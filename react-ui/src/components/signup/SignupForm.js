@@ -21,6 +21,9 @@ function validateInput(data) {
   if (Validator.isEmpty(data.passwordConfirmation)) {
     errors.passwordConfirmation = 'This field is required';
   }
+  if (Validator.isEmpty(data.country)) {
+    errors.country = 'This field is required';
+  }
   if (!Validator.equals(data.password, data.passwordConfirmation)) {
     errors.passwordConfirmation = 'Passwords must match';
   }
@@ -41,6 +44,7 @@ class SignupForm extends React.Component {
       email: '',
       password: '',
       passwordConfirmation: '',
+      country: '',
       errors: {},
       isLoading: false,
       invalid: false
@@ -145,6 +149,14 @@ class SignupForm extends React.Component {
 					field="passwordConfirmation"
           type="password"
     />
+
+        <TextFieldGroup
+          error={errors.country}
+          label="Country"
+          onChange={this.onChange}
+          value={this.state.country}
+          field="country"
+        />
 
         <div className="form-group">
           <button

@@ -40,8 +40,8 @@ $ git push heroku master
 
 ## Environments
 - development - http://localhost:3000
-- staging - https://floating-dusk-88295.herokuapp.com/
-- production -
+- staging - https://floating-dusk-88295.herokuapp.com
+- production - https://chinese-me.herokuapp.com
 
 ## TODO
 - [ ]

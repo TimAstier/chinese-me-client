@@ -34,8 +34,8 @@ Note: In order for Environment variables to be updated in the code after a chang
 the app needs to be rebuilt. This can be done by pushing an empty commit like so:
 
 ```
-git commit --allow-empty -m "empty commit"
-git push heroku master
+$ git commit --allow-empty -m "empty commit"
+$ git push heroku master
 ```
 
 ## Environments

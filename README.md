@@ -43,5 +43,20 @@ $ git push heroku master
 - staging - https://floating-dusk-88295.herokuapp.com
 - production - https://chinese-me.herokuapp.com
 
+## Misc
+- [redux docs](http://redux.js.org)
+- [react-redux-links](https://github.com/markerikson/react-redux-links)
+- [semantic-ui-react](https://github.com/Semantic-Org/Semantic-UI-React)
+- [react-router](https://reacttraining.com/react-router/web/guides/quick-start)
+- [learning-react-router](https://css-tricks.com/learning-react-router/#article-header-id-9)
+- [redux-form](http://redux-form.com/6.6.1/docs/GettingStarted.md)
+
 ## TODO
-- [ ]
+- [ ] Migrate to Ducks file structure.
+- https://medium.com/@scbarrus/the-ducks-file-structure-for-redux-d63c41b7035c
+- https://github.com/erikras/ducks-modular-redux
+- [ ] Routing: see this https://github.com/erikras/react-redux-universal-hot-example/blob/master/src/routes.js
+- [ ] Api Middleware - https://github.com/erikras/react-redux-universal-hot-example/blob/master/src/redux/modules/auth.js
+- [ ] See more examples
+- [ ] Use CloudFront as a CDN (S3 is not optimised for delivery)
+- [ ] Use Helmet

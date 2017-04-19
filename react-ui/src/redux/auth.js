@@ -1,8 +1,29 @@
 import axios from 'axios';
 import setAuthorizationToken from '../utils/setAuthorizationToken';
 import jwtDecode from 'jwt-decode';
-import { SET_CURRENT_USER } from './types';
+import isEmpty from 'lodash/isEmpty';
+import { Map } from 'immutable';
 
+// Action Types
+const SET_CURRENT_USER = 'chinese-me/auth/SET_CURRENT_USER';
+
+// Reducer
+const INITIAL_STATE = Map({
+  isAuthenticated: false,
+  user: {}
+});
+
+export default function reducer(state = INITIAL_STATE, action = {}) {
+  switch (action.type) {
+    case SET_CURRENT_USER:
+      return state.set('isAuthenticated', !isEmpty(action.user))
+        .set('user', action.user);
+    default:
+      return state;
+  }
+}
+
+// Action Creators
 export function setCurrentUser(user) {
   return {
     type: SET_CURRENT_USER,

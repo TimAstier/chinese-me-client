@@ -1,10 +1,10 @@
-import React from 'react';
-import SignupForm from './SignupForm';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { userSignupRequest, isUserExists } from '../../actions/signupActions';
-import { showFlashMessageWithTimeout } from '../../actions/flashMessages';
+import { SignupForm } from '../../components';
+import { userSignupRequest, isUserExists } from '../../redux/signup';
+import { showFlashMessageWithTimeout } from '../../redux/flashMessages';
 
-class SignupPage extends React.Component {
+class SignupPage extends Component {
   render() {
     const { userSignupRequest, showFlashMessageWithTimeout,
       isUserExists } = this.props;
@@ -23,9 +23,9 @@ class SignupPage extends React.Component {
 }
 
 SignupPage.propTypes = {
-  userSignupRequest: React.PropTypes.func.isRequired,
-  showFlashMessageWithTimeout: React.PropTypes.func.isRequired,
-  isUserExists: React.PropTypes.func.isRequired
+  userSignupRequest: PropTypes.func.isRequired,
+  showFlashMessageWithTimeout: PropTypes.func.isRequired,
+  isUserExists: PropTypes.func.isRequired
 };
 
 export default connect(

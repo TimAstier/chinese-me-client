@@ -1,3 +1,4 @@
+// Not sure that this is the right place to put those 'actions'
 import axios from 'axios';
 
 export function userSignupRequest(userData) {

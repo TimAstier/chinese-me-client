@@ -1,5 +1,5 @@
-import React from 'react';
-import TextFieldGroup from '../common/TextFieldGroup';
+import React, { Component, PropTypes } from 'react';
+import { TextFieldGroup } from '../';
 import Validator from 'validator';
 import isEmpty from 'lodash/isEmpty';
 
@@ -35,7 +35,7 @@ function validateInput(data) {
 }
 
 // Use class components for top-components to get hot reloading working
-class SignupForm extends React.Component {
+class SignupForm extends Component {
   // Defining the state in the constructor
   constructor(props) {
     super(props);
@@ -172,9 +172,9 @@ class SignupForm extends React.Component {
 }
 
 SignupForm.propTypes = {
-  userSignupRequest: React.PropTypes.func.isRequired,
-  showFlashMessageWithTimeout: React.PropTypes.func.isRequired,
-  isUserExists: React.PropTypes.func.isRequired
+  userSignupRequest: PropTypes.func.isRequired,
+  showFlashMessageWithTimeout: PropTypes.func.isRequired,
+  isUserExists: PropTypes.func.isRequired
 };
 
 SignupForm.contextTypes = {

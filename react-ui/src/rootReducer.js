@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux-immutable';
-import routerReducer from './routerReducer';
 
-import flashMessages from './reducers/flashMessages';
-import auth from './reducers/auth';
+import auth from './redux/auth';
+import flashMessages from './redux/flashMessages';
+import routing from './redux/routing';
 
 export default combineReducers({
-  flashMessages,
   auth,
-  routing: routerReducer
+  flashMessages,
+  routing
 });

@@ -1,6 +1,6 @@
 import React from 'react';
-import NavigationBar from '../navigationBar/containers/NavigationBar';
-import FlashMessagesList from './flash/FlashMessagesList';
+import { NavigationBar } from '../';
+import { FlashMessagesList } from '../';
 
 class App extends React.Component {
   render() {

@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Menu } from 'semantic-ui-react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
-import { logout } from '../../actions/authActions';
+import { logout } from '../../redux/auth';
 import './NavigationBar.css';
 import logo from '../../logo.png';
-import AppMenu from '../components/AppMenu';
+import { AppMenu } from '../../components';
 
-class NavigationBar extends React.Component {
+class NavigationBar extends Component {
 
   logout(e) {
     e.preventDefault();
@@ -64,9 +64,9 @@ class NavigationBar extends React.Component {
 }
 
 NavigationBar.propTypes = {
-  auth: React.PropTypes.object.isRequired,
-  logout: React.PropTypes.func.isRequired,
-  pathname: React.PropTypes.string.isRequired
+  auth: PropTypes.object.isRequired,
+  logout: PropTypes.func.isRequired,
+  pathname: PropTypes.string.isRequired
 };
 
 function mapStateToProps(state) {

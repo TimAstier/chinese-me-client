@@ -1,7 +1,5 @@
-import React from 'react';
-import TextFieldGroup from '../common/TextFieldGroup';
-import { connect } from 'react-redux';
-import { login } from '../../actions/authActions';
+import React, { Component, PropTypes } from 'react';
+import { TextFieldGroup } from '../';
 import Validator from 'validator';
 import isEmpty from 'lodash/isEmpty';
 
@@ -22,7 +20,7 @@ function validateInput(data) {
   };
 }
 
-class LoginForm extends React.Component {
+class LoginForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -101,13 +99,11 @@ class LoginForm extends React.Component {
 }
 
 LoginForm.propTypes = {
-  login: React.PropTypes.func.isRequired
+  login: PropTypes.func.isRequired
 };
 
 LoginForm.contextTypes = {
-  router: React.PropTypes.object.isRequired
+  router: PropTypes.object.isRequired
 };
 
-// This allows to bind this component with actions to dispatch
-// null (no state associated) login actions
-export default connect(null, { login })(LoginForm);
+export default LoginForm;

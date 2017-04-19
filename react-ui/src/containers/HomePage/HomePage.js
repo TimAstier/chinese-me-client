@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { Message, Image, Button } from 'semantic-ui-react';
-import logo from '../logo.png';
+import logo from '../../logo.png';
 
-class HomePage extends React.Component {
+class HomePage extends Component {
   render() {
     const { isAuthenticated } = this.props.auth;
 
@@ -29,6 +29,7 @@ class HomePage extends React.Component {
           </Link>
           :
           <Image
+            id="home-logo"
             src={logo}
             alt="ChineseMe logo"
             shape="circular"
@@ -41,7 +42,7 @@ class HomePage extends React.Component {
 }
 
 HomePage.propTypes = {
-  auth: React.PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {

@@ -9,14 +9,12 @@ class SignupPage extends Component {
     const { userSignupRequest, showFlashMessageWithTimeout,
       isUserExists } = this.props;
     return (
-      <div className="row">
-        <div className="col-md-4 col-md-offset-4">
-          <SignupForm
-            isUserExists={isUserExists}
-            userSignupRequest={userSignupRequest}
-            showFlashMessageWithTimeout={showFlashMessageWithTimeout}
-          />
-        </div>
+      <div className="page">
+        <SignupForm
+          isUserExists={isUserExists}
+          userSignupRequest={userSignupRequest}
+          showFlashMessageWithTimeout={showFlashMessageWithTimeout}
+        />
       </div>
     );
   }

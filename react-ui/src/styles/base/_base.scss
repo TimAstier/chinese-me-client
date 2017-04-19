@@ -9,7 +9,8 @@ body {
 
 #app {
   height: 100%;
-  margin-top: 59px;
+  display: flex;
+  flex-direction: column;
 }
 
 .center {
@@ -20,4 +21,8 @@ h2 {
   text-align: center;
   height: 50px;
   padding-top: 7px;
+}
+
+#navbar {
+  margin-bottom: 0px;
 }

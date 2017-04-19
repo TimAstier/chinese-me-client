@@ -1,10 +1,9 @@
 import React, { Component, PropTypes } from 'react';
-import { Menu } from 'semantic-ui-react';
+import { Menu, Button, Icon } from 'semantic-ui-react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { logout } from '../../redux/auth';
 import logo from '../../logo.png';
-import { AppMenu } from '../../components';
 
 class NavigationBar extends Component {
 
@@ -18,28 +17,38 @@ class NavigationBar extends Component {
 
     const userLinks = (
       <Menu.Menu position="right" className="main-menu-link">
-        <a href={process.env.REACT_APP_ADMIN_URL}
-          className="item"
-          target="_blank">
-          Open Admin
-        </a>
-        <a href="#"
-          onClick={this.logout.bind(this)}
-          className="item">
-          Logout
-        </a>
+        <Menu.Item>
+          <Button
+            as={Link}
+            to="#"
+            basic
+            inverted
+            onClick={this.logout.bind(this)}>
+            <Icon name="power"/>Logout
+          </Button>
+        </Menu.Item>
       </Menu.Menu>
     );
 
     const guestLinks = (
       <Menu.Menu position="right" className="main-menu-link">
-        <Link to="/signup" className="item color">Signup</Link>
-        <Link to="/login" className="item">Login</Link>
+        <Menu.Item>
+          <Button as={Link} to="/signup" primary inverted >
+            <Icon name="pencil"/>
+            Signup
+          </Button>
+        </Menu.Item>
+        <Menu.Item>
+          <Button as={Link} to="/login" secondary inverted >
+            <Icon name="user"/>
+            Login
+          </Button>
+        </Menu.Item>
       </Menu.Menu>
     );
 
     return (
-    <Menu fixed="top">
+    <Menu id="navbar" inverted>
       <Menu.Item>
         <img
           className="logo"
@@ -53,9 +62,6 @@ class NavigationBar extends Component {
       >
         ChineseMe
       </Link>
-      { isAuthenticated && this.props.pathname === '/app' &&
-        <AppMenu />
-      }
       { isAuthenticated ? userLinks : guestLinks }
     </Menu>
     );
@@ -64,8 +70,7 @@ class NavigationBar extends Component {
 
 NavigationBar.propTypes = {
   auth: PropTypes.object.isRequired,
-  logout: PropTypes.func.isRequired,
-  pathname: PropTypes.string.isRequired
+  logout: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {

@@ -6,7 +6,7 @@ class App extends React.Component {
   render() {
     return (
       <div id="app">
-        <NavigationBar pathname={this.props.location.pathname} />
+        <NavigationBar />
         <FlashMessagesList />
         {this.props.children}
       </div>

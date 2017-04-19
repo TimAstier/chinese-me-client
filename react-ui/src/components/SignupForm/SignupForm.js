@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { Header } from 'semantic-ui-react';
+import { Header, Form } from 'semantic-ui-react';
 import { TextFieldGroup } from '../';
 import Validator from 'validator';
 import isEmpty from 'lodash/isEmpty';
@@ -69,18 +69,19 @@ class SignupForm extends Component {
     const field = e.target.name;
     const val = e.target.value;
     if (val !== '') {
-      this.props.isUserExists(val).then(res => {
-        const errors = this.state.errors;
-        let invalid;
-        if (!isEmpty(res.data.user)) {
-          errors[field] = 'There is user with such ' + field;
-          invalid = true;
-        } else {
-          errors[field] = '';
-          invalid = false;
-        }
-        this.setState({ errors, invalid });
-      });
+      this.props.isUserExists(val)
+        .then(res => {
+          const errors = this.state.errors;
+          let invalid;
+          if (!isEmpty(res.data.user)) {
+            errors[field] = 'There is user with such ' + field;
+            invalid = true;
+          } else {
+            errors[field] = '';
+            invalid = false;
+          }
+          this.setState({ errors, invalid });
+        });
     }
   }
 
@@ -112,7 +113,7 @@ class SignupForm extends Component {
   render() {
     const { errors } = this.state;
     return (
-      <form onSubmit={this.onSubmit} id="signup-form">
+      <form onSubmit={this.onSubmit} class="form">
         <Header as="h1">Create your account</Header>
 
 				<TextFieldGroup

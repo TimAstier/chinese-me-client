@@ -4,10 +4,12 @@
   "private": true,
   "description": "A client for the ChineseMe app.",
   "author": "Timothée Astier",
-  "private": true,
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build-css": "node-sass src/ -o src/",
+    "watch-css": "npm run build-css && node-sass src/ -o src/ --watch --recursive",
+    "start-js": "react-scripts start",
+    "start": "npm-run-all -p watch-css start-js",
+    "build": "npm run build-css && react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "lint": "eslint *.js .; exit 0",
@@ -33,6 +35,8 @@
     "validator": "^6.2.1"
   },
   "devDependencies": {
+    "node-sass": "^4.5.2",
+    "npm-run-all": "^4.0.2",
     "react-scripts": "0.9.4"
   }
 }

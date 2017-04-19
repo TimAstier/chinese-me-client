@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import { Header } from 'semantic-ui-react';
 import { TextFieldGroup } from '../';
 import Validator from 'validator';
 import isEmpty from 'lodash/isEmpty';
@@ -66,7 +67,7 @@ class LoginForm extends Component {
     const { errors, identifier, password, isLoading } = this.state;
     return (
       <form onSubmit={this.onSubmit} id="login-form">
-        <h1>Login</h1>
+        <Header as="h1">Login</Header>
 
         { errors.form &&
           <div className="alert alert-danger">{errors.form}</div> }

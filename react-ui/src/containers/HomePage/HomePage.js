@@ -26,7 +26,7 @@ class HomePage extends Component {
               shape="circular"
               centered
             />
-            <Button size="massive" id="get-started-btn" primary>Enter the app</Button>
+            <Button id="get-started-btn" primary>Enter the app</Button>
           </Link>
           :
           <Image

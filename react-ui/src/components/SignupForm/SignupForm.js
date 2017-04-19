@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import { Header } from 'semantic-ui-react';
 import { TextFieldGroup } from '../';
 import Validator from 'validator';
 import isEmpty from 'lodash/isEmpty';
@@ -112,7 +113,7 @@ class SignupForm extends Component {
     const { errors } = this.state;
     return (
       <form onSubmit={this.onSubmit} id="signup-form">
-        <h1>Create your account</h1>
+        <Header as="h1">Create your account</Header>
 
 				<TextFieldGroup
 					error={errors.username}

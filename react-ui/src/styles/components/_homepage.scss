@@ -1,0 +1,25 @@
+#home-screen {
+  padding-top: 40px;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+}
+
+#home-logo {
+  animation: scaly 5000ms ease-in-out 0ms infinite;
+}
+
+@keyframes scaly {
+  0% { transform: scale(1.0); }
+  50% { transform: scale(1.1); }
+}
+
+#greetings {
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 40px;
+}
+
+#get-started-btn {
+  margin-top: 20px;
+}

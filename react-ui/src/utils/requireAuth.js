@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { showFlashMessageWithTimeout } from '../actions/flashMessages';
+import { showFlashMessageWithTimeout } from '../redux/flashMessages';
 
 // Example of High Order Component
 
@@ -11,7 +11,7 @@ export default function(ComposedComponent) {
         this.props.showFlashMessageWithTimeout({
           type: 'error',
           text: 'You need to login to access this page.'
-        });
+        }, 5000);
         this.props.router.push('/login');
       }
     }

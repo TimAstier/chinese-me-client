@@ -1,36 +1,31 @@
 import React, { Component, PropTypes } from 'react';
-import classnames from 'classnames';
+import { Message } from 'semantic-ui-react';
 
 class FlashMessage extends Component {
-  constructor(props) {
-    super(props);
-    this.onClick = this.onClick.bind(this);
-  }
-
-  onClick() {
-    this.props.deleteFlashMessage(this.props.message.id);
-  }
 
   render() {
     const { type, text } = this.props.message;
+    let color = '';
+    switch (type) {
+      case 'success':
+        color = 'green';
+        break;
+      case 'error':
+        color = 'red';
+        break;
+      default:
+        color = 'blue';
+    }
     return (
-      <div className={classnames('alert', {
-        'alert-success': type === 'success',
-        'alert-danger': type === 'error'
-      })}>
-        <button
-          onClick={this.onClick}
-          className="close"
-        ><span>&times;</span></button>
-        {text}
+      <div className="flashmessage">
+        <Message color={color}>{text}</Message>
       </div>
     );
   }
 }
 
 FlashMessage.propTypes = {
-  message: PropTypes.object.isRequired,
-  deleteFlashMessage: PropTypes.func.isRequired
+  message: PropTypes.object.isRequired
 };
 
 export default FlashMessage;

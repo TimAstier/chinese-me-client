@@ -1,17 +1,21 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
-
+import requireAuth from './utils/requireAuth';
 import { App, HomePage, LoginPage, SignupPage,
-  GrammarScreen } from './containers';
-// import requireAuth from './utils/requireAuth';
+  StudyScreen } from './containers';
+import { Character, Dialog, Grammar, NotFound } from './components';
+
 
 export default (
   <Route path="/" component={App}>
-    {/* Children of 'App' */}
     <IndexRoute component={HomePage} />
-    {/* <Route path="/app" component={requireAuth(MainScreen)} />*/}
-    <Route path="/signup" component={SignupPage} />
-    <Route path="/login" component={LoginPage} />
-    <Route path="/grammar/:id" component={GrammarScreen}/>
+    <Route path="signup" component={SignupPage} />
+    <Route path="login" component={LoginPage} />
+    <Route path="study" component={requireAuth(StudyScreen)}>
+      <Route path="character" component={Character} />
+      <Route path="dialog" component={Dialog} />
+      <Route path="grammar" component={Grammar} />
+    </Route>
+    <Route path="*" component={NotFound} />
   </Route>
 );

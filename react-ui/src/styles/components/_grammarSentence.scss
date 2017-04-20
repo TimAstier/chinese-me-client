@@ -1,0 +1,19 @@
+.grammar-sentence {
+  padding: 30px 30px;
+  background: lighten(lightblue, 10%);
+  width: 70%;
+  margin: 10px 0px;
+  border-radius: 10px;
+
+  .chinese {
+    font-size: 18px;
+  }
+
+  .translation {
+    margin-top: 10px;
+  }
+
+  .rawtranslation {
+    margin-top: 10px;
+  }
+}

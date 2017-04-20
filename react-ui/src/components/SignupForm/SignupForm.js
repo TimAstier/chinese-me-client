@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { Header, Form } from 'semantic-ui-react';
-import { TextFieldGroup } from '../';
+import { Header, Form, Button } from 'semantic-ui-react';
 import Validator from 'validator';
 import isEmpty from 'lodash/isEmpty';
 
@@ -113,62 +112,90 @@ class SignupForm extends Component {
   render() {
     const { errors } = this.state;
     return (
-      <form onSubmit={this.onSubmit} class="form">
-        <Header as="h1">Create your account</Header>
+      <Form onSubmit={this.onSubmit}>
+        <Header as="h1" className="center">Create your account</Header>
 
-				<TextFieldGroup
-					error={errors.username}
-					label="Username"
-          checkUserExists={this.checkUserExists}
-					onChange={this.onChange}
-					value={this.state.username}
-          field="username"
-    />
+        <Form.Field>
+          <Form.Input
+            label="Username"
+            value={this.state.username}
+            onBlur={this.checkUserExists}
+            onChange={this.onChange}
+            type="text"
+            name="username"
+            error={!isEmpty(errors.username)}
+          />
+          { errors.username &&
+            <p className="error">{errors.username}</p>
+          }
+        </Form.Field>
 
-				<TextFieldGroup
-					error={errors.email}
-					label="Email"
-          checkUserExists={this.checkUserExists}
-					onChange={this.onChange}
-					value={this.state.email}
-					field="email"
-    />
+        <Form.Field>
+          <Form.Input
+            label="Email"
+            value={this.state.email}
+            onBlur={this.checkUserExists}
+            onChange={this.onChange}
+            type="text"
+            name="email"
+            error={!isEmpty(errors.email)}
+          />
+          { errors.email &&
+            <p className="error">{errors.email}</p>
+          }
+        </Form.Field>
 
-				<TextFieldGroup
-					error={errors.password}
-					label="Password"
-					onChange={this.onChange}
-					value={this.state.password}
-					field="password"
-          type="password"
-    />
+        <Form.Field>
+          <Form.Input
+            label="Password"
+            value={this.state.password}
+            onChange={this.onChange}
+            type="password"
+            name="password"
+            error={!isEmpty(errors.password)}
+          />
+          { errors.password &&
+            <p className="error">{errors.password}</p>
+          }
+        </Form.Field>
 
-				<TextFieldGroup
-					error={errors.passwordConfirmation}
-					label="Password Confirmation"
-					onChange={this.onChange}
-					value={this.state.passwordConfirmation}
-					field="passwordConfirmation"
-          type="password"
-    />
+        <Form.Field>
+          <Form.Input
+            label="Password Confirmation"
+            value={this.state.passwordConfirmation}
+            onChange={this.onChange}
+            type="password"
+            name="passwordConfirmation"
+            error={!isEmpty(errors.passwordConfirmation)}
+          />
+          { errors.passwordConfirmation &&
+            <p className="error">{errors.passwordConfirmation}</p>
+          }
+        </Form.Field>
 
-        <TextFieldGroup
-          error={errors.country}
-          label="Country"
-          onChange={this.onChange}
-          value={this.state.country}
-          field="country"
-        />
+        <Form.Field>
+          <Form.Input
+            label="Country"
+            value={this.state.country}
+            onChange={this.onChange}
+            type="text"
+            name="country"
+            error={!isEmpty(errors.country)}
+          />
+          { errors.country &&
+            <p className="error">{errors.country}</p>
+          }
+        </Form.Field>
 
-        <div className="form-group">
-          <button
-            className="btn btn-primary btn-lg"
-            disabled={this.state.isLoading || this.state.invalid}
-          >
-            Sign up
-          </button>
-        </div>
-      </form>
+        <Button
+          primary
+          type="submit"
+          disabled={this.state.isLoading || this.state.invalid}
+        >
+          Signup
+        </Button>
+
+      </Form>
     );
   }
 }

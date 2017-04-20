@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { Header } from 'semantic-ui-react';
-import { TextFieldGroup } from '../';
+import { Header, Form, Button } from 'semantic-ui-react';
 import Validator from 'validator';
 import isEmpty from 'lodash/isEmpty';
 
@@ -40,11 +39,22 @@ class LoginForm extends Component {
     if (this.isValid()) {
       this.setState({ errors: {}, isLoading: true });
       this.props.login(this.state).then(
-        () => this.context.router.push('/app'),
-        (err) => this.setState({
-          errors: err.response.data.errors,
-          isLoading: false
-        })
+        () => {
+          this.context.router.push('/study/grammar');
+          this.props.showFlashMessageWithTimeout({
+            type: 'success',
+            text: 'Welcome back on ChineseMe!'
+          }, 5000);
+        },
+        (err) => {
+          this.setState({
+            isLoading: false
+          });
+          this.props.showFlashMessageWithTimeout({
+            type: 'error',
+            text: err.response.data.errors[0].message
+          }, 5000);
+        }
       );
     }
   }
@@ -64,43 +74,58 @@ class LoginForm extends Component {
   }
 
   render() {
-    const { errors, identifier, password, isLoading } = this.state;
+    const { errors } = this.state;
     return (
-      <form onSubmit={this.onSubmit} id="login-form">
-        <Header as="h1">Login</Header>
+      <Form onSubmit={this.onSubmit}>
+        <Header as="h1" className="center">Login</Header>
 
         { errors.form &&
           <div className="alert alert-danger">{errors.form}</div> }
 
-        <TextFieldGroup
-          field="identifier"
-          label="Username / email"
-          value={identifier}
-          error={errors.identifier}
-          onChange={this.onChange}
-        />
+        <Form.Field>
+          <Form.Input
+            label="Username / email"
+            value={this.state.identifier}
+            onChange={this.onChange}
+            type="text"
+            name="identifier"
+            error={!isEmpty(errors.identifier)}
+          />
+          { errors.identifier &&
+            <p className="error">{errors.identifier}</p>
+          }
+        </Form.Field>
 
-        <TextFieldGroup
-          field="password"
-          label="Password"
-          value={password}
-          error={errors.password}
-          onChange={this.onChange}
-          type="password"
-        />
+        <Form.Field>
+          <Form.Input
+            label="Password"
+            value={this.state.password}
+            onChange={this.onChange}
+            type="password"
+            name="password"
+            error={!isEmpty(errors.password)}
+          />
+          { errors.password &&
+            <p className="error">{errors.password}</p>
+          }
+        </Form.Field>
 
-        <div className="form-group">
-          <button className="btn btn-primary btn-lg" disabled={isLoading}>
-            Login
-          </button>
-        </div>
-      </form>
+        <Button
+          primary
+          type="submit"
+          disabled={this.state.isLoading || this.state.invalid}
+        >
+          Login
+        </Button>
+
+      </Form>
     );
   }
 }
 
 LoginForm.propTypes = {
-  login: PropTypes.func.isRequired
+  login: PropTypes.func.isRequired,
+  showFlashMessageWithTimeout: PropTypes.func.isRequired
 };
 
 LoginForm.contextTypes = {

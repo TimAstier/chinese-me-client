@@ -4,5 +4,6 @@ export { default as FlashMessagesList } from './FlashMessagesList/FlashMessagesL
 export { default as HomePage } from './HomePage/HomePage';
 export { default as LoginPage } from './LoginPage/LoginPage';
 export { default as NavigationBar } from './NavigationBar/NavigationBar';
+export { default as ResourceScreen } from './ResourceScreen/ResourceScreen';
 export { default as SignupPage } from './SignupPage/SignupPage';
 export { default as StudyScreen } from './StudyScreen/StudyScreen';

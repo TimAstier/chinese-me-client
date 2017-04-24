@@ -16,7 +16,8 @@ const INITIAL_STATE = Map({
 export default function reducer(state = INITIAL_STATE, action = {}) {
   switch (action.type) {
     case SET_CURRENT_USER:
-      return state.set('isAuthenticated', !isEmpty(action.user))
+      return state
+        .set('isAuthenticated', !isEmpty(action.user))
         .set('user', action.user);
     default:
       return state;

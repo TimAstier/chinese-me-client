@@ -4,8 +4,6 @@ import { Coach, UserFeedback, LessonMenu } from '../../components';
 // TODO: Import this from the DB
 const comment = 'Here is another usage of the character 有 yǒu, previously seen in lesson 2.';
 
-const activeItem = 'enterprise';
-
 class StudyScreen extends Component {
 
   render() {

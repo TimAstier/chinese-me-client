@@ -4,15 +4,19 @@ export default function DialogDeserializer(data) {
       id: data.data.id,
       title: data.data.attributes.title
     },
-    lines: data.included.map(l => {
-      return {
-        id: l.id,
-        avatar: l.attributes.avatar,
-        name: l.attributes.name,
-        meta: l.attributes.meta,
-        text: l.attributes.text,
-        order: l.attributes.lineDialog.order
-      };
-    })
+    lines: data.included
+      .map(l => {
+        return {
+          id: l.id,
+          avatar: l.attributes.avatar,
+          name: l.attributes.name,
+          meta: l.attributes.meta,
+          text: l.attributes.text,
+          order: l.attributes.lineDialog.order
+        };
+      })
+      .sort((a, b) => {
+        return a.order - b.order;
+      })
   };
 }

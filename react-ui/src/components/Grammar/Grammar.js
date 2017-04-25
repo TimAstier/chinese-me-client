@@ -1,55 +1,58 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { GrammarSentence } from '../';
-
-// TODO: Import this from the DB
-const sentences = [{
-  chinese: '我有三本书。',
-  translation: 'I have three books.',
-  rawtranslation: '(I HAVE THREE ROOT-OF BOOK.)'
-}, {
-  chinese: '它有两个名字。',
-  translation: 'It has two names.',
-  rawtranslation: '(IT HAVE TWO PIECE-OF NAME.)'
-}, {
-  chinese: '她也有中文名字吗？',
-  translation: 'Does she have a Chinese name, too?',
-  rawtranslation: '(SHE HAVE CHINESE NAME YES/NO?)'
-}];
+import { ResourceLoader, ResourceNotFound } from '../';
 
 class Grammar extends Component {
+
+  componentWillMount() {
+    return this.props.getGrammar(this.props.id);
+  }
 
   renderSentences(sentences) {
     return sentences.map((sentence, i) => {
       return (
         <GrammarSentence
           key={i}
-          chinese={sentence.chinese}
-          translation={sentence.translation}
-          rawtranslation={sentence.rawtranslation}
+          chinese={sentence.get('chinese')}
+          translation={sentence.get('english')}
+          rawtranslation={sentence.get('rawEnglish')}
         />
       );
     });
   }
 
-  render() {
+  renderGrammar() {
     return (
       <div id="grammar">
         <div className="explanation">
-          <h1>有, yǒu meaning to have</h1>
-          <p>
-            有, yǒu, can mean either to have, or there is, depending
-            on context. With a noun or pronoun, it means have.
-          </p>
+          <h1>{this.props.grammar.get('title')}</h1>
+          <p>{this.props.grammar.get('explanation')}</p>
         </div>
 
         <div className="sentences">
-          {this.renderSentences(sentences)}
+          {this.renderSentences(this.props.sentences)}
         </div>
       </div>
     );
   }
+
+  render() {
+    if (this.props.isFetching) {
+      return <ResourceLoader />;
+    }
+    if (this.props.grammar.get('title') === undefined) {
+      return <ResourceNotFound />;
+    }
+    return this.renderGrammar();
+  }
 }
 
-Grammar.propTypes = {};
+Grammar.propTypes = {
+  getGrammar: PropTypes.func.isRequired,
+  grammar: PropTypes.object.isRequired,
+  sentences: PropTypes.object.isRequired,
+  isFetching: PropTypes.bool.isRequired,
+  id: PropTypes.number.isRequired
+};
 
 export default Grammar;

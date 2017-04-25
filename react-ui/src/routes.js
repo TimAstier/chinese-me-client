@@ -2,8 +2,8 @@ import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 import requireAuth from './utils/requireAuth';
 import { App, HomePage, LoginPage, SignupPage,
-  StudyScreen, ResourceScreen, Char, Dialog } from './containers';
-import { Grammar, NotFound } from './components';
+  StudyScreen, ResourceScreen, Char, Dialog, Grammar } from './containers';
+import { NotFound } from './components';
 
 // How to redirect from action creators:
 // import { browserHistory } from 'react-router';

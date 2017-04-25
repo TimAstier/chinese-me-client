@@ -1,12 +1,19 @@
 import React, { Component, PropTypes } from 'react';
 import { Comment, Icon } from 'semantic-ui-react';
+import meijia from './meijia.png';
+import zenglaoshi from './zenglaoshi.png';
+
+const avatars = {
+  'meijia': meijia,
+  'zenglaoshi': zenglaoshi
+};
 
 class DialogLine extends Component {
 
   render() {
     return (
       <Comment>
-        <Comment.Avatar as="a" src={this.props.avatar} />
+        <Comment.Avatar as="a" src={avatars[this.props.avatar]} />
         <Comment.Content>
           <Comment.Author as="a">{this.props.name}</Comment.Author>
           <Comment.Metadata>

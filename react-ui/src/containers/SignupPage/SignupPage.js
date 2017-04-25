@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { SignupForm } from '../../components';
-import { userSignupRequest, isUserExists } from '../../redux/signup';
+import { userSignupRequest, isUserExists } from './operations';
 import { showFlashMessageWithTimeout } from '../../redux/flashMessages';
 
 class SignupPage extends Component {

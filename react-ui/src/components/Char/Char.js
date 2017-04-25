@@ -1,10 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 import { ResourceLoader, ResourceNotFound } from '../';
 
-class Character extends Component {
+class Char extends Component {
 
   componentWillMount() {
-    return this.props.getChar(this.props.routeParams.id);
+    return this.props.getChar(this.props.id);
   }
 
   renderChar() {
@@ -43,11 +43,11 @@ class Character extends Component {
   }
 }
 
-Character.propTypes = {
-  getChar: PropTypes.func,
-  char: PropTypes.object,
-  isFetching: PropTypes.bool,
-  routeParams: PropTypes.object.isRequired
+Char.propTypes = {
+  getChar: PropTypes.func.isRequired,
+  char: PropTypes.object.isRequired,
+  isFetching: PropTypes.bool.isRequired,
+  id: PropTypes.number.isRequired
 };
 
-export default Character;
+export default Char;

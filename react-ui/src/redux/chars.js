@@ -30,7 +30,7 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
 }
 
 // Action Creators
-export function set(char) {
+function set(char) {
   return {
     type: SET,
     char

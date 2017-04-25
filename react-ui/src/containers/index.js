@@ -1,5 +1,7 @@
 // Keep in alphabetical order
 export { default as App } from './App/App';
+export { default as Char } from './Char/Char';
+export { default as Dialog } from './Dialog/Dialog';
 export { default as FlashMessagesList } from './FlashMessagesList/FlashMessagesList';
 export { default as HomePage } from './HomePage/HomePage';
 export { default as LoginPage } from './LoginPage/LoginPage';

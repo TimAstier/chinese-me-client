@@ -1,5 +1,5 @@
 // Keep in alphabetical order
-export { default as Character } from './Character/Character';
+export { default as Char } from './Char/Char';
 export { default as Coach } from './Coach/Coach';
 export { default as Dialog } from './Dialog/Dialog';
 export { default as DialogLine } from './DialogLine/DialogLine';

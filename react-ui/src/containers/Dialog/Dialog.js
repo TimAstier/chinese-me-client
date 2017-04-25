@@ -12,7 +12,7 @@ class Dialog extends Component {
         dialog={this.props.dialog}
         lines={this.props.lines}
         isFetching={this.props.isFetching}
-        id={Number(this.props.routeParams.id)}
+        id={Number(this.props.routeParams.dialogId)}
       />
     );
   }

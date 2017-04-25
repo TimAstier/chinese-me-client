@@ -1,29 +1,33 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
 import { Coach, UserFeedback, LessonMenu } from '../../components';
+import { get as getLesson, charCount, grammarCount, getTitle }
+  from '../../redux/lessons';
 
 // TODO: Import this from the DB
 const comment = 'Here is another usage of the character 有 yǒu, previously seen in lesson 2.';
 
 class StudyScreen extends Component {
 
+  componentWillMount() {
+    return this.props.getLesson(this.props.routeParams.lessonId);
+  }
+
   render() {
-    // Allow to pass props along with children coming from react-router
-    // See following link for case with multiple children
-    // http://stackoverflow.com/questions/32370994/how-to-pass-props-to-this-props-children
-
-    // const childrenWithProps = React.cloneElement(this.props.children, { ...grammarProps });
-    const childrenWithProps = React.cloneElement(this.props.children, {});
-
     return (
       <div id="study-screen">
 
         <div id="left-sidebar">
-          <LessonMenu />
+          <LessonMenu
+            title={this.props.title}
+            charCount={this.props.charCount}
+            grammarCount={this.props.grammarCount}
+          />
           <Coach comment={comment}/>
         </div>
 
         <div id="main-content">
-          {childrenWithProps}
+          {this.props.children}
         </div>
 
         <div id="right-sidebar">
@@ -36,7 +40,20 @@ class StudyScreen extends Component {
 }
 
 StudyScreen.propTypes = {
-  children: React.PropTypes.node
+  children: PropTypes.node,
+  getLesson: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
+  charCount: PropTypes.number.isRequired,
+  grammarCount: PropTypes.number.isRequired,
+  routeParams: PropTypes.object.isRequired
 };
 
-export default StudyScreen;
+function mapStateToProps(state) {
+  return {
+    charCount: charCount(state.get('lessons')),
+    grammarCount: grammarCount(state.get('lessons')),
+    title: getTitle(state.get('lessons'))
+  };
+}
+
+export default connect(mapStateToProps, { getLesson })(StudyScreen);

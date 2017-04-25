@@ -12,7 +12,7 @@ class Grammar extends Component {
         sentences={this.props.sentences}
         grammar={this.props.grammar}
         isFetching={this.props.isFetching}
-        id={Number(this.props.routeParams.id)}
+        id={Number(this.props.routeParams.grammarId)}
       />
     );
   }

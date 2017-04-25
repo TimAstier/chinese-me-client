@@ -1,26 +1,31 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Menu, Label, Icon } from 'semantic-ui-react';
 
 class LessonMenu extends Component {
 
+  // TODO: Display number of words
   render() {
     return (
       <div id="lesson-menu">
         <Menu vertical>
           <Menu.Item>
-            <Menu.Header>Lesson 1</Menu.Header>
+            <Menu.Header>{this.props.title}</Menu.Header>
             <Menu.Menu>
               <Menu.Item name="objectives">
                 <Icon name="checkmark" color="green" size="large"/>
                 Objectives
               </Menu.Item>
               <Menu.Item name="grammar" active>
-                <Label color="teal" circular size="tiny">3</Label>
+                <Label color="teal" circular size="tiny">
+                  {this.props.grammarCount}
+                </Label>
                 Grammar
               </Menu.Item>
               <Menu.Item name="Dialog" />
               <Menu.Item name="characters">
-                <Label color="teal" circular size="tiny">7</Label>
+                <Label color="teal" circular size="tiny">
+                  {this.props.charCount}
+                </Label>
                 Characters
               </Menu.Item>
               <Menu.Item name="words">
@@ -36,6 +41,10 @@ class LessonMenu extends Component {
   }
 }
 
-LessonMenu.propTypes = {};
+LessonMenu.propTypes = {
+  title: PropTypes.string.isRequired,
+  charCount: PropTypes.number.isRequired,
+  grammarCount: PropTypes.number.isRequired
+};
 
 export default LessonMenu;

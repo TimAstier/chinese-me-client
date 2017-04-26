@@ -15,14 +15,14 @@ export default (
     <Route path="signup" component={SignupPage} />
     <Route path="login" component={LoginPage} />
     <Route path="resource" component={ResourceScreen}>
-      <Route path="char/:charId" component={Char} />
-      <Route path="dialog/:dialogId" component={Dialog} />
-      <Route path="grammar/:grammarId" component={Grammar} />
+      <Route path="char/:id" component={Char} />
+      <Route path="dialog/:id" component={Dialog} />
+      <Route path="grammar/:id" component={Grammar} />
     </Route>
     <Route path="study/:lessonId" component={requireAuth(StudyScreen)}>
-      <Route path="char/:charId" component={Char} />
-      <Route path="dialog/:dialogId" component={Dialog} />
-      <Route path="grammar/:grammarId" component={Grammar} />
+      <Route path="char/:id" component={Char} />
+      <Route path="dialog/:id" component={Dialog} />
+      <Route path="grammar/:id" component={Grammar} />
     </Route>
     <Route path="*" component={NotFound} />
   </Route>

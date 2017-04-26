@@ -1,9 +1,9 @@
 import { showFlashMessageWithTimeout } from '../redux/flashMessages';
 import checkNetwork from './checkNetwork';
 
-export default function apiCall(data, call, success, fail) {
+export default function apiCall(data, fetch, success, fail) {
   return dispatch =>
-    dispatch(call(data))
+    dispatch(fetch(data))
       .then(response => {
         dispatch(success(response.data));
       })

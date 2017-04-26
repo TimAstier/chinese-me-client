@@ -13,9 +13,9 @@ const FETCH_FAIL = 'chinese-me/lessons/FETCH_FAIL';
 const INITIAL_STATE = fromJS({
   id: null,
   title: '',
-  dialogIds: [],
-  charIds: [],
-  grammarIds: [],
+  dialogsData: [],
+  charsData: [],
+  grammarsData: [],
   isFetching: false
 });
 
@@ -25,9 +25,9 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
       return state.merge(fromJS({
         id: action.data.id,
         title: action.data.title,
-        dialogIds: action.data.dialogIds,
-        charIds: action.data.charIds,
-        grammarIds: action.data.grammarIds
+        dialogsData: action.data.dialogsData,
+        charsData: action.data.charsData,
+        grammarsData: action.data.grammarsData
       }));
     case FETCH:
       return state.set('isFetching', true);
@@ -73,9 +73,26 @@ export function get(data) {
 // Selectors
 
 export function charCount(state) {
-  return state.get('charIds').size;
+  return state.get('charsData').size;
 }
 
 export function grammarCount(state) {
-  return state.get('grammarIds').size;
+  return state.get('dialogsData').size;
+}
+
+export function getComment(state, resourceId, resourceType) {
+  // TODO: Use Reselect to avoid calling this N times
+  console.log('Called getComment selector!');
+  const stateName = `${resourceType}sData`;
+  const resourceData = state.get(stateName);
+  const index = resourceData.findIndex(e => e.get('id') === resourceId);
+  const resource = resourceData.get(index);
+  if (resource !== undefined) {
+    const comment = resource.get('comment');
+    if (comment === null) {
+      return '';
+    }
+    return comment;
+  }
+  return '';
 }

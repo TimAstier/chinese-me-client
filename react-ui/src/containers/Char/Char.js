@@ -9,7 +9,7 @@ class Char extends Component {
     return (
       <CharComponent
         getChar={this.props.getChar.bind(this)}
-        id={Number(this.props.routeParams.charId)}
+        id={Number(this.props.routeParams.id)}
         chinese={this.props.chinese}
         pinyint={this.props.pinyint}
         explanation={this.props.explanation}

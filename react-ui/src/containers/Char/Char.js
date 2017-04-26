@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Char as CharComponent } from '../../components';
-import { get as getChar } from '../../redux/chars';
+import { get as getChar } from '../../redux/char';
 
 class Char extends Component {
 
@@ -10,7 +10,9 @@ class Char extends Component {
       <CharComponent
         getChar={this.props.getChar.bind(this)}
         id={Number(this.props.routeParams.charId)}
-        char={this.props.char}
+        chinese={this.props.chinese}
+        pinyint={this.props.pinyint}
+        explanation={this.props.explanation}
         isFetching={this.props.isFetching}
       />
     );
@@ -19,15 +21,20 @@ class Char extends Component {
 
 Char.propTypes = {
   getChar: PropTypes.func.isRequired,
-  char: PropTypes.object.isRequired,
+  chinese: PropTypes.string.isRequired,
+  pinyint: PropTypes.string.isRequired,
+  explanation: PropTypes.string.isRequired,
   isFetching: PropTypes.bool.isRequired,
   routeParams: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {
+  const charState = state.get('char');
   return {
-    char: state.get('chars').get('char'),
-    isFetching: state.get('chars').get('isFetching')
+    chinese: charState.get('chinese'),
+    pinyint: charState.get('pinyint'),
+    explanation: charState.get('explanation'),
+    isFetching: charState.get('isFetching')
   };
 }
 

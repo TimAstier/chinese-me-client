@@ -21,35 +21,37 @@ class Grammar extends Component {
     });
   }
 
-  renderGrammar() {
+  renderGrammar(title, explanation, sentences) {
     return (
       <div id="grammar">
         <div className="explanation">
-          <h1>{this.props.grammar.get('title')}</h1>
-          <p>{this.props.grammar.get('explanation')}</p>
+          <h1>{title}</h1>
+          <p>{explanation}</p>
         </div>
 
         <div className="sentences">
-          {this.renderSentences(this.props.sentences)}
+          {this.renderSentences(sentences)}
         </div>
       </div>
     );
   }
 
   render() {
-    if (this.props.isFetching) {
+    const { title, explanation, sentences, isFetching } = this.props;
+    if (isFetching) {
       return <ResourceLoader />;
     }
-    if (this.props.grammar.get('title') === undefined) {
+    if (title === '') {
       return <ResourceNotFound />;
     }
-    return this.renderGrammar();
+    return this.renderGrammar(title, explanation, sentences);
   }
 }
 
 Grammar.propTypes = {
   getGrammar: PropTypes.func.isRequired,
-  grammar: PropTypes.object.isRequired,
+  title: PropTypes.string.isRequired,
+  explanation: PropTypes.string.isRequired,
   sentences: PropTypes.object.isRequired,
   isFetching: PropTypes.bool.isRequired,
   id: PropTypes.number.isRequired

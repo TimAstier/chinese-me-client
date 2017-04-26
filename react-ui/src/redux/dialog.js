@@ -12,7 +12,8 @@ const FETCH_FAIL = 'chinese-me/dialogs/FETCH_FAIL';
 
 // Reducer
 const INITIAL_STATE = fromJS({
-  dialog: {},
+  id: null,
+  title: '',
   lines: [],
   isFetching: false
 });
@@ -20,7 +21,10 @@ const INITIAL_STATE = fromJS({
 export default function reducer(state = INITIAL_STATE, action = {}) {
   switch (action.type) {
     case SET_DIALOG:
-      return state.set('dialog', fromJS(action.dialog));
+      return state.merge(fromJS({
+        id: action.dialog.id,
+        title: action.dialog.title
+      }));
     case SET_LINES:
       return state.set('lines', fromJS(action.lines));
     case FETCH:

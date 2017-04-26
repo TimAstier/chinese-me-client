@@ -79,7 +79,3 @@ export function charCount(state) {
 export function grammarCount(state) {
   return state.get('grammarIds').size;
 }
-
-export function getTitle(state) {
-  return state.get('title');
-}

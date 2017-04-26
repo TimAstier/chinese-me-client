@@ -12,7 +12,9 @@ const FETCH_FAIL = 'chinese-me/grammars/FETCH_FAIL';
 
 // Reducer
 const INITIAL_STATE = fromJS({
-  grammar: {},
+  id: null,
+  title: '',
+  explanation: '',
   sentences: [],
   isFetching: false
 });
@@ -20,7 +22,11 @@ const INITIAL_STATE = fromJS({
 export default function reducer(state = INITIAL_STATE, action = {}) {
   switch (action.type) {
     case SET_GRAMMAR:
-      return state.set('grammar', fromJS(action.grammar));
+      return state.merge(fromJS({
+        id: action.grammar.id,
+        title: action.grammar.title,
+        explanation: action.grammar.explanation
+      }));
     case SET_SENTENCES:
       return state.set('sentences', fromJS(action.sentences));
     case FETCH:

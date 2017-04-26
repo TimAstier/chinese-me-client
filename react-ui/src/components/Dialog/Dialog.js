@@ -23,15 +23,15 @@ class Dialog extends Component {
     });
   }
 
-  renderDialog() {
+  renderDialog(title, lines) {
     return (
       <div id="dialog">
         <div className="title-container">
-          <Header as="h1">{this.props.dialog.get('title')}</Header>
+          <Header as="h1">{title}</Header>
         </div>
         <div className="dialog-container">
           <Comment.Group className="large">
-            {this.renderDialogLines(this.props.lines)}
+            {this.renderDialogLines(lines)}
           </Comment.Group>
         </div>
       </div>
@@ -39,19 +39,20 @@ class Dialog extends Component {
   }
 
   render() {
-    if (this.props.isFetching) {
+    const { title, lines, isFetching } = this.props;
+    if (isFetching) {
       return <ResourceLoader />;
     }
-    if (this.props.dialog.get('title') === undefined) {
+    if (title === '') {
       return <ResourceNotFound />;
     }
-    return this.renderDialog();
+    return this.renderDialog(title, lines);
   }
 }
 
 Dialog.propTypes = {
   getDialog: PropTypes.func.isRequired,
-  dialog: PropTypes.object.isRequired,
+  title: PropTypes.string.isRequired,
   lines: PropTypes.object.isRequired,
   isFetching: PropTypes.bool.isRequired,
   id: PropTypes.number.isRequired

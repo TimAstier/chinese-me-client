@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Grammar as GrammarComponent } from '../../components';
-import { get as getGrammar } from '../../redux/grammars';
+import { get as getGrammar } from '../../redux/grammar';
 
 class Grammar extends Component {
 
@@ -10,7 +10,8 @@ class Grammar extends Component {
       <GrammarComponent
         getGrammar={this.props.getGrammar.bind(this)}
         sentences={this.props.sentences}
-        grammar={this.props.grammar}
+        title={this.props.title}
+        explanation={this.props.explanation}
         isFetching={this.props.isFetching}
         id={Number(this.props.routeParams.grammarId)}
       />
@@ -20,17 +21,20 @@ class Grammar extends Component {
 
 Grammar.propTypes = {
   getGrammar: PropTypes.func.isRequired,
-  grammar: PropTypes.object.isRequired,
+  title: PropTypes.string.isRequired,
+  explanation: PropTypes.string.isRequired,
   sentences: PropTypes.object.isRequired,
   isFetching: PropTypes.bool.isRequired,
   routeParams: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {
+  const grammarState = state.get('grammar');
   return {
-    grammar: state.get('grammars').get('grammar'),
-    sentences: state.get('grammars').get('sentences'),
-    isFetching: state.get('grammars').get('isFetching')
+    title: grammarState.get('title'),
+    explanation: grammarState.get('title'),
+    sentences: grammarState.get('sentences'),
+    isFetching: grammarState.get('isFetching')
   };
 }
 

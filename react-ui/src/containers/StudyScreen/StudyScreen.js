@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Coach, UserFeedback, LessonMenu } from '../../components';
-import { get as getLesson, charCount, grammarCount, getTitle }
-  from '../../redux/lessons';
+import { get as getLesson, charCount, grammarCount }
+  from '../../redux/lesson';
 
 // TODO: Import this from the DB
 const comment = 'Here is another usage of the character 有 yǒu, previously seen in lesson 2.';
@@ -50,9 +50,9 @@ StudyScreen.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    charCount: charCount(state.get('lessons')),
-    grammarCount: grammarCount(state.get('lessons')),
-    title: getTitle(state.get('lessons'))
+    charCount: charCount(state.get('lesson')),
+    grammarCount: grammarCount(state.get('lesson')),
+    title: state.get('lesson').get('title')
   };
 }
 

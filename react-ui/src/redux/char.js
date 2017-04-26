@@ -10,14 +10,24 @@ const FETCH_FAIL = 'chinese-me/chars/FETCH_FAIL';
 
 // Reducer
 const INITIAL_STATE = fromJS({
-  char: {},
+  id: null,
+  chinese: '',
+  pinyin: '',
+  pinyint: '',
+  explanation: '',
   isFetching: false
 });
 
 export default function reducer(state = INITIAL_STATE, action = {}) {
   switch (action.type) {
     case SET:
-      return state.set('char', fromJS(action.char));
+      return state.merge(fromJS({
+        id: action.char.id,
+        chinese: action.char.chinese,
+        pinyin: action.char.pinyin,
+        pinyint: action.char.pinyint,
+        explanation: action.char.explanation
+      }));
     case FETCH:
       return state.set('isFetching', true);
     case FETCH_SUCCESS:

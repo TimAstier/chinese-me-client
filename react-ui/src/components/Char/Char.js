@@ -7,7 +7,7 @@ class Char extends Component {
     return this.props.getChar(this.props.id);
   }
 
-  renderChar() {
+  renderChar(chinese, pinyint, explanation) {
     return (
       <div id="character">
         <div className="infos">
@@ -16,11 +16,11 @@ class Char extends Component {
             <div className="ancient">二</div>
             <div className="ancient">三</div>
           </div>
-          <div className="box">{this.props.char.get('chinese')}</div>
-          <div className="pinyin">{this.props.char.get('pinyint')}</div>
+          <div className="box">{chinese}</div>
+          <div className="pinyin">{pinyint}</div>
         </div>
         <div className="description">
-          <p>{this.props.char.get('explanation')}</p>
+          <p>{explanation}</p>
         </div>
         <div className="words">
           <p>Words you've seen before containing 中</p>
@@ -33,19 +33,22 @@ class Char extends Component {
   }
 
   render() {
-    if (this.props.isFetching) {
+    const { chinese, pinyint, explanation, isFetching } = this.props;
+    if (isFetching) {
       return <ResourceLoader />;
     }
-    if (this.props.char.get('chinese') === undefined) {
+    if (chinese === '') {
       return <ResourceNotFound />;
     }
-    return this.renderChar();
+    return this.renderChar(chinese, pinyint, explanation);
   }
 }
 
 Char.propTypes = {
   getChar: PropTypes.func.isRequired,
-  char: PropTypes.object.isRequired,
+  chinese: PropTypes.string.isRequired,
+  pinyint: PropTypes.string.isRequired,
+  explanation: PropTypes.string.isRequired,
   isFetching: PropTypes.bool.isRequired,
   id: PropTypes.number.isRequired
 };

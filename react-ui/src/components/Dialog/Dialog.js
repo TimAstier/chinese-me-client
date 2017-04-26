@@ -5,8 +5,14 @@ import { ResourceLoader, ResourceNotFound } from '../';
 
 class Dialog extends Component {
 
-  componentWillMount() {
+  componentDidMount() {
     return this.props.getDialog(this.props.id);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.id !== prevProps.id) {
+      this.props.getDialog(this.props.id);
+    }
   }
 
   renderDialogLines(lines) {

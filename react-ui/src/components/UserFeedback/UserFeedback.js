@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Button, Icon } from 'semantic-ui-react';
 
 class UserFeedback extends Component {
@@ -6,7 +6,7 @@ class UserFeedback extends Component {
   render() {
     return (
       <div id="user-feedback">
-        <Button primary>
+        <Button primary onClick={this.props.nextResource}>
           <Icon name="external square" />
           Continue
         </Button>
@@ -27,6 +27,8 @@ class UserFeedback extends Component {
   }
 }
 
-UserFeedback.propTypes = {};
+UserFeedback.propTypes = {
+  nextResource: PropTypes.func.isRequired
+};
 
 export default UserFeedback;

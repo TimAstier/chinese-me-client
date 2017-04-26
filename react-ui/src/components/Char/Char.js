@@ -3,8 +3,14 @@ import { ResourceLoader, ResourceNotFound } from '../';
 
 class Char extends Component {
 
-  componentWillMount() {
+  componentDidMount() {
     return this.props.getChar(this.props.id);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.id !== prevProps.id) {
+      this.props.getChar(this.props.id);
+    }
   }
 
   renderChar(chinese, pinyint, explanation) {

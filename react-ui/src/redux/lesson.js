@@ -1,5 +1,6 @@
 import { fromJS } from 'immutable';
 import axios from 'axios';
+import { createSelector } from 'reselect';
 import apiCall from '../helpers/apiCall';
 import LessonDeserializer from '../utils/deserializers/lesson';
 
@@ -8,11 +9,14 @@ const SET = 'chinese-me/lessons/SET';
 const FETCH = 'chinese-me/lessons/FETCH';
 const FETCH_SUCCESS = 'chinese-me/lessons/FETCH_SUCCESS';
 const FETCH_FAIL = 'chinese-me/lessons/FETCH_FAIL';
+const SET_CURRENT_RESOURCE = 'chinese-me/lessons/SET_CURRENT_RESOURCE';
 
 // Reducer
 const INITIAL_STATE = fromJS({
-  id: null,
+  id: 0,
   title: '',
+  currentResourceId: 0,
+  currentResourceType: '',
   dialogsData: [],
   charsData: [],
   grammarsData: [],
@@ -35,6 +39,11 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
       return state.set('isFetching', false);
     case FETCH_FAIL:
       return state.set('isFetching', false);
+    case SET_CURRENT_RESOURCE:
+      return state.merge(fromJS({
+        currentResourceId: action.data.resourceId,
+        currentResourceType: action.data.resourceType
+      }));
     default:
       return state;
   }
@@ -70,29 +79,89 @@ export function get(data) {
   return apiCall(data, fetch, fetchSuccess, fetchFail);
 }
 
+export function setCurrentResource(data) {
+  return {
+    type: SET_CURRENT_RESOURCE,
+    data
+  };
+}
+
 // Selectors
+const getCharsData = state => state.get('charsData');
+const getDialogsData = state => state.get('dialogsData');
+const getGrammarsData = state => state.get('grammarsData');
+const getCurrentResourceId = state => state.get('currentResourceId');
+const getCurrentResourceType = state => state.get('currentResourceType');
 
-export function charCount(state) {
-  return state.get('charsData').size;
-}
+// Memoized Selectors
+export const getCharCount = createSelector(
+  getCharsData,
+  charsData => charsData.size
+);
 
-export function grammarCount(state) {
-  return state.get('dialogsData').size;
-}
+export const getGrammarCount = createSelector(
+  getGrammarsData,
+  grammarsData => grammarsData.size
+);
 
-export function getComment(state, resourceId, resourceType) {
-  // TODO: Use Reselect to avoid calling this N times
-  console.log('Called getComment selector!');
-  const stateName = `${resourceType}sData`;
-  const resourceData = state.get(stateName);
-  const index = resourceData.findIndex(e => e.get('id') === resourceId);
-  const resource = resourceData.get(index);
-  if (resource !== undefined) {
-    const comment = resource.get('comment');
-    if (comment === null) {
-      return '';
+const getResourceData = createSelector(
+  [getCurrentResourceType, getCharsData, getDialogsData, getGrammarsData],
+  (resourceType, charsData, dialogsData, grammarsData) => {
+    switch (resourceType) {
+      case 'char':
+        return charsData;
+      case 'dialog':
+        return dialogsData;
+      case 'grammar':
+        return grammarsData;
+      default:
+        return fromJS([]);
     }
-    return comment;
   }
-  return '';
-}
+);
+
+export const getComment = createSelector(
+  getCurrentResourceId,
+  getResourceData,
+  (resourceId, resourceData) => {
+    const index = resourceData.findIndex(e => e.get('id') === resourceId);
+    const resource = resourceData.get(index);
+    if (resource !== undefined) {
+      const comment = resource.get('comment');
+      if (comment === null) {
+        return '';
+      }
+      return comment;
+    }
+    return '';
+  }
+);
+
+const getTypedResources = createSelector(
+  [getCharsData, getDialogsData, getGrammarsData],
+  (charsData, dialogsData, grammarsData) => {
+    const grammarsWithType = grammarsData.map(e => e.set('type', 'grammar'));
+    const dialogsWithType = dialogsData.map(e => e.set('type', 'dialog'));
+    const charsWithType = charsData.map(e => e.set('type', 'char'));
+    return grammarsWithType.concat(dialogsWithType).concat(charsWithType);
+  }
+);
+
+export const getNextResource = createSelector(
+  [getCurrentResourceId, getCurrentResourceType, getTypedResources],
+  (id, type, typedResources) => {
+    if (type === null) {
+      return {};
+    }
+    // console.log(typedResources.toJS());
+    const resourceCount = typedResources.size;
+    const index =  typedResources.findIndex(e => {
+      return (e.get('type') === type && e.get('id') === id);
+    });
+    if (index + 1 === resourceCount) {
+      return {type: 'end', id: 0 };
+    }
+    const nextResource = typedResources.get(index + 1);
+    return { type: nextResource.get('type'), id: nextResource.get('id') };
+  }
+);

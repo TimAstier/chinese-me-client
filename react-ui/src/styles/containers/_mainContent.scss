@@ -1,0 +1,13 @@
+#main-content {
+  flex: 0 0 50%;
+  align-self: center;
+  height: 95%;
+  background: white;
+  border: 3px solid black;
+  display: flex;
+  flex-direction: column;
+
+  .segment {
+    height: 100%;
+  }
+}

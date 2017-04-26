@@ -32,7 +32,7 @@ function mapStateToProps(state) {
   const grammarState = state.get('grammar');
   return {
     title: grammarState.get('title'),
-    explanation: grammarState.get('title'),
+    explanation: grammarState.get('explanation'),
     sentences: grammarState.get('sentences'),
     isFetching: grammarState.get('isFetching')
   };

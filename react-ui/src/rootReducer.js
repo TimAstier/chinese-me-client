@@ -1,19 +1,8 @@
 import { combineReducers } from 'redux-immutable';
+import * as reducers from './redux';
 
-import auth from './redux/auth';
-import char from './redux/char';
-import dialog from './redux/dialog';
-import flashMessages from './redux/flashMessages';
-import grammar from './redux/grammar';
-import lesson from './redux/lesson';
-import routing from './redux/routing';
+export default combineReducers(reducers);
 
-export default combineReducers({
-  auth,
-  char,
-  dialog,
-  flashMessages,
-  grammar,
-  lesson,
-  routing
-});
+// TODO: export selectors with a slice of the state to use in components
+// This avoids having to change components if selectors implementation is changed
+// See https://egghead.io/lessons/javascript-redux-colocating-selectors-with-reducers

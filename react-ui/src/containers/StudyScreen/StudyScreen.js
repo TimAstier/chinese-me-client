@@ -74,15 +74,16 @@ StudyScreen.contextTypes = {
 };
 
 function mapStateToProps(state) {
+  const lessonState = state.get('lesson');
   return {
-    lessonId: state.get('lesson').get('id'),
-    charCount: getCharCount(state.get('lesson')),
-    grammarCount: getGrammarCount(state.get('lesson')),
-    title: state.get('lesson').get('title'),
-    comment: getComment(state.get('lesson')),
-    resourceId: state.get('lesson').get('currentResourceId'),
-    resourceType: state.get('lesson').get('currentResourceType'),
-    nextResource: getNextResource(state.get('lesson'))
+    lessonId: lessonState.get('id'),
+    charCount: getCharCount(lessonState),
+    grammarCount: getGrammarCount(lessonState),
+    title: lessonState.get('title'),
+    comment: getComment(lessonState),
+    resourceId: lessonState.get('currentResourceId'),
+    resourceType: lessonState.get('currentResourceType'),
+    nextResource: getNextResource(lessonState)
   };
 }
 

@@ -42,11 +42,12 @@ export function logout() {
 
 export function login(data) {
   return dispatch => {
-    return axios.post(`${process.env.REACT_APP_API_URL}/api/auth`, data).then(res => {
-      const token = res.data.token;
-      localStorage.setItem('jwtToken', token);
-      setAuthorizationToken(token);
-      dispatch(setCurrentUser(jwtDecode(token)));
-    });
+    return axios.post(`${process.env.REACT_APP_API_URL}/api/auth`, data)
+      .then(res => {
+        const token = res.data.token;
+        localStorage.setItem('jwtToken', token);
+        setAuthorizationToken(token);
+        dispatch(setCurrentUser(jwtDecode(token)));
+      });
   };
 }

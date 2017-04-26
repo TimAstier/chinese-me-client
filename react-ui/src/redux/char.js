@@ -31,7 +31,6 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
     case FETCH:
       return state.set('isFetching', true);
     case FETCH_SUCCESS:
-      return state.set('isFetching', false);
     case FETCH_FAIL:
       return state.set('isFetching', false);
     default:

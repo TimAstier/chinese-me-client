@@ -1,7 +1,8 @@
 import { fromJS } from 'immutable';
-import axios from 'axios';
-import apiCall from '../helpers/apiCall';
+import { apiCall, Api } from '../helpers/api';
 import DialogDeserializer from '../utils/deserializers/dialog';
+
+const api = new Api();
 
 // Action Types
 const SET_DIALOG = 'chinese-me/dialogs/SET_DIALOG';
@@ -62,7 +63,7 @@ function set(data) {
 function fetch(dialogId) {
   return dispatch => {
     dispatch({ type: FETCH });
-    return axios.get(`${process.env.REACT_APP_API_URL}/api/dialog/${dialogId}`);
+    return api.get(`/dialog/${dialogId}`);
   };
 }
 

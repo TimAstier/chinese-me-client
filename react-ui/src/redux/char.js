@@ -1,6 +1,7 @@
 import { fromJS } from 'immutable';
-import axios from 'axios';
-import apiCall from '../helpers/apiCall';
+import { apiCall, Api } from '../helpers/api';
+
+const api = new Api();
 
 // Action Types
 const SET = 'chinese-me/chars/SET';
@@ -49,7 +50,7 @@ function set(char) {
 function fetch(charId) {
   return dispatch => {
     dispatch({ type: FETCH });
-    return axios.get(`${process.env.REACT_APP_API_URL}/api/char/${charId}`);
+    return api.get(`/char/${charId}`);
   };
 }
 

@@ -1,8 +1,9 @@
 import { fromJS } from 'immutable';
-import axios from 'axios';
 import { createSelector } from 'reselect';
-import apiCall from '../helpers/apiCall';
+import { apiCall, Api } from '../helpers/api';
 import LessonDeserializer from '../utils/deserializers/lesson';
+
+const api = new Api();
 
 // Action Types
 const SET = 'chinese-me/lessons/SET';
@@ -62,7 +63,7 @@ function set(data) {
 function fetch(lessonId) {
   return dispatch => {
     dispatch({ type: FETCH });
-    return axios.get(`${process.env.REACT_APP_API_URL}/api/lesson/${lessonId}`);
+    return api.get(`/lesson/${lessonId}`);
   };
 }
 
@@ -92,7 +93,7 @@ function complete(data) {
   const { userId } = data;
   return dispatch => {
     dispatch({ type: COMPLETE });
-    return axios.post(`${process.env.REACT_APP_API_URL}/api/users/${userId}/completed`, data);
+    return api.post(`/users/${userId}/completed`, data);
   };
 }
 

@@ -1,13 +1,15 @@
-import axios from 'axios';
+import { Api } from '../../helpers/api';
+
+const api = new Api();
 
 export function userSignupRequest(userData) {
   return () => {
-    return axios.post(`${process.env.REACT_APP_API_URL}/api/users`, userData);
+    return api.post('/users', userData);
   };
 }
 
 export function isUserExists(identifier) {
   return () => {
-    return axios.get(`${process.env.REACT_APP_API_URL}/api/users/${identifier}`);
+    return api.get(`/users/${identifier}`);
   };
 }

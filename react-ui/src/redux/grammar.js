@@ -1,7 +1,8 @@
 import { fromJS } from 'immutable';
-import axios from 'axios';
-import apiCall from '../helpers/apiCall';
+import { apiCall, Api } from '../helpers/api';
 import GrammarDeserializer from '../utils/deserializers/grammar';
+
+const api = new Api();
 
 // Action Types
 const SET_GRAMMAR = 'chinese-me/grammars/SET_GRAMMAR';
@@ -64,7 +65,7 @@ function set(data) {
 function fetch(grammarId) {
   return dispatch => {
     dispatch({ type: FETCH });
-    return axios.get(`${process.env.REACT_APP_API_URL}/api/grammar/${grammarId}`);
+    return api.get(`/grammar/${grammarId}`);
   };
 }
 

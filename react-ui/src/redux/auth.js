@@ -1,8 +1,10 @@
-import axios from 'axios';
+import { Api } from '../helpers/api';
 import setAuthorizationToken from '../utils/setAuthorizationToken';
 import jwtDecode from 'jwt-decode';
 import isEmpty from 'lodash/isEmpty';
 import { Map } from 'immutable';
+
+const api = new Api();
 
 // Action Types
 const SET_CURRENT_USER = 'chinese-me/auth/SET_CURRENT_USER';
@@ -42,7 +44,7 @@ export function logout() {
 
 export function login(data) {
   return dispatch => {
-    return axios.post(`${process.env.REACT_APP_API_URL}/api/auth`, data)
+    return api.post('/auth', data)
       .then(res => {
         const token = res.data.token;
         localStorage.setItem('jwtToken', token);

@@ -1,7 +1,8 @@
+import axios from 'axios';
 import { showFlashMessageWithTimeout } from '../redux/flashMessages';
 import checkNetwork from './checkNetwork';
 
-export default function apiCall(data, fetch, success, fail) {
+export function apiCall(data, fetch, success, fail) {
   return dispatch =>
     dispatch(fetch(data))
       .then(response => {
@@ -13,4 +14,13 @@ export default function apiCall(data, fetch, success, fail) {
         const text = checkNetwork(err);
         dispatch(showFlashMessageWithTimeout({ type, text }));
       });
+}
+
+export function Api() {
+  this.get = (url) => {
+    return axios.get(`${process.env.REACT_APP_API_URL}/api` + url);
+  };
+  this.post = (url, data) => {
+    return axios.post(`${process.env.REACT_APP_API_URL}/api` + url, data);
+  };
 }

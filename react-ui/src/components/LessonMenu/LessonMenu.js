@@ -4,6 +4,7 @@ import { Menu, Label, Icon } from 'semantic-ui-react';
 class LessonMenu extends Component {
 
   // TODO: Display number of words
+  // TODO: Count number of resources that are completed
   render() {
     return (
       <div id="lesson-menu">
@@ -17,19 +18,21 @@ class LessonMenu extends Component {
               </Menu.Item>
               <Menu.Item name="grammar" active>
                 <Label color="teal" circular size="tiny">
-                  {this.props.grammarCount}
+                  0/{this.props.grammarCount}
                 </Label>
                 Grammar
               </Menu.Item>
               <Menu.Item name="Dialog" />
               <Menu.Item name="characters">
                 <Label color="teal" circular size="tiny">
-                  {this.props.charCount}
+                  0/{this.props.charCount}
                 </Label>
                 Characters
               </Menu.Item>
               <Menu.Item name="words">
-                <Label color="teal" circular size="tiny">9</Label>
+                <Label color="teal" circular size="tiny">
+                  0/9
+                </Label>
                 Words / Expressions
               </Menu.Item>
               <Menu.Item name="Practice" />

@@ -10,6 +10,9 @@ const FETCH = 'chinese-me/lessons/FETCH';
 const FETCH_SUCCESS = 'chinese-me/lessons/FETCH_SUCCESS';
 const FETCH_FAIL = 'chinese-me/lessons/FETCH_FAIL';
 const SET_CURRENT_RESOURCE = 'chinese-me/lessons/SET_CURRENT_RESOURCE';
+const COMPLETE = 'chinese-me/lessons/COMPLETE';
+const COMPLETE_SUCCESS = 'chinese-me/lessons/COMPLETE_SUCCESS';
+const COMPLETE_FAIL = 'chinese-me/lessons/COMPLETE_FAIL';
 
 // Reducer
 const INITIAL_STATE = fromJS({
@@ -83,6 +86,27 @@ export function setCurrentResource(data) {
     type: SET_CURRENT_RESOURCE,
     data
   };
+}
+
+function complete(data) {
+  const { userId } = data;
+  return dispatch => {
+    dispatch({ type: COMPLETE });
+    return axios.post(`${process.env.REACT_APP_API_URL}/api/users/${userId}/completed`, data);
+  };
+}
+
+function completeSuccess() {
+  // console.log(data);
+  return { type: COMPLETE_SUCCESS };
+}
+
+function completeFail() {
+  return { type: COMPLETE_FAIL };
+}
+
+export function completeResource(data) {
+  return apiCall(data, complete, completeSuccess, completeFail);
 }
 
 // Selectors

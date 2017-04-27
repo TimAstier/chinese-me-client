@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Coach, UserFeedback, LessonMenu } from '../../components';
 import { get as getLesson, getCharCount, getGrammarCount,
-  getComment, setCurrentResource, getNextResource }
+  getComment, setCurrentResource, getNextResource, completeResource }
   from '../../redux/lesson';
 
 class StudyScreen extends Component {
@@ -15,15 +15,27 @@ class StudyScreen extends Component {
     return this.props.getLesson(this.props.routeParams.lessonId);
   }
 
+  // TODO: move to operation file 
   nextResource() {
-    // Next Resource based on lesson state and routing state
-    const { lessonId, nextResource } = this.props;
-    const nextUrl = '/study/' + lessonId + '/' + nextResource.type + '/' + nextResource.id;
-    this.context.router.push(nextUrl);
-    return this.props.setCurrentResource({
-      resourceId: nextResource.id,
-      resourceType: nextResource.type
-    });
+    const { lessonId, nextResource, resourceId,
+      resourceType, currentUserId } = this.props;
+    // Mark current resource as completed
+    const data = { userId: currentUserId, resourceType, resourceId, lessonId };
+    this.props.completeResource(data)
+      .then(() => {
+        // Calculate nextResource URL based on lesson state and routing state
+        const nextUrl = '/study/' + lessonId + '/' + nextResource.type + '/' + nextResource.id;
+        // Display nextResource and fetch resource data
+        this.context.router.push(nextUrl);
+        // Set currentResource to update study screen (coach, menu, etc.)
+        return this.props.setCurrentResource({
+          resourceId: nextResource.id,
+          resourceType: nextResource.type
+        });
+      })
+      .catch((err) => {
+        console.log('error: ' + err);
+      });
   }
 
   render() {
@@ -66,7 +78,9 @@ StudyScreen.propTypes = {
   setCurrentResource: PropTypes.func.isRequired,
   resourceId: PropTypes.number.isRequired,
   resourceType: PropTypes.string.isRequired,
-  nextResource: PropTypes.object.isRequired
+  nextResource: PropTypes.object.isRequired,
+  completeResource: PropTypes.func.isRequired,
+  currentUserId: PropTypes.number.isRequired
 };
 
 StudyScreen.contextTypes = {
@@ -83,11 +97,13 @@ function mapStateToProps(state) {
     comment: getComment(lessonState),
     resourceId: lessonState.get('currentResourceId'),
     resourceType: lessonState.get('currentResourceType'),
-    nextResource: getNextResource(lessonState)
+    nextResource: getNextResource(lessonState),
+    currentUserId: state.get('auth').get('user').id
   };
 }
 
 export default connect(mapStateToProps, {
   getLesson,
-  setCurrentResource
+  setCurrentResource,
+  completeResource
 })(StudyScreen);

@@ -1,9 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Coach, UserFeedback, LessonMenu } from '../../components';
-import { get as getLesson, getCharCount, getGrammarCount,
-  getComment, setCurrentResource, getNextResource, completeResource }
+import { actions, getCharCount, getGrammarCount, getComment, getNextResource,
+  getLessonId, getTitle, getCurrentResourceId, getCurrentResourceType }
   from '../../redux/lesson';
+import { getCurrentUserId } from '../../redux/auth';
 
 class StudyScreen extends Component {
 
@@ -15,7 +16,7 @@ class StudyScreen extends Component {
     return this.props.getLesson(this.props.routeParams.lessonId);
   }
 
-  // TODO: move to operation file 
+  // TODO: move to ducks file
   nextResource() {
     const { lessonId, nextResource, resourceId,
       resourceType, currentUserId } = this.props;
@@ -88,22 +89,17 @@ StudyScreen.contextTypes = {
 };
 
 function mapStateToProps(state) {
-  const lessonState = state.get('lesson');
   return {
-    lessonId: lessonState.get('id'),
-    charCount: getCharCount(lessonState),
-    grammarCount: getGrammarCount(lessonState),
-    title: lessonState.get('title'),
-    comment: getComment(lessonState),
-    resourceId: lessonState.get('currentResourceId'),
-    resourceType: lessonState.get('currentResourceType'),
-    nextResource: getNextResource(lessonState),
-    currentUserId: state.get('auth').get('user').id
+    lessonId: getLessonId(state),
+    charCount: getCharCount(state),
+    grammarCount: getGrammarCount(state),
+    title: getTitle(state),
+    comment: getComment(state),
+    resourceId: getCurrentResourceId(state),
+    resourceType: getCurrentResourceType(state),
+    nextResource: getNextResource(state),
+    currentUserId: getCurrentUserId(state)
   };
 }
 
-export default connect(mapStateToProps, {
-  getLesson,
-  setCurrentResource,
-  completeResource
-})(StudyScreen);
+export default connect(mapStateToProps, { ...actions })(StudyScreen);

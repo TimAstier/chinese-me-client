@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { Menu, Button, Icon } from 'semantic-ui-react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
-import { logout } from '../../redux/auth';
+import { logout, getIsAuthenticated } from '../../redux/auth';
 import logo from '../../logo.png';
 
 class NavigationBar extends Component {
@@ -13,8 +13,6 @@ class NavigationBar extends Component {
   }
 
   render() {
-    const { isAuthenticated } = this.props.auth;
-
     const userLinks = (
       <Menu.Menu position="right" className="main-menu-link">
         <Menu.Item>
@@ -57,25 +55,25 @@ class NavigationBar extends Component {
         />
       </Menu.Item>
       <Link
-        to={ isAuthenticated ? '/app' : '/' }
+        to={ this.props.isAuthenticated ? '/app' : '/' }
         className="item header main-menu-header"
       >
         ChineseMe
       </Link>
-      { isAuthenticated ? userLinks : guestLinks }
+      { this.props.isAuthenticated ? userLinks : guestLinks }
     </Menu>
     );
   }
 }
 
 NavigationBar.propTypes = {
-  auth: PropTypes.object.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
   logout: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {
   return {
-    auth: state.get('auth').toJS()
+    isAuthenticated: getIsAuthenticated(state)
   };
 }
 

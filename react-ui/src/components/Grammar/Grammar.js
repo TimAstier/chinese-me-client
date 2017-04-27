@@ -5,12 +5,12 @@ import { ResourceLoader, ResourceNotFound } from '../';
 class Grammar extends Component {
 
   componentDidMount() {
-    return this.props.getGrammar(this.props.id);
+    return this.props.fetchGrammar(this.props.id);
   }
 
   componentDidUpdate(prevProps) {
     if (this.props.id !== prevProps.id) {
-      this.props.getGrammar(this.props.id);
+      this.props.fetchGrammar(this.props.id);
     }
   }
 
@@ -55,7 +55,7 @@ class Grammar extends Component {
 }
 
 Grammar.propTypes = {
-  getGrammar: PropTypes.func.isRequired,
+  fetchGrammar: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
   explanation: PropTypes.string.isRequired,
   sentences: PropTypes.object.isRequired,

@@ -3,22 +3,24 @@ import { List } from 'immutable';
 import shortid from 'shortid';
 
 // Action Types
-const ADD = 'chinese-me/flashMessages/ADD';
-const DELETE = 'chinese-me/flashMessages/DELETE';
+export const types = {
+  ADD: 'FLASH_MESSAGES/ADD',
+  DELETE: 'FLASH_MESSAGES/DELETE'
+};
 
 // Reducer
-const INITIAL_STATE = List();
+export const INITIAL_STATE = List();
 
 export default function reducer(state = INITIAL_STATE, action = {}) {
   switch (action.type) {
-    case ADD:
+    case types.ADD:
       return state.push({
         type: action.message.type,
         text: action.message.text,
         // id is generated in the action creator to keep this function pure
         id: action.message.id
       });
-    case DELETE:
+    case types.DELETE:
       const index = findIndex(state.toJS(), { id: action.id });
       if (index >= 0) {
         return state.delete(index);
@@ -32,7 +34,7 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
 // Action Creators
 export function addFlashMessage(message, id = shortid.generate()) {
   return {
-    type: ADD,
+    type: types.ADD,
     message: {
       type: message.type,
       text: message.text,
@@ -43,7 +45,7 @@ export function addFlashMessage(message, id = shortid.generate()) {
 
 export function deleteFlashMessage(id) {
   return {
-    type: DELETE,
+    type: types.DELETE,
     id
   };
 }
@@ -59,3 +61,6 @@ export function showFlashMessageWithTimeout(message, duration = 5000) {
     }, duration);
   };
 }
+
+// Selectors
+export const getMessages = state => state.get('flashMessages');

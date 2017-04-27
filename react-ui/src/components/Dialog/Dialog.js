@@ -6,12 +6,12 @@ import { ResourceLoader, ResourceNotFound } from '../';
 class Dialog extends Component {
 
   componentDidMount() {
-    return this.props.getDialog(this.props.id);
+    return this.props.fetchDialog(this.props.id);
   }
 
   componentDidUpdate(prevProps) {
     if (this.props.id !== prevProps.id) {
-      this.props.getDialog(this.props.id);
+      this.props.fetchDialog(this.props.id);
     }
   }
 
@@ -57,7 +57,7 @@ class Dialog extends Component {
 }
 
 Dialog.propTypes = {
-  getDialog: PropTypes.func.isRequired,
+  fetchDialog: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
   lines: PropTypes.object.isRequired,
   isFetching: PropTypes.bool.isRequired,

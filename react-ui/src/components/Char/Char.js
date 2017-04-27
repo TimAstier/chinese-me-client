@@ -4,12 +4,12 @@ import { ResourceLoader, ResourceNotFound } from '../';
 class Char extends Component {
 
   componentDidMount() {
-    return this.props.getChar(this.props.id);
+    return this.props.fetchChar(this.props.id);
   }
 
   componentDidUpdate(prevProps) {
     if (this.props.id !== prevProps.id) {
-      this.props.getChar(this.props.id);
+      this.props.fetchChar(this.props.id);
     }
   }
 
@@ -51,7 +51,7 @@ class Char extends Component {
 }
 
 Char.propTypes = {
-  getChar: PropTypes.func.isRequired,
+  fetchChar: PropTypes.func.isRequired,
   chinese: PropTypes.string.isRequired,
   pinyint: PropTypes.string.isRequired,
   explanation: PropTypes.string.isRequired,

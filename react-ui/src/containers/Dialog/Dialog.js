@@ -1,14 +1,15 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Dialog as DialogComponent } from '../../components';
-import { get as getDialog } from '../../redux/dialog';
+import { fetch as fetchDialog, getTitle, getLines, getIsFetching }
+  from '../../redux/dialog';
 
 class Dialog extends Component {
 
   render() {
     return (
       <DialogComponent
-        getDialog={this.props.getDialog.bind(this)}
+        fetchDialog={this.props.fetchDialog.bind(this)}
         title={this.props.title}
         lines={this.props.lines}
         isFetching={this.props.isFetching}
@@ -19,7 +20,7 @@ class Dialog extends Component {
 }
 
 Dialog.propTypes = {
-  getDialog: PropTypes.func.isRequired,
+  fetchDialog: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
   lines: PropTypes.object.isRequired,
   isFetching: PropTypes.bool.isRequired,
@@ -27,12 +28,11 @@ Dialog.propTypes = {
 };
 
 function MapStateToProps(state) {
-  const dialogState = state.get('dialog');
   return {
-    title: dialogState.get('title'),
-    lines: dialogState.get('lines'),
-    isFetching: dialogState.get('isFetching')
+    title: getTitle(state),
+    lines: getLines(state),
+    isFetching: getIsFetching(state)
   };
 }
 
-export default connect(MapStateToProps, { getDialog })(Dialog);
+export default connect(MapStateToProps, { fetchDialog })(Dialog);

@@ -3,11 +3,10 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { Message, Image, Button } from 'semantic-ui-react';
 import logo from '../../logo.png';
+import { getIsAuthenticated } from '../../redux/auth';
 
 class HomePage extends Component {
   render() {
-    const { isAuthenticated } = this.props.auth;
-
     return (
       <div id="home-screen">
         <Message
@@ -17,7 +16,7 @@ class HomePage extends Component {
         >
           Welcome to ChineseMe
         </Message>
-        {isAuthenticated ?
+        {this.props.isAuthenticated ?
           <Link to="/app" className="item color">
             <Image
               id="home-logo"
@@ -43,12 +42,12 @@ class HomePage extends Component {
 }
 
 HomePage.propTypes = {
-  auth: PropTypes.object.isRequired
+  isAuthenticated: PropTypes.bool.isRequired
 };
 
 function mapStateToProps(state) {
   return {
-    auth: state.get('auth').toJS()
+    isAuthenticated: getIsAuthenticated(state)
   };
 }
 

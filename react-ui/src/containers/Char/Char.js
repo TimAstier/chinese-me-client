@@ -1,14 +1,15 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Char as CharComponent } from '../../components';
-import { get as getChar } from '../../redux/char';
+import { fetch as fetchChar, getChinese, getPinyint, getExplanation,
+  getIsFetching } from '../../redux/char';
 
 class Char extends Component {
 
   render() {
     return (
       <CharComponent
-        getChar={this.props.getChar.bind(this)}
+        fetchChar={this.props.fetchChar.bind(this)}
         id={Number(this.props.routeParams.id)}
         chinese={this.props.chinese}
         pinyint={this.props.pinyint}
@@ -20,7 +21,7 @@ class Char extends Component {
 }
 
 Char.propTypes = {
-  getChar: PropTypes.func.isRequired,
+  fetchChar: PropTypes.func.isRequired,
   chinese: PropTypes.string.isRequired,
   pinyint: PropTypes.string.isRequired,
   explanation: PropTypes.string.isRequired,
@@ -29,13 +30,12 @@ Char.propTypes = {
 };
 
 function mapStateToProps(state) {
-  const charState = state.get('char');
   return {
-    chinese: charState.get('chinese'),
-    pinyint: charState.get('pinyint'),
-    explanation: charState.get('explanation'),
-    isFetching: charState.get('isFetching')
+    chinese: getChinese(state),
+    pinyint: getPinyint(state),
+    explanation: getExplanation(state),
+    isFetching: getIsFetching(state)
   };
 }
 
-export default connect(mapStateToProps, { getChar })(Char);
+export default connect(mapStateToProps, { fetchChar })(Char);

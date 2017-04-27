@@ -5,14 +5,16 @@ import DialogDeserializer from '../utils/deserializers/dialog';
 const api = new Api();
 
 // Action Types
-const SET_DIALOG = 'chinese-me/dialogs/SET_DIALOG';
-const SET_LINES = 'chinese-me/dialogs/SET_LINES';
-const FETCH = 'chinese-me/dialogs/FETCH';
-const FETCH_SUCCESS = 'chinese-me/dialogs/FETCH_SUCCESS';
-const FETCH_FAIL = 'chinese-me/dialogs/FETCH_FAIL';
+export const types = {
+  SET_DIALOG: 'DIALOG/SET_DIALOG',
+  SET_LINES: 'DIALOG/SET_LINES',
+  FETCH_REQUEST: 'DIALOG/FETCH_REQUEST',
+  FETCH_SUCCESS: 'DIALOG/FETCH_SUCCESS',
+  FETCH_FAIL: 'DIALOG/FETCH_FAIL'
+};
 
 // Reducer
-const INITIAL_STATE = fromJS({
+export const INITIAL_STATE = fromJS({
   id: null,
   title: '',
   lines: [],
@@ -21,17 +23,17 @@ const INITIAL_STATE = fromJS({
 
 export default function reducer(state = INITIAL_STATE, action = {}) {
   switch (action.type) {
-    case SET_DIALOG:
+    case types.SET_DIALOG:
       return state.merge(fromJS({
         id: action.dialog.id,
         title: action.dialog.title
       }));
-    case SET_LINES:
+    case types.SET_LINES:
       return state.set('lines', fromJS(action.lines));
-    case FETCH:
+    case types.FETCH_REQUEST:
       return state.set('isFetching', true);
-    case FETCH_SUCCESS:
-    case FETCH_FAIL:
+    case types.FETCH_SUCCESS:
+    case types.FETCH_FAIL:
       return state.set('isFetching', false);
     default:
       return state;
@@ -41,14 +43,14 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
 // Action Creators
 function setDialog(dialog) {
   return {
-    type: SET_DIALOG,
+    type: types.SET_DIALOG,
     dialog
   };
 }
 
 function setLines(lines) {
   return {
-    type: SET_LINES,
+    type: types.SET_LINES,
     lines
   };
 }
@@ -60,24 +62,30 @@ function set(data) {
   };
 }
 
-function fetch(dialogId) {
+function fetchRequest(dialogId) {
   return dispatch => {
-    dispatch({ type: FETCH });
+    dispatch({ type: types.FETCH_REQUEST });
     return api.get(`/dialog/${dialogId}`);
   };
 }
 
 function fetchSuccess(data) {
   return dispatch => {
-    dispatch({ type: FETCH_SUCCESS });
+    dispatch({ type: types.FETCH_SUCCESS });
     return dispatch(set(DialogDeserializer(data)));
   };
 }
 
 function fetchFail() {
-  return { type: FETCH_FAIL };
+  return { type: types.FETCH_FAIL };
 }
 
-export function get(data) {
-  return apiCall(data, fetch, fetchSuccess, fetchFail);
+export function fetch(data) {
+  return apiCall(data, fetchRequest, fetchSuccess, fetchFail);
 }
+
+// Selectors
+const duckState = state => state.get('dialog');
+export const getTitle = state => duckState(state).get('title');
+export const getLines = state => duckState(state).get('lines');
+export const getIsFetching = state => duckState(state).get('isFetching');

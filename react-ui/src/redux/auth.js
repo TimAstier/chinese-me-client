@@ -7,17 +7,19 @@ import { Map } from 'immutable';
 const api = new Api();
 
 // Action Types
-const SET_CURRENT_USER = 'chinese-me/auth/SET_CURRENT_USER';
+export const types = {
+  SET_CURRENT_USER: 'AUTH/SET_CURRENT_USER'
+};
 
 // Reducer
-const INITIAL_STATE = Map({
+export const INITIAL_STATE = Map({
   isAuthenticated: false,
   user: {}
 });
 
 export default function reducer(state = INITIAL_STATE, action = {}) {
   switch (action.type) {
-    case SET_CURRENT_USER:
+    case types.SET_CURRENT_USER:
       return state
         .set('isAuthenticated', !isEmpty(action.user))
         .set('user', action.user);
@@ -29,7 +31,7 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
 // Action Creators
 export function setCurrentUser(user) {
   return {
-    type: SET_CURRENT_USER,
+    type: types.SET_CURRENT_USER,
     user
   };
 }
@@ -53,3 +55,8 @@ export function login(data) {
       });
   };
 }
+
+// Selectors
+const duckState = state => state.get('auth');
+export const getCurrentUserId = state => duckState(state).get('user').id;
+export const getIsAuthenticated = state => duckState(state).get('isAuthenticated');

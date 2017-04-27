@@ -5,14 +5,16 @@ import GrammarDeserializer from '../utils/deserializers/grammar';
 const api = new Api();
 
 // Action Types
-const SET_GRAMMAR = 'chinese-me/grammars/SET_GRAMMAR';
-const SET_SENTENCES = 'chinese-me/grammars/SET_SENTENCES';
-const FETCH = 'chinese-me/grammars/FETCH';
-const FETCH_SUCCESS = 'chinese-me/grammars/FETCH_SUCCESS';
-const FETCH_FAIL = 'chinese-me/grammars/FETCH_FAIL';
+export const types = {
+  SET_GRAMMAR: 'GRAMMAR/SET_GRAMMAR',
+  SET_SENTENCES: 'GRAMMAR/SET_SENTENCES',
+  FETCH_REQUEST: 'GRAMMAR/FETCH_REQUEST',
+  FETCH_SUCCESS: 'GRAMMAR/FETCH_SUCCESS',
+  FETCH_FAIL: 'GRAMMAR/FETCH_FAIL'
+};
 
 // Reducer
-const INITIAL_STATE = fromJS({
+export const INITIAL_STATE = fromJS({
   id: null,
   title: '',
   explanation: '',
@@ -22,18 +24,18 @@ const INITIAL_STATE = fromJS({
 
 export default function reducer(state = INITIAL_STATE, action = {}) {
   switch (action.type) {
-    case SET_GRAMMAR:
+    case types.SET_GRAMMAR:
       return state.merge(fromJS({
         id: action.grammar.id,
         title: action.grammar.title,
         explanation: action.grammar.explanation
       }));
-    case SET_SENTENCES:
+    case types.SET_SENTENCES:
       return state.set('sentences', fromJS(action.sentences));
-    case FETCH:
+    case types.FETCH_REQUEST:
       return state.set('isFetching', true);
-    case FETCH_SUCCESS:
-    case FETCH_FAIL:
+    case types.FETCH_SUCCESS:
+    case types.FETCH_FAIL:
       return state.set('isFetching', false);
     default:
       return state;
@@ -43,14 +45,14 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
 // Action Creators
 function setGrammar(grammar) {
   return {
-    type: SET_GRAMMAR,
+    type: types.SET_GRAMMAR,
     grammar
   };
 }
 
 function setSentences(sentences) {
   return {
-    type: SET_SENTENCES,
+    type: types.SET_SENTENCES,
     sentences
   };
 }
@@ -62,24 +64,31 @@ function set(data) {
   };
 }
 
-function fetch(grammarId) {
+function fetchRequest(grammarId) {
   return dispatch => {
-    dispatch({ type: FETCH });
+    dispatch({ type: types.FETCH_REQUEST });
     return api.get(`/grammar/${grammarId}`);
   };
 }
 
 function fetchSuccess(data) {
   return dispatch => {
-    dispatch({ type: FETCH_SUCCESS });
+    dispatch({ type: types.FETCH_SUCCESS });
     return dispatch(set(GrammarDeserializer(data)));
   };
 }
 
 function fetchFail() {
-  return { type: FETCH_FAIL };
+  return { type: types.FETCH_FAIL };
 }
 
-export function get(data) {
-  return apiCall(data, fetch, fetchSuccess, fetchFail);
+export function fetch(data) {
+  return apiCall(data, fetchRequest, fetchSuccess, fetchFail);
 }
+
+// Selectors
+const duckState = state => state.get('grammar');
+export const getTitle = state => duckState(state).get('title');
+export const getSentences = state => duckState(state).get('sentences');
+export const getExplanation = state => duckState(state).get('explanation');
+export const getIsFetching = state => duckState(state).get('isFetching');

@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { FlashMessage } from '../../components';
+import { getMessages } from '../../redux/flashMessages';
 
 class FlashMessagesList extends Component {
   render() {
@@ -18,12 +19,12 @@ class FlashMessagesList extends Component {
 
 function mapStateToProps(state) {
   return {
-    messages: state.get('flashMessages').toJS()
+    messages: getMessages(state)
   };
 }
 
 FlashMessagesList.propTypes = {
-  messages: PropTypes.array.isRequired,
+  messages: PropTypes.object.isRequired,
 };
 
 export default connect(mapStateToProps)(FlashMessagesList);

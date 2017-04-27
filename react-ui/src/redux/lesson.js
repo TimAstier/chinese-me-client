@@ -6,17 +6,19 @@ import LessonDeserializer from '../utils/deserializers/lesson';
 const api = new Api();
 
 // Action Types
-const SET = 'chinese-me/lessons/SET';
-const FETCH = 'chinese-me/lessons/FETCH';
-const FETCH_SUCCESS = 'chinese-me/lessons/FETCH_SUCCESS';
-const FETCH_FAIL = 'chinese-me/lessons/FETCH_FAIL';
-const SET_CURRENT_RESOURCE = 'chinese-me/lessons/SET_CURRENT_RESOURCE';
-const COMPLETE = 'chinese-me/lessons/COMPLETE';
-const COMPLETE_SUCCESS = 'chinese-me/lessons/COMPLETE_SUCCESS';
-const COMPLETE_FAIL = 'chinese-me/lessons/COMPLETE_FAIL';
+export const types = {
+  SET: 'LESSONS/SET',
+  FETCH_REQUEST: 'LESSONS/FETCH_REQUEST',
+  FETCH_SUCCESS: 'LESSONS/FETCH_SUCCESS',
+  FETCH_FAIL: 'LESSONS/FETCH_FAIL',
+  SET_CURRENT_RESOURCE: 'LESSONS/SET_CURRENT_RESOURCE',
+  COMPLETE_REQUEST: 'LESSONS/COMPLETE_REQUEST',
+  COMPLETE_SUCCESS: 'LESSONS/COMPLETE_SUCCESS',
+  COMPLETE_FAIL: 'LESSONS/COMPLETE_FAIL'
+};
 
 // Reducer
-const INITIAL_STATE = fromJS({
+export const INITIAL_STATE = fromJS({
   id: 0,
   title: '',
   currentResourceId: 0,
@@ -29,7 +31,7 @@ const INITIAL_STATE = fromJS({
 
 export default function reducer(state = INITIAL_STATE, action = {}) {
   switch (action.type) {
-    case SET:
+    case types.SET:
       return state.merge(fromJS({
         id: action.data.id,
         title: action.data.title,
@@ -37,12 +39,12 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
         charsData: action.data.charsData,
         grammarsData: action.data.grammarsData
       }));
-    case FETCH:
+    case types.FETCH_REQUEST:
       return state.set('isFetching', true);
-    case FETCH_SUCCESS:
-    case FETCH_FAIL:
+    case types.FETCH_SUCCESS:
+    case types.FETCH_FAIL:
       return state.set('isFetching', false);
-    case SET_CURRENT_RESOURCE:
+    case types.SET_CURRENT_RESOURCE:
       return state.merge(fromJS({
         currentResourceId: action.data.resourceId,
         currentResourceType: action.data.resourceType
@@ -55,67 +57,65 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
 // Action Creators
 function set(data) {
   return {
-    type: SET,
+    type: types.SET,
     data
   };
 }
 
 function fetch(lessonId) {
   return dispatch => {
-    dispatch({ type: FETCH });
+    dispatch({ type: types.FETCH_REQUEST });
     return api.get(`/lesson/${lessonId}`);
   };
 }
 
 function fetchSuccess(data) {
   return dispatch => {
-    dispatch({ type: FETCH_SUCCESS });
+    dispatch({ type: types.FETCH_SUCCESS });
     return dispatch(set(LessonDeserializer(data)));
   };
 }
 
 function fetchFail() {
-  return { type: FETCH_FAIL };
-}
-
-export function get(data) {
-  return apiCall(data, fetch, fetchSuccess, fetchFail);
-}
-
-export function setCurrentResource(data) {
-  return {
-    type: SET_CURRENT_RESOURCE,
-    data
-  };
+  return { type: types.FETCH_FAIL };
 }
 
 function complete(data) {
   const { userId } = data;
   return dispatch => {
-    dispatch({ type: COMPLETE });
+    dispatch({ type: types.COMPLETE_REQUEST });
     return api.post(`/users/${userId}/completed`, data);
   };
 }
 
 function completeSuccess() {
   // console.log(data);
-  return { type: COMPLETE_SUCCESS };
+  return { type: types.COMPLETE_SUCCESS };
 }
 
 function completeFail() {
-  return { type: COMPLETE_FAIL };
+  return { type: types.COMPLETE_FAIL };
 }
 
-export function completeResource(data) {
-  return apiCall(data, complete, completeSuccess, completeFail);
-}
+const getFuncs = [fetch, fetchSuccess, fetchFail];
+const completeResourceFuncs = [complete, completeSuccess, completeFail];
+
+export const actions = {
+  getLesson: data => apiCall(data, ...getFuncs),
+  completeResource: data => apiCall(data, ...completeResourceFuncs),
+  setCurrentResource: data => ({ type: types.SET_CURRENT_RESOURCE, data })
+};
 
 // Selectors
-const getCharsData = state => state.get('charsData');
-const getDialogsData = state => state.get('dialogsData');
-const getGrammarsData = state => state.get('grammarsData');
-const getCurrentResourceId = state => state.get('currentResourceId');
-const getCurrentResourceType = state => state.get('currentResourceType');
+const duckState = state => state.get('lesson');
+const getCharsData = state => duckState(state).get('charsData');
+const getDialogsData = state => duckState(state).get('dialogsData');
+const getGrammarsData = state => duckState(state).get('grammarsData');
+export const getCurrentResourceId = state => duckState(state).get('currentResourceId');
+export const getCurrentResourceType = state => duckState(state).get('currentResourceType');
+export const getLessonId = state => duckState(state).get('id');
+export const getTitle = state => duckState(state).get('title');
+
 
 // Memoized Selectors
 export const getCharCount = createSelector(

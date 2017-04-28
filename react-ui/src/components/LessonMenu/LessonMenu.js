@@ -4,7 +4,35 @@ import { Menu, Label, Icon } from 'semantic-ui-react';
 class LessonMenu extends Component {
 
   // TODO: Display number of words
-  // TODO: Count number of resources that are completed
+  // TODO: Active resource
+  renderCompletedMenuItem(name, wording, active) {
+    return (
+      <Menu.Item name={name} active={active}>
+        <Icon name="checkmark" color="green" size="large"/>
+        {wording}
+      </Menu.Item>
+    );
+  }
+
+  renderNotCompletedMenuItem(name, wording, active, count, completedCount) {
+    return (
+      <Menu.Item name={name} active={active}>
+        <Label color="teal" circular size="tiny">
+          {completedCount}/{count}
+        </Label>
+        {wording}
+      </Menu.Item>
+    );
+  }
+
+  renderMenuItem(name, wording, active, count, completedCount) {
+    const completed = (completedCount === count);
+    if (completed) {
+      return this.renderCompletedMenuItem(name, wording, active);
+    }
+    return this.renderNotCompletedMenuItem(name, wording, active, count, completedCount);
+  }
+
   render() {
     return (
       <div id="lesson-menu">
@@ -16,19 +44,9 @@ class LessonMenu extends Component {
                 <Icon name="checkmark" color="green" size="large"/>
                 Objectives
               </Menu.Item>
-              <Menu.Item name="grammar" active>
-                <Label color="teal" circular size="tiny">
-                  0/{this.props.grammarCount}
-                </Label>
-                Grammar
-              </Menu.Item>
-              <Menu.Item name="Dialog" />
-              <Menu.Item name="characters">
-                <Label color="teal" circular size="tiny">
-                  0/{this.props.charCount}
-                </Label>
-                Characters
-              </Menu.Item>
+              {this.renderMenuItem('grammar', 'Grammar', false, this.props.grammarCount, this.props.completedGrammarCount)}
+              {this.renderMenuItem('dialog', 'Dialog', false, this.props.dialogCount, this.props.completedDialogCount)}
+              {this.renderMenuItem('characters', 'Characters', false, this.props.charCount, this.props.completedCharCount)}
               <Menu.Item name="words">
                 <Label color="teal" circular size="tiny">
                   0/9
@@ -47,7 +65,11 @@ class LessonMenu extends Component {
 LessonMenu.propTypes = {
   title: PropTypes.string.isRequired,
   charCount: PropTypes.number.isRequired,
-  grammarCount: PropTypes.number.isRequired
+  completedCharCount: PropTypes.number.isRequired,
+  grammarCount: PropTypes.number.isRequired,
+  completedGrammarCount: PropTypes.number.isRequired,
+  dialogCount: PropTypes.number.isRequired,
+  completedDialogCount: PropTypes.number.isRequired
 };
 
 export default LessonMenu;

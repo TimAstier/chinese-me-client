@@ -2,6 +2,7 @@ import { fromJS } from 'immutable';
 import { createSelector } from 'reselect';
 import { apiCall, Api } from '../helpers/api';
 import LessonDeserializer from '../utils/deserializers/lesson';
+import isEmpty from 'lodash/isEmpty';
 
 const api = new Api();
 
@@ -14,7 +15,8 @@ export const types = {
   SET_CURRENT_RESOURCE: 'LESSONS/SET_CURRENT_RESOURCE',
   COMPLETE_REQUEST: 'LESSONS/COMPLETE_REQUEST',
   COMPLETE_SUCCESS: 'LESSONS/COMPLETE_SUCCESS',
-  COMPLETE_FAIL: 'LESSONS/COMPLETE_FAIL'
+  COMPLETE_FAIL: 'LESSONS/COMPLETE_FAIL',
+  UPDATE_COMPLETE_STATUS: 'LESSONS/UPDATE_COMPLETE_STATUS'
 };
 
 // Reducer
@@ -49,6 +51,19 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
         currentResourceId: action.data.resourceId,
         currentResourceType: action.data.resourceType
       }));
+    case types.COMPLETE_SUCCESS:
+      if (action.data === null) {
+        return state;
+      }
+      const name = `${action.data.resourceType}sData`;
+      let resourcesData = state.get(name);
+      resourcesData = resourcesData.update(
+        resourcesData.findIndex(e => {
+          return e.get('id') === action.data.resourceId;
+        }),
+        resource => resource.set('completed', true)
+      );
+      return state.set(name, resourcesData);
     default:
       return state;
   }
@@ -81,16 +96,26 @@ function fetchFail() {
 }
 
 function complete(data) {
-  const { userId } = data;
+  const { lessonId } = data;
   return dispatch => {
     dispatch({ type: types.COMPLETE_REQUEST });
-    return api.post(`/users/${userId}/completed`, data);
+    return api.post(`/lesson/${lessonId}/completed`, data);
   };
 }
 
-function completeSuccess() {
-  // console.log(data);
-  return { type: types.COMPLETE_SUCCESS };
+function completeSuccess(data) {
+  if (!isEmpty(data)) {
+    const { resourceType } = data;
+    const resourceId = data[`${resourceType}Id`];
+    return {
+      type: types.COMPLETE_SUCCESS,
+      data: {
+        resourceType,
+        resourceId
+      }
+    };
+  }
+  return { type: types.COMPLETE_SUCCESS, data: null };
 }
 
 function completeFail() {
@@ -123,9 +148,29 @@ export const getCharCount = createSelector(
   charsData => charsData.size
 );
 
+export const getCompletedCharCount = createSelector(
+  getCharsData,
+  charsData => charsData.filter(e => e.get('completed')).size
+);
+
 export const getGrammarCount = createSelector(
   getGrammarsData,
   grammarsData => grammarsData.size
+);
+
+export const getCompletedGrammarCount = createSelector(
+  getGrammarsData,
+  grammarsData => grammarsData.filter(e => e.get('completed')).size
+);
+
+export const getDialogCount = createSelector(
+  getDialogsData,
+  dialogsData => dialogsData.size
+);
+
+export const getCompletedDialogCount = createSelector(
+  getDialogsData,
+  dialogsData => dialogsData.filter(e => e.get('completed')).size
 );
 
 const getResourceData = createSelector(

@@ -1,10 +1,12 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Coach, UserFeedback, LessonMenu } from '../../components';
-import { actions, getCharCount, getGrammarCount, getComment, getNextResource,
-  getLessonId, getTitle, getCurrentResourceId, getCurrentResourceType }
-  from '../../redux/lesson';
-import { getCurrentUserId } from '../../redux/auth';
+import { actions, getCharCount, getGrammarCount, getDialogCount, getComment,
+  getNextResource, getLessonId, getTitle, getCurrentResourceId,
+  getCurrentResourceType, getCompletedCharCount, getCompletedGrammarCount,
+  getCompletedDialogCount } from '../../redux/lesson';
+
+// TODO: import all selectors
 
 class StudyScreen extends Component {
 
@@ -16,12 +18,12 @@ class StudyScreen extends Component {
     return this.props.getLesson(this.props.routeParams.lessonId);
   }
 
-  // TODO: move to ducks file
+  // TODO: move to ducks file or operation file (using that?)
   nextResource() {
     const { lessonId, nextResource, resourceId,
-      resourceType, currentUserId } = this.props;
+      resourceType } = this.props;
     // Mark current resource as completed
-    const data = { userId: currentUserId, resourceType, resourceId, lessonId };
+    const data = { resourceType, resourceId, lessonId };
     this.props.completeResource(data)
       .then(() => {
         // Calculate nextResource URL based on lesson state and routing state
@@ -35,7 +37,7 @@ class StudyScreen extends Component {
         });
       })
       .catch((err) => {
-        console.log('error: ' + err);
+        console.log('error: ' + err); // eslint-disable-line no-console
       });
   }
 
@@ -47,7 +49,11 @@ class StudyScreen extends Component {
           <LessonMenu
             title={this.props.title}
             charCount={this.props.charCount}
+            completedCharCount={this.props.completedCharCount}
             grammarCount={this.props.grammarCount}
+            completedGrammarCount={this.props.completedGrammarCount}
+            dialogCount={this.props.dialogCount}
+            completedDialogCount={this.props.completedDialogCount}
           />
           <Coach comment={this.props.comment} />
         </div>
@@ -73,15 +79,18 @@ StudyScreen.propTypes = {
   getLesson: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
   charCount: PropTypes.number.isRequired,
+  completedCharCount: PropTypes.number.isRequired,
   grammarCount: PropTypes.number.isRequired,
+  completedGrammarCount: PropTypes.number.isRequired,
+  dialogCount: PropTypes.number.isRequired,
+  completedDialogCount: PropTypes.number.isRequired,
   comment: PropTypes.string.isRequired,
   routeParams: PropTypes.object.isRequired,
   setCurrentResource: PropTypes.func.isRequired,
   resourceId: PropTypes.number.isRequired,
   resourceType: PropTypes.string.isRequired,
   nextResource: PropTypes.object.isRequired,
-  completeResource: PropTypes.func.isRequired,
-  currentUserId: PropTypes.number.isRequired
+  completeResource: PropTypes.func.isRequired
 };
 
 StudyScreen.contextTypes = {
@@ -92,13 +101,16 @@ function mapStateToProps(state) {
   return {
     lessonId: getLessonId(state),
     charCount: getCharCount(state),
+    completedCharCount: getCompletedCharCount(state),
     grammarCount: getGrammarCount(state),
+    completedGrammarCount: getCompletedGrammarCount(state),
+    dialogCount: getDialogCount(state),
+    completedDialogCount: getCompletedDialogCount(state),
     title: getTitle(state),
     comment: getComment(state),
     resourceId: getCurrentResourceId(state),
     resourceType: getCurrentResourceType(state),
-    nextResource: getNextResource(state),
-    currentUserId: getCurrentUserId(state)
+    nextResource: getNextResource(state)
   };
 }
 

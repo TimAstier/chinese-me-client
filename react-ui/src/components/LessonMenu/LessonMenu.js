@@ -25,8 +25,12 @@ class LessonMenu extends Component {
     );
   }
 
-  renderMenuItem(name, wording, active, count, completedCount) {
+  renderMenuItem(name, wording, count, completedCount) {
     const completed = (completedCount === count);
+    const active = (this.props.activeType === name);
+    if (count === 0) {
+      return false;
+    }
     if (completed) {
       return this.renderCompletedMenuItem(name, wording, active);
     }
@@ -44,9 +48,9 @@ class LessonMenu extends Component {
                 <Icon name="checkmark" color="green" size="large"/>
                 Objectives
               </Menu.Item>
-              {this.renderMenuItem('grammar', 'Grammar', false, this.props.grammarCount, this.props.completedGrammarCount)}
-              {this.renderMenuItem('dialog', 'Dialog', false, this.props.dialogCount, this.props.completedDialogCount)}
-              {this.renderMenuItem('characters', 'Characters', false, this.props.charCount, this.props.completedCharCount)}
+              {this.renderMenuItem('grammar', 'Grammar', this.props.grammarCount, this.props.completedGrammarCount)}
+              {this.renderMenuItem('dialog', 'Dialog', this.props.dialogCount, this.props.completedDialogCount)}
+              {this.renderMenuItem('char', 'Characters', this.props.charCount, this.props.completedCharCount)}
               <Menu.Item name="words">
                 <Label color="teal" circular size="tiny">
                   0/9
@@ -69,7 +73,8 @@ LessonMenu.propTypes = {
   grammarCount: PropTypes.number.isRequired,
   completedGrammarCount: PropTypes.number.isRequired,
   dialogCount: PropTypes.number.isRequired,
-  completedDialogCount: PropTypes.number.isRequired
+  completedDialogCount: PropTypes.number.isRequired,
+  activeType: PropTypes.string.isRequired
 };
 
 export default LessonMenu;

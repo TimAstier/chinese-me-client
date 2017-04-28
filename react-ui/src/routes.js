@@ -3,7 +3,7 @@ import { Route, IndexRoute } from 'react-router';
 import requireAuth from './utils/requireAuth';
 import { App, HomePage, LoginPage, SignupPage,
   StudyScreen, ResourceScreen, Char, Dialog, Grammar } from './containers';
-import { NotFound } from './components';
+import { NotFound, LessonCompleted } from './components';
 
 // How to redirect from action creators:
 // import { browserHistory } from 'react-router';
@@ -23,6 +23,7 @@ export default (
       <Route path="char/:id" component={Char} />
       <Route path="dialog/:id" component={Dialog} />
       <Route path="grammar/:id" component={Grammar} />
+      <Route path="completed" component={LessonCompleted} />
     </Route>
     <Route path="*" component={NotFound} />
   </Route>

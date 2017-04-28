@@ -26,6 +26,9 @@ class StudyScreen extends Component {
     const data = { resourceType, resourceId, lessonId };
     this.props.completeResource(data)
       .then(() => {
+        if (nextResource.type === 'end') {
+          return this.context.router.push('/study/' + lessonId + '/completed');
+        }
         // Calculate nextResource URL based on lesson state and routing state
         const nextUrl = '/study/' + lessonId + '/' + nextResource.type + '/' + nextResource.id;
         // Display nextResource and fetch resource data
@@ -54,8 +57,11 @@ class StudyScreen extends Component {
             completedGrammarCount={this.props.completedGrammarCount}
             dialogCount={this.props.dialogCount}
             completedDialogCount={this.props.completedDialogCount}
+            activeType={this.props.resourceType}
           />
-          <Coach comment={this.props.comment} />
+          {(this.props.children.props.route.path !== 'completed') &&
+            <Coach comment={this.props.comment} />
+          }
         </div>
 
         <div id="main-content">
@@ -63,9 +69,9 @@ class StudyScreen extends Component {
         </div>
 
         <div id="right-sidebar">
-          <UserFeedback
-            nextResource={this.nextResource.bind(this)}
-          />
+          {(this.props.children.props.route.path !== 'completed') &&
+            <UserFeedback nextResource={this.nextResource.bind(this)} />
+          }
         </div>
 
       </div>

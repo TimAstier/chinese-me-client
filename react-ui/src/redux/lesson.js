@@ -228,7 +228,7 @@ export const getNextResource = createSelector(
       return (e.get('type') === type && e.get('id') === id);
     });
     if (index + 1 === resourceCount) {
-      return {type: 'end', id: 0 };
+      return { type: 'end' };
     }
     const nextResource = typedResources.get(index + 1);
     return { type: nextResource.get('type'), id: nextResource.get('id') };

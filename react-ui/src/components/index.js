@@ -6,6 +6,7 @@ export { default as DialogLine } from './DialogLine/DialogLine';
 export { default as FlashMessage } from './FlashMessage/FlashMessage';
 export { default as Grammar } from './Grammar/Grammar';
 export { default as GrammarSentence } from './GrammarSentence/GrammarSentence';
+export { default as LessonCompleted } from './LessonCompleted/LessonCompleted';
 export { default as LessonMenu } from './LessonMenu/LessonMenu';
 export { default as ResourceLoader } from './ResourceLoader/ResourceLoader';
 export { default as ResourceNotFound } from './ResourceNotFound/ResourceNotFound';

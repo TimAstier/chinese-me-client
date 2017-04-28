@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { Menu, Button, Icon } from 'semantic-ui-react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
-import { logout, getIsAuthenticated } from '../../redux/auth';
+import { logout, getIsAuthenticated, getCurrentUsername } from '../../redux/auth';
 import logo from '../../logo.png';
 
 class NavigationBar extends Component {
@@ -18,10 +18,20 @@ class NavigationBar extends Component {
         <Menu.Item>
           <Button
             as={Link}
+            to={`/${this.props.currentUsername}`}
+            primary
+          >
+            <Icon name="user"/>Profile
+          </Button>
+        </Menu.Item>
+        <Menu.Item>
+          <Button
+            as={Link}
             to="#"
             basic
             inverted
-            onClick={this.logout.bind(this)}>
+            onClick={this.logout.bind(this)}
+          >
             <Icon name="power"/>Logout
           </Button>
         </Menu.Item>
@@ -55,7 +65,7 @@ class NavigationBar extends Component {
         />
       </Menu.Item>
       <Link
-        to={ this.props.isAuthenticated ? '/app' : '/' }
+        to="/"
         className="item header main-menu-header"
       >
         ChineseMe
@@ -68,11 +78,13 @@ class NavigationBar extends Component {
 
 NavigationBar.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
-  logout: PropTypes.func.isRequired
+  logout: PropTypes.func.isRequired,
+  currentUsername: PropTypes.string.isRequired
 };
 
 function mapStateToProps(state) {
   return {
+    currentUsername: getCurrentUsername(state),
     isAuthenticated: getIsAuthenticated(state)
   };
 }

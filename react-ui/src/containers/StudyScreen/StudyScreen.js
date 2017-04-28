@@ -27,7 +27,11 @@ class StudyScreen extends Component {
     this.props.completeResource(data)
       .then(() => {
         if (nextResource.type === 'end') {
-          return this.context.router.push('/study/' + lessonId + '/completed');
+          this.context.router.push('/study/' + lessonId + '/completed');
+          return this.props.setCurrentResource({
+            resourceId: 0,
+            resourceType: nextResource.type
+          });
         }
         // Calculate nextResource URL based on lesson state and routing state
         const nextUrl = '/study/' + lessonId + '/' + nextResource.type + '/' + nextResource.id;

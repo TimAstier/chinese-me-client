@@ -14,7 +14,10 @@ export const types = {
 // Reducer
 export const INITIAL_STATE = Map({
   isAuthenticated: false,
-  user: {}
+  user: {
+    id: 0,
+    username: ''
+  }
 });
 
 export default function reducer(state = INITIAL_STATE, action = {}) {
@@ -59,4 +62,5 @@ export function login(data) {
 // Selectors
 const duckState = state => state.get('auth');
 export const getCurrentUserId = state => duckState(state).get('user').id;
+export const getCurrentUsername = state => duckState(state).get('user').username;
 export const getIsAuthenticated = state => duckState(state).get('isAuthenticated');

@@ -3,13 +3,21 @@ import { Button, Icon } from 'semantic-ui-react';
 
 class UserFeedback extends Component {
 
+  renderMainAction(completed) {
+    const onClick = completed ? this.props.next : this.props.saveAndNext;
+    const text = completed ? 'Next' : 'Got it!';
+    return (
+      <Button primary onClick={onClick}>
+        <Icon name="external square" />
+        {text}
+      </Button>
+    );
+  }
+
   render() {
     return (
       <div id="user-feedback">
-        <Button primary onClick={this.props.nextResource}>
-          <Icon name="external square" />
-          Continue
-        </Button>
+        {this.renderMainAction(this.props.completed)}
         <Button secondary>
           <Icon name="help circle" />
           Ask question
@@ -28,7 +36,9 @@ class UserFeedback extends Component {
 }
 
 UserFeedback.propTypes = {
-  nextResource: PropTypes.func.isRequired
+  saveAndNext: PropTypes.func.isRequired,
+  next: PropTypes.func.isRequired,
+  completed: PropTypes.bool.isRequired
 };
 
 export default UserFeedback;

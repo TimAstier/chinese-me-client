@@ -7,6 +7,9 @@ import { getIsAuthenticated } from '../../redux/auth';
 
 class HomePage extends Component {
   render() {
+    const message = this.props.isAuthenticated
+      ? 'Welcome back to ChineseMe!'
+      : 'Welcome to ChineseMe';
     return (
       <div id="home-screen">
         <Message
@@ -14,10 +17,10 @@ class HomePage extends Component {
           className="center"
           id="greetings"
         >
-          Welcome to ChineseMe
+          {message}
         </Message>
         {this.props.isAuthenticated ?
-          <Link to="/app" className="item color">
+          <Link to="/study" className="item color">
             <Image
               id="home-logo"
               src={logo}
@@ -25,7 +28,7 @@ class HomePage extends Component {
               shape="circular"
               centered
             />
-            <Button id="get-started-btn" primary>Enter the app</Button>
+            <Button id="get-started-btn" primary>Continue</Button>
           </Link>
           :
           <Image

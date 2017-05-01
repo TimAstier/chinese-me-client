@@ -5,10 +5,10 @@ const api = new Api();
 
 // Action Types
 export const types = {
-  SET: 'CHAR/SET',
-  FETCH_REQUEST: 'CHAR/FETCH_REQUEST',
-  FETCH_SUCCESS: 'CHAR/FETCH_SUCCESS',
-  FETCH_FAIL: 'CHAR/FETCH_FAIL'
+  SET: 'char/SET',
+  FETCH_REQUEST: 'char/FETCH_REQUEST',
+  FETCH_SUCCESS: 'char/FETCH_SUCCESS',
+  FETCH_FAIL: 'char/FETCH_FAIL'
 };
 
 // Reducer

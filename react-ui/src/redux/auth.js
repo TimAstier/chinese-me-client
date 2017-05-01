@@ -8,7 +8,7 @@ const api = new Api();
 
 // Action Types
 export const types = {
-  SET_CURRENT_USER: 'AUTH/SET_CURRENT_USER'
+  SET_CURRENT_USER: 'auth/SET_CURRENT_USER'
 };
 
 // Reducer

@@ -6,8 +6,8 @@ import { Char, Dialog, Grammar, Word } from '../.';
 import { fetchLesson, getTitle } from '../../redux/lesson';
 import { completeResource, selectors as resourcesSelectors }
   from '../../redux/resources';
-import { setStudy, fetchStudyUrl, selectors as studySelectors }
-  from '../../redux/study';
+import { setStudyFromUrl, fetchStudyUrl, setCurrentResource,
+  selectors as studySelectors } from '../../redux/study';
 import { getCurrentUserId } from '../../redux/auth';
 
 class StudyScreen extends Component {
@@ -17,20 +17,24 @@ class StudyScreen extends Component {
     // As this Route requires Auth, this.props.currentUserId is available
     fetchStudyUrl(this.props.currentUserId)
       .then(studyUrl => {
-        this.props.setStudy(studyUrl.data);
+        this.props.setStudyFromUrl(studyUrl.data);
         return this.props.fetchLesson(studyUrl.data.split('/')[1]);
       });
   }
 
-  // TODO: move to ducks file or operation file (using that?)
-  nextResource() {
+  // TODO: move to operation file using func params
+  saveAndNext() {
     const { nextResource } = this.props;
     const { lessonId, resourceType, resourceId } = this.props;
     // Mark current resource as completed
     const nextUrl = 'study/' + lessonId + '/' + nextResource.type + '/' + nextResource.id;
-    // console.log(nextUrl)
     const data = { resourceType, resourceId, lessonId, nextUrl };
-    this.props.completeResource(data);
+    return this.props.completeResource(data);
+  }
+
+  next() {
+    const { nextResource } = this.props;
+    return this.props.setCurrentResource(nextResource.id, nextResource.type);
   }
 
   renderMainContent(resourceType) {
@@ -71,7 +75,11 @@ class StudyScreen extends Component {
         </div>
 
         <div id="right-sidebar">
-          <UserFeedback nextResource={this.nextResource.bind(this)} />
+          <UserFeedback
+            saveAndNext={this.saveAndNext.bind(this)}
+            next={this.next.bind(this)}
+            completed={this.props.completed}
+          />
         </div>
 
       </div>
@@ -94,15 +102,13 @@ StudyScreen.propTypes = {
   comment: PropTypes.string.isRequired,
   nextResource: PropTypes.object.isRequired,
   completeResource: PropTypes.func.isRequired,
-  setStudy: PropTypes.func.isRequired,
+  setStudyFromUrl: PropTypes.func.isRequired,
   lessonId: PropTypes.string.isRequired,
   resourceId: PropTypes.string.isRequired,
   resourceType: PropTypes.string.isRequired,
-  currentUserId: PropTypes.number.isRequired
-};
-
-StudyScreen.contextTypes = {
-  router: PropTypes.object.isRequired
+  currentUserId: PropTypes.number.isRequired,
+  setCurrentResource: PropTypes.func.isRequired,
+  completed: PropTypes.bool.isRequired
 };
 
 function mapStateToProps(state) {
@@ -121,12 +127,14 @@ function mapStateToProps(state) {
     lessonId: studySelectors.getLessonId(state),
     resourceType: studySelectors.getResourceType(state),
     resourceId: studySelectors.getResourceId(state),
-    currentUserId: getCurrentUserId(state)
+    currentUserId: getCurrentUserId(state),
+    completed: resourcesSelectors.getCompleted(state)
   };
 }
 
 export default connect(mapStateToProps, {
   fetchLesson,
-  setStudy,
-  completeResource
+  setStudyFromUrl,
+  completeResource,
+  setCurrentResource
 })(StudyScreen);

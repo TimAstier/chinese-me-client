@@ -4,8 +4,8 @@ import shortid from 'shortid';
 
 // Action Types
 export const types = {
-  ADD: 'FLASH_MESSAGES/ADD',
-  DELETE: 'FLASH_MESSAGES/DELETE'
+  ADD: 'flashMessages/ADD',
+  DELETE: 'flashMessages/DELETE'
 };
 
 // Reducer

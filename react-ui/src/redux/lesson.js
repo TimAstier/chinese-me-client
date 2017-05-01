@@ -7,10 +7,10 @@ const api = new Api();
 
 // Action Types
 export const types = {
-  SET: 'LESSONS/SET',
-  FETCH_REQUEST: 'LESSONS/FETCH_REQUEST',
-  FETCH_SUCCESS: 'LESSONS/FETCH_SUCCESS',
-  FETCH_FAIL: 'LESSONS/FETCH_FAIL'
+  SET: 'lessons/SET',
+  FETCH_REQUEST: 'lessons/FETCH_REQUEST',
+  FETCH_SUCCESS: 'lessons/FETCH_SUCCESS',
+  FETCH_FAIL: 'lessons/FETCH_FAIL'
 };
 
 // Reducer

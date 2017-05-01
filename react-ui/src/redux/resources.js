@@ -2,17 +2,17 @@ import { fromJS } from 'immutable';
 import { createSelector } from 'reselect';
 import { apiCall, Api } from '../helpers/api';
 import isEmpty from 'lodash/isEmpty';
-import { selectors as studySelectors, setStudy } from './study';
+import { selectors as studySelectors, setStudyFromUrl } from './study';
 
 const api = new Api();
 
 // Action Types
 export const types = {
-  SET: 'RESOURCES/SET',
-  COMPLETE_REQUEST: 'RESOURCES/COMPLETE_REQUEST',
-  COMPLETE_SUCCESS: 'RESOURCES/COMPLETE_SUCCESS',
-  COMPLETE_FAIL: 'RESOURCES/COMPLETE_FAIL',
-  UPDATE_COMPLETE_STATUS: 'RESOURCES/UPDATE_COMPLETE_STATUS'
+  SET: 'resources/SET',
+  COMPLETE_REQUEST: 'resources/COMPLETE_REQUEST',
+  COMPLETE_SUCCESS: 'resources/COMPLETE_SUCCESS',
+  COMPLETE_FAIL: 'resources/COMPLETE_FAIL',
+  UPDATE_COMPLETE_STATUS: 'resources/UPDATE_COMPLETE_STATUS'
 };
 
 // Reducer
@@ -72,7 +72,7 @@ function completeSuccess(data) {
     if (!isEmpty(data)) {
       const { resourceType, studyUrl } = data;
       const resourceId = data[`${resourceType}Id`].toString();
-      dispatch(setStudy(studyUrl));
+      dispatch(setStudyFromUrl(studyUrl));
       return dispatch({
         type: types.COMPLETE_SUCCESS,
         data: {
@@ -175,6 +175,19 @@ const getComment = createSelector(
   }
 );
 
+const getCompleted = createSelector(
+  studySelectors.getResourceId,
+  getResourceData,
+  (resourceId, resourceData) => {
+    const index = resourceData.findIndex(e => e.get('id') === resourceId);
+    const resource = resourceData.get(index);
+    if (resource !== undefined) {
+      return resource.get('completed');
+    }
+    return false;
+  }
+);
+
 const getTypedResources = createSelector(
   [getCharsData, getDialogsData, getGrammarsData, getWordsData],
   (charsData, dialogsData, grammarsData, wordsData) => {
@@ -221,5 +234,6 @@ export const selectors = {
   getWordCount,
   getCompletedWordCount,
   getComment,
+  getCompleted,
   getNextResource
 };

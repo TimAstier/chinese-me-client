@@ -1,11 +1,15 @@
 import React, { Component, PropTypes } from 'react';
 import { Comment, Icon } from 'semantic-ui-react';
 import meijia from './meijia.png';
-import zenglaoshi from './zenglaoshi.png';
+import yuguo from './zenglaoshi.png';
+import gao from './gao.png';
+import mawen from './mawen.png';
 
 const avatars = {
   'meijia': meijia,
-  'zenglaoshi': zenglaoshi
+  'yuguo': yuguo,
+  'mawen': mawen,
+  'gao': gao
 };
 
 class DialogLine extends Component {

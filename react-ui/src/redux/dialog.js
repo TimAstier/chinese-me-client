@@ -6,11 +6,11 @@ const api = new Api();
 
 // Action Types
 export const types = {
-  SET_DIALOG: 'DIALOG/SET_DIALOG',
-  SET_LINES: 'DIALOG/SET_LINES',
-  FETCH_REQUEST: 'DIALOG/FETCH_REQUEST',
-  FETCH_SUCCESS: 'DIALOG/FETCH_SUCCESS',
-  FETCH_FAIL: 'DIALOG/FETCH_FAIL'
+  SET_DIALOG: 'dialog/SET_DIALOG',
+  SET_LINES: 'dialog/SET_LINES',
+  FETCH_REQUEST: 'dialog/FETCH_REQUEST',
+  FETCH_SUCCESS: 'dialog/FETCH_SUCCESS',
+  FETCH_FAIL: 'dialog/FETCH_FAIL'
 };
 
 // Reducer

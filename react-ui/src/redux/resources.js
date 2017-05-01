@@ -223,6 +223,18 @@ const getNextResource = createSelector(
   }
 );
 
+// TODO: Do something less ugly
+const getFirstOfEachType = createSelector(
+  [getCharsData, getDialogsData, getGrammarsData, getWordsData],
+  (charsData, dialogsData, grammarsData, wordsData) => {
+    const char = charsData.size !== 0 ? charsData.get(0) : null;
+    const word = wordsData.size !== 0 ? wordsData.get(0) : null;
+    const grammar = grammarsData.size !== 0 ? grammarsData.get(0) : null;
+    const dialog = dialogsData.size !== 0 ? dialogsData.get(0) : null;
+    return { char, word, grammar, dialog };
+  }
+);
+
 // Export selectors
 export const selectors = {
   getCharCount,
@@ -235,5 +247,6 @@ export const selectors = {
   getCompletedWordCount,
   getComment,
   getCompleted,
-  getNextResource
+  getNextResource,
+  getFirstOfEachType
 };

@@ -3,9 +3,17 @@ import { Menu, Label, Icon } from 'semantic-ui-react';
 
 class LessonMenu extends Component {
 
+  handleClick(resourceType) {
+    if (this.props.firstOfEachType[resourceType] === null) {
+      return () => false;
+    }
+    const resourceId = this.props.firstOfEachType[resourceType].get('id');
+    return () => this.props.setCurrentResource(resourceId, resourceType);
+  }
+
   renderCompletedMenuItem(name, wording, active) {
     return (
-      <Menu.Item name={name} active={active}>
+      <Menu.Item name={name} active={active} onClick={this.handleClick(name)}>
         <Icon name="checkmark" color="green" size="large"/>
         {wording}
       </Menu.Item>
@@ -14,7 +22,7 @@ class LessonMenu extends Component {
 
   renderNotCompletedMenuItem(name, wording, active, count, completedCount) {
     return (
-      <Menu.Item name={name} active={active}>
+      <Menu.Item name={name} active={active} onClick={this.handleClick(name)}>
         <Label color="teal" circular size="tiny">
           {completedCount}/{count}
         </Label>
@@ -68,7 +76,9 @@ LessonMenu.propTypes = {
   completedDialogCount: PropTypes.number.isRequired,
   wordCount: PropTypes.number.isRequired,
   completedWordCount: PropTypes.number.isRequired,
-  activeType: PropTypes.string.isRequired
+  activeType: PropTypes.string.isRequired,
+  firstOfEachType: PropTypes.object.isRequired,
+  setCurrentResource: PropTypes.func.isRequired
 };
 
 export default LessonMenu;

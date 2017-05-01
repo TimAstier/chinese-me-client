@@ -22,10 +22,8 @@ class StudyScreen extends Component {
       });
   }
 
-  // TODO: move to operation file using func params
   saveAndNext() {
-    const { nextResource } = this.props;
-    const { lessonId, resourceType, resourceId } = this.props;
+    const { lessonId, resourceType, resourceId, nextResource } = this.props;
     // Mark current resource as completed
     const nextUrl = 'study/' + lessonId + '/' + nextResource.type + '/' + nextResource.id;
     const data = { resourceType, resourceId, lessonId, nextUrl };
@@ -64,6 +62,8 @@ class StudyScreen extends Component {
             wordCount={this.props.wordCount}
             completedWordCount={this.props.completedWordCount}
             activeType={this.props.resourceType}
+            setCurrentResource={this.props.setCurrentResource.bind(this)}
+            firstOfEachType={this.props.firstOfEachType}
           />
           {this.props.comment &&
             <Coach comment={this.props.comment} />
@@ -108,7 +108,8 @@ StudyScreen.propTypes = {
   resourceType: PropTypes.string.isRequired,
   currentUserId: PropTypes.number.isRequired,
   setCurrentResource: PropTypes.func.isRequired,
-  completed: PropTypes.bool.isRequired
+  completed: PropTypes.bool.isRequired,
+  firstOfEachType: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {
@@ -128,7 +129,8 @@ function mapStateToProps(state) {
     resourceType: studySelectors.getResourceType(state),
     resourceId: studySelectors.getResourceId(state),
     currentUserId: getCurrentUserId(state),
-    completed: resourcesSelectors.getCompleted(state)
+    completed: resourcesSelectors.getCompleted(state),
+    firstOfEachType: resourcesSelectors.getFirstOfEachType(state)
   };
 }
 

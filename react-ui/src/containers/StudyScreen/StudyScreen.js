@@ -17,6 +17,11 @@ class StudyScreen extends Component {
     // As this Route requires Auth, this.props.currentUserId is available
     fetchStudyUrl(this.props.currentUserId)
       .then(studyUrl => {
+        // TODO: Initialize studyUrl for new Users
+        if (studyUrl.data === '/study') {
+          this.props.setStudyFromUrl('study/1/grammar/3');
+          return this.props.fetchLesson('study/1/grammar/3'.split('/')[1]);
+        }
         this.props.setStudyFromUrl(studyUrl.data);
         return this.props.fetchLesson(studyUrl.data.split('/')[1]);
       });

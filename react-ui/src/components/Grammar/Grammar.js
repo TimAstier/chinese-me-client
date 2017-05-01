@@ -32,7 +32,14 @@ class Grammar extends Component {
       <div id="grammar">
         <div className="explanation">
           <h1>{title}</h1>
-          <p>{explanation}</p>
+          <p>{explanation.split('\n').map((item, key) => {
+            return (
+              <span key={key}>
+                {item}
+                <br/>
+              </span>
+            );
+          })}</p>
         </div>
 
         <div className="sentences">

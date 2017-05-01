@@ -14,3 +14,4 @@ export { default as LoginForm } from './LoginForm/LoginForm';
 export { default as NotFound } from './NotFound/NotFound';
 export { default as SignupForm } from './SignupForm/SignupForm';
 export { default as UserFeedback } from './UserFeedback/UserFeedback';
+export { default as Word } from './Word/Word';

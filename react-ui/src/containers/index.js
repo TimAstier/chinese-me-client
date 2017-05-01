@@ -11,3 +11,4 @@ export { default as ResourceScreen } from './ResourceScreen/ResourceScreen';
 export { default as SignupPage } from './SignupPage/SignupPage';
 export { default as StudyScreen } from './StudyScreen/StudyScreen';
 export { default as UserProfile } from './UserProfile/UserProfile';
+export { default as Word } from './Word/Word';

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Grammar as GrammarComponent } from '../../components';
 import { fetch as fetchGrammar, getTitle, getExplanation, getSentences,
   getIsFetching } from '../../redux/grammar';
+import { selectors as resourcesSelectors } from '../../redux/study';
 
 class Grammar extends Component {
 
@@ -14,7 +15,7 @@ class Grammar extends Component {
         title={this.props.title}
         explanation={this.props.explanation}
         isFetching={this.props.isFetching}
-        id={Number(this.props.routeParams.id)}
+        id={this.props.id}
       />
     );
   }
@@ -26,7 +27,7 @@ Grammar.propTypes = {
   explanation: PropTypes.string.isRequired,
   sentences: PropTypes.object.isRequired,
   isFetching: PropTypes.bool.isRequired,
-  routeParams: PropTypes.object.isRequired
+  id: PropTypes.string.isRequired
 };
 
 function mapStateToProps(state) {
@@ -34,7 +35,8 @@ function mapStateToProps(state) {
     title: getTitle(state),
     explanation: getExplanation(state),
     sentences: getSentences(state),
-    isFetching: getIsFetching(state)
+    isFetching: getIsFetching(state),
+    id: resourcesSelectors.getResourceId(state)
   };
 }
 

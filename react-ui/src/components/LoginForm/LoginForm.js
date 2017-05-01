@@ -40,7 +40,7 @@ class LoginForm extends Component {
       this.setState({ errors: {}, isLoading: true });
       this.props.login(this.state).then(
         () => {
-          this.context.router.push('/study/1/grammar/1');
+          this.context.router.push('/study');
           this.props.showFlashMessageWithTimeout({
             type: 'success',
             text: 'Welcome back on ChineseMe!'

@@ -1,51 +1,47 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { Coach, UserFeedback, LessonMenu } from '../../components';
-import { actions, getCharCount, getGrammarCount, getDialogCount, getComment,
-  getNextResource, getLessonId, getTitle, getCurrentResourceId,
-  getCurrentResourceType, getCompletedCharCount, getCompletedGrammarCount,
-  getCompletedDialogCount } from '../../redux/lesson';
-
-// TODO: import all selectors
+import { Coach, UserFeedback, LessonMenu, ResourceLoader, LessonCompleted}
+  from '../../components';
+import { Char, Dialog, Grammar, Word } from '../.';
+import { fetchLesson, getTitle } from '../../redux/lesson';
+import { completeResource, selectors as resourcesSelectors }
+  from '../../redux/resources';
+import { setStudy, fetchStudyUrl, selectors as studySelectors }
+  from '../../redux/study';
+import { getCurrentUserId } from '../../redux/auth';
 
 class StudyScreen extends Component {
 
   componentDidMount() {
-    // Initialisation based on routing state
-    const resourceId = Number(this.props.children.props.routeParams.id);
-    const resourceType = this.props.children.props.route.path.match(/[^/]*/)[0];
-    this.props.setCurrentResource({ resourceId, resourceType });
-    return this.props.getLesson(this.props.routeParams.lessonId);
+    // get Study URL from server
+    // As this Route requires Auth, this.props.currentUserId is available
+    fetchStudyUrl(this.props.currentUserId)
+      .then(studyUrl => {
+        this.props.setStudy(studyUrl.data);
+        return this.props.fetchLesson(studyUrl.data.split('/')[1]);
+      });
   }
 
   // TODO: move to ducks file or operation file (using that?)
   nextResource() {
-    const { lessonId, nextResource, resourceId,
-      resourceType } = this.props;
+    const { nextResource } = this.props;
+    const { lessonId, resourceType, resourceId } = this.props;
     // Mark current resource as completed
-    const data = { resourceType, resourceId, lessonId };
-    this.props.completeResource(data)
-      .then(() => {
-        if (nextResource.type === 'end') {
-          this.context.router.push('/study/' + lessonId + '/completed');
-          return this.props.setCurrentResource({
-            resourceId: 0,
-            resourceType: nextResource.type
-          });
-        }
-        // Calculate nextResource URL based on lesson state and routing state
-        const nextUrl = '/study/' + lessonId + '/' + nextResource.type + '/' + nextResource.id;
-        // Display nextResource and fetch resource data
-        this.context.router.push(nextUrl);
-        // Set currentResource to update study screen (coach, menu, etc.)
-        return this.props.setCurrentResource({
-          resourceId: nextResource.id,
-          resourceType: nextResource.type
-        });
-      })
-      .catch((err) => {
-        console.log('error: ' + err); // eslint-disable-line no-console
-      });
+    const nextUrl = 'study/' + lessonId + '/' + nextResource.type + '/' + nextResource.id;
+    // console.log(nextUrl)
+    const data = { resourceType, resourceId, lessonId, nextUrl };
+    this.props.completeResource(data);
+  }
+
+  renderMainContent(resourceType) {
+    switch (resourceType) {
+      case 'char': return <Char/>;
+      case 'dialog': return <Dialog/>;
+      case 'grammar': return <Grammar/>;
+      case 'word': return <Word/>;
+      case 'end': return <LessonCompleted/>;
+      default: return <ResourceLoader/>;
+    }
   }
 
   render() {
@@ -61,21 +57,21 @@ class StudyScreen extends Component {
             completedGrammarCount={this.props.completedGrammarCount}
             dialogCount={this.props.dialogCount}
             completedDialogCount={this.props.completedDialogCount}
+            wordCount={this.props.wordCount}
+            completedWordCount={this.props.completedWordCount}
             activeType={this.props.resourceType}
           />
-          {(this.props.children.props.route.path !== 'completed') &&
+          {this.props.comment &&
             <Coach comment={this.props.comment} />
           }
         </div>
 
         <div id="main-content">
-          {this.props.children}
+          {this.renderMainContent(this.props.resourceType)}
         </div>
 
         <div id="right-sidebar">
-          {(this.props.children.props.route.path !== 'completed') &&
-            <UserFeedback nextResource={this.nextResource.bind(this)} />
-          }
+          <UserFeedback nextResource={this.nextResource.bind(this)} />
         </div>
 
       </div>
@@ -84,9 +80,8 @@ class StudyScreen extends Component {
 }
 
 StudyScreen.propTypes = {
-  lessonId: PropTypes.number.isRequired,
   children: PropTypes.node,
-  getLesson: PropTypes.func.isRequired,
+  fetchLesson: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
   charCount: PropTypes.number.isRequired,
   completedCharCount: PropTypes.number.isRequired,
@@ -94,13 +89,16 @@ StudyScreen.propTypes = {
   completedGrammarCount: PropTypes.number.isRequired,
   dialogCount: PropTypes.number.isRequired,
   completedDialogCount: PropTypes.number.isRequired,
+  wordCount: PropTypes.number.isRequired,
+  completedWordCount: PropTypes.number.isRequired,
   comment: PropTypes.string.isRequired,
-  routeParams: PropTypes.object.isRequired,
-  setCurrentResource: PropTypes.func.isRequired,
-  resourceId: PropTypes.number.isRequired,
-  resourceType: PropTypes.string.isRequired,
   nextResource: PropTypes.object.isRequired,
-  completeResource: PropTypes.func.isRequired
+  completeResource: PropTypes.func.isRequired,
+  setStudy: PropTypes.func.isRequired,
+  lessonId: PropTypes.string.isRequired,
+  resourceId: PropTypes.string.isRequired,
+  resourceType: PropTypes.string.isRequired,
+  currentUserId: PropTypes.number.isRequired
 };
 
 StudyScreen.contextTypes = {
@@ -109,19 +107,26 @@ StudyScreen.contextTypes = {
 
 function mapStateToProps(state) {
   return {
-    lessonId: getLessonId(state),
-    charCount: getCharCount(state),
-    completedCharCount: getCompletedCharCount(state),
-    grammarCount: getGrammarCount(state),
-    completedGrammarCount: getCompletedGrammarCount(state),
-    dialogCount: getDialogCount(state),
-    completedDialogCount: getCompletedDialogCount(state),
     title: getTitle(state),
-    comment: getComment(state),
-    resourceId: getCurrentResourceId(state),
-    resourceType: getCurrentResourceType(state),
-    nextResource: getNextResource(state)
+    charCount: resourcesSelectors.getCharCount(state),
+    completedCharCount: resourcesSelectors.getCompletedCharCount(state),
+    grammarCount: resourcesSelectors.getGrammarCount(state),
+    completedGrammarCount: resourcesSelectors.getCompletedGrammarCount(state),
+    dialogCount: resourcesSelectors.getDialogCount(state),
+    completedDialogCount: resourcesSelectors.getCompletedDialogCount(state),
+    wordCount: resourcesSelectors.getWordCount(state),
+    completedWordCount: resourcesSelectors.getCompletedWordCount(state),
+    comment: resourcesSelectors.getComment(state),
+    nextResource: resourcesSelectors.getNextResource(state),
+    lessonId: studySelectors.getLessonId(state),
+    resourceType: studySelectors.getResourceType(state),
+    resourceId: studySelectors.getResourceId(state),
+    currentUserId: getCurrentUserId(state)
   };
 }
 
-export default connect(mapStateToProps, { ...actions })(StudyScreen);
+export default connect(mapStateToProps, {
+  fetchLesson,
+  setStudy,
+  completeResource
+})(StudyScreen);

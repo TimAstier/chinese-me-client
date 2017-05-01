@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Dialog as DialogComponent } from '../../components';
 import { fetch as fetchDialog, getTitle, getLines, getIsFetching }
   from '../../redux/dialog';
+import { selectors as resourcesSelectors } from '../../redux/study';
 
 class Dialog extends Component {
 
@@ -13,7 +14,7 @@ class Dialog extends Component {
         title={this.props.title}
         lines={this.props.lines}
         isFetching={this.props.isFetching}
-        id={Number(this.props.routeParams.id)}
+        id={this.props.id}
       />
     );
   }
@@ -24,14 +25,15 @@ Dialog.propTypes = {
   title: PropTypes.string.isRequired,
   lines: PropTypes.object.isRequired,
   isFetching: PropTypes.bool.isRequired,
-  routeParams: PropTypes.object.isRequired
+  id: PropTypes.string.isRequired
 };
 
 function MapStateToProps(state) {
   return {
     title: getTitle(state),
     lines: getLines(state),
-    isFetching: getIsFetching(state)
+    isFetching: getIsFetching(state),
+    id: resourcesSelectors.getResourceId(state)
   };
 }
 

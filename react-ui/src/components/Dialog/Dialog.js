@@ -61,7 +61,7 @@ Dialog.propTypes = {
   title: PropTypes.string.isRequired,
   lines: PropTypes.object.isRequired,
   isFetching: PropTypes.bool.isRequired,
-  id: PropTypes.number.isRequired
+  id: PropTypes.string.isRequired
 };
 
 export default Dialog;

@@ -2,7 +2,7 @@ import { Api } from '../helpers/api';
 import setAuthorizationToken from '../utils/setAuthorizationToken';
 import jwtDecode from 'jwt-decode';
 import isEmpty from 'lodash/isEmpty';
-import { Map } from 'immutable';
+import { fromJS } from 'immutable';
 
 const api = new Api();
 
@@ -12,7 +12,7 @@ export const types = {
 };
 
 // Reducer
-export const INITIAL_STATE = Map({
+export const INITIAL_STATE = fromJS({
   isAuthenticated: false,
   user: {
     id: 0,
@@ -25,7 +25,7 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
     case types.SET_CURRENT_USER:
       return state
         .set('isAuthenticated', !isEmpty(action.user))
-        .set('user', action.user);
+        .set('user', fromJS(action.user));
     default:
       return state;
   }
@@ -53,6 +53,7 @@ export function login(data) {
       .then(res => {
         const token = res.data.token;
         localStorage.setItem('jwtToken', token);
+        localStorage.setItem('studyUrl', jwtDecode(token).studyUrl);
         setAuthorizationToken(token);
         dispatch(setCurrentUser(jwtDecode(token)));
       });
@@ -61,6 +62,7 @@ export function login(data) {
 
 // Selectors
 const duckState = state => state.get('auth');
-export const getCurrentUserId = state => duckState(state).get('user').id;
-export const getCurrentUsername = state => duckState(state).get('user').username;
+export const getCurrentUserId = state => duckState(state).getIn(['user', 'id']);
+export const getCurrentUsername = state => duckState(state).getIn(['user', 'username']);
+export const getStudyUrl = state => duckState(state).getIn(['user', 'studyUrl']);
 export const getIsAuthenticated = state => duckState(state).get('isAuthenticated');

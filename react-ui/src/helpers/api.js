@@ -9,6 +9,7 @@ export function apiCall(data, fetch, success, fail) {
         dispatch(success(response.data));
       })
       .catch(err => {
+        console.log(err); // eslint-disable-line no-console
         dispatch(fail());
         const type = 'error';
         const text = checkNetwork(err);

@@ -60,7 +60,7 @@ Grammar.propTypes = {
   explanation: PropTypes.string.isRequired,
   sentences: PropTypes.object.isRequired,
   isFetching: PropTypes.bool.isRequired,
-  id: PropTypes.number.isRequired
+  id: PropTypes.string.isRequired
 };
 
 export default Grammar;

@@ -6,7 +6,7 @@ function extractResourceIds(data, type, lessonJoinedTable, userJoinedTable) {
     })
     .map(e => {
       return {
-        id: Number(e.id),
+        id: e.id,
         comment: e.attributes[lessonJoinedTable].comment,
         completed: e.attributes[userJoinedTable].length === 1 ? true : false
       };
@@ -15,10 +15,12 @@ function extractResourceIds(data, type, lessonJoinedTable, userJoinedTable) {
 
 export default function LessonDeserializer(data) {
   return {
-    id: Number(data.data.id),
     title: data.data.attributes.title,
-    dialogsData: extractResourceIds(data, 'dialogs', 'dialogLesson', 'dialogUsers'),
-    charsData: extractResourceIds(data, 'chars', 'charLesson', 'charUsers'),
-    grammarsData: extractResourceIds(data, 'grammars', 'grammarLesson', 'grammarUsers')
+    resources: {
+      dialogsData: extractResourceIds(data, 'dialogs', 'dialogLesson', 'dialogUsers'),
+      charsData: extractResourceIds(data, 'chars', 'charLesson', 'charUsers'),
+      grammarsData: extractResourceIds(data, 'grammars', 'grammarLesson', 'grammarUsers'),
+      wordsData: extractResourceIds(data, 'words', 'wordLesson', 'wordUsers')
+    }
   };
 }

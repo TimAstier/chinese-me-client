@@ -3,7 +3,6 @@ import { Menu, Label, Icon } from 'semantic-ui-react';
 
 class LessonMenu extends Component {
 
-  // TODO: Display number of words
   renderCompletedMenuItem(name, wording, active) {
     return (
       <Menu.Item name={name} active={active}>
@@ -50,12 +49,7 @@ class LessonMenu extends Component {
               {this.renderMenuItem('grammar', 'Grammar', this.props.grammarCount, this.props.completedGrammarCount)}
               {this.renderMenuItem('dialog', 'Dialog', this.props.dialogCount, this.props.completedDialogCount)}
               {this.renderMenuItem('char', 'Characters', this.props.charCount, this.props.completedCharCount)}
-              <Menu.Item name="words">
-                <Label color="teal" circular size="tiny">
-                  0/9
-                </Label>
-                Words / Expressions
-              </Menu.Item>
+              {this.renderMenuItem('word', 'Words', this.props.wordCount, this.props.completedWordCount)}
             </Menu.Menu>
           </Menu.Item>
         </Menu>
@@ -72,6 +66,8 @@ LessonMenu.propTypes = {
   completedGrammarCount: PropTypes.number.isRequired,
   dialogCount: PropTypes.number.isRequired,
   completedDialogCount: PropTypes.number.isRequired,
+  wordCount: PropTypes.number.isRequired,
+  completedWordCount: PropTypes.number.isRequired,
   activeType: PropTypes.string.isRequired
 };
 

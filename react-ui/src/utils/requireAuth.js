@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { showFlashMessageWithTimeout } from '../redux/flashMessages';
+import { getIsAuthenticated } from '../redux/auth';
 
 // Example of High Order Component
 
 export default function(ComposedComponent) {
-  class Authenticate extends React.Component {
+  class Authenticate extends Component {
     componentWillMount() {
       if (!this.props.isAuthenticated) {
         this.props.showFlashMessageWithTimeout({
@@ -30,9 +31,9 @@ export default function(ComposedComponent) {
   }
 
   Authenticate.propTypes = {
-    isAuthenticated: React.PropTypes.bool.isRequired,
-    showFlashMessageWithTimeout: React.PropTypes.func.isRequired,
-    router: React.PropTypes.object.isRequired
+    isAuthenticated: PropTypes.bool.isRequired,
+    showFlashMessageWithTimeout: PropTypes.func.isRequired,
+    router: PropTypes.object.isRequired,
   };
 
   Authenticate.contextTypes = {
@@ -41,7 +42,7 @@ export default function(ComposedComponent) {
 
   function mapStateToProps(state) {
     return {
-      isAuthenticated: state.get('auth').get('isAuthenticated')
+      isAuthenticated: getIsAuthenticated(state)
     };
   }
 

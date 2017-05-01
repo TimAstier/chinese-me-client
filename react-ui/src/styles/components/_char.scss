@@ -1,0 +1,42 @@
+#char {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background: lighten(orange, 30%);
+
+  #chinese {
+    flex: 3;
+    align-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    font-size: 100px;
+  }
+
+  #pinyint {
+    flex: 1;
+    font-size: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #english {
+    flex: 1;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #explanation {
+    flex: 3;
+    padding: 20px 50px;
+    margin: 10px 30px;
+    font-size: 20px;
+    line-height: 1.3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

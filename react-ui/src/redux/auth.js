@@ -53,7 +53,6 @@ export function login(data) {
       .then(res => {
         const token = res.data.token;
         localStorage.setItem('jwtToken', token);
-        localStorage.setItem('studyUrl', jwtDecode(token).studyUrl);
         setAuthorizationToken(token);
         dispatch(setCurrentUser(jwtDecode(token)));
       });

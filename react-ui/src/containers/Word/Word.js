@@ -8,10 +8,12 @@ import { selectors as resourcesSelectors } from '../../redux/study';
 class Word extends Component {
 
   render() {
+    // When mounted from study route, id is defined from props
+    // When mounted from resource route, id is defined from params
     return (
       <WordComponent
         fetchWord={this.props.fetchWord.bind(this)}
-        id={this.props.id}
+        id={this.props.id || this.props.params.id}
         chinese={this.props.chinese}
         pinyint={this.props.pinyint}
         explanation={this.props.explanation}
@@ -29,7 +31,8 @@ Word.propTypes = {
   explanation: PropTypes.string.isRequired,
   english: PropTypes.string.isRequired,
   isFetching: PropTypes.bool.isRequired,
-  id: PropTypes.string.isRequired
+  id: PropTypes.string.isRequired,
+  params: PropTypes.object
 };
 
 function mapStateToProps(state) {

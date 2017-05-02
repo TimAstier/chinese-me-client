@@ -8,6 +8,8 @@ import { selectors as resourcesSelectors } from '../../redux/study';
 class Grammar extends Component {
 
   render() {
+    // When mounted from study route, id is defined from props
+    // When mounted from resource route, id is defined from params
     return (
       <GrammarComponent
         fetchGrammar={this.props.fetchGrammar.bind(this)}
@@ -15,7 +17,7 @@ class Grammar extends Component {
         title={this.props.title}
         explanation={this.props.explanation}
         isFetching={this.props.isFetching}
-        id={this.props.id}
+        id={this.props.id || this.props.params.id}
       />
     );
   }
@@ -27,7 +29,8 @@ Grammar.propTypes = {
   explanation: PropTypes.string.isRequired,
   sentences: PropTypes.object.isRequired,
   isFetching: PropTypes.bool.isRequired,
-  id: PropTypes.string.isRequired
+  id: PropTypes.string.isRequired,
+  params: PropTypes.object
 };
 
 function mapStateToProps(state) {

@@ -12,7 +12,6 @@ import rootReducer from './rootReducer';
 import setAuthorizationToken from './utils/setAuthorizationToken';
 import jwtDecode from 'jwt-decode';
 import { setCurrentUser } from './redux/auth';
-import './styles/app.css';
 
 import routes from './routes';
 

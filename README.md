@@ -18,6 +18,14 @@ ESLint config comes from https://github.com/rangle/react-redux-example/blob/mast
 $ npm run lint
 ```
 
+## React storybook
+Followed instructions in the [docs](https://storybook.js.org/basics/quick-start-guide/).
+```
+npm i -g @storybook/cli
+cd chinese-me/client/react-ui
+getstorybook
+```
+
 ## Deployment
 The app is deployed to Heroku with a Node server as described [here](https://github.com/mars/heroku-cra-node).  
 

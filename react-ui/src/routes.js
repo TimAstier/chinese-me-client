@@ -1,10 +1,8 @@
 import React from 'react';
-import { Route, IndexRoute } from 'react-router';
-import requireAuth from './utils/requireAuth';
-import { App, HomePage, LoginPage, SignupPage,
-  StudyScreen, ResourceScreen, Char, Dialog, Grammar, UserProfile, Word }
-  from './containers';
-import { NotFound } from './components';
+import { Route } from 'react-router';
+// import { Route, IndexRoute } from 'react-router';
+// import requireAuth from './utils/requireAuth';
+import { App } from './containers';
 
 // How to redirect from action creators:
 // import { browserHistory } from 'react-router';
@@ -12,17 +10,5 @@ import { NotFound } from './components';
 
 export default (
   <Route path="/" component={App}>
-    <IndexRoute component={HomePage} />
-    <Route path="signup" component={SignupPage} />
-    <Route path="login" component={LoginPage} />
-    <Route path="resource" component={ResourceScreen}>
-      <Route path="char/:id" component={Char} />
-      <Route path="dialog/:id" component={Dialog} />
-      <Route path="grammar/:id" component={Grammar} />
-      <Route path="word/:id" component={Word} />
-    </Route>
-    <Route path="study" component={requireAuth(StudyScreen)} />
-    <Route path=":identifier" component={UserProfile} />
-    <Route path="*" component={NotFound} />
   </Route>
 );

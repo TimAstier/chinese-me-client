@@ -5,15 +5,14 @@
   "description": "A client for the ChineseMe app.",
   "author": "Timothée Astier",
   "scripts": {
-    "build-css": "node-sass src/ -o src/",
-    "watch-css": "npm run build-css && node-sass src/ -o src/ --watch --recursive",
-    "start-js": "react-scripts start",
-    "start": "npm-run-all -p watch-css start-js",
-    "build": "npm run build-css && react-scripts build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "lint": "eslint *.js .; exit 0",
-    "lint:watch": "watch 'npm run lint'"
+    "lint:watch": "watch 'npm run lint'",
+    "storybook": "start-storybook -p 9009 -s public",
+    "build-storybook": "build-storybook -s public"
   },
   "dependencies": {
     "axios": "^0.15.3",
@@ -21,6 +20,7 @@
     "immutable": "^3.8.1",
     "jwt-decode": "^2.1.0",
     "lodash": "^4.17.4",
+    "prop-types": "^15.5.10",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.2",
@@ -33,11 +33,12 @@
     "reselect": "^3.0.0",
     "semantic-ui-react": "^0.64.0",
     "shortid": "^2.2.6",
+    "styled-components": "^2.1.0",
     "validator": "^6.2.1"
   },
   "devDependencies": {
-    "node-sass": "^4.5.2",
-    "npm-run-all": "^4.0.2",
-    "react-scripts": "0.9.4"
+    "@storybook/react": "^3.1.5",
+    "eslint-plugin-react": "^7.1.0",
+    "react-scripts": "1.0.0"
   }
 }

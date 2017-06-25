@@ -1,13 +1,15 @@
-import React from 'react';
-import { NavigationBar } from '../';
-import { FlashMessagesList } from '../';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-class App extends React.Component {
+import { Button } from 'semantic-ui-react';
+
+class App extends Component {
   render() {
     return (
       <div id="app">
-        <NavigationBar />
-        <FlashMessagesList />
+        <Button primary>
+          Click Here
+        </Button>
         {this.props.children}
       </div>
     );
@@ -15,8 +17,8 @@ class App extends React.Component {
 }
 
 App.propTypes = {
-  children: React.PropTypes.object.isRequired,
-  location: React.PropTypes.object.isRequired
+  children: PropTypes.object,
+  location: PropTypes.object.isRequired
 };
 
 export default App;

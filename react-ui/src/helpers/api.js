@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { showFlashMessageWithTimeout } from '../redux/flashMessages';
 import checkNetwork from './checkNetwork';
 
 export function apiCall(data, fetch, success, fail) {
@@ -13,7 +12,7 @@ export function apiCall(data, fetch, success, fail) {
         dispatch(fail());
         const type = 'error';
         const text = checkNetwork(err);
-        dispatch(showFlashMessageWithTimeout({ type, text }));
+        console.log({ type, text });
       });
 }
 

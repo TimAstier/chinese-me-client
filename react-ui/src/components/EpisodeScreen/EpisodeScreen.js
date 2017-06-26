@@ -2,19 +2,7 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
 import { Icon } from 'semantic-ui-react';
-import { ScreenButton, ProgressBar, StepsBar } from '../.';
-
-// 1st level wrapper
-
-const Wrapper = styled.div`
-  width: 1200px;
-  height: 777px;
-  border-radius: 15px;
-  background-color: #ffffff;
-	box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-`;
+import { ScreenButton, ProgressBar, StepsBar, ScreenWrapper } from '../.';
 
 // 2nd level wrappers
 
@@ -89,7 +77,7 @@ class EpisodeScreen extends Component {
     const { next, skip, progressBarOptions, stepsOptions } = this.props;
     // const { type, currentElement, totalElements } = progressBarOptions;
     return (
-      <Wrapper>
+      <ScreenWrapper>
         <TopWrapper>
           <TopLeftWrapper>
             <ExitIcon>Exit</ExitIcon>
@@ -123,7 +111,7 @@ class EpisodeScreen extends Component {
             }
           </BottomRightWrapper>
         </BottomWrapper>
-      </Wrapper>
+      </ScreenWrapper>
     );
   }
 }

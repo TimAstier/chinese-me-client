@@ -1,7 +1,9 @@
 import React from 'react';
-
 import { storiesOf } from '@storybook/react';
-import { EpisodeCard, ScreenButton, NavDot, Statement } from '../components';
+
+import { Avatar, EpisodeCard, EpisodeScreen, ScreenButton,
+  NavDot, Statement, ProgressBar, StepsBar } from '../components';
+import testImage from '../images/test_image.jpeg';
 
 storiesOf('EpisodeCard', module)
   .add('locked', () =>
@@ -79,4 +81,70 @@ storiesOf('Statement', module)
   )
   .add('threeSentences: active[2]', () =>
     <Statement sentences={threeSentences} currentSentence={2} />
+  );
+
+storiesOf('Avatar', module)
+  .add('static', () =>
+    <Avatar image={testImage} />
+  )
+  .add('animated', () =>
+    <Avatar image={testImage} animated />
+  );
+
+storiesOf('ProgressBar', module)
+  .add('twoElements: current_1', () =>
+    <ProgressBar type="grammar" currentElement={1} totalElements={2} />
+  )
+  .add('twoElements: current_2', () =>
+    <ProgressBar type="grammar" currentElement={2} totalElements={2} />
+  )
+  .add('threeElements: current_1', () =>
+    <ProgressBar type="character" currentElement={1} totalElements={3} />
+  )
+  .add('threeElements: current_2', () =>
+    <ProgressBar type="character" currentElement={2} totalElements={3} />
+  )
+  .add('threeElements: current_3', () =>
+    <ProgressBar type="character" currentElement={3} totalElements={3} />
+  );
+
+storiesOf('StepsBar', module)
+  .add('with steps', () =>
+    <StepsBar currentStep={3} totalSteps={11} />
+  );
+
+const progressBarOptions = {
+  type: 'character',
+  currentElement: 2,
+  totalElements: 4
+};
+
+const stepsOptions = {
+  currentStep: 7,
+  totalSteps: 20
+};
+
+storiesOf('EpisodeScreen', module)
+  .add('empty', () =>
+    <EpisodeScreen />
+  )
+  .add('with next', () =>
+    <EpisodeScreen next />
+  )
+  .add('with skip', () =>
+    <EpisodeScreen skip />
+  )
+  .add('with progressBar', () =>
+    <EpisodeScreen progressBarOptions={progressBarOptions} />
+  )
+  .add('with steps', () =>
+    <EpisodeScreen stepsOptions={stepsOptions} />
+  )
+  .add('with everything', () =>
+    <EpisodeScreen
+      next
+      skip
+      progressBarOptions={progressBarOptions}
+      stepsOptions={stepsOptions}
+    />
   );

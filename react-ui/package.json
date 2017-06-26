@@ -37,6 +37,7 @@
     "validator": "^6.2.1"
   },
   "devDependencies": {
+    "@storybook/addon-centered": "^3.1.2",
     "@storybook/react": "^3.1.5",
     "eslint-plugin-react": "^7.1.0",
     "react-scripts": "1.0.0"

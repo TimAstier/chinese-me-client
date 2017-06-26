@@ -11,6 +11,8 @@ class NavDot extends Component {
       border-radius: 18px;
       height: 18px;
       background-color: ${completed ? '#c0c0c0' : '#ececec'};
+      margin-right: 3px;
+      margin-left: 3px;
     `;
 
     return (

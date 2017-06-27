@@ -12,13 +12,15 @@ class StepsBar extends Component {
   render() {
     const { currentStep, totalSteps } = this.props;
     const navDots = [];
+    let key = 0;
     for (let i = 0; i < currentStep; i++) {
-      navDots.push(<NavDot completed />);
+      navDots.push(<NavDot completed key={key} />);
+      key++;
     }
     for (let i = 0; i < totalSteps; i++) {
-      navDots.push(<NavDot />);
+      navDots.push(<NavDot key={key} />);
+      key++;
     }
-    navDots.push(<NavDot />);
     return <Wrapper>{navDots}</Wrapper>;
   }
 }

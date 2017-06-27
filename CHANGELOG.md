@@ -8,10 +8,3 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 ### Changed
 ### Fixed
-
-## [0.0.0] 2017-04-19
-### Added
-- Scss
-
-### Changed
-- Ducks file structure

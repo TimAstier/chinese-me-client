@@ -19,6 +19,9 @@ storiesOf('EpisodeScreen', module)
   .add('with progressBar', () =>
     <EpisodeScreen progressBarOptions={episodeScreenData.progressBarOptions} />
   )
+  .add('with screenLabel', () =>
+    <EpisodeScreen screenLabel={'Dialog - Explore'} />
+  )
   .add('with steps', () =>
     <EpisodeScreen stepsOptions={episodeScreenData.stepsOptions} />
   )

@@ -5,5 +5,5 @@ import { StepsBar } from '../.';
 
 storiesOf('StepsBar', module)
   .add('with steps', () =>
-    <StepsBar currentStep={3} totalSteps={11} />
+    <StepsBar currentStep={3} totalSteps={5} />
   );

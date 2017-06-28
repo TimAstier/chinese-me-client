@@ -1,5 +1,6 @@
 // Keep in alphabetical order
 export { default as Avatar } from './Avatar/Avatar';
+export { default as DialogWrapper } from './DialogWrapper/DialogWrapper';
 export { default as EpisodeCard } from './EpisodeCard/EpisodeCard';
 export { default as EpisodeScreen } from './EpisodeScreen/EpisodeScreen';
 export { default as NavDot } from './NavDot/NavDot';

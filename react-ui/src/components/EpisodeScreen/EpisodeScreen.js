@@ -14,6 +14,7 @@ const TopWrapper = styled.div`
 
 const MiddleWrapper = styled.div`
   flex: 1 0 0;
+  display: flex;
 `;
 
 const BottomWrapper = styled.div`
@@ -73,8 +74,23 @@ const ExitIcon = styled.div`
 
 class EpisodeScreen extends Component {
 
+  renderTopMiddleWrapperContent() {
+    const { progressBarOptions, screenLabel } = this.props;
+    const Label = styled.span`
+      font-family: 'Open Sans';
+      font-size: 20px;
+      color: #949494;
+    `;
+    if (progressBarOptions) {
+      return <ProgressBar {...progressBarOptions} />;
+    } else if (screenLabel) {
+      return <Label>{screenLabel}</Label>;
+    }
+    return null;
+  }
+
   render() {
-    const { next, skip, progressBarOptions, stepsOptions } = this.props;
+    const { next, skip, stepsOptions } = this.props;
     // const { type, currentElement, totalElements } = progressBarOptions;
     return (
       <ScreenWrapper>
@@ -84,16 +100,16 @@ class EpisodeScreen extends Component {
             <Icon name="unordered list" size="big" color="teal" />
           </TopLeftWrapper>
           <TopMiddleWrapper>
-            {progressBarOptions &&
-              <ProgressBar {...progressBarOptions} />
-            }
+            {this.renderTopMiddleWrapperContent()}
           </TopMiddleWrapper>
           <TopRightWrapper>
             <Icon name="map outline" size="big" color="teal" />
             <Icon name="help circle outline" size="big" color="teal" />
           </TopRightWrapper>
         </TopWrapper>
-        <MiddleWrapper></MiddleWrapper>
+        <MiddleWrapper>
+          {this.props.children}
+        </MiddleWrapper>
         <BottomWrapper>
           <BottomLeftWrapper>
             {skip &&
@@ -120,7 +136,9 @@ EpisodeScreen.propTypes = {
   next: propTypes.bool,
   skip: propTypes.bool,
   progressBarOptions: propTypes.object,
-  stepsOptions: propTypes.object
+  stepsOptions: propTypes.object,
+  screenLabel: propTypes.string,
+  children: propTypes.object
 };
 
 export default EpisodeScreen;

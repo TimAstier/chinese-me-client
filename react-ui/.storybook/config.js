@@ -7,6 +7,7 @@ addDecorator(centered);
 
 function loadStories() {
   require('../src/components/Avatar/stories');
+  require('../src/components/DialogWrapper/stories');
   require('../src/components/EpisodeCard/stories');
   require('../src/components/EpisodeScreen/stories');
   require('../src/components/NavDot/stories');

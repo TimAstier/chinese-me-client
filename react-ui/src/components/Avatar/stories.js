@@ -3,13 +3,10 @@ import { storiesOf } from '@storybook/react';
 
 import { Avatar } from '../.';
 
-// Import assets
-import testImage from '../../images/test_image.jpeg';
-
 storiesOf('Avatar', module)
   .add('static', () =>
-    <Avatar image={testImage} />
+    <Avatar image={'boyBlink'} />
   )
   .add('animated', () =>
-    <Avatar image={testImage} animated />
+    <Avatar image={'boyBlink'} animated />
   );

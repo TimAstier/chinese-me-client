@@ -12,7 +12,7 @@ const bouncy = keyframes`
 `;
 
 class Avatar extends Component {
-
+  // BUG: Images have different sizes
   render() {
     const { image, animated } = this.props;
     const Wrapper = styled.div`

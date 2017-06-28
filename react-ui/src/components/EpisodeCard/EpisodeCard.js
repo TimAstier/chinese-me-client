@@ -8,11 +8,18 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 200px;
-  height: 170px;
+  width: 180px;
+  height: 140px;
   border-radius: 10px;
   border: solid 1px #e9e9e9;
   cursor: pointer;
+  margin-right: 15px;
+  margin-left: 15px;
+  margin-top: 15px;
+  cursor: pointer;
+  &:hover {
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  }
 `;
 
 const LockedWrapper = styled(Wrapper)`

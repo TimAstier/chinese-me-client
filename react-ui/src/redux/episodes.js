@@ -1,6 +1,7 @@
 import { List, fromJS } from 'immutable';
 
 // Action Types
+
 export const types = {
   SET: 'episodes/SET',
   FETCH: 'episodes/FETCH',
@@ -25,7 +26,6 @@ export const set = data => ({ type: types.SET, data });
 export const fetch = () => ({ type: types.FETCH });
 export const fetchSuccess = () => ({ type: types.FETCH_SUCCESS });
 export const fetchFail = error => ({ type: types.FETCH_FAIL, error });
-
 
 // Selectors
 

@@ -24,7 +24,7 @@ const StatementWrapper = styled.div`
   justify-content: center;
 `;
 
-class DialogWrapper extends Component {
+class Dialog extends Component {
 
   renderAvatars() {
     const { personalities, animatedAvatar } = this.props;
@@ -56,11 +56,11 @@ class DialogWrapper extends Component {
   }
 }
 
-DialogWrapper.propTypes = {
+Dialog.propTypes = {
   sentences: propTypes.array.isRequired,
   personalities: propTypes.array.isRequired,
   currentSentence: propTypes.number.isRequired,
   animatedAvatar: propTypes.number.isRequired
 };
 
-export default DialogWrapper;
+export default Dialog;

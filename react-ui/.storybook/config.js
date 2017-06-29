@@ -7,17 +7,17 @@ addDecorator(centered);
 
 function loadStories() {
   require('../src/components/Avatar/stories');
-  require('../src/components/DialogWrapper/stories');
+  require('../src/components/Dialog/stories');
   require('../src/components/EpisodeCard/stories');
   require('../src/components/EpisodeScreen/stories');
-  require('../src/components/IntroductionWrapper/stories');
+  require('../src/components/Introduction/stories');
   require('../src/components/NavDot/stories');
   require('../src/components/ProgressBar/stories');
   require('../src/components/ScreenButton/stories');
-  require('../src/components/SelectEpisodeScreen/stories');
+  require('../src/components/SelectEpisode/stories');
   require('../src/components/Statement/stories');
   require('../src/components/StepsBar/stories');
-  require('../src/components/TitleWrapper/stories');
+  require('../src/components/Title/stories');
 }
 
 configure(loadStories, module);

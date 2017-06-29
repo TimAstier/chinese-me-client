@@ -35,13 +35,13 @@ const Label = styled.div`
   align-items: center;
 `;
 
-const Title = styled.div`
+const Header = styled.div`
   font-family: 'STHeiTi';
   font-size: 90px;
 	color: #454545;
 `;
 
-class TitleWrapper extends Component {
+class Title extends Component {
 
   render() {
     return (
@@ -50,16 +50,16 @@ class TitleWrapper extends Component {
           <Label>{'Part ' + this.props.partNumber}</Label>
         </TopWrapper>
         <BottomWrapper>
-          <Title>{this.props.title}</Title>
+          <Header>{this.props.title}</Header>
         </BottomWrapper>
       </Wrapper>
     );
   }
 }
 
-TitleWrapper.propTypes = {
+Title.propTypes = {
   partNumber: propTypes.number.isRequired,
   title: propTypes.string.isRequired
 };
 
-export default TitleWrapper;
+export default Title;

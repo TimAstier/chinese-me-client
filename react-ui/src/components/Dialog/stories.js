@@ -1,17 +1,17 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import { EpisodeScreen, DialogWrapper } from '../.';
+import { EpisodeScreen, Dialog } from '../.';
 import dialogData from '../../test/data/dialog';
 
-storiesOf('DialogWrapper', module)
+storiesOf('Dialog', module)
   .add('first sentence', () => {
     return (
       <EpisodeScreen
         stepsOptions={dialogData.stepsOptions}
         screenLabel={'Dialog - Explore'}
       >
-        <DialogWrapper
+        <Dialog
           personalities= {dialogData.personalities}
           sentences={dialogData.sentences}
           currentSentence={0}
@@ -26,7 +26,7 @@ storiesOf('DialogWrapper', module)
         stepsOptions={dialogData.stepsOptions}
         screenLabel={'Dialog - Explore'}
       >
-        <DialogWrapper
+        <Dialog
           personalities= {dialogData.personalities}
           sentences={dialogData.sentences}
           currentSentence={1}
@@ -41,7 +41,7 @@ storiesOf('DialogWrapper', module)
         stepsOptions={dialogData.stepsOptions}
         screenLabel={'Dialog - Explore'}
       >
-        <DialogWrapper
+        <Dialog
           personalities= {dialogData.personalities}
           sentences={dialogData.sentences}
           currentSentence={0}
@@ -56,7 +56,7 @@ storiesOf('DialogWrapper', module)
         stepsOptions={dialogData.stepsOptions}
         screenLabel={'Dialog - Explore'}
       >
-        <DialogWrapper
+        <Dialog
           personalities= {dialogData.personalities}
           sentences={dialogData.sentences}
           currentSentence={0}

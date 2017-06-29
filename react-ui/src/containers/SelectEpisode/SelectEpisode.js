@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 
-import { SelectEpisodeScreen as ChildComponent } from '../../components';
+import { SelectEpisode as SelectEpisodeComponent } from '../../components';
 import { fetch as fetchEpisodes } from '../../redux/episodes';
 import { getEpisodes } from '../../redux/episodes';
 
@@ -13,7 +13,7 @@ class SelectEpisodeScreen extends Component {
 
   render() {
     return (
-      <ChildComponent episodes={this.props.episodes} title={'Season 1'} />
+      <SelectEpisodeComponent episodes={this.props.episodes} title={'Season 1'} />
     );
   }
 }
@@ -29,7 +29,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  { fetchEpisodes }
-)(SelectEpisodeScreen);
+export default connect(mapStateToProps, { fetchEpisodes })(SelectEpisodeScreen);

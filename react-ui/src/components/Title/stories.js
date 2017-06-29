@@ -1,13 +1,13 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import { EpisodeScreen, TitleWrapper } from '../.';
+import { EpisodeScreen, Title } from '../.';
 
-storiesOf('TitleWrapper', module)
+storiesOf('Title', module)
   .add('with props', () => {
     return (
       <EpisodeScreen>
-        <TitleWrapper partNumber={2} title={'Grammar'} />
+        <Title partNumber={2} title={'Grammar'} />
       </EpisodeScreen>
     );
   });

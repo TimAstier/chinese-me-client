@@ -1,21 +1,21 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import { EpisodeScreen, IntroductionWrapper } from '../.';
+import { EpisodeScreen, Introduction } from '../.';
 import objectives from '../../test/data/objectives';
 
-storiesOf('IntroductionWrapper', module)
+storiesOf('Introduction', module)
   .add('audio_playing', () => {
     return (
       <EpisodeScreen skip >
-        <IntroductionWrapper objectives={objectives} />
+        <Introduction objectives={objectives} />
       </EpisodeScreen>
     );
   })
   .add('audio_finished', () => {
     return (
       <EpisodeScreen skip next >
-        <IntroductionWrapper objectives={objectives} />
+        <Introduction objectives={objectives} />
       </EpisodeScreen>
     );
   });

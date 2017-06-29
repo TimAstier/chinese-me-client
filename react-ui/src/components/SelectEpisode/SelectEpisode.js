@@ -24,7 +24,7 @@ const EpisodeCardsWrapper = styled.div`
 
 `;
 
-class SelectEpisodeScreen extends Component {
+class SelectEpisode extends Component {
   renderEpisodeCards() {
     const episodeCards = [];
     this.props.episodes.forEach((e, i) => {
@@ -51,9 +51,9 @@ class SelectEpisodeScreen extends Component {
   }
 }
 
-SelectEpisodeScreen.propTypes = {
+SelectEpisode.propTypes = {
   episodes: propTypes.object.isRequired,
   title: propTypes.string.isRequired
 };
 
-export default SelectEpisodeScreen;
+export default SelectEpisode;

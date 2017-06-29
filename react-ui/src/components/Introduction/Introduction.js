@@ -34,7 +34,7 @@ const Label = styled.div`
   color: #454545;
 `;
 
-class IntroductionWrapper extends Component {
+class Introduction extends Component {
 
   renderObjectives() {
     const array = [];
@@ -67,8 +67,8 @@ class IntroductionWrapper extends Component {
   }
 }
 
-IntroductionWrapper.propTypes = {
+Introduction.propTypes = {
   objectives: propTypes.array.isRequired
 };
 
-export default IntroductionWrapper;
+export default Introduction;

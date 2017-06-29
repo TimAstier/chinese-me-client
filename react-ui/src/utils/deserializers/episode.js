@@ -1,5 +1,6 @@
 const episodeDeserializer = episode => {
   return {
+    id: episode.id,
     title: episode.title,
     number: episode.number,
     status: 'locked',

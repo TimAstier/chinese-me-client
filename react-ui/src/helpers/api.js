@@ -1,20 +1,20 @@
 import axios from 'axios';
-import checkNetwork from './checkNetwork';
+// import checkNetwork from './checkNetwork';
 
-export function apiCall(data, fetch, success, fail) {
-  return dispatch =>
-    dispatch(fetch(data))
-      .then(response => {
-        dispatch(success(response.data));
-      })
-      .catch(err => {
-        console.log(err); // eslint-disable-line no-console
-        dispatch(fail());
-        const type = 'error';
-        const text = checkNetwork(err);
-        console.log({ type, text }); // eslint-disable-line no-console
-      });
-}
+// export function apiCall(data, fetch, success, fail) {
+//   return dispatch =>
+//     dispatch(fetch(data))
+//       .then(response => {
+//         dispatch(success(response.data));
+//       })
+//       .catch(err => {
+//         console.log(err); // eslint-disable-line no-console
+//         dispatch(fail());
+//         const type = 'error';
+//         const text = checkNetwork(err);
+//         console.log({ type, text }); // eslint-disable-line no-console
+//       });
+// }
 
 // TODO: Return a function (and not the result) for post method
 export function Api() {

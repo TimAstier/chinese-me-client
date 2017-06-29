@@ -6,6 +6,8 @@ import { set, fetchSuccess, fetchFail, types } from '../redux/episodes';
 
 const api = new Api();
 
+// TODO: use checkNetworks
+
 function* fetchEpisodes() {
   try {
     const response = yield call(api.get('/episodes'));

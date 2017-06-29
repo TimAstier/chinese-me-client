@@ -29,7 +29,13 @@ class SelectEpisodeScreen extends Component {
     const episodeCards = [];
     this.props.episodes.forEach((e, i) => {
       return episodeCards.push(
-        <EpisodeCard key={i} {...e} />
+        <EpisodeCard
+          key={i}
+          number={e.get('number')}
+          title={e.get('title')}
+          status={e.get('status')}
+          score={e.get('score')}
+        />
       );
     });
     return episodeCards;
@@ -46,7 +52,7 @@ class SelectEpisodeScreen extends Component {
 }
 
 SelectEpisodeScreen.propTypes = {
-  episodes: propTypes.array.isRequired,
+  episodes: propTypes.object.isRequired,
   title: propTypes.string.isRequired
 };
 

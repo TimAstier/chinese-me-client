@@ -1,17 +1,22 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
-import { Button } from 'semantic-ui-react';
+import styled from 'styled-components';
 
 class App extends Component {
+
   render() {
+    const Wrapper = styled.div`
+      height: 100%;
+      width: 100%;
+      background-color: blue;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    `;
     return (
-      <div id="app">
-        <Button primary>
-          Click Here
-        </Button>
+      <Wrapper>
         {this.props.children}
-      </div>
+      </Wrapper>
     );
   }
 }

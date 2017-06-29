@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
+import { Icon } from 'semantic-ui-react';
 
 const Wrapper = styled.div`
   flex: 1 0 0;
@@ -39,13 +40,16 @@ class IntroductionWrapper extends Component {
     const array = [];
     this.props.objectives.forEach((o, i) => {
       array.push(
-        <li key={i}>{o}</li>
+        <li key={i}><Icon name = "check circle" color="teal" />{o}</li>
       );
     });
+    const Ul = styled.ul`
+      list-style-type: none;
+    `;
     return (
-      <ul>
+      <Ul>
         {array}
-      </ul>
+      </Ul>
     );
   }
 

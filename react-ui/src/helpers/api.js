@@ -12,7 +12,7 @@ export function apiCall(data, fetch, success, fail) {
         dispatch(fail());
         const type = 'error';
         const text = checkNetwork(err);
-        console.log({ type, text });
+        console.log({ type, text }); // eslint-disable-line no-console
       });
 }
 

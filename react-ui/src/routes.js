@@ -2,7 +2,7 @@ import React from 'react';
 import { Route } from 'react-router';
 // import { Route, IndexRoute } from 'react-router';
 // import requireAuth from './utils/requireAuth';
-import { App } from './containers';
+import { App, SelectEpisodeScreen } from './containers';
 
 // How to redirect from action creators:
 // import { browserHistory } from 'react-router';
@@ -10,5 +10,6 @@ import { App } from './containers';
 
 export default (
   <Route path="/" component={App}>
+    <Route path="select" component={SelectEpisodeScreen} />
   </Route>
 );

@@ -1,3 +1,5 @@
+import { fromJS } from 'immutable';
+
 const episodes = [{
   number: 1,
   title: '你好',
@@ -100,4 +102,4 @@ const episodes = [{
   score: 0
 }];
 
-export default episodes;
+export default fromJS(episodes);

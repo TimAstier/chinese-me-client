@@ -1,5 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import { List } from 'immutable';
 
 import { SelectEpisodeScreen } from '../.';
 
@@ -7,6 +8,9 @@ import { SelectEpisodeScreen } from '../.';
 import episodes from '../../test/data/episodes';
 
 storiesOf('SelectEpisodeScreen', module)
-  .add('Season 1', () =>
+  .add('without episodes', () =>
+    <SelectEpisodeScreen episodes={List()} title={'Season 1'} />
+  )
+  .add('with episodes', () =>
     <SelectEpisodeScreen episodes={episodes} title={'Season 1'} />
   );

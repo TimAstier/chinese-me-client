@@ -19,7 +19,7 @@ const personalities = [{
   id: 1
 }, {
   name: 'girl',
-  mood: 'blink',
+  mood: 'surprised',
   id: 2
 }];
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
+import createSagaMiddleware from 'redux-saga';
 import { Provider } from 'react-redux';
 import { Router, browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
@@ -14,15 +15,21 @@ import jwtDecode from 'jwt-decode';
 import { setCurrentUser } from './redux/auth';
 
 import routes from './routes';
+import rootSaga from './rootSaga';
 
 const initialState = Map();
+const sagaMiddleware = createSagaMiddleware();
 const store = createStore(
   rootReducer,
   initialState,
   composeWithDevTools(
-    applyMiddleware(thunk)
+    applyMiddleware(thunk),
+    applyMiddleware(sagaMiddleware)
   )
 );
+
+// Start all Sagas at once
+sagaMiddleware.run(rootSaga);
 
 // Create an enhanced history that syncs navigation events with the store
 // Pass a selector for use with https://github.com/gajus/redux-immutable

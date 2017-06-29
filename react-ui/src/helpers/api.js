@@ -16,9 +16,11 @@ export function apiCall(data, fetch, success, fail) {
       });
 }
 
+// TODO: Return a function (and not the result) for post method
 export function Api() {
   this.get = (url) => {
-    return axios.get(`${process.env.REACT_APP_API_URL}/api` + url);
+    // return axios.get(`${process.env.REACT_APP_API_URL}/api` + url);
+    return () => axios.get(`${process.env.REACT_APP_API_URL}/api` + url);
   };
   this.post = (url, data) => {
     return axios.post(`${process.env.REACT_APP_API_URL}/api` + url, data);

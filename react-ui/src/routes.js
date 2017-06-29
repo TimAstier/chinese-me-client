@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route } from 'react-router';
-// import { Route, IndexRoute } from 'react-router';
+// import { IndexRoute } from 'react-router';
 // import requireAuth from './utils/requireAuth';
 import { App, SelectEpisodeScreen } from './containers';
 

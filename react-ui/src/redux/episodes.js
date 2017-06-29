@@ -1,13 +1,9 @@
 import { List, fromJS } from 'immutable';
-import { apiCall, Api } from '../helpers/api';
-import episodesDeserializer from '../utils/deserializers/episode';
-
-const api = new Api();
 
 // Action Types
 export const types = {
   SET: 'episodes/SET',
-  FETCH_REQUEST: 'episodes/FETCH_REQUEST',
+  FETCH: 'episodes/FETCH',
   FETCH_SUCCESS: 'episodes/FETCH_SUCCESS',
   FETCH_FAIL: 'episodes/FETCH_FAIL'
 };
@@ -24,29 +20,12 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
 }
 
 // Action Creators
-const set = data => ({ type: types.SET, data });
 
-const fetchRequest = () => {
-  return dispatch => {
-    dispatch({ type: types.FETCH_REQUEST });
-    return api.get('/episodes');
-  };
-};
+export const set = data => ({ type: types.SET, data });
+export const fetch = () => ({ type: types.FETCH });
+export const fetchSuccess = () => ({ type: types.FETCH_SUCCESS });
+export const fetchFail = error => ({ type: types.FETCH_FAIL, error });
 
-const fetchSuccess = data => {
-  return dispatch => {
-    dispatch({ type: types.FETCH_SUCCESS });
-    return dispatch(set(episodesDeserializer(data)));
-  };
-};
-
-function fetchFail() {
-  return { type: types.FETCH_FAIL };
-}
-
-export function fetch() {
-  return apiCall(null, fetchRequest, fetchSuccess, fetchFail);
-}
 
 // Selectors
 

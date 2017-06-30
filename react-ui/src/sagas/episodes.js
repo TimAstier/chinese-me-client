@@ -1,16 +1,14 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
-import { Api } from '../helpers/api';
+import Api from '../helpers/api';
 
 import episodesDeserializer from '../utils/deserializers/episode';
 import { set, fetchSuccess, fetchFail, types } from '../redux/episodes';
 
-const api = new Api();
-
 // TODO: use checkNetworks
 
-function* fetchEpisodes() {
+export function* fetchEpisodes() {
   try {
-    const response = yield call(api.get('/episodes'));
+    const response = yield call(Api.get, '/episodes');
     const data = episodesDeserializer(response.data);
     yield put(set(data));
     yield put(fetchSuccess());

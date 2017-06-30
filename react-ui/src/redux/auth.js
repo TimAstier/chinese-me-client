@@ -1,10 +1,8 @@
-import { Api } from '../helpers/api';
+import Api from '../helpers/api';
 import setAuthorizationToken from '../utils/setAuthorizationToken';
 import jwtDecode from 'jwt-decode';
 import isEmpty from 'lodash/isEmpty';
 import { fromJS } from 'immutable';
-
-const api = new Api();
 
 // Action Types
 export const types = {
@@ -49,7 +47,7 @@ export function logout() {
 
 export function login(data) {
   return dispatch => {
-    return api.post('/auth', data)
+    return Api.post('/auth', data)
       .then(res => {
         const token = res.data.token;
         localStorage.setItem('jwtToken', token);

@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 
 import { SelectEpisode as SelectEpisodeComponent } from '../../components';
-import { fetch as fetchEpisodes } from '../../redux/episodes';
-import { getEpisodes } from '../../redux/episodes';
+import { actions } from '../../redux/episodes';
+import { getEpisodes } from '../../rootReducer';
 
 class SelectEpisodeScreen extends Component {
   componentDidMount() {
@@ -29,4 +29,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { fetchEpisodes })(SelectEpisodeScreen);
+export default connect(mapStateToProps, { fetchEpisodes: actions.fetch })(SelectEpisodeScreen);

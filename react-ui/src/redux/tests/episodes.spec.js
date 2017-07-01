@@ -1,16 +1,15 @@
 import reducer, { INITIAL_STATE, actions, selectors } from '../episodes';
-import { fromJS } from 'immutable';
+import episodes from '../../test/data/episodes';
 
 describe('episodes reducer', () => {
   it('returns the initial state', () => {
     expect(reducer(INITIAL_STATE, {})).toEqual(INITIAL_STATE);
   });
 
-  it('sets items', () => {
-    const episodes = [{ number: 1 }, { number: 2 }, { number: 3 }];
-    const action = actions.set(episodes);
+  it('receives entities', () => {
+    const action = actions.receivedEntities(episodes);
     const nextState = reducer(INITIAL_STATE, action);
-    expect(selectors.getEpisodes(nextState)).toEqual(fromJS(episodes));
+    expect(selectors.getEpisodes(nextState)).toEqual(episodes);
   });
 
   it('sets isFetching to true', () => {

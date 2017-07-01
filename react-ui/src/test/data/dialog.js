@@ -15,11 +15,11 @@ const sentences = [
 
 const personalities = [{
   name: 'boy',
-  mood: 'surprised',
+  mood: 'blink',
   id: 1
 }, {
   name: 'girl',
-  mood: 'surprised',
+  mood: 'happy',
   id: 2
 }];
 

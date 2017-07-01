@@ -3,6 +3,7 @@ import propTypes from 'prop-types';
 import styled from 'styled-components';
 
 import { ScreenWrapper, EpisodeCard } from '../.';
+import EpisodeMap from '../../models/EpisodeMap';
 
 const TitleWrapper = styled.div`
   flex: 1 0 0;
@@ -27,14 +28,11 @@ const EpisodeCardsWrapper = styled.div`
 class SelectEpisode extends Component {
   renderEpisodeCards() {
     const episodeCards = [];
-    this.props.episodes.forEach((e, i) => {
+    this.props.episodes.forEach((episode, i) => {
       return episodeCards.push(
         <EpisodeCard
           key={i}
-          number={e.get('number')}
-          title={e.get('title')}
-          status={e.get('status')}
-          score={e.get('score')}
+          episode={episode}
         />
       );
     });
@@ -52,7 +50,7 @@ class SelectEpisode extends Component {
 }
 
 SelectEpisode.propTypes = {
-  episodes: propTypes.object.isRequired,
+  episodes: propTypes.instanceOf(EpisodeMap).isRequired,
   title: propTypes.string.isRequired
 };
 

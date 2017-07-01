@@ -1,6 +1,7 @@
 import { fromJS } from 'immutable';
+import Episode from '../../models/Episode';
 
-const episodes = [{
+const entities = [{
   number: 1,
   title: '你好',
   status: 'passed',
@@ -102,4 +103,8 @@ const episodes = [{
   score: 0
 }];
 
-export default fromJS(episodes);
+const episodes = fromJS(entities)
+  .map(episode => new Episode(episode))
+  .toOrderedMap();
+
+export default episodes;

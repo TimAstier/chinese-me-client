@@ -1,9 +1,9 @@
 import { call, put } from 'redux-saga/effects';
-import Api from '../helpers/api';
-import { actions } from '../redux/episodes';
+import Api from '../../helpers/api';
+import { actions } from '../../redux/episodes';
 
-import { fetchEpisodes } from './episodes';
-import episodesDeserializer from '../utils/deserializers/episode';
+import { fetchEpisodes } from '../episodes';
+import episodesDeserializer from '../../utils/deserializers/episode';
 
 describe('fetchEpisodes saga', () => {
   it('fetches episodes successfully', () => {
@@ -21,10 +21,14 @@ describe('fetchEpisodes saga', () => {
     const data = episodesDeserializer(response.data);
 
     // dispatch an action to set episodes
-    expect(iterator.next(response).value).toEqual(put(actions.set(data)));
+    expect(iterator.next(response).value)
+      .toEqual(put(actions.receivedEntities(data)));
 
     // dispatch a success action
     expect(iterator.next().value).toEqual(put(actions.fetchSuccess()));
+
+    // fetchEpisodes saga is done
+    expect(iterator.next()).toEqual({ done: true, value: undefined });
   });
 
   it('dispatches a fail action for bad requests', () => {
@@ -35,6 +39,7 @@ describe('fetchEpisodes saga', () => {
 
     // dispatch a fail action with an error
     const error = { status: 404, message: 'episodes_not_found' };
-    expect(iterator.throw(error).value).toEqual(put(actions.fetchFail(error)));
+    expect(iterator.throw(error).value)
+      .toEqual(put(actions.fetchFail(error)));
   });
 });

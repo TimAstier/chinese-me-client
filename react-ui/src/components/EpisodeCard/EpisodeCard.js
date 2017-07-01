@@ -3,6 +3,8 @@ import propTypes from 'prop-types';
 import { Icon, Label } from 'semantic-ui-react';
 import styled from 'styled-components';
 
+import Episode from '../../models/Episode';
+
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -63,7 +65,7 @@ class EpisodeCard extends Component {
   }
 
   render() {
-    const { number, title, status, score } = this.props;
+    const { number, title, status, score } = this.props.episode;
 
     const Title = styled.h1`
       font-family: 'Open Sans';
@@ -100,10 +102,7 @@ class EpisodeCard extends Component {
 }
 
 EpisodeCard.propTypes = {
-  number: propTypes.number.isRequired,
-  title: propTypes.string.isRequired,
-  status: propTypes.string.isRequired,
-  score: propTypes.number.isRequired
+  episode: propTypes.instanceOf(Episode).isRequired
 };
 
 export default EpisodeCard;

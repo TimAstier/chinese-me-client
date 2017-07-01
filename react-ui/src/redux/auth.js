@@ -61,5 +61,4 @@ export function login(data) {
 const duckState = state => state.get('auth');
 export const getCurrentUserId = state => duckState(state).getIn(['user', 'id']);
 export const getCurrentUsername = state => duckState(state).getIn(['user', 'username']);
-export const getStudyUrl = state => duckState(state).getIn(['user', 'studyUrl']);
 export const getIsAuthenticated = state => duckState(state).get('isAuthenticated');

@@ -4,10 +4,11 @@ import propTypes from 'prop-types';
 
 import { SelectEpisode as SelectEpisodeComponent } from '../../components';
 import { actions } from '../../redux/episodes';
+import EpisodeMap from '../../models/EpisodeMap';
 import { getEpisodes } from '../../rootReducer';
 
 class SelectEpisodeScreen extends Component {
-  componentDidMount() {
+  componentWillMount() {
     return this.props.fetchEpisodes();
   }
 
@@ -20,7 +21,7 @@ class SelectEpisodeScreen extends Component {
 
 SelectEpisodeScreen.propTypes = {
   fetchEpisodes: propTypes.func.isRequired,
-  episodes: propTypes.object.isRequired
+  episodes: propTypes.instanceOf(EpisodeMap).isRequired
 };
 
 const mapStateToProps = state => {

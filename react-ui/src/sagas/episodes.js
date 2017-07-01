@@ -9,8 +9,9 @@ import { actions, types } from '../redux/episodes';
 export function* fetchEpisodes() {
   try {
     const response = yield call(Api.get, '/episodes');
+    // TODO: Replace deserializers by Normalizr
     const data = episodesDeserializer(response.data);
-    yield put(actions.set(data));
+    yield put(actions.receivedEntities(data));
     yield put(actions.fetchSuccess());
   } catch (error) {
     yield put(yield put(actions.fetchFail(error)));

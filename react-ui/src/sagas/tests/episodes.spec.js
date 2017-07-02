@@ -3,7 +3,7 @@ import Api from '../../helpers/api';
 import { actions } from '../../redux/episodes';
 
 import { fetchEpisodes } from '../episodes';
-import episodesDeserializer from '../../utils/deserializers/episode';
+import normalize from 'json-api-normalizer';
 
 describe('fetchEpisodes saga', () => {
   it('fetches episodes successfully', () => {
@@ -13,16 +13,14 @@ describe('fetchEpisodes saga', () => {
     expect(iterator.next().value).toEqual(call(Api.get, '/episodes'));
 
     // create a fake response
-    const response = {
-      data: [{id: 1, number: 1, title: 'plop'}]
-    };
+    const fakeResponse = { data: [] };
 
-    // deserialize the fake response
-    const data = episodesDeserializer(response.data);
+    // normalize the fake response
+    const entities = normalize(fakeResponse.data);
 
     // dispatch an action to set episodes
-    expect(iterator.next(response).value)
-      .toEqual(put(actions.receivedEntities(data)));
+    expect(iterator.next(fakeResponse).value)
+      .toEqual(put(actions.receivedEntities(entities)));
 
     // dispatch a success action
     expect(iterator.next().value).toEqual(put(actions.fetchSuccess()));

@@ -18,16 +18,16 @@ export const INITIAL_STATE = fromJS({
   isFetching: false
 });
 
-// TODO: Normalizr
-// TODO: Normalize the API
-// Data come as an object indexed by ID, from a normalized JSON API using
-// normalizr. This way, the map function iterates over the values, and the
-// merge function ensures that you have only one Record per ID.
-
+// Idea: this might be changed into a shared helper later
 const setEntities = (state, newEpisodes) => {
   return state.mergeIn(
     ['entities'],
-    newEpisodes.map((episode) => new Episode(episode)).toOrderedMap()
+    newEpisodes.map(episode => {
+      return new Episode({
+        id: episode.id,
+        ...episode.get('attributes').toJS()
+      });
+    })
   );
 };
 
@@ -48,8 +48,7 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
 const fetch = () => ({ type: types.FETCH });
 const fetchSuccess = () => ({ type: types.FETCH_SUCCESS });
 const fetchFail = error => ({ type: types.FETCH_FAIL, error });
-const receivedEntities = episodes =>
-  ({ type: RECEIVED_ENTITIES, entities: { episodes } });
+const receivedEntities = entities => ({ type: RECEIVED_ENTITIES, entities });
 
 export const actions = {
   fetch,

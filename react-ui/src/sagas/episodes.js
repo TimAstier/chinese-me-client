@@ -1,7 +1,7 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import Api from '../helpers/api';
+import normalize from 'json-api-normalizer';
 
-import episodesDeserializer from '../utils/deserializers/episode';
 import { actions, types } from '../redux/episodes';
 
 // TODO: use checkNetworks
@@ -9,9 +9,8 @@ import { actions, types } from '../redux/episodes';
 export function* fetchEpisodes() {
   try {
     const response = yield call(Api.get, '/episodes');
-    // TODO: Replace deserializers by Normalizr
-    const data = episodesDeserializer(response.data);
-    yield put(actions.receivedEntities(data));
+    const entities = normalize(response.data);
+    yield put(actions.receivedEntities(entities));
     yield put(actions.fetchSuccess());
   } catch (error) {
     yield put(yield put(actions.fetchFail(error)));

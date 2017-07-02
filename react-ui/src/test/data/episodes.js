@@ -104,7 +104,6 @@ const entities = [{
 }];
 
 const episodes = fromJS(entities)
-  .map(episode => new Episode(episode))
-  .toOrderedMap();
+  .map(episode => new Episode(episode));
 
 export default episodes;

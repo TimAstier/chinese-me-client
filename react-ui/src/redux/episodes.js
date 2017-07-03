@@ -45,7 +45,10 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
 
 // Action Creators
 
-const fetch = () => ({ type: types.FETCH });
+const fetch = () => ({
+  type: types.FETCH,
+  endpoint: '/episodes'
+});
 const fetchSuccess = () => ({ type: types.FETCH_SUCCESS });
 const fetchFail = error => ({ type: types.FETCH_FAIL, error });
 const receivedEntities = entities => ({ type: RECEIVED_ENTITIES, entities });

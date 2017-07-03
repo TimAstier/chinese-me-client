@@ -7,10 +7,13 @@ import normalize from 'json-api-normalizer';
 
 describe('fetchEpisodes saga', () => {
   it('fetches episodes successfully', () => {
-    const iterator = fetchEpisodes();
+    // create a fake dispatched action
+    const action = { endpoint: '/episodes' };
+
+    const iterator = fetchEpisodes(action);
 
     // call to the Api
-    expect(iterator.next().value).toEqual(call(Api.get, '/episodes'));
+    expect(iterator.next().value).toEqual(call(Api.get, action.endpoint));
 
     // create a fake response
     const fakeResponse = { data: [] };
@@ -30,7 +33,10 @@ describe('fetchEpisodes saga', () => {
   });
 
   it('dispatches a fail action for bad requests', () => {
-    const iterator = fetchEpisodes();
+    // create a fake dispatched action
+    const action = { endpoint: '/episodes' };
+
+    const iterator = fetchEpisodes(action);
 
     // call to the Api
     iterator.next();

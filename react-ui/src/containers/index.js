@@ -1,3 +1,4 @@
 // Keep in alphabetical order
-export { default as App } from './App/App';
-export { default as SelectEpisode } from './SelectEpisode/SelectEpisode';
+export { default as App } from './App';
+export { default as Dialog } from './Dialog';
+export { default as SelectEpisode } from './SelectEpisode';

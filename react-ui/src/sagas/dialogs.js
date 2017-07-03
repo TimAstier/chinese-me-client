@@ -2,13 +2,13 @@ import { call, put, takeEvery } from 'redux-saga/effects';
 import Api from '../helpers/api';
 import normalize from 'json-api-normalizer';
 
-import { actions, types } from '../redux/episodes';
+import { actions, types } from '../redux/dialogs';
 
 // TODO: use checkNetworks
 
 // TODO: DRY this into a fetch Saga
 
-export function* fetchEpisodes(action) {
+export function* fetchDialogs(action) {
   try {
     const response = yield call(Api.get, action.endpoint);
     const entities = normalize(response.data);
@@ -20,5 +20,5 @@ export function* fetchEpisodes(action) {
 }
 
 export default function* watchFetchEpisodes() {
-  yield takeEvery(types.FETCH, fetchEpisodes);
+  yield takeEvery(types.FETCH, fetchDialogs);
 }

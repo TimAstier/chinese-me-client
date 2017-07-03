@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
 import styled from 'styled-components';
 
 class App extends Component {
@@ -22,8 +22,8 @@ class App extends Component {
 }
 
 App.propTypes = {
-  children: PropTypes.object,
-  location: PropTypes.object.isRequired
+  children: propTypes.object,
+  location: propTypes.object.isRequired
 };
 
 export default App;

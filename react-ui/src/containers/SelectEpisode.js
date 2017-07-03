@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 
-import { SelectEpisode as SelectEpisodeComponent } from '../../components';
-import { actions } from '../../redux/episodes';
-import EpisodeMap from '../../models/EpisodeMap';
-import { getEpisodes } from '../../rootReducer';
+import { SelectEpisode as SelectEpisodeComponent } from '../components';
+import { actions } from '../redux/episodes';
+import EpisodeMap from '../models/EpisodeMap';
+import { getEpisodes } from '../rootReducer';
 
 class SelectEpisodeScreen extends Component {
   componentWillMount() {
@@ -14,7 +14,10 @@ class SelectEpisodeScreen extends Component {
 
   render() {
     return (
-      <SelectEpisodeComponent episodes={this.props.episodes} title={'Season 1'} />
+      <SelectEpisodeComponent
+        episodes={this.props.episodes}
+        title={'Season 1'}
+      />
     );
   }
 }
@@ -30,4 +33,7 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { fetchEpisodes: actions.fetch })(SelectEpisodeScreen);
+export default connect(
+  mapStateToProps,
+  { fetchEpisodes: actions.fetch }
+)(SelectEpisodeScreen);

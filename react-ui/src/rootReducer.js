@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux-immutable';
 import * as duckReducers from './redux';
 import * as fromEntities from './redux/entities';
+import * as fromStudy from './redux/study';
 import * as fromModels from './models';
 import createEntitiesReducer from './helpers/createEntitiesReducer';
 
@@ -17,6 +18,14 @@ export const getEntities = (state, reducerName) => {
   return fromEntities.selectors.getEntities(state.get('entities'), reducerName);
 };
 
-// export const getIsFetching = state => {
-//   return fromEpisodes.selectors.getIsFetching(state.get('isFetching'));
-// };
+export const getCurrentEpisode = state =>
+  fromStudy.selectors.getCurrentEpisode(state.get('study'));
+
+export const getCurrentDialog = state =>
+  fromStudy.selectors.getCurrentDialog(state.get('study'));
+
+export const getCurrentStatement = state =>
+  fromStudy.selectors.getCurrentStatement(state.get('study'));
+
+export const getCurrentSentence = state =>
+  fromStudy.selectors.getCurrentSentence(state.get('study'));

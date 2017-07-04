@@ -3,7 +3,7 @@ import Immutable from 'immutable';
 const Statement = Immutable.Record({
   id: null,
   order: null,
-  sentence: []
+  sentences: []
 });
 
 export default Statement;

@@ -3,7 +3,7 @@ import propTypes from 'prop-types';
 import styled from 'styled-components';
 
 import { ScreenWrapper, EpisodeCard } from '../.';
-import EpisodeMap from '../../models/EpisodeMap';
+import Immutable from 'immutable';
 
 const TitleWrapper = styled.div`
   flex: 1 0 0;
@@ -50,7 +50,7 @@ class SelectEpisode extends Component {
 }
 
 SelectEpisode.propTypes = {
-  episodes: propTypes.instanceOf(EpisodeMap).isRequired,
+  episodes: propTypes.instanceOf(Immutable.orderedMap).isRequired,
   title: propTypes.string.isRequired
 };
 

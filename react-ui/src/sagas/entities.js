@@ -2,23 +2,21 @@ import { call, put, takeEvery } from 'redux-saga/effects';
 import Api from '../helpers/api';
 import normalize from 'json-api-normalizer';
 
-import { actions, types } from '../redux/episodes';
+import { actions, types } from '../redux/entities';
 
 // TODO: use checkNetworks
 
-// TODO: DRY this into a fetch Saga
-
-export function* fetchEpisodes(action) {
+export function* fetchEntities(action) {
   try {
     const response = yield call(Api.get, action.endpoint);
     const entities = normalize(response.data);
-    yield put(actions.receivedEntities(entities));
+    yield put(actions.received(entities));
     yield put(actions.fetchSuccess());
   } catch (error) {
     yield put(yield put(actions.fetchFail(error)));
   }
 }
 
-export default function* watchFetchEpisodes() {
-  yield takeEvery(types.FETCH, fetchEpisodes);
+export default function* watchFetchEntities() {
+  yield takeEvery(types.FETCH, fetchEntities);
 }

@@ -3,13 +3,16 @@ import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 
 import { SelectEpisode as SelectEpisodeComponent } from '../components';
-import { actions } from '../redux/episodes';
-import EpisodeMap from '../models/EpisodeMap';
-import { getEpisodes } from '../rootReducer';
+// import { actions } from '../redux/episodes';
+import { actions } from '../redux/entities';
+// import EntitiesMap from '../models/EntitiesMap';
+import Immutable from 'immutable';
+// import { getEpisodes } from '../rootReducer';
+import { getEntities } from '../rootReducer';
 
 class SelectEpisodeScreen extends Component {
   componentWillMount() {
-    return this.props.fetchEpisodes();
+    return this.props.fetch('/episodes');
   }
 
   render() {
@@ -23,17 +26,17 @@ class SelectEpisodeScreen extends Component {
 }
 
 SelectEpisodeScreen.propTypes = {
-  fetchEpisodes: propTypes.func.isRequired,
-  episodes: propTypes.instanceOf(EpisodeMap).isRequired
+  fetch: propTypes.func.isRequired,
+  episodes: propTypes.instanceOf(Immutable.orderedMap).isRequired
 };
 
 const mapStateToProps = state => {
   return {
-    episodes: getEpisodes(state)
+    episodes: getEntities(state, 'episodes')
   };
 };
 
 export default connect(
   mapStateToProps,
-  { fetchEpisodes: actions.fetch }
+  { fetch: actions.fetch }
 )(SelectEpisodeScreen);

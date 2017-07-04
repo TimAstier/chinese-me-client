@@ -1,4 +1,6 @@
 const setEntities = (state, newEntities, Model) => {
+  // Assumes the JSON Api is returning entities and relations
+  // in the correct order
   return state.merge(
     newEntities.map(entity => {
       const attributes = entity.get('attributes').toJS();

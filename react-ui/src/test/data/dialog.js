@@ -1,13 +1,13 @@
 const sentences = [
   {
     chinese: '你好！',
-    l1: 'Hi!',
+    english: 'Hi!',
     personality: 2,
     mood: 'happy',
     audio: 'sentence_2.mp3'
   }, {
     chinese: '你会说中文吗？',
-    l1: 'Can you speak Chinese?',
+    english: 'Can you speak Chinese?',
     personality: 2,
     mood: 'surprised',
     audio: 'sentence_3.mp3'

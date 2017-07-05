@@ -3,7 +3,7 @@ import propTypes from 'prop-types';
 import styled from 'styled-components';
 
 import { ScreenWrapper, EpisodeCard } from '../.';
-import Immutable from 'immutable';
+import * as models from '../../models';
 
 const TitleWrapper = styled.div`
   flex: 1 0 0;
@@ -49,8 +49,10 @@ class SelectEpisode extends Component {
   }
 }
 
+// BUG: Can't validate proptypes with model names (work with any model)
+
 SelectEpisode.propTypes = {
-  episodes: propTypes.instanceOf(Immutable.orderedMap).isRequired,
+  episodes: propTypes.instanceOf(models.EpisodeMap).isRequired,
   title: propTypes.string.isRequired
 };
 

@@ -1,12 +1,15 @@
 import Immutable from 'immutable';
 
-const Sentence = Immutable.Record({
+const SentenceRecord = Immutable.Record({
   id: null,
   order: '',
   chinese: '',
   mood: '',
   audioUrl: '',
-  english: ''
+  english: '',
+  avatarId: null
 });
+
+class Sentence extends SentenceRecord {}
 
 export default Sentence;

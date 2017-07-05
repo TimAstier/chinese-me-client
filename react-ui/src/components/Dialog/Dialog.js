@@ -3,7 +3,6 @@ import propTypes from 'prop-types';
 import styled from 'styled-components';
 
 import { Avatar, Statement } from '../.';
-import { capitalizeFirstLetter } from '../../utils/strings';
 
 const Wrapper = styled.div`
   flex: 1 0 0;
@@ -27,14 +26,15 @@ const StatementWrapper = styled.div`
 class Dialog extends Component {
 
   renderAvatars() {
-    const { personalities, animatedAvatar } = this.props;
+    // TODO: Remove hardcoding of mood
+    const { personalities } = this.props;
     const avatars = [];
     personalities.forEach(p => {
       return avatars.push(
         <Avatar
           key={p.id}
-          image={p.name + capitalizeFirstLetter(p.mood)}
-          animated={p.id === animatedAvatar}
+          image={p[ p.mood + 'Image' ]}
+          animated={p.isTalking}
         />
       );
     });
@@ -59,8 +59,7 @@ class Dialog extends Component {
 Dialog.propTypes = {
   sentences: propTypes.array.isRequired,
   personalities: propTypes.array.isRequired,
-  currentSentence: propTypes.number.isRequired,
-  animatedAvatar: propTypes.number.isRequired
+  currentSentence: propTypes.number.isRequired
 };
 
 export default Dialog;

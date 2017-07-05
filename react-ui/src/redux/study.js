@@ -9,10 +9,10 @@ export const types = {
 // Reducers
 
 export const INITIAL_STATE = Immutable.Map({
-  currentEpisode: null,
-  currentDialog: null,
-  currentStatement: null,
-  currentSentence: null
+  currentEpisodeId: null,
+  currentDialogId: null,
+  currentStatementId: null,
+  currentSentenceId: null
 });
 
 export default function reducer(state = INITIAL_STATE, action = {}) {
@@ -38,14 +38,14 @@ export const actions = {
 
 // Selectors
 
-const getCurrentEpisode = state => state.get('currentEpisode');
-const getCurrentDialog = state => state.get('currentDialog');
-const getCurrentStatement = state => state.get('currentStatement');
-const getCurrentSentence = state => state.get('currentSentence');
+const getCurrentEpisodeId = state => state.get('currentEpisodeId');
+const getCurrentDialogId = state => state.get('currentDialogId');
+const getCurrentStatementId = state => state.get('currentStatementId');
+const getCurrentSentenceId = state => state.get('currentSentenceId');
 
 export const selectors = {
-  getCurrentEpisode,
-  getCurrentDialog,
-  getCurrentStatement,
-  getCurrentSentence
+  getCurrentEpisodeId,
+  getCurrentDialogId,
+  getCurrentStatementId,
+  getCurrentSentenceId
 };

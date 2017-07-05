@@ -1,9 +1,11 @@
 import Immutable from 'immutable';
 
-const Statement = Immutable.Record({
+const StatementRecord = Immutable.Record({
   id: null,
   order: null,
   sentences: []
 });
+
+class Statement extends StatementRecord {}
 
 export default Statement;

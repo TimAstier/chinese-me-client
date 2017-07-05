@@ -3,12 +3,9 @@ import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 
 import { SelectEpisode as SelectEpisodeComponent } from '../components';
-// import { actions } from '../redux/episodes';
 import { actions } from '../redux/entities';
-// import EntitiesMap from '../models/EntitiesMap';
+import { getEpisodes } from '../rootReducer';
 import Immutable from 'immutable';
-// import { getEpisodes } from '../rootReducer';
-import { getEntities } from '../rootReducer';
 
 class SelectEpisodeScreen extends Component {
   componentWillMount() {
@@ -27,12 +24,12 @@ class SelectEpisodeScreen extends Component {
 
 SelectEpisodeScreen.propTypes = {
   fetch: propTypes.func.isRequired,
-  episodes: propTypes.instanceOf(Immutable.orderedMap).isRequired
+  episodes: propTypes.instanceOf(Immutable.OrderedMap).isRequired
 };
 
 const mapStateToProps = state => {
   return {
-    episodes: getEntities(state, 'episodes')
+    episodes: getEpisodes(state)
   };
 };
 

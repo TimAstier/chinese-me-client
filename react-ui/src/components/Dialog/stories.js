@@ -12,8 +12,8 @@ storiesOf('Dialog', module)
         screenLabel={'Dialog - Explore'}
       >
         <Dialog
-          personalities= {dialogData.personalities}
-          sentences={dialogData.sentences}
+          personalities= {[dialogData.personalities]}
+          sentences={[dialogData.sentences]}
           currentSentence={0}
           animatedAvatar={0}
         />

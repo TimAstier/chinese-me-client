@@ -3,8 +3,6 @@ import { Image } from 'semantic-ui-react';
 import propTypes from 'prop-types';
 import styled, { keyframes } from 'styled-components';
 
-import images from '../../images';
-
 const bouncy = keyframes`
   0% { transform: scale(1.0); }
   50% { transform: scale(1.1); }
@@ -25,7 +23,7 @@ class Avatar extends Component {
 
     return (
       <Wrapper>
-        <Image src={images[image]} shape="circular" bordered />
+        <Image src={image} shape="circular" bordered />
       </Wrapper>
     );
   }

@@ -98,7 +98,7 @@ const renderL1 = (sentences, currentSentence) => {
         padded={i !== 0}
         active={i === currentSentence}
       >
-        {s.l1}
+        {s.english}
       </Sentence>
     );
   });

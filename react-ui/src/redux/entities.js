@@ -7,7 +7,8 @@ export const types = {
   FETCH: 'entities/FETCH',
   FETCH_SUCCESS: 'entities/FETCH_SUCCESS',
   FETCH_FAIL: 'entities/FETCH_FAIL',
-  RECEIVED: 'entities/RECEIVED'
+  RECEIVED: 'entities/RECEIVED',
+  UPDATE: 'entities/UPDATE'
 };
 
 // High-order Reducer
@@ -23,9 +24,10 @@ export default function createNamedEntityReducer(reducerName, EntityModel, Entit
           fromJS(action.entities[reducerName]),
           EntityModel
         );
-      // case types.FETCH: return state.set('isFetching', true);
-      // case types.FETCH_SUCCESS:
-      // case types.FETCH_FAIL: return state.set('isFetching', false);
+      case types.UPDATE:
+        const { entityName, entityId, attribute, newValue } = action.payload;
+        if (reducerName !== entityName) { return state; }
+        return state.update(entityId, entity => entity.set(attribute, newValue));
       default: return state;
     }
   };
@@ -37,12 +39,19 @@ const fetch = endpoint => ({ type: types.FETCH, endpoint });
 const fetchSuccess = () => ({ type: types.FETCH_SUCCESS });
 const fetchFail = error => ({ type: types.FETCH_FAIL, error });
 const received = entities => ({ type: types.RECEIVED, entities });
+const update = (entityName, entityId, attribute, newValue) => {
+  return {
+    type: types.update,
+    payload: { entityName, entityId, attribute, newValue }
+  };
+};
 
 export const actions = {
   fetch,
   fetchSuccess,
   fetchFail,
-  received
+  received,
+  update
 };
 
 // Selectors

@@ -3,7 +3,16 @@ import Immutable from 'immutable';
 // Action Types
 
 export const types = {
-  SET: 'study/SET'
+  SET: 'study/SET',
+  NEXT: 'study/NEXT',
+  SKIP: 'study/SKIP',
+  NEXT_SENTENCE: 'study/NEXT_SENTENCE',
+  PREVIOUS_SENTENCE: 'study/PREVIOUS_SENTENCE',
+  PLAY_SENTENCE: 'study/PLAY_SENTENCE',
+  SWITCH_STATEMENT: 'study/SWITCH_STATEMENT',
+  ASK_QUESTION: 'study/ASK_QUESTION',
+  DISPLAY_EPISODE_OVERVIEW: 'study/DISPLAY_EPISODE_OVERVIEW',
+  EXIT: 'study/EXIT'
 };
 
 // Reducers
@@ -31,9 +40,37 @@ const set = (attribute, id) => {
     payload: { attribute, id }
   };
 };
+const next = () => ({ type: types.NEXT });
+const skip = () => ({ type: types.SKIP });
+const nextSentence = () => ({ type: types.NEXT_SENTENCE });
+const previousSentence = () => ({ type: types.PREVIOUS_SENTENCE });
+const playSentence = (sentenceId) => {
+  return {
+    type: types.PLAY_SENTENCE,
+    payload: { id: sentenceId }
+  };
+};
+const switchStatement = (statementId) => {
+  return {
+    type: types.SWITCH_STATEMENT,
+    payload: { id: statementId }
+  };
+};
+const askQuestion = () => ({ type: types.ASK_QUESTION });
+const displayEpisodeOverview = () => ({ type: types.DISPLAY_EPISODE_OVERVIEW });
+const exit = () => ({ type: types.EXIT });
 
 export const actions = {
-  set
+  set,
+  next,
+  skip,
+  nextSentence,
+  previousSentence,
+  playSentence,
+  switchStatement,
+  askQuestion,
+  displayEpisodeOverview,
+  exit
 };
 
 // Selectors

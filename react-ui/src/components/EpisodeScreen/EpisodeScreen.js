@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
 import { Icon } from 'semantic-ui-react';
-import { ScreenButton, ProgressBar, StepsBar, ScreenWrapper } from '../.';
+import { ProgressBar, ScreenWrapper } from '../.';
+import { ScreenButton, StepsBar } from '../../containers';
+import { Clickable } from '../Shared';
 
 // 2nd level wrappers
 
@@ -96,15 +98,39 @@ class EpisodeScreen extends Component {
       <ScreenWrapper>
         <TopWrapper>
           <TopLeftWrapper>
-            <ExitIcon>Exit</ExitIcon>
-            <Icon name="unordered list" size="big" color="teal" />
+            <Clickable>
+              <ExitIcon onClick={this.props.exit}>
+                Exit
+              </ExitIcon>
+            </Clickable>
+            <Clickable>
+              <Icon
+                name="unordered list"
+                size="big"
+                color="teal"
+              />
+            </Clickable>
           </TopLeftWrapper>
           <TopMiddleWrapper>
             {this.renderTopMiddleWrapperContent()}
           </TopMiddleWrapper>
           <TopRightWrapper>
-            <Icon name="map outline" size="big" color="teal" />
-            <Icon name="help circle outline" size="big" color="teal" />
+            <Clickable>
+              <Icon
+                name="map outline"
+                size="big"
+                color="teal"
+                onClick={this.props.displayEpisodeOverview}
+              />
+            </Clickable>
+            <Clickable>
+              <Icon
+                name="help circle outline"
+                size="big"
+                color="teal"
+                onClick={this.props.askQuestion}
+              />
+            </Clickable>
           </TopRightWrapper>
         </TopWrapper>
         <MiddleWrapper>
@@ -123,7 +149,10 @@ class EpisodeScreen extends Component {
           </BottomMiddleWrapper>
           <BottomRightWrapper>
             {next &&
-              <ScreenButton text="Next" primary />
+              <ScreenButton
+                text="Next"
+                primary
+              />
             }
           </BottomRightWrapper>
         </BottomWrapper>
@@ -138,7 +167,10 @@ EpisodeScreen.propTypes = {
   progressBarOptions: propTypes.object,
   stepsOptions: propTypes.object,
   screenLabel: propTypes.string,
-  children: propTypes.object
+  children: propTypes.object,
+  askQuestion: propTypes.func.isRequired,
+  displayEpisodeOverview: propTypes.func.isRequired,
+  exit: propTypes.func.isRequired
 };
 
 export default EpisodeScreen;

@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { Avatar, Statement } from '../.';
+import { Avatar } from '../.';
+import { Statement } from '../../containers';
 
 const Wrapper = styled.div`
   flex: 1 0 0;
@@ -26,7 +27,6 @@ const StatementWrapper = styled.div`
 class Dialog extends Component {
 
   renderAvatars() {
-    // TODO: Remove hardcoding of mood
     const { personalities } = this.props;
     const avatars = [];
     personalities.forEach(p => {
@@ -42,14 +42,14 @@ class Dialog extends Component {
   }
 
   render() {
-    const { sentences, currentSentence } = this.props;
+    const { sentences, currentSentenceIndex } = this.props;
     return (
       <Wrapper>
         <PersonalitiesWrapper>
           {this.renderAvatars()}
         </PersonalitiesWrapper>
         <StatementWrapper>
-          <Statement sentences={sentences} currentSentence={currentSentence} />
+          <Statement sentences={sentences} currentSentenceIndex={currentSentenceIndex} />
         </StatementWrapper>
       </Wrapper>
     );
@@ -59,7 +59,7 @@ class Dialog extends Component {
 Dialog.propTypes = {
   sentences: propTypes.array.isRequired,
   personalities: propTypes.array.isRequired,
-  currentSentence: propTypes.number.isRequired
+  currentSentenceIndex: propTypes.number.isRequired
 };
 
 export default Dialog;

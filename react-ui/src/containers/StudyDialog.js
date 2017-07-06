@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 
-import { Dialog, EpisodeScreen } from '../components';
+import { Dialog } from '../components';
+import { EpisodeScreen } from './';
 import { actions as entitiesActions } from '../redux/entities';
 import { actions as studyActions } from '../redux/study';
 import { getCurrentDialog, getCurrentStatementIndex,
-  getCurrentSentenceIndex, getCurrentSentences, getCurrentAvatars }
-  from '../rootReducer';
+  getCurrentSentenceIndex, getCurrentSentences, getCurrentAvatars,
+  getCurrentStatement } from '../rootReducer';
 import * as models from '../models';
 
 class StudyDialog extends Component {
@@ -25,18 +26,20 @@ class StudyDialog extends Component {
   render() {
     const stepsOptions = {
       currentStep: this.props.currentStatementIndex,
-      totalSteps: this.props.dialog ? this.props.dialog.countStatements() : 0
+      stepIds: this.props.statement ? this.props.statement.sentences : []
     };
 
     return (
       <EpisodeScreen
         stepsOptions={stepsOptions}
         screenLabel={'Dialog - Explore'}
+        next
+        skip
       >
         <Dialog
           personalities= {this.props.avatars}
           sentences={this.props.sentences}
-          currentSentence={this.props.currentSentenceIndex || 0}
+          currentSentenceIndex={this.props.currentSentenceIndex || 0}
         />
       </EpisodeScreen>
     );
@@ -49,6 +52,7 @@ const mapStateToProps = state => {
     currentStatementIndex: getCurrentStatementIndex(state),
     currentSentenceIndex: getCurrentSentenceIndex(state),
     sentences: getCurrentSentences(state),
+    statement: getCurrentStatement(state),
     avatars: getCurrentAvatars(state)
   };
 };
@@ -59,6 +63,7 @@ StudyDialog.propTypes = {
   dialog: propTypes.instanceOf(models.Dialog),
   currentStatementIndex: propTypes.number,
   currentSentenceIndex: propTypes.number,
+  statement: propTypes.instanceOf(models.Statement),
   sentences: propTypes.arrayOf(propTypes.instanceOf(models.Sentence)).isRequired,
   avatars: propTypes.arrayOf(propTypes.instanceOf(models.Avatar)).isRequired
 };

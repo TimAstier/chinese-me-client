@@ -68,7 +68,7 @@ export const getCurrentStatementIndex = createSelector(
     if (dialog) {
       return dialog.statements.findIndex(s => s === id);
     }
-    return 1;
+    return 0;
   }
 );
 

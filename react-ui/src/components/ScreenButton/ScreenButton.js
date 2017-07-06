@@ -20,7 +20,7 @@ class Screen extends Component {
     `;
 
     return (
-      <Button>
+      <Button onClick={this.props.onClick}>
         {text}
       </Button>
     );
@@ -29,7 +29,8 @@ class Screen extends Component {
 
 Screen.propTypes = {
   text: propTypes.string.isRequired,
-  primary: propTypes.bool
+  primary: propTypes.bool,
+  onClick: propTypes.func.isRequired
 };
 
 export default Screen;

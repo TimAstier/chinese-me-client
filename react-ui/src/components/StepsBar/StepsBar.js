@@ -10,16 +10,16 @@ const Wrapper = styled.div`
 class StepsBar extends Component {
 
   render() {
-    const { currentStep, totalSteps } = this.props;
+    const { currentStep, stepIds } = this.props;
     const navDots = [];
-    let key = 0;
-    for (let i = 0; i <= currentStep; i++) {
-      navDots.push(<NavDot completed key={key} />);
-      key++;
-    }
-    for (let i = key; i < totalSteps; i++) {
-      navDots.push(<NavDot key={key} />);
-      key++;
+    for (let i = 0; i < stepIds.length; i++) {
+      navDots.push(
+        <NavDot
+          completed={i <= currentStep ? true : false}
+          key={i}
+          id={stepIds[i]}
+          switchStatement={this.props.switchStatement}
+        />);
     }
     return <Wrapper>{navDots}</Wrapper>;
   }
@@ -27,7 +27,8 @@ class StepsBar extends Component {
 
 StepsBar.propTypes = {
   currentStep: propTypes.number.isRequired,
-  totalSteps: propTypes.number.isRequired
+  stepIds: propTypes.arrayOf(propTypes.number).isRequired,
+  switchStatement: propTypes.func.isRequired
 };
 
 export default StepsBar;

@@ -3,6 +3,8 @@ import { Icon } from 'semantic-ui-react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
 
+import { Clickable } from '../Shared';
+
 const Wrapper = styled.div`
   width: 550px;
   height: 320px;
@@ -73,14 +75,14 @@ const FormatedSentences = styled.div`
   text-align: center;
 `;
 
-const renderChinese = (sentences, currentSentence) => {
+const renderChinese = (sentences, currentSentenceIndex) => {
   const chinese = [];
   sentences.forEach((s, i) => {
     chinese.push(
       <Sentence
         key={i}
         padded={i !== 0}
-        active={i === currentSentence}
+        active={i === currentSentenceIndex}
       >
         {s.chinese}
       </Sentence>
@@ -89,14 +91,14 @@ const renderChinese = (sentences, currentSentence) => {
   return <FormatedSentences>{chinese}</FormatedSentences>;
 };
 
-const renderL1 = (sentences, currentSentence) => {
+const renderL1 = (sentences, currentSentenceIndex) => {
   const l1 = [];
   sentences.forEach((s, i) => {
     l1.push(
       <Sentence
         key={i}
         padded={i !== 0}
-        active={i === currentSentence}
+        active={i === currentSentenceIndex}
       >
         {s.english}
       </Sentence>
@@ -108,28 +110,49 @@ const renderL1 = (sentences, currentSentence) => {
 class Statement extends Component {
 
   render() {
-    const { sentences, currentSentence } = this.props;
+    const { sentences, currentSentenceIndex } = this.props;
 
     return (
       <Wrapper>
         <ChineseWrapper>
-          {renderChinese(sentences, currentSentence)}
+          {renderChinese(sentences, currentSentenceIndex)}
         </ChineseWrapper>
         <L1Wrapper>
-          {renderL1(sentences, currentSentence)}
+          {renderL1(sentences, currentSentenceIndex)}
         </L1Wrapper>
         <ControlWrapper>
           <LeftChevronWrapper>
-            {currentSentence > 0 &&
-              <Icon name="chevron left" size="big" color="teal" />
+            {currentSentenceIndex > 0 &&
+              <Clickable>
+                <Icon
+                  name="chevron left"
+                  size="big"
+                  color="teal"
+                  onClick={this.props.previousSentence}
+                />
+              </Clickable>
             }
           </LeftChevronWrapper>
           <PlayAudioWrapper>
-            <Icon name="video play outline" size="huge" color="teal" />
+            <Clickable>
+              <Icon
+                name="video play outline"
+                size="huge"
+                color="teal"
+                onClick={() => this.props.playSentence(this.props.sentences[currentSentenceIndex].id)}
+              />
+            </Clickable>
           </PlayAudioWrapper>
           <RightChevronWrapper>
-            {currentSentence < sentences.length - 1 &&
-              <Icon name="chevron right" size="big" color="teal" />
+            {currentSentenceIndex < sentences.length - 1 &&
+              <Clickable>
+                <Icon
+                  name="chevron right"
+                  size="big"
+                  color="teal"
+                  onClick={this.props.nextSentence}
+                />
+              </Clickable>
             }
           </RightChevronWrapper>
         </ControlWrapper>
@@ -140,7 +163,10 @@ class Statement extends Component {
 
 Statement.propTypes = {
   sentences: propTypes.array.isRequired,
-  currentSentence: propTypes.number.isRequired
+  currentSentenceIndex: propTypes.number.isRequired,
+  nextSentence: propTypes.func.isRequired,
+  previousSentence: propTypes.func.isRequired,
+  playSentence: propTypes.func.isRequired
 };
 
 export default Statement;

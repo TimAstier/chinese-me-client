@@ -4,7 +4,7 @@ import propTypes from 'prop-types';
 
 import { SelectEpisode as SelectEpisodeComponent } from '../components';
 import { actions } from '../redux/entities';
-import { getEpisodes } from '../rootReducer';
+import selectors from '../rootSelectors';
 import Immutable from 'immutable';
 
 class SelectEpisodeScreen extends Component {
@@ -29,7 +29,7 @@ SelectEpisodeScreen.propTypes = {
 
 const mapStateToProps = state => {
   return {
-    episodes: getEpisodes(state)
+    episodes: selectors.getEpisodes(state)
   };
 };
 

@@ -3,6 +3,7 @@ import { Icon } from 'semantic-ui-react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
 
+import * as models from '../../models';
 import { Clickable } from '../Shared';
 
 const Wrapper = styled.div`
@@ -162,7 +163,7 @@ class Statement extends Component {
 }
 
 Statement.propTypes = {
-  sentences: propTypes.array.isRequired,
+  sentences: propTypes.arrayOf(propTypes.instanceOf(models.Sentence)).isRequired,
   currentSentenceIndex: propTypes.number.isRequired,
   nextSentence: propTypes.func.isRequired,
   previousSentence: propTypes.func.isRequired,

@@ -1,5 +1,5 @@
 import { fromJS } from 'immutable';
-import setEntities from '../helpers/setEntities';
+import setEntities from '../utils/setEntities';
 
 // Action Types
 
@@ -35,7 +35,7 @@ export default function createNamedEntityReducer(reducerName, EntityModel, Entit
 
 // Action Creators
 
-const fetch = endpoint => ({ type: types.FETCH, endpoint });
+const fetch = endpoint => ({ type: types.FETCH, payload: { endpoint } });
 const fetchSuccess = () => ({ type: types.FETCH_SUCCESS });
 const fetchFail = error => ({ type: types.FETCH_FAIL, error });
 const received = entities => ({ type: types.RECEIVED, entities });
@@ -56,15 +56,11 @@ export const actions = {
 
 // Selectors
 
-// const getEpisodes = state => state.get('episodes');
 const getAvatars = state => state.get('avatars');
 const getEpisodes = state => state.get('episodes');
 const getDialogs = state => state.get('dialogs');
 const getStatements = state => state.get('statements');
 const getSentences = state => state.get('sentences');
-
-
-// const getIsFetching = state => state.get('isFetching');
 
 export const selectors = {
   getAvatars,

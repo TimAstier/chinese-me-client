@@ -1,5 +1,5 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
-import Api from '../helpers/api';
+import Api from '../utils/api';
 import normalize from 'json-api-normalizer';
 
 import { actions, types } from '../redux/entities';
@@ -8,7 +8,7 @@ import { actions, types } from '../redux/entities';
 
 export function* fetchEntities(action) {
   try {
-    const response = yield call(Api.get, action.endpoint);
+    const response = yield call(Api.get, action.payload.endpoint);
     const entities = normalize(response.data);
     yield put(actions.received(entities));
     yield put(actions.fetchSuccess());

@@ -2,13 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 
-import { Dialog } from '../components';
-import { EpisodeScreen } from './';
+import { EpisodeScreen, Dialog } from './';
 import { actions as entitiesActions } from '../redux/entities';
 import { actions as studyActions } from '../redux/study';
-import { getCurrentDialog, getCurrentStatementIndex,
-  getCurrentSentenceIndex, getCurrentSentences, getCurrentAvatars,
-  getCurrentStatement } from '../rootReducer';
+import selectors from '../rootSelectors';
 import * as models from '../models';
 
 class StudyDialog extends Component {
@@ -26,7 +23,7 @@ class StudyDialog extends Component {
   render() {
     const stepsOptions = {
       currentStep: this.props.currentStatementIndex,
-      stepIds: this.props.statement ? this.props.statement.sentences : []
+      stepIds: this.props.dialog ? this.props.dialog.statements : []
     };
 
     return (
@@ -36,11 +33,7 @@ class StudyDialog extends Component {
         next
         skip
       >
-        <Dialog
-          personalities= {this.props.avatars}
-          sentences={this.props.sentences}
-          currentSentenceIndex={this.props.currentSentenceIndex || 0}
-        />
+        <Dialog />
       </EpisodeScreen>
     );
   }
@@ -48,24 +41,18 @@ class StudyDialog extends Component {
 
 const mapStateToProps = state => {
   return {
-    avatars: getCurrentAvatars(state),
-    dialog: getCurrentDialog(state),
-    statement: getCurrentStatement(state),
-    sentences: getCurrentSentences(state),
-    currentStatementIndex: getCurrentStatementIndex(state),
-    currentSentenceIndex: getCurrentSentenceIndex(state)
+    dialog: selectors.getCurrentDialog(state),
+    statement: selectors.getCurrentStatement(state),
+    currentStatementIndex: selectors.getCurrentStatementIndex(state)
   };
 };
 
 StudyDialog.propTypes = {
   fetch: propTypes.func.isRequired,
   set: propTypes.func.isRequired,
-  avatars: propTypes.arrayOf(propTypes.instanceOf(models.Avatar)).isRequired,
   dialog: propTypes.instanceOf(models.Dialog),
   statement: propTypes.instanceOf(models.Statement),
-  sentences: propTypes.arrayOf(propTypes.instanceOf(models.Sentence)).isRequired,
   currentStatementIndex: propTypes.number,
-  currentSentenceIndex: propTypes.number,
 };
 
 export default connect(

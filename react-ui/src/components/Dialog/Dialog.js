@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import { Avatar } from '../.';
 import { Statement } from '../../containers';
+import * as models from '../../models';
 
 const Wrapper = styled.div`
   flex: 1 0 0;
@@ -27,18 +28,16 @@ const StatementWrapper = styled.div`
 class Dialog extends Component {
 
   renderAvatars() {
-    const { personalities } = this.props;
-    const avatars = [];
-    personalities.forEach(p => {
-      return avatars.push(
+    const avatarComponents = [];
+    this.props.avatars.forEach(avatar => {
+      return avatarComponents.push(
         <Avatar
-          key={p.id}
-          image={p[ p.mood + 'Image' ]}
-          animated={p.isTalking}
+          key={avatar.id}
+          avatar={avatar}
         />
       );
     });
-    return avatars;
+    return avatarComponents;
   }
 
   render() {
@@ -49,7 +48,10 @@ class Dialog extends Component {
           {this.renderAvatars()}
         </PersonalitiesWrapper>
         <StatementWrapper>
-          <Statement sentences={sentences} currentSentenceIndex={currentSentenceIndex} />
+          <Statement
+            sentences={sentences}
+            currentSentenceIndex={currentSentenceIndex}
+          />
         </StatementWrapper>
       </Wrapper>
     );
@@ -57,8 +59,8 @@ class Dialog extends Component {
 }
 
 Dialog.propTypes = {
-  sentences: propTypes.array.isRequired,
-  personalities: propTypes.array.isRequired,
+  sentences: propTypes.arrayOf(propTypes.instanceOf(models.Sentence)).isRequired,
+  avatars: propTypes.arrayOf(propTypes.instanceOf(models.Avatar)).isRequired,
   currentSentenceIndex: propTypes.number.isRequired
 };
 

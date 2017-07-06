@@ -1,4 +1,4 @@
-import Api from '../helpers/api';
+import Api from '../utils/api';
 import setAuthorizationToken from '../utils/setAuthorizationToken';
 import jwtDecode from 'jwt-decode';
 import isEmpty from 'lodash/isEmpty';

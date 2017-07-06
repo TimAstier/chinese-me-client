@@ -3,7 +3,8 @@ import Immutable from 'immutable';
 const StatementRecord = Immutable.Record({
   id: null,
   order: null,
-  sentences: []
+  sentences: [],
+  avatarId: null
 });
 
 class Statement extends StatementRecord {}

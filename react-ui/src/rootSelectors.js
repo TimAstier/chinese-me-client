@@ -90,6 +90,18 @@ const getCurrentAvatars = createSelector(
   }
 );
 
+const getNextSentenceId = createSelector(
+  getCurrentStatement,
+  getCurrentSentenceIndex,
+  (statement, i) => statement.sentences[i + 1]
+);
+
+const getPreviousSentenceId = createSelector(
+  getCurrentStatement,
+  getCurrentSentenceIndex,
+  (statement, i) => statement.sentences[i - 1]
+);
+
 const selectors = {
   ...entitySelectors,
   ...studySelectors,
@@ -99,7 +111,9 @@ const selectors = {
   getCurrentSentence,
   getCurrentSentenceIndex,
   getCurrentSentences,
-  getCurrentAvatars
+  getCurrentAvatars,
+  getNextSentenceId,
+  getPreviousSentenceId
 };
 
 export default selectors;

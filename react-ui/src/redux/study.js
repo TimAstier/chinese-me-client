@@ -44,12 +44,7 @@ const next = () => ({ type: types.NEXT });
 const skip = () => ({ type: types.SKIP });
 const nextSentence = () => ({ type: types.NEXT_SENTENCE });
 const previousSentence = () => ({ type: types.PREVIOUS_SENTENCE });
-const playSentence = (sentenceId) => {
-  return {
-    type: types.PLAY_SENTENCE,
-    payload: { id: sentenceId }
-  };
-};
+const playSentence = () => ({ type: types.PLAY_SENTENCE });
 const switchStatement = (statementId) => {
   return {
     type: types.SWITCH_STATEMENT,

@@ -1,41 +1,34 @@
-import { takeEvery, all, select, put } from 'redux-saga/effects';
-import { delay } from 'redux-saga';
-import { types } from '../redux/audio';
-import selectors from '../rootSelectors';
-import { actions as fromEntities } from '../redux/entities';
-import { actions as fromUi } from '../redux/ui';
+import { take, put } from 'redux-saga/effects';
+import { eventChannel, END } from 'redux-saga';
 import { actions as fromAudio } from '../redux/audio';
 import howler from 'howler';
 
 // Sub-routines
 
-function *playSentence() {
-  // Animate and update avatar mood
-  yield put(fromUi.set('nextButton', false));
-  yield put(fromAudio.set('isPlaying', true));
-  const statement = yield select(selectors.getCurrentStatement);
-  const sentence = yield select(selectors.getCurrentSentence);
-  const src = [sentence.audioUrl];
+export function *playSound(src) {
   const sound = new howler.Howl({ src });
+
+  // Create an event channel
+  const channel = eventChannel(emitter => {
+    sound.on('end', () => {
+      emitter(END); // Ends the channel
+    });
+    // Return an unsubscribe method
+    return () => {
+      // Perform any cleanup you need here
+      sound.unload();
+    };
+  });
+
   sound.play();
-  yield put(fromEntities.update('avatars', String(statement.avatarId), 'mood', sentence.mood));
-  yield put(fromEntities.update('avatars', String(statement.avatarId), 'isTalking', true));
-  yield delay(1500); // Mock audio length
-  yield put(fromEntities.update('avatars', String(statement.avatarId), 'isTalking', false));
-  yield put(fromUi.set('nextButton', true));
-  yield put(fromAudio.set('isPlaying', false));
-}
+  yield put(fromAudio.set('isPlaying', true));
 
-// Watchers
-
-function* watchPlay() {
-  yield takeEvery(types.PLAY_SENTENCE, playSentence);
-}
-
-// Export
-
-export default function* audio() {
-  yield all([
-    watchPlay()
-  ]);
+  try {
+    while (true) { // eslint-disable-line no-constant-condition
+      yield take(channel); // The loop breaks via the END in the channel
+    }
+  } finally {
+    // Audio is done playing
+    yield put(fromAudio.set('isPlaying', false));
+  }
 }

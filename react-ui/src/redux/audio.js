@@ -3,8 +3,7 @@ import { fromJS } from 'immutable';
 // Action Types
 
 export const types = {
-  SET: 'audio/SET',
-  PLAY_SENTENCE: 'audio/PLAY_SENTENCE'
+  SET: 'audio/SET'
 };
 
 // Reducer
@@ -27,19 +26,15 @@ const set = (attribute, value) => ({
   type: types.SET,
   payload: { attribute, value }
 });
-const playSentence = () => ({ type: types.PLAY_SENTENCE });
 
 export const actions = {
-  set,
-  playSentence
+  set
 };
 
 // Selectors
 
-const getSrc = state => state.get('src');
 const getIsPlaying = state => state.get('isPlaying');
 
 export const selectors = {
-  getSrc,
   getIsPlaying
 };

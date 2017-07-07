@@ -8,7 +8,7 @@ class App extends Component {
     const Wrapper = styled.div`
       height: 100%;
       width: 100%;
-      background-color: orangered;
+      background-color: pink;
       display: flex;
       justify-content: center;
       align-items: center;

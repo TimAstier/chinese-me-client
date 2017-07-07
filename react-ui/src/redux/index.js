@@ -4,3 +4,4 @@
 export { default as auth } from './auth';
 export { default as routing } from './routing';
 export { default as study } from './study';
+export { default as ui } from './ui';

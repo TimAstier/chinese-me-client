@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import { EpisodeScreen as EpisodeScreenComponent } from '../components';
 import { actions } from '../redux/study';
+import selectors from '../rootSelectors';
 
 class EpisodeScreen extends Component {
 
@@ -26,8 +27,15 @@ EpisodeScreen.propTypes = {
   exit: propTypes.func.isRequired
 };
 
+const mapStateToProps = state => {
+  return {
+    next: selectors.getNextButton(state),
+    skip: selectors.getSkipButton(state)
+  };
+};
+
 export default connect(
-  null,
+  mapStateToProps,
   {
     askQuestion: actions.askQuestion,
     displayEpisodeOverview: actions.displayEpisodeOverview,

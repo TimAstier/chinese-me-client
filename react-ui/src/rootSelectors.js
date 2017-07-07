@@ -6,6 +6,7 @@ import { createSelector } from 'reselect';
 import bindSelectors from './utils/bindSelectors';
 import * as fromEntities from './redux/entities';
 import * as fromStudy from './redux/study';
+import * as fromUi from './redux/ui';
 
 const entitySelectors = bindSelectors(
   state => state.get('entities'),
@@ -15,6 +16,11 @@ const entitySelectors = bindSelectors(
 const studySelectors = bindSelectors(
   state => state.get('study'),
   fromStudy.selectors
+);
+
+const uiSelectors = bindSelectors(
+  state => state.get('ui'),
+  fromUi.selectors
 );
 
 const getCurrentDialog = createSelector(
@@ -93,7 +99,9 @@ const getCurrentAvatars = createSelector(
 const getNextSentenceId = createSelector(
   getCurrentStatement,
   getCurrentSentenceIndex,
-  (statement, i) => statement.sentences[i + 1]
+  (statement, i) => {
+    return statement.sentences[i + 1] ? statement.sentences[i + 1] : undefined;
+  }
 );
 
 const getPreviousSentenceId = createSelector(
@@ -102,9 +110,16 @@ const getPreviousSentenceId = createSelector(
   (statement, i) => statement.sentences[i - 1]
 );
 
+const getNextStatementId = createSelector(
+  getCurrentDialog,
+  getCurrentStatementIndex,
+  (dialog, i) => dialog.statements[i + 1]
+);
+
 const selectors = {
   ...entitySelectors,
   ...studySelectors,
+  ...uiSelectors,
   getCurrentDialog,
   getCurrentStatement,
   getCurrentStatementIndex,
@@ -113,7 +128,8 @@ const selectors = {
   getCurrentSentences,
   getCurrentAvatars,
   getNextSentenceId,
-  getPreviousSentenceId
+  getPreviousSentenceId,
+  getNextStatementId
 };
 
 export default selectors;

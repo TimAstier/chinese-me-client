@@ -30,8 +30,6 @@ class StudyDialog extends Component {
       <EpisodeScreen
         stepsOptions={stepsOptions}
         screenLabel={'Dialog - Explore'}
-        next
-        skip
       >
         <Dialog />
       </EpisodeScreen>

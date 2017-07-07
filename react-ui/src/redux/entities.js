@@ -41,7 +41,7 @@ const fetchFail = error => ({ type: types.FETCH_FAIL, error });
 const received = entities => ({ type: types.RECEIVED, entities });
 const update = (entityName, entityId, attribute, newValue) => {
   return {
-    type: types.update,
+    type: types.UPDATE,
     payload: { entityName, entityId, attribute, newValue }
   };
 };

@@ -136,12 +136,21 @@ class Statement extends Component {
           </LeftChevronWrapper>
           <PlayAudioWrapper>
             <Clickable>
-              <Icon
-                name="video play outline"
-                size="huge"
-                color="teal"
-                onClick={() => this.props.playSentence(this.props.sentences[currentSentenceIndex].id)}
-              />
+              {!this.props.isAudioPlaying ?
+                <Icon
+                  name="video play outline"
+                  size="huge"
+                  color="teal"
+                  onClick={() => this.props.playSentence(this.props.sentences[currentSentenceIndex].id)}
+                />
+                :
+                <Icon
+                  name="pause circle outline"
+                  size="huge"
+                  color="teal"
+                  onClick={() => {}}
+                />
+                }
             </Clickable>
           </PlayAudioWrapper>
           <RightChevronWrapper>
@@ -167,7 +176,8 @@ Statement.propTypes = {
   currentSentenceIndex: propTypes.number.isRequired,
   nextSentence: propTypes.func.isRequired,
   previousSentence: propTypes.func.isRequired,
-  playSentence: propTypes.func.isRequired
+  playSentence: propTypes.func.isRequired,
+  isAudioPlaying: propTypes.bool.isRequired
 };
 
 export default Statement;

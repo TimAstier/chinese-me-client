@@ -1,15 +1,16 @@
-import { Map } from 'immutable';
+import { fromJS } from 'immutable';
 
-// Action types
+// Action Types
 
 export const types = {
-  SET: 'ui/SET'
+  SET: 'audio/SET',
+  PLAY_SENTENCE: 'audio/PLAY_SENTENCE'
 };
 
 // Reducer
-export const INITIAL_STATE = Map({
-  nextButton: true,
-  skipButton: true
+
+export const INITIAL_STATE = fromJS({
+  isPlaying: false
 });
 
 export default function reducer(state = INITIAL_STATE, action = {}) {
@@ -26,17 +27,19 @@ const set = (attribute, value) => ({
   type: types.SET,
   payload: { attribute, value }
 });
+const playSentence = () => ({ type: types.PLAY_SENTENCE });
 
 export const actions = {
-  set
+  set,
+  playSentence
 };
 
 // Selectors
 
-const getNextButton = state => state.get('nextButton');
-const getSkipButton = state => state.get('skipButton');
+const getSrc = state => state.get('src');
+const getIsPlaying = state => state.get('isPlaying');
 
 export const selectors = {
-  getNextButton,
-  getSkipButton
+  getSrc,
+  getIsPlaying
 };

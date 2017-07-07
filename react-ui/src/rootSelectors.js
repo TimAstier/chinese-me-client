@@ -7,6 +7,7 @@ import bindSelectors from './utils/bindSelectors';
 import * as fromEntities from './redux/entities';
 import * as fromStudy from './redux/study';
 import * as fromUi from './redux/ui';
+import * as fromAudio from './redux/audio';
 
 const entitySelectors = bindSelectors(
   state => state.get('entities'),
@@ -21,6 +22,11 @@ const studySelectors = bindSelectors(
 const uiSelectors = bindSelectors(
   state => state.get('ui'),
   fromUi.selectors
+);
+
+const audioSelectors = bindSelectors(
+  state => state.get('audio'),
+  fromAudio.selectors
 );
 
 const getCurrentDialog = createSelector(
@@ -120,6 +126,7 @@ const selectors = {
   ...entitySelectors,
   ...studySelectors,
   ...uiSelectors,
+  ...audioSelectors,
   getCurrentDialog,
   getCurrentStatement,
   getCurrentStatementIndex,

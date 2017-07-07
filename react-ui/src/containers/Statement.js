@@ -26,7 +26,7 @@ Statement.propTypes = {
 
 const mapStateToProps = state => {
   return {
-    isAudioPlaying: selectors.getIsAudioPlaying(state)
+    isAudioPlaying: selectors.getIsPlaying(state)
   };
 };
 

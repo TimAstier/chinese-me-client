@@ -21,6 +21,7 @@ export function *playSound(src) {
   });
 
   sound.play();
+  // TODO: move this into onPlay
   yield put(fromAudio.set('isPlaying', true));
 
   try {

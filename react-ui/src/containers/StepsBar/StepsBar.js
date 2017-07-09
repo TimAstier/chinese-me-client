@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { StepsBar as StepsBarComponent } from '../components';
-import { actions } from '../redux/study';
+import { StepsBar as StepsBarComponent } from '../../components';
+import { actions } from '../../redux/study';
 
 class StepsBar extends Component {
 

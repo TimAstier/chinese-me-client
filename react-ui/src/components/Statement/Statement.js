@@ -174,10 +174,10 @@ class Statement extends Component {
 Statement.propTypes = {
   sentences: propTypes.arrayOf(propTypes.instanceOf(models.Sentence)).isRequired,
   currentSentenceIndex: propTypes.number.isRequired,
+  isAudioPlaying: propTypes.bool.isRequired,
   nextSentence: propTypes.func.isRequired,
   previousSentence: propTypes.func.isRequired,
-  playSentence: propTypes.func.isRequired,
-  isAudioPlaying: propTypes.bool.isRequired
+  playSentence: propTypes.func.isRequired
 };
 
 export default Statement;

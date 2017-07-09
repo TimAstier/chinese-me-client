@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
-import { Statement as StatementComponent } from '../components';
-import selectors from '../rootSelectors';
+import { Statement as StatementComponent } from '../../components';
+import selectors from '../../rootSelectors';
 
-import { actions } from '../redux/study';
+import { actions } from '../../redux/study';
 
 class Statement extends Component {
 
@@ -18,10 +18,10 @@ class Statement extends Component {
 Statement.propTypes = {
   sentences: propTypes.array.isRequired,
   currentSentenceIndex: propTypes.number.isRequired,
+  isAudioPlaying: propTypes.bool.isRequired,
   nextSentence: propTypes.func.isRequired,
   previousSentence: propTypes.func.isRequired,
-  playSentence: propTypes.func.isRequired,
-  isAudioPlaying: propTypes.bool.isRequired
+  playSentence: propTypes.func.isRequired
 };
 
 const mapStateToProps = state => {

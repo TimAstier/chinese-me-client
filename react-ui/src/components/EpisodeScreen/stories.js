@@ -1,37 +1,78 @@
+/* eslint-disable react/jsx-wrap-multilines */
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
 import { EpisodeScreen } from '../.';
+import Provider from '../../utils/Provider';
 
-// Import test data
-import episodeScreenData from '../../test/data/episodeScreen';
+// Mock dispatch functions
+const dispatchFunctions = {
+  askQuestion: () => {},
+  displayEpisodeOverview: () => {},
+  exit: () => {}
+};
+
+const stepsOptions = {
+  currentStep: 1,
+  stepIds: [4, 5, 9, 10]
+};
+
+const progressBarOptions = {
+  type: 'character',
+  currentElement: 2,
+  totalElements: 4
+};
 
 storiesOf('EpisodeScreen', module)
-  .add('empty', () =>
-    <EpisodeScreen />
+  .addDecorator(story => <Provider story={story()} />)
+  .add('without props', () =>
+    <EpisodeScreen
+      {...dispatchFunctions}
+    />
   )
-  .add('with next', () =>
-    <EpisodeScreen next />
+  .add('next', () =>
+    <EpisodeScreen
+      {...dispatchFunctions}
+      next
+    />
   )
-  .add('with skip', () =>
-    <EpisodeScreen skip />
+  .add('skip', () =>
+    <EpisodeScreen
+      {...dispatchFunctions}
+      skip
+    />
   )
-  .add('with progressBar', () =>
-    <EpisodeScreen progressBarOptions={episodeScreenData.progressBarOptions} />
+  .add('skip & next', () =>
+    <EpisodeScreen
+      {...dispatchFunctions}
+      skip
+      next
+    />
   )
-  .add('with screenLabel', () =>
-    <EpisodeScreen screenLabel={'Dialog - Explore'} />
+  .add('progressBar', () =>
+    <EpisodeScreen
+      {...dispatchFunctions}
+      progressBarOptions={progressBarOptions}
+    />
   )
-  .add('with steps', () =>
-    <EpisodeScreen stepsOptions={episodeScreenData.stepsOptions} />
+  .add('screenLabel', () =>
+    <EpisodeScreen
+      {...dispatchFunctions}
+      screenLabel={'Dialog - Explore'}
+    />
   )
-  .add('with everything', () => {
-    return (
-      <EpisodeScreen
-        next
-        skip
-        progressBarOptions={episodeScreenData.progressBarOptions}
-        stepsOptions={episodeScreenData.stepsOptions}
-      />
-    );
-  });
+  .add('stepsOptions', () =>
+    <EpisodeScreen
+      {...dispatchFunctions}
+      stepsOptions={stepsOptions}
+    />
+  )
+  .add('with everything', () =>
+    <EpisodeScreen
+      {...dispatchFunctions}
+      next
+      skip
+      progressBarOptions={progressBarOptions}
+      stepsOptions={stepsOptions}
+    />
+  );

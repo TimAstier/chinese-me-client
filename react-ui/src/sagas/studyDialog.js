@@ -6,6 +6,8 @@ import { actions as fromEntities } from '../redux/entities';
 import { actions as fromUi } from '../redux/ui';
 import { playSound } from './audio';
 
+// TODO: Handle Stop audio action when audio is playing
+
 // Sub-routines
 
 function* playSentence() {

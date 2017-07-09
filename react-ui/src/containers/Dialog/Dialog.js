@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
-import * as models from '../models';
-import { Dialog as DialogComponent } from '../components';
-import selectors from '../rootSelectors';
+import * as models from '../../models';
+import { Dialog as DialogComponent } from '../../components';
+import selectors from '../../rootSelectors';
 
 class Dialog extends Component {
 

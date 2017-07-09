@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { EpisodeScreen as EpisodeScreenComponent } from '../components';
-import { actions } from '../redux/study';
-import selectors from '../rootSelectors';
+import { EpisodeScreen as EpisodeScreenComponent } from '../../components';
+import { actions } from '../../redux/study';
+import selectors from '../../rootSelectors';
 
 class EpisodeScreen extends Component {
 

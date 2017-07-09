@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 
-import { SelectEpisode as SelectEpisodeComponent } from '../components';
-import { actions } from '../redux/entities';
-import selectors from '../rootSelectors';
+import { SelectEpisode as SelectEpisodeComponent } from '../../components';
+import { actions } from '../../redux/entities';
+import selectors from '../../rootSelectors';
 import Immutable from 'immutable';
 
 class SelectEpisodeScreen extends Component {

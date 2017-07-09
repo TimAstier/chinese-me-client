@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 
-import { EpisodeScreen, Dialog } from './';
-import { actions as entitiesActions } from '../redux/entities';
-import { actions as studyActions } from '../redux/study';
-import selectors from '../rootSelectors';
-import * as models from '../models';
+import { EpisodeScreen, Dialog } from '../.';
+import { actions as entitiesActions } from '../../redux/entities';
+import { actions as studyActions } from '../../redux/study';
+import selectors from '../../rootSelectors';
+import * as models from '../../models';
 
 class StudyDialog extends Component {
   componentWillMount() {

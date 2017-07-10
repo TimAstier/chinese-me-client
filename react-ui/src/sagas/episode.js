@@ -1,7 +1,7 @@
 /* eslint-disable no-constant-condition */
 import { takeEvery, put, select, call, race, take, all } from 'redux-saga/effects';
 import { types as studyTypes} from '../redux/study';
-import { types as sagaTypes } from './actions';
+import { types as sagaTypes, actions as fromSaga } from './actions';
 import { push } from 'react-router-redux';
 import { actions as studyActions } from '../redux/study';
 import { actions as entitiesActions } from '../redux/entities';
@@ -18,6 +18,7 @@ function* initDialog() {
   yield put(studyActions.setCurrentStatementId(currentDialog.statements[0]));
   const currentStatement = yield select(selectors.getCurrentStatement);
   yield put(studyActions.setCurrentSentenceId(currentStatement.sentences[0]));
+  yield put(fromSaga.playSentence());
 }
 
 function* playEpisode(action) {

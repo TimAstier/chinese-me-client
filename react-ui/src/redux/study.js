@@ -9,6 +9,7 @@ export const types = {
   NEXT_SENTENCE: 'study/NEXT_SENTENCE',
   PREVIOUS_SENTENCE: 'study/PREVIOUS_SENTENCE',
   PLAY_SENTENCE: 'study/PLAY_SENTENCE',
+  STOP_SENTENCE: 'study/STOP_SENTENCE',
   SWITCH_STATEMENT: 'study/SWITCH_STATEMENT',
   ASK_QUESTION: 'study/ASK_QUESTION',
   DISPLAY_EPISODE_OVERVIEW: 'study/DISPLAY_EPISODE_OVERVIEW',
@@ -45,6 +46,7 @@ const skip = () => ({ type: types.SKIP });
 const nextSentence = () => ({ type: types.NEXT_SENTENCE });
 const previousSentence = () => ({ type: types.PREVIOUS_SENTENCE });
 const playSentence = () => ({ type: types.PLAY_SENTENCE });
+const stopSentence = () => ({ type: types.STOP_SENTENCE });
 const switchStatement = (statementId) => {
   return {
     type: types.SWITCH_STATEMENT,
@@ -62,6 +64,7 @@ export const actions = {
   nextSentence,
   previousSentence,
   playSentence,
+  stopSentence,
   switchStatement,
   askQuestion,
   displayEpisodeOverview,

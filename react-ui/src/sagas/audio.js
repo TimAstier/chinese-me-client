@@ -1,4 +1,4 @@
-import { take, put } from 'redux-saga/effects';
+import { take, put, cancelled } from 'redux-saga/effects';
 import { eventChannel, END } from 'redux-saga';
 import { actions as fromAudio } from '../redux/audio';
 import howler from 'howler';
@@ -21,7 +21,6 @@ export function *playSound(src) {
   });
 
   sound.play();
-  // TODO: move this into onPlay
   yield put(fromAudio.set('isPlaying', true));
 
   try {
@@ -29,7 +28,10 @@ export function *playSound(src) {
       yield take(channel); // The loop breaks via the END in the channel
     }
   } finally {
-    // Audio is done playing
+    // Audio is done playing OR playSound was cancelled
+    if (yield cancelled()) {
+      sound.unload();
+    }
     yield put(fromAudio.set('isPlaying', false));
   }
 }

@@ -21,7 +21,8 @@ Statement.propTypes = {
   isAudioPlaying: propTypes.bool.isRequired,
   nextSentence: propTypes.func.isRequired,
   previousSentence: propTypes.func.isRequired,
-  playSentence: propTypes.func.isRequired
+  playSentence: propTypes.func.isRequired,
+  stopSentence: propTypes.func.isRequired
 };
 
 const mapStateToProps = state => {
@@ -35,6 +36,7 @@ export default connect(
   {
     nextSentence: actions.nextSentence,
     previousSentence: actions.previousSentence,
-    playSentence: actions.playSentence
+    playSentence: actions.playSentence,
+    stopSentence: actions.stopSentence
   }
 )(Statement);

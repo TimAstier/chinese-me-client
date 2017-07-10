@@ -141,14 +141,14 @@ class Statement extends Component {
                   name="video play outline"
                   size="huge"
                   color="teal"
-                  onClick={() => this.props.playSentence(this.props.sentences[currentSentenceIndex].id)}
+                  onClick={() => this.props.playSentence()}
                 />
                 :
                 <Icon
-                  name="pause circle outline"
+                  name="stop circle outline"
                   size="huge"
                   color="teal"
-                  onClick={() => {}}
+                  onClick={() => this.props.stopSentence()}
                 />
                 }
             </Clickable>
@@ -177,7 +177,8 @@ Statement.propTypes = {
   isAudioPlaying: propTypes.bool.isRequired,
   nextSentence: propTypes.func.isRequired,
   previousSentence: propTypes.func.isRequired,
-  playSentence: propTypes.func.isRequired
+  playSentence: propTypes.func.isRequired,
+  stopSentence: propTypes.func.isRequired
 };
 
 export default Statement;

@@ -1,4 +1,5 @@
-import { takeEvery, select, put, all, call } from 'redux-saga/effects';
+import { takeEvery, select, put, all, call, takeLatest, race, take }
+  from 'redux-saga/effects';
 import { types } from '../redux/study';
 import selectors from '../rootSelectors';
 import { actions as fromStudy } from '../redux/study';
@@ -17,30 +18,37 @@ function* playSentence() {
   // Animate and update avatar mood
   const statement = yield select(selectors.getCurrentStatement);
   const sentence = yield select(selectors.getCurrentSentence);
-  yield put(fromEntities.update('avatars', String(statement.avatarId), 'mood', sentence.mood));
-  yield put(fromEntities.update('avatars', String(statement.avatarId), 'isTalking', true));
 
-  // Find sound of currentSentence and play it
-  const src = [sentence.audioUrl];
-  yield call(playSound, src);
+  try {
+    yield put(fromEntities.update('avatars', String(statement.avatarId), 'mood', sentence.mood));
+    yield put(fromEntities.update('avatars', String(statement.avatarId), 'isTalking', true));
 
-  // Once the sound ends, stop avatar animation and display next button
-  yield put(fromEntities.update('avatars', String(statement.avatarId), 'isTalking', false));
-  yield put(fromUi.set('nextButton', true));
+    // Find sound of currentSentence and play it
+    const src = [sentence.audioUrl];
+    yield race({ // Allow stopping sound via "End" button
+      task: call(playSound, src),
+      cancel: take(types.STOP_SENTENCE)
+    });
+  } finally {
+    // Once the sound ends OR is cancelled,
+    // stop avatar animation and display next button
+    yield put(fromEntities.update('avatars', String(statement.avatarId), 'isTalking', false));
+    yield put(fromUi.set('nextButton', true));
+  }
 }
 
 function* nextSentence() {
   // Go to next Sentence
   const nextSentenceId = yield select(selectors.getNextSentenceId);
   yield put(fromStudy.set('currentSentenceId', nextSentenceId));
-  yield call(playSentence);
+  yield put(fromStudy.playSentence());
 }
 
 function* previousSentence() {
   // Go to previous Sentence
   const previousSentenceId = yield select(selectors.getPreviousSentenceId);
   yield put(fromStudy.set('currentSentenceId', previousSentenceId));
-  yield call(playSentence);
+  yield put(fromStudy.playSentence());
 }
 
 function* nextStatement() {
@@ -48,14 +56,14 @@ function* nextStatement() {
   yield put(fromStudy.set('currentStatementId', nextStatementId));
   const statement = yield select(selectors.getCurrentStatement);
   yield put(fromStudy.set('currentSentenceId', statement.sentences[0]));
-  yield call(playSentence);
+  yield put(fromStudy.playSentence());
 }
 
 function* switchStatement(action) {
   yield put(fromStudy.set('currentStatementId', action.payload.id));
   const statement = yield select(selectors.getCurrentStatement);
   yield put(fromStudy.set('currentSentenceId', statement.sentences[0]));
-  yield call(playSentence);
+  yield put(fromStudy.playSentence());
 }
 
 function* next() {
@@ -74,6 +82,6 @@ export default function* studyDialog() {
     takeEvery(types.PREVIOUS_SENTENCE, previousSentence),
     takeEvery(types.SWITCH_STATEMENT, switchStatement),
     takeEvery(types.NEXT, next),
-    takeEvery(types.PLAY_SENTENCE, playSentence)
+    takeLatest(types.PLAY_SENTENCE, playSentence)
   ]);
 }

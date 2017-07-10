@@ -4,6 +4,9 @@ import { storiesOf } from '@storybook/react';
 import { EpisodeCard } from '../.';
 import Episode from '../../models/Episode';
 
+// Mock dispatchProp
+const startEpisode = id => id;
+
 const episodeA = new Episode({
   number: 1,
   title: '你好',
@@ -40,8 +43,8 @@ const episodeE = new Episode({
 });
 
 storiesOf('EpisodeCard', module)
-  .add('locked', () => <EpisodeCard episode={episodeA} />)
-  .add('new', () => <EpisodeCard episode={episodeB} />)
-  .add('passed: score(1)', () => <EpisodeCard episode={episodeC} />)
-  .add('passed: score(2)', () => <EpisodeCard episode={episodeD} />)
-  .add('passed: score(3)', () => <EpisodeCard episode={episodeE} />);
+  .add('locked', () => <EpisodeCard episode={episodeA} startEpisode={startEpisode}/>)
+  .add('new', () => <EpisodeCard episode={episodeB} startEpisode={startEpisode}/>)
+  .add('passed: score(1)', () => <EpisodeCard episode={episodeC} startEpisode={startEpisode}/>)
+  .add('passed: score(2)', () => <EpisodeCard episode={episodeD} startEpisode={startEpisode}/>)
+  .add('passed: score(3)', () => <EpisodeCard episode={episodeE} startEpisode={startEpisode}/>);

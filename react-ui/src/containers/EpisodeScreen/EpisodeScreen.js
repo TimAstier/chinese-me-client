@@ -3,7 +3,7 @@ import propTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { EpisodeScreen as EpisodeScreenComponent } from '../../components';
-import { actions } from '../../redux/study';
+import { actions } from '../../sagas/actions';
 import selectors from '../../rootSelectors';
 
 class EpisodeScreen extends Component {

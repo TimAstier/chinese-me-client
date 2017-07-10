@@ -51,6 +51,12 @@ const getCurrentStatementIndex = createSelector(
   }
 );
 
+const getCurrentEpisode = createSelector(
+  entitySelectors.getEpisodes,
+  studySelectors.getCurrentEpisodeId,
+  (episodes, id) => episodes.get(String(id))
+);
+
 const getCurrentStatement = createSelector(
   entitySelectors.getStatements,
   studySelectors.getCurrentStatementId,
@@ -119,7 +125,7 @@ const getPreviousSentenceId = createSelector(
 const getNextStatementId = createSelector(
   getCurrentDialog,
   getCurrentStatementIndex,
-  (dialog, i) => dialog.statements[i + 1]
+  (dialog, i) => dialog.statements[i + 1] ? dialog.statements[i + 1] : undefined
 );
 
 const selectors = {
@@ -127,6 +133,7 @@ const selectors = {
   ...studySelectors,
   ...uiSelectors,
   ...audioSelectors,
+  getCurrentEpisode,
   getCurrentDialog,
   getCurrentStatement,
   getCurrentStatementIndex,

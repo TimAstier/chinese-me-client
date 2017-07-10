@@ -5,7 +5,8 @@ const EpisodeRecord = Immutable.Record({
   title: '',
   number: null,
   status: '',
-  score: null
+  score: null,
+  dialogs: []
 });
 
 class Episode extends EpisodeRecord {}

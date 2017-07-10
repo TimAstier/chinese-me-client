@@ -4,7 +4,7 @@ import propTypes from 'prop-types';
 import { Statement as StatementComponent } from '../../components';
 import selectors from '../../rootSelectors';
 
-import { actions } from '../../redux/study';
+import { actions } from '../../sagas/actions';
 
 class Statement extends Component {
 

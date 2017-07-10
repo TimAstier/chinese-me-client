@@ -4,13 +4,14 @@ import { Route } from 'react-router';
 // import requireAuth from './utils/requireAuth';
 import { App, SelectEpisode, StudyDialog } from './containers';
 
-// How to redirect from action creators:
-// import { browserHistory } from 'react-router';
-// browserHistory.push('/URL');
+// How to redirect by dispatching actions:
+// import { push } from 'react-router-redux';
 
+// push(endpoint); <- In a component's method
+// yield put(push('/dialog/' + action.payload.episodeId)); <- in a saga
 export default (
   <Route path="/" component={App}>
     <Route path="select" component={SelectEpisode} />
-    <Route path="dialog/:id" component={StudyDialog} />
+    <Route path="dialog" component={StudyDialog} />
   </Route>
 );

@@ -1,6 +1,7 @@
 import { takeEvery, select, put, all, call, takeLatest, race, take }
   from 'redux-saga/effects';
-import { types } from '../redux/study';
+import { types as studyTypes } from '../redux/study';
+import { types as sagaTypes, actions as fromSaga } from './actions';
 import selectors from '../rootSelectors';
 import { actions as fromStudy } from '../redux/study';
 import { actions as fromEntities } from '../redux/entities';
@@ -20,19 +21,22 @@ function* playSentence() {
   const sentence = yield select(selectors.getCurrentSentence);
 
   try {
-    yield put(fromEntities.update('avatars', String(statement.avatarId), 'mood', sentence.mood));
-    yield put(fromEntities.update('avatars', String(statement.avatarId), 'isTalking', true));
+    yield put(fromEntities
+      .update('avatars', String(statement.avatarId), 'mood', sentence.mood));
+    yield put(fromEntities
+      .update('avatars', String(statement.avatarId), 'isTalking', true));
 
     // Find sound of currentSentence and play it
     const src = [sentence.audioUrl];
     yield race({ // Allow stopping sound via "End" button
       task: call(playSound, src),
-      cancel: take(types.STOP_SENTENCE)
+      cancel: take(sagaTypes.STOP_SENTENCE)
     });
   } finally {
     // Once the sound ends OR is cancelled,
     // stop avatar animation and display next button
-    yield put(fromEntities.update('avatars', String(statement.avatarId), 'isTalking', false));
+    yield put(fromEntities
+      .update('avatars', String(statement.avatarId), 'isTalking', false));
     yield put(fromUi.set('nextButton', true));
   }
 }
@@ -40,30 +44,33 @@ function* playSentence() {
 function* nextSentence() {
   // Go to next Sentence
   const nextSentenceId = yield select(selectors.getNextSentenceId);
-  yield put(fromStudy.set('currentSentenceId', nextSentenceId));
-  yield put(fromStudy.playSentence());
+  yield put(fromStudy.setCurrentSentenceId(nextSentenceId));
+  yield put(fromSaga.playSentence());
 }
 
 function* previousSentence() {
   // Go to previous Sentence
   const previousSentenceId = yield select(selectors.getPreviousSentenceId);
-  yield put(fromStudy.set('currentSentenceId', previousSentenceId));
-  yield put(fromStudy.playSentence());
+  yield put(fromStudy.setCurrentSentenceId(previousSentenceId));
+  yield put(fromSaga.playSentence());
 }
 
 function* nextStatement() {
   const nextStatementId = yield select(selectors.getNextStatementId);
-  yield put(fromStudy.set('currentStatementId', nextStatementId));
-  const statement = yield select(selectors.getCurrentStatement);
-  yield put(fromStudy.set('currentSentenceId', statement.sentences[0]));
-  yield put(fromStudy.playSentence());
+  if (nextStatementId === undefined) {
+    yield put(fromSaga.endDialog());
+  } else {
+    yield put(fromStudy.setCurrentStatementId(nextStatementId));
+    const statement = yield select(selectors.getCurrentStatement);
+    yield put(fromStudy.setCurrentSentenceId(statement.sentences[0]));
+    yield put(fromSaga.playSentence());
+  }
 }
 
-function* switchStatement(action) {
-  yield put(fromStudy.set('currentStatementId', action.payload.id));
+function* switchStatement() {
   const statement = yield select(selectors.getCurrentStatement);
-  yield put(fromStudy.set('currentSentenceId', statement.sentences[0]));
-  yield put(fromStudy.playSentence());
+  yield put(fromStudy.setCurrentSentenceId(statement.sentences[0]));
+  yield put(fromSaga.playSentence());
 }
 
 function* next() {
@@ -76,12 +83,12 @@ function* next() {
 
 // Export watchers
 
-export default function* studyDialog() {
+export default function* watchStudyDialogSagas() {
   yield all([
-    takeEvery(types.NEXT_SENTENCE, nextSentence),
-    takeEvery(types.PREVIOUS_SENTENCE, previousSentence),
-    takeEvery(types.SWITCH_STATEMENT, switchStatement),
-    takeEvery(types.NEXT, next),
-    takeLatest(types.PLAY_SENTENCE, playSentence)
+    takeEvery(sagaTypes.NEXT_SENTENCE, nextSentence),
+    takeEvery(sagaTypes.PREVIOUS_SENTENCE, previousSentence),
+    takeEvery(studyTypes.SWITCH_STATEMENT, switchStatement),
+    takeEvery(sagaTypes.NEXT, next),
+    takeLatest(sagaTypes.PLAY_SENTENCE, playSentence)
   ]);
 }

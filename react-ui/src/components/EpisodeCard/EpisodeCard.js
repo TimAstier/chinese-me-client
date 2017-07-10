@@ -65,7 +65,7 @@ class EpisodeCard extends Component {
   }
 
   render() {
-    const { number, title, status, score } = this.props.episode;
+    const { number, title, status, score, id } = this.props.episode;
 
     const Title = styled.h1`
       font-family: 'Open Sans';
@@ -92,7 +92,7 @@ class EpisodeCard extends Component {
     }
 
     return (
-      <NormalWrapper>
+      <NormalWrapper onClick={() => this.props.startEpisode(id)}>
         <EpisodeNumber>Episode {number}</EpisodeNumber>
         <Title>{title}</Title>
         {this.renderStatus(status, score)}
@@ -102,7 +102,8 @@ class EpisodeCard extends Component {
 }
 
 EpisodeCard.propTypes = {
-  episode: propTypes.instanceOf(Episode).isRequired
+  episode: propTypes.instanceOf(Episode).isRequired,
+  startEpisode: propTypes.func.isRequired
 };
 
 export default EpisodeCard;

@@ -3,17 +3,12 @@ import Immutable from 'immutable';
 // Action Types
 
 export const types = {
-  SET: 'study/SET',
-  NEXT: 'study/NEXT',
-  SKIP: 'study/SKIP',
-  NEXT_SENTENCE: 'study/NEXT_SENTENCE',
-  PREVIOUS_SENTENCE: 'study/PREVIOUS_SENTENCE',
-  PLAY_SENTENCE: 'study/PLAY_SENTENCE',
-  STOP_SENTENCE: 'study/STOP_SENTENCE',
+  SET_CURRENT_EPISODE_ID: 'study/SET_CURRENT_EPISODE_ID',
+  SET_CURRENT_DIALOG_ID: 'study/SET_CURRENT_DIALOG_ID',
+  SET_CURRENT_STATEMENT_ID: 'study/SET_CURRENT_STATEMENT_ID',
+  SET_CURRENT_SENTENCE_ID: 'study/SET_CURRENT_SENTENCE_ID',
+  START_EPISODE: 'study/START_EPISODE',
   SWITCH_STATEMENT: 'study/SWITCH_STATEMENT',
-  ASK_QUESTION: 'study/ASK_QUESTION',
-  DISPLAY_EPISODE_OVERVIEW: 'study/DISPLAY_EPISODE_OVERVIEW',
-  EXIT: 'study/EXIT'
 };
 
 // Reducers
@@ -27,48 +22,68 @@ export const INITIAL_STATE = Immutable.Map({
 
 export default function reducer(state = INITIAL_STATE, action = {}) {
   switch (action.type) {
-    case types.SET:
-      return state.set(action.payload.attribute, action.payload.id);
+    case types.SET_CURRENT_EPISODE_ID:
+    case types.START_EPISODE:
+      return state.set('currentEpisodeId', action.payload.id);
+    case types.SET_CURRENT_DIALOG_ID:
+      return state.set('currentDialogId', action.payload.id);
+    case types.SET_CURRENT_STATEMENT_ID:
+      return state.set('currentStatementId', action.payload.id);
+    case types.SET_CURRENT_SENTENCE_ID:
+      return state.set('currentSentenceId', action.payload.id);
+    case types.SWITCH_STATEMENT:
+      return state.set('currentStatementId', action.payload.id);
     default: return state;
   }
 }
 
 // Action Creators
 
-const set = (attribute, id) => {
+const setCurrentEpisodeId = id => {
   return {
-    type: types.SET,
-    payload: { attribute, id }
+    type: types.SET_CURRENT_EPISODE_ID,
+    payload: { id }
   };
 };
-const next = () => ({ type: types.NEXT });
-const skip = () => ({ type: types.SKIP });
-const nextSentence = () => ({ type: types.NEXT_SENTENCE });
-const previousSentence = () => ({ type: types.PREVIOUS_SENTENCE });
-const playSentence = () => ({ type: types.PLAY_SENTENCE });
-const stopSentence = () => ({ type: types.STOP_SENTENCE });
-const switchStatement = (statementId) => {
+
+const setCurrentDialogId = id => {
   return {
-    type: types.SWITCH_STATEMENT,
-    payload: { id: statementId }
+    type: types.SET_CURRENT_DIALOG_ID,
+    payload: { id }
   };
 };
-const askQuestion = () => ({ type: types.ASK_QUESTION });
-const displayEpisodeOverview = () => ({ type: types.DISPLAY_EPISODE_OVERVIEW });
-const exit = () => ({ type: types.EXIT });
+
+const setCurrentStatementId = id => {
+  return {
+    type: types.SET_CURRENT_STATEMENT_ID,
+    payload: { id }
+  };
+};
+
+const setCurrentSentenceId = id => {
+  return {
+    type: types.SET_CURRENT_SENTENCE_ID,
+    payload: { id }
+  };
+};
+
+const startEpisode = id => ({
+  type: types.START_EPISODE,
+  payload: { id }
+});
+
+const switchStatement = (statementId) => ({
+  type: types.SWITCH_STATEMENT,
+  payload: { id: statementId }
+});
 
 export const actions = {
-  set,
-  next,
-  skip,
-  nextSentence,
-  previousSentence,
-  playSentence,
-  stopSentence,
-  switchStatement,
-  askQuestion,
-  displayEpisodeOverview,
-  exit
+  setCurrentEpisodeId,
+  setCurrentDialogId,
+  setCurrentStatementId,
+  setCurrentSentenceId,
+  startEpisode,
+  switchStatement
 };
 
 // Selectors

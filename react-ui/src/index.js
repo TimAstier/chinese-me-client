@@ -4,7 +4,7 @@ import { createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import { Provider } from 'react-redux';
 import { Router, browserHistory } from 'react-router';
-import { syncHistoryWithStore } from 'react-router-redux';
+import { syncHistoryWithStore, routerMiddleware } from 'react-router-redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 import { Map } from 'immutable';
@@ -24,7 +24,8 @@ const store = createStore(
   initialState,
   composeWithDevTools(
     applyMiddleware(thunk),
-    applyMiddleware(sagaMiddleware)
+    applyMiddleware(sagaMiddleware),
+    applyMiddleware(routerMiddleware(browserHistory))
   )
 );
 

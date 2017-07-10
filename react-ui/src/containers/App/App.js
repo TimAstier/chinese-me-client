@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
+import { actions } from '../../sagas/actions';
 
 class App extends Component {
+  componentWillMount() {
+    return this.props.init();
+  }
 
   render() {
     const Wrapper = styled.div`
@@ -23,7 +28,13 @@ class App extends Component {
 
 App.propTypes = {
   children: propTypes.object,
-  location: propTypes.object.isRequired
+  location: propTypes.object.isRequired,
+  init: propTypes.func.isRequired
 };
 
-export default App;
+export default connect(
+  null,
+  {
+    init: actions.init
+  }
+)(App);

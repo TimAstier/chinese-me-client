@@ -40,7 +40,8 @@ const threeSentences = [
 const dispatchFunctions = {
   nextSentence: () => {},
   previousSentence: () => {},
-  playSentence: () => {}
+  playSentence: () => {},
+  stopSentence: id => id
 };
 
 storiesOf('Statement', module)

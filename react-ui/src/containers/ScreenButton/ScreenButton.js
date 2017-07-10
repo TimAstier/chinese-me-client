@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import { ScreenButton as ScreenButtonComponent } from '../../components';
 import { connect } from 'react-redux';
-import { actions } from '../../redux/study';
+import { actions } from '../../sagas/actions';
 
 class ScreenButton extends Component {
 

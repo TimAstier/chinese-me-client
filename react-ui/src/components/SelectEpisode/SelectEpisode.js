@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { ScreenWrapper, EpisodeCard } from '../.';
+import { ScreenWrapper } from '../.';
+import { EpisodeCard } from '../../containers';
 import * as models from '../../models';
 
 const TitleWrapper = styled.div`
@@ -48,8 +49,6 @@ class SelectEpisode extends Component {
     );
   }
 }
-
-// BUG: Can't validate proptypes with model names (work with any model)
 
 SelectEpisode.propTypes = {
   episodes: propTypes.instanceOf(models.EpisodeMap).isRequired,

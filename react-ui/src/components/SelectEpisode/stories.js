@@ -5,6 +5,7 @@ import { SelectEpisode } from '../.';
 import EpisodeMap from '../../models/EpisodeMap';
 import { fromJS } from 'immutable';
 import Episode from '../../models/Episode';
+import Provider from '../../utils/Provider';
 
 const entities = [{
   number: 1,
@@ -113,6 +114,7 @@ const episodes = fromJS(entities)
   .toOrderedMap();
 
 storiesOf('SelectEpisode', module)
+  .addDecorator(story => <Provider story={story()}/>)
   .add('without episodes', () =>
     <SelectEpisode episodes={new EpisodeMap()} title={'Season 1'} />
   )

@@ -8,3 +8,4 @@ export { default as Statement } from './Statement/Statement';
 export { default as StepsBar } from './StepsBar/StepsBar';
 export { default as StudyDialog } from './StudyDialog/StudyDialog';
 export { default as SelectEpisode } from './SelectEpisode/SelectEpisode';
+export { default as Title } from './Title/Title';

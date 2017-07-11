@@ -9,7 +9,9 @@ export const types = {
   SET_CURRENT_SENTENCE_ID: 'study/SET_CURRENT_SENTENCE_ID',
   START_EPISODE: 'study/START_EPISODE',
   SWITCH_STATEMENT: 'study/SWITCH_STATEMENT',
-  SET_DIALOG_MODE: 'study/SET_DIALOG_MODE'
+  SET_DIALOG_MODE: 'study/SET_DIALOG_MODE',
+  SET_TITLE: 'study/SET_TITLE',
+  SET_PART_NUMBER: 'study/SET_PART_NUMBER'
 };
 
 // Reducers
@@ -19,7 +21,9 @@ export const INITIAL_STATE = Immutable.Map({
   currentDialogId: null,
   currentStatementId: null,
   currentSentenceId: null,
-  dialogMode: ''
+  dialogMode: '',
+  title: '',
+  partNumber: null
 });
 
 export default function reducer(state = INITIAL_STATE, action = {}) {
@@ -36,6 +40,10 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
       return state.set('currentSentenceId', action.payload.id);
     case types.SET_DIALOG_MODE:
       return state.set('dialogMode', action.payload.mode);
+    case types.SET_TITLE:
+      return state.set('title', action.payload.title);
+    case types.SET_PART_NUMBER:
+      return state.set('partNumber', action.payload.partNumber);
     default: return state;
   }
 }
@@ -80,10 +88,33 @@ const switchStatement = statementId => ({
   payload: { id: statementId }
 });
 
-// 'listen', 'explore', 'rolePlay'
-const setDialogMode = mode => ({
-  type: types.SET_DIALOG_MODE,
-  payload: { mode }
+const setDialogMode = mode => {
+  const modes = ['listen', 'explore', 'rolePlay'];
+  if (modes.findIndex(e => e === mode) === -1) {
+    console.log('Unknown dialog mode'); // eslint-disable-line no-console
+    return {};
+  }
+  return {
+    type: types.SET_DIALOG_MODE,
+    payload: { mode }
+  };
+};
+
+const setTitle = title => {
+  const titles = ['Characters', 'Grammar', 'Dialog', 'Review', 'Final Test'];
+  if (titles.findIndex(e => e === title) === -1) {
+    console.log('Unknown title'); // eslint-disable-line no-console
+    return {};
+  }
+  return {
+    type: types.SET_TITLE,
+    payload: { title }
+  };
+};
+
+const setPartNumber = partNumber => ({
+  type: types.SET_PART_NUMBER,
+  payload: { partNumber }
 });
 
 export const actions = {
@@ -93,7 +124,9 @@ export const actions = {
   setCurrentSentenceId,
   startEpisode,
   switchStatement,
-  setDialogMode
+  setDialogMode,
+  setTitle,
+  setPartNumber
 };
 
 // Selectors
@@ -103,11 +136,15 @@ const getCurrentDialogId = state => state.get('currentDialogId');
 const getCurrentStatementId = state => state.get('currentStatementId');
 const getCurrentSentenceId = state => state.get('currentSentenceId');
 const getDialogMode = state => state.get('dialogMode');
+const getTitle = state => state.get('title');
+const getPartNumber = state => state.get('partNumber');
 
 export const selectors = {
   getCurrentEpisodeId,
   getCurrentDialogId,
   getCurrentStatementId,
   getCurrentSentenceId,
-  getDialogMode
+  getDialogMode,
+  getTitle,
+  getPartNumber
 };

@@ -22,11 +22,21 @@ function* initDialog() {
   yield put(fromStudy.setCurrentStatementId(currentDialog.statements[0]));
   const currentStatement = yield select(selectors.getCurrentStatement);
   yield put(fromStudy.setCurrentSentenceId(currentStatement.sentences[0]));
+  yield put(fromUi.set('skipButton', true));
 }
 
 export function* playDialogs(episodeId) {
+  // Display Title
+  yield put(fromUi.set('skipButton', false));
+  yield put(fromUi.set('nextButton', false));
+  yield put(fromStudy.setTitle('Dialog'));
+  yield put(fromStudy.setPartNumber(3));
+  yield put(push('/title'));
   // Fetch dialogs data
-  yield call(fetchEntities, '/episode/' + episodeId + '/dialogs');
+  yield all([
+    call(fetchEntities, '/episode/' + episodeId + '/dialogs'),
+    delay(3000) // Data is loaded during title screen
+  ]);
   // TODO: handle fetch error
   yield call(playDialog); // TODO: for i = 0 to dialogs.length
 }

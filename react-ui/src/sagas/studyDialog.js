@@ -28,8 +28,7 @@ export function* playDialogs(episodeId) {
   // Fetch dialogs data
   yield call(fetchEntities, '/episode/' + episodeId + '/dialogs');
   // TODO: handle fetch error
-  // yield call(playDialog); // TODO: for i = 0 to dialogs.length
-  yield call(playDialog);
+  yield call(playDialog); // TODO: for i = 0 to dialogs.length
 }
 
 function* playDialog() {
@@ -37,7 +36,10 @@ function* playDialog() {
   // Push route on router to mount studyDialog container
   yield put(push('/dialog'));
   // Listen mode
-  yield call(listenDialog);
+  yield race({
+    listenDialog: call(listenDialog),
+    skip: take(sagaTypes.SKIP)
+  });
   yield call(initDialog); // Restart from the beginning
   // Explore mode
   yield put(fromStudy.setDialogMode('explore'));
@@ -46,6 +48,7 @@ function* playDialog() {
     end: take(sagaTypes.END_DIALOG),
     skip: take(sagaTypes.SKIP)
   });
+  yield put(fromUi.set('nextButton', false));
   // TODO: Listen, Explore, Role play
 }
 

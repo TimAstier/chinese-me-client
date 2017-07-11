@@ -1,5 +1,5 @@
 /* eslint-disable no-constant-condition */
-import { takeEvery, put, call, all } from 'redux-saga/effects';
+import { takeEvery, put, call, all, race, take } from 'redux-saga/effects';
 import { types as studyTypes} from '../redux/study';
 import { types as sagaTypes } from './actions';
 import { actions as entitiesActions } from '../redux/entities';
@@ -10,7 +10,10 @@ function* playEpisode(action) {
   try {
     // playCharacters
     // playGrammars
-    yield call(playDialogs, action.payload.id);
+    yield race({
+      playDialogs: call(playDialogs, action.payload.id),
+      exit: take(sagaTypes.EXIT)
+    });
     // playReview
     // playFinalTest
   } finally {

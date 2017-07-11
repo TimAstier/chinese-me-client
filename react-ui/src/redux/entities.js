@@ -28,6 +28,9 @@ export default function createNamedEntityReducer(reducerName, EntityModel, Entit
       case types.UPDATE:
         const { entityName, entityId, attribute, newValue } = action.payload;
         if (reducerName !== entityName) { return state; }
+        if (!state.get(entityId)) {
+          return state;
+        }
         return state.update(entityId, entity => entity.set(attribute, newValue));
       case types.CLEAR:
         return INITIAL_STATE;

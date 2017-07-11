@@ -22,12 +22,14 @@ Statement.propTypes = {
   nextSentence: propTypes.func.isRequired,
   previousSentence: propTypes.func.isRequired,
   playSentence: propTypes.func.isRequired,
-  stopSentence: propTypes.func.isRequired
+  stopSentence: propTypes.func.isRequired,
+  displayControls: propTypes.bool.isRequired
 };
 
 const mapStateToProps = state => {
   return {
-    isAudioPlaying: selectors.getIsPlaying(state)
+    isAudioPlaying: selectors.getIsPlaying(state),
+    displayControls: selectors.getDialogMode(state) === 'explore'
   };
 };
 

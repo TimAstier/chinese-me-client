@@ -9,6 +9,7 @@ export const types = {
   SET_CURRENT_SENTENCE_ID: 'study/SET_CURRENT_SENTENCE_ID',
   START_EPISODE: 'study/START_EPISODE',
   SWITCH_STATEMENT: 'study/SWITCH_STATEMENT',
+  SET_DIALOG_MODE: 'study/SET_DIALOG_MODE'
 };
 
 // Reducers
@@ -17,7 +18,8 @@ export const INITIAL_STATE = Immutable.Map({
   currentEpisodeId: null,
   currentDialogId: null,
   currentStatementId: null,
-  currentSentenceId: null
+  currentSentenceId: null,
+  dialogMode: ''
 });
 
 export default function reducer(state = INITIAL_STATE, action = {}) {
@@ -28,11 +30,12 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
     case types.SET_CURRENT_DIALOG_ID:
       return state.set('currentDialogId', action.payload.id);
     case types.SET_CURRENT_STATEMENT_ID:
+    case types.SWITCH_STATEMENT:
       return state.set('currentStatementId', action.payload.id);
     case types.SET_CURRENT_SENTENCE_ID:
       return state.set('currentSentenceId', action.payload.id);
-    case types.SWITCH_STATEMENT:
-      return state.set('currentStatementId', action.payload.id);
+    case types.SET_DIALOG_MODE:
+      return state.set('dialogMode', action.payload.mode);
     default: return state;
   }
 }
@@ -72,9 +75,15 @@ const startEpisode = id => ({
   payload: { id }
 });
 
-const switchStatement = (statementId) => ({
+const switchStatement = statementId => ({
   type: types.SWITCH_STATEMENT,
   payload: { id: statementId }
+});
+
+// 'listen', 'explore', 'rolePlay'
+const setDialogMode = mode => ({
+  type: types.SET_DIALOG_MODE,
+  payload: { mode }
 });
 
 export const actions = {
@@ -83,7 +92,8 @@ export const actions = {
   setCurrentStatementId,
   setCurrentSentenceId,
   startEpisode,
-  switchStatement
+  switchStatement,
+  setDialogMode
 };
 
 // Selectors
@@ -92,10 +102,12 @@ const getCurrentEpisodeId = state => state.get('currentEpisodeId');
 const getCurrentDialogId = state => state.get('currentDialogId');
 const getCurrentStatementId = state => state.get('currentStatementId');
 const getCurrentSentenceId = state => state.get('currentSentenceId');
+const getDialogMode = state => state.get('dialogMode');
 
 export const selectors = {
   getCurrentEpisodeId,
   getCurrentDialogId,
   getCurrentStatementId,
-  getCurrentSentenceId
+  getCurrentSentenceId,
+  getDialogMode
 };

@@ -16,7 +16,7 @@ class StudyDialog extends Component {
     return (
       <EpisodeScreen
         stepsOptions={stepsOptions}
-        screenLabel={'Dialog - Explore'}
+        screenLabel={'Dialog - ' + this.props.dialogMode}
       >
         <Dialog />
       </EpisodeScreen>
@@ -28,7 +28,8 @@ const mapStateToProps = state => {
   return {
     dialog: selectors.getCurrentDialog(state),
     statement: selectors.getCurrentStatement(state),
-    currentStatementIndex: selectors.getCurrentStatementIndex(state)
+    currentStatementIndex: selectors.getCurrentStatementIndex(state),
+    dialogMode: selectors.getDialogMode(state)
   };
 };
 
@@ -36,6 +37,7 @@ StudyDialog.propTypes = {
   dialog: propTypes.instanceOf(models.Dialog),
   statement: propTypes.instanceOf(models.Statement),
   currentStatementIndex: propTypes.number,
+  dialogMode: propTypes.string.isRequired
 };
 
 export default connect(

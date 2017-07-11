@@ -1,25 +1,10 @@
 /* eslint-disable no-constant-condition */
-import { takeEvery, put, select, call, race, take, all } from 'redux-saga/effects';
+import { takeEvery, put, call, all } from 'redux-saga/effects';
 import { types as studyTypes} from '../redux/study';
-import { types as sagaTypes, actions as fromSaga } from './actions';
-import { push } from 'react-router-redux';
-import { actions as studyActions } from '../redux/study';
+import { types as sagaTypes } from './actions';
 import { actions as entitiesActions } from '../redux/entities';
-import selectors from '../rootSelectors';
-import { fetchEntities } from './entities';
 import { init } from '../rootSaga';
-
-// Init sagas
-
-function* initDialog() {
-  const currentEpisode = yield select(selectors.getCurrentEpisode);
-  yield put(studyActions.setCurrentDialogId(currentEpisode.dialogs[0]));
-  const currentDialog = yield select(selectors.getCurrentDialog);
-  yield put(studyActions.setCurrentStatementId(currentDialog.statements[0]));
-  const currentStatement = yield select(selectors.getCurrentStatement);
-  yield put(studyActions.setCurrentSentenceId(currentStatement.sentences[0]));
-  yield put(fromSaga.playSentence());
-}
+import { playDialogs } from './studyDialog';
 
 function* playEpisode(action) {
   try {
@@ -31,24 +16,6 @@ function* playEpisode(action) {
   } finally {
     yield call(exitEpisode);
   }
-}
-
-function* playDialogs(episodeId) {
-  // Fetch dialogs data
-  yield call(fetchEntities, '/episode/' + episodeId + '/dialogs');
-  // TODO: handle fetch error
-  yield call(playDialog); // TODO: for i = 0 to dialogs.length
-}
-
-function* playDialog() {
-  yield call(initDialog);
-  // Push route on router to mount studyDialog container
-  yield put(push('/dialog'));
-  yield race({
-    end: take(sagaTypes.END_DIALOG),
-    skip: take(sagaTypes.SKIP)
-  });
-  // TODO: Listen, Explore, Role play
 }
 
 function* exitEpisode() {

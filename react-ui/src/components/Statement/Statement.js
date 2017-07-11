@@ -109,63 +109,69 @@ const renderL1 = (sentences, currentSentenceIndex) => {
 };
 
 class Statement extends Component {
+  renderControls() {
+    return (
+      <ControlWrapper>
+        <LeftChevronWrapper>
+          {this.props.currentSentenceIndex > 0 &&
+            <Clickable>
+              <Icon
+                name="chevron left"
+                size="big"
+                color="teal"
+                onClick={this.props.previousSentence}
+              />
+            </Clickable>
+          }
+        </LeftChevronWrapper>
+        <PlayAudioWrapper>
+          <Clickable>
+            {!this.props.isAudioPlaying ?
+              <Icon
+                name="video play outline"
+                size="huge"
+                color="teal"
+                onClick={() => this.props.playSentence()}
+              />
+              :
+              <Icon
+                name="stop circle outline"
+                size="huge"
+                color="teal"
+                onClick={() => this.props.stopSentence()}
+              />
+            }
+          </Clickable>
+        </PlayAudioWrapper>
+        <RightChevronWrapper>
+          {this.props.currentSentenceIndex < this.props.sentences.length - 1 &&
+            <Clickable>
+              <Icon
+                name="chevron right"
+                size="big"
+                color="teal"
+                onClick={this.props.nextSentence}
+              />
+            </Clickable>
+          }
+        </RightChevronWrapper>
+      </ControlWrapper>
+    );
+  }
 
   render() {
-    const { sentences, currentSentenceIndex } = this.props;
-
     return (
       <Wrapper>
         <ChineseWrapper>
-          {renderChinese(sentences, currentSentenceIndex)}
+          {renderChinese(this.props.sentences, this.props.currentSentenceIndex)}
         </ChineseWrapper>
         <L1Wrapper>
-          {renderL1(sentences, currentSentenceIndex)}
+          {renderL1(this.props.sentences, this.props.currentSentenceIndex)}
         </L1Wrapper>
-        <ControlWrapper>
-          <LeftChevronWrapper>
-            {currentSentenceIndex > 0 &&
-              <Clickable>
-                <Icon
-                  name="chevron left"
-                  size="big"
-                  color="teal"
-                  onClick={this.props.previousSentence}
-                />
-              </Clickable>
-            }
-          </LeftChevronWrapper>
-          <PlayAudioWrapper>
-            <Clickable>
-              {!this.props.isAudioPlaying ?
-                <Icon
-                  name="video play outline"
-                  size="huge"
-                  color="teal"
-                  onClick={() => this.props.playSentence()}
-                />
-                :
-                <Icon
-                  name="stop circle outline"
-                  size="huge"
-                  color="teal"
-                  onClick={() => this.props.stopSentence()}
-                />
-                }
-            </Clickable>
-          </PlayAudioWrapper>
-          <RightChevronWrapper>
-            {currentSentenceIndex < sentences.length - 1 &&
-              <Clickable>
-                <Icon
-                  name="chevron right"
-                  size="big"
-                  color="teal"
-                  onClick={this.props.nextSentence}
-                />
-              </Clickable>
-            }
-          </RightChevronWrapper>
-        </ControlWrapper>
+        { this.props.displayControls
+          ? this.renderControls()
+            : <ControlWrapper/>
+        }
       </Wrapper>
     );
   }
@@ -178,7 +184,8 @@ Statement.propTypes = {
   nextSentence: propTypes.func.isRequired,
   previousSentence: propTypes.func.isRequired,
   playSentence: propTypes.func.isRequired,
-  stopSentence: propTypes.func.isRequired
+  stopSentence: propTypes.func.isRequired,
+  displayControls: propTypes.bool.isRequired
 };
 
 export default Statement;

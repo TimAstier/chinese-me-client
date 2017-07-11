@@ -6,7 +6,8 @@ import * as models from '../../models';
 
 const bouncy = keyframes`
   0% { transform: scale(1.0); }
-  50% { transform: scale(1.1); }
+  25% { transform: scale(1.1); }
+  75% { transform: scale(0.9); }
   100% { transform: scale(1); }
 `;
 
@@ -19,7 +20,7 @@ class Avatar extends Component {
     const Wrapper = styled.div`
       width: 80px;
       height: 80px;
-      animation: ${isTalking ? bouncy : 'none'} 1500ms ease-in-out 0ms infinite;
+      animation: ${isTalking ? bouncy : 'none'} 1200ms linear 0ms infinite;
       margin-right: 5px;
       margin-left: 5px;
     `;

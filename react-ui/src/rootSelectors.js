@@ -128,6 +128,18 @@ const getNextStatementId = createSelector(
   (dialog, i) => dialog.statements[i + 1] ? dialog.statements[i + 1] : undefined
 );
 
+const getSentencesCountInCurrentDialog = createSelector(
+  getCurrentDialog,
+  entitySelectors.getStatements,
+  (dialog, statements) => {
+    let count = 0;
+    dialog.statements.forEach(statementId => {
+      count = count + statements.get(String(statementId)).sentences.length;
+    });
+    return count;
+  }
+);
+
 const selectors = {
   ...entitySelectors,
   ...studySelectors,
@@ -143,7 +155,8 @@ const selectors = {
   getCurrentAvatars,
   getNextSentenceId,
   getPreviousSentenceId,
-  getNextStatementId
+  getNextStatementId,
+  getSentencesCountInCurrentDialog
 };
 
 export default selectors;

@@ -8,7 +8,7 @@ export const types = {
 
 // Reducer
 export const INITIAL_STATE = Map({
-  nextButton: true,
+  nextButton: false,
   skipButton: true
 });
 

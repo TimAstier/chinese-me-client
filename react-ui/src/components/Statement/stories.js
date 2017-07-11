@@ -52,6 +52,7 @@ storiesOf('Statement', module)
       currentSentenceIndex={0}
       isAudioPlaying
       { ...dispatchFunctions }
+      displayControls
     />
   )
   .add('singleSentence', () =>
@@ -60,6 +61,7 @@ storiesOf('Statement', module)
       currentSentenceIndex={0}
       isAudioPlaying={false}
       { ...dispatchFunctions }
+      displayControls
     />
   )
   .add('twoSentences: active[0]', () =>
@@ -68,6 +70,7 @@ storiesOf('Statement', module)
       currentSentenceIndex={0}
       { ...dispatchFunctions }
       isAudioPlaying={false}
+      displayControls
     />
   )
   .add('twoSentences: active[1]', () =>
@@ -76,6 +79,7 @@ storiesOf('Statement', module)
       currentSentenceIndex={1}
       { ...dispatchFunctions }
       isAudioPlaying={false}
+      displayControls
     />
   )
   .add('threeSentences: active[0]', () =>
@@ -84,6 +88,7 @@ storiesOf('Statement', module)
       currentSentenceIndex={0}
       { ...dispatchFunctions }
       isAudioPlaying={false}
+      displayControls
     />
   )
   .add('threeSentences: active[1]', () =>
@@ -92,6 +97,7 @@ storiesOf('Statement', module)
       currentSentenceIndex={1}
       { ...dispatchFunctions }
       isAudioPlaying={false}
+      displayControls
     />
   )
   .add('threeSentences: active[2]', () =>
@@ -100,5 +106,14 @@ storiesOf('Statement', module)
       currentSentenceIndex={2}
       { ...dispatchFunctions }
       isAudioPlaying={false}
+      displayControls
+    />
+  ).add('displayControls: false', () =>
+    <Statement
+      sentences={threeSentences}
+      currentSentenceIndex={2}
+      { ...dispatchFunctions }
+      isAudioPlaying={false}
+      displayControls={false}
     />
   );

@@ -10,7 +10,8 @@ class StudyDialog extends Component {
   render() {
     const stepsOptions = {
       currentStep: this.props.currentStatementIndex,
-      stepIds: this.props.dialog ? this.props.dialog.statements : []
+      stepIds: this.props.dialog ? this.props.dialog.statements : [],
+      clickable: this.props.dialogMode === 'explore'
     };
 
     return (

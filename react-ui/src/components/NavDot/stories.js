@@ -10,10 +10,19 @@ storiesOf('NavDot', module)
       id={1}
       switchStatement={() => {}}
       completed
+      clickable
     />
   ).add('completed: false', () =>
     <NavDot
       id={1}
       switchStatement={() => {}}
+      clickable
+    />
+  )
+  .add('clickable: false', () =>
+    <NavDot
+      id={1}
+      switchStatement={() => {}}
+      clickable={false}
     />
   );

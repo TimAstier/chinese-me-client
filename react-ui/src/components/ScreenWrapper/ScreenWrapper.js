@@ -6,8 +6,8 @@ class ScreenWrapper extends Component {
 
   render() {
     const Wrapper = styled.div`
-      width: 1200px;
-      height: 777px;
+      width: 1100px;
+      height: 700px;
       border-radius: 15px;
       background-color: #ffffff;
     	box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.1);

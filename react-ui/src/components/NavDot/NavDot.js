@@ -16,19 +16,22 @@ class NavDot extends Component {
       margin-right: 3px;
       margin-left: 3px;
     `;
-
-    return (
-      <Clickable>
-        <Dot onClick={() => this.props.switchStatement(this.props.id)}/>
-      </Clickable>
-    );
+    if (this.props.clickable) {
+      return (
+        <Clickable>
+          <Dot onClick={() => this.props.switchStatement(this.props.id)}/>
+        </Clickable>
+      );
+    }
+    return <Dot />;
   }
 }
 
 NavDot.propTypes = {
   completed: propTypes.bool,
   id: propTypes.number.isRequired,
-  switchStatement: propTypes.func.isRequired
+  switchStatement: propTypes.func.isRequired,
+  clickable: propTypes.bool
 };
 
 export default NavDot;

@@ -19,6 +19,7 @@ class StepsBar extends Component {
           key={i}
           id={stepIds[i]}
           switchStatement={this.props.switchStatement}
+          clickable={this.props.clickable}
         />);
     }
     return <Wrapper>{navDots}</Wrapper>;
@@ -28,7 +29,8 @@ class StepsBar extends Component {
 StepsBar.propTypes = {
   currentStep: propTypes.number.isRequired,
   stepIds: propTypes.arrayOf(propTypes.number).isRequired,
-  switchStatement: propTypes.func.isRequired
+  switchStatement: propTypes.func.isRequired,
+  clickable: propTypes.bool.isRequired
 };
 
 export default StepsBar;

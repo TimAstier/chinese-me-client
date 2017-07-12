@@ -139,7 +139,10 @@ class EpisodeScreen extends Component {
         <BottomWrapper>
           <BottomLeftWrapper>
             {skip &&
-              <ScreenButton text="Skip" />
+              <ScreenButton
+                text="Skip"
+                action="skip"
+              />
             }
           </BottomLeftWrapper>
           <BottomMiddleWrapper>
@@ -152,6 +155,7 @@ class EpisodeScreen extends Component {
               <ScreenButton
                 text="Next"
                 primary
+                action="next"
               />
             }
           </BottomRightWrapper>

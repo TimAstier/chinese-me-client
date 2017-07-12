@@ -4,6 +4,8 @@
 
 export { default as Avatar } from './Avatar';
 export { default as AvatarMap } from './AvatarMap';
+export { default as Character } from './Character';
+export { default as CharacterMap } from './CharacterMap';
 export { default as Dialog } from './Dialog';
 export { default as DialogMap } from './DialogMap';
 export { default as Episode } from './Episode';

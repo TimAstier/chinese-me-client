@@ -1,5 +1,6 @@
 // Keep in alphabetical order
 export { default as Avatar } from './Avatar/Avatar';
+export { default as CharacterPinyin } from './CharacterPinyin/CharacterPinyin';
 export { default as Dialog } from './Dialog/Dialog';
 export { default as EpisodeCard } from './EpisodeCard/EpisodeCard';
 export { default as EpisodeScreen } from './EpisodeScreen/EpisodeScreen';

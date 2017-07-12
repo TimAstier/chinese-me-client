@@ -7,12 +7,23 @@ import { actions } from '../../sagas/actions';
 class ScreenButton extends Component {
 
   render() {
-    const onClick = this.props.primary ? this.props.next : this.props.skip;
+    const mapActionToOnClick = submitAction => {
+      if (this.props.disabled) {
+        return () => {};
+      }
+      switch (submitAction) {
+        case 'next': return this.props.next;
+        case 'skip': return this.props.skip;
+        default: return () => {};
+      }
+    };
+
     return (
       <ScreenButtonComponent
         text={this.props.text}
+        onClick={mapActionToOnClick(this.props.action)}
         primary={this.props.primary}
-        onClick={onClick}
+        disabled={this.props.disabled}
       />
     );
   }
@@ -21,6 +32,8 @@ class ScreenButton extends Component {
 ScreenButton.propTypes = {
   text: propTypes.string.isRequired,
   primary: propTypes.bool,
+  disabled: propTypes.bool,
+  action: propTypes.oneOf(['next', 'skip']),
   next: propTypes.func.isRequired,
   skip: propTypes.func.isRequired
 };

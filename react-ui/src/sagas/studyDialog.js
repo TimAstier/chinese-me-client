@@ -106,6 +106,9 @@ function* playSentence(mode = 'explore') {
       task: call(playSound, src, muted),
       cancel: take(sagaTypes.STOP_SENTENCE)
     });
+    if (mode === 'rolePlay' && muted === true) {
+      yield delay(1000); // Give more time to the user to read the sentence
+    }
   } finally {
     // Once the sound ends OR is cancelled,
     // stop avatar animation and display next button

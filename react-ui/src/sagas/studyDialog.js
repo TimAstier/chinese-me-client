@@ -47,29 +47,36 @@ function* playDialog() {
   yield put(push('/dialog'));
   // Listen mode
   yield race({
-    listenDialog: call(listenDialog),
+    listen: call(listenDialog, 'listen'),
     skip: take(sagaTypes.SKIP)
   });
   yield call(initDialog); // Restart from the beginning
   // Explore mode
   yield put(fromStudy.setDialogMode('explore'));
+  yield put(fromUi.set('nextButton', true));
   yield put(fromSaga.playSentence());
   yield race({
     end: take(sagaTypes.END_DIALOG),
     skip: take(sagaTypes.SKIP)
   });
   yield put(fromUi.set('nextButton', false));
-  // TODO: Listen, Explore, Role play
+  yield call(initDialog); // Restart from the beginning
+  // RolePlay mode
+  yield put(fromStudy.setChosenAvatarId(4)); // TODO: select avatar
+  yield race({
+    rolePlay: call(listenDialog, 'rolePlay'),
+    skip: take(sagaTypes.SKIP)
+  });
 }
 
-export function* listenDialog() {
-  yield put(fromStudy.setDialogMode('listen'));
-  yield call(playSentence, 'listen');
+export function* listenDialog(mode) {
+  yield put(fromStudy.setDialogMode(mode));
+  yield call(playSentence, mode);
   const sentencesCount =
     yield select(selectors.getSentencesCountInCurrentDialog);
   for (let i = 0; i < sentencesCount - 1; i++) {
-    yield delay(500);
-    yield call(next, 'listen');
+    yield delay(500); // Create spaces between audios
+    yield call(next, mode);
   }
   yield put(fromUi.set('nextButton', true));
   yield take(sagaTypes.END_DIALOG);
@@ -88,10 +95,15 @@ function* playSentence(mode = 'explore') {
       .update('avatars', String(statement.avatarId), 'mood', sentence.mood));
     yield put(fromEntities
       .update('avatars', String(statement.avatarId), 'isTalking', true));
+    // Mute sound in Role Play
+    let muted = false;
+    if (mode === 'rolePlay') {
+      muted = yield select(selectors.getIsChosenAvatarTalking);
+    }
     // Find sound of currentSentence and play it
     const src = [sentence.audioUrl];
     yield race({ // Allow stopping sound via "End" button
-      task: call(playSound, src),
+      task: call(playSound, src, muted),
       cancel: take(sagaTypes.STOP_SENTENCE)
     });
   } finally {

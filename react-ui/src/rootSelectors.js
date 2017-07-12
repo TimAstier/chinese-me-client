@@ -140,6 +140,17 @@ const getSentencesCountInCurrentDialog = createSelector(
   }
 );
 
+const getIsChosenAvatarTalking = createSelector(
+  studySelectors.getChosenAvatarId,
+  entitySelectors.getAvatars,
+  (id, avatars) => {
+    if (id && avatars.get(String(id))) {
+      return avatars.get(String(id)).isTalking;
+    }
+    return false;
+  }
+);
+
 const selectors = {
   ...entitySelectors,
   ...studySelectors,
@@ -156,7 +167,8 @@ const selectors = {
   getNextSentenceId,
   getPreviousSentenceId,
   getNextStatementId,
-  getSentencesCountInCurrentDialog
+  getSentencesCountInCurrentDialog,
+  getIsChosenAvatarTalking
 };
 
 export default selectors;

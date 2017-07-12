@@ -29,7 +29,8 @@ const threeSentences = [
 
 const stepsOptions = {
   currentStep: 1,
-  stepIds: [4, 5, 9, 10]
+  stepIds: [4, 5, 9, 10],
+  clickable: true
 };
 
 const avatar1 = new AvatarModel({

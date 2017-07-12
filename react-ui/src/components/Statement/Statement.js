@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import { Icon } from 'semantic-ui-react';
 import propTypes from 'prop-types';
-import styled from 'styled-components';
-
+import styled, { keyframes } from 'styled-components';
 import * as models from '../../models';
 import { Clickable } from '../Shared';
+
+const blinker = keyframes`
+  50% { opacity: 0; }
+`;
 
 const Wrapper = styled.div`
   width: 550px;
@@ -62,6 +65,24 @@ const PlayAudioWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+
+const MessageWrapper = styled.div`
+  flex: 1 0 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+const ReadIconWrapper = styled.div`
+  font-size: 18px;
+  animation: ${blinker} 1s linear infinite;
+`;
+
+const ReadMessageWrapper = styled.div`
+  font-size: 20px;
+  color: blue;
 `;
 
 const Sentence = styled.span`
@@ -159,6 +180,34 @@ class Statement extends Component {
     );
   }
 
+  renderReadMessage() {
+    return (
+      <ControlWrapper>
+        <MessageWrapper>
+          <ReadIconWrapper>
+            <Icon
+              name="volume up"
+              size="big"
+              color="blue"
+            />
+          </ReadIconWrapper>
+          <ReadMessageWrapper>
+            Read the sentence yourself
+          </ReadMessageWrapper>
+        </MessageWrapper>
+      </ControlWrapper>
+    );
+  }
+
+  renderControlWrapper() {
+    if (this.props.displayControls) {
+      return this.renderControls();
+    } else if (this.props.read) {
+      return this.renderReadMessage();
+    }
+    return <ControlWrapper/>;
+  }
+
   render() {
     return (
       <Wrapper>
@@ -168,10 +217,7 @@ class Statement extends Component {
         <L1Wrapper>
           {renderL1(this.props.sentences, this.props.currentSentenceIndex)}
         </L1Wrapper>
-        { this.props.displayControls
-          ? this.renderControls()
-            : <ControlWrapper/>
-        }
+        {this.renderControlWrapper()}
       </Wrapper>
     );
   }
@@ -185,7 +231,8 @@ Statement.propTypes = {
   previousSentence: propTypes.func.isRequired,
   playSentence: propTypes.func.isRequired,
   stopSentence: propTypes.func.isRequired,
-  displayControls: propTypes.bool.isRequired
+  displayControls: propTypes.bool.isRequired,
+  read: propTypes.bool.isRequired
 };
 
 export default Statement;

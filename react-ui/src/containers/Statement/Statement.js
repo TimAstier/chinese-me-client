@@ -23,13 +23,15 @@ Statement.propTypes = {
   previousSentence: propTypes.func.isRequired,
   playSentence: propTypes.func.isRequired,
   stopSentence: propTypes.func.isRequired,
-  displayControls: propTypes.bool.isRequired
+  displayControls: propTypes.bool.isRequired,
+  read: propTypes.bool.isRequired
 };
 
 const mapStateToProps = state => {
   return {
     isAudioPlaying: selectors.getIsPlaying(state),
-    displayControls: selectors.getDialogMode(state) === 'explore'
+    displayControls: selectors.getDialogMode(state) === 'explore',
+    read: selectors.getIsChosenAvatarTalking(state)
   };
 };
 

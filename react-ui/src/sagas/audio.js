@@ -5,9 +5,9 @@ import howler from 'howler';
 
 // Sub-routines
 
-export function *playSound(src) {
+export function *playSound(src, muted) {
   const sound = new howler.Howl({ src });
-
+  sound.mute(muted);
   // Create an event channel
   const channel = eventChannel(emitter => {
     sound.on('end', () => {

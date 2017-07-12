@@ -11,7 +11,8 @@ export const types = {
   SWITCH_STATEMENT: 'study/SWITCH_STATEMENT',
   SET_DIALOG_MODE: 'study/SET_DIALOG_MODE',
   SET_TITLE: 'study/SET_TITLE',
-  SET_PART_NUMBER: 'study/SET_PART_NUMBER'
+  SET_PART_NUMBER: 'study/SET_PART_NUMBER',
+  SET_CHOSEN_AVATAR_ID: 'study/CHOSEN_AVATAR_ID'
 };
 
 // Reducers
@@ -23,7 +24,8 @@ export const INITIAL_STATE = Immutable.Map({
   currentSentenceId: null,
   dialogMode: '',
   title: '',
-  partNumber: null
+  partNumber: null,
+  chosenAvatarId: null
 });
 
 export default function reducer(state = INITIAL_STATE, action = {}) {
@@ -44,6 +46,8 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
       return state.set('title', action.payload.title);
     case types.SET_PART_NUMBER:
       return state.set('partNumber', action.payload.partNumber);
+    case types.SET_CHOSEN_AVATAR_ID:
+      return state.set('chosenAvatarId', action.payload.id);
     default: return state;
   }
 }
@@ -117,6 +121,11 @@ const setPartNumber = partNumber => ({
   payload: { partNumber }
 });
 
+const setChosenAvatarId = id => ({
+  type: types.SET_CHOSEN_AVATAR_ID,
+  payload: { id }
+});
+
 export const actions = {
   setCurrentEpisodeId,
   setCurrentDialogId,
@@ -126,7 +135,8 @@ export const actions = {
   switchStatement,
   setDialogMode,
   setTitle,
-  setPartNumber
+  setPartNumber,
+  setChosenAvatarId
 };
 
 // Selectors
@@ -138,6 +148,7 @@ const getCurrentSentenceId = state => state.get('currentSentenceId');
 const getDialogMode = state => state.get('dialogMode');
 const getTitle = state => state.get('title');
 const getPartNumber = state => state.get('partNumber');
+const getChosenAvatarId = state => state.get('chosenAvatarId');
 
 export const selectors = {
   getCurrentEpisodeId,
@@ -146,5 +157,6 @@ export const selectors = {
   getCurrentSentenceId,
   getDialogMode,
   getTitle,
-  getPartNumber
+  getPartNumber,
+  getChosenAvatarId
 };

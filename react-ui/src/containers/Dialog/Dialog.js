@@ -17,14 +17,16 @@ class Dialog extends Component {
 Dialog.propTypes = {
   sentences: propTypes.arrayOf(propTypes.instanceOf(models.Sentence)).isRequired,
   avatars: propTypes.arrayOf(propTypes.instanceOf(models.Avatar)).isRequired,
-  currentSentenceIndex: propTypes.number.isRequired
+  currentSentenceIndex: propTypes.number.isRequired,
+  chosenAvatarId: propTypes.number.isRequired
 };
 
 const mapStateToProps = state => {
   return {
     avatars: selectors.getCurrentAvatars(state),
     sentences: selectors.getCurrentSentences(state),
-    currentSentenceIndex: selectors.getCurrentSentenceIndex(state)
+    currentSentenceIndex: selectors.getCurrentSentenceIndex(state),
+    chosenAvatarId: selectors.getChosenAvatarId(state) || 0
   };
 };
 

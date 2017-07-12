@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Image } from 'semantic-ui-react';
 import propTypes from 'prop-types';
 import styled, { keyframes } from 'styled-components';
 import * as models from '../../models';
@@ -17,28 +16,25 @@ class Avatar extends Component {
     const isTalking = this.props.avatar.isTalking;
     const image = this.props.avatar[ this.props.avatar.mood + 'Image' ];
 
-    const Wrapper = styled.div`
+    const Image = styled.img`
       width: 80px;
       height: 80px;
       animation: ${isTalking ? bouncy : 'none'} 1200ms linear 0ms infinite;
       margin-right: 5px;
       margin-left: 5px;
+      border-radius: 50%;
+      box-shadow: ${this.props.chosen ? '0 0 0pt 2pt blue' : 'none'}
     `;
 
     return (
-      <Wrapper>
-        <Image
-          src={image}
-          shape="circular"
-          bordered
-        />
-      </Wrapper>
+        <Image src={image} />
     );
   }
 }
 
 Avatar.propTypes = {
-  avatar: propTypes.instanceOf(models.Avatar)
+  avatar: propTypes.instanceOf(models.Avatar),
+  chosen: propTypes.bool
 };
 
 export default Avatar;

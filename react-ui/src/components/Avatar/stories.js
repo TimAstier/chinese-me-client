@@ -22,4 +22,7 @@ storiesOf('Avatar', module)
   )
   .add('isTalking: true', () =>
     <Avatar avatar={avatar2} />
+  )
+  .add('chosen: true', () =>
+    <Avatar avatar={avatar1} chosen/>
   );

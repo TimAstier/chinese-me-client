@@ -77,6 +77,7 @@ storiesOf('Dialog', module)
         avatars= {avatars1}
         sentences={threeSentences}
         currentSentenceIndex={0}
+        chosenAvatarId={0}
       />
     </EpisodeScreen>
   )
@@ -90,6 +91,7 @@ storiesOf('Dialog', module)
         avatars= {avatars1}
         sentences={threeSentences}
         currentSentenceIndex={1}
+        chosenAvatarId={0}
       />
     </EpisodeScreen>
   )
@@ -103,6 +105,7 @@ storiesOf('Dialog', module)
         avatars= {avatars2}
         sentences={threeSentences}
         currentSentenceIndex={0}
+        chosenAvatarId={0}
       />
     </EpisodeScreen>
   )
@@ -116,6 +119,21 @@ storiesOf('Dialog', module)
         avatars= {avatars3}
         sentences={threeSentences}
         currentSentenceIndex={0}
+        chosenAvatarId={0}
+      />
+    </EpisodeScreen>
+  )
+  .add('avatar_1 isChosen', () =>
+    <EpisodeScreen
+      {...dispatchFunctions}
+      stepsOptions={stepsOptions}
+      screenLabel={'Dialog - Explore'}
+    >
+      <Dialog
+        avatars= {avatars3}
+        sentences={threeSentences}
+        currentSentenceIndex={0}
+        chosenAvatarId={1}
       />
     </EpisodeScreen>
   );

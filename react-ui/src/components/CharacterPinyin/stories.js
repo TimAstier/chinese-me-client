@@ -31,32 +31,56 @@ storiesOf('CharacterPinyin', module)
     <EpisodeScreen
       {...dispatchFunctions}
       progressBarOptions={progressBarOptions}
+      skip
     >
       <CharacterPinyin
         character={character}
         status={'question'}
+        attempts={2}
+        openModal={false}
       />
     </EpisodeScreen>
   )
-  .add('status: "typing"', () =>
+  .add('attempts: 2', () =>
     <EpisodeScreen
       {...dispatchFunctions}
       progressBarOptions={progressBarOptions}
+      skip
     >
       <CharacterPinyin
         character={character}
-        status={'typing'}
+        status={'mistake'}
+        attempts={2}
+        openModal
       />
     </EpisodeScreen>
   )
-  .add('status: "showAnswer"', () =>
+  .add('attempts: 1', () =>
     <EpisodeScreen
       {...dispatchFunctions}
       progressBarOptions={progressBarOptions}
+      skip
     >
       <CharacterPinyin
         character={character}
-        status={'showAnswer'}
+        status={'mistake'}
+        attempts={1}
+        openModal
+      />
+    </EpisodeScreen>
+  )
+  .add('status: "wrong"', () =>
+    <EpisodeScreen
+      {...dispatchFunctions}
+      progressBarOptions={progressBarOptions}
+      skip
+      next
+    >
+      <CharacterPinyin
+        character={character}
+        status={'wrong'}
+        attempts={1}
+        openModal={false}
       />
     </EpisodeScreen>
   )
@@ -64,10 +88,14 @@ storiesOf('CharacterPinyin', module)
     <EpisodeScreen
       {...dispatchFunctions}
       progressBarOptions={progressBarOptions}
+      skip
+      next
     >
       <CharacterPinyin
         character={character}
         status={'correct'}
+        attempts={2}
+        openModal={false}
       />
     </EpisodeScreen>
   );

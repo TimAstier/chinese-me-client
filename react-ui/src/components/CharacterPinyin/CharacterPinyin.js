@@ -3,6 +3,7 @@ import propTypes from 'prop-types';
 import styled from 'styled-components';
 import { Character } from '../../models';
 import { ScreenButton } from '../../containers';
+import { Modal } from '../../containers';
 import { Icon } from 'semantic-ui-react';
 
 const Wrapper = styled.div`
@@ -100,14 +101,69 @@ const FeedbackMessageWrapper = styled.div`
   align-items: center;
 `;
 
+const ModalContent = styled.div`
+  text-align: center;
+  background-color: white;
+  color: #454545;
+  height: 260px;
+  display: flex;
+  flex-direction: column;
+`;
+
+const ModalTitle = styled.div`
+  flex: 1 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+	font-family: 'Open Sans';
+	font-size: 30px;
+	color: #454545;
+`;
+
+const ModalMessage = styled.div`
+  flex: 1 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Open Sans';
+	font-size: 25px;
+	color: #454545;
+`;
+
+const ModalControls = styled.div`
+  flex: 2 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 class CharacterPinyin extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      userAnswer: ''
+    };
+  }
+
+  handleChange(event) {
+    return this.setState({ userAnswer: event.target.value });
+  }
 
   renderInputWrapper() {
     switch (this.props.status) {
       case 'question':
-      case 'typing':
-        return <InputWrapper><Input/></InputWrapper>;
-      case 'showAnswer':
+      case 'mistake':
+        return (
+          <InputWrapper>
+            <Input
+              type="text"
+              value={this.state.userAnswer}
+              onChange={this.handleChange.bind(this)}
+              autoFocus
+            />
+          </InputWrapper>
+        );
+      case 'wrong':
       case 'correct':
         return (
           <InputWrapper>
@@ -121,18 +177,17 @@ class CharacterPinyin extends Component {
   renderCheckWrapper() {
     switch (this.props.status) {
       case 'question':
+      case 'mistake':
         return (
           <CheckWrapper>
-            <ScreenButton text="Check" primary disabled />
+            <ScreenButton
+              text="Check"
+              primary
+              disabled = {this.state.userAnswer === '' ? true : undefined}
+            />
           </CheckWrapper>
         );
-      case 'typing':
-        return (
-          <CheckWrapper>
-            <ScreenButton text="Check" primary />
-          </CheckWrapper>
-        );
-      case 'showAnswer':
+      case 'wrong':
         return <CheckWrapper />;
       case 'correct':
         return (
@@ -152,11 +207,25 @@ class CharacterPinyin extends Component {
     }
   }
 
+  renderMessage() {
+    if (this.props.attempts > 1) {
+      return 'You have ' + this.props.attempts + ' attempts lefts';
+    }
+    return 'You have 1 attempt left';
+  }
+
   render() {
     return (
       <Wrapper>
+        <Modal open={this.props.openModal} size="small">
+          <ModalContent>
+            <ModalTitle>Wrong answer</ModalTitle>
+            <ModalMessage>{this.renderMessage()}</ModalMessage>
+            <ModalControls><ScreenButton text="Got it" /></ModalControls>
+          </ModalContent>
+        </Modal>
         <LabelWrapper>
-          Write the pinyin of this character
+          Type the pinyin of this character
         </LabelWrapper>
         <CharacterBoxWrapper>
           <CharacterBox>
@@ -174,10 +243,11 @@ CharacterPinyin.propTypes = {
   character: propTypes.instanceOf(Character).isRequired,
   status: propTypes.oneOf([
     'question',
-    'typing',
-    'showAnswer',
+    'wrong',
     'correct'
-  ]).isRequired
+  ]).isRequired,
+  attempts: propTypes.number.isRequired,
+  openModal: propTypes.bool.isRequired
 };
 
 export default CharacterPinyin;

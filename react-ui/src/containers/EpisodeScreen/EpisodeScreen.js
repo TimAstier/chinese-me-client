@@ -18,7 +18,7 @@ class EpisodeScreen extends Component {
 EpisodeScreen.propTypes = {
   next: propTypes.bool,
   skip: propTypes.bool,
-  progressBarOptions: propTypes.object,
+  progressMenuOptions: propTypes.object,
   stepsOptions: propTypes.object,
   screenLabel: propTypes.string,
   children: propTypes.object,

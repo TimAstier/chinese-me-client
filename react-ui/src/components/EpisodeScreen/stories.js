@@ -17,7 +17,7 @@ const stepsOptions = {
   stepIds: [4, 5, 9, 10]
 };
 
-const progressBarOptions = {
+const progressMenuOptions = {
   type: 'character',
   currentElement: 2,
   totalElements: 4
@@ -49,10 +49,10 @@ storiesOf('EpisodeScreen', module)
       next
     />
   )
-  .add('progressBar', () =>
+  .add('progressMenu', () =>
     <EpisodeScreen
       {...dispatchFunctions}
-      progressBarOptions={progressBarOptions}
+      progressMenuOptions={progressMenuOptions}
     />
   )
   .add('screenLabel', () =>
@@ -67,12 +67,17 @@ storiesOf('EpisodeScreen', module)
       stepsOptions={stepsOptions}
     />
   )
-  .add('with everything', () =>
+  .add('progress & steps', () =>
     <EpisodeScreen
       {...dispatchFunctions}
-      next
-      skip
-      progressBarOptions={progressBarOptions}
+      progressMenuOptions={progressMenuOptions}
+      stepsOptions={stepsOptions}
+    />
+  )
+  .add('title & steps', () =>
+    <EpisodeScreen
+      {...dispatchFunctions}
+      screenLabel={'Dialog - Explore'}
       stepsOptions={stepsOptions}
     />
   );

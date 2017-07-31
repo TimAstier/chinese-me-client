@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
 import { Icon } from 'semantic-ui-react';
-import { ProgressBar, ScreenWrapper } from '../.';
+import { ProgressMenu, ScreenWrapper } from '../.';
 import { ScreenButton, StepsBar } from '../../containers';
 import { Clickable } from '../Shared';
 
@@ -64,6 +64,21 @@ const TopRightWrapper = styled.div`
 const TopMiddleWrapper = styled.div`
   flex: 1 0 0;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+const TopMiddleUpWrapper = styled.div`
+  flex: 1 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const TopMiddleDownWrapper = styled.div`
+  flex: 1 0 0;
+  display: flex;
   justify-content: center;
   align-items: center;
 `;
@@ -77,23 +92,28 @@ const ExitIcon = styled.div`
 class EpisodeScreen extends Component {
 
   renderTopMiddleWrapperContent() {
-    const { progressBarOptions, screenLabel } = this.props;
+    const { progressMenuOptions, screenLabel, stepsOptions } = this.props;
     const Label = styled.span`
       font-family: 'Open Sans';
       font-size: 20px;
       color: #949494;
     `;
-    if (progressBarOptions) {
-      return <ProgressBar {...progressBarOptions} />;
-    } else if (screenLabel) {
-      return <Label>{screenLabel}</Label>;
-    }
-    return null;
+    return (
+      <TopMiddleWrapper>
+        <TopMiddleUpWrapper>
+          {progressMenuOptions && <ProgressMenu {...progressMenuOptions} />}
+          {screenLabel && <Label>{screenLabel}</Label>}
+        </TopMiddleUpWrapper>
+        <TopMiddleDownWrapper>
+          {stepsOptions && <StepsBar {...stepsOptions} />}
+        </TopMiddleDownWrapper>
+      </TopMiddleWrapper>
+    );
   }
 
   render() {
-    const { next, skip, stepsOptions } = this.props;
-    // const { type, currentElement, totalElements } = progressBarOptions;
+    const { next, skip } = this.props;
+    // const { type, currentElement, totalElements } = progressMenuOptions;
     return (
       <ScreenWrapper>
         <TopWrapper>
@@ -111,9 +131,7 @@ class EpisodeScreen extends Component {
               />
             </Clickable>
           </TopLeftWrapper>
-          <TopMiddleWrapper>
-            {this.renderTopMiddleWrapperContent()}
-          </TopMiddleWrapper>
+          {this.renderTopMiddleWrapperContent()}
           <TopRightWrapper>
             <Clickable>
               <Icon
@@ -145,11 +163,7 @@ class EpisodeScreen extends Component {
               />
             }
           </BottomLeftWrapper>
-          <BottomMiddleWrapper>
-            {stepsOptions &&
-              <StepsBar {...stepsOptions} />
-            }
-          </BottomMiddleWrapper>
+          <BottomMiddleWrapper />
           <BottomRightWrapper>
             {next &&
               <ScreenButton
@@ -168,7 +182,7 @@ class EpisodeScreen extends Component {
 EpisodeScreen.propTypes = {
   next: propTypes.bool,
   skip: propTypes.bool,
-  progressBarOptions: propTypes.object,
+  progressMenuOptions: propTypes.object,
   stepsOptions: propTypes.object,
   screenLabel: propTypes.string,
   children: propTypes.object,

@@ -49,6 +49,12 @@ storiesOf('EpisodeScreen', module)
       next
     />
   )
+  .add('playAudio', () =>
+    <EpisodeScreen
+      {...dispatchFunctions}
+      playAudio
+    />
+  )
   .add('progressMenu', () =>
     <EpisodeScreen
       {...dispatchFunctions}

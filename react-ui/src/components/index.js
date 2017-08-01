@@ -7,6 +7,7 @@ export { default as EpisodeScreen } from './EpisodeScreen/EpisodeScreen';
 export { default as Introduction } from './Introduction/Introduction';
 export { default as Modal } from './Modal/Modal';
 export { default as NavDot } from './NavDot/NavDot';
+export { default as PlayAudioButton } from './PlayAudioButton/PlayAudioButton';
 export { default as ProgressMenu } from './ProgressMenu/ProgressMenu';
 export { default as ScreenButton } from './ScreenButton/ScreenButton';
 export { default as ScreenWrapper } from './ScreenWrapper/ScreenWrapper';

@@ -11,7 +11,8 @@ export const types = {
   DISPLAY_EPISODE_OVERVIEW: 'DISPLAY_EPISODE_OVERVIEW',
   EXIT: 'EXIT',
   INIT: 'INIT',
-  END_DIALOG: 'END_DIALOG'
+  END_DIALOG: 'END_DIALOG',
+  PLAY_AUDIO: 'PLAY_AUDIO'
 };
 
 // Action Creators
@@ -27,6 +28,7 @@ const displayEpisodeOverview = () => ({ type: types.DISPLAY_EPISODE_OVERVIEW });
 const exit = () => ({ type: types.EXIT });
 const init = () => ({ type: types.INIT });
 const endDialog = () => ({ type: types.END_DIALOG });
+const playAudio = () => ({ type: types.PLAY_AUDIO });
 
 export const actions = {
   next,
@@ -39,5 +41,6 @@ export const actions = {
   displayEpisodeOverview,
   exit,
   init,
-  endDialog
+  endDialog,
+  playAudio
 };

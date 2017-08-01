@@ -13,6 +13,7 @@ function loadStories() {
   require('../src/components/EpisodeScreen/stories');
   require('../src/components/Introduction/stories');
   require('../src/components/NavDot/stories');
+  require('../src/components/PlayAudioButton/stories');
   require('../src/components/ProgressMenu/stories');
   require('../src/components/ScreenButton/stories');
   require('../src/components/SelectEpisode/stories');

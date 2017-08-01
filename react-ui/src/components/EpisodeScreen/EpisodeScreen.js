@@ -3,7 +3,7 @@ import propTypes from 'prop-types';
 import styled from 'styled-components';
 import { Icon } from 'semantic-ui-react';
 import { ProgressMenu, ScreenWrapper } from '../.';
-import { ScreenButton, StepsBar } from '../../containers';
+import { ScreenButton, StepsBar, PlayAudioButton } from '../../containers';
 import { Clickable } from '../Shared';
 
 // 2nd level wrappers
@@ -91,7 +91,7 @@ const ExitIcon = styled.div`
 
 class EpisodeScreen extends Component {
 
-  renderTopMiddleWrapperContent() {
+  renderTopMiddleWrapper() {
     const { progressMenuOptions, screenLabel, stepsOptions } = this.props;
     const Label = styled.span`
       font-family: 'Open Sans';
@@ -109,6 +109,14 @@ class EpisodeScreen extends Component {
         </TopMiddleDownWrapper>
       </TopMiddleWrapper>
     );
+  }
+
+  renderBottomMiddleWrapper() {
+    const { playAudio } = this.props;
+    if (playAudio) {
+      return <PlayAudioButton />;
+    }
+    return null;
   }
 
   render() {
@@ -131,7 +139,7 @@ class EpisodeScreen extends Component {
               />
             </Clickable>
           </TopLeftWrapper>
-          {this.renderTopMiddleWrapperContent()}
+          {this.renderTopMiddleWrapper()}
           <TopRightWrapper>
             <Clickable>
               <Icon
@@ -163,7 +171,9 @@ class EpisodeScreen extends Component {
               />
             }
           </BottomLeftWrapper>
-          <BottomMiddleWrapper />
+          <BottomMiddleWrapper>
+            {this.renderBottomMiddleWrapper()}
+          </BottomMiddleWrapper>
           <BottomRightWrapper>
             {next &&
               <ScreenButton
@@ -182,6 +192,7 @@ class EpisodeScreen extends Component {
 EpisodeScreen.propTypes = {
   next: propTypes.bool,
   skip: propTypes.bool,
+  playAudio: propTypes.bool,
   progressMenuOptions: propTypes.object,
   stepsOptions: propTypes.object,
   screenLabel: propTypes.string,

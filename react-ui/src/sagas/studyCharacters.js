@@ -1,4 +1,4 @@
-import { put, all, call, race, take, select }
+import { put, all, call, race, take, select, fork }
   from 'redux-saga/effects';
 import { delay } from 'redux-saga';
 import { push } from 'react-router-redux';
@@ -11,6 +11,7 @@ import { actions as fromCharacterPinyin } from '../redux/characterPinyin';
 import { actions as fromSagas } from './actions';
 import { actions as fromAudio } from '../redux/audio';
 import selectors from '../rootSelectors';
+import { playSuccessSound, playWrongSound } from './audio';
 
 // Sub-routines
 
@@ -52,20 +53,22 @@ function* characterPinyin() {
       const userAnswer = yield select(selectors.getCharacterPinyinUserAnswer);
       const expectedAnswer = currentChar.pinyinNumber;
       if (userAnswer === expectedAnswer) {
+        yield fork(playSuccessSound);
         yield put(fromCharacterPinyin.setStatus('correct'));
         yield put(fromUi.set('playAudioButton', false));
         yield delay(2000);
         yield put(fromSagas.next());
       } else {
         if (attemptsLeft !== 0) {
+          yield fork(playWrongSound);
           yield put(fromCharacterPinyin.setUserAnswer(''));
           yield put(fromUi.openModal());
           yield take(uiTypes.CLOSE_MODAL);
           yield put(fromCharacterPinyin.setAttemptsLeft(attemptsLeft - 1));
           attemptsLeft --;
         } else {
+          yield fork(playWrongSound);
           yield put(fromCharacterPinyin.setStatus('wrong'));
-          yield put(fromUi.set('playAudioButton', false));
           yield put(fromUi.set('nextButton', true));
         }
       }

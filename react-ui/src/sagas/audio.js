@@ -1,8 +1,10 @@
-import { take, put, cancelled, select, call, takeLatest } from 'redux-saga/effects';
+import { take, put, cancelled, select, call, takeLatest }
+  from 'redux-saga/effects';
 import { eventChannel, END } from 'redux-saga';
 import { actions as fromAudio } from '../redux/audio';
 import selectors from '../rootSelectors';
 import { types as sagaTypes } from './actions';
+import sounds from '../constants/sounds';
 import howler from 'howler';
 
 // Sub-routines
@@ -41,6 +43,14 @@ export function *playSound(src, muted = false) {
 function* playAudio() {
   const audioUrl = yield select(selectors.getAudioUrl);
   yield call(playSound, [audioUrl]);
+}
+
+export function* playSuccessSound() {
+  yield call(playSound, [sounds.success]);
+}
+
+export function* playWrongSound() {
+  yield call(playSound, [sounds.wrong]);
 }
 
 // Watchers

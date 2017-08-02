@@ -203,9 +203,9 @@ class CharacterPinyin extends Component {
 
   renderMessage() {
     if (this.props.attemptsLeft > 1) {
-      return 'You have ' + this.props.attemptsLeft + ' attempts lefts';
+      return 'You can try ' + this.props.attemptsLeft + ' more times before seeing the answer.';
     }
-    return 'You have 1 attempt left';
+    return 'You have one more try.';
   }
 
   render() {

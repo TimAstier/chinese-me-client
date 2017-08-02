@@ -24,6 +24,6 @@ Modal.propTypes = {
 export default connect(
   null,
   {
-    handleClose: () => actions.set('openModal', false)
+    handleClose: () => actions.closeModal()
   }
 )(Modal);

@@ -54,7 +54,7 @@ function* playDialog() {
   yield put(fromUi.set('nextButton', true));
   yield put(fromSaga.playSentence());
   yield race({
-    end: take(sagaTypes.END_DIALOG),
+    next: take(sagaTypes.NEXT),
     skip: take(sagaTypes.SKIP)
   });
   yield put(fromUi.set('nextButton', false));
@@ -77,7 +77,7 @@ export function* listenDialog(mode) {
     yield call(next, mode);
   }
   yield put(fromUi.set('nextButton', true));
-  yield take(sagaTypes.END_DIALOG);
+  yield take(sagaTypes.NEXT);
 }
 
 function* playSentence(mode = 'explore') {
@@ -173,7 +173,6 @@ export default function* watchStudyDialogSagas() {
     takeEvery(sagaTypes.NEXT_SENTENCE, nextSentence),
     takeEvery(sagaTypes.PREVIOUS_SENTENCE, previousSentence),
     takeEvery(studyTypes.SWITCH_STATEMENT, switchStatement),
-    takeEvery(sagaTypes.NEXT, next),
     takeLatest(sagaTypes.PLAY_SENTENCE, playSentence)
   ]);
 }

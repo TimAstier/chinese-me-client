@@ -22,7 +22,9 @@ class Screen extends Component {
     `;
 
     return (
-      <Button onClick={this.props.onClick}>
+      <Button
+        onClick={this.props.onClick}
+      >
         {text}
       </Button>
     );

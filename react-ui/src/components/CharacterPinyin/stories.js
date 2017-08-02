@@ -32,7 +32,6 @@ storiesOf('CharacterPinyin', module)
       {...dispatchFunctions}
       progressMenuOptions={progressMenuOptions}
       skip
-      playAudio
     >
       <CharacterPinyin
         character={character}
@@ -47,7 +46,6 @@ storiesOf('CharacterPinyin', module)
       {...dispatchFunctions}
       progressMenuOptions={progressMenuOptions}
       skip
-      playAudio
     >
       <CharacterPinyin
         character={character}
@@ -62,7 +60,6 @@ storiesOf('CharacterPinyin', module)
       {...dispatchFunctions}
       progressMenuOptions={progressMenuOptions}
       skip
-      playAudio
     >
       <CharacterPinyin
         character={character}
@@ -78,7 +75,6 @@ storiesOf('CharacterPinyin', module)
       progressMenuOptions={progressMenuOptions}
       skip
       next
-      playAudio
     >
       <CharacterPinyin
         character={character}
@@ -94,7 +90,6 @@ storiesOf('CharacterPinyin', module)
       progressMenuOptions={progressMenuOptions}
       skip
       next
-      playAudio
     >
       <CharacterPinyin
         character={character}

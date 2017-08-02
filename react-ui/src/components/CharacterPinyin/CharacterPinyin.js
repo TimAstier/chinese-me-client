@@ -139,6 +139,9 @@ const ModalControls = styled.div`
 
 class CharacterPinyin extends Component {
 
+  // This way of setting autofocus allow the input to be re-focused
+  // when the modal is close. It uses innerRef instead of ref
+  // to work with styled-components.
   renderInputWrapper() {
     switch (this.props.status) {
       case 'question':
@@ -149,7 +152,7 @@ class CharacterPinyin extends Component {
               type="text"
               value={this.props.userAnswer}
               onChange={this.props.handleChange}
-              autoFocus
+              innerRef={input => input && input.focus()}
             />
           </InputWrapper>
         );
@@ -214,7 +217,8 @@ class CharacterPinyin extends Component {
             <ModalMessage>{this.renderMessage()}</ModalMessage>
             <ModalControls>
               <ScreenButton
-                text="Got it"
+                primary
+                text="Try again"
                 action={'closeModal'}
               />
             </ModalControls>

@@ -5,7 +5,8 @@ import { Map } from 'immutable';
 export const types = {
   SET_STATUS: 'characterPinyin/SET_STATUS',
   SET_ATTEMPTS_LEFT: 'characterPinyin/SET_ATTEMPTS_LEFT',
-  SET_USER_ANSWER: 'characterPinyin/SET_USER_ANSWER'
+  SET_USER_ANSWER: 'characterPinyin/SET_USER_ANSWER',
+  INIT: 'characterPinyin/INIT'
 };
 
 // Reducer
@@ -24,6 +25,8 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
       return state.set('attemptsLeft', action.payload);
     case types.SET_USER_ANSWER:
       return state.set('userAnswer', action.payload);
+    case types.INIT:
+      return INITIAL_STATE;
     default: return state;
   }
 }
@@ -40,17 +43,20 @@ const setAttemptsLeft = number => ({
   payload: number
 });
 
-const setUserAnswer = answer => {
-  return {
-    type: types.SET_USER_ANSWER,
-    payload: answer
-  };
-};
+const setUserAnswer = answer => ({
+  type: types.SET_USER_ANSWER,
+  payload: answer
+});
+
+const init = () => ({
+  type: types.INIT
+});
 
 export const actions = {
   setStatus,
   setAttemptsLeft,
-  setUserAnswer
+  setUserAnswer,
+  init
 };
 
 // Selectors

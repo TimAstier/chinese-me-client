@@ -24,13 +24,15 @@ EpisodeScreen.propTypes = {
   children: propTypes.object,
   askQuestion: propTypes.func.isRequired,
   displayEpisodeOverview: propTypes.func.isRequired,
-  exit: propTypes.func.isRequired
+  exit: propTypes.func.isRequired,
+  playAudio: propTypes.bool
 };
 
 const mapStateToProps = state => {
   return {
     next: selectors.getNextButton(state),
-    skip: selectors.getSkipButton(state)
+    skip: selectors.getSkipButton(state),
+    playAudio: selectors.getPlayAudioButton(state)
   };
 };
 

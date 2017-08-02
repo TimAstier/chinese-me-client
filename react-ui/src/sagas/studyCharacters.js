@@ -1,23 +1,24 @@
-import { put, all, call, takeLatest, race, take, select }
+import { put, all, call, race, take, select }
   from 'redux-saga/effects';
 import { delay } from 'redux-saga';
-// import { types as studyTypes } from '../redux/study';
-import { types as sagaTypes } from './actions';
-// import selectors from '../rootSelectors';
-import { actions as fromStudy } from '../redux/study';
-// import { actions as fromEntities } from '../redux/entities';
-import { actions as fromUi } from '../redux/ui';
-import selectors from '../rootSelectors';
-// import { playSound } from './audio';
 import { push } from 'react-router-redux';
+import { types as sagaTypes } from './actions';
+import { types as uiTypes } from '../redux/ui';
 import { fetchEntities } from './entities';
+import { actions as fromStudy } from '../redux/study';
+import { actions as fromUi } from '../redux/ui';
+import { actions as fromCharacterPinyin } from '../redux/characterPinyin';
+import { actions as fromSagas } from './actions';
+import { actions as fromAudio } from '../redux/audio';
+import selectors from '../rootSelectors';
 
 // Sub-routines
 
-function* initCharacter() {
+function* initCharacter(index) {
   yield put(fromUi.set('skipButton', true));
+  yield put(fromUi.closeModal());
   const currentEpisode = yield select(selectors.getCurrentEpisode);
-  yield put(fromStudy.setCurrentCharacterId(currentEpisode.characters[0]));
+  yield put(fromStudy.setCurrentCharacterId(currentEpisode.characters[index]));
 }
 
 export function* playCharacters(episodeId) {
@@ -33,28 +34,60 @@ export function* playCharacters(episodeId) {
     delay(3000) // Data is loaded during title screen
   ]);
   // TODO: handle fetch error
-  yield call(playCharacter); // TODO: for i = 0 to characters.length
+  const currentEpisode = yield select(selectors.getCurrentEpisode);
+  const charactersCount = currentEpisode.characters.length;
+  for (let i = 0; i < charactersCount; i++) {
+    yield call(playCharacter, [i]);
+  }
 }
 
-function* playCharacter() {
-  yield call(initCharacter);
+function* characterPinyin() {
+  const currentChar = yield select(selectors.getCurrentCharacter);
+  yield put(fromAudio.set('audioUrl', currentChar.audioUrl));
+  while (true) { // eslint-disable-line no-constant-condition
+    let attemptsLeft = yield select(selectors.getCharacterPinyinAttemptsLeft);
+    while (attemptsLeft >= 0) {
+      yield put(fromSagas.playAudio());
+      yield take(sagaTypes.CHECK_ANSWER);
+      const userAnswer = yield select(selectors.getCharacterPinyinUserAnswer);
+      const expectedAnswer = currentChar.pinyinNumber;
+      if (userAnswer === expectedAnswer) {
+        yield put(fromCharacterPinyin.setStatus('correct'));
+        yield put(fromUi.set('playAudioButton', false));
+        yield delay(2000);
+        yield put(fromSagas.next());
+      } else {
+        if (attemptsLeft !== 0) {
+          yield put(fromCharacterPinyin.setUserAnswer(''));
+          yield put(fromUi.openModal());
+          yield take(uiTypes.CLOSE_MODAL);
+          yield put(fromCharacterPinyin.setAttemptsLeft(attemptsLeft - 1));
+          attemptsLeft --;
+        } else {
+          yield put(fromCharacterPinyin.setStatus('wrong'));
+          yield put(fromUi.set('playAudioButton', false));
+          yield put(fromUi.set('nextButton', true));
+        }
+      }
+    }
+  }
+}
+
+function* characterPinyinInit() {
+  yield put(fromUi.set('playAudioButton', true));
+  yield put(fromCharacterPinyin.init());
+}
+
+function* playCharacter(index) {
+  yield call(initCharacter, [index]);
   // Push route on router to mount studyCharacterPinyin container
   yield put(push('/study/character/pinyin'));
+  yield call(characterPinyinInit);
   yield race({
+    characterPinyin: call(characterPinyin),
     next: take(sagaTypes.NEXT),
     skip: take(sagaTypes.SKIP)
   });
-}
-
-export function* playAudio() {
-  yield console.log('play audio');
-}
-
-
-// Export watchers
-
-export default function* watchStudyCharactersSagas() {
-  yield all([
-    takeLatest(sagaTypes.PLAY_AUDIO, playAudio)
-  ]);
+  // TODO: Etymology
+  // TODO: Writing
 }

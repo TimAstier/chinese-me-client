@@ -16,7 +16,6 @@ export const types = {
   DISPLAY_EPISODE_OVERVIEW: 'signal/DISPLAY_EPISODE_OVERVIEW',
   EXIT: 'signal/EXIT',
   INIT: 'signal/INIT',
-  END_DIALOG: 'signal/END_DIALOG',
   PLAY_AUDIO: 'signal/PLAY_AUDIO',
   CHECK_ANSWER: 'signal/CHECK_ANSWER'
 };
@@ -35,10 +34,7 @@ const exit = () => ({ type: types.EXIT });
 const init = () => ({ type: types.INIT });
 const endDialog = () => ({ type: types.END_DIALOG });
 const playAudio = () => ({ type: types.PLAY_AUDIO });
-const checkAnswer = answer => ({
-  type: types.CHECK_ANSWER,
-  payload: answer
-});
+const checkAnswer = () => ({ type: types.CHECK_ANSWER });
 
 export const actions = {
   next,

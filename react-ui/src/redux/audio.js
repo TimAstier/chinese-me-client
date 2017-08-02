@@ -9,7 +9,8 @@ export const types = {
 // Reducer
 
 export const INITIAL_STATE = fromJS({
-  isPlaying: false
+  isPlaying: false,
+  audioUrl: ''
 });
 
 export default function reducer(state = INITIAL_STATE, action = {}) {
@@ -34,7 +35,9 @@ export const actions = {
 // Selectors
 
 const getIsPlaying = state => state.get('isPlaying');
+const getAudioUrl = state => state.get('audioUrl');
 
 export const selectors = {
-  getIsPlaying
+  getIsPlaying,
+  getAudioUrl
 };

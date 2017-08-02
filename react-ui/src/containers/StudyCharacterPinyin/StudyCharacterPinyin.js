@@ -18,7 +18,6 @@ class StudyCharacterPinyin extends Component {
       <EpisodeScreen
         progressMenuOptions={progressMenuOptions}
         skip
-        playAudio
       >
         <CharacterPinyin />
       </EpisodeScreen>

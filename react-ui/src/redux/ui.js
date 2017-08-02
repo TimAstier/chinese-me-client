@@ -12,7 +12,8 @@ export const types = {
 export const INITIAL_STATE = Map({
   nextButton: false,
   skipButton: true,
-  openModal: false
+  openModal: false,
+  playAudioButton: false
 });
 
 export default function reducer(state = INITIAL_STATE, action = {}) {
@@ -48,9 +49,11 @@ export const actions = {
 const getNextButton = state => state.get('nextButton');
 const getSkipButton = state => state.get('skipButton');
 const getOpenModal = state => state.get('openModal');
+const getPlayAudioButton = state => state.get('playAudioButton');
 
 export const selectors = {
   getNextButton,
   getSkipButton,
-  getOpenModal
+  getOpenModal,
+  getPlayAudioButton
 };

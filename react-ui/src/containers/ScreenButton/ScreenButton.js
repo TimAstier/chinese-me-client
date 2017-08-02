@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import { ScreenButton as ScreenButtonComponent } from '../../components';
 import { connect } from 'react-redux';
-import { actions } from '../../sagas/actions';
+import { actions as sagaActions } from '../../sagas/actions';
+import { actions as uiActions } from '../../redux/ui';
 
 class ScreenButton extends Component {
 
@@ -14,6 +15,8 @@ class ScreenButton extends Component {
       switch (submitAction) {
         case 'next': return this.props.next;
         case 'skip': return this.props.skip;
+        case 'closeModal': return this.props.handleCloseModal;
+        case 'checkAnswer': return this.props.checkAnswer;
         default: return () => {};
       }
     };
@@ -33,15 +36,19 @@ ScreenButton.propTypes = {
   text: propTypes.string.isRequired,
   primary: propTypes.bool,
   disabled: propTypes.bool,
-  action: propTypes.oneOf(['next', 'skip']),
+  action: propTypes.oneOf(['next', 'skip', 'closeModal', 'checkAnswer']),
   next: propTypes.func.isRequired,
-  skip: propTypes.func.isRequired
+  skip: propTypes.func.isRequired,
+  handleCloseModal: propTypes.func.isRequired,
+  checkAnswer: propTypes.func.isRequired
 };
 
 export default connect(
   null,
   {
-    next: actions.next,
-    skip: actions.skip
+    next: sagaActions.next,
+    skip: sagaActions.skip,
+    handleCloseModal: uiActions.closeModal,
+    checkAnswer: sagaActions.checkAnswer
   }
 )(ScreenButton);

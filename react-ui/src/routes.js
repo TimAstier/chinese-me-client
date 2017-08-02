@@ -2,7 +2,8 @@ import React from 'react';
 import { Route } from 'react-router';
 // import { IndexRoute } from 'react-router';
 // import requireAuth from './utils/requireAuth';
-import { App, SelectEpisode, StudyDialog, Title } from './containers';
+import { App, SelectEpisode, StudyCharacterPinyin, StudyDialog, Title }
+  from './containers';
 
 // How to redirect by dispatching actions:
 // import { push } from 'react-router-redux';
@@ -12,7 +13,8 @@ import { App, SelectEpisode, StudyDialog, Title } from './containers';
 export default (
   <Route path="/" component={App}>
     <Route path="select" component={SelectEpisode} />
-    <Route path="dialog" component={StudyDialog} />
+    <Route path="study/dialog" component={StudyDialog} />
     <Route path="title" component={Title} />
+    <Route path="study/character/pinyin" component={StudyCharacterPinyin} />
   </Route>
 );

@@ -1,18 +1,24 @@
+// Those actions are signals
+// Unlike delta actions, they do not modify the state
+// They only tell the saga watchers that something happened
+// Signals can be triggered by user actions or inside sagas
+
 // Action Types
 
 export const types = {
-  NEXT: 'NEXT',
-  SKIP: 'SKIP',
-  NEXT_SENTENCE: 'NEXT_SENTENCE',
-  PREVIOUS_SENTENCE: 'PREVIOUS_SENTENCE',
-  PLAY_SENTENCE: 'PLAY_SENTENCE',
-  STOP_SENTENCE: 'STOP_SENTENCE',
-  ASK_QUESTION: 'ASK_QUESTION',
-  DISPLAY_EPISODE_OVERVIEW: 'DISPLAY_EPISODE_OVERVIEW',
-  EXIT: 'EXIT',
-  INIT: 'INIT',
-  END_DIALOG: 'END_DIALOG',
-  PLAY_AUDIO: 'PLAY_AUDIO'
+  NEXT: 'signal/NEXT',
+  SKIP: 'signal/SKIP',
+  NEXT_SENTENCE: 'signal/NEXT_SENTENCE',
+  PREVIOUS_SENTENCE: 'signal/PREVIOUS_SENTENCE',
+  PLAY_SENTENCE: 'signal/PLAY_SENTENCE',
+  STOP_SENTENCE: 'signal/STOP_SENTENCE',
+  ASK_QUESTION: 'signal/ASK_QUESTION',
+  DISPLAY_EPISODE_OVERVIEW: 'signal/DISPLAY_EPISODE_OVERVIEW',
+  EXIT: 'signal/EXIT',
+  INIT: 'signal/INIT',
+  END_DIALOG: 'signal/END_DIALOG',
+  PLAY_AUDIO: 'signal/PLAY_AUDIO',
+  CHECK_ANSWER: 'signal/CHECK_ANSWER'
 };
 
 // Action Creators
@@ -29,6 +35,10 @@ const exit = () => ({ type: types.EXIT });
 const init = () => ({ type: types.INIT });
 const endDialog = () => ({ type: types.END_DIALOG });
 const playAudio = () => ({ type: types.PLAY_AUDIO });
+const checkAnswer = answer => ({
+  type: types.CHECK_ANSWER,
+  payload: answer
+});
 
 export const actions = {
   next,
@@ -42,5 +52,6 @@ export const actions = {
   exit,
   init,
   endDialog,
-  playAudio
+  playAudio,
+  checkAnswer
 };

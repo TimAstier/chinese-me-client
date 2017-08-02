@@ -65,15 +65,17 @@ export const actions = {
 // Selectors
 
 const getAvatars = state => state.get('avatars');
-const getEpisodes = state => state.get('episodes');
+const getCharacters = state => state.get('characters');
 const getDialogs = state => state.get('dialogs');
+const getEpisodes = state => state.get('episodes');
 const getStatements = state => state.get('statements');
 const getSentences = state => state.get('sentences');
 
 export const selectors = {
   getAvatars,
-  getEpisodes,
+  getCharacters,
   getDialogs,
+  getEpisodes,
   getStatements,
   getSentences
 };

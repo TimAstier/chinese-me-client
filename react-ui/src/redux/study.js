@@ -12,7 +12,8 @@ export const types = {
   SET_DIALOG_MODE: 'study/SET_DIALOG_MODE',
   SET_TITLE: 'study/SET_TITLE',
   SET_PART_NUMBER: 'study/SET_PART_NUMBER',
-  SET_CHOSEN_AVATAR_ID: 'study/CHOSEN_AVATAR_ID'
+  SET_CHOSEN_AVATAR_ID: 'study/CHOSEN_AVATAR_ID',
+  SET_CURRENT_CHARACTER_ID: 'study/SET_CURRENT_CHARACTER_ID'
 };
 
 // Reducers
@@ -25,7 +26,8 @@ export const INITIAL_STATE = Immutable.Map({
   dialogMode: '',
   title: '',
   partNumber: null,
-  chosenAvatarId: null
+  chosenAvatarId: null,
+  currentCharacterId: null
 });
 
 export default function reducer(state = INITIAL_STATE, action = {}) {
@@ -48,6 +50,8 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
       return state.set('partNumber', action.payload.partNumber);
     case types.SET_CHOSEN_AVATAR_ID:
       return state.set('chosenAvatarId', action.payload.id);
+    case types.SET_CURRENT_CHARACTER_ID:
+      return state.set('currentCharacterId', action.payload.id);
     default: return state;
   }
 }
@@ -126,6 +130,11 @@ const setChosenAvatarId = id => ({
   payload: { id }
 });
 
+const setCurrentCharacterId = id => ({
+  type: types.SET_CURRENT_CHARACTER_ID,
+  payload: { id }
+});
+
 export const actions = {
   setCurrentEpisodeId,
   setCurrentDialogId,
@@ -136,7 +145,8 @@ export const actions = {
   setDialogMode,
   setTitle,
   setPartNumber,
-  setChosenAvatarId
+  setChosenAvatarId,
+  setCurrentCharacterId
 };
 
 // Selectors
@@ -149,6 +159,7 @@ const getDialogMode = state => state.get('dialogMode');
 const getTitle = state => state.get('title');
 const getPartNumber = state => state.get('partNumber');
 const getChosenAvatarId = state => state.get('chosenAvatarId');
+const getCurrentCharacterId = state => state.get('currentCharacterId');
 
 export const selectors = {
   getCurrentEpisodeId,
@@ -158,5 +169,6 @@ export const selectors = {
   getDialogMode,
   getTitle,
   getPartNumber,
-  getChosenAvatarId
+  getChosenAvatarId,
+  getCurrentCharacterId
 };

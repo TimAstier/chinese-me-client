@@ -11,8 +11,6 @@ import { playSound } from './audio';
 import { push } from 'react-router-redux';
 import { fetchEntities } from './entities';
 
-// TODO: Handle Stop audio action when audio is playing
-
 // Sub-routines
 
 function* initDialog() {
@@ -44,7 +42,7 @@ export function* playDialogs(episodeId) {
 function* playDialog() {
   yield call(initDialog);
   // Push route on router to mount studyDialog container
-  yield put(push('/dialog'));
+  yield put(push('/study/dialog'));
   // Listen mode
   yield race({
     listen: call(listenDialog, 'listen'),

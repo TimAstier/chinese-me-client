@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 import { Modal as ModalComponent } from '../../components';
+import { actions } from '../../redux/ui';
 
 class Modal extends Component {
 
@@ -15,7 +17,13 @@ class Modal extends Component {
 }
 
 Modal.propTypes = {
-  open: propTypes.bool.isRequired
+  open: propTypes.bool.isRequired,
+  handleClose: propTypes.func.isRequired
 };
 
-export default Modal;
+export default connect(
+  null,
+  {
+    handleClose: () => actions.set('openModal', false)
+  }
+)(Modal);

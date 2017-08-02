@@ -15,11 +15,11 @@ const dispatchFunctions = {
 
 const character = new Character({
   id: 1,
-  chinese: '我',
-  pinyin: 'wo3'
+  simpChar: '我',
+  pinyinNumber: 'wo3'
 });
 
-const progressBarOptions = {
+const progressMenuOptions = {
   type: 'character',
   currentElement: 1,
   totalElements: 4
@@ -30,44 +30,44 @@ storiesOf('CharacterPinyin', module)
   .add('status: "question"', () =>
     <EpisodeScreen
       {...dispatchFunctions}
-      progressBarOptions={progressBarOptions}
+      progressMenuOptions={progressMenuOptions}
       skip
       playAudio
     >
       <CharacterPinyin
         character={character}
         status={'question'}
-        attempts={2}
+        attemptsLeft={2}
         openModal={false}
       />
     </EpisodeScreen>
   )
-  .add('attempts: 2', () =>
+  .add('attemptsLeft: 2', () =>
     <EpisodeScreen
       {...dispatchFunctions}
-      progressBarOptions={progressBarOptions}
+      progressMenuOptions={progressMenuOptions}
       skip
       playAudio
     >
       <CharacterPinyin
         character={character}
         status={'mistake'}
-        attempts={2}
+        attemptsLeft={2}
         openModal
       />
     </EpisodeScreen>
   )
-  .add('attempts: 1', () =>
+  .add('attemptsLeft: 1', () =>
     <EpisodeScreen
       {...dispatchFunctions}
-      progressBarOptions={progressBarOptions}
+      progressMenuOptions={progressMenuOptions}
       skip
       playAudio
     >
       <CharacterPinyin
         character={character}
         status={'mistake'}
-        attempts={1}
+        attemptsLeft={1}
         openModal
       />
     </EpisodeScreen>
@@ -75,7 +75,7 @@ storiesOf('CharacterPinyin', module)
   .add('status: "wrong"', () =>
     <EpisodeScreen
       {...dispatchFunctions}
-      progressBarOptions={progressBarOptions}
+      progressMenuOptions={progressMenuOptions}
       skip
       next
       playAudio
@@ -83,7 +83,7 @@ storiesOf('CharacterPinyin', module)
       <CharacterPinyin
         character={character}
         status={'wrong'}
-        attempts={1}
+        attemptsLeft={1}
         openModal={false}
       />
     </EpisodeScreen>
@@ -91,7 +91,7 @@ storiesOf('CharacterPinyin', module)
   .add('status: "correct"', () =>
     <EpisodeScreen
       {...dispatchFunctions}
-      progressBarOptions={progressBarOptions}
+      progressMenuOptions={progressMenuOptions}
       skip
       next
       playAudio
@@ -99,7 +99,7 @@ storiesOf('CharacterPinyin', module)
       <CharacterPinyin
         character={character}
         status={'correct'}
-        attempts={2}
+        attemptsLeft={2}
         openModal={false}
       />
     </EpisodeScreen>

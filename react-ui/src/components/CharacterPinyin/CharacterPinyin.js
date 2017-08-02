@@ -138,16 +138,6 @@ const ModalControls = styled.div`
 `;
 
 class CharacterPinyin extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      userAnswer: ''
-    };
-  }
-
-  handleChange(event) {
-    return this.setState({ userAnswer: event.target.value });
-  }
 
   renderInputWrapper() {
     switch (this.props.status) {
@@ -157,8 +147,8 @@ class CharacterPinyin extends Component {
           <InputWrapper>
             <Input
               type="text"
-              value={this.state.userAnswer}
-              onChange={this.handleChange.bind(this)}
+              value={this.props.userAnswer}
+              onChange={this.props.handleChange}
               autoFocus
             />
           </InputWrapper>
@@ -167,7 +157,7 @@ class CharacterPinyin extends Component {
       case 'correct':
         return (
           <InputWrapper>
-            <Answer>{this.props.character.pinyin}</Answer>
+            <Answer>{this.props.character.pinyinNumber}</Answer>
           </InputWrapper>
         );
       default: return null;
@@ -183,7 +173,8 @@ class CharacterPinyin extends Component {
             <ScreenButton
               text="Check"
               primary
-              disabled = {this.state.userAnswer === '' ? true : undefined}
+              action={'checkAnswer'}
+              disabled = {this.props.userAnswer === '' ? true : undefined}
             />
           </CheckWrapper>
         );
@@ -208,8 +199,8 @@ class CharacterPinyin extends Component {
   }
 
   renderMessage() {
-    if (this.props.attempts > 1) {
-      return 'You have ' + this.props.attempts + ' attempts lefts';
+    if (this.props.attemptsLeft > 1) {
+      return 'You have ' + this.props.attemptsLeft + ' attempts lefts';
     }
     return 'You have 1 attempt left';
   }
@@ -221,7 +212,12 @@ class CharacterPinyin extends Component {
           <ModalContent>
             <ModalTitle>Wrong answer</ModalTitle>
             <ModalMessage>{this.renderMessage()}</ModalMessage>
-            <ModalControls><ScreenButton text="Got it" /></ModalControls>
+            <ModalControls>
+              <ScreenButton
+                text="Got it"
+                action={'closeModal'}
+              />
+            </ModalControls>
           </ModalContent>
         </Modal>
         <LabelWrapper>
@@ -229,7 +225,7 @@ class CharacterPinyin extends Component {
         </LabelWrapper>
         <CharacterBoxWrapper>
           <CharacterBox>
-            {this.props.character.chinese}
+            {this.props.character.simpChar}
           </CharacterBox>
         </CharacterBoxWrapper>
         {this.renderInputWrapper()}
@@ -246,8 +242,10 @@ CharacterPinyin.propTypes = {
     'wrong',
     'correct'
   ]).isRequired,
-  attempts: propTypes.number.isRequired,
-  openModal: propTypes.bool.isRequired
+  attemptsLeft: propTypes.number.isRequired,
+  openModal: propTypes.bool.isRequired,
+  userAnswer: propTypes.string.isRequired,
+  handleChange: propTypes.func.isRequired
 };
 
 export default CharacterPinyin;

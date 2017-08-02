@@ -4,18 +4,24 @@ import { types as studyTypes} from '../redux/study';
 import { types as sagaTypes } from './actions';
 import { actions as entitiesActions } from '../redux/entities';
 import { init } from '../rootSaga';
+import { playCharacters } from './studyCharacters';
 import { playDialogs } from './studyDialog';
 
 function* playEpisode(action) {
   try {
-    // playCharacters
-    // playGrammars
+    // Characters
+    yield race({
+      playCharacters: call(playCharacters, action.payload.id),
+      exit: take(sagaTypes.EXIT)
+    });
+    // Grammars
+    // Dialogs
     yield race({
       playDialogs: call(playDialogs, action.payload.id),
       exit: take(sagaTypes.EXIT)
     });
-    // playReview
-    // playFinalTest
+    // Review
+    // FinalTest
   } finally {
     yield call(exitEpisode);
   }

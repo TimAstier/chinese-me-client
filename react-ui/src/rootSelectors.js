@@ -8,6 +8,7 @@ import * as fromEntities from './redux/entities';
 import * as fromStudy from './redux/study';
 import * as fromUi from './redux/ui';
 import * as fromAudio from './redux/audio';
+import * as fromCharacterPinyin from './redux/characterPinyin';
 
 const entitySelectors = bindSelectors(
   state => state.get('entities'),
@@ -27,6 +28,11 @@ const uiSelectors = bindSelectors(
 const audioSelectors = bindSelectors(
   state => state.get('audio'),
   fromAudio.selectors
+);
+
+const characterPinyinSelectors = bindSelectors(
+  state => state.get('characterPinyin'),
+  fromCharacterPinyin.selectors
 );
 
 const getCurrentDialog = createSelector(
@@ -151,11 +157,34 @@ const getIsChosenAvatarTalking = createSelector(
   }
 );
 
+const getCurrentCharacter = createSelector(
+  entitySelectors.getCharacters,
+  studySelectors.getCurrentCharacterId,
+  (characters, id) => {
+    if (characters.get(String(id))) {
+      return characters.get(String(id));
+    }
+    return undefined;
+  }
+);
+
+const getCurrentCharacterPosition = createSelector(
+  getCurrentEpisode,
+  studySelectors.getCurrentCharacterId,
+  (episode, id) => {
+    if (episode) {
+      return episode.characters.findIndex(c => c === id) + 1;
+    }
+    return 0;
+  }
+);
+
 const selectors = {
   ...entitySelectors,
   ...studySelectors,
   ...uiSelectors,
   ...audioSelectors,
+  ...characterPinyinSelectors,
   getCurrentEpisode,
   getCurrentDialog,
   getCurrentStatement,
@@ -168,7 +197,9 @@ const selectors = {
   getPreviousSentenceId,
   getNextStatementId,
   getSentencesCountInCurrentDialog,
-  getIsChosenAvatarTalking
+  getIsChosenAvatarTalking,
+  getCurrentCharacter,
+  getCurrentCharacterPosition
 };
 
 export default selectors;

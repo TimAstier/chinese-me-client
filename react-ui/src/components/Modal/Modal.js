@@ -16,6 +16,7 @@ class Modal extends Component {
       <SemanticModal
         open={this.props.open}
         size={this.props.size}
+        onClose={this.props.handleClose}
         basic
       >
         { this.props.children }
@@ -27,7 +28,8 @@ class Modal extends Component {
 Modal.propTypes = {
   size: propTypes.oneOf(['small', 'large', 'fullscreen']).isRequired,
   open: propTypes.bool.isRequired,
-  children: propTypes.node
+  children: propTypes.node,
+  handleClose: propTypes.func.isRequired
 };
 
 export default Modal;

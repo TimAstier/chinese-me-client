@@ -3,9 +3,10 @@ import { takeEvery, put, call, all, race, take } from 'redux-saga/effects';
 import { types as studyTypes} from '../redux/study';
 import { types as sagaTypes } from './actions';
 import { actions as entitiesActions } from '../redux/entities';
-import { init } from '../rootSaga';
+import { fetchEpisodes } from '../rootSaga';
 import { playCharacters } from './studyCharacters';
 import { playDialogs } from './studyDialog';
+import { push } from 'react-router-redux';
 
 function* playEpisode(action) {
   try {
@@ -29,7 +30,8 @@ function* playEpisode(action) {
 
 function* exitEpisode() {
   yield put(entitiesActions.clear());
-  yield call(init);
+  yield call(fetchEpisodes);
+  yield put(push('/select'));
 }
 
 export default function* watchEpisodeSagas() {

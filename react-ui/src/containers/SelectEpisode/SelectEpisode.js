@@ -6,7 +6,13 @@ import { SelectEpisode as SelectEpisodeComponent } from '../../components';
 import selectors from '../../rootSelectors';
 import Immutable from 'immutable';
 
+import { actions } from '../../sagas/actions';
+
 class SelectEpisodeScreen extends Component {
+  componentWillMount() {
+    return this.props.fetchEpisodes();
+  }
+
   render() {
     return (
       <SelectEpisodeComponent
@@ -28,5 +34,8 @@ const mapStateToProps = state => {
 };
 
 export default connect(
-  mapStateToProps
+  mapStateToProps,
+  {
+    fetchEpisodes: actions.fetchEpisodes
+  }
 )(SelectEpisodeScreen);

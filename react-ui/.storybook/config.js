@@ -12,14 +12,17 @@ function loadStories() {
   require('../src/components/EpisodeCard/stories');
   require('../src/components/EpisodeScreen/stories');
   require('../src/components/Introduction/stories');
+  require('../src/components/Logo/stories');
   require('../src/components/NavDot/stories');
   require('../src/components/PlayAudioButton/stories');
   require('../src/components/ProgressMenu/stories');
   require('../src/components/ScreenButton/stories');
   require('../src/components/SelectEpisode/stories');
+  require('../src/components/Signup/stories');
   require('../src/components/Statement/stories');
   require('../src/components/StepsBar/stories');
   require('../src/components/Title/stories');
+  require('../src/components/TransparentInput/stories');
 }
 
 configure(loadStories, module);

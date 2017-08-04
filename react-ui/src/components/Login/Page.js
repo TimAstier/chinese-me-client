@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import propTypes from 'prop-types';
-import { Logo, SignupForm } from '../.';
+import { Logo, LoginForm } from '../.';
 
 const Wrapper = styled.div`
   display: flex;
@@ -36,11 +36,11 @@ class Page extends Component {
     return (
       <Wrapper>
         <Logo />
-        <Title>Signup for ChineseMe</Title>
-        <SignupForm onSubmit={this.props.onSubmit} />
+        <Title>Log into your ChineseMe account</Title>
+        <LoginForm onSubmit={this.props.onSubmit} />
         <Footer>
-          <FooterText>Already have an account? Log in.</FooterText>
-          <FooterText>By Clicking "Create your ChineseMe account", I agree to ChineseMe's Terms of Service.</FooterText>
+          <FooterText>Don't have an account yet? Sign in.</FooterText>
+          <FooterText>Forgot your password?</FooterText>
         </Footer>
       </Wrapper>
     );

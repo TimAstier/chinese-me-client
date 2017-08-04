@@ -9,6 +9,7 @@ import * as fromStudy from './redux/study';
 import * as fromUi from './redux/ui';
 import * as fromAudio from './redux/audio';
 import * as fromCharacterPinyin from './redux/characterPinyin';
+import * as fromAuth from './redux/auth';
 
 const entitySelectors = bindSelectors(
   state => state.get('entities'),
@@ -33,6 +34,11 @@ const audioSelectors = bindSelectors(
 const characterPinyinSelectors = bindSelectors(
   state => state.get('characterPinyin'),
   fromCharacterPinyin.selectors
+);
+
+const authPinyinSelectors = bindSelectors(
+  state => state.get('auth'),
+  fromAuth.selectors
 );
 
 const getCurrentDialog = createSelector(
@@ -185,6 +191,7 @@ const selectors = {
   ...uiSelectors,
   ...audioSelectors,
   ...characterPinyinSelectors,
+  ...authPinyinSelectors,
   getCurrentEpisode,
   getCurrentDialog,
   getCurrentStatement,

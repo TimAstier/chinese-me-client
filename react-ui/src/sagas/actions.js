@@ -18,7 +18,9 @@ export const types = {
   PLAY_AUDIO: 'signal/PLAY_AUDIO',
   CHECK_ANSWER: 'signal/CHECK_ANSWER',
   FETCH_EPISODES: 'signal/FETCH_EPISODES',
-  CREATE_NEW_USER: 'signal/CREATE_NEW_USER'
+  CREATE_NEW_USER: 'signal/CREATE_NEW_USER',
+  LOGIN_REQUEST: 'signal/LOGIN_REQUEST',
+  LOGOUT: 'signal/LOGOUT'
 };
 
 // Action Creators
@@ -40,6 +42,11 @@ const createNewUser = payload => ({
   type: types.CREATE_NEW_USER,
   payload
 });
+const loginRequest = payload => ({
+  type: types.LOGIN_REQUEST,
+  payload
+});
+const logout = () => ({ type: types.LOGOUT });
 
 export const actions = {
   next,
@@ -55,5 +62,7 @@ export const actions = {
   endDialog,
   playAudio,
   checkAnswer,
-  createNewUser
+  createNewUser,
+  loginRequest,
+  logout
 };

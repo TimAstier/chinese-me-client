@@ -43,7 +43,6 @@ class ScreenButton extends Component {
 
   handleEnterKeyPress(event) {
     if (event.keyCode === 13 && !this.props.disabled) {
-      console.log('pressed enter!')
       return this.mapActionToOnClick(this.props.action).bind(this)();
     }
     return null;

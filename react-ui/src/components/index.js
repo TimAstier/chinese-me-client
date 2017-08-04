@@ -6,6 +6,8 @@ export { default as EpisodeCard } from './EpisodeCard/EpisodeCard';
 export { default as EmailSentPage } from './Signup/EmailSentPage';
 export { default as EpisodeScreen } from './EpisodeScreen/EpisodeScreen';
 export { default as Introduction } from './Introduction/Introduction';
+export { default as LoginForm } from './Login/Form';
+export { default as LoginPage } from './Login/Page';
 export { default as Logo } from './Logo/Logo';
 export { default as Modal } from './Modal/Modal';
 export { default as NavDot } from './NavDot/NavDot';

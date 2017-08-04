@@ -29,7 +29,7 @@ class TransparentInput extends Component {
   // that are otherwise on the styled.input element
   // https://github.com/erikras/redux-form/issues/1094
   renderInput(props) {
-    return <Input {...props.input} />;
+    return <Input {...props.input} type={props.type} />;
   }
 
   render() {
@@ -39,7 +39,7 @@ class TransparentInput extends Component {
         <Field
           name={this.props.name}
           component={this.renderInput}
-          type="text"
+          type={this.props.type}
           placeholder={this.props.label}
           autocomplete="off"
         />
@@ -50,7 +50,8 @@ class TransparentInput extends Component {
 
 TransparentInput.propTypes = {
   name: propTypes.string.isRequired,
-  label: propTypes.string.isRequired
+  label: propTypes.string.isRequired,
+  type: propTypes.oneOf(['email', 'text', 'password']).isRequired
 };
 
 export default TransparentInput;

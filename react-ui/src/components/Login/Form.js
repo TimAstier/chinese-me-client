@@ -22,7 +22,7 @@ const FieldsWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  height: 250px;
+  height: 180px;
 `;
 
 class Form extends Component {
@@ -44,13 +44,8 @@ class Form extends Component {
             label="Password"
             type="password"
           />
-          <TransparentInput
-            name="passwordAgain"
-            label="Password again"
-            type="password"
-          />
         </FieldsWrapper>
-        <Button type="submit">Create your ChineseMe account</Button>
+        <Button type="submit">Log in</Button>
       </form>
     );
   }
@@ -61,7 +56,7 @@ Form.propTypes = {
 };
 
 Form = reduxForm({
-  form: 'signup' // a unique name for the form
+  form: 'login' // a unique name for the form
 })(Form);
 
 export default Form;

@@ -5,7 +5,6 @@ import createSagaMiddleware from 'redux-saga';
 import { Provider } from 'react-redux';
 import { Router, browserHistory } from 'react-router';
 import { syncHistoryWithStore, routerMiddleware } from 'react-router-redux';
-import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 import { Map } from 'immutable';
 
@@ -23,7 +22,6 @@ const store = createStore(
   rootReducer,
   initialState,
   composeWithDevTools(
-    applyMiddleware(thunk),
     applyMiddleware(sagaMiddleware),
     applyMiddleware(routerMiddleware(browserHistory))
   )
@@ -40,7 +38,8 @@ const history = syncHistoryWithStore(browserHistory, store, {
   }
 });
 
-// Set jwtToken in every request's header
+// Set jwtToken in every request's header AND
+// Log in returning users automatically
 if (localStorage.jwtToken) {
   setAuthorizationToken(localStorage.jwtToken);
   store.dispatch(setCurrentUser(jwtDecode(localStorage.jwtToken)));

@@ -1,20 +1,19 @@
-import Api from '../utils/api';
-import setAuthorizationToken from '../utils/setAuthorizationToken';
-import jwtDecode from 'jwt-decode';
 import isEmpty from 'lodash/isEmpty';
 import { fromJS } from 'immutable';
 
 // Action Types
+
 export const types = {
   SET_CURRENT_USER: 'auth/SET_CURRENT_USER'
 };
 
 // Reducer
+
 export const INITIAL_STATE = fromJS({
   isAuthenticated: false,
   user: {
     id: 0,
-    username: ''
+    email: ''
   }
 });
 
@@ -30,6 +29,7 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
 }
 
 // Action Creators
+
 export function setCurrentUser(user) {
   return {
     type: types.SET_CURRENT_USER,
@@ -37,28 +37,14 @@ export function setCurrentUser(user) {
   };
 }
 
-export function logout() {
-  return dispatch => {
-    localStorage.removeItem('jwtToken');
-    setAuthorizationToken(false);
-    dispatch(setCurrentUser({}));
-  };
-}
-
-export function login(data) {
-  return dispatch => {
-    return Api.post('/auth', data)
-      .then(res => {
-        const token = res.data.token;
-        localStorage.setItem('jwtToken', token);
-        setAuthorizationToken(token);
-        dispatch(setCurrentUser(jwtDecode(token)));
-      });
-  };
-}
-
 // Selectors
-const duckState = state => state.get('auth');
-export const getCurrentUserId = state => duckState(state).getIn(['user', 'id']);
-export const getCurrentUsername = state => duckState(state).getIn(['user', 'username']);
-export const getIsAuthenticated = state => duckState(state).get('isAuthenticated');
+
+const getCurrentUserId = state => state.getIn(['user', 'id']);
+const getCurrentUserEmail = state => state.getIn(['user', 'email']);
+const getIsAuthenticated = state => state.get('isAuthenticated');
+
+export const selectors = {
+  getCurrentUserId,
+  getCurrentUserEmail,
+  getIsAuthenticated
+};

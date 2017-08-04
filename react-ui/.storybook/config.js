@@ -11,6 +11,7 @@ function loadStories() {
   require('../src/components/Dialog/stories');
   require('../src/components/EpisodeCard/stories');
   require('../src/components/EpisodeScreen/stories');
+  require('../src/components/FeedbackModal/stories');
   require('../src/components/Introduction/stories');
   require('../src/components/Logo/stories');
   require('../src/components/NavDot/stories');
@@ -22,7 +23,6 @@ function loadStories() {
   require('../src/components/Statement/stories');
   require('../src/components/StepsBar/stories');
   require('../src/components/Title/stories');
-  require('../src/components/TransparentInput/stories');
 }
 
 configure(loadStories, module);

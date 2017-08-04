@@ -5,6 +5,7 @@ import { Icon } from 'semantic-ui-react';
 import { ProgressMenu, ScreenWrapper } from '../.';
 import { ScreenButton, StepsBar, PlayAudioButton } from '../../containers';
 import { Clickable } from '../Shared';
+import { FeedbackModal } from '../../containers';
 
 // 2nd level wrappers
 
@@ -124,6 +125,7 @@ class EpisodeScreen extends Component {
     // const { type, currentElement, totalElements } = progressMenuOptions;
     return (
       <ScreenWrapper>
+        <FeedbackModal />
         <TopWrapper>
           <TopLeftWrapper>
             <Clickable>

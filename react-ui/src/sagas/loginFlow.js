@@ -4,6 +4,7 @@ import Api from '../utils/api';
 import setAuthorizationToken from '../utils/setAuthorizationToken';
 import jwtDecode from 'jwt-decode';
 import { setCurrentUser } from '../redux/auth';
+import { push } from 'react-router-redux';
 
 function* login(token) {
   localStorage.setItem('jwtToken', token);
@@ -26,6 +27,7 @@ function* authorize(params) {
     const token = response.data.token;
     yield call(login, token);
     resolve();
+    yield put(push('/select'));
   } catch (error) {
     reject();
     yield put({type: 'LOGIN_ERROR', error});

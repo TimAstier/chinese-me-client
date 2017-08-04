@@ -8,7 +8,9 @@ storiesOf('SignupPage', module)
   .addDecorator(story => <Provider story={story()} />)
   .add('without props', () => {
     return (
-      <SignupPage />
+      <SignupPage
+        onSubmit={()=>{}}
+      />
     );
   });
 

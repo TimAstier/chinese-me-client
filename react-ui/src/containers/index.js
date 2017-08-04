@@ -4,6 +4,7 @@ export { default as CharacterPinyin } from './CharacterPinyin/CharacterPinyin';
 export { default as Dialog } from './Dialog/Dialog';
 export { default as EpisodeCard } from './EpisodeCard/EpisodeCard';
 export { default as EpisodeScreen } from './EpisodeScreen/EpisodeScreen';
+export { default as FeedbackModal } from './FeedbackModal/FeedbackModal';
 export { default as LoginPage } from './Login/Page';
 export { default as Modal } from './Modal/Modal';
 export { default as PlayAudioButton } from './PlayAudioButton/PlayAudioButton';

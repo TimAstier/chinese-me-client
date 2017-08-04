@@ -13,6 +13,8 @@ const dispatchFunctions = {
   exit: () => {}
 };
 
+const handleChange = () => {};
+
 const character = new Character({
   id: 1,
   simpChar: '我',
@@ -38,6 +40,8 @@ storiesOf('CharacterPinyin', module)
         status={'question'}
         attemptsLeft={2}
         openModal={false}
+        userAnswer=""
+        handleChange={handleChange}
       />
     </EpisodeScreen>
   )
@@ -49,9 +53,11 @@ storiesOf('CharacterPinyin', module)
     >
       <CharacterPinyin
         character={character}
-        status={'mistake'}
+        status={'question'}
         attemptsLeft={2}
         openModal
+        userAnswer=""
+        handleChange={handleChange}
       />
     </EpisodeScreen>
   )
@@ -63,9 +69,11 @@ storiesOf('CharacterPinyin', module)
     >
       <CharacterPinyin
         character={character}
-        status={'mistake'}
+        status={'question'}
         attemptsLeft={1}
         openModal
+        userAnswer=""
+        handleChange={handleChange}
       />
     </EpisodeScreen>
   )
@@ -81,6 +89,8 @@ storiesOf('CharacterPinyin', module)
         status={'wrong'}
         attemptsLeft={1}
         openModal={false}
+        userAnswer=""
+        handleChange={handleChange}
       />
     </EpisodeScreen>
   )
@@ -96,6 +106,8 @@ storiesOf('CharacterPinyin', module)
         status={'correct'}
         attemptsLeft={2}
         openModal={false}
+        userAnswer=""
+        handleChange={handleChange}
       />
     </EpisodeScreen>
   );

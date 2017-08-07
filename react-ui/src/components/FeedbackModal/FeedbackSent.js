@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import propTypes from 'prop-types';
 import { ScreenButton } from '../../containers';
 import styled from 'styled-components';
 import { Icon } from 'semantic-ui-react';
@@ -55,12 +56,16 @@ class FeedbackSent extends Component {
           <ScreenButton
             primary
             text="Continue"
-            action={'closeModal'}
+            onClick={this.props.handleClose}
           />
         </ModalControls>
       </Wrapper>
     );
   }
 }
+
+FeedbackSent.propTypes = {
+  handleClose: propTypes.func.isRequired
+};
 
 export default FeedbackSent;

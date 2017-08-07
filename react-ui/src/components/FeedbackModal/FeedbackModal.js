@@ -8,16 +8,17 @@ import FeedbackSent from './FeedbackSent';
 class FeedbackModal extends Component {
   renderContent() {
     switch (this.props.status) {
-      case 'writing': return <FeedbackWriting />;
+      case 'writing': return <FeedbackWriting onSubmit={this.props.onSubmit}/>;
       case 'sending': return <FeedbackSending />;
-      case 'sent': return <FeedbackSent />;
+      case 'sent': return <FeedbackSent handleClose={this.props.handleClose}/>;
       default: return null;
     }
   }
 
   render() {
+    const { open, handleClose } = this.props;
     return (
-      <Modal { ...this.props } size="small">
+      <Modal open={open} handleClose={handleClose} size="small">
         {this.renderContent()}
       </Modal>
     );
@@ -27,7 +28,8 @@ class FeedbackModal extends Component {
 FeedbackModal.propTypes = {
   open: propTypes.bool.isRequired,
   handleClose: propTypes.func.isRequired,
-  status: propTypes.oneOf(['writing', 'sending', 'sent']).isRequired
+  status: propTypes.oneOf(['writing', 'sending', 'sent']).isRequired,
+  onSubmit: propTypes.func.isRequired,
 };
 
 export default FeedbackModal;

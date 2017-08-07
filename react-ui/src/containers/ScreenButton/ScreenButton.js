@@ -32,6 +32,10 @@ class ScreenButton extends Component {
     if (this.props.disabled) {
       return () => {};
     }
+    // when the action is passed directly through the onClick prop
+    if (!submitAction) {
+      return this.props.onClick;
+    }
     switch (submitAction) {
       case 'next': return this.props.next;
       case 'skip': return this.props.skip;
@@ -68,7 +72,8 @@ ScreenButton.propTypes = {
   next: propTypes.func.isRequired,
   skip: propTypes.func.isRequired,
   handleCloseModal: propTypes.func.isRequired,
-  checkAnswer: propTypes.func.isRequired
+  checkAnswer: propTypes.func.isRequired,
+  onClick: propTypes.func
 };
 
 export default connect(

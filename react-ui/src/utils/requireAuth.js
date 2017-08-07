@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import propTypes from 'prop-types';
 import { connect } from 'react-redux';
 // import { showFlashMessageWithTimeout } from '../redux/flashMessages';
 import selectors from '../rootSelectors';
@@ -31,13 +32,13 @@ export default function(ComposedComponent) {
   }
 
   Authenticate.propTypes = {
-    isAuthenticated: PropTypes.bool.isRequired,
+    isAuthenticated: propTypes.bool.isRequired,
     // showFlashMessageWithTimeout: PropTypes.func.isRequired,
-    router: PropTypes.object.isRequired,
+    router: propTypes.object.isRequired,
   };
 
   Authenticate.contextTypes = {
-    router: React.PropTypes.object.isRequired
+    router: propTypes.object.isRequired
   };
 
   function mapStateToProps(state) {

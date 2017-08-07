@@ -7,7 +7,6 @@ import selectors from '../../rootSelectors';
 
 class StudyCharacterPinyin extends Component {
   render() {
-    // TODO: link this to actual data with selectors
     const progressMenuOptions = {
       type: 'character',
       currentElement: this.props.currentCharacterPosition,

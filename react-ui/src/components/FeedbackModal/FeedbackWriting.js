@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import propTypes from 'prop-types';
 import styled from 'styled-components';
 import Form from './Form';
 
@@ -30,11 +31,19 @@ class FeedbackWriting extends Component {
   render() {
     return (
       <Wrapper>
-        <TitleWrapper>Tell us about your question or comment</TitleWrapper>
-        <FormWrapper><Form /></FormWrapper>
+        <TitleWrapper>
+          Tell us about your question or comment
+        </TitleWrapper>
+        <FormWrapper>
+          <Form onSubmit={this.props.onSubmit}/>
+        </FormWrapper>
       </Wrapper>
     );
   }
 }
+
+FeedbackWriting.propTypes = {
+  onSubmit: propTypes.func.isRequired
+};
 
 export default FeedbackWriting;

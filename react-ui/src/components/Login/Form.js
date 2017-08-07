@@ -52,6 +52,7 @@ class Form extends Component {
 }
 
 Form.propTypes = {
+  onSubmit: propTypes.func.isRequired,
   handleSubmit: propTypes.func.isRequired
 };
 

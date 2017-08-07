@@ -17,7 +17,7 @@ export const INITIAL_STATE = Map({
   skipButton: true,
   openModal: false,
   playAudioButton: false,
-  openFeedbackModal: true,
+  openFeedbackModal: false,
   feedbackStatus: 'writing'
 });
 
@@ -30,11 +30,14 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
     case types.CLOSE_MODAL:
       return state.set('openModal', false);
     case types.OPEN_FEEDBACK_MODAL:
-      return state.set('openFeedbackModal', true);
+      return state.merge({
+        'feedbackStatus': 'writing',
+        'openFeedbackModal': true
+      });
     case types.CLOSE_FEEDBACK_MODAL:
       return state.set('openFeedbackModal', false);
     case types.UPDATE_FEEDBACK_STATUS:
-      return state.set('updateFeedbackStatus', action.payload);
+      return state.set('feedbackStatus', action.payload);
     default: return state;
   }
 }

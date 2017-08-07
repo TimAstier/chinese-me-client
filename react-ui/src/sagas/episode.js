@@ -3,6 +3,7 @@ import { takeEvery, put, call, all, race, take } from 'redux-saga/effects';
 import { types as studyTypes} from '../redux/study';
 import { types as sagaTypes } from './actions';
 import { actions as entitiesActions } from '../redux/entities';
+import { actions as uiActions } from '../redux/ui';
 import { fetchEpisodes } from '../rootSaga';
 import { playCharacters } from './studyCharacters';
 import { playDialogs } from './studyDialog';
@@ -34,9 +35,14 @@ function* exitEpisode() {
   yield put(push('/select'));
 }
 
+function* askQuestion() {
+  yield put(uiActions.openFeedbackModal());
+}
+
 export default function* watchEpisodeSagas() {
   yield all([
     takeEvery(studyTypes.START_EPISODE, playEpisode),
-    takeEvery(sagaTypes.EXIT, exitEpisode)
+    takeEvery(sagaTypes.EXIT, exitEpisode),
+    takeEvery(sagaTypes.ASK_QUESTION, askQuestion)
   ]);
 }

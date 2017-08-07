@@ -8,6 +8,7 @@ import { types } from './sagas/actions';
 import { fetchEntities } from './sagas/entities';
 import { watchCreateUser } from './sagas/signup';
 import { loginFlow } from './sagas/loginFlow';
+import watchSendFeedback from './sagas/feedback';
 
 export function* fetchEpisodes() {
   yield call(fetchEntities, '/episodes');
@@ -20,6 +21,7 @@ export default function* rootSaga() {
     watchAudioSagas(),
     takeEvery(types.FETCH_EPISODES, fetchEpisodes),
     watchCreateUser(),
-    loginFlow()
+    loginFlow(),
+    watchSendFeedback()
   ]);
 }

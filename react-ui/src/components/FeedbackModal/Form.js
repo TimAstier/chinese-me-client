@@ -45,6 +45,10 @@ const Select = styled.select`
   border-radius: 10px;
   background-color: #ffffff;
   border: solid 2px #d5d5d5;
+  font-family: 'Open Sans';
+	font-size: 20px;
+	line-height: 1.0;
+	color: #454545;
 `;
 
 const TextArea = styled.textarea`
@@ -55,19 +59,39 @@ const TextArea = styled.textarea`
   border: solid 2px #d5d5d5;
   outline: 0;
   resize: none;
+  font-family: 'Open Sans';
+	font-size: 20px;
+	line-height: 1.5;
+	color: #454545;
+  padding-left: 10px;
+  padding-right: 10px;
 `;
 
 class Form extends Component {
+  // This render method allows the inner input element to get the props
+  // that are otherwise on the styled.input element
+  // https://github.com/erikras/redux-form/issues/1094
+  renderSelect(props) {
+    return <Select {...props.input} children={props.children} />;
+  }
 
+  renderTextArea(props) {
+    return <TextArea {...props.input} required={props.required} />;
+  }
+
+  // BUG: The form is re-rendered (and lose value and focus) when the route
+  // changes from an episode saga
+  // Maybe can be solved by pushing to the context
   render() {
+    // console.log('re-render')
     return (
       <form
-        onSubmit={ () => { console.log('Message submitted'); } }
+        onSubmit={ this.props.handleSubmit }
         autoComplete="off"
       >
         <FieldsWrapper>
           <Label>Subject</Label>
-          <Field name="subject" component={Select}>
+          <Field name="subject" component={this.renderSelect}>
             <option />
             <option value="question">I have a question about Chinese language</option>
             <option value="idea">I have a idea for ChineseMe</option>
@@ -76,7 +100,7 @@ class Form extends Component {
             <option value="other">Other...</option>
           </Field>
           <Label>Message</Label>
-          <Field name="message" component={TextArea} />
+          <Field name="message" component={this.renderTextArea} required/>
         </FieldsWrapper>
         <ButtonWrapper>
           <Button type="submit">Send</Button>
@@ -87,6 +111,7 @@ class Form extends Component {
 }
 
 Form.propTypes = {
+  onSubmit: propTypes.func.isRequired,
   handleSubmit: propTypes.func.isRequired
 };
 

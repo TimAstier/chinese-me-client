@@ -5,7 +5,6 @@ import Form from './Form';
 
 const Wrapper = styled.div`
   height: 600px;
-  background: white;
   display: flex;
   flex-direction: column;
   align-items: center;

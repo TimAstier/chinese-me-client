@@ -27,6 +27,7 @@ export function* playDialogs(episodeId) {
   // Display Title
   yield put(fromUi.set('skipButton', false));
   yield put(fromUi.set('nextButton', false));
+  yield put(fromUi.set('playAudioButton', false));
   yield put(fromStudy.setTitle('Dialog'));
   yield put(fromStudy.setPartNumber(3));
   yield put(push('/title'));

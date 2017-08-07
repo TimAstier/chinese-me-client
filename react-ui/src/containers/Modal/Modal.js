@@ -18,7 +18,9 @@ class Modal extends Component {
 
 Modal.propTypes = {
   open: propTypes.bool.isRequired,
-  handleClose: propTypes.func.isRequired
+  handleClose: propTypes.func.isRequired,
+  basic: propTypes.bool,
+  closeIcon: propTypes.oneOf(['close'])
 };
 
 export default connect(

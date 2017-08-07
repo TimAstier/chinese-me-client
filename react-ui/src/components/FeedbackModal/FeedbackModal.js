@@ -18,7 +18,13 @@ class FeedbackModal extends Component {
   render() {
     const { open, handleClose } = this.props;
     return (
-      <Modal open={open} handleClose={handleClose} size="small">
+      <Modal
+        open={open}
+        handleClose={handleClose}
+        size="small"
+        closeIcon={this.props.status === 'sending' ? undefined : 'close'}
+        basic={this.props.status === 'sending' ? true : undefined}
+      >
         {this.renderContent()}
       </Modal>
     );

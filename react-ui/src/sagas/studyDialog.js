@@ -21,6 +21,7 @@ function* initDialog() {
   const currentStatement = yield select(selectors.getCurrentStatement);
   yield put(fromStudy.setCurrentSentenceId(currentStatement.sentences[0]));
   yield put(fromUi.set('skipButton', true));
+  yield put(fromStudy.setChosenAvatarId(null));
 }
 
 export function* playDialogs(episodeId) {

@@ -1,4 +1,5 @@
 // Keep in alphabetical order
+export { default as ActivatedPage } from './Signup/ActivatedPage';
 export { default as Avatar } from './Avatar/Avatar';
 export { default as CharacterPinyin } from './CharacterPinyin/CharacterPinyin';
 export { default as Dialog } from './Dialog/Dialog';

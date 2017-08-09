@@ -21,7 +21,8 @@ export const types = {
   CREATE_NEW_USER: 'signal/CREATE_NEW_USER',
   LOGIN_REQUEST: 'signal/LOGIN_REQUEST',
   LOGOUT: 'signal/LOGOUT',
-  SEND_FEEDBACK: 'signal/SEND_FEEDBACK'
+  SEND_FEEDBACK: 'signal/SEND_FEEDBACK',
+  ACTIVATE: 'signal/ACTIVATE'
 };
 
 // Action Creators
@@ -52,6 +53,10 @@ const sendFeedback = payload => ({
   type: types.SEND_FEEDBACK,
   payload
 });
+const activate = payload => ({
+  type: types.ACTIVATE,
+  payload
+});
 
 export const actions = {
   next,
@@ -70,5 +75,6 @@ export const actions = {
   createNewUser,
   loginRequest,
   logout,
-  sendFeedback
+  sendFeedback,
+  activate
 };

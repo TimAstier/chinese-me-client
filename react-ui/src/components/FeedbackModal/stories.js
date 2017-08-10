@@ -13,6 +13,7 @@ storiesOf('FeedbackModal', module)
         open
         handleClose={()=>{}}
         status="writing"
+        onSubmit={()=>{}}
       />
     );
   })
@@ -22,6 +23,7 @@ storiesOf('FeedbackModal', module)
         open
         handleClose={()=>{}}
         status="sending"
+        onSubmit={()=>{}}
       />
     );
   })
@@ -31,6 +33,7 @@ storiesOf('FeedbackModal', module)
         open
         handleClose={()=>{}}
         status="sent"
+        onSubmit={()=>{}}
       />
     );
   });

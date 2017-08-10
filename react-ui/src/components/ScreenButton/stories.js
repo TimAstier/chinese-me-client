@@ -11,11 +11,13 @@ storiesOf('ScreenButton', module)
     <ScreenButton
       text="Next"
       primary
+      action="next"
     />
   )
   .add('secondary', () =>
     <ScreenButton
       text="Skip"
+      action="skip"
     />
   )
   .add('action: "next"', () =>

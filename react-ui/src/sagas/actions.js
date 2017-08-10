@@ -20,6 +20,7 @@ export const types = {
   FETCH_EPISODES: 'signal/FETCH_EPISODES',
   CREATE_NEW_USER: 'signal/CREATE_NEW_USER',
   LOGIN_REQUEST: 'signal/LOGIN_REQUEST',
+  LOGIN_ERROR: 'signal/LOGIN_ERROR',
   LOGOUT: 'signal/LOGOUT',
   SEND_FEEDBACK: 'signal/SEND_FEEDBACK',
   ACTIVATE: 'signal/ACTIVATE'
@@ -48,6 +49,7 @@ const loginRequest = payload => ({
   type: types.LOGIN_REQUEST,
   payload
 });
+const loginError = () => ({ type: types.LOGIN_ERROR });
 const logout = () => ({ type: types.LOGOUT });
 const sendFeedback = payload => ({
   type: types.SEND_FEEDBACK,
@@ -74,6 +76,7 @@ export const actions = {
   checkAnswer,
   createNewUser,
   loginRequest,
+  loginError,
   logout,
   sendFeedback,
   activate

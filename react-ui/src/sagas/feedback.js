@@ -20,10 +20,10 @@ function* sendFeedback(action) {
       ),
       yield delay(1000)
     ]);
-    resolve();
+    yield call(resolve);
     yield put(uiActions.updateFeedbackStatus('sent'));
   } catch (error) {
-    reject();
+    yield call(reject);
     yield put({type: 'SEND_FEEDBACK_ERROR', error});
     // TODO: handle errors
   }

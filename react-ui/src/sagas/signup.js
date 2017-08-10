@@ -3,6 +3,7 @@ import { take, call, put, all } from 'redux-saga/effects';
 import { push } from 'react-router-redux';
 import { types } from './actions';
 import Api from '../utils/api';
+import { SubmissionError } from 'redux-form/immutable';
 
 function* watchCreateUser() {
   while (true) { // eslint-disable-line no-constant-condition
@@ -10,11 +11,10 @@ function* watchCreateUser() {
     try {
       const response = yield call(Api.post, '/users', values);
       console.log('New user created: ' + response.data.user.data.attributes.email);
-      resolve();
+      yield call(resolve);
       yield put(push('/email_sent'));
-      //
     } catch (error) {
-      reject();
+      yield call(reject, new SubmissionError(error.response.data));
       console.log('User creation failed');
     }
   }

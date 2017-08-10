@@ -15,6 +15,7 @@ const Input = styled.input`
 `;
 
 const Wrapper = styled.div`
+  height: 100px;
 `;
 
 const Label = styled.label`
@@ -24,26 +25,50 @@ const Label = styled.label`
   display: block;
 `;
 
+const Error = styled.div`
+  margin-top: 5px;
+  color: orangered;
+`;
+
 class TransparentInput extends Component {
   // This render method allows the inner input element to get the props
   // that are otherwise on the styled.input element
   // https://github.com/erikras/redux-form/issues/1094
-  renderInput(props) {
-    return <Input {...props.input} type={props.type} />;
+  renderField({
+    input,
+    label,
+    type,
+    placeholder,
+    meta: { touched, error, warning }
+  }) {
+    return (
+      <Wrapper>
+        <Label>{label}</Label>
+        <Input {...input} type={type} placeholder={placeholder}/>
+        {touched &&
+          ((error &&
+            <Error>
+              {error}
+            </Error>) ||
+            (warning &&
+              <Error>
+                {warning}
+              </Error>))}
+      </Wrapper>
+    );
   }
 
   render() {
     return (
-      <Wrapper>
-        <Label>{this.props.label}</Label>
-        <Field
-          name={this.props.name}
-          component={this.renderInput}
-          type={this.props.type}
-          placeholder={this.props.label}
-          autocomplete="off"
-        />
-      </Wrapper>
+      <Field
+        label={this.props.label}
+        placeholder={this.props.label}
+        name={this.props.name}
+        component={this.renderField}
+        type={this.props.type}
+        autocomplete="off"
+        validate={this.props.validate}
+      />
     );
   }
 }
@@ -51,7 +76,8 @@ class TransparentInput extends Component {
 TransparentInput.propTypes = {
   name: propTypes.string.isRequired,
   label: propTypes.string.isRequired,
-  type: propTypes.oneOf(['email', 'text', 'password']).isRequired
+  type: propTypes.oneOf(['email', 'text', 'password']).isRequired,
+  validate: propTypes.array
 };
 
 export default TransparentInput;

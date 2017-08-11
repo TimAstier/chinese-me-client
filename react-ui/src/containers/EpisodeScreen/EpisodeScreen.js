@@ -19,7 +19,6 @@ EpisodeScreen.propTypes = {
   next: propTypes.bool,
   skip: propTypes.bool,
   progressMenuOptions: propTypes.object,
-  stepsOptions: propTypes.object,
   screenLabel: propTypes.string,
   children: propTypes.object,
   askQuestion: propTypes.func.isRequired,

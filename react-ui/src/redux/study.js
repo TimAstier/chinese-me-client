@@ -8,7 +8,6 @@ export const types = {
   SET_CURRENT_STATEMENT_ID: 'study/SET_CURRENT_STATEMENT_ID',
   SET_CURRENT_SENTENCE_ID: 'study/SET_CURRENT_SENTENCE_ID',
   START_EPISODE: 'study/START_EPISODE',
-  SWITCH_STATEMENT: 'study/SWITCH_STATEMENT',
   SET_DIALOG_MODE: 'study/SET_DIALOG_MODE',
   SET_TITLE: 'study/SET_TITLE',
   SET_PART_NUMBER: 'study/SET_PART_NUMBER',
@@ -38,7 +37,6 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
     case types.SET_CURRENT_DIALOG_ID:
       return state.set('currentDialogId', action.payload.id);
     case types.SET_CURRENT_STATEMENT_ID:
-    case types.SWITCH_STATEMENT:
       return state.set('currentStatementId', action.payload.id);
     case types.SET_CURRENT_SENTENCE_ID:
       return state.set('currentSentenceId', action.payload.id);
@@ -91,11 +89,6 @@ const startEpisode = id => ({
   payload: { id }
 });
 
-const switchStatement = statementId => ({
-  type: types.SWITCH_STATEMENT,
-  payload: { id: statementId }
-});
-
 const setDialogMode = mode => {
   const modes = ['listen', 'explore', 'rolePlay'];
   if (modes.findIndex(e => e === mode) === -1) {
@@ -141,7 +134,6 @@ export const actions = {
   setCurrentStatementId,
   setCurrentSentenceId,
   startEpisode,
-  switchStatement,
   setDialogMode,
   setTitle,
   setPartNumber,

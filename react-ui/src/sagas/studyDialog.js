@@ -1,7 +1,6 @@
 import { takeEvery, select, put, all, call, takeLatest, race, take }
   from 'redux-saga/effects';
 import { delay } from 'redux-saga';
-import { types as studyTypes } from '../redux/study';
 import { types as sagaTypes, actions as fromSaga } from './actions';
 import selectors from '../rootSelectors';
 import { actions as fromStudy } from '../redux/study';
@@ -154,12 +153,6 @@ function* nextStatement(mode = 'explore') {
   }
 }
 
-function* switchStatement() {
-  const statement = yield select(selectors.getCurrentStatement);
-  yield put(fromStudy.setCurrentSentenceId(statement.sentences[0]));
-  yield put(fromSaga.playSentence());
-}
-
 function* next(mode = 'explore') {
   const nextSentenceId = yield select(selectors.getNextSentenceId);
   if (nextSentenceId !== undefined) {
@@ -174,7 +167,6 @@ export default function* watchStudyDialogSagas() {
   yield all([
     takeEvery(sagaTypes.NEXT_SENTENCE, nextSentence),
     takeEvery(sagaTypes.PREVIOUS_SENTENCE, previousSentence),
-    takeEvery(studyTypes.SWITCH_STATEMENT, switchStatement),
     takeLatest(sagaTypes.PLAY_SENTENCE, playSentence)
   ]);
 }

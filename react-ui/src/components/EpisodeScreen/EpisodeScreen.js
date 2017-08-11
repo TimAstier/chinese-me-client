@@ -3,7 +3,7 @@ import propTypes from 'prop-types';
 import styled from 'styled-components';
 import { Icon } from 'semantic-ui-react';
 import { ProgressMenu, ScreenWrapper } from '../.';
-import { ScreenButton, StepsBar, PlayAudioButton } from '../../containers';
+import { ScreenButton, PlayAudioButton } from '../../containers';
 import { Clickable } from '../Shared';
 import { FeedbackModal } from '../../containers';
 
@@ -93,7 +93,7 @@ const ExitIcon = styled.div`
 class EpisodeScreen extends Component {
 
   renderTopMiddleWrapper() {
-    const { progressMenuOptions, screenLabel, stepsOptions } = this.props;
+    const { progressMenuOptions, screenLabel } = this.props;
     const Label = styled.span`
       font-family: 'Open Sans';
       font-size: 20px;
@@ -106,7 +106,6 @@ class EpisodeScreen extends Component {
           {screenLabel && <Label>{screenLabel}</Label>}
         </TopMiddleUpWrapper>
         <TopMiddleDownWrapper>
-          {stepsOptions && <StepsBar {...stepsOptions} />}
         </TopMiddleDownWrapper>
       </TopMiddleWrapper>
     );
@@ -196,7 +195,6 @@ EpisodeScreen.propTypes = {
   skip: propTypes.bool,
   playAudio: propTypes.bool,
   progressMenuOptions: propTypes.object,
-  stepsOptions: propTypes.object,
   screenLabel: propTypes.string,
   children: propTypes.object,
   askQuestion: propTypes.func.isRequired,

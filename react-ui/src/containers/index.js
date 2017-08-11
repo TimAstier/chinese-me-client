@@ -12,7 +12,6 @@ export { default as ScreenButton } from './ScreenButton/ScreenButton';
 export { default as SignupPage } from './Signup/Page';
 export { default as SignupActivate } from './Signup/Activate';
 export { default as Statement } from './Statement/Statement';
-export { default as StepsBar } from './StepsBar/StepsBar';
 export { default as StudyDialog } from './StudyDialog/StudyDialog';
 export { default as StudyCharacterPinyin } from './StudyCharacterPinyin/StudyCharacterPinyin';
 export { default as SelectEpisode } from './SelectEpisode/SelectEpisode';

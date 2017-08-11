@@ -67,23 +67,15 @@ storiesOf('EpisodeScreen', module)
       screenLabel={'Dialog - Explore'}
     />
   )
-  .add('stepsOptions', () =>
-    <EpisodeScreen
-      {...dispatchFunctions}
-      stepsOptions={stepsOptions}
-    />
-  )
-  .add('progress & steps', () =>
+  .add('progress', () =>
     <EpisodeScreen
       {...dispatchFunctions}
       progressMenuOptions={progressMenuOptions}
-      stepsOptions={stepsOptions}
     />
   )
-  .add('title & steps', () =>
+  .add('title', () =>
     <EpisodeScreen
       {...dispatchFunctions}
       screenLabel={'Dialog - Explore'}
-      stepsOptions={stepsOptions}
     />
   );

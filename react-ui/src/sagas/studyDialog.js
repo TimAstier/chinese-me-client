@@ -30,7 +30,7 @@ export function* playDialogs(episodeId) {
   yield put(fromUi.set('playAudioButton', false));
   yield put(fromStudy.setTitle('Dialog'));
   yield put(fromStudy.setPartNumber(3));
-  yield put(push('/title'));
+  yield put(push('/study/title'));
   // Fetch dialogs data
   yield all([
     call(fetchEntities, '/episode/' + episodeId + '/dialogs'),

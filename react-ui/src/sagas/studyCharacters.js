@@ -28,7 +28,7 @@ export function* playCharacters(episodeId) {
   yield put(fromUi.set('nextButton', false));
   yield put(fromStudy.setTitle('Characters'));
   yield put(fromStudy.setPartNumber(1));
-  yield put(push('/title'));
+  yield put(push('/study/title'));
   // Fetch dialogs data
   yield all([
     call(fetchEntities, '/episode/' + episodeId + '/characters'),
@@ -84,7 +84,7 @@ function* characterPinyinInit() {
 function* playCharacter(index) {
   yield call(initCharacter, [index]);
   // Push route on router to mount studyCharacterPinyin container
-  yield put(push('/study/character/pinyin'));
+  yield put(push('/study/characterPinyin'));
   yield call(characterPinyinInit);
   yield race({
     characterPinyin: call(characterPinyin),

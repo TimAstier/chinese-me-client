@@ -9,13 +9,13 @@ function loadStories() {
   require('../src/components/Avatar/stories');
   require('../src/components/CharacterPinyin/stories');
   require('../src/components/Dialog/stories');
+  require('../src/components/ElementsNav/stories');
   require('../src/components/EpisodeCard/stories');
   require('../src/components/EpisodeScreen/stories');
   require('../src/components/FeedbackModal/stories');
   require('../src/components/Introduction/stories');
   require('../src/components/Logo/stories');
   require('../src/components/PlayAudioButton/stories');
-  require('../src/components/ProgressMenu/stories');
   require('../src/components/ScreenButton/stories');
   require('../src/components/SelectEpisode/stories');
   require('../src/components/Signup/stories');

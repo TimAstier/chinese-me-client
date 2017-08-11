@@ -185,6 +185,28 @@ const getCurrentCharacterPosition = createSelector(
   }
 );
 
+// for EpisodeScreen
+
+const getCharactersNavParams = createSelector(
+  getCurrentEpisode,
+  getCurrentCharacterPosition,
+  (currentEpisode, currentCharacterPosition) => {
+    const charactersCount = currentEpisode.characters.length;
+    return {
+      type: 'character',
+      currentElement: currentCharacterPosition,
+      totalElements: charactersCount
+    };
+  }
+);
+
+// TODO: link this to actual data
+const getDialogsNavParams = () => ({
+  type: 'dialog',
+  currentElement: 1,
+  totalElements: 2
+});
+
 const selectors = {
   ...entitySelectors,
   ...studySelectors,
@@ -206,7 +228,9 @@ const selectors = {
   getSentencesCountInCurrentDialog,
   getIsChosenAvatarTalking,
   getCurrentCharacter,
-  getCurrentCharacterPosition
+  getCurrentCharacterPosition,
+  getCharactersNavParams,
+  getDialogsNavParams
 };
 
 export default selectors;

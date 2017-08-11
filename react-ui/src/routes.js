@@ -2,8 +2,9 @@ import React from 'react';
 import { Route } from 'react-router';
 // import { IndexRoute } from 'react-router';
 import requireAuth from './utils/requireAuth';
-import { App, SelectEpisode, StudyCharacterPinyin,
-  StudyDialog, Title, SignupPage, LoginPage, SignupActivate } from './containers';
+import { App, SelectEpisode, CharacterPinyin,
+  Dialog, Title, SignupPage, LoginPage, SignupActivate, EpisodeScreen }
+  from './containers';
 import { EmailSentPage, ActivatedPage } from './components';
 
 // How to redirect by dispatching actions:
@@ -23,8 +24,10 @@ export default (
     <Route path="email_sent" component={EmailSentPage} />
     <Route path="login" component={LoginPage} />
     <Route path="select" component={requireAuth(SelectEpisode)} />
-    <Route path="study/dialog" component={requireAuth(StudyDialog)} />
-    <Route path="title" component={requireAuth(Title)} />
-    <Route path="study/character/pinyin" component={requireAuth(StudyCharacterPinyin)} />
+    <Route path="study" component={requireAuth(EpisodeScreen)}>
+      <Route path="title" component={requireAuth(Title)} />
+      <Route path="characterPinyin" component={requireAuth(CharacterPinyin)} />
+      <Route path="dialog" component={requireAuth(Dialog)} />
+    </Route>
   </Route>
 );

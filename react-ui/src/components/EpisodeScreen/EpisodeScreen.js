@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
 import { Icon } from 'semantic-ui-react';
-import { ProgressMenu, ScreenWrapper } from '../.';
+import { ElementsNav, ScreenWrapper } from '../.';
 import { ScreenButton, PlayAudioButton } from '../../containers';
 import { Clickable } from '../Shared';
 import { FeedbackModal } from '../../containers';
@@ -93,7 +93,7 @@ const ExitIcon = styled.div`
 class EpisodeScreen extends Component {
 
   renderTopMiddleWrapper() {
-    const { progressMenuOptions, screenLabel } = this.props;
+    const { elementsNavParams, screenLabel } = this.props;
     const Label = styled.span`
       font-family: 'Open Sans';
       font-size: 20px;
@@ -102,7 +102,7 @@ class EpisodeScreen extends Component {
     return (
       <TopMiddleWrapper>
         <TopMiddleUpWrapper>
-          {progressMenuOptions && <ProgressMenu {...progressMenuOptions} />}
+          {elementsNavParams && <ElementsNav {...elementsNavParams} />}
           {screenLabel && <Label>{screenLabel}</Label>}
         </TopMiddleUpWrapper>
         <TopMiddleDownWrapper>
@@ -121,7 +121,7 @@ class EpisodeScreen extends Component {
 
   render() {
     const { next, skip } = this.props;
-    // const { type, currentElement, totalElements } = progressMenuOptions;
+    // const { type, currentElement, totalElements } = elementsNavParams;
     return (
       <ScreenWrapper>
         <FeedbackModal />
@@ -194,7 +194,7 @@ EpisodeScreen.propTypes = {
   next: propTypes.bool,
   skip: propTypes.bool,
   playAudio: propTypes.bool,
-  progressMenuOptions: propTypes.object,
+  elementsNavParams: propTypes.object,
   screenLabel: propTypes.string,
   children: propTypes.object,
   askQuestion: propTypes.func.isRequired,

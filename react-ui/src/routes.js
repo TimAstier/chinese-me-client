@@ -16,6 +16,14 @@ import { EmailSentPage, ActivatedPage } from './components';
 // How to push directly from a component:
 // this.props.router.push('/login')
 
+/* ----- */
+// Study routes:
+// /study/:episodeId/[element]/:elementId/[mode]
+
+// Study flow:
+// Hit URL -> Component Render -> trigger saga -> next -> push next URL
+/* ----- */
+
 export default (
   <Route path="/" component={App}>
     <Route path="signup" component={SignupPage} />
@@ -24,10 +32,12 @@ export default (
     <Route path="email_sent" component={EmailSentPage} />
     <Route path="login" component={LoginPage} />
     <Route path="select" component={requireAuth(SelectEpisode)} />
-    <Route path="study" component={requireAuth(EpisodeScreen)}>
-      <Route path="title" component={requireAuth(Title)} />
-      <Route path="characterPinyin" component={requireAuth(CharacterPinyin)} />
-      <Route path="dialog" component={requireAuth(Dialog)} />
+    <Route path="study/:episodeId" component={requireAuth(EpisodeScreen)}>
+      <Route path="title/:partNumber" component={requireAuth(Title)} />
+      <Route path="character/:characterId/pinyin" component={requireAuth(CharacterPinyin)} />
+      <Route path="dialog/:dialogId/listen" component={requireAuth(Dialog)} />
+      <Route path="dialog/:dialogId/explore" component={requireAuth(Dialog)} />
+      <Route path="dialog/:dialogId/roleplay" component={requireAuth(Dialog)} />
     </Route>
   </Route>
 );

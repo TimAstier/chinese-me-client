@@ -185,18 +185,20 @@ const getCurrentCharacterPosition = createSelector(
   }
 );
 
-// for EpisodeScreen
-
 const getCharactersNavParams = createSelector(
   getCurrentEpisode,
   getCurrentCharacterPosition,
   (currentEpisode, currentCharacterPosition) => {
-    const charactersCount = currentEpisode.characters.length;
-    return {
-      type: 'character',
-      currentElement: currentCharacterPosition,
-      totalElements: charactersCount
-    };
+    try {
+      const charactersCount = currentEpisode.characters.length;
+      return {
+        type: 'character',
+        currentElement: currentCharacterPosition,
+        totalElements: charactersCount
+      };
+    } catch (e) {
+      return undefined;
+    }
   }
 );
 

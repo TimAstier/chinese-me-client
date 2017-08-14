@@ -12,7 +12,9 @@ export const types = {
   SET_TITLE: 'study/SET_TITLE',
   SET_PART_NUMBER: 'study/SET_PART_NUMBER',
   SET_CHOSEN_AVATAR_ID: 'study/CHOSEN_AVATAR_ID',
-  SET_CURRENT_CHARACTER_ID: 'study/SET_CURRENT_CHARACTER_ID'
+  SET_CURRENT_CHARACTER_ID: 'study/SET_CURRENT_CHARACTER_ID',
+  INIT_SCREEN: 'study/INIT_SCREEN',
+  SET_INITIALIZED: 'study/SET_INITIALIZED'
 };
 
 // Reducers
@@ -26,7 +28,8 @@ export const INITIAL_STATE = Immutable.Map({
   title: '',
   partNumber: null,
   chosenAvatarId: null,
-  currentCharacterId: null
+  currentCharacterId: null,
+  initialized: false
 });
 
 export default function reducer(state = INITIAL_STATE, action = {}) {
@@ -50,6 +53,10 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
       return state.set('chosenAvatarId', action.payload.id);
     case types.SET_CURRENT_CHARACTER_ID:
       return state.set('currentCharacterId', action.payload.id);
+    case types.INIT_SCREEN:
+      return state.set('initialized', false);
+    case types.SET_INITIALIZED:
+      return state.set('initialized', action.payload);
     default: return state;
   }
 }
@@ -90,7 +97,7 @@ const startEpisode = id => ({
 });
 
 const setDialogMode = mode => {
-  const modes = ['listen', 'explore', 'rolePlay'];
+  const modes = ['listen', 'explore', 'roleplay'];
   if (modes.findIndex(e => e === mode) === -1) {
     console.log('Unknown dialog mode'); // eslint-disable-line no-console
     return {};
@@ -128,6 +135,16 @@ const setCurrentCharacterId = id => ({
   payload: { id }
 });
 
+const setInitialized = payload => ({
+  type: types.SET_INITIALIZED,
+  payload
+});
+
+const initScreen = url => ({
+  type: types.INIT_SCREEN,
+  payload: { url }
+});
+
 export const actions = {
   setCurrentEpisodeId,
   setCurrentDialogId,
@@ -138,7 +155,9 @@ export const actions = {
   setTitle,
   setPartNumber,
   setChosenAvatarId,
-  setCurrentCharacterId
+  setCurrentCharacterId,
+  setInitialized,
+  initScreen
 };
 
 // Selectors
@@ -152,6 +171,7 @@ const getTitle = state => state.get('title');
 const getPartNumber = state => state.get('partNumber');
 const getChosenAvatarId = state => state.get('chosenAvatarId');
 const getCurrentCharacterId = state => state.get('currentCharacterId');
+const getInitialized = state => state.get('initialized');
 
 export const selectors = {
   getCurrentEpisodeId,
@@ -162,5 +182,6 @@ export const selectors = {
   getTitle,
   getPartNumber,
   getChosenAvatarId,
-  getCurrentCharacterId
+  getCurrentCharacterId,
+  getInitialized
 };

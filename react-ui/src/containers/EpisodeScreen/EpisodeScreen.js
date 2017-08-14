@@ -3,10 +3,16 @@ import propTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { EpisodeScreen as EpisodeScreenComponent } from '../../components';
-import { actions } from '../../sagas/actions';
+import { actions as sagaActions } from '../../sagas/actions';
+import { actions as studyActions } from '../../redux/study';
 import selectors from '../../rootSelectors';
 
 class EpisodeScreen extends Component {
+
+  componentWillMount() {
+    return this.props.initScreen(this.props.location.pathname);
+  }
+
   mapOptionsToScreenType(screenType) {
     switch (screenType) {
       case 'characterPinyin': return this.props.charactersNavParams;
@@ -21,6 +27,15 @@ class EpisodeScreen extends Component {
     let elementsNavParams = undefined;
     if (typesWithMenu.indexOf(screenType) !== -1) {
       elementsNavParams = this.mapOptionsToScreenType(screenType);
+    }
+    if (!this.props.initialized) {
+      return (
+        <EpisodeScreenComponent
+          displayEpisodeOverview={this.props.displayEpisodeOverview}
+          exit={this.props.exit}
+          askQuestion={this.props.askQuestion}
+        />
+      );
     }
     return (
       <EpisodeScreenComponent
@@ -42,8 +57,10 @@ EpisodeScreen.propTypes = {
   exit: propTypes.func.isRequired,
   playAudio: propTypes.bool,
   location: propTypes.object.isRequired,
-  charactersNavParams: propTypes.object.isRequired,
-  dialogsNavParams: propTypes.object.isRequired
+  charactersNavParams: propTypes.object,
+  dialogsNavParams: propTypes.object,
+  initScreen: propTypes.func.isRequired,
+  initialized: propTypes.bool.isRequired
 };
 
 const mapStateToProps = state => {
@@ -52,15 +69,17 @@ const mapStateToProps = state => {
     skip: selectors.getSkipButton(state),
     playAudio: selectors.getPlayAudioButton(state),
     charactersNavParams: selectors.getCharactersNavParams(state),
-    dialogsNavParams: selectors.getDialogsNavParams(state)
+    dialogsNavParams: selectors.getDialogsNavParams(state),
+    initialized: selectors.getInitialized(state)
   };
 };
 
 export default connect(
   mapStateToProps,
   {
-    askQuestion: actions.askQuestion,
-    displayEpisodeOverview: actions.displayEpisodeOverview,
-    exit: actions.exit
+    askQuestion: sagaActions.askQuestion,
+    displayEpisodeOverview: sagaActions.displayEpisodeOverview,
+    exit: sagaActions.exit,
+    initScreen: studyActions.initScreen
   }
 )(EpisodeScreen);

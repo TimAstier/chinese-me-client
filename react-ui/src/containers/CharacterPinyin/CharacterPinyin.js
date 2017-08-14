@@ -5,7 +5,7 @@ import { CharacterPinyin as CharacterPinyinComponent } from '../../components';
 
 import { Character } from '../../models';
 import selectors from '../../rootSelectors';
-import { actions } from '../../redux/characterPinyin';
+import { actions as characterPinyinActions } from '../../redux/characterPinyin';
 
 class CharacterPinyin extends Component {
   handleChange(event) {
@@ -44,7 +44,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = () => ({
-  setUserAnswer: actions.setUserAnswer
+  setUserAnswer: characterPinyinActions.setUserAnswer
 });
 
 export default connect(

@@ -1,33 +1,10 @@
 /* eslint-disable no-constant-condition */
-import { takeEvery, put, call, all, race, take } from 'redux-saga/effects';
-import { types as studyTypes} from '../redux/study';
+import { takeEvery, put, call, all } from 'redux-saga/effects';
 import { types as sagaTypes } from './actions';
 import { actions as entitiesActions } from '../redux/entities';
 import { actions as uiActions } from '../redux/ui';
 import { fetchEpisodes } from '../rootSaga';
-import { playCharacters } from './studyCharacters';
-import { playDialogs } from './studyDialog';
 import { push } from 'react-router-redux';
-
-function* playEpisode(action) {
-  try {
-    // Characters
-    yield race({
-      playCharacters: call(playCharacters, action.payload.id),
-      exit: take(sagaTypes.EXIT)
-    });
-    // Grammars
-    // Dialogs
-    yield race({
-      playDialogs: call(playDialogs, action.payload.id),
-      exit: take(sagaTypes.EXIT)
-    });
-    // Review
-    // FinalTest
-  } finally {
-    yield call(exitEpisode);
-  }
-}
 
 function* exitEpisode() {
   yield put(entitiesActions.clear());
@@ -41,7 +18,6 @@ function* askQuestion() {
 
 export default function* watchEpisodeSagas() {
   yield all([
-    takeEvery(studyTypes.START_EPISODE, playEpisode),
     takeEvery(sagaTypes.EXIT, exitEpisode),
     takeEvery(sagaTypes.ASK_QUESTION, askQuestion)
   ]);

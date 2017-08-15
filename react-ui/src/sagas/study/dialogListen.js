@@ -21,6 +21,7 @@ export function* initUi() {
 }
 
 export function* initStudyData() {
+  yield put(fromStudy.setDialogMode('listen'));
   const currentDialog = yield select(selectors.getCurrentDialog);
   yield put(fromStudy.setCurrentStatementId(currentDialog.statements[0]));
   const currentStatement = yield select(selectors.getCurrentStatement);
@@ -29,7 +30,6 @@ export function* initStudyData() {
 }
 
 export function* run(mode = 'listen') {
-  yield put(fromStudy.setDialogMode(mode));
   yield call(playSentence, mode);
   const sentencesCount =
     yield select(selectors.getSentencesCountInCurrentDialog);

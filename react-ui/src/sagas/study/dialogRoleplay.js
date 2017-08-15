@@ -19,6 +19,7 @@ export function* initUi() {
 }
 
 export function* initStudyData() {
+  yield put(fromStudy.setDialogMode('roleplay'));
   const currentDialog = yield select(selectors.getCurrentDialog);
   yield put(fromStudy.setCurrentStatementId(currentDialog.statements[0]));
   const currentStatement = yield select(selectors.getCurrentStatement);

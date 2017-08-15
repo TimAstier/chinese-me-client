@@ -6,11 +6,11 @@ class ScreenWrapper extends Component {
 
   render() {
     const Wrapper = styled.div`
-      width: 1100px;
-      height: 700px;
-      border-radius: 15px;
+      width: 1200px;
+      height: 640px;
+      border-radius: 10px;
       background-color: #ffffff;
-    	box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.1);
+      box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.08);
       display: flex;
       flex-direction: column;
     `;

@@ -10,6 +10,7 @@ import * as fromUi from './redux/ui';
 import * as fromAudio from './redux/audio';
 import * as fromCharacterPinyin from './redux/characterPinyin';
 import * as fromAuth from './redux/auth';
+import * as fromRouting from './redux/routing';
 
 const entitySelectors = bindSelectors(
   state => state.get('entities'),
@@ -39,6 +40,11 @@ const characterPinyinSelectors = bindSelectors(
 const authPinyinSelectors = bindSelectors(
   state => state.get('auth'),
   fromAuth.selectors
+);
+
+const routingSelectors = bindSelectors(
+  state => state.get('routing'),
+  fromRouting.selectors
 );
 
 const getCurrentDialog = createSelector(
@@ -202,7 +208,22 @@ const getCharactersNavParams = createSelector(
   }
 );
 
-// TODO: link this to actual data
+const getNextCharacterId = createSelector(
+  getCurrentEpisode,
+  studySelectors.getCurrentCharacterId,
+  (episode, id) => {
+    if (episode) {
+      const index = episode.characters.findIndex(c => c === Number(id));
+      if (episode.characters[index + 1]) {
+        return episode.characters[index + 1];
+      }
+      return undefined;
+    }
+    return undefined;
+  }
+);
+
+// TODO: link this to actual data. Remove?
 const getDialogsNavParams = () => ({
   type: 'dialog',
   currentElement: 1,
@@ -216,6 +237,7 @@ const selectors = {
   ...audioSelectors,
   ...characterPinyinSelectors,
   ...authPinyinSelectors,
+  ...routingSelectors,
   getCurrentEpisode,
   getCurrentDialog,
   getCurrentStatement,
@@ -232,7 +254,8 @@ const selectors = {
   getCurrentCharacter,
   getCurrentCharacterPosition,
   getCharactersNavParams,
-  getDialogsNavParams
+  getDialogsNavParams,
+  getNextCharacterId
 };
 
 export default selectors;

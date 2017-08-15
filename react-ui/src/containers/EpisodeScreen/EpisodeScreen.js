@@ -13,6 +13,12 @@ class EpisodeScreen extends Component {
     return this.props.initScreen(this.props.location.pathname);
   }
 
+  // componentDidUpdate(prevProps) {
+  //   if (this.props.location.pathname !== prevProps.location.pathname) {
+  //     console.log('changed!');
+  //   }
+  // }
+
   mapOptionsToScreenType(screenType) {
     switch (screenType) {
       case 'characterPinyin': return this.props.charactersNavParams;

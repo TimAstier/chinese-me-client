@@ -13,3 +13,13 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
   }
   return state;
 }
+
+// Selectors
+
+const getCurrentUrl = state => {
+  return state.get('locationBeforeTransitions').pathname;
+};
+
+export const selectors = {
+  getCurrentUrl
+};

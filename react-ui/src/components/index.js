@@ -13,6 +13,7 @@ export { default as LoginForm } from './Login/Form';
 export { default as LoginPage } from './Login/Page';
 export { default as Logo } from './Logo/Logo';
 export { default as Modal } from './Modal/Modal';
+export { default as Navbar } from './Navbar/Navbar';
 export { default as PlayAudioButton } from './PlayAudioButton/PlayAudioButton';
 export { default as ScreenButton } from './ScreenButton/ScreenButton';
 export { default as ScreenWrapper } from './ScreenWrapper/ScreenWrapper';

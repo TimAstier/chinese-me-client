@@ -32,7 +32,8 @@ CharacterPinyin.propTypes = {
   attemptsLeft: propTypes.number.isRequired,
   openModal: propTypes.bool.isRequired,
   userAnswer: propTypes.string.isRequired,
-  setUserAnswer: propTypes.func.isRequired
+  setUserAnswer: propTypes.func.isRequired,
+  openFeedbackModal: propTypes.bool.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -40,7 +41,8 @@ const mapStateToProps = state => ({
   status: selectors.getCharacterPinyinStatus(state),
   attemptsLeft: selectors.getCharacterPinyinAttemptsLeft(state),
   openModal: selectors.getOpenModal(state),
-  userAnswer: selectors.getCharacterPinyinUserAnswer(state)
+  userAnswer: selectors.getCharacterPinyinUserAnswer(state),
+  openFeedbackModal: selectors.getOpenFeedbackModal(state)
 });
 
 const mapDispatchToProps = () => ({

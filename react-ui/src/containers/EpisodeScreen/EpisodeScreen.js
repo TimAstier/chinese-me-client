@@ -58,7 +58,6 @@ EpisodeScreen.propTypes = {
   elementsNavParams: propTypes.object,
   screenLabel: propTypes.string,
   children: propTypes.object,
-  askQuestion: propTypes.func.isRequired,
   displayEpisodeOverview: propTypes.func.isRequired,
   exit: propTypes.func.isRequired,
   playAudio: propTypes.bool,
@@ -83,7 +82,6 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   {
-    askQuestion: sagaActions.askQuestion,
     displayEpisodeOverview: sagaActions.displayEpisodeOverview,
     exit: sagaActions.exit,
     initScreen: studyActions.initScreen

@@ -6,6 +6,7 @@ class ScreenWrapper extends Component {
 
   render() {
     const Wrapper = styled.div`
+      margin-top: 30px;
       width: 1200px;
       height: 640px;
       border-radius: 10px;

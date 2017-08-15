@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
+import { FeedbackModal, Navbar } from '../.';
 
 class App extends Component {
 
@@ -10,11 +11,13 @@ class App extends Component {
       width: 100%;
       background-color: #f9f9f9;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
     `;
     return (
       <Wrapper>
+        <FeedbackModal />
+        <Navbar router={this.props.router} />
         {this.props.children}
       </Wrapper>
     );
@@ -24,6 +27,7 @@ class App extends Component {
 App.propTypes = {
   children: propTypes.object,
   location: propTypes.object.isRequired,
+  router: propTypes.object.isRequired
 };
 
 export default App;

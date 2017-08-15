@@ -7,6 +7,7 @@ export { default as EpisodeScreen } from './EpisodeScreen/EpisodeScreen';
 export { default as FeedbackModal } from './FeedbackModal/FeedbackModal';
 export { default as LoginPage } from './Login/Page';
 export { default as Modal } from './Modal/Modal';
+export { default as Navbar } from './Navbar/Navbar';
 export { default as PlayAudioButton } from './PlayAudioButton/PlayAudioButton';
 export { default as ScreenButton } from './ScreenButton/ScreenButton';
 export { default as SignupPage } from './Signup/Page';

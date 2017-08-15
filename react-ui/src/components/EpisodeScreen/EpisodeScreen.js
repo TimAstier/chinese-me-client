@@ -1,17 +1,14 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
-import { Icon } from 'semantic-ui-react';
 import { ElementsNav, ScreenWrapper } from '../.';
 import { ScreenButton, PlayAudioButton } from '../../containers';
 import { Clickable } from '../Shared';
-import { FeedbackModal } from '../../containers';
 
 // 2nd level wrappers
 
 const TopWrapper = styled.div`
-  flex: 0 0 85px;
-  border-bottom: solid 2px #efefef;
+  flex: 0 0 80px;
   display: flex;
 `;
 
@@ -49,14 +46,17 @@ const BottomMiddleWrapper = styled.div`
 `;
 
 const TopLeftWrapper = styled.div`
-  flex: 0 0 130px;
+  flex: 0 0 100px;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
+	font-family: 'Open Sans';
+	font-size: 20px;
+	color: #b2babf;
 `;
 
 const TopRightWrapper = styled.div`
-  flex: 0 0 130px;
+  flex: 0 0 100px;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -105,8 +105,7 @@ class EpisodeScreen extends Component {
           {elementsNavParams && <ElementsNav {...elementsNavParams} />}
           {screenLabel && <Label>{screenLabel}</Label>}
         </TopMiddleUpWrapper>
-        <TopMiddleDownWrapper>
-        </TopMiddleDownWrapper>
+        <TopMiddleDownWrapper />
       </TopMiddleWrapper>
     );
   }
@@ -121,10 +120,8 @@ class EpisodeScreen extends Component {
 
   render() {
     const { next, skip } = this.props;
-    // const { type, currentElement, totalElements } = elementsNavParams;
     return (
       <ScreenWrapper>
-        <FeedbackModal />
         <TopWrapper>
           <TopLeftWrapper>
             <Clickable>
@@ -132,33 +129,9 @@ class EpisodeScreen extends Component {
                 Exit
               </ExitIcon>
             </Clickable>
-            <Clickable>
-              <Icon
-                name="unordered list"
-                size="big"
-                color="teal"
-              />
-            </Clickable>
           </TopLeftWrapper>
           {this.renderTopMiddleWrapper()}
-          <TopRightWrapper>
-            <Clickable>
-              <Icon
-                name="map outline"
-                size="big"
-                color="teal"
-                onClick={this.props.displayEpisodeOverview}
-              />
-            </Clickable>
-            <Clickable>
-              <Icon
-                name="help circle outline"
-                size="big"
-                color="teal"
-                onClick={this.props.askQuestion}
-              />
-            </Clickable>
-          </TopRightWrapper>
+          <TopRightWrapper />
         </TopWrapper>
         <MiddleWrapper>
           {this.props.children}
@@ -197,7 +170,6 @@ EpisodeScreen.propTypes = {
   elementsNavParams: propTypes.object,
   screenLabel: propTypes.string,
   children: propTypes.object,
-  askQuestion: propTypes.func.isRequired,
   displayEpisodeOverview: propTypes.func.isRequired,
   exit: propTypes.func.isRequired
 };

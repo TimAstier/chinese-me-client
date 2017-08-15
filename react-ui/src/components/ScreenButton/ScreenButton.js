@@ -6,19 +6,36 @@ class Screen extends Component {
 
   render() {
     const { text, primary, disabled } = this.props;
+
+    const hoverBackgroundColor = () => {
+      if (disabled) return 'none';
+      return primary ? '#4ea7eb' : '#f2f7fa';
+    };
+
+    const activeBackgroundColor = () => {
+      if (disabled) return 'none';
+      return primary ? '#4799d7' : '#cdd6db';
+    };
+
     const Button = styled.button`
       width: 146px;
-      height: 50px;
+      height: 48px;
       border-radius: 57px;
-      background-color: ${ primary ? '#4990e2' : 'white' };
+      background-color: ${ primary ? '#55b6ff' : '#ffffff' };
       outline: none;
       border: none;
       font-family: 'Open Sans';
     	font-size: 20px;
     	color: ${ primary ? '#ffffff' : '#959595' };
-      border: solid 1px #bfbfbf;
+      border: ${ primary ? 'none' : 'solid 1px #cdd6db' };
       opacity: ${ disabled ? 0.3 : 1 };
       cursor: ${ disabled ? 'default' : 'pointer' };
+      :hover {
+        background-color: ${ hoverBackgroundColor() };
+      }
+      :active {
+        background-color: ${ activeBackgroundColor() };
+      }
     `;
 
     return (

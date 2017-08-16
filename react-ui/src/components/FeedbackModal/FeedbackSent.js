@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import { ScreenButton } from '../../containers';
 import styled from 'styled-components';
-import { Icon } from 'semantic-ui-react';
+import iconThanksForMessage from '../../images/iconThanksForMessage.png';
 
 const Wrapper = styled.div`
   height: 600px;
@@ -14,22 +14,27 @@ const Wrapper = styled.div`
 `;
 
 const SentImage = styled.div`
+  padding-top: 50px;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
   flex: 4 0 0;
+  img {
+    width: 284px;
+  }
 `;
 
 const SentMessage = styled.div`
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   height: 70px;
   font-family: 'Open Sans';
-	font-size: 23px;
+	font-size: 20px;
 	font-weight: 600;
 	line-height: 1.52;
 	text-align: center;
-	color: #454545;
+	color: #b2babf;
   flex: 3 0 0;
 `;
 
@@ -46,11 +51,10 @@ class FeedbackSent extends Component {
     return (
       <Wrapper>
         <SentImage>
-          <Icon name="mail" size="massive" color="teal" />
+          <img src={iconThanksForMessage} alt="thank you" />
         </SentImage>
         <SentMessage>
-          <div>Thanks for your message!</div>
-          <div>We will do our best to answer you shortly.</div>
+          <div>We will do our best to answer your message shortly.</div>
         </SentMessage>
         <ModalControls>
           <ScreenButton

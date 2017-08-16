@@ -17,9 +17,9 @@ const ButtonWrapper = styled.div`
 
 const Button = styled.button`
   width: 146px;
-  height: 50px;
+  height: 48px;
   border-radius: 57px;
-  background-color: #4990e2;
+  background-color: #55b6ff;
   font-family: 'Open Sans';
   font-size: 20px;
   text-align: center;
@@ -44,9 +44,9 @@ const Select = styled.select`
   height: 50px;
   border-radius: 10px;
   background-color: #ffffff;
-  border: solid 2px #d5d5d5;
+  border: solid 2px #cdd6db;
   font-family: 'Open Sans';
-	font-size: 20px;
+	font-size: 17px;
 	line-height: 1.0;
 	color: #454545;
 `;
@@ -56,11 +56,11 @@ const TextArea = styled.textarea`
   height: 227px;
   border-radius: 10px;
   background-color: #ffffff;
-  border: solid 2px #d5d5d5;
+  border: solid 2px #cdd6db;
   outline: 0;
   resize: none;
   font-family: 'Open Sans';
-	font-size: 20px;
+	font-size: 17px;
 	line-height: 1.5;
 	color: #454545;
   padding-left: 10px;

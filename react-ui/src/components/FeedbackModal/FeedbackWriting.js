@@ -14,6 +14,7 @@ const TitleWrapper = styled.div`
   flex: 2 0 0;
   font-family: 'Open Sans';
   font-size: 30px;
+  font-weight: bold;
   text-align: center;
   color: #454545;
   display: flex;
@@ -31,7 +32,7 @@ class FeedbackWriting extends Component {
     return (
       <Wrapper>
         <TitleWrapper>
-          Tell us about your question or comment
+          <p>Tell us about your question or comment</p>
         </TitleWrapper>
         <FormWrapper>
           <Form onSubmit={this.props.onSubmit}/>

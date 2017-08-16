@@ -20,7 +20,7 @@ class FeedbackModal extends Component {
     return (
       <Modal
         open={open}
-        handleClose={handleClose}
+        handleClose={this.props.status === 'sending' ? () => {} : handleClose}
         size="small"
         closeIcon={this.props.status === 'sending' ? undefined : 'close'}
         basic={this.props.status === 'sending' ? true : undefined}

@@ -113,6 +113,7 @@ const ModalTitle = styled.div`
   justify-content: center;
   align-items: center;
 	font-family: 'Open Sans';
+  font-weight: 600;
 	font-size: 30px;
 	color: #454545;
 `;

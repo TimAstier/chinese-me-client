@@ -4,8 +4,10 @@ const DialogRecord = Immutable.Record({
   id: null,
   order: null,
   introAudioUrl: '',
+  title: '',
   avatars: [],
-  statements: []
+  statements: [],
+  completed: false
 });
 
 class Dialog extends DialogRecord {

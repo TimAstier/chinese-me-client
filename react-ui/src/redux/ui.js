@@ -8,6 +8,8 @@ export const types = {
   CLOSE_MODAL: 'ui/CLOSE_MODAL',
   OPEN_FEEDBACK_MODAL: 'ui/OPEN_FEEDBACK_MODAL',
   CLOSE_FEEDBACK_MODAL: 'ui/CLOSE_FEEDBACK_MODAL',
+  OPEN_MAP_MODAL: 'ui/OPEN_MAP_MODAL',
+  CLOSE_MAP_MODAL: 'ui/CLOSE_MAP_MODAL',
   UPDATE_FEEDBACK_STATUS: 'ui/UPDATE_FEEDBACK_STATUS'
 };
 
@@ -18,7 +20,8 @@ export const INITIAL_STATE = Map({
   openModal: false,
   playAudioButton: false,
   openFeedbackModal: false,
-  feedbackStatus: 'writing'
+  feedbackStatus: 'writing',
+  openMapModal: false
 });
 
 export default function reducer(state = INITIAL_STATE, action = {}) {
@@ -38,6 +41,10 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
       return state.set('openFeedbackModal', false);
     case types.UPDATE_FEEDBACK_STATUS:
       return state.set('feedbackStatus', action.payload);
+    case types.OPEN_MAP_MODAL:
+      return state.set('openMapModal', true);
+    case types.CLOSE_MAP_MODAL:
+      return state.set('openMapModal', false);
     default: return state;
   }
 }
@@ -56,6 +63,8 @@ const updateFeedbackStatus = status => ({
   type: types.UPDATE_FEEDBACK_STATUS,
   payload: status
 });
+const openMapModal = () => ({ type: types.OPEN_MAP_MODAL });
+const closeMapModal = () => ({ type: types.CLOSE_MAP_MODAL });
 
 export const actions = {
   set,
@@ -63,7 +72,9 @@ export const actions = {
   closeModal,
   openFeedbackModal,
   closeFeedbackModal,
-  updateFeedbackStatus
+  updateFeedbackStatus,
+  openMapModal,
+  closeMapModal
 };
 
 // Selectors
@@ -74,6 +85,7 @@ const getOpenModal = state => state.get('openModal');
 const getPlayAudioButton = state => state.get('playAudioButton');
 const getOpenFeedbackModal = state => state.get('openFeedbackModal');
 const getFeedbackStatus = state => state.get('feedbackStatus');
+const getOpenMapModal = state => state.get('openMapModal');
 
 export const selectors = {
   getNextButton,
@@ -81,5 +93,6 @@ export const selectors = {
   getOpenModal,
   getPlayAudioButton,
   getOpenFeedbackModal,
-  getFeedbackStatus
+  getFeedbackStatus,
+  getOpenMapModal
 };

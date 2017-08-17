@@ -10,6 +10,8 @@ export { default as Dialog } from './Dialog';
 export { default as DialogMap } from './DialogMap';
 export { default as Episode } from './Episode';
 export { default as EpisodeMap } from './EpisodeMap';
+export { default as Grammar } from './Grammar';
+export { default as GrammarMap } from './GrammarMap';
 export { default as Sentence } from './Sentence';
 export { default as SentenceMap } from './SentenceMap';
 export { default as Statement } from './Statement';

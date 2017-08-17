@@ -1,7 +1,9 @@
 // Keep in alphabetical order
 export { default as ActivatedPage } from './Signup/ActivatedPage';
 export { default as Avatar } from './Avatar/Avatar';
+export { default as CharacterBox } from './MapModal/CharacterBox';
 export { default as CharacterPinyin } from './CharacterPinyin/CharacterPinyin';
+export { default as ChapterHeader } from './MapModal/ChapterHeader';
 export { default as Dialog } from './Dialog/Dialog';
 export { default as ElementsNav } from './ElementsNav/ElementsNav';
 export { default as EpisodeCard } from './EpisodeCard/EpisodeCard';
@@ -12,6 +14,11 @@ export { default as Introduction } from './Introduction/Introduction';
 export { default as LoginForm } from './Login/Form';
 export { default as LoginPage } from './Login/Page';
 export { default as Logo } from './Logo/Logo';
+export { default as MapContent } from './MapModal/MapContent';
+export { default as MapDialogItem } from './MapModal/MapDialogItem';
+export { default as MapGrammarItem } from './MapModal/MapGrammarItem';
+export { default as MapModal } from './MapModal/MapModal';
+export { default as MapSidebar } from './MapModal/MapSidebar';
 export { default as Modal } from './Modal/Modal';
 export { default as Navbar } from './Navbar/Navbar';
 export { default as PlayAudioButton } from './PlayAudioButton/PlayAudioButton';

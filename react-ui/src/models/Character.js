@@ -6,7 +6,8 @@ const CharacterRecord = Immutable.Record({
   pinyinNumber: '',
   audioUrl: '',
   etymologyUrl: '',
-  writingUrl: ''
+  writingUrl: '',
+  completed: false
 });
 
 class Character extends CharacterRecord {}

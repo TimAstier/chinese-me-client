@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
-import { FeedbackModal, Navbar } from '../.';
+import { FeedbackModal, Navbar, MapModal } from '../.';
+import { actions as sagaActions } from '../../sagas/actions';
 
 class App extends Component {
+  componentWillMount() {
+    return this.props.initApp();
+  }
 
   render() {
     const Wrapper = styled.div`
@@ -17,7 +22,8 @@ class App extends Component {
     return (
       <Wrapper>
         <FeedbackModal />
-        <Navbar router={this.props.router} />
+        <MapModal />
+        <Navbar />
         {this.props.children}
       </Wrapper>
     );
@@ -27,7 +33,13 @@ class App extends Component {
 App.propTypes = {
   children: propTypes.object,
   location: propTypes.object.isRequired,
-  router: propTypes.object.isRequired
+  router: propTypes.object.isRequired,
+  initApp: propTypes.func.isRequired
 };
 
-export default App;
+export default connect(
+  null,
+  {
+    initApp: sagaActions.initApp
+  }
+)(App);

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
 import { Accordion, List } from 'semantic-ui-react';
-import { Episode } from '../../models';
+import * as models from '../../models';
 import SidebarItem from './SidebarItem';
 
 const Wrapper = styled.div`
@@ -33,46 +33,61 @@ const ContentWrapper = styled.div`
 
 class MapSidebar extends Component {
 
+  renderEpisodesList(seasonId) {
+    // TODO: move this into an util func
+    const episodesArray = [];
+    this.props.episodes.valueSeq().forEach(episode => {
+      episodesArray.push(episode);
+    });
+    const filteredEpisodes = episodesArray.filter(e => {
+      return e.seasonId === seasonId;
+    });
+    return (
+      <List>
+        {filteredEpisodes.map(e => {
+          return (
+            <SidebarItem
+              episode={e}
+              focused={e.id === this.props.focusedEpisodeId}
+              key={e.id}
+              playing={this.props.currentEpisodeId === e.id}
+              setFocusedEpisodeId={this.props.setFocusedEpisodeId}
+            />
+          );
+        })}
+      </List>
+    );
+  }
+
+  generatePanels() {
+    const { seasons } = this.props;
+    const panels = [];
+    seasons.valueSeq().forEach(season => {
+      return panels.push({
+        title: 'Season ' + season.number,
+        content: this.renderEpisodesList(season.id)
+      });
+    });
+    return panels;
+  }
+
   render() {
-    const renderEpisodesList = episodes => {
-      return (
-        <List>
-          {episodes.map(e => {
-            return (
-              <SidebarItem
-                episode={e}
-                focused={e.id === 3}
-                key={e.id}
-                playing={this.props.currentEpisodeId === e.id}
-              />
-            );
-          })}
-        </List>
-      );
-    };
-
-    // TODO: Link this to actual data
-    const panels = [{
-      title: 'Season 1',
-      content: renderEpisodesList(this.props.episodes)
-    }, {
-      title: 'Season 2',
-      content: renderEpisodesList(this.props.episodes),
-    }, {
-      title: 'Season 3',
-      content: renderEpisodesList(this.props.episodes),
-    }, {
-      title: 'Season 4',
-      content: renderEpisodesList(this.props.episodes),
-    }, {
-      title: 'Season 5',
-      content: renderEpisodesList(this.props.episodes),
-    }];
-
+    const { episodes, seasons, focusedEpisodeId } = this.props;
+    let focusedSeasonId = 0;
+    let defaultActiveIndex = undefined;
+    if (focusedEpisodeId) {
+      focusedSeasonId = episodes.get(String(focusedEpisodeId)).seasonId;
+      defaultActiveIndex = seasons.get(String(focusedSeasonId)).number - 1;
+    }
     return (
       <Wrapper>
         <ContentWrapper>
-          <Accordion panels={panels} fluid />
+          <Accordion
+            panels={this.generatePanels()}
+            fluid
+            defaultActiveIndex={defaultActiveIndex}
+            exclusive
+          />
         </ContentWrapper>
       </Wrapper>
     );
@@ -80,8 +95,11 @@ class MapSidebar extends Component {
 }
 
 MapSidebar.propTypes = {
-  episodes: propTypes.arrayOf(propTypes.instanceOf(Episode)).isRequired,
-  currentEpisodeId: propTypes.number
+  seasons: propTypes.instanceOf(models.SeasonMap).isRequired,
+  episodes: propTypes.instanceOf(models.EpisodeMap).isRequired,
+  currentEpisodeId: propTypes.number,
+  focusedEpisodeId: propTypes.number,
+  setFocusedEpisodeId: propTypes.func.isRequired
 };
 
 export default MapSidebar;

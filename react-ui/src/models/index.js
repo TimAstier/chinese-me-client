@@ -12,6 +12,8 @@ export { default as Episode } from './Episode';
 export { default as EpisodeMap } from './EpisodeMap';
 export { default as Grammar } from './Grammar';
 export { default as GrammarMap } from './GrammarMap';
+export { default as Season } from './Season';
+export { default as SeasonMap } from './SeasonMap';
 export { default as Sentence } from './Sentence';
 export { default as SentenceMap } from './SentenceMap';
 export { default as Statement } from './Statement';

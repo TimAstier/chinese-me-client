@@ -3,31 +3,26 @@ import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 import { Navbar as NavbarComponent } from '../../components';
 import { actions as sagaActions } from '../../sagas/actions';
+import { actions as uiActions } from '../../redux/ui';
 
 class Navbar extends Component {
 
-  navigateToSelect() {
-    return () => this.props.router.push('/select');
-  }
-
   render() {
     return (
-      <NavbarComponent
-        { ...this.props }
-        navigateToSelect={this.navigateToSelect()}
-      />
+      <NavbarComponent { ...this.props } />
     );
   }
 }
 
 Navbar.propTypes = {
   askQuestion: propTypes.func.isRequired,
-  router: propTypes.object.isRequired
+  openMapModal: propTypes.func.isRequired
 };
 
 export default connect(
   null,
   {
-    askQuestion: sagaActions.askQuestion
+    askQuestion: sagaActions.askQuestion,
+    openMapModal: uiActions.openMapModal
   }
 )(Navbar);

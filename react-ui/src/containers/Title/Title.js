@@ -5,8 +5,8 @@ import { Title as TitleComponent } from '../../components';
 import selectors from '../../rootSelectors';
 
 class Title extends Component {
-
   render() {
+    console.log('test')
     return (
       <TitleComponent { ...this.props } />
     );

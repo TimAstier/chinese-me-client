@@ -11,6 +11,7 @@ import * as fromAudio from './redux/audio';
 import * as fromCharacterPinyin from './redux/characterPinyin';
 import * as fromAuth from './redux/auth';
 import * as fromRouting from './redux/routing';
+import * as fromMap from './redux/map';
 
 const entitySelectors = bindSelectors(
   state => state.get('entities'),
@@ -47,6 +48,11 @@ const routingSelectors = bindSelectors(
   fromRouting.selectors
 );
 
+const mapSelectors = bindSelectors(
+  state => state.get('map'),
+  fromMap.selectors
+);
+
 const getCurrentDialog = createSelector(
   entitySelectors.getDialogs,
   studySelectors.getCurrentDialogId,
@@ -73,6 +79,14 @@ const getCurrentEpisode = createSelector(
   entitySelectors.getEpisodes,
   studySelectors.getCurrentEpisodeId,
   (episodes, id) => episodes.get(String(id))
+);
+
+const getFocusedEpisode = createSelector(
+  entitySelectors.getEpisodes,
+  mapSelectors.getFocusedEpisodeId,
+  (episodes, id) => {
+    return episodes.get(String(id));
+  }
 );
 
 const getCurrentStatement = createSelector(
@@ -238,7 +252,9 @@ const selectors = {
   ...characterPinyinSelectors,
   ...authPinyinSelectors,
   ...routingSelectors,
+  ...mapSelectors,
   getCurrentEpisode,
+  getFocusedEpisode,
   getCurrentDialog,
   getCurrentStatement,
   getCurrentStatementIndex,

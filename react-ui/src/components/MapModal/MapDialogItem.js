@@ -11,6 +11,7 @@ const Wrapper = styled.div`
   :hover {
     color: #55b6ff;
   }
+  cursor: pointer;
 `;
 
 const CheckmarkWrapper = styled.div`
@@ -23,7 +24,6 @@ const CheckmarkWrapper = styled.div`
 const TitleWrapper = styled.div`
   font-family: 'STKaitiSC';
   flex-grow: 1;
-  cursor: pointer;
   display: flex;
   align-items: center;
 	height: 20px;
@@ -35,7 +35,7 @@ class MapGrammarItem extends Component {
 
   render() {
     return (
-      <Wrapper>
+      <Wrapper onClick={this.props.onClick}>
         <CheckmarkWrapper>
           {this.props.completed && <Icon name="checkmark" color="green" />}
         </CheckmarkWrapper>
@@ -47,7 +47,8 @@ class MapGrammarItem extends Component {
 
 MapGrammarItem.propTypes = {
   title: propTypes.string.isRequired,
-  completed: propTypes.bool
+  completed: propTypes.bool,
+  onClick: propTypes.func.isRequired
 };
 
 export default MapGrammarItem;

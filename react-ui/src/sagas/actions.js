@@ -23,7 +23,9 @@ export const types = {
   LOGIN_ERROR: 'signal/LOGIN_ERROR',
   LOGOUT: 'signal/LOGOUT',
   SEND_FEEDBACK: 'signal/SEND_FEEDBACK',
-  ACTIVATE: 'signal/ACTIVATE'
+  ACTIVATE: 'signal/ACTIVATE',
+  INIT_APP: 'signal/INIT_APP',
+  MAP_LINK_CLICK: 'signal/MAP_LINK_CLICK'
 };
 
 // Action Creators
@@ -59,6 +61,11 @@ const activate = payload => ({
   type: types.ACTIVATE,
   payload
 });
+const initApp = () => ({ type: types.INIT_APP });
+const mapLinkClick = link => ({
+  type: types.MAP_LINK_CLICK,
+  payload: { link }
+});
 
 export const actions = {
   next,
@@ -79,5 +86,7 @@ export const actions = {
   loginError,
   logout,
   sendFeedback,
-  activate
+  activate,
+  initApp,
+  mapLinkClick
 };

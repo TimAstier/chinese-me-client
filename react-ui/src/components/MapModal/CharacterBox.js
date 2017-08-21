@@ -32,7 +32,7 @@ class CharacterBox extends Component {
 
   render() {
     return (
-      <Wrapper>
+      <Wrapper onClick={this.props.onClick}>
         {this.props.char}
         {this.props.completed &&
           <CheckmarkWrapper>
@@ -46,7 +46,8 @@ class CharacterBox extends Component {
 
 CharacterBox.propTypes = {
   char: propTypes.string.isRequired,
-  completed: propTypes.bool
+  completed: propTypes.bool,
+  onClick: propTypes.func.isRequired
 };
 
 export default CharacterBox;

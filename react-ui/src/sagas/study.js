@@ -1,11 +1,9 @@
 /* eslint-disable no-console */
-import { takeLatest, put, call, race, take, select } from 'redux-saga/effects';
+import { takeLatest, put, call, race, take } from 'redux-saga/effects';
 import { types as studyTypes, actions as studyActions } from '../redux/study';
 import { elementTypes } from '../constants/study';
 import { types as sagaTypes } from './actions';
 import mapScreenTypeToModule from '../helpers/mapScreenTypeToModule';
-import selectors from '../rootSelectors';
-import { fetchEpisodes } from '../rootSaga';
 import getParamsFromUrl from '../utils/getParamsFromUrl';
 
 // Every screenType has those five "studyFunctions" (generators):
@@ -19,11 +17,6 @@ function* initScreen(action) {
   yield put(studyActions.setInitialized(false)); // Hide screen content
   const { episodeId, elementType, elementId, mode }
     = getParamsFromUrl(action.payload.url); // Get params from url
-  // Check if episodes data is loaded
-  const currentEpisode = yield select(selectors.getCurrentEpisode);
-  if (currentEpisode === undefined) {
-    yield call(fetchEpisodes);
-  }
   yield put(studyActions.setCurrentEpisodeId(episodeId)); // Set currentEpisodeId
   const screenType = elementType + '/' + mode; // Define screenType
   const funcs = getStudyFunctions(screenType); // Get studyFunctions

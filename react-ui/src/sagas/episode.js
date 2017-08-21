@@ -1,9 +1,9 @@
 /* eslint-disable no-constant-condition */
 import { takeEvery, put, call, all, select } from 'redux-saga/effects';
 import { types as sagaTypes } from './actions';
+import { types as studyTypes } from '../redux/study';
 import { actions as entitiesActions } from '../redux/entities';
 import { actions as uiActions } from '../redux/ui';
-import { fetchEpisodes } from '../rootSaga';
 import { push } from 'react-router-redux';
 import selectors from '../rootSelectors';
 import getParamsFromUrl from '../utils/getParamsFromUrl';
@@ -11,7 +11,6 @@ import getParamsFromUrl from '../utils/getParamsFromUrl';
 function* exitEpisode() {
   yield put(push('/select'));
   yield put(entitiesActions.clear());
-  yield call(fetchEpisodes);
 }
 
 function* askQuestion() {
@@ -50,8 +49,13 @@ function* findNextUrl(params) {
   }
 }
 
+function* startEpisode(action) {
+  return yield put(push('/study/' + action.payload.id + '/title/1'));
+}
+
 export default function* watchEpisodeSagas() {
   yield all([
+    takeEvery(studyTypes.START_EPISODE, startEpisode),
     takeEvery(sagaTypes.EXIT, exitEpisode),
     takeEvery(sagaTypes.ASK_QUESTION, askQuestion),
     takeEvery(sagaTypes.SKIP, skip),

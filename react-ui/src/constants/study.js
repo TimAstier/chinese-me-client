@@ -1,4 +1,5 @@
 export const elementTypes = [
   'character',
-  'dialog'
+  'dialog',
+  'grammar'
 ];

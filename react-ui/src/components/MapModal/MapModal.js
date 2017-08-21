@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import { Modal } from '../.';
 import styled from 'styled-components';
-import { MapSidebar, MapContent } from '../../components';
+import { MapSidebar, MapContent } from '../../containers';
 import * as models from '../../models';
 
 const Wrapper = styled.div`
@@ -15,9 +15,9 @@ const Wrapper = styled.div`
   padding-left: 15px;
 `;
 
-class FeedbackModal extends Component {
+class MapModal extends Component {
   render() {
-    const { open, handleClose, episodes, currentEpisodeId } = this.props;
+    const { open, handleClose } = this.props;
     return (
       <Modal
         open={open}
@@ -26,10 +26,7 @@ class FeedbackModal extends Component {
         closeIcon="close"
       >
         <Wrapper>
-          <MapSidebar
-            episodes={episodes}
-            currentEpisodeId={currentEpisodeId}
-          />
+          <MapSidebar />
           <MapContent
             characters={this.props.characters}
             dialogs={this.props.dialogs}
@@ -41,14 +38,12 @@ class FeedbackModal extends Component {
   }
 }
 
-FeedbackModal.propTypes = {
+MapModal.propTypes = {
   open: propTypes.bool.isRequired,
   handleClose: propTypes.func.isRequired,
-  currentEpisodeId: propTypes.number,
-  episodes: propTypes.arrayOf(propTypes.instanceOf(models.Episode)).isRequired,
   characters: propTypes.arrayOf(propTypes.instanceOf(models.Character)),
   grammars: propTypes.arrayOf(propTypes.instanceOf(models.Grammar)),
   dialogs: propTypes.arrayOf(propTypes.instanceOf(models.Dialog))
 };
 
-export default FeedbackModal;
+export default MapModal;

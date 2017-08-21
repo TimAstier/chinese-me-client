@@ -11,6 +11,7 @@ const Wrapper = styled.div`
   :hover {
     color: #55b6ff;
   }
+  cursor: pointer;
 `;
 
 const CheckmarkWrapper = styled.div`
@@ -23,7 +24,6 @@ const CheckmarkWrapper = styled.div`
 const TitleWrapper = styled.div`
   font-family: 'Open Sans';
   flex-grow: 1;
-  cursor: pointer;
   display: flex;
   align-items: center;
 	height: 20px;

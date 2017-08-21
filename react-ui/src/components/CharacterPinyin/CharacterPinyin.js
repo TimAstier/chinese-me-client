@@ -53,7 +53,7 @@ const CharacterBox = styled.div`
   box-shadow: 0 2px 7px 0 rgba(0, 0, 0, 0.08);
   border: solid 2px #dce6eb;
   font-size: 100px;
-  font-family: 'PingFangSC';
+  font-family: 'STKaitiSC';
 	color: #454545;
   display: flex;
   justify-content: center;

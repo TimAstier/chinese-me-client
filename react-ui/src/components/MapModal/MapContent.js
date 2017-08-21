@@ -67,6 +67,9 @@ class MapContent extends Component {
             key={i}
             char={c.simpChar}
             completed={c.completed}
+            onClick={() => this.props.mapLinkClick(
+              '/study/' + this.props.episode.id + '/character/' + c.id + '/pinyin'
+            )}
           />
         );
       });
@@ -82,6 +85,9 @@ class MapContent extends Component {
             key={i}
             title={d.title}
             completed={d.completed ? true : undefined}
+            onClick={() => this.props.mapLinkClick(
+              '/study/' + this.props.episode.id + '/dialog/' + d.id + '/listen'
+            )}
           />
         );
       });
@@ -105,28 +111,36 @@ class MapContent extends Component {
   }
 
   render() {
-    // TODO: Link headers to actual data
-    // TODO: Link Characters to actual data
+    // TODO: Display number of completed items and completed headers
+    if (!this.props.episode) {
+      // TODO: return a message for empty screen
+      return null;
+    }
     return (
       <Wrapper>
         <TitleWrapper>
-          <EpisodeNumber>Episode 5:</EpisodeNumber>
-          <EpisodeTitle>你是谁？</EpisodeTitle>
+          <EpisodeNumber>
+            {`Episode ${this.props.episode.number}:`}
+          </EpisodeNumber>
+          <EpisodeTitle>
+            {this.props.episode.title}
+          </EpisodeTitle>
         </TitleWrapper>
         <ContentWrapper>
           <ChapterHeader
             name="Characters"
-            completedElements={3}
-            totalElements={8}
+            completedElements={0}
+            totalElements={this.props.episode.characters.length}
+            completed={false}
           />
           <CharactersWrapper>
             {this.renderCharacterBoxes()}
           </CharactersWrapper>
           <ChapterHeader
             name="Grammar"
-            completed
-            completedElements={2}
-            totalElements={2}
+            completedElements={0}
+            totalElements={this.props.episode.grammars.length}
+            completed={false}
           />
           <ContentItemsWrapper>
             {this.renderGrammarItems()}
@@ -134,18 +148,20 @@ class MapContent extends Component {
           <ChapterHeader
             name="Dialog"
             completedElements={0}
-            totalElements={1}
+            totalElements={this.props.episode.dialogs.length}
+            completed={false}
           />
           <ContentItemsWrapper>
             {this.renderDialogItems()}
           </ContentItemsWrapper>
           <ChapterHeader
             name="Practice"
-            completed
+            completed={false}
           />
           <Space />
           <ChapterHeader
             name="Final Exam"
+            completed={false}
           />
         </ContentWrapper>
       </Wrapper>
@@ -154,9 +170,11 @@ class MapContent extends Component {
 }
 
 MapContent.propTypes = {
-  characters: propTypes.arrayOf(propTypes.instanceOf(models.Character)),
-  grammars: propTypes.arrayOf(propTypes.instanceOf(models.Grammar)),
-  dialogs: propTypes.arrayOf(propTypes.instanceOf(models.Dialog))
+  characters: propTypes.array.isRequired,
+  grammars: propTypes.array.isRequired,
+  dialogs: propTypes.array.isRequired,
+  episode: propTypes.instanceOf(models.Episode),
+  mapLinkClick: propTypes.func.isRequired
 };
 
 export default MapContent;

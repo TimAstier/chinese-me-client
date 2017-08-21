@@ -1,8 +1,10 @@
 import Immutable from 'immutable';
+import { types as sagaTypes } from '../sagas/actions';
 
 // Action Types
 
 export const types = {
+  CLEAR: 'study/CLEAR',
   SET_CURRENT_EPISODE_ID: 'study/SET_CURRENT_EPISODE_ID',
   SET_CURRENT_DIALOG_ID: 'study/SET_CURRENT_DIALOG_ID',
   SET_CURRENT_STATEMENT_ID: 'study/SET_CURRENT_STATEMENT_ID',
@@ -34,6 +36,9 @@ export const INITIAL_STATE = Immutable.Map({
 
 export default function reducer(state = INITIAL_STATE, action = {}) {
   switch (action.type) {
+    case types.CLEAR:
+    case sagaTypes.EXIT:
+      return INITIAL_STATE;
     case types.SET_CURRENT_EPISODE_ID:
     case types.START_EPISODE:
       return state.set('currentEpisodeId', action.payload.id);

@@ -5,6 +5,7 @@ import logo from '../../images/logo.svg';
 import iconSendFeedback from '../../images/iconSendFeedback.svg';
 import userIcon from '../../images/defaultMaleUserIcon.svg';
 import Clickable from '../Shared/Clickable';
+import { browserHistory } from 'react-router';
 
 const Wrapper = styled.div`
   align-self: stretch;
@@ -83,12 +84,18 @@ class Navbar extends Component {
         <LeftMenuWrapper>
           <LeftMenuItem>
             <Clickable>
-              <div onClick={this.props.navigateToSelect}>
+              <div onClick={() => browserHistory.push('/select')}>
                 Home
               </div>
             </Clickable>
           </LeftMenuItem>
-          <LeftMenuItem>Map</LeftMenuItem>
+          <LeftMenuItem>
+            <Clickable>
+              <div onClick={this.props.openMapModal}>
+                Map
+              </div>
+            </Clickable>
+          </LeftMenuItem>
         </LeftMenuWrapper>
         <RightMenuWrapper>
           <UserMenuWrapper>
@@ -117,7 +124,7 @@ class Navbar extends Component {
 
 Navbar.propTypes = {
   askQuestion: propTypes.func.isRequired,
-  navigateToSelect: propTypes.func.isRequired
+  openMapModal: propTypes.func.isRequired
 };
 
 export default Navbar;

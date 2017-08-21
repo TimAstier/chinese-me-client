@@ -74,7 +74,7 @@ class SidebarItem extends Component {
     // TODO: triangle on the right of focused episode
     // TODO: Change checkmark into svg icon with right color
     return (
-      <Wrapper>
+      <Wrapper onClick={() => this.props.setFocusedEpisodeId(episode.id)}>
         <List.Item>
           <StyledItem>
             <CheckWrapper>
@@ -99,7 +99,8 @@ class SidebarItem extends Component {
 SidebarItem.propTypes = {
   episode: propTypes.instanceOf(Episode).isRequired,
   focused: propTypes.bool.isRequired,
-  playing: propTypes.bool
+  playing: propTypes.bool,
+  setFocusedEpisodeId: propTypes.func.isRequired
 };
 
 export default SidebarItem;

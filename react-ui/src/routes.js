@@ -14,7 +14,8 @@ import { EmailSentPage, ActivatedPage } from './components';
 // yield put(push('/dialog/' + action.payload.episodeId)); <- in a saga
 
 // How to push directly from a component:
-// this.props.router.push('/login')
+// import { browserHistory } from 'react-router'
+// browserHistory.push('/select')
 
 /* ----- */
 // Study routes:

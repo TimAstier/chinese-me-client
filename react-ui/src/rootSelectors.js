@@ -64,6 +64,11 @@ const getCurrentDialog = createSelector(
   }
 );
 
+const getCurrentDialogStatementsCount = createSelector(
+  getCurrentDialog,
+  dialog => dialog.countStatements()
+);
+
 const getCurrentStatementIndex = createSelector(
   getCurrentDialog,
   studySelectors.getCurrentStatementId,
@@ -148,16 +153,22 @@ const getNextSentenceId = createSelector(
   }
 );
 
-const getPreviousSentenceId = createSelector(
-  getCurrentStatement,
-  getCurrentSentenceIndex,
-  (statement, i) => statement.sentences[i - 1]
-);
+// const getPreviousSentenceId = createSelector(
+//   getCurrentStatement,
+//   getCurrentSentenceIndex,
+//   (statement, i) => statement.sentences[i - 1]
+// );
 
 const getNextStatementId = createSelector(
   getCurrentDialog,
   getCurrentStatementIndex,
   (dialog, i) => dialog.statements[i + 1] ? dialog.statements[i + 1] : undefined
+);
+
+const getPreviousStatementId = createSelector(
+  getCurrentDialog,
+  getCurrentStatementIndex,
+  (dialog, i) => dialog.statements[i - 1] ? dialog.statements[i - 1] : undefined
 );
 
 const getSentencesCountInCurrentDialog = createSelector(
@@ -256,6 +267,7 @@ const selectors = {
   getCurrentEpisode,
   getFocusedEpisode,
   getCurrentDialog,
+  getCurrentDialogStatementsCount,
   getCurrentStatement,
   getCurrentStatementIndex,
   getCurrentSentence,
@@ -263,8 +275,9 @@ const selectors = {
   getCurrentSentences,
   getCurrentAvatars,
   getNextSentenceId,
-  getPreviousSentenceId,
+  // getPreviousSentenceId,
   getNextStatementId,
+  getPreviousStatementId,
   getSentencesCountInCurrentDialog,
   getIsChosenAvatarTalking,
   getCurrentCharacter,

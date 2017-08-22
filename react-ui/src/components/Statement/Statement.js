@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { Icon } from 'semantic-ui-react';
 import propTypes from 'prop-types';
 import styled, { keyframes } from 'styled-components';
 import * as models from '../../models';
 import { Clickable } from '../Shared';
+import { PlayAudioButton } from '../../containers';
+import iconYourTurn from '../../images/iconYourTurn.svg';
 
 const blinker = keyframes`
   50% { opacity: 0; }
@@ -11,10 +12,11 @@ const blinker = keyframes`
 
 const Wrapper = styled.div`
   width: 550px;
-  height: 320px;
+  height: 310px;
   border-radius: 15px;
   background-color: #ffffff;
-  border: solid 2px #eaeaea;
+  box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.08);
+  border: solid 2px #dce6eb;
   display: flex;
   flex-direction: column;
 `;
@@ -24,10 +26,12 @@ const ChineseWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  font-family: 'STHeiTi';
-  font-size: 25px;
-  color: #454545;
+  font-family: 'STKaitiSC';
+	font-size: 22px;
+	font-weight: 900;
+	line-height: 1.5;
   flex-wrap: wrap;
+  color: #454545;
 `;
 
 const L1Wrapper = styled.div`
@@ -37,27 +41,15 @@ const L1Wrapper = styled.div`
   align-items: center;
   font-family: 'Open Sans';
   font-size: 20px;
-  color: #959595;
+  font-weight: 900;
+  line-height: 1.5;
+  color: #454545;
   flex-wrap: wrap;
 `;
 
 const ControlWrapper = styled.div`
   flex: 1 0 0;
   display: flex;
-`;
-
-const LeftChevronWrapper = styled.div`
-  flex: 2 0 0;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-`;
-
-const RightChevronWrapper = styled.div`
-  flex: 2 0 0;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
 `;
 
 const PlayAudioWrapper = styled.div`
@@ -70,7 +62,6 @@ const PlayAudioWrapper = styled.div`
 const MessageWrapper = styled.div`
   flex: 1 0 0;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
 `;
@@ -81,13 +72,21 @@ const ReadIconWrapper = styled.div`
 `;
 
 const ReadMessageWrapper = styled.div`
-  font-size: 20px;
-  color: blue;
+  font-family: 'Open Sans';
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  color: #55b6ff;
+  margin-left: 9px;
 `;
 
 const Sentence = styled.span`
   padding-left: ${props => props.padded ? '10px' : '0px'};
   opacity: ${props => props.active ? 1 : 0.3};
+  cursor: ${props => props.active || props.dialogMode !== 'explore' ? 'normal' : 'pointer'};
+  :hover {
+    opacity: ${props => props.dialogMode === 'explore' ? 1 : 'none'};
+  }
 `;
 
 const FormatedSentences = styled.div`
@@ -97,85 +96,46 @@ const FormatedSentences = styled.div`
   text-align: center;
 `;
 
-const renderChinese = (sentences, currentSentenceIndex) => {
-  const chinese = [];
-  sentences.forEach((s, i) => {
-    chinese.push(
-      <Sentence
-        key={i}
-        padded={i !== 0}
-        active={i === currentSentenceIndex}
-      >
-        {s.chinese}
-      </Sentence>
-    );
-  });
-  return <FormatedSentences>{chinese}</FormatedSentences>;
-};
-
-const renderL1 = (sentences, currentSentenceIndex) => {
-  const l1 = [];
-  sentences.forEach((s, i) => {
-    l1.push(
-      <Sentence
-        key={i}
-        padded={i !== 0}
-        active={i === currentSentenceIndex}
-      >
-        {s.english}
-      </Sentence>
-    );
-  });
-  return <FormatedSentences>{l1}</FormatedSentences>;
-};
-
 class Statement extends Component {
+
+  renderStatement(language) {
+    const { sentences, currentSentenceIndex, switchSentence, dialogMode }
+      = this.props;
+    const segments = [];
+    sentences.forEach((s, i) => {
+      const active = i === currentSentenceIndex;
+      segments.push(
+        <Sentence
+          key={i}
+          padded={i !== 0}
+          active={active}
+          dialogMode={dialogMode}
+          onClick={
+            dialogMode !== 'explore' || active ?
+            undefined
+            : () => switchSentence(s.id)
+          }
+        >
+          {s[language]}
+        </Sentence>
+      );
+    });
+    return <FormatedSentences>{segments}</FormatedSentences>;
+  }
+
   renderControls() {
     return (
       <ControlWrapper>
-        <LeftChevronWrapper>
-          {this.props.currentSentenceIndex > 0 &&
-            <Clickable>
-              <Icon
-                name="chevron left"
-                size="big"
-                color="teal"
-                onClick={this.props.previousSentence}
-              />
-            </Clickable>
-          }
-        </LeftChevronWrapper>
         <PlayAudioWrapper>
           <Clickable>
-            {!this.props.isAudioPlaying ?
-              <Icon
-                name="video play outline"
-                size="huge"
-                color="teal"
-                onClick={() => this.props.playSentence()}
-              />
-              :
-              <Icon
-                name="stop circle outline"
-                size="huge"
-                color="teal"
-                onClick={() => this.props.stopSentence()}
-              />
-            }
+            <PlayAudioButton
+              onClick={this.props.isAudioPlaying ?
+                () => this.props.stopSentence()
+                : () => this.props.playSentence()
+              }
+            />
           </Clickable>
         </PlayAudioWrapper>
-        <RightChevronWrapper>
-          {this.props.currentSentenceIndex < this.props.sentences.length - 1 &&
-            <Clickable>
-              <Icon
-                name="chevron right"
-                size="big"
-                color="teal"
-                onClick={this.props.nextSentence}
-              />
-            </Clickable>
-          }
-        </RightChevronWrapper>
       </ControlWrapper>
     );
   }
@@ -185,14 +145,10 @@ class Statement extends Component {
       <ControlWrapper>
         <MessageWrapper>
           <ReadIconWrapper>
-            <Icon
-              name="volume up"
-              size="big"
-              color="blue"
-            />
+            <img src={iconYourTurn} alt="your turn" />
           </ReadIconWrapper>
           <ReadMessageWrapper>
-            Read the sentence yourself
+            Your turn!
           </ReadMessageWrapper>
         </MessageWrapper>
       </ControlWrapper>
@@ -212,10 +168,10 @@ class Statement extends Component {
     return (
       <Wrapper>
         <ChineseWrapper>
-          {renderChinese(this.props.sentences, this.props.currentSentenceIndex)}
+          {this.renderStatement('chinese')}
         </ChineseWrapper>
         <L1Wrapper>
-          {renderL1(this.props.sentences, this.props.currentSentenceIndex)}
+          {this.renderStatement('english')}
         </L1Wrapper>
         {this.renderControlWrapper()}
       </Wrapper>
@@ -227,12 +183,12 @@ Statement.propTypes = {
   sentences: propTypes.arrayOf(propTypes.instanceOf(models.Sentence)).isRequired,
   currentSentenceIndex: propTypes.number.isRequired,
   isAudioPlaying: propTypes.bool.isRequired,
-  nextSentence: propTypes.func.isRequired,
-  previousSentence: propTypes.func.isRequired,
   playSentence: propTypes.func.isRequired,
   stopSentence: propTypes.func.isRequired,
   displayControls: propTypes.bool.isRequired,
-  read: propTypes.bool.isRequired
+  read: propTypes.bool.isRequired,
+  switchSentence: propTypes.func.isRequired,
+  dialogMode: propTypes.string.isRequired
 };
 
 export default Statement;

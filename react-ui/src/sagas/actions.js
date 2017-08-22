@@ -9,7 +9,10 @@ export const types = {
   NEXT: 'signal/NEXT',
   SKIP: 'signal/SKIP',
   NEXT_SENTENCE: 'signal/NEXT_SENTENCE',
-  PREVIOUS_SENTENCE: 'signal/PREVIOUS_SENTENCE',
+  // PREVIOUS_SENTENCE: 'signal/PREVIOUS_SENTENCE',
+  SWITCH_SENTENCE: 'signal/SWITCH_SENTENCE',
+  NEXT_STATEMENT: 'signal/NEXT_STATEMENT',
+  PREVIOUS_STATEMENT: 'signal/PREVIOUS_STATEMENT',
   PLAY_SENTENCE: 'signal/PLAY_SENTENCE',
   STOP_SENTENCE: 'signal/STOP_SENTENCE',
   ASK_QUESTION: 'signal/ASK_QUESTION',
@@ -25,7 +28,8 @@ export const types = {
   SEND_FEEDBACK: 'signal/SEND_FEEDBACK',
   ACTIVATE: 'signal/ACTIVATE',
   INIT_APP: 'signal/INIT_APP',
-  MAP_LINK_CLICK: 'signal/MAP_LINK_CLICK'
+  MAP_LINK_CLICK: 'signal/MAP_LINK_CLICK',
+  DIALOG_LINK_CLICK: 'signal/DIALOG_LINK_CLICK'
 };
 
 // Action Creators
@@ -33,8 +37,14 @@ export const types = {
 const next = () => ({ type: types.NEXT });
 const skip = () => ({ type: types.SKIP });
 const nextSentence = () => ({ type: types.NEXT_SENTENCE });
-const previousSentence = () => ({ type: types.PREVIOUS_SENTENCE });
+// const previousSentence = () => ({ type: types.PREVIOUS_SENTENCE });
+const switchSentence = id => ({
+  type: types.SWITCH_SENTENCE,
+  payload: { id }
+});
 const playSentence = () => ({ type: types.PLAY_SENTENCE });
+const nextStatement = () => ({ type: types.NEXT_STATEMENT });
+const previousStatement = () => ({ type: types.PREVIOUS_STATEMENT });
 const stopSentence = () => ({ type: types.STOP_SENTENCE });
 const askQuestion = () => ({ type: types.ASK_QUESTION });
 const displayEpisodeOverview = () => ({ type: types.DISPLAY_EPISODE_OVERVIEW });
@@ -66,12 +76,19 @@ const mapLinkClick = link => ({
   type: types.MAP_LINK_CLICK,
   payload: { link }
 });
+const dialogLinkClick = link => ({
+  type: types.DIALOG_LINK_CLICK,
+  payload: { link }
+});
 
 export const actions = {
   next,
   skip,
   nextSentence,
-  previousSentence,
+  // previousSentence,
+  switchSentence,
+  nextStatement,
+  previousStatement,
   playSentence,
   stopSentence,
   askQuestion,
@@ -88,5 +105,6 @@ export const actions = {
   sendFeedback,
   activate,
   initApp,
-  mapLinkClick
+  mapLinkClick,
+  dialogLinkClick
 };

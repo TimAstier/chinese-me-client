@@ -19,12 +19,12 @@ Statement.propTypes = {
   sentences: propTypes.array.isRequired,
   currentSentenceIndex: propTypes.number.isRequired,
   isAudioPlaying: propTypes.bool.isRequired,
-  nextSentence: propTypes.func.isRequired,
-  previousSentence: propTypes.func.isRequired,
   playSentence: propTypes.func.isRequired,
   stopSentence: propTypes.func.isRequired,
   displayControls: propTypes.bool.isRequired,
-  read: propTypes.bool.isRequired
+  read: propTypes.bool.isRequired,
+  switchSentence: propTypes.func.isRequired,
+  dialogMode: propTypes.string.isRequired
 };
 
 const mapStateToProps = state => {
@@ -38,9 +38,8 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   {
-    nextSentence: actions.nextSentence,
-    previousSentence: actions.previousSentence,
     playSentence: actions.playSentence,
-    stopSentence: actions.stopSentence
+    stopSentence: actions.stopSentence,
+    switchSentence: actions.switchSentence
   }
 )(Statement);

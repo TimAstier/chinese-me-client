@@ -9,6 +9,7 @@ import { playSound } from '../audio';
 import selectors from '../../rootSelectors';
 import { fetchEntities } from '../entities';
 import { actions as studyActions } from '../../redux/study';
+import { push } from 'react-router-redux';
 
 export function* checkDialogData(id) {
   yield put(studyActions.setCurrentDialogId(id));
@@ -70,12 +71,18 @@ function* nextSentence(mode = 'explore') {
   }
 }
 
-function* previousSentence() {
-  // Go to previous Sentence
-  const previousSentenceId = yield select(selectors.getPreviousSentenceId);
-  yield put(fromStudy.setCurrentSentenceId(previousSentenceId));
+// Only used in explore mode
+function* switchSentence(action) {
+  yield put(fromStudy.setCurrentSentenceId(action.payload.id));
   yield put(fromSaga.playSentence());
 }
+
+// function* previousSentence() {
+//   // Go to previous Sentence
+//   const previousSentenceId = yield select(selectors.getPreviousSentenceId);
+//   yield put(fromStudy.setCurrentSentenceId(previousSentenceId));
+//   yield put(fromSaga.playSentence());
+// }
 
 function* nextStatement(mode = 'explore') {
   const nextStatementId = yield select(selectors.getNextStatementId);
@@ -93,6 +100,15 @@ function* nextStatement(mode = 'explore') {
   }
 }
 
+// Only used in explore mode
+function* previousStatement() {
+  const previousStatementId = yield select(selectors.getPreviousStatementId);
+  yield put(fromStudy.setCurrentStatementId(previousStatementId));
+  const statement = yield select(selectors.getCurrentStatement);
+  yield put(fromStudy.setCurrentSentenceId(statement.sentences[0]));
+  yield put(fromSaga.playSentence());
+}
+
 export function* next(mode = 'explore') {
   const nextSentenceId = yield select(selectors.getNextSentenceId);
   if (nextSentenceId !== undefined) {
@@ -101,12 +117,20 @@ export function* next(mode = 'explore') {
   return yield call(nextStatement, mode);
 }
 
+function* switchDialogMode(action) {
+  yield put(push(action.payload.link));
+}
+
 // Export watchers
 
 export default function* watchDialogSagas() {
   yield all([
     takeEvery(sagaTypes.NEXT_SENTENCE, nextSentence),
-    takeEvery(sagaTypes.PREVIOUS_SENTENCE, previousSentence),
-    takeLatest(sagaTypes.PLAY_SENTENCE, playSentence)
+    // takeEvery(sagaTypes.PREVIOUS_SENTENCE, previousSentence),
+    takeEvery(sagaTypes.SWITCH_SENTENCE, switchSentence),
+    takeEvery(sagaTypes.NEXT_STATEMENT, nextStatement),
+    takeEvery(sagaTypes.PREVIOUS_STATEMENT, previousStatement),
+    takeLatest(sagaTypes.PLAY_SENTENCE, playSentence),
+    takeEvery(sagaTypes.DIALOG_LINK_CLICK, switchDialogMode)
   ]);
 }

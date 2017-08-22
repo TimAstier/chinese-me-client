@@ -23,6 +23,8 @@ function* initScreen(action) {
   let isDataLoaded = undefined;
   if (elementTypes.indexOf(elementType) !== -1) { // Check data
     isDataLoaded = yield call(funcs.checkData, elementId);
+  } else {
+    isDataLoaded = true;
   }
   if (!isDataLoaded) { // Fetch data
     yield call(funcs.fetchData, episodeId);

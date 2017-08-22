@@ -11,7 +11,6 @@ export const types = {
   SET_CURRENT_SENTENCE_ID: 'study/SET_CURRENT_SENTENCE_ID',
   START_EPISODE: 'study/START_EPISODE',
   SET_DIALOG_MODE: 'study/SET_DIALOG_MODE',
-  SET_TITLE: 'study/SET_TITLE',
   SET_PART_NUMBER: 'study/SET_PART_NUMBER',
   SET_CHOSEN_AVATAR_ID: 'study/CHOSEN_AVATAR_ID',
   SET_CURRENT_CHARACTER_ID: 'study/SET_CURRENT_CHARACTER_ID',
@@ -27,7 +26,6 @@ export const INITIAL_STATE = Immutable.Map({
   currentStatementId: null,
   currentSentenceId: null,
   dialogMode: '',
-  title: '',
   partNumber: null,
   chosenAvatarId: null,
   currentCharacterId: null,
@@ -50,8 +48,6 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
       return state.set('currentSentenceId', action.payload.id);
     case types.SET_DIALOG_MODE:
       return state.set('dialogMode', action.payload.mode);
-    case types.SET_TITLE:
-      return state.set('title', action.payload.title);
     case types.SET_PART_NUMBER:
       return state.set('partNumber', action.payload.partNumber);
     case types.SET_CHOSEN_AVATAR_ID:
@@ -113,18 +109,6 @@ const setDialogMode = mode => {
   };
 };
 
-const setTitle = title => {
-  const titles = ['Characters', 'Grammar', 'Dialog', 'Review', 'Final Test'];
-  if (titles.findIndex(e => e === title) === -1) {
-    console.log('Unknown title'); // eslint-disable-line no-console
-    return {};
-  }
-  return {
-    type: types.SET_TITLE,
-    payload: { title }
-  };
-};
-
 const setPartNumber = partNumber => ({
   type: types.SET_PART_NUMBER,
   payload: { partNumber }
@@ -157,7 +141,6 @@ export const actions = {
   setCurrentSentenceId,
   startEpisode,
   setDialogMode,
-  setTitle,
   setPartNumber,
   setChosenAvatarId,
   setCurrentCharacterId,
@@ -172,7 +155,6 @@ const getCurrentDialogId = state => state.get('currentDialogId');
 const getCurrentStatementId = state => state.get('currentStatementId');
 const getCurrentSentenceId = state => state.get('currentSentenceId');
 const getDialogMode = state => state.get('dialogMode');
-const getTitle = state => state.get('title');
 const getPartNumber = state => state.get('partNumber');
 const getChosenAvatarId = state => state.get('chosenAvatarId');
 const getCurrentCharacterId = state => state.get('currentCharacterId');
@@ -184,7 +166,6 @@ export const selectors = {
   getCurrentStatementId,
   getCurrentSentenceId,
   getDialogMode,
-  getTitle,
   getPartNumber,
   getChosenAvatarId,
   getCurrentCharacterId,

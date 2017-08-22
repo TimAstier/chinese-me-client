@@ -1,7 +1,7 @@
 /* eslint-disable no-constant-condition */
 import { takeEvery, put, call, all, select } from 'redux-saga/effects';
 import { types as sagaTypes } from './actions';
-import { types as studyTypes } from '../redux/study';
+import { types as studyTypes, actions as studyActions } from '../redux/study';
 import { actions as entitiesActions } from '../redux/entities';
 import { actions as uiActions } from '../redux/ui';
 import { push } from 'react-router-redux';
@@ -26,18 +26,40 @@ function* next() {
   const { episodeId, elementType, elementId, mode } = urlParams;
   const screenType = elementType + '/' + mode; // Define screenType
   const nextUrl = yield call(findNextUrl, { screenType, episodeId, elementId }); // Find next URL
+  yield put(studyActions.setInitialized(false)); // Hide screen content
   return yield put(push(nextUrl)); // Push url
 }
 
 function* findNextUrl(params) {
   const { screenType, episodeId, elementId } = params;
+  let currentEpisode = 0;
   switch (screenType) {
+    // TODO: title
+    case 'title/':
+      const partNumber = yield select(selectors.getPartNumber);
+      switch (partNumber) {
+        case 1: // characters
+          currentEpisode = yield select(selectors.getCurrentEpisode);
+          const characterId = currentEpisode.characters[0];
+          return '/study/' + episodeId + '/character/' + characterId + '/pinyin';
+        case 2: // grammar
+          return 'GRAMMAR';
+        case 3: // dialogs
+          currentEpisode = yield select(selectors.getCurrentEpisode);
+          const dialogId = currentEpisode.dialogs[0];
+          return '/study/' + episodeId + '/dialog/' + dialogId + '/listen';
+        case 4: // review
+          return '/study/' + episodeId + '/review';
+        case 5: // final exam
+          return '/study/' + episodeId + '/finalExam';
+        default: return '/error';
+      }
     case 'character/pinyin':
       const nextCharacterId = yield select(selectors.getNextCharacterId);
       if (nextCharacterId) {
         return '/study/' + episodeId + '/character/' + nextCharacterId + '/pinyin';
       }
-      const currentEpisode = yield select(selectors.getCurrentEpisode);
+      currentEpisode = yield select(selectors.getCurrentEpisode);
       const dialogId = currentEpisode.dialogs[0];
       return '/study/' + episodeId + '/dialog/' + dialogId + '/listen';
     case 'dialog/listen':

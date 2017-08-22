@@ -6,7 +6,6 @@ import selectors from '../../rootSelectors';
 
 class Title extends Component {
   render() {
-    console.log('test')
     return (
       <TitleComponent { ...this.props } />
     );
@@ -15,11 +14,9 @@ class Title extends Component {
 
 Title.propTypes = {
   partNumber: propTypes.number.isRequired,
-  title: propTypes.string.isRequired
 };
 
 const mapStateToProps = state => ({
-  title: selectors.getTitle(state),
   partNumber: selectors.getPartNumber(state)
 });
 

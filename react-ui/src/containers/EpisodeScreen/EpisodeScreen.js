@@ -37,9 +37,7 @@ class EpisodeScreen extends Component {
     if (!this.props.initialized) {
       return (
         <EpisodeScreenComponent
-          displayEpisodeOverview={this.props.displayEpisodeOverview}
           exit={this.props.exit}
-          askQuestion={this.props.askQuestion}
         />
       );
     }
@@ -58,7 +56,6 @@ EpisodeScreen.propTypes = {
   elementsNavParams: propTypes.object,
   screenLabel: propTypes.string,
   children: propTypes.object,
-  displayEpisodeOverview: propTypes.func.isRequired,
   exit: propTypes.func.isRequired,
   playAudio: propTypes.bool,
   location: propTypes.object.isRequired,
@@ -82,7 +79,6 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   {
-    displayEpisodeOverview: sagaActions.displayEpisodeOverview,
     exit: sagaActions.exit,
     initScreen: studyActions.initScreen
   }

@@ -170,7 +170,6 @@ EpisodeScreen.propTypes = {
   elementsNavParams: propTypes.object,
   screenLabel: propTypes.string,
   children: propTypes.object,
-  displayEpisodeOverview: propTypes.func.isRequired,
   exit: propTypes.func.isRequired
 };
 

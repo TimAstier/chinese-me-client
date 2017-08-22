@@ -2,6 +2,7 @@
 export { default as ActivatedPage } from './Signup/ActivatedPage';
 export { default as Avatar } from './Avatar/Avatar';
 export { default as CharacterBox } from './MapModal/CharacterBox';
+export { default as CharacterEtymology } from './CharacterEtymology/CharacterEtymology';
 export { default as CharacterPinyin } from './CharacterPinyin/CharacterPinyin';
 export { default as ChapterHeader } from './MapModal/ChapterHeader';
 export { default as Dialog } from './Dialog/Dialog';
@@ -31,3 +32,4 @@ export { default as SignupPage } from './Signup/Page';
 export { default as Statement } from './Statement/Statement';
 export { default as Title } from './Title/Title';
 export { default as TransparentInput } from './TransparentInput/TransparentInput';
+export { default as VideoPlayer } from './VideoPlayer/VideoPlayer';

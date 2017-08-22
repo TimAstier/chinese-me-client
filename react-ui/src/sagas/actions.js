@@ -29,7 +29,8 @@ export const types = {
   ACTIVATE: 'signal/ACTIVATE',
   INIT_APP: 'signal/INIT_APP',
   MAP_LINK_CLICK: 'signal/MAP_LINK_CLICK',
-  DIALOG_LINK_CLICK: 'signal/DIALOG_LINK_CLICK'
+  DIALOG_LINK_CLICK: 'signal/DIALOG_LINK_CLICK',
+  VIDEO_ENDED: 'signal/VIDEO_ENDED'
 };
 
 // Action Creators
@@ -80,6 +81,9 @@ const dialogLinkClick = link => ({
   type: types.DIALOG_LINK_CLICK,
   payload: { link }
 });
+const videoEnded = () => ({
+  type: types.VIDEO_ENDED
+});
 
 export const actions = {
   next,
@@ -106,5 +110,6 @@ export const actions = {
   activate,
   initApp,
   mapLinkClick,
-  dialogLinkClick
+  dialogLinkClick,
+  videoEnded
 };

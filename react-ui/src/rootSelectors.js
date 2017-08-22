@@ -12,6 +12,7 @@ import * as fromCharacterPinyin from './redux/characterPinyin';
 import * as fromAuth from './redux/auth';
 import * as fromRouting from './redux/routing';
 import * as fromMap from './redux/map';
+import * as fromVideo from './redux/video';
 
 const entitySelectors = bindSelectors(
   state => state.get('entities'),
@@ -51,6 +52,11 @@ const routingSelectors = bindSelectors(
 const mapSelectors = bindSelectors(
   state => state.get('map'),
   fromMap.selectors
+);
+
+const videoSelectors = bindSelectors(
+  state => state.get('video'),
+  fromVideo.selectors
 );
 
 const getCurrentDialog = createSelector(
@@ -264,6 +270,7 @@ const selectors = {
   ...authPinyinSelectors,
   ...routingSelectors,
   ...mapSelectors,
+  ...videoSelectors,
   getCurrentEpisode,
   getFocusedEpisode,
   getCurrentDialog,

@@ -55,6 +55,10 @@ function* findNextUrl(params) {
         default: return '/error';
       }
     case 'character/pinyin':
+      return '/study/' + episodeId + '/character/' + elementId + '/etymology';
+    case 'character/etymology':
+      return '/study/' + episodeId + '/character/' + elementId + '/writing';
+    case 'character/writing':
       const nextCharacterId = yield select(selectors.getNextCharacterId);
       if (nextCharacterId) {
         return '/study/' + episodeId + '/character/' + nextCharacterId + '/pinyin';

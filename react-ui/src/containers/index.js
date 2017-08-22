@@ -1,5 +1,6 @@
 // Keep in alphabetical order
 export { default as App } from './App/App';
+export { default as CharacterEtymology } from './CharacterEtymology/CharacterEtymology';
 export { default as CharacterPinyin } from './CharacterPinyin/CharacterPinyin';
 export { default as Dialog } from './Dialog/Dialog';
 export { default as EpisodeCard } from './EpisodeCard/EpisodeCard';
@@ -18,3 +19,4 @@ export { default as SignupActivate } from './Signup/Activate';
 export { default as Statement } from './Statement/Statement';
 export { default as SelectEpisode } from './SelectEpisode/SelectEpisode';
 export { default as Title } from './Title/Title';
+export { default as VideoPlayer } from './VideoPlayer/VideoPlayer';

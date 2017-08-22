@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import { takeLatest, put, call, race, take } from 'redux-saga/effects';
 import { types as studyTypes, actions as studyActions } from '../redux/study';
+import { actions as uiActions } from '../redux/ui';
 import { elementTypes } from '../constants/study';
 import { types as sagaTypes } from './actions';
 import mapScreenTypeToModule from '../helpers/mapScreenTypeToModule';
@@ -14,6 +15,7 @@ import getParamsFromUrl from '../utils/getParamsFromUrl';
 // 5. run
 
 function* initScreen(action) {
+  yield call(defaultEpisodeScreenUi); // Init Episode Screen UI
   yield put(studyActions.setInitialized(false)); // Hide screen content
   const { episodeId, elementType, elementId, mode }
     = getParamsFromUrl(action.payload.url); // Get params from url
@@ -53,6 +55,11 @@ function* runScreenSaga(runFunction) {
     skip: take(sagaTypes.SKIP),
     exit: take(sagaTypes.EXIT)
   });
+}
+
+function* defaultEpisodeScreenUi() {
+  yield put(uiActions.set('nextButton', false));
+  yield put(uiActions.set('playAudioButton', false));
 }
 
 export default function* watchStudySagas() {

@@ -1,4 +1,5 @@
 import * as fromTitle from '../sagas/study/title';
+import * as fromCharacterEtymology from '../sagas/study/characterEtymology';
 import * as fromCharacterPinyin from '../sagas/study/characterPinyin';
 import * as fromDialogListen from '../sagas/study/dialogListen';
 import * as fromDialogExplore from '../sagas/study/dialogExplore';
@@ -7,6 +8,7 @@ import * as fromDialogRoleplay from '../sagas/study/dialogRoleplay';
 export default function mapScreenTypeToModule(screenType) {
   switch (screenType) {
     case 'title/': return fromTitle;
+    case 'character/etymology': return fromCharacterEtymology;
     case 'character/pinyin': return fromCharacterPinyin;
     case 'dialog/listen': return fromDialogListen;
     case 'dialog/explore': return fromDialogExplore;

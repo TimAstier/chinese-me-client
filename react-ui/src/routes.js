@@ -3,7 +3,8 @@ import { Route } from 'react-router';
 // import { IndexRoute } from 'react-router';
 import requireAuth from './utils/requireAuth';
 import { App, SelectEpisode, CharacterPinyin,
-  Dialog, Title, SignupPage, LoginPage, SignupActivate, EpisodeScreen }
+  Dialog, Title, SignupPage, LoginPage, SignupActivate,
+  EpisodeScreen, CharacterEtymology }
   from './containers';
 import { EmailSentPage, ActivatedPage } from './components';
 
@@ -36,6 +37,7 @@ export default (
     <Route path="study/:episodeId" component={requireAuth(EpisodeScreen)}>
       <Route path="title/:partNumber" component={requireAuth(Title)} />
       <Route path="character/:characterId/pinyin" component={requireAuth(CharacterPinyin)} />
+      <Route path="character/:characterId/etymology" component={requireAuth(CharacterEtymology)} />
       <Route path="dialog/:dialogId/listen" component={requireAuth(Dialog)} />
       <Route path="dialog/:dialogId/explore" component={requireAuth(Dialog)} />
       <Route path="dialog/:dialogId/roleplay" component={requireAuth(Dialog)} />

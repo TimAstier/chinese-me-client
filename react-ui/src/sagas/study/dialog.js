@@ -85,6 +85,7 @@ function* switchSentence(action) {
 // }
 
 function* nextStatement(mode = 'explore') {
+  yield put(fromSaga.stopSentence());
   const nextStatementId = yield select(selectors.getNextStatementId);
   if (nextStatementId === undefined) {
     yield put(fromSaga.endDialog());
@@ -102,6 +103,7 @@ function* nextStatement(mode = 'explore') {
 
 // Only used in explore mode
 function* previousStatement() {
+  yield put(fromSaga.stopSentence());
   const previousStatementId = yield select(selectors.getPreviousStatementId);
   yield put(fromStudy.setCurrentStatementId(previousStatementId));
   const statement = yield select(selectors.getCurrentStatement);

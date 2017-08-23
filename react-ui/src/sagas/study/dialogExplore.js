@@ -24,7 +24,7 @@ export function* initStudyData() {
   yield put(fromStudy.setCurrentStatementId(currentDialog.statements[0]));
   const currentStatement = yield select(selectors.getCurrentStatement);
   yield put(fromStudy.setCurrentSentenceId(currentStatement.sentences[0]));
-  // yield put(fromStudy.setChosenAvatarId(null));
+  yield put(fromStudy.setChosenAvatarId(null));
 }
 
 export function* run() {

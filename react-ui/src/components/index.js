@@ -26,6 +26,7 @@ export { default as Modal } from './Modal/Modal';
 export { default as ModeButton } from './Dialog/ModeButton';
 export { default as Navbar } from './Navbar/Navbar';
 export { default as PlayAudioButton } from './PlayAudioButton/PlayAudioButton';
+export { default as Progressbar } from './Progressbar/Progressbar';
 export { default as ScreenButton } from './ScreenButton/ScreenButton';
 export { default as ScreenWrapper } from './ScreenWrapper/ScreenWrapper';
 export { default as SelectEpisode } from './SelectEpisode/SelectEpisode';

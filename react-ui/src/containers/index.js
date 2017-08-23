@@ -16,6 +16,7 @@ export { default as MapSidebar } from './MapModal/MapSidebar';
 export { default as Modal } from './Modal/Modal';
 export { default as Navbar } from './Navbar/Navbar';
 export { default as PlayAudioButton } from './PlayAudioButton/PlayAudioButton';
+export { default as Progressbar } from './Progressbar/Progressbar';
 export { default as ScreenButton } from './ScreenButton/ScreenButton';
 export { default as SignupPage } from './Signup/Page';
 export { default as SignupActivate } from './Signup/Activate';

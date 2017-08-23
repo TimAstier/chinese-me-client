@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
 import { ScreenWrapper } from '../.';
-import { ElementsNav, ScreenButton, PlayAudioButton } from '../../containers';
+import { ElementsNav, ScreenButton, PlayAudioButton, Progressbar }
+  from '../../containers';
 import { Clickable } from '../Shared';
 
 // 2nd level wrappers
@@ -72,11 +73,9 @@ const TopMiddleWrapper = styled.div`
 
 const TopMiddleUpWrapper = styled.div`
   height: 43px;
-  width: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: orangered;
 `;
 
 const TopMiddleDownWrapper = styled.div`
@@ -98,7 +97,7 @@ class EpisodeScreen extends Component {
     return (
       <TopMiddleWrapper>
         <TopMiddleUpWrapper>
-          // TODO: progressBar
+          <Progressbar />
         </TopMiddleUpWrapper>
         <TopMiddleDownWrapper>
           <ElementsNav />

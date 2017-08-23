@@ -30,7 +30,9 @@ export const types = {
   INIT_APP: 'signal/INIT_APP',
   MAP_LINK_CLICK: 'signal/MAP_LINK_CLICK',
   DIALOG_LINK_CLICK: 'signal/DIALOG_LINK_CLICK',
-  VIDEO_ENDED: 'signal/VIDEO_ENDED'
+  VIDEO_ENDED: 'signal/VIDEO_ENDED',
+  ELEMENTS_NAV_PREVIOUS_CLICK: 'signal/ELEMENTS_NAV_PREVIOUS_CLICK',
+  ELEMENTS_NAV_NEXT_CLICK: 'signal/ELEMENTS_NAV_NEXT_CLICK'
 };
 
 // Action Creators
@@ -84,6 +86,12 @@ const dialogLinkClick = link => ({
 const videoEnded = () => ({
   type: types.VIDEO_ENDED
 });
+const elementsNavPreviousClick = () => ({
+  type: types.ELEMENTS_NAV_PREVIOUS_CLICK
+});
+const elementsNavNextClick = () => ({
+  type: types.ELEMENTS_NAV_NEXT_CLICK
+});
 
 export const actions = {
   next,
@@ -111,5 +119,7 @@ export const actions = {
   initApp,
   mapLinkClick,
   dialogLinkClick,
-  videoEnded
+  videoEnded,
+  elementsNavPreviousClick,
+  elementsNavNextClick
 };

@@ -15,8 +15,9 @@ import getParamsFromUrl from '../utils/getParamsFromUrl';
 // 5. run
 
 function* initScreen(action) {
-  yield call(defaultEpisodeScreenUi); // Init Episode Screen UI
+  // IMPORTANT: start by hiding screen content
   yield put(studyActions.setInitialized(false)); // Hide screen content
+  yield call(defaultEpisodeScreenUi); // Init Episode Screen UI
   const { episodeId, elementType, elementId, mode }
     = getParamsFromUrl(action.payload.url); // Get params from url
   yield put(studyActions.setCurrentEpisodeId(episodeId)); // Set currentEpisodeId

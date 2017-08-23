@@ -11,6 +11,7 @@ import watchStudySagas from './sagas/study';
 import watchDialogSagas from './sagas/study/dialog';
 import watchMapSagas from './sagas/map';
 import watchVideoSagas from './sagas/video';
+import watchElementsNavSagas from './sagas/elementsNav';
 
 export default function* rootSaga() {
   yield all([
@@ -23,6 +24,7 @@ export default function* rootSaga() {
     watchStudySagas(),
     watchDialogSagas(),
     watchMapSagas(),
-    watchVideoSagas()
+    watchVideoSagas(),
+    watchElementsNavSagas()
   ]);
 }

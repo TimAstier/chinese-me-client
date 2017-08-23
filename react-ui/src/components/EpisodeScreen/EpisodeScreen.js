@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
-import { ElementsNav, ScreenWrapper } from '../.';
-import { ScreenButton, PlayAudioButton } from '../../containers';
+import { ScreenWrapper } from '../.';
+import { ElementsNav, ScreenButton, PlayAudioButton } from '../../containers';
 import { Clickable } from '../Shared';
 
 // 2nd level wrappers
@@ -71,17 +71,19 @@ const TopMiddleWrapper = styled.div`
 `;
 
 const TopMiddleUpWrapper = styled.div`
-  flex: 1 0 0;
+  height: 43px;
+  width: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: orangered;
 `;
 
 const TopMiddleDownWrapper = styled.div`
-  flex: 1 0 0;
+  height: 28px;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
 `;
 
 const ExitIcon = styled.div`
@@ -93,19 +95,14 @@ const ExitIcon = styled.div`
 class EpisodeScreen extends Component {
 
   renderTopMiddleWrapper() {
-    const { elementsNavParams, screenLabel } = this.props;
-    const Label = styled.span`
-      font-family: 'Open Sans';
-      font-size: 20px;
-      color: #949494;
-    `;
     return (
       <TopMiddleWrapper>
         <TopMiddleUpWrapper>
-          {elementsNavParams && <ElementsNav {...elementsNavParams} />}
-          {screenLabel && <Label>{screenLabel}</Label>}
+          // TODO: progressBar
         </TopMiddleUpWrapper>
-        <TopMiddleDownWrapper />
+        <TopMiddleDownWrapper>
+          <ElementsNav />
+        </TopMiddleDownWrapper>
       </TopMiddleWrapper>
     );
   }
@@ -167,8 +164,6 @@ EpisodeScreen.propTypes = {
   next: propTypes.bool,
   skip: propTypes.bool,
   playAudio: propTypes.bool,
-  elementsNavParams: propTypes.object,
-  screenLabel: propTypes.string,
   children: propTypes.object,
   exit: propTypes.func.isRequired
 };

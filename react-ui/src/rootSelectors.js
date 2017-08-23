@@ -14,6 +14,8 @@ import * as fromRouting from './redux/routing';
 import * as fromMap from './redux/map';
 import * as fromVideo from './redux/video';
 
+// TODO: DRY selectors (like getNext/Previous ids)
+
 const entitySelectors = bindSelectors(
   state => state.get('entities'),
   fromEntities.selectors
@@ -216,7 +218,7 @@ const getCurrentCharacterPosition = createSelector(
   studySelectors.getCurrentCharacterId,
   (episode, id) => {
     if (episode) {
-      return episode.characters.findIndex(c => c === id) + 1;
+      return episode.characters.findIndex(c => String(c) === id) + 1;
     }
     return 0;
   }
@@ -239,6 +241,34 @@ const getCharactersNavParams = createSelector(
   }
 );
 
+const getCurrentDialogPosition = createSelector(
+  getCurrentEpisode,
+  studySelectors.getCurrentDialogId,
+  (episode, id) => {
+    if (episode) {
+      return episode.dialogs.findIndex(c => String(c) === id) + 1;
+    }
+    return 0;
+  }
+);
+
+const getDialogsNavParams = createSelector(
+  getCurrentEpisode,
+  getCurrentDialogPosition,
+  (currentEpisode, currentDialogPosition) => {
+    try {
+      const dialogsCount = currentEpisode.dialogs.length;
+      return {
+        type: 'dialog',
+        currentElement: currentDialogPosition,
+        totalElements: dialogsCount
+      };
+    } catch (e) {
+      return undefined;
+    }
+  }
+);
+
 const getNextCharacterId = createSelector(
   getCurrentEpisode,
   studySelectors.getCurrentCharacterId,
@@ -254,12 +284,80 @@ const getNextCharacterId = createSelector(
   }
 );
 
-// TODO: link this to actual data. Remove?
-const getDialogsNavParams = () => ({
-  type: 'dialog',
-  currentElement: 1,
-  totalElements: 2
-});
+const getNextDialogId = createSelector(
+  getCurrentEpisode,
+  studySelectors.getCurrentDialogId,
+  (episode, id) => {
+    if (episode) {
+      const index = episode.dialogs.findIndex(c => c === Number(id));
+      if (episode.dialogs[index + 1]) {
+        return episode.dialogs[index + 1];
+      }
+      return undefined;
+    }
+    return undefined;
+  }
+);
+
+const getNextGrammarId = createSelector(
+  getCurrentEpisode,
+  studySelectors.getCurrentGrammarId,
+  (episode, id) => {
+    if (episode) {
+      const index = episode.grammars.findIndex(c => c === Number(id));
+      if (episode.grammars[index + 1]) {
+        return episode.grammars[index + 1];
+      }
+      return undefined;
+    }
+    return undefined;
+  }
+);
+
+const getPreviousCharacterId = createSelector(
+  getCurrentEpisode,
+  studySelectors.getCurrentCharacterId,
+  (episode, id) => {
+    if (episode) {
+      const index = episode.characters.findIndex(c => c === Number(id));
+      if (episode.characters[index - 1]) {
+        return episode.characters[index - 1];
+      }
+      return undefined;
+    }
+    return undefined;
+  }
+);
+
+const getPreviousDialogId = createSelector(
+  getCurrentEpisode,
+  studySelectors.getCurrentDialogId,
+  (episode, id) => {
+    if (episode) {
+      const index = episode.dialogs.findIndex(c => c === Number(id));
+      if (episode.dialogs[index - 1]) {
+        return episode.dialogs[index - 1];
+      }
+      return undefined;
+    }
+    return undefined;
+  }
+);
+
+const getPreviousGrammarId = createSelector(
+  getCurrentEpisode,
+  studySelectors.getCurrentGrammarId,
+  (episode, id) => {
+    if (episode) {
+      const index = episode.grammars.findIndex(c => c === Number(id));
+      if (episode.grammars[index - 1]) {
+        return episode.grammars[index - 1];
+      }
+      return undefined;
+    }
+    return undefined;
+  }
+);
 
 const selectors = {
   ...entitySelectors,
@@ -290,8 +388,14 @@ const selectors = {
   getCurrentCharacter,
   getCurrentCharacterPosition,
   getCharactersNavParams,
+  getCurrentDialogPosition,
   getDialogsNavParams,
-  getNextCharacterId
+  getNextCharacterId,
+  getNextDialogId,
+  getNextGrammarId,
+  getPreviousCharacterId,
+  getPreviousDialogId,
+  getPreviousGrammarId
 };
 
 export default selectors;

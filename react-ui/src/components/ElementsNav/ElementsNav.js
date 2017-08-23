@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
-import { Icon } from 'semantic-ui-react';
 import { capitalizeFirstLetter } from '../../utils/strings';
+import iconElementPrevious from '../../images/iconElementPrevious.svg';
+import iconElementNext from '../../images/iconElementNext.svg';
 
 const Wrapper = styled.div`
   width: 400px;
@@ -15,56 +16,98 @@ const ProgressWrapper = styled.div`
   display: flex;
 `;
 
-const ChevronWrapper = styled.div`
+const LeftChevronWrapper = styled.div`
   flex: 1 0 0;
+  width: 10px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
+  padding-right: 10px;
+`;
+
+const RightChevronWrapper = styled.div`
+  flex: 1 0 0;
+  width: 30px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 10px;
 `;
 
 const LabelWrapper = styled.div`
-  flex: 4 0 0;
-  font-family: Open Sans;
-	font-size: 20px;
-	font-weight: 600;
-	color: #959595;
+  width: 150px;
+  font-family: 'Open Sans';
+	font-size: 18px;
+	color: #b2babf;
   display: flex;
   justify-content: center;
   align-items: center;
 `;
 
-class ProgressMenu extends Component {
+const LabelA = styled.span`
+  font-weight: 600;
+  margin-right: 5px;
+`;
+
+const IconWrapper = styled.div`
+  height: 26px;
+  width: 26px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 13px;
+  :hover {
+    border: solid 2px #dce6eb;
+  }
+`;
+
+class ElementsNav extends Component {
 
   render() {
     const { type, currentElement, totalElements } = this.props;
-    const label = capitalizeFirstLetter(type) +
-      ' ' + currentElement + ' of ' + totalElements;
+    const labelA = capitalizeFirstLetter(type) + ' ' + currentElement;
+    const labelB = ' of ' + totalElements;
     return (
       <Wrapper>
         <ProgressWrapper>
-          <ChevronWrapper>
+          <LeftChevronWrapper>
             {currentElement > 1 &&
-              <Icon name="chevron left" size="large" color="teal" />
+              <IconWrapper>
+                <img
+                  src={iconElementPrevious}
+                  alt={'previous ' + type}
+                  onClick={this.props.onPreviousClick()}
+                />
+              </IconWrapper>
             }
-          </ChevronWrapper>
+          </LeftChevronWrapper>
           <LabelWrapper>
-            {label}
+            <LabelA>{labelA}</LabelA><span>{labelB}</span>
           </LabelWrapper>
-          <ChevronWrapper>
+          <RightChevronWrapper>
             {currentElement < totalElements &&
-              <Icon name="chevron right" size="large" color="teal" />
+              <IconWrapper>
+                <img
+                  src={iconElementNext}
+                  alt={'previous ' + type}
+                  onClick={this.props.onNextClick()}
+                />
+              </IconWrapper>
             }
-          </ChevronWrapper>
+          </RightChevronWrapper>
         </ProgressWrapper>
       </Wrapper>
     );
   }
 }
 
-ProgressMenu.propTypes = {
+ElementsNav.propTypes = {
   type: propTypes.string.isRequired,
   currentElement: propTypes.number.isRequired,
-  totalElements: propTypes.number.isRequired
+  totalElements: propTypes.number.isRequired,
+  onPreviousClick: propTypes.func.isRequired,
+  onNextClick: propTypes.func.isRequired
 };
 
-export default ProgressMenu;
+export default ElementsNav;

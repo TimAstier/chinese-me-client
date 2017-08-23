@@ -359,6 +359,17 @@ const getPreviousGrammarId = createSelector(
   }
 );
 
+const getCurrentGrammar = createSelector(
+  entitySelectors.getGrammars,
+  studySelectors.getCurrentGrammarId,
+  (grammars, id) => {
+    if (grammars.get(String(id))) {
+      return grammars.get(String(id));
+    }
+    return undefined;
+  }
+);
+
 const selectors = {
   ...entitySelectors,
   ...studySelectors,
@@ -395,7 +406,8 @@ const selectors = {
   getNextGrammarId,
   getPreviousCharacterId,
   getPreviousDialogId,
-  getPreviousGrammarId
+  getPreviousGrammarId,
+  getCurrentGrammar
 };
 
 export default selectors;

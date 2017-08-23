@@ -2,11 +2,13 @@
 export { default as App } from './App/App';
 export { default as CharacterEtymology } from './CharacterEtymology/CharacterEtymology';
 export { default as CharacterPinyin } from './CharacterPinyin/CharacterPinyin';
+export { default as CharacterWriting } from './CharacterWriting/CharacterWriting';
 export { default as Dialog } from './Dialog/Dialog';
 export { default as ElementsNav } from './ElementsNav/ElementsNav';
 export { default as EpisodeCard } from './EpisodeCard/EpisodeCard';
 export { default as EpisodeScreen } from './EpisodeScreen/EpisodeScreen';
 export { default as FeedbackModal } from './FeedbackModal/FeedbackModal';
+export { default as GrammarExplanation } from './GrammarExplanation/GrammarExplanation';
 export { default as LoginPage } from './Login/Page';
 export { default as MapContent } from './MapModal/MapContent';
 export { default as MapModal } from './MapModal/MapModal';

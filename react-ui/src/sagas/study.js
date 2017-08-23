@@ -31,6 +31,7 @@ function* initScreen(action) {
   }
   if (!isDataLoaded) { // Fetch data
     yield call(funcs.fetchData, episodeId);
+    // TODO: handle fetch error
   }
   yield call(funcs.initStudyData); // Init studyData
   yield call(funcs.initUi); // Init UI

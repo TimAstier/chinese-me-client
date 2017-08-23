@@ -4,7 +4,7 @@ import { Route } from 'react-router';
 import requireAuth from './utils/requireAuth';
 import { App, SelectEpisode, CharacterPinyin,
   Dialog, Title, SignupPage, LoginPage, SignupActivate,
-  EpisodeScreen, CharacterEtymology }
+  EpisodeScreen, CharacterEtymology, CharacterWriting, GrammarExplanation }
   from './containers';
 import { EmailSentPage, ActivatedPage } from './components';
 
@@ -38,6 +38,8 @@ export default (
       <Route path="title/:partNumber" component={requireAuth(Title)} />
       <Route path="character/:characterId/pinyin" component={requireAuth(CharacterPinyin)} />
       <Route path="character/:characterId/etymology" component={requireAuth(CharacterEtymology)} />
+      <Route path="character/:characterId/writing" component={requireAuth(CharacterWriting)} />
+      <Route path="grammar/:grammarId/explanation" component={requireAuth(GrammarExplanation)} />
       <Route path="dialog/:dialogId/listen" component={requireAuth(Dialog)} />
       <Route path="dialog/:dialogId/explore" component={requireAuth(Dialog)} />
       <Route path="dialog/:dialogId/roleplay" component={requireAuth(Dialog)} />

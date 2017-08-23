@@ -43,7 +43,9 @@ function* findNextUrl(params) {
           const characterId = currentEpisode.characters[0];
           return '/study/' + episodeId + '/character/' + characterId + '/pinyin';
         case 2: // grammar
-          return 'GRAMMAR';
+          currentEpisode = yield select(selectors.getCurrentEpisode);
+          const grammarId = currentEpisode.grammars[0];
+          return '/study/' + episodeId + '/grammar/' + grammarId + '/explanation';
         case 3: // dialogs
           currentEpisode = yield select(selectors.getCurrentEpisode);
           const dialogId = currentEpisode.dialogs[0];
@@ -63,13 +65,19 @@ function* findNextUrl(params) {
       if (nextCharacterId) {
         return '/study/' + episodeId + '/character/' + nextCharacterId + '/pinyin';
       }
-      currentEpisode = yield select(selectors.getCurrentEpisode);
-      const dialogId = currentEpisode.dialogs[0];
-      return '/study/' + episodeId + '/dialog/' + dialogId + '/listen';
+      return '/study/' + episodeId + '/title/2';
+    case 'grammar/explanation':
+      const nextGrammarId = yield select(selectors.getNextGrammarId);
+      if (nextGrammarId) {
+        return '/study/' + episodeId + '/grammar/' + nextGrammarId + '/explanation';
+      }
+      return '/study/' + episodeId + '/title/3';
     case 'dialog/listen':
       return '/study/' + episodeId + '/dialog/' + elementId + '/explore';
     case 'dialog/explore':
       return '/study/' + episodeId + '/dialog/' + elementId + '/roleplay';
+    case 'dialog/roleplay':
+      return '/study/' + episodeId + '/title/4';
     default:
       return '/error';
   }

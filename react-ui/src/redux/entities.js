@@ -67,6 +67,7 @@ export const actions = {
 const getAvatars = state => state.get('avatars');
 const getCharacters = state => state.get('characters');
 const getDialogs = state => state.get('dialogs');
+const getGrammars = state => state.get('grammars');
 const getEpisodes = state => state.get('episodes');
 const getStatements = state => state.get('statements');
 const getSentences = state => state.get('sentences');
@@ -76,6 +77,7 @@ export const selectors = {
   getAvatars,
   getCharacters,
   getDialogs,
+  getGrammars,
   getEpisodes,
   getStatements,
   getSentences,

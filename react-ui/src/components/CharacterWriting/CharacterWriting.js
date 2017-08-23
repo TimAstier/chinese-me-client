@@ -11,7 +11,7 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 
-class CharacterEtymology extends Component {
+class CharacterWriting extends Component {
   render() {
     // List of video events available here:
     // https://facebook.github.io/react/blog/2015/09/10/react-v0.14-rc1.html
@@ -20,15 +20,15 @@ class CharacterEtymology extends Component {
         <VideoPlayer
           width={676}
           height={380}
-          src={this.props.character.etymologyUrl}
+          src={this.props.character.writingUrl}
         />
       </Wrapper>
     );
   }
 }
 
-CharacterEtymology.propTypes = {
+CharacterWriting.propTypes = {
   character: propTypes.instanceOf(Character).isRequired
 };
 
-export default CharacterEtymology;
+export default CharacterWriting;

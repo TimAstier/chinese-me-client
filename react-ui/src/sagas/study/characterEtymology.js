@@ -1,5 +1,4 @@
 import { put, select, call } from 'redux-saga/effects';
-import { actions as fromUi } from '../../redux/ui';
 import selectors from '../../rootSelectors';
 import { actions as studyActions } from '../../redux/study';
 import { actions as videoActions } from '../../redux/video';
@@ -20,10 +19,6 @@ export function* initStudyData() {
   yield put(videoActions.autoPlayOn());
 }
 
-export function* initUi() {
-  yield put(fromUi.set('skipButton', true));
-  // TODO: move this in global EpisodeScreen init ui
-  yield put(fromUi.closeModal());
-}
+export function* initUi() {}
 
 export function* run() {}

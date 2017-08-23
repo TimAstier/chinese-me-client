@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
+import iconCharacter from '../../images/iconCharacter.svg';
+import iconGrammar from '../../images/iconGrammar.svg';
+import iconDialog from '../../images/iconDialog.svg';
+import iconReview from '../../images/iconReview.svg';
+import iconExam from '../../images/iconExam.svg';
 
 const Wrapper = styled.div`
   flex: 1 0 0;
@@ -11,8 +16,10 @@ const Wrapper = styled.div`
 
 const ImageWrapper = styled.div`
   height: 150px;
-  width: 150px;
-  background-color: orangered;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const LabelsWrapper = styled.div`
@@ -43,24 +50,27 @@ const PartNumberLabel = styled.div`
 
 class Title extends Component {
 
-  mapPartNumberToTitle() {
+  mapPartNumberToTitleAndIcon() {
     switch (this.props.partNumber) {
-      case 1: return 'CHARACTERS';
-      case 2: return 'GRAMMAR';
-      case 3: return 'DIALOGS';
-      case 4: return 'REVIEW';
-      case 5: return 'FINAL EXAM';
+      case 1: return { title: 'CHARACTERS', icon: iconCharacter };
+      case 2: return { title: 'GRAMMAR', icon: iconGrammar };
+      case 3: return { title: 'DIALOGS', icon: iconDialog };
+      case 4: return { title: 'REVIEW', icon: iconReview };
+      case 5: return { title: 'FINAL EXAM', icon: iconExam };
       default: return console.log('unkown part number');
     }
   }
 
   render() {
+    const { title, icon } = this.mapPartNumberToTitleAndIcon();
     return (
       <Wrapper>
-        <ImageWrapper></ImageWrapper>
+        <ImageWrapper>
+          <img src={icon} alt={title + ' icon'} />
+        </ImageWrapper>
         <LabelsWrapper>
           <PartNumberLabel>{'PART ' + this.props.partNumber}</PartNumberLabel>
-          <TitleLabel>{this.mapPartNumberToTitle()}</TitleLabel>
+          <TitleLabel>{title}</TitleLabel>
         </LabelsWrapper>
       </Wrapper>
     );

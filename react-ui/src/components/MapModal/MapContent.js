@@ -103,6 +103,9 @@ class MapContent extends Component {
             key={i}
             title={g.title}
             completed={g.completed ? true : undefined}
+            onClick={() => this.props.mapLinkClick(
+              '/study/' + this.props.episode.id + '/grammar/' + g.id + '/explanation'
+            )}
           />
         );
       });
@@ -111,8 +114,9 @@ class MapContent extends Component {
   }
 
   render() {
-    // TODO: Display number of completed items and completed headers
-    if (!this.props.episode) {
+    const { episode, mapCharactersCompletedCount,
+      mapGrammarsCompletedCount, mapDialogsCompletedCount } = this.props;
+    if (!episode) {
       // TODO: return a message for empty screen
       return null;
     }
@@ -120,36 +124,36 @@ class MapContent extends Component {
       <Wrapper>
         <TitleWrapper>
           <EpisodeNumber>
-            {`Episode ${this.props.episode.number}:`}
+            {`Episode ${episode.number}:`}
           </EpisodeNumber>
           <EpisodeTitle>
-            {this.props.episode.title}
+            {episode.title}
           </EpisodeTitle>
         </TitleWrapper>
         <ContentWrapper>
           <ChapterHeader
             name="Characters"
-            completedElements={0}
-            totalElements={this.props.episode.characters.length}
-            completed={false}
+            completedElements={mapCharactersCompletedCount}
+            totalElements={episode.characters.length}
+            completed={mapCharactersCompletedCount === episode.characters.length}
           />
           <CharactersWrapper>
             {this.renderCharacterBoxes()}
           </CharactersWrapper>
           <ChapterHeader
             name="Grammar"
-            completedElements={0}
-            totalElements={this.props.episode.grammars.length}
-            completed={false}
+            completedElements={mapGrammarsCompletedCount}
+            totalElements={episode.grammars.length}
+            completed={mapGrammarsCompletedCount === episode.grammars.length}
           />
           <ContentItemsWrapper>
             {this.renderGrammarItems()}
           </ContentItemsWrapper>
           <ChapterHeader
             name="Dialog"
-            completedElements={0}
-            totalElements={this.props.episode.dialogs.length}
-            completed={false}
+            completedElements={mapDialogsCompletedCount}
+            totalElements={episode.dialogs.length}
+            completed={mapDialogsCompletedCount === episode.dialogs.length}
           />
           <ContentItemsWrapper>
             {this.renderDialogItems()}
@@ -174,7 +178,10 @@ MapContent.propTypes = {
   grammars: propTypes.array.isRequired,
   dialogs: propTypes.array.isRequired,
   episode: propTypes.instanceOf(models.Episode),
-  mapLinkClick: propTypes.func.isRequired
+  mapLinkClick: propTypes.func.isRequired,
+  mapCharactersCompletedCount: propTypes.number.isRequired,
+  mapDialogsCompletedCount: propTypes.number.isRequired,
+  mapGrammarsCompletedCount: propTypes.number.isRequired
 };
 
 export default MapContent;

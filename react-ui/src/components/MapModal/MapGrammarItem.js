@@ -35,7 +35,7 @@ class MapGrammarItem extends Component {
 
   render() {
     return (
-      <Wrapper>
+      <Wrapper onClick={this.props.onClick}>
         <CheckmarkWrapper>
           {this.props.completed && <Icon name="checkmark" color="green" />}
         </CheckmarkWrapper>
@@ -47,7 +47,8 @@ class MapGrammarItem extends Component {
 
 MapGrammarItem.propTypes = {
   title: propTypes.string.isRequired,
-  completed: propTypes.bool
+  completed: propTypes.bool,
+  onClick: propTypes.func.isRequired
 };
 
 export default MapGrammarItem;

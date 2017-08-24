@@ -370,6 +370,27 @@ const getCurrentGrammar = createSelector(
   }
 );
 
+const getMapCharactersCompletedCount = createSelector(
+  mapSelectors.getMapCharacters,
+  characters => {
+    return characters.filter(c => c.get('completed') === true).size;
+  }
+);
+
+const getMapDialogsCompletedCount = createSelector(
+  mapSelectors.getMapDialogs,
+  dialogs => {
+    return dialogs.filter(d => d.get('completed') === true).size;
+  }
+);
+
+const getMapGrammarsCompletedCount = createSelector(
+  mapSelectors.getMapGrammars,
+  grammars => {
+    return grammars.filter(c => c.get('completed') === true).size;
+  }
+);
+
 const selectors = {
   ...entitySelectors,
   ...studySelectors,
@@ -407,7 +428,10 @@ const selectors = {
   getPreviousCharacterId,
   getPreviousDialogId,
   getPreviousGrammarId,
-  getCurrentGrammar
+  getCurrentGrammar,
+  getMapCharactersCompletedCount,
+  getMapDialogsCompletedCount,
+  getMapGrammarsCompletedCount
 };
 
 export default selectors;

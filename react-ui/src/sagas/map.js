@@ -11,7 +11,7 @@ function* fetchMapData(action) {
   try {
     const episodeId = action.payload.id;
     const response = yield call(Api.get, '/episodes/' + episodeId + '/map');
-    yield put(mapActions.setData(response.data));
+    yield put(mapActions.setData(response.data.data.attributes));
     yield put(mapActions.fetchSuccess());
   } catch (error) {
     yield put(yield put(mapActions.fetchFail(error)));

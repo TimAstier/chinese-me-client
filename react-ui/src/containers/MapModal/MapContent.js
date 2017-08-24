@@ -20,14 +20,20 @@ MapContent.propTypes = {
   characters: propTypes.array.isRequired,
   grammars: propTypes.array.isRequired,
   dialogs: propTypes.array.isRequired,
-  mapLinkClick: propTypes.func.isRequired
+  mapLinkClick: propTypes.func.isRequired,
+  mapCharactersCompletedCount: propTypes.number.isRequired,
+  mapDialogsCompletedCount: propTypes.number.isRequired,
+  mapGrammarsCompletedCount: propTypes.number.isRequired
 };
 
 const mapStateToProps = state => ({
   episode: selectors.getFocusedEpisode(state),
   characters: selectors.getMapCharacters(state).toJS(),
   grammars: selectors.getMapGrammars(state).toJS(),
-  dialogs: selectors.getMapDialogs(state).toJS()
+  dialogs: selectors.getMapDialogs(state).toJS(),
+  mapCharactersCompletedCount: selectors.getMapCharactersCompletedCount(state),
+  mapDialogsCompletedCount: selectors.getMapDialogsCompletedCount(state),
+  mapGrammarsCompletedCount: selectors.getMapGrammarsCompletedCount(state)
 });
 
 export default connect(

@@ -14,7 +14,7 @@ function* previous() {
       return yield put(push('/study/' + episodeId + '/character/' + previousElementId + '/pinyin'));
     case 'grammar':
       previousElementId = yield select(selectors.getPreviousGrammarId);
-      return yield put(push('/study/' + episodeId + '/grammar/' + previousElementId));
+      return yield put(push('/study/' + episodeId + '/grammar/' + previousElementId + '/explanation'));
     case 'dialog':
       previousElementId = yield select(selectors.getPreviousDialogId);
       return yield put(push('/study/' + episodeId + '/dialog/' + previousElementId + '/listen'));
@@ -32,7 +32,7 @@ function* next() {
       return yield put(push('/study/' + episodeId + '/character/' + nextElementId + '/pinyin'));
     case 'grammar':
       nextElementId = yield select(selectors.getNextGrammarId);
-      return yield put(push('/study/' + episodeId + '/grammar/' + nextElementId));
+      return yield put(push('/study/' + episodeId + '/grammar/' + nextElementId + '/explanation'));
     case 'dialog':
       nextElementId = yield select(selectors.getNextDialogId);
       return yield put(push('/study/' + episodeId + '/dialog/' + nextElementId + '/listen'));

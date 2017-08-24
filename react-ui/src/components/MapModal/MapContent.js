@@ -60,8 +60,8 @@ const Space = styled.div`
 class MapContent extends Component {
 
   renderCharacterBoxes() {
-    if (this.props.characters) {
-      return this.props.characters.map((c, i) => {
+    if (this.props.characters.length !== 0) {
+      const characterBoxes = this.props.characters.map((c, i) => {
         return (
           <CharacterBox
             key={i}
@@ -73,13 +73,14 @@ class MapContent extends Component {
           />
         );
       });
+      return <CharactersWrapper>{characterBoxes}</CharactersWrapper>;
     }
     return null;
   }
 
   renderDialogItems() {
-    if (this.props.dialogs) {
-      return this.props.dialogs.map((d, i) => {
+    if (this.props.dialogs.length !== 0) {
+      const dialogItems = this.props.dialogs.map((d, i) => {
         return (
           <MapDialogItem
             key={i}
@@ -91,13 +92,14 @@ class MapContent extends Component {
           />
         );
       });
+      return <ContentItemsWrapper>{dialogItems}</ContentItemsWrapper>;
     }
     return null;
   }
 
   renderGrammarItems() {
-    if (this.props.grammars) {
-      return this.props.grammars.map((g, i) => {
+    if (this.props.grammars.length !== 0) {
+      const grammarItems = this.props.grammars.map((g, i) => {
         return (
           <MapGrammarItem
             key={i}
@@ -109,6 +111,7 @@ class MapContent extends Component {
           />
         );
       });
+      return <ContentItemsWrapper>{grammarItems}</ContentItemsWrapper>;
     }
     return null;
   }
@@ -131,33 +134,33 @@ class MapContent extends Component {
           </EpisodeTitle>
         </TitleWrapper>
         <ContentWrapper>
-          <ChapterHeader
-            name="Characters"
-            completedElements={mapCharactersCompletedCount}
-            totalElements={episode.characters.length}
-            completed={mapCharactersCompletedCount === episode.characters.length}
-          />
-          <CharactersWrapper>
-            {this.renderCharacterBoxes()}
-          </CharactersWrapper>
-          <ChapterHeader
-            name="Grammar"
-            completedElements={mapGrammarsCompletedCount}
-            totalElements={episode.grammars.length}
-            completed={mapGrammarsCompletedCount === episode.grammars.length}
-          />
-          <ContentItemsWrapper>
-            {this.renderGrammarItems()}
-          </ContentItemsWrapper>
-          <ChapterHeader
-            name="Dialog"
-            completedElements={mapDialogsCompletedCount}
-            totalElements={episode.dialogs.length}
-            completed={mapDialogsCompletedCount === episode.dialogs.length}
-          />
-          <ContentItemsWrapper>
-            {this.renderDialogItems()}
-          </ContentItemsWrapper>
+          {episode.characters.length !== 0 &&
+            <ChapterHeader
+              name="Characters"
+              completedElements={mapCharactersCompletedCount}
+              totalElements={episode.characters.length}
+              completed={mapCharactersCompletedCount === episode.characters.length}
+            />
+          }
+          {this.renderCharacterBoxes()}
+          {episode.grammars.length !== 0 &&
+            <ChapterHeader
+              name="Grammar"
+              completedElements={mapGrammarsCompletedCount}
+              totalElements={episode.grammars.length}
+              completed={mapGrammarsCompletedCount === episode.grammars.length}
+            />
+          }
+          {this.renderGrammarItems()}
+          {episode.dialogs.length !== 0 &&
+            <ChapterHeader
+              name="Dialog"
+              completedElements={mapDialogsCompletedCount}
+              totalElements={episode.dialogs.length}
+              completed={mapDialogsCompletedCount === episode.dialogs.length}
+            />
+          }
+          {this.renderDialogItems()}
           <ChapterHeader
             name="Practice"
             completed={false}

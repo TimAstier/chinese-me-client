@@ -370,6 +370,34 @@ const getCurrentGrammar = createSelector(
   }
 );
 
+const getCurrentGrammarPosition = createSelector(
+  getCurrentEpisode,
+  studySelectors.getCurrentGrammarId,
+  (episode, id) => {
+    if (episode) {
+      return episode.grammars.findIndex(c => String(c) === id) + 1;
+    }
+    return 0;
+  }
+);
+
+const getGrammarsNavParams = createSelector(
+  getCurrentEpisode,
+  getCurrentGrammarPosition,
+  (currentEpisode, currentGrammarPosition) => {
+    try {
+      const grammarsCount = currentEpisode.grammars.length;
+      return {
+        type: 'grammar',
+        currentElement: currentGrammarPosition,
+        totalElements: grammarsCount
+      };
+    } catch (e) {
+      return undefined;
+    }
+  }
+);
+
 const getMapCharactersCompletedCount = createSelector(
   mapSelectors.getMapCharacters,
   characters => {
@@ -431,7 +459,8 @@ const selectors = {
   getCurrentGrammar,
   getMapCharactersCompletedCount,
   getMapDialogsCompletedCount,
-  getMapGrammarsCompletedCount
+  getMapGrammarsCompletedCount,
+  getGrammarsNavParams
 };
 
 export default selectors;

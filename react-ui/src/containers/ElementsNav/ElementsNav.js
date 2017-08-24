@@ -19,13 +19,14 @@ class ElementsNav extends Component {
     switch (elementType) {
       case 'character': return this.props.charactersNavParams;
       case 'dialog': return this.props.dialogsNavParams;
+      case 'grammar': return this.props.grammarsNavParams;
       default: return undefined;
     }
   }
 
   render() {
     const elementType = this.props.currentUrl.split('/')[3];
-    const typesWithMenu = ['character', 'dialog'];
+    const typesWithMenu = ['character', 'dialog', 'grammar'];
     let elementsNavParams = undefined;
     if (typesWithMenu.indexOf(elementType) !== -1) {
       elementsNavParams = this.mapOptionsToScreenType(elementType);
@@ -43,6 +44,7 @@ class ElementsNav extends Component {
 ElementsNav.propTypes = {
   elementsNavParams: propTypes.object,
   charactersNavParams: propTypes.object,
+  grammarsNavParams: propTypes.object,
   dialogsNavParams: propTypes.object,
   currentUrl: propTypes.string.isRequired,
   elementsNavPreviousClick: propTypes.func.isRequired,
@@ -52,6 +54,7 @@ ElementsNav.propTypes = {
 const mapStateToProps = state => ({
   charactersNavParams: selectors.getCharactersNavParams(state),
   dialogsNavParams: selectors.getDialogsNavParams(state),
+  grammarsNavParams: selectors.getGrammarsNavParams(state),
   currentUrl: selectors.getCurrentUrl(state)
 });
 

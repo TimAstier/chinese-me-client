@@ -419,6 +419,52 @@ const getMapGrammarsCompletedCount = createSelector(
   }
 );
 
+const getCurrentCharactersCount = createSelector(
+  getCurrentEpisode,
+  episode => {
+    if (!episode) {
+      return undefined;
+    }
+    return episode.characters.length;
+  }
+);
+
+const getCurrentDialogsCount = createSelector(
+  getCurrentEpisode,
+  episode => {
+    if (!episode) {
+      return undefined;
+    }
+    return episode.dialogs.length;
+  }
+);
+
+const getCurrentGrammarsCount = createSelector(
+  getCurrentEpisode,
+  episode => {
+    if (!episode) {
+      return undefined;
+    }
+    return episode.grammars.length;
+  }
+);
+
+
+const getCompletionPercentage = createSelector(
+  getMapCharactersCompletedCount,
+  getMapDialogsCompletedCount,
+  getMapGrammarsCompletedCount,
+  getCurrentCharactersCount,
+  getCurrentDialogsCount,
+  getCurrentGrammarsCount,
+  (completeC, completeD, completeG, totalC, totalD, totalG) => {
+    const ratioC = completeC / totalC;
+    const ratioD = completeD / totalD * 3; // Estimate Dialogs to take more time
+    const ratioG = completeG / totalG;
+    return Math.round((ratioC + ratioD + ratioG) / 5 * 100);
+  }
+);
+
 const selectors = {
   ...entitySelectors,
   ...studySelectors,
@@ -460,7 +506,8 @@ const selectors = {
   getMapCharactersCompletedCount,
   getMapDialogsCompletedCount,
   getMapGrammarsCompletedCount,
-  getGrammarsNavParams
+  getGrammarsNavParams,
+  getCompletionPercentage
 };
 
 export default selectors;

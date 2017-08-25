@@ -10,9 +10,7 @@ export function* initUi() {
 
 export function* initStudyData() {
   const url = yield select(selectors.getCurrentUrl);
-  const episodeId = url.split('/')[2];
   const partNumber = url.split('/')[4];
-  yield put(fromStudy.setCurrentEpisodeId(episodeId));
   yield put(fromStudy.setPartNumber(Number(partNumber)));
 }
 

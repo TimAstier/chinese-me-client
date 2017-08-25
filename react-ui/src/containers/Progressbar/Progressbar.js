@@ -1,19 +1,28 @@
 import React, { Component } from 'react';
-// import propTypes from 'prop-types';
+import propTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Progressbar as ProgressbarComponent } from '../../components';
+import selectors from '../../rootSelectors';
 
 class Progressbar extends Component {
 
   render() {
     return (
       <ProgressbarComponent
-        completionPercentage={75}
+        completionPercentage={this.props.completionPercentage}
       />
     );
   }
 }
 
-// Progressbar.propTypes = {};
+Progressbar.propTypes = {
+  completionPercentage: propTypes.number.isRequired
+};
 
-export default connect()(Progressbar);
+const mapStateToProps = state => ({
+  completionPercentage: selectors.getCompletionPercentage(state)
+});
+
+export default connect(
+  mapStateToProps
+)(Progressbar);

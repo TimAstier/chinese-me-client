@@ -66,7 +66,7 @@ class MapContent extends Component {
           <CharacterBox
             key={i}
             char={c.simpChar}
-            completed={c.completed}
+            completed={c.userCharacters.length !== 0}
             onClick={() => this.props.mapLinkClick(
               '/study/' + this.props.episode.id + '/character/' + c.id + '/pinyin'
             )}
@@ -85,7 +85,7 @@ class MapContent extends Component {
           <MapDialogItem
             key={i}
             title={d.title}
-            completed={d.completed ? true : undefined}
+            completed={d.userDialogs.length !== 0 ? true : undefined}
             onClick={() => this.props.mapLinkClick(
               '/study/' + this.props.episode.id + '/dialog/' + d.id + '/listen'
             )}
@@ -104,7 +104,7 @@ class MapContent extends Component {
           <MapGrammarItem
             key={i}
             title={g.title}
-            completed={g.completed ? true : undefined}
+            completed={g.userGrammars.length !== 0 ? true : undefined}
             onClick={() => this.props.mapLinkClick(
               '/study/' + this.props.episode.id + '/grammar/' + g.id + '/explanation'
             )}

@@ -17,11 +17,7 @@ function* askQuestion() {
   yield put(uiActions.openFeedbackModal());
 }
 
-function* skip() {
-  yield call(next); // TODO: differentiate skip and next in analytics
-}
-
-function* next() {
+function* nextScreen() {
   const urlParams = getParamsFromUrl(yield select(selectors.getCurrentUrl));
   const { episodeId, elementType, elementId, mode } = urlParams;
   const screenType = elementType + '/' + mode; // Define screenType
@@ -92,7 +88,6 @@ export default function* watchEpisodeSagas() {
     takeEvery(studyTypes.START_EPISODE, startEpisode),
     takeEvery(sagaTypes.EXIT, exitEpisode),
     takeEvery(sagaTypes.ASK_QUESTION, askQuestion),
-    takeEvery(sagaTypes.SKIP, skip),
-    takeEvery(sagaTypes.NEXT, next)
+    takeEvery(sagaTypes.NEXT_SCREEN, nextScreen)
   ]);
 }

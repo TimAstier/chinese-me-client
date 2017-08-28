@@ -398,24 +398,68 @@ const getGrammarsNavParams = createSelector(
   }
 );
 
+// Any screenType completed
 const getMapCharactersCompletedCount = createSelector(
   mapSelectors.getMapCharacters,
   characters => {
-    return characters.filter(c => c.get('completed') === true).size;
+    return characters.filter(c => c.get('userCharacters').size !== 0).size;
   }
 );
 
 const getMapDialogsCompletedCount = createSelector(
   mapSelectors.getMapDialogs,
   dialogs => {
-    return dialogs.filter(d => d.get('completed') === true).size;
+    return dialogs.filter(d => d.get('userDialogs').size !== 0).size;
   }
 );
 
 const getMapGrammarsCompletedCount = createSelector(
   mapSelectors.getMapGrammars,
   grammars => {
-    return grammars.filter(c => c.get('completed') === true).size;
+    return grammars.filter(c => c.get('userGrammars').size !== 0).size;
+  }
+);
+
+// Count screenTypes individually
+const getMapCharactersCompletedDeepCount = createSelector(
+  mapSelectors.getMapCharacters,
+  characters => {
+    let count = 0;
+    characters.forEach(c => {
+      if (c.get('userCharacters').size !== 0) {
+        if (c.getIn(['userCharacters', 0, 'pinyin']) !== 0) {
+          count++;
+        }
+        if (c.getIn(['userCharacters', 0, 'etymology']) !== 0) {
+          count++;
+        }
+        if (c.getIn(['userCharacters', 0, 'writing']) !== 0) {
+          count++;
+        }
+      }
+    });
+    return count;
+  }
+);
+
+const getMapDialogsCompletedDeepCount = createSelector(
+  mapSelectors.getMapDialogs,
+  dialogs => {
+    let count = 0;
+    dialogs.forEach(d => {
+      if (d.get('userDialogs').size !== 0) {
+        if (d.getIn(['userDialogs', 0, 'listen']) !== 0) {
+          count++;
+        }
+        if (d.getIn(['userDialogs', 0, 'explore']) !== 0) {
+          count++;
+        }
+        if (d.getIn(['userDialogs', 0, 'roleplay']) !== 0) {
+          count++;
+        }
+      }
+    });
+    return count;
   }
 );
 
@@ -451,17 +495,19 @@ const getCurrentGrammarsCount = createSelector(
 
 
 const getCompletionPercentage = createSelector(
-  getMapCharactersCompletedCount,
-  getMapDialogsCompletedCount,
+  getMapCharactersCompletedDeepCount,
+  getMapDialogsCompletedDeepCount,
   getMapGrammarsCompletedCount,
+  // TODO: include grammar deepcount (once more screenTypes)
   getCurrentCharactersCount,
   getCurrentDialogsCount,
   getCurrentGrammarsCount,
   (completeC, completeD, completeG, totalC, totalD, totalG) => {
-    const ratioC = completeC / totalC;
-    const ratioD = completeD / totalD * 3; // Estimate Dialogs to take more time
+    const ratioC = completeC / (totalC * 3);
+    const ratioD = completeD / (totalD * 3) * 3; // Estimate Dialogs to take more time
     const ratioG = completeG / totalG;
-    return Math.round((ratioC + ratioD + ratioG) / 5 * 100);
+    const result = Math.round((ratioC + ratioD + ratioG) / 5 * 100);
+    return result ? result : 0;
   }
 );
 

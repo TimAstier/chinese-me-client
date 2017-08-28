@@ -1,8 +1,8 @@
-import { put, select, call } from 'redux-saga/effects';
+import { put, select, call, take } from 'redux-saga/effects';
 import { actions as fromUi } from '../../redux/ui';
 import { actions as fromStudy } from '../../redux/study';
 import selectors from '../../rootSelectors';
-import { actions as sagaActions } from '../actions';
+import { actions as sagaActions, types as sagaTypes } from '../actions';
 import { checkDialogData, fetchDialogData } from './dialog';
 
 export function* checkData(id) {
@@ -29,4 +29,5 @@ export function* initStudyData() {
 
 export function* run() {
   yield put(sagaActions.playSentence());
+  yield take(sagaTypes.NEXT_SCREEN);
 }

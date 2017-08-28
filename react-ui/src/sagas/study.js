@@ -1,11 +1,12 @@
 /* eslint-disable no-console */
-import { takeLatest, put, call, race, take } from 'redux-saga/effects';
+import { put, call, race, take, takeLatest } from 'redux-saga/effects';
 import { types as studyTypes, actions as studyActions } from '../redux/study';
 import { actions as uiActions } from '../redux/ui';
 import { elementTypes } from '../constants/study';
-import { types as sagaTypes } from './actions';
+import { actions as sagaActions, types as sagaTypes } from './actions';
 import mapScreenTypeToModule from '../helpers/mapScreenTypeToModule';
 import getParamsFromUrl from '../utils/getParamsFromUrl';
+import Api from '../utils/api';
 
 // Every screenType has those five "studyFunctions" (generators):
 // 1. checkData
@@ -13,7 +14,7 @@ import getParamsFromUrl from '../utils/getParamsFromUrl';
 // 3. initStudyData
 // 4. initUi
 // 5. run
-
+// 6. onCompleted
 function* initScreen(action) {
   // IMPORTANT: start by hiding screen content
   yield put(studyActions.setInitialized(false)); // Hide screen content
@@ -36,7 +37,14 @@ function* initScreen(action) {
   yield call(funcs.initStudyData); // Init studyData
   yield call(funcs.initUi); // Init UI
   yield put(studyActions.setInitialized(true)); // Display screen content
-  return yield call(runScreenSaga, funcs.run); // Run Saga(s) for the screen
+  const result = yield call(runScreenSaga, funcs); // Run Saga(s) for the screen
+  if (elementTypes.indexOf(elementType) !== -1) { // Save progression on the server
+    if (result.skip || result.next) {
+      const completedCode = result.skip ? 1 : 2;
+      yield call(Api.post, `/${elementType}/${elementId}/completed`, { completedCode, mode });
+    }
+  }
+  return yield put(sagaActions.nextScreen()); // Go to next screen
 }
 
 function getStudyFunctions(screenType) {
@@ -50,9 +58,16 @@ function getStudyFunctions(screenType) {
   };
 }
 
-function* runScreenSaga(runFunction) {
+function* runScreenSaga(studyFuncs) {
+  if (studyFuncs.run) {
+    return yield race({
+      runScreen: call(studyFuncs.run),
+      next: take(sagaTypes.NEXT),
+      skip: take(sagaTypes.SKIP),
+      exit: take(sagaTypes.EXIT)
+    });
+  }
   return yield race({
-    runScreen: call(runFunction),
     next: take(sagaTypes.NEXT),
     skip: take(sagaTypes.SKIP),
     exit: take(sagaTypes.EXIT)

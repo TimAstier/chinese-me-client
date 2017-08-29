@@ -6,6 +6,7 @@ export { default as CharacterEtymology } from './CharacterEtymology/CharacterEty
 export { default as CharacterPinyin } from './CharacterPinyin/CharacterPinyin';
 export { default as CharacterWriting } from './CharacterWriting/CharacterWriting';
 export { default as ChapterHeader } from './MapModal/ChapterHeader';
+export { default as ChoiceBox } from './ChoiceBox/ChoiceBox';
 export { default as Dialog } from './Dialog/Dialog';
 export { default as ElementsNav } from './ElementsNav/ElementsNav';
 export { default as EpisodeCard } from './EpisodeCard/EpisodeCard';
@@ -24,6 +25,7 @@ export { default as MapModal } from './MapModal/MapModal';
 export { default as MapSidebar } from './MapModal/MapSidebar';
 export { default as Modal } from './Modal/Modal';
 export { default as ModeButton } from './Dialog/ModeButton';
+export { default as MultipleChoice } from './MultipleChoice/MultipleChoice';
 export { default as Navbar } from './Navbar/Navbar';
 export { default as PlayAudioButton } from './PlayAudioButton/PlayAudioButton';
 export { default as Progressbar } from './Progressbar/Progressbar';

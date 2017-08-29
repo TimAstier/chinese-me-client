@@ -256,11 +256,7 @@ class CharacterPinyin extends Component {
 
 CharacterPinyin.propTypes = {
   character: propTypes.instanceOf(Character).isRequired,
-  status: propTypes.oneOf([
-    'question',
-    'wrong',
-    'correct'
-  ]).isRequired,
+  status: propTypes.oneOf([ 'question', 'wrong', 'correct' ]).isRequired,
   attemptsLeft: propTypes.number.isRequired,
   openModal: propTypes.bool.isRequired,
   userAnswer: propTypes.string.isRequired,

@@ -2,7 +2,7 @@
 import { put, call, race, take, takeLatest } from 'redux-saga/effects';
 import { types as studyTypes, actions as studyActions } from '../redux/study';
 import { actions as uiActions } from '../redux/ui';
-import { elementTypes } from '../constants/study';
+import { elementTypes, elementTypesToTrack } from '../constants/study';
 import { actions as sagaActions, types as sagaTypes } from './actions';
 import mapScreenTypeToModule from '../helpers/mapScreenTypeToModule';
 import getParamsFromUrl from '../utils/getParamsFromUrl';
@@ -38,7 +38,7 @@ function* initScreen(action) {
   yield call(funcs.initUi); // Init UI
   yield put(studyActions.setInitialized(true)); // Display screen content
   const result = yield call(runScreenSaga, funcs); // Run Saga(s) for the screen
-  if (elementTypes.indexOf(elementType) !== -1) { // Save progression on the server
+  if (elementTypesToTrack.indexOf(elementType) !== -1) { // Save progression on the server
     if (result.skip || result.next) {
       const completedCode = result.skip ? 1 : 2;
       yield call(Api.post, `/${elementType}/${elementId}/completed`, { completedCode, mode });

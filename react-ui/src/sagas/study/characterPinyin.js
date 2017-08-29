@@ -60,6 +60,7 @@ export function* run() {
           yield fork(playWrongSound);
           yield put(fromCharacterPinyin.setStatus('wrong'));
           yield put(fromUi.set('nextButton', true));
+          yield take(sagaTypes.NEXT);
         }
       }
     }

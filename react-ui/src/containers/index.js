@@ -14,6 +14,7 @@ export { default as MapContent } from './MapModal/MapContent';
 export { default as MapModal } from './MapModal/MapModal';
 export { default as MapSidebar } from './MapModal/MapSidebar';
 export { default as Modal } from './Modal/Modal';
+export { default as MultipleChoice } from './MultipleChoice/MultipleChoice';
 export { default as Navbar } from './Navbar/Navbar';
 export { default as PlayAudioButton } from './PlayAudioButton/PlayAudioButton';
 export { default as Progressbar } from './Progressbar/Progressbar';

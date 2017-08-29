@@ -72,6 +72,7 @@ const getEpisodes = state => state.get('episodes');
 const getStatements = state => state.get('statements');
 const getSentences = state => state.get('sentences');
 const getSeasons = state => state.get('seasons');
+const getMultipleChoices = state => state.get('multipleChoices');
 
 export const selectors = {
   getAvatars,
@@ -81,5 +82,6 @@ export const selectors = {
   getEpisodes,
   getStatements,
   getSentences,
-  getSeasons
+  getSeasons,
+  getMultipleChoices
 };

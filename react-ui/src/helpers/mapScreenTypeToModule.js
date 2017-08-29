@@ -6,6 +6,7 @@ import * as fromGrammarExplanation from '../sagas/study/grammarExplanation';
 import * as fromDialogListen from '../sagas/study/dialogListen';
 import * as fromDialogExplore from '../sagas/study/dialogExplore';
 import * as fromDialogRoleplay from '../sagas/study/dialogRoleplay';
+import * as fromMultipleChoice from '../sagas/study/multipleChoice';
 
 export default function mapScreenTypeToModule(screenType) {
   switch (screenType) {
@@ -17,6 +18,7 @@ export default function mapScreenTypeToModule(screenType) {
     case 'dialog/listen': return fromDialogListen;
     case 'dialog/explore': return fromDialogExplore;
     case 'dialog/roleplay': return fromDialogRoleplay;
+    case 'multipleChoice/': return fromMultipleChoice;
     default: return console.log('unknown screenType');
   }
 }

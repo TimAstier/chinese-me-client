@@ -4,8 +4,8 @@ import { Route } from 'react-router';
 import requireAuth from './utils/requireAuth';
 import { App, SelectEpisode, CharacterPinyin,
   Dialog, Title, SignupPage, LoginPage, SignupActivate,
-  EpisodeScreen, CharacterEtymology, CharacterWriting, GrammarExplanation }
-  from './containers';
+  EpisodeScreen, CharacterEtymology, CharacterWriting, GrammarExplanation,
+  MultipleChoice } from './containers';
 import { EmailSentPage, ActivatedPage } from './components';
 
 // How to redirect by dispatching actions:
@@ -43,6 +43,7 @@ export default (
       <Route path="dialog/:dialogId/listen" component={requireAuth(Dialog)} />
       <Route path="dialog/:dialogId/explore" component={requireAuth(Dialog)} />
       <Route path="dialog/:dialogId/roleplay" component={requireAuth(Dialog)} />
+      <Route path="multipleChoice/:id" component={requireAuth(MultipleChoice)} />
     </Route>
   </Route>
 );

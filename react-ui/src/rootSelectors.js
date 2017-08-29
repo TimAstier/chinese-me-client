@@ -12,6 +12,7 @@ import * as fromCharacterPinyin from './redux/characterPinyin';
 import * as fromAuth from './redux/auth';
 import * as fromRouting from './redux/routing';
 import * as fromMap from './redux/map';
+import * as fromMultipleChoice from './redux/multipleChoice';
 import * as fromVideo from './redux/video';
 
 // TODO: DRY selectors (like getNext/Previous ids)
@@ -54,6 +55,11 @@ const routingSelectors = bindSelectors(
 const mapSelectors = bindSelectors(
   state => state.get('map'),
   fromMap.selectors
+);
+
+const multipleChoiceSelectors = bindSelectors(
+  state => state.get('multipleChoice'),
+  fromMultipleChoice.selectors
 );
 
 const videoSelectors = bindSelectors(
@@ -112,6 +118,12 @@ const getCurrentSentence = createSelector(
   entitySelectors.getSentences,
   studySelectors.getCurrentSentenceId,
   (sentences, id) => sentences.get(String(id))
+);
+
+const getCurrentMultipleChoice = createSelector(
+  entitySelectors.getMultipleChoices,
+  studySelectors.getCurrentMultipleChoiceId,
+  (multipleChoices, id) => multipleChoices.get(String(id))
 );
 
 const getCurrentSentenceIndex = createSelector(
@@ -520,6 +532,7 @@ const selectors = {
   ...authPinyinSelectors,
   ...routingSelectors,
   ...mapSelectors,
+  ...multipleChoiceSelectors,
   ...videoSelectors,
   getCurrentEpisode,
   getFocusedEpisode,
@@ -530,6 +543,7 @@ const selectors = {
   getCurrentSentence,
   getCurrentSentenceIndex,
   getCurrentSentences,
+  getCurrentMultipleChoice,
   getCurrentAvatars,
   getNextSentenceId,
   // getPreviousSentenceId,

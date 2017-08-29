@@ -3,7 +3,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 
 import { Character } from '../../models';
-import { EpisodeScreen, CharacterPinyin } from '../.';
+import { EpisodeScreen, CharacterPinyin } from '../../containers';
 import Provider from '../../utils/Provider';
 
 // Mock dispatch functions
@@ -31,8 +31,10 @@ storiesOf('CharacterPinyin', module)
   .addDecorator(story => <Provider story={story()} />)
   .add('status: "question"', () =>
     <EpisodeScreen
+      location={{pathname: ''}}
       {...dispatchFunctions}
       progressMenuOptions={progressMenuOptions}
+      openFeedbackModal={()=>{}}
       skip
     >
       <CharacterPinyin
@@ -49,6 +51,7 @@ storiesOf('CharacterPinyin', module)
     <EpisodeScreen
       {...dispatchFunctions}
       progressMenuOptions={progressMenuOptions}
+      openFeedbackModal={()=>{}}
       skip
     >
       <CharacterPinyin
@@ -65,6 +68,7 @@ storiesOf('CharacterPinyin', module)
     <EpisodeScreen
       {...dispatchFunctions}
       progressMenuOptions={progressMenuOptions}
+      openFeedbackModal={()=>{}}
       skip
     >
       <CharacterPinyin
@@ -81,6 +85,7 @@ storiesOf('CharacterPinyin', module)
     <EpisodeScreen
       {...dispatchFunctions}
       progressMenuOptions={progressMenuOptions}
+      openFeedbackModal={()=>{}}
       skip
       next
     >
@@ -98,6 +103,7 @@ storiesOf('CharacterPinyin', module)
     <EpisodeScreen
       {...dispatchFunctions}
       progressMenuOptions={progressMenuOptions}
+      openFeedbackModal={()=>{}}
       skip
       next
     >

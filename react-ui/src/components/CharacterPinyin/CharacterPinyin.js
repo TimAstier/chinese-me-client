@@ -135,6 +135,21 @@ const ModalControls = styled.div`
   align-items: center;
 `;
 
+const Input = styled.input`
+  width: 160px;
+  height: 50px;
+  border-radius: 10px;
+  background-color: ${props => props.isFinsihed ? '#f2f7fa' : '#ffffff'};
+  box-shadow: 0 0 8px 0 rgba(85, 182, 255, 0.6);
+  border: solid 2px ${props => props.isFinsihed ? '#cdd6db' : '#55b6ff'};
+  font-family: 'Open Sans';
+  font-size: 20px;
+  text-align: center;
+  color: #454545;
+  -webkit-appearance: none;
+  outline: none;
+`;
+
 class CharacterPinyin extends Component {
   isFinished() {
     const status = this.props.status;
@@ -142,21 +157,6 @@ class CharacterPinyin extends Component {
   }
 
   renderInputWrapper() {
-    const Input = styled.input`
-      width: 160px;
-      height: 50px;
-      border-radius: 10px;
-      background-color: ${this.isFinished() ? '#f2f7fa' : '#ffffff'};
-      box-shadow: 0 0 8px 0 rgba(85, 182, 255, 0.6);
-      border: solid 2px ${this.isFinished() ? '#cdd6db' : '#55b6ff'};
-      font-family: 'Open Sans';
-    	font-size: 20px;
-    	text-align: center;
-    	color: #454545;
-      -webkit-appearance: none;
-      outline: none;
-    `;
-
     // This way of setting autofocus allow the input to be re-focused
     // when the modal is closed. It uses innerRef instead of ref
     // to work with styled-components.
@@ -164,6 +164,7 @@ class CharacterPinyin extends Component {
     return (
       <InputWrapper>
         <Input
+          isFinished={this.isFinished()}
           type="text"
           value={this.props.userAnswer}
           onChange={this.props.handleChange}

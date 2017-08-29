@@ -2,7 +2,8 @@ export const elementTypes = [
   'character',
   'dialog',
   'grammar',
-  'multipleChoice'
+  'multipleChoice',
+  'audioToText'
 ];
 
 export const elementTypesToTrack = [

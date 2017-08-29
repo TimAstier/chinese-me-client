@@ -8,6 +8,7 @@ import * as fromEntities from './redux/entities';
 import * as fromStudy from './redux/study';
 import * as fromUi from './redux/ui';
 import * as fromAudio from './redux/audio';
+import * as fromAudioToText from './redux/audioToText';
 import * as fromCharacterPinyin from './redux/characterPinyin';
 import * as fromAuth from './redux/auth';
 import * as fromRouting from './redux/routing';
@@ -35,6 +36,11 @@ const uiSelectors = bindSelectors(
 const audioSelectors = bindSelectors(
   state => state.get('audio'),
   fromAudio.selectors
+);
+
+const audioToTextSelectors = bindSelectors(
+  state => state.get('audioToText'),
+  fromAudioToText.selectors
 );
 
 const characterPinyinSelectors = bindSelectors(
@@ -528,6 +534,7 @@ const selectors = {
   ...studySelectors,
   ...uiSelectors,
   ...audioSelectors,
+  ...audioToTextSelectors,
   ...characterPinyinSelectors,
   ...authPinyinSelectors,
   ...routingSelectors,

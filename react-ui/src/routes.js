@@ -2,11 +2,8 @@ import React from 'react';
 import { Route } from 'react-router';
 // import { IndexRoute } from 'react-router';
 import requireAuth from './utils/requireAuth';
-import { App, SelectEpisode, CharacterPinyin,
-  Dialog, Title, SignupPage, LoginPage, SignupActivate,
-  EpisodeScreen, CharacterEtymology, CharacterWriting, GrammarExplanation,
-  MultipleChoice } from './containers';
-import { EmailSentPage, ActivatedPage } from './components';
+import * as containers from './containers';
+import * as components from './components';
 
 // How to redirect by dispatching actions:
 // import { push } from 'react-router-redux';
@@ -27,23 +24,24 @@ import { EmailSentPage, ActivatedPage } from './components';
 /* ----- */
 
 export default (
-  <Route path="/" component={App}>
-    <Route path="signup" component={SignupPage} />
-    <Route path="signup/activated" component={ActivatedPage} />
-    <Route path="signup/activate/:activationToken" component={SignupActivate} />
-    <Route path="email_sent" component={EmailSentPage} />
-    <Route path="login" component={LoginPage} />
-    <Route path="select" component={requireAuth(SelectEpisode)} />
-    <Route path="study/:episodeId" component={requireAuth(EpisodeScreen)}>
-      <Route path="title/:partNumber" component={requireAuth(Title)} />
-      <Route path="character/:characterId/pinyin" component={requireAuth(CharacterPinyin)} />
-      <Route path="character/:characterId/etymology" component={requireAuth(CharacterEtymology)} />
-      <Route path="character/:characterId/writing" component={requireAuth(CharacterWriting)} />
-      <Route path="grammar/:grammarId/explanation" component={requireAuth(GrammarExplanation)} />
-      <Route path="dialog/:dialogId/listen" component={requireAuth(Dialog)} />
-      <Route path="dialog/:dialogId/explore" component={requireAuth(Dialog)} />
-      <Route path="dialog/:dialogId/roleplay" component={requireAuth(Dialog)} />
-      <Route path="multipleChoice/:id" component={requireAuth(MultipleChoice)} />
+  <Route path="/" component={containers.App}>
+    <Route path="signup" component={containers.SignupPage} />
+    <Route path="signup/activated" component={components.ActivatedPage} />
+    <Route path="signup/activate/:activationToken" component={containers.SignupActivate} />
+    <Route path="email_sent" component={components.EmailSentPage} />
+    <Route path="login" component={containers.LoginPage} />
+    <Route path="select" component={requireAuth(containers.SelectEpisode)} />
+    <Route path="study/:episodeId" component={requireAuth(containers.EpisodeScreen)}>
+      <Route path="title/:partNumber" component={requireAuth(containers.Title)} />
+      <Route path="character/:characterId/pinyin" component={requireAuth(containers.CharacterPinyin)} />
+      <Route path="character/:characterId/etymology" component={requireAuth(containers.CharacterEtymology)} />
+      <Route path="character/:characterId/writing" component={requireAuth(containers.CharacterWriting)} />
+      <Route path="grammar/:grammarId/explanation" component={requireAuth(containers.GrammarExplanation)} />
+      <Route path="dialog/:dialogId/listen" component={requireAuth(containers.Dialog)} />
+      <Route path="dialog/:dialogId/explore" component={requireAuth(containers.Dialog)} />
+      <Route path="dialog/:dialogId/roleplay" component={requireAuth(containers.Dialog)} />
+      <Route path="multipleChoice/:id" component={requireAuth(containers.MultipleChoice)} />
+      <Route path="audioToText/:id" component={requireAuth(containers.AudioToText)} />
     </Route>
   </Route>
 );

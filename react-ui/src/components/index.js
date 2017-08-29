@@ -1,5 +1,6 @@
 // Keep in alphabetical order
 export { default as ActivatedPage } from './Signup/ActivatedPage';
+export { default as AudioToText } from './AudioToText/AudioToText';
 export { default as Avatar } from './Avatar/Avatar';
 export { default as CharacterBox } from './MapModal/CharacterBox';
 export { default as CharacterEtymology } from './CharacterEtymology/CharacterEtymology';
@@ -38,3 +39,4 @@ export { default as Statement } from './Statement/Statement';
 export { default as Title } from './Title/Title';
 export { default as TransparentInput } from './TransparentInput/TransparentInput';
 export { default as VideoPlayer } from './VideoPlayer/VideoPlayer';
+export { default as WordBox } from './WordBox/WordBox';

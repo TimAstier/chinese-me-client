@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import { Episode } from '../../models';
 import styled, { keyframes } from 'styled-components';
-import { List, Icon } from 'semantic-ui-react';
+import { List } from 'semantic-ui-react';
 import iconPlayingWhite from '../../images/iconPlayingWhite.svg';
 import iconPlayingColor from '../../images/iconPlayingColor.svg';
+import iconCheck from '../../images/iconCheck.svg';
 
 const rotate360 = keyframes`
 	from {
@@ -78,7 +79,7 @@ class SidebarItem extends Component {
         <List.Item>
           <StyledItem>
             <CheckWrapper>
-              {episode.completed && <Icon name="checkmark" color="green"/>}
+              {episode.completed && <img src={iconCheck} alt="icon-check" />}
             </CheckWrapper>
             <ItemNumber>{episode.number + '.'}</ItemNumber>
             <ItemTitle>

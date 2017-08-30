@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
-import { Icon } from 'semantic-ui-react';
+import iconCheck from '../../images/iconCheck.svg';
 
 const Wrapper = styled.div`
   width: 40px;
@@ -36,7 +36,7 @@ class CharacterBox extends Component {
         {this.props.char}
         {this.props.completed &&
           <CheckmarkWrapper>
-            <Icon name="checkmark" color="green" size="small"/>
+            <img src={iconCheck} alt="icon-check" />
           </CheckmarkWrapper>
         }
       </Wrapper>

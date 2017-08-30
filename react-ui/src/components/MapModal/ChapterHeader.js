@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import propTypes from 'prop-types';
-import { Icon } from 'semantic-ui-react';
+import iconCheck from '../../images/iconCheck.svg';
 
 const Wrapper = styled.div`
   border-radius: 8px;
@@ -43,7 +43,7 @@ class ChapterHeader extends Component {
     return (
       <Wrapper>
         <CheckmarkWrapper>
-          {completed && <Icon name="checkmark" color="green"/>}
+          {completed && <img src={iconCheck} alt="icon-check" />}
         </CheckmarkWrapper>
         <NameWrapper>
           {name}

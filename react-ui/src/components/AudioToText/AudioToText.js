@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
+import { WordBoxResult } from './..';
 import { WordBox } from '../../containers';
+import { List } from 'immutable';
+import { ScreenButton } from '../../containers';
 
 const Wrapper = styled.div`
   flex-grow: 1;
@@ -38,17 +41,47 @@ const WordBoxesWrapper = styled.div`
   align-items: center;
 `;
 
-class AudioToText extends Component {
+const CheckWrapper = styled.div`
+  flex-basis: 98px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+`;
 
+class AudioToText extends Component {
   renderWordBoxes() {
     return this.props.words.map((w, i) => {
+      if (this.props.results.get(i) !== undefined) {
+        return (
+          <WordBoxResult
+            key={i}
+            word={w}
+            success={this.props.results.getIn([i, 'success'])}
+            userAnswer={this.props.results.getIn([i, 'userAnswer'])}
+          />
+        );
+      }
       return (
         <WordBox
           key={i}
           index={i}
+          word={w}
         />
       );
     });
+  }
+
+  renderCheckWrapper() {
+    return (
+      <CheckWrapper>
+        <ScreenButton
+          text="Check"
+          primary
+          action={'checkAnswer'}
+          disabled = {this.props.userAnswer === '' ? true : undefined}
+        />
+      </CheckWrapper>
+    );
   }
 
   render() {
@@ -63,6 +96,7 @@ class AudioToText extends Component {
           </SecondaryGuideline>
         </GuidelineWrapper>
         <WordBoxesWrapper>{this.renderWordBoxes()}</WordBoxesWrapper>
+        {this.props.status !== 'finished' && this.renderCheckWrapper()}
       </Wrapper>
     );
   }
@@ -70,7 +104,10 @@ class AudioToText extends Component {
 
 AudioToText.propTypes = {
   words: propTypes.array.isRequired,
-  currentBoxIndex: propTypes.number.isRequired
+  currentBoxIndex: propTypes.number.isRequired,
+  results: propTypes.instanceOf(List).isRequired,
+  status: propTypes.string.isRequired,
+  userAnswer: propTypes.string.isRequired
 };
 
 export default AudioToText;

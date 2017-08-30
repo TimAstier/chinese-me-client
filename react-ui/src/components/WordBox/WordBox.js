@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 const TextInput = styled.input`
   width: 100px;
+  margin: 0 5px;
   height: 50px;
   border-radius: 10px;
   background-color: ${props => props.disabled ? '#f2f7fa' : '#ffffff'};
@@ -13,7 +14,6 @@ const TextInput = styled.input`
   font-size: 20px;
   text-align: center;
   color: #454545;
-  margin: 0 5px;
   -webkit-appearance: none;
   outline: none;
   :focus {
@@ -48,7 +48,8 @@ WordBox.propTypes = {
   currentBoxIndex: propTypes.number.isRequired,
   userAnswer: propTypes.string.isRequired,
   index: propTypes.number.isRequired,
-  handleChange: propTypes.func.isRequired
+  handleChange: propTypes.func.isRequired,
+  word: propTypes.object.isRequired
 };
 
 export default WordBox;

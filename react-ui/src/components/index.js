@@ -40,3 +40,4 @@ export { default as Title } from './Title/Title';
 export { default as TransparentInput } from './TransparentInput/TransparentInput';
 export { default as VideoPlayer } from './VideoPlayer/VideoPlayer';
 export { default as WordBox } from './WordBox/WordBox';
+export { default as WordBoxResult } from './WordBoxResult/WordBoxResult';

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
-import { Icon } from 'semantic-ui-react';
+import iconCheck from '../../images/iconCheck.svg';
 
 const Wrapper = styled.div`
   height: 40px;
@@ -37,7 +37,7 @@ class MapGrammarItem extends Component {
     return (
       <Wrapper onClick={this.props.onClick}>
         <CheckmarkWrapper>
-          {this.props.completed && <Icon name="checkmark" color="green" />}
+          {this.props.completed && <img src={iconCheck} alt="icon-check" />}
         </CheckmarkWrapper>
         <TitleWrapper>{this.props.title}</TitleWrapper>
       </Wrapper>

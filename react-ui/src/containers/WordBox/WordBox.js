@@ -26,7 +26,8 @@ WordBox.propTypes = {
   currentBoxIndex: propTypes.number.isRequired,
   userAnswer: propTypes.string.isRequired,
   index: propTypes.number.isRequired,
-  setUserAnswer: propTypes.func.isRequired
+  setUserAnswer: propTypes.func.isRequired,
+  word: propTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({

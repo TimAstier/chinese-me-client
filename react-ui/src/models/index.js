@@ -2,6 +2,8 @@
 // This implementation requires that coreModels and mapModels
 // are ordered in alphabetical order.
 
+export { default as AudioToText } from './AudioToText';
+export { default as AudioToTextMap } from './AudioToTextMap';
 export { default as Avatar } from './Avatar';
 export { default as AvatarMap } from './AvatarMap';
 export { default as Character } from './Character';
@@ -20,3 +22,5 @@ export { default as Sentence } from './Sentence';
 export { default as SentenceMap } from './SentenceMap';
 export { default as Statement } from './Statement';
 export { default as StatementMap } from './StatementMap';
+export { default as Word } from './Word';
+export { default as WordMap } from './WordMap';

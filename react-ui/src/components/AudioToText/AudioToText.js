@@ -5,6 +5,7 @@ import { WordBoxResult } from './..';
 import { WordBox } from '../../containers';
 import { List } from 'immutable';
 import { ScreenButton } from '../../containers';
+import * as models from '../../models';
 
 const Wrapper = styled.div`
   flex-grow: 1;
@@ -50,12 +51,12 @@ const CheckWrapper = styled.div`
 
 class AudioToText extends Component {
   renderWordBoxes() {
-    return this.props.words.map((w, i) => {
+    return this.props.audioToText.words.map((w, i) => {
       if (this.props.results.get(i) !== undefined) {
         return (
           <WordBoxResult
             key={i}
-            word={w}
+            word={this.props.words.get(String(w))}
             success={this.props.results.getIn([i, 'success'])}
             userAnswer={this.props.results.getIn([i, 'userAnswer'])}
           />
@@ -65,7 +66,7 @@ class AudioToText extends Component {
         <WordBox
           key={i}
           index={i}
-          word={w}
+          word={this.props.words.get(String(w))}
         />
       );
     });
@@ -89,10 +90,10 @@ class AudioToText extends Component {
       <Wrapper>
         <GuidelineWrapper>
           <MainGuideline>
-            Write the pinyin, with tone, of the words you hear
+            Write the pinyin, with tones, of the words you hear
           </MainGuideline>
           <SecondaryGuideline>
-            (Write the original tone of each word without tone sandhi)
+            (Write the original tones of each word without tone sandhi)
           </SecondaryGuideline>
         </GuidelineWrapper>
         <WordBoxesWrapper>{this.renderWordBoxes()}</WordBoxesWrapper>
@@ -103,7 +104,8 @@ class AudioToText extends Component {
 }
 
 AudioToText.propTypes = {
-  words: propTypes.array.isRequired,
+  audioToText: propTypes.instanceOf(models.AudioToText).isRequired,
+  words: propTypes.instanceOf(models.WordMap).isRequired,
   currentBoxIndex: propTypes.number.isRequired,
   results: propTypes.instanceOf(List).isRequired,
   status: propTypes.string.isRequired,

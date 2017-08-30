@@ -11,6 +11,7 @@ export const types = {
   SET_CURRENT_STATEMENT_ID: 'study/SET_CURRENT_STATEMENT_ID',
   SET_CURRENT_SENTENCE_ID: 'study/SET_CURRENT_SENTENCE_ID',
   SET_CURRENT_MULTIPLE_CHOICE_ID: 'study/SET_CURRENT_MULTIPLE_CHOICE_ID',
+  SET_CURRENT_AUDIO_TO_TEXT_ID: 'study/SET_CURRENT_AUDIO_TO_TEXT_ID',
   START_EPISODE: 'study/START_EPISODE',
   SET_DIALOG_MODE: 'study/SET_DIALOG_MODE',
   SET_PART_NUMBER: 'study/SET_PART_NUMBER',
@@ -30,6 +31,7 @@ export const INITIAL_STATE = Immutable.Map({
   currentStatementId: null,
   currentSentenceId: null,
   currentMultipleChoiceId: null,
+  currentAudioToTextId: null,
   dialogMode: '',
   partNumber: null,
   chosenAvatarId: null,
@@ -54,6 +56,8 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
       return state.set('currentSentenceId', action.payload.id);
     case types.SET_CURRENT_MULTIPLE_CHOICE_ID:
       return state.set('currentMultipleChoiceId', action.payload.id);
+    case types.SET_CURRENT_AUDIO_TO_TEXT_ID:
+      return state.set('currentAudioToTextId', action.payload.id);
     case types.SET_DIALOG_MODE:
       return state.set('dialogMode', action.payload.mode);
     case types.SET_PART_NUMBER:
@@ -114,6 +118,13 @@ const setCurrentMultipleChoiceId = id => {
   };
 };
 
+const setCurrentAudioToTextId = id => {
+  return {
+    type: types.SET_CURRENT_AUDIO_TO_TEXT_ID,
+    payload: { id }
+  };
+};
+
 const startEpisode = id => ({
   type: types.START_EPISODE,
   payload: { id }
@@ -163,6 +174,7 @@ export const actions = {
   setCurrentStatementId,
   setCurrentSentenceId,
   setCurrentMultipleChoiceId,
+  setCurrentAudioToTextId,
   startEpisode,
   setDialogMode,
   setPartNumber,
@@ -180,6 +192,7 @@ const getCurrentGrammarId = state => state.get('currentGrammarId');
 const getCurrentStatementId = state => state.get('currentStatementId');
 const getCurrentSentenceId = state => state.get('currentSentenceId');
 const getCurrentMultipleChoiceId = state => state.get('currentMultipleChoiceId');
+const getCurrentAudioToTextId = state => state.get('currentAudioToTextId');
 const getDialogMode = state => state.get('dialogMode');
 const getPartNumber = state => state.get('partNumber');
 const getChosenAvatarId = state => state.get('chosenAvatarId');
@@ -193,6 +206,7 @@ export const selectors = {
   getCurrentStatementId,
   getCurrentSentenceId,
   getCurrentMultipleChoiceId,
+  getCurrentAudioToTextId,
   getDialogMode,
   getPartNumber,
   getChosenAvatarId,

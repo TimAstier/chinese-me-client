@@ -23,6 +23,10 @@ const TextInput = styled.input`
 
 class WordBox extends Component {
 
+  renderPlaceholder() {
+    return ' _ '.repeat(this.props.word.chinese.length);
+  }
+
   render() {
     const focusInputField = input => {
       return input && input.focus();
@@ -30,6 +34,7 @@ class WordBox extends Component {
     return (
       <TextInput
         type="text"
+        placeholder={this.renderPlaceholder()}
         value={this.props.index !== this.props.currentBoxIndex ? '' : this.props.userAnswer}
         onChange={this.props.handleChange}
         disabled={this.props.disabled}

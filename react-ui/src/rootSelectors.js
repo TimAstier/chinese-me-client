@@ -132,6 +132,12 @@ const getCurrentMultipleChoice = createSelector(
   (multipleChoices, id) => multipleChoices.get(String(id))
 );
 
+const getCurrentAudioToText = createSelector(
+  entitySelectors.getAudioToTexts,
+  studySelectors.getCurrentAudioToTextId,
+  (audioToTexts, id) => audioToTexts.get(String(id))
+);
+
 const getCurrentSentenceIndex = createSelector(
   getCurrentStatement,
   studySelectors.getCurrentSentenceId,
@@ -551,6 +557,7 @@ const selectors = {
   getCurrentSentenceIndex,
   getCurrentSentences,
   getCurrentMultipleChoice,
+  getCurrentAudioToText,
   getCurrentAvatars,
   getNextSentenceId,
   // getPreviousSentenceId,

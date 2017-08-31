@@ -23,6 +23,7 @@ import * as components from './components';
 // Hit URL -> Component Render -> trigger saga -> next -> push next URL
 /* ----- */
 
+// TODO: use ReviewScreen and ExamScreen containers
 export default (
   <Route path="/" component={containers.App}>
     <Route path="signup" component={containers.SignupPage} />

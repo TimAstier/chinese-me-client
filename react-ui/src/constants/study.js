@@ -12,3 +12,11 @@ export const elementTypesToTrack = [
   'dialog',
   'grammar'
 ];
+
+export const elementTypesWithMenu = [
+  'character',
+  'dialog',
+  'grammar',
+  'multipleChoice',
+  'audioToText'
+];

@@ -140,6 +140,9 @@ class MapContent extends Component {
               completedElements={mapCharactersCompletedCount}
               totalElements={episode.characters.length}
               completed={mapCharactersCompletedCount === episode.characters.length}
+              onClick={() => this.props.mapLinkClick(
+                '/study/' + this.props.episode.id + '/title/1'
+              )}
             />
           }
           {this.renderCharacterBoxes()}
@@ -149,6 +152,9 @@ class MapContent extends Component {
               completedElements={mapGrammarsCompletedCount}
               totalElements={episode.grammars.length}
               completed={mapGrammarsCompletedCount === episode.grammars.length}
+              onClick={() => this.props.mapLinkClick(
+                '/study/' + this.props.episode.id + '/title/2'
+              )}
             />
           }
           {this.renderGrammarItems()}
@@ -158,17 +164,26 @@ class MapContent extends Component {
               completedElements={mapDialogsCompletedCount}
               totalElements={episode.dialogs.length}
               completed={mapDialogsCompletedCount === episode.dialogs.length}
+              onClick={() => this.props.mapLinkClick(
+                '/study/' + this.props.episode.id + '/title/3'
+              )}
             />
           }
           {this.renderDialogItems()}
           <ChapterHeader
-            name="Practice"
+            name="Review"
             completed={false}
+            onClick={() => this.props.mapLinkClick(
+              '/study/' + this.props.episode.id + '/title/4'
+            )}
           />
           <Space />
           <ChapterHeader
             name="Final Exam"
             completed={false}
+            onClick={() => this.props.mapLinkClick(
+              '/study/' + this.props.episode.id + '/title/5'
+            )}
           />
         </ContentWrapper>
       </Wrapper>

@@ -8,6 +8,7 @@ const Wrapper = styled.div`
   height: 32px;
   background-color: #f7f7f7;
   display: flex;
+  cursor: pointer;
 `;
 
 const CheckmarkWrapper = styled.div`
@@ -41,7 +42,7 @@ class ChapterHeader extends Component {
   render() {
     const { completed, name, completedElements, totalElements } = this.props;
     return (
-      <Wrapper>
+      <Wrapper onClick={this.props.onClick}>
         <CheckmarkWrapper>
           {completed && <img src={iconCheck} alt="icon-check" />}
         </CheckmarkWrapper>
@@ -62,7 +63,8 @@ ChapterHeader.propTypes = {
   completed: propTypes.bool,
   name: propTypes.string.isRequired,
   completedElements: propTypes.number,
-  totalElements: propTypes.number
+  totalElements: propTypes.number,
+  onClick: propTypes.func.isRequired
 };
 
 export default ChapterHeader;

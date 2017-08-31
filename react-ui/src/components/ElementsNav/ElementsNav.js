@@ -64,10 +64,37 @@ const IconWrapper = styled.div`
 
 class ElementsNav extends Component {
 
-  render() {
+  renderWithPosition() {
     const { type, currentElement, totalElements } = this.props;
     const labelA = capitalizeFirstLetter(type) + ' ' + currentElement;
     const labelB = ' of ' + totalElements;
+    return (
+      <LabelWrapper>
+        <LabelA>{labelA}</LabelA><span>{labelB}</span>
+      </LabelWrapper>
+    );
+  }
+
+  renderWithLeft() {
+    const { type, totalElements } = this.props;
+    if (totalElements === 0) {
+      return (
+        <LabelWrapper>
+          <LabelA>Completed!</LabelA>
+        </LabelWrapper>
+      );
+    }
+    const labelB = type + ((totalElements > 1) ? 's' : '') + ' left';
+    const labelA = totalElements;
+    return (
+      <LabelWrapper>
+        <LabelA>{labelA}</LabelA><span>{labelB}</span>
+      </LabelWrapper>
+    );
+  }
+
+  render() {
+    const { type, currentElement, totalElements } = this.props;
     return (
       <Wrapper>
         <ProgressWrapper>
@@ -82,11 +109,12 @@ class ElementsNav extends Component {
               </IconWrapper>
             }
           </LeftChevronWrapper>
-          <LabelWrapper>
-            <LabelA>{labelA}</LabelA><span>{labelB}</span>
-          </LabelWrapper>
+          { this.props.currentElement ?
+            this.renderWithPosition()
+            : this.renderWithLeft()
+          }
           <RightChevronWrapper>
-            {currentElement < totalElements &&
+            {currentElement && currentElement < totalElements &&
               <IconWrapper>
                 <img
                   src={iconElementNext}
@@ -104,7 +132,7 @@ class ElementsNav extends Component {
 
 ElementsNav.propTypes = {
   type: propTypes.string.isRequired,
-  currentElement: propTypes.number.isRequired,
+  currentElement: propTypes.number,
   totalElements: propTypes.number.isRequired,
   onPreviousClick: propTypes.func.isRequired,
   onNextClick: propTypes.func.isRequired

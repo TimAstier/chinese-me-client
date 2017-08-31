@@ -6,16 +6,25 @@ import { actions as multipleChoiceActions } from '../../redux/multipleChoice';
 import { types as sagaTypes } from '../actions';
 import { actions as fromUi } from '../../redux/ui';
 import { playSuccessSound, playWrongSound } from '../audio';
+import { actions as reviewActions } from '../../redux/review';
 
 export function* checkData(id) {
   yield put(studyActions.setCurrentMultipleChoiceId(id));
+  const initialized = yield select(selectors.getReviewInitialized);
+  if (!initialized) {
+    return false;
+  }
   const currentElement = yield select(selectors.getCurrentMultipleChoice);
   return (currentElement === undefined) ? false : true;
 }
 
 export function* fetchData(episodeId) {
-  return yield call(fetchEntities, '/episode/' + episodeId + '/multipleChoices');
+  yield call(fetchEntities, '/episode/' + episodeId + '/review');
   // TODO: handle fetch error
+  const reviews = yield select(selectors.getReviews);
+  const exercises = reviews.getIn([episodeId, 'exercises']);
+  yield put(reviewActions.setExercises(exercises));
+  yield put(reviewActions.setInitialized(true));
 }
 
 export function* initStudyData() {
@@ -31,9 +40,11 @@ export function* run() {
   const userAnswer = yield select(selectors.getMultipleChoiceUserAnswer);
   // TODO: update Review reducer (remaining questions?)
   if (multipleChoice.get('correctAnswer') === userAnswer) {
+    yield put(reviewActions.correctAnswer());
     yield fork(playSuccessSound);
     yield put(multipleChoiceActions.setStatus('correct'));
   } else {
+    yield put(reviewActions.wrongAnswer());
     yield fork(playWrongSound);
     yield put(multipleChoiceActions.setStatus('wrong'));
   }

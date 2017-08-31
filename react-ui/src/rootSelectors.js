@@ -541,6 +541,29 @@ const getCompletionPercentage = createSelector(
   }
 );
 
+const getCurrentReviewExercise = createSelector(
+  reviewSelectors.getReviewExercises,
+  exercises => {
+    return exercises.get(0) ? exercises.get(0) : null;
+  }
+);
+
+const getReviewNavParams = createSelector(
+  studySelectors.getCurrentEpisodeId,
+  reviewSelectors.getReviewExercises,
+  (episodeId, reviewExercises) => {
+    try {
+      return {
+        type: 'exercise',
+        currentElement: null,
+        totalElements: reviewExercises.size,
+      };
+    } catch (e) {
+      return undefined;
+    }
+  }
+);
+
 const selectors = {
   ...entitySelectors,
   ...studySelectors,
@@ -588,7 +611,9 @@ const selectors = {
   getMapDialogsCompletedCount,
   getMapGrammarsCompletedCount,
   getGrammarsNavParams,
-  getCompletionPercentage
+  getCompletionPercentage,
+  getCurrentReviewExercise,
+  getReviewNavParams
 };
 
 export default selectors;

@@ -4,6 +4,7 @@ import propTypes from 'prop-types';
 import { ElementsNav as ElementsNavComponent } from '../../components';
 import selectors from '../../rootSelectors';
 import { actions as sagaActions } from '../../sagas/actions';
+import { elementTypesWithMenu } from '../../constants/study';
 
 class ElementsNav extends Component {
 
@@ -20,15 +21,16 @@ class ElementsNav extends Component {
       case 'character': return this.props.charactersNavParams;
       case 'dialog': return this.props.dialogsNavParams;
       case 'grammar': return this.props.grammarsNavParams;
+      case 'multipleChoice':
+      case 'audioToText': return this.props.reviewNavParams;
       default: return undefined;
     }
   }
 
   render() {
     const elementType = this.props.currentUrl.split('/')[3];
-    const typesWithMenu = ['character', 'dialog', 'grammar'];
     let elementsNavParams = undefined;
-    if (typesWithMenu.indexOf(elementType) !== -1) {
+    if (elementTypesWithMenu.indexOf(elementType) !== -1) {
       elementsNavParams = this.mapOptionsToScreenType(elementType);
     }
     return elementsNavParams ?
@@ -46,15 +48,17 @@ ElementsNav.propTypes = {
   charactersNavParams: propTypes.object,
   grammarsNavParams: propTypes.object,
   dialogsNavParams: propTypes.object,
+  reviewNavParams: propTypes.object,
   currentUrl: propTypes.string.isRequired,
   elementsNavPreviousClick: propTypes.func.isRequired,
-  elementsNavNextClick: propTypes.func.isRequired
+  elementsNavNextClick: propTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
   charactersNavParams: selectors.getCharactersNavParams(state),
   dialogsNavParams: selectors.getDialogsNavParams(state),
   grammarsNavParams: selectors.getGrammarsNavParams(state),
+  reviewNavParams: selectors.getReviewNavParams(state),
   currentUrl: selectors.getCurrentUrl(state)
 });
 

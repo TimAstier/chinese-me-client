@@ -26,11 +26,11 @@ function* nextScreen() {
   return yield put(push(nextUrl)); // Push url
 }
 
+// TODO: DRY and simplifiy this
 function* findNextUrl(params) {
   const { screenType, episodeId, elementId } = params;
   let currentEpisode = 0;
   switch (screenType) {
-    // TODO: title
     case 'title/':
       const partNumber = yield select(selectors.getPartNumber);
       switch (partNumber) {
@@ -47,7 +47,8 @@ function* findNextUrl(params) {
           const dialogId = currentEpisode.dialogs[0];
           return '/study/' + episodeId + '/dialog/' + dialogId + '/listen';
         case 4: // review
-          return '/study/' + episodeId + '/review';
+          const exercise = yield select(selectors.getCurrentReviewExercise);
+          return '/study/' + episodeId + '/' + exercise.get('type') + '/' + exercise.get('id');
         case 5: // final exam
           return '/study/' + episodeId + '/finalExam';
         default: return '/error';
@@ -74,6 +75,13 @@ function* findNextUrl(params) {
       return '/study/' + episodeId + '/dialog/' + elementId + '/roleplay';
     case 'dialog/roleplay':
       return '/study/' + episodeId + '/title/4';
+    case 'audioToText/':
+    case 'multipleChoice/':
+      const exercise = yield select(selectors.getCurrentReviewExercise);
+      if (exercise === null) {
+        return '/study/' + episodeId + '/title/5';
+      }
+      return '/study/' + episodeId + '/' + exercise.get('type') + '/' + exercise.get('id');
     default:
       return '/error';
   }

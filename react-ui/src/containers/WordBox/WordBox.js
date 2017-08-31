@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { WordBox as WordBoxComponent } from '../../components';
 import selectors from '../../rootSelectors';
 import { actions as audioToTextActions } from '../../redux/audioToText';
+import { Word } from '../../models';
 
 class WordBox extends Component {
   handleChange(event) {
@@ -27,7 +28,7 @@ WordBox.propTypes = {
   userAnswer: propTypes.string.isRequired,
   index: propTypes.number.isRequired,
   setUserAnswer: propTypes.func.isRequired,
-  word: propTypes.object.isRequired
+  word: propTypes.instanceOf(Word).isRequired
 };
 
 const mapStateToProps = state => ({

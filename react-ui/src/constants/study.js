@@ -3,7 +3,8 @@ export const elementTypes = [
   'dialog',
   'grammar',
   'multipleChoice',
-  'audioToText'
+  'audioToText',
+  'title'
 ];
 
 export const elementTypesToTrack = [

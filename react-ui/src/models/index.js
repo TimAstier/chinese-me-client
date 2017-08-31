@@ -16,6 +16,8 @@ export { default as Grammar } from './Grammar';
 export { default as GrammarMap } from './GrammarMap';
 export { default as MultipleChoice } from './MultipleChoice';
 export { default as MultipleChoiceMap } from './MultipleChoiceMap';
+export { default as Review } from './Review';
+export { default as ReviewMap } from './ReviewMap';
 export { default as Season } from './Season';
 export { default as SeasonMap } from './SeasonMap';
 export { default as Sentence } from './Sentence';

@@ -3,6 +3,7 @@ import propTypes from 'prop-types';
 import styled from 'styled-components';
 import iconSmallCorrect from '../../images/iconSmallCorrect.svg';
 import iconSmallWrong from '../../images/iconSmallWrong.svg';
+import { Word } from '../../models';
 
 
 const Wrapper = styled.div`
@@ -72,7 +73,7 @@ class WordBoxResult extends Component {
 }
 
 WordBoxResult.propTypes = {
-  word: propTypes.object.isRequired,
+  word: propTypes.instanceOf(Word).isRequired,
   success: propTypes.bool.isRequired,
   userAnswer: propTypes.string.isRequired
 };

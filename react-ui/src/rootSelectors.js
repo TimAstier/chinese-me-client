@@ -11,6 +11,7 @@ import * as fromAudio from './redux/audio';
 import * as fromAudioToText from './redux/audioToText';
 import * as fromCharacterPinyin from './redux/characterPinyin';
 import * as fromAuth from './redux/auth';
+import * as fromReview from './redux/review';
 import * as fromRouting from './redux/routing';
 import * as fromMap from './redux/map';
 import * as fromMultipleChoice from './redux/multipleChoice';
@@ -51,6 +52,11 @@ const characterPinyinSelectors = bindSelectors(
 const authPinyinSelectors = bindSelectors(
   state => state.get('auth'),
   fromAuth.selectors
+);
+
+const reviewSelectors = bindSelectors(
+  state => state.get('review'),
+  fromReview.selectors
 );
 
 const routingSelectors = bindSelectors(
@@ -543,6 +549,7 @@ const selectors = {
   ...audioToTextSelectors,
   ...characterPinyinSelectors,
   ...authPinyinSelectors,
+  ...reviewSelectors,
   ...routingSelectors,
   ...mapSelectors,
   ...multipleChoiceSelectors,

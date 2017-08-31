@@ -10,6 +10,8 @@ const EpisodeRecord = Immutable.Record({
   dialogs: [],
   characters: [],
   grammars: [],
+  multipleChoices: [],
+  audioToTexts: [],
   completed: false,
   locked: true
 });

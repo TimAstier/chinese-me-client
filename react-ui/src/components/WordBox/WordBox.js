@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
+import { Word } from '../../models';
 
 const TextInput = styled.input`
   width: 100px;
@@ -54,7 +55,7 @@ WordBox.propTypes = {
   userAnswer: propTypes.string.isRequired,
   index: propTypes.number.isRequired,
   handleChange: propTypes.func.isRequired,
-  word: propTypes.object.isRequired
+  word: propTypes.instanceOf(Word).isRequired
 };
 
 export default WordBox;

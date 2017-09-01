@@ -6,14 +6,14 @@ const EpisodeRecord = Immutable.Record({
   seasonId: null,
   number: null,
   status: '',
-  score: null,
   dialogs: [],
   characters: [],
   grammars: [],
   multipleChoices: [],
   audioToTexts: [],
-  completed: false,
-  locked: true
+  locked: null,
+  review: null,
+  score: null
 });
 
 class Episode extends EpisodeRecord {}

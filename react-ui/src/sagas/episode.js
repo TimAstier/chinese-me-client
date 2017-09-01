@@ -1,6 +1,6 @@
 /* eslint-disable no-constant-condition */
 import { takeEvery, put, call, all, select } from 'redux-saga/effects';
-import { types as sagaTypes } from './actions';
+import { actions as sagaActions, types as sagaTypes } from './actions';
 import { types as studyTypes, actions as studyActions } from '../redux/study';
 import { actions as entitiesActions } from '../redux/entities';
 import { actions as uiActions } from '../redux/ui';
@@ -79,6 +79,7 @@ function* findNextUrl(params) {
     case 'multipleChoice/':
       const exercise = yield select(selectors.getCurrentReviewExercise);
       if (exercise === null) {
+        yield put(sagaActions.reviewCompleted());
         return '/study/' + episodeId + '/title/5';
       }
       return '/study/' + episodeId + '/' + exercise.get('type') + '/' + exercise.get('id');

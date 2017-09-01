@@ -28,7 +28,13 @@ const store = createStore(
 );
 
 // Start all Sagas at once
-sagaMiddleware.run(rootSaga);
+const rootTask = sagaMiddleware.run(rootSaga);
+rootTask.done.catch(err => {
+  // TODO: find a way to make on error in a saga
+  // avoid terminating all the other sagas
+  // Seee: https://github.com/redux-saga/redux-saga/pull/644
+  console.log('Error in Sagas', err); // eslint-disable-line no-console
+});
 
 // Create an enhanced history that syncs navigation events with the store
 // Pass a selector for use with https://github.com/gajus/redux-immutable

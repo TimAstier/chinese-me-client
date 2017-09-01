@@ -7,6 +7,9 @@ import selectors from '../../rootSelectors';
 class Progressbar extends Component {
 
   render() {
+    if (!this.props.completionPercentage) {
+      return null;
+    }
     return (
       <ProgressbarComponent
         completionPercentage={this.props.completionPercentage}
@@ -16,7 +19,7 @@ class Progressbar extends Component {
 }
 
 Progressbar.propTypes = {
-  completionPercentage: propTypes.number.isRequired
+  completionPercentage: propTypes.number
 };
 
 const mapStateToProps = state => ({

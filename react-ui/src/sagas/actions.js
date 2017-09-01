@@ -33,7 +33,8 @@ export const types = {
   VIDEO_ENDED: 'signal/VIDEO_ENDED',
   ELEMENTS_NAV_PREVIOUS_CLICK: 'signal/ELEMENTS_NAV_PREVIOUS_CLICK',
   ELEMENTS_NAV_NEXT_CLICK: 'signal/ELEMENTS_NAV_NEXT_CLICK',
-  NEXT_SCREEN: 'signal/NEXT_SCREEN'
+  NEXT_SCREEN: 'signal/NEXT_SCREEN',
+  REVIEW_COMPLETED: 'signal/REVIEW_COMPLETED'
 };
 
 // Action Creators
@@ -96,6 +97,9 @@ const elementsNavNextClick = () => ({
 const nextScreen = () => ({
   type: types.NEXT_SCREEN
 });
+const reviewCompleted = () => ({
+  type: types.REVIEW_COMPLETED
+});
 
 export const actions = {
   next,
@@ -126,5 +130,6 @@ export const actions = {
   videoEnded,
   elementsNavPreviousClick,
   elementsNavNextClick,
-  nextScreen
+  nextScreen,
+  reviewCompleted
 };

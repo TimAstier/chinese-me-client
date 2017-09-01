@@ -525,6 +525,7 @@ const getCurrentGrammarsCount = createSelector(
 
 
 const getCompletionPercentage = createSelector(
+  getCurrentEpisode,
   getMapCharactersCompletedDeepCount,
   getMapDialogsCompletedDeepCount,
   getMapGrammarsCompletedCount,
@@ -532,11 +533,15 @@ const getCompletionPercentage = createSelector(
   getCurrentCharactersCount,
   getCurrentDialogsCount,
   getCurrentGrammarsCount,
-  (completeC, completeD, completeG, totalC, totalD, totalG) => {
+  (episode, completeC, completeD, completeG, totalC, totalD, totalG) => {
+    if (!episode) {
+      return undefined;
+    }
+    const review = episode.get('review') ? 1 : 0;
     const ratioC = completeC / (totalC * 3);
-    const ratioD = completeD / (totalD * 3) * 3; // Estimate Dialogs to take more time
     const ratioG = completeG / totalG;
-    const result = Math.round((ratioC + ratioD + ratioG) / 5 * 100);
+    const ratioD = completeD / (totalD * 3); // Estimate Dialogs to take more time
+    const result = Math.round((ratioC + ratioG + ratioD * 2 + review * 2) / 6 * 100);
     return result ? result : 0;
   }
 );

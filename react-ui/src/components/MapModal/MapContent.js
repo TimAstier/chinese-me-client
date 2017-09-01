@@ -172,7 +172,7 @@ class MapContent extends Component {
           {this.renderDialogItems()}
           <ChapterHeader
             name="Review"
-            completed={false}
+            completed={this.props.episode.get('review')}
             onClick={() => this.props.mapLinkClick(
               '/study/' + this.props.episode.id + '/title/4'
             )}

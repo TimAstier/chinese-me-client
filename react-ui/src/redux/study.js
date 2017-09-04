@@ -5,6 +5,7 @@ import { types as sagaTypes } from '../sagas/actions';
 
 export const types = {
   CLEAR: 'study/CLEAR',
+  SET_CURRENT_SEASON_ID: 'study/SET_CURRENT_SEASON_ID',
   SET_CURRENT_EPISODE_ID: 'study/SET_CURRENT_EPISODE_ID',
   SET_CURRENT_GRAMMAR_ID: 'study/SET_CURRENT_GRAMMAR_ID',
   SET_CURRENT_DIALOG_ID: 'study/SET_CURRENT_DIALOG_ID',
@@ -24,6 +25,7 @@ export const types = {
 // Reducers
 
 export const INITIAL_STATE = Immutable.Map({
+  currentSeasonId: 1, // TODO: set this dynamically
   currentEpisodeId: null,
   currentCharacterId: null,
   currentGrammarId: null,
@@ -43,6 +45,8 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
     case types.CLEAR:
     case sagaTypes.EXIT:
       return INITIAL_STATE;
+    case types.SET_CURRENT_SEASON_ID:
+      return state.set('currentSeasonId', action.payload.id);
     case types.SET_CURRENT_EPISODE_ID:
     case types.START_EPISODE:
       return state.set('currentEpisodeId', action.payload.id);
@@ -75,6 +79,13 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
 }
 
 // Action Creators
+
+const setCurrentSeasonId = id => {
+  return {
+    type: types.SET_CURRENT_SEASON_ID,
+    payload: { id }
+  };
+};
 
 const setCurrentEpisodeId = id => {
   return {
@@ -168,6 +179,7 @@ const initScreen = url => ({
 });
 
 export const actions = {
+  setCurrentSeasonId,
   setCurrentEpisodeId,
   setCurrentDialogId,
   setCurrentGrammarId,
@@ -186,6 +198,7 @@ export const actions = {
 
 // Selectors
 
+const getCurrentSeasonId = state => state.get('currentSeasonId');
 const getCurrentEpisodeId = state => state.get('currentEpisodeId');
 const getCurrentDialogId = state => state.get('currentDialogId');
 const getCurrentGrammarId = state => state.get('currentGrammarId');
@@ -200,6 +213,7 @@ const getCurrentCharacterId = state => state.get('currentCharacterId');
 const getInitialized = state => state.get('initialized');
 
 export const selectors = {
+  getCurrentSeasonId,
   getCurrentEpisodeId,
   getCurrentDialogId,
   getCurrentGrammarId,

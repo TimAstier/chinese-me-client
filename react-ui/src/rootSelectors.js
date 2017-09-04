@@ -569,6 +569,16 @@ const getReviewNavParams = createSelector(
   }
 );
 
+const getCurrentSeasonEpisodes = createSelector(
+  entitySelectors.getEpisodes,
+  studySelectors.getCurrentSeasonId,
+  (episodes, seasonId) => {
+    return episodes
+      .filter(e => e.seasonId === seasonId)
+      .sortBy(item => item.number);
+  }
+);
+
 const selectors = {
   ...entitySelectors,
   ...studySelectors,
@@ -618,7 +628,8 @@ const selectors = {
   getGrammarsNavParams,
   getCompletionPercentage,
   getCurrentReviewExercise,
-  getReviewNavParams
+  getReviewNavParams,
+  getCurrentSeasonEpisodes
 };
 
 export default selectors;

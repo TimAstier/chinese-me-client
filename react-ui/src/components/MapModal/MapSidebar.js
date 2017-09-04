@@ -34,17 +34,16 @@ const ContentWrapper = styled.div`
 class MapSidebar extends Component {
 
   renderEpisodesList(seasonId) {
-    // TODO: move this into an util func
+    // convert to array to avoid calling .map() on an ordered List
+    // (not officially supported)
     const episodesArray = [];
-    this.props.episodes.valueSeq().forEach(episode => {
-      episodesArray.push(episode);
-    });
-    const filteredEpisodes = episodesArray.filter(e => {
-      return e.seasonId === seasonId;
-    });
+    const episodes = this.props.episodes
+      .filter(e => e.seasonId === seasonId)
+      .sortBy(e => e.number);
+    episodes.valueSeq().forEach(episode => episodesArray.push(episode));
     return (
       <List>
-        {filteredEpisodes.map(e => {
+        {episodesArray.map(e => {
           return (
             <SidebarItem
               episode={e}

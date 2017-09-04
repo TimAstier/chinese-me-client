@@ -5,7 +5,7 @@ import styled from 'styled-components';
 class Screen extends Component {
 
   render() {
-    const { text, primary, disabled } = this.props;
+    const { text, primary, disabled, height, width, fontSize } = this.props;
 
     const hoverBackgroundColor = () => {
       if (disabled) return 'none';
@@ -18,14 +18,14 @@ class Screen extends Component {
     };
 
     const Button = styled.button`
-      width: 146px;
-      height: 48px;
+      width: ${ width ? `${width}px` : '146px' };
+      height: ${ height ? `${height}px` : '48px' };
       border-radius: 57px;
       background-color: ${ primary ? '#55b6ff' : '#ffffff' };
       outline: none;
       border: none;
       font-family: 'Open Sans';
-    	font-size: 20px;
+    	font-size: ${ fontSize ? `${fontSize}px` : '20px' };
     	color: ${ primary ? '#ffffff' : '#959595' };
       border: ${ primary ? 'none' : 'solid 1px #cdd6db' };
       opacity: ${ disabled ? 0.3 : 1 };
@@ -52,7 +52,10 @@ Screen.propTypes = {
   text: propTypes.string.isRequired,
   primary: propTypes.bool,
   disabled: propTypes.bool,
-  onClick: propTypes.func.isRequired
+  onClick: propTypes.func,
+  height: propTypes.number,
+  width: propTypes.number,
+  fontSize: propTypes.number
 };
 
 export default Screen;

@@ -2,28 +2,48 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { ScreenWrapper } from '../.';
 import { EpisodeCard } from '../../containers';
 import * as models from '../../models';
 
+const ScrollableAppWrapper = styled.div`
+  height: 100%;
+  width: 100%;
+  background-color: #fefefe;
+  overflow-y: auto;
+`;
+
+const ScreenWrapper = styled.div`
+  margin: 30px auto 50px;
+  min-height: 640px;
+  width: 1200px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+`;
+
 const TitleWrapper = styled.div`
-  flex: 1 0 0;
+  height: 75px;
   font-family: 'Open Sans';
-	font-size: 30px;
+	font-size: 35px;
+  font-weight: bold;
 	color: #454545;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
 `;
 
 const EpisodeCardsWrapper = styled.div`
-  flex: 12 0 0;
+  margin: 16px 40px 50px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  overflow-y: auto;
-  height: 0px;
+`;
 
+const FooterWrapper = styled.div`
+  height: 148px;
+  width: 100%;
+  background-color: #f8f8f8;
 `;
 
 class SelectEpisode extends Component {
@@ -42,10 +62,15 @@ class SelectEpisode extends Component {
 
   render() {
     return (
-      <ScreenWrapper>
-        <TitleWrapper>{this.props.title}</TitleWrapper>
-        <EpisodeCardsWrapper>{this.renderEpisodeCards()}</EpisodeCardsWrapper>
-      </ScreenWrapper>
+      <ScrollableAppWrapper>
+        <ScreenWrapper>
+          <TitleWrapper>{'Episodes in ' + this.props.title}</TitleWrapper>
+          <EpisodeCardsWrapper>{this.renderEpisodeCards()}</EpisodeCardsWrapper>
+        </ScreenWrapper>
+        <FooterWrapper>
+          Hey
+        </FooterWrapper>
+      </ScrollableAppWrapper>
     );
   }
 }

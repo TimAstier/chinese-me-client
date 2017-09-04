@@ -7,10 +7,22 @@ import propTypes from 'prop-types';
 import { EpisodeCard as EpisodeCardComponent } from '../../components';
 
 class EpisodeCard extends Component {
+  onClick() {
+    return this.props.episode.locked ? undefined :
+      () => this.props.startEpisode(this.props.episode.id);
+  }
 
   render() {
     return (
-      <EpisodeCardComponent { ...this.props } />
+      <EpisodeCardComponent
+        onClick={this.onClick()}
+        id={this.props.episode.id}
+        number={this.props.episode.number}
+        locked={this.props.episode.locked}
+        title={this.props.episode.title}
+        score={this.props.episode.score}
+        imageUrl={this.props.episode.imageUrl}
+      />
     );
   }
 }

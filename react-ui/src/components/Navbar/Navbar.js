@@ -9,10 +9,11 @@ import { browserHistory } from 'react-router';
 
 const Wrapper = styled.div`
   align-self: stretch;
-  flex-basis: 70px;
+  min-height: 70px;
   background-color: #363636;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.18);
   display: flex;
+  z-index: 1;
 `;
 
 const LogoWrapper = styled.div`

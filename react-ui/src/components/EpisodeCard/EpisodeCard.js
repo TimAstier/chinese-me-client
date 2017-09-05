@@ -102,7 +102,7 @@ class EpisodeCard extends Component {
 
   renderStatus() {
     if (this.props.locked) {
-      return <img src={iconLock} alt={'locked icon'}/>;
+      return null;
     } else if (this.props.score) {
       return this.renderStars();
     }
@@ -124,7 +124,7 @@ class EpisodeCard extends Component {
       <Wrapper>
         <ImageWrapper>
           <img
-            src={this.props.imageUrl}
+            src={this.props.locked ? iconLock : this.props.imageUrl}
             alt={`episode ${this.props.number}`}
           />
         </ImageWrapper>

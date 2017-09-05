@@ -7,7 +7,8 @@ import selectors from '../../rootSelectors';
 class Progressbar extends Component {
 
   render() {
-    if (!this.props.completionPercentage) {
+    const { completionPercentage } = this.props;
+    if (!completionPercentage && completionPercentage !== 0) {
       return null;
     }
     return (

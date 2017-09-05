@@ -3,14 +3,8 @@ import propTypes from 'prop-types';
 import styled from 'styled-components';
 
 import { EpisodeCard } from '../../containers';
+import { ScrollableAppWrapper } from '../Shared';
 import * as models from '../../models';
-
-const ScrollableAppWrapper = styled.div`
-  height: 100%;
-  width: 100%;
-  background-color: #fefefe;
-  overflow-y: auto;
-`;
 
 const ScreenWrapper = styled.div`
   margin: 30px auto 50px;
@@ -40,12 +34,6 @@ const EpisodeCardsWrapper = styled.div`
   flex-wrap: wrap;
 `;
 
-const FooterWrapper = styled.div`
-  height: 148px;
-  width: 100%;
-  background-color: #f8f8f8;
-`;
-
 class SelectEpisode extends Component {
   renderEpisodeCards() {
     const episodeCards = [];
@@ -67,9 +55,6 @@ class SelectEpisode extends Component {
           <TitleWrapper>{'Episodes in ' + this.props.title}</TitleWrapper>
           <EpisodeCardsWrapper>{this.renderEpisodeCards()}</EpisodeCardsWrapper>
         </ScreenWrapper>
-        <FooterWrapper>
-          Hey
-        </FooterWrapper>
       </ScrollableAppWrapper>
     );
   }

@@ -1,4 +1,4 @@
-import { fromJS } from 'immutable';
+import Immutable, { fromJS } from 'immutable';
 import setEntities from '../utils/setEntities';
 
 // Action Types
@@ -14,8 +14,8 @@ export const types = {
 
 // High-order Reducer
 
-export default function createNamedEntityReducer(reducerName, EntityModel, EntityMapModel) {
-  const INITIAL_STATE = new EntityMapModel();
+export default function createNamedEntityReducer(reducerName, EntityModel) {
+  const INITIAL_STATE = new Immutable.OrderedMap();
   return (state = INITIAL_STATE, action = {}) => {
     switch (action.type) {
       case types.RECEIVED:

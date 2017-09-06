@@ -8,6 +8,10 @@ const AudioToTextRecord = Immutable.Record({
   words: []
 });
 
+// console.log(AudioToTextRecord)
+
 class AudioToText extends AudioToTextRecord {}
+
+// console.log(new AudioToText())
 
 export default AudioToText;

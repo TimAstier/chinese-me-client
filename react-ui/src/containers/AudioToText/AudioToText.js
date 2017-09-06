@@ -5,6 +5,7 @@ import { AudioToText as AudioToTextComponent } from '../../components';
 import selectors from '../../rootSelectors';
 import { List } from 'immutable';
 import * as models from '../../models';
+import Immutable from 'immutable';
 
 class AudioToText extends Component {
 
@@ -21,7 +22,7 @@ AudioToText.propTypes = {
   status: propTypes.string.isRequired,
   userAnswer: propTypes.string.isRequired,
   audioToText: propTypes.instanceOf(models.AudioToText).isRequired,
-  words: propTypes.instanceOf(models.WordMap).isRequired
+  words: propTypes.instanceOf(Immutable.OrderedMap).isRequired
 };
 
 const mapStateToProps = state => ({

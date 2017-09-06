@@ -6,19 +6,14 @@ function lowerCaseFirstLetter(string) {
 }
 
 const createEntitiesReducer = models => {
-  const coreModels = [];
-  const mapModels = [];
+  const modelsArray = [];
   for (const k in models) {
-    if (models[k].name.endsWith('Map')) {
-      mapModels.push(models[k]);
-    } else {
-      coreModels.push({ model: models[k], name: k });
-    }
+    modelsArray.push({ model: models[k], name: k });
   }
   const object = {};
-  coreModels.forEach((m, i) => {
+  modelsArray.forEach(m => {
     const entityName = lowerCaseFirstLetter(m.name) + 's';
-    const reducer = createNamedEntityReducer(entityName, m.model, mapModels[i]);
+    const reducer = createNamedEntityReducer(entityName, m.model);
     object[entityName] = reducer;
   });
   return combineReducers(object);

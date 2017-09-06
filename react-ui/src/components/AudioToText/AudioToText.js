@@ -3,7 +3,7 @@ import propTypes from 'prop-types';
 import styled from 'styled-components';
 import { WordBoxResult } from './..';
 import { WordBox } from '../../containers';
-import { List } from 'immutable';
+import Immutable, { List } from 'immutable';
 import { ScreenButton } from '../../containers';
 import * as models from '../../models';
 
@@ -105,7 +105,7 @@ class AudioToText extends Component {
 
 AudioToText.propTypes = {
   audioToText: propTypes.instanceOf(models.AudioToText).isRequired,
-  words: propTypes.instanceOf(models.WordMap).isRequired,
+  words: propTypes.instanceOf(Immutable.OrderedMap).isRequired,
   currentBoxIndex: propTypes.number.isRequired,
   results: propTypes.instanceOf(List).isRequired,
   status: propTypes.string.isRequired,

@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
 import { Accordion, List } from 'semantic-ui-react';
-import * as models from '../../models';
 import SidebarItem from './SidebarItem';
+import Immutable from 'immutable';
 
 const Wrapper = styled.div`
   width: 277px;
@@ -94,8 +94,8 @@ class MapSidebar extends Component {
 }
 
 MapSidebar.propTypes = {
-  seasons: propTypes.instanceOf(models.SeasonMap).isRequired,
-  episodes: propTypes.instanceOf(models.EpisodeMap).isRequired,
+  seasons: propTypes.instanceOf(Immutable.OrderedMap).isRequired,
+  episodes: propTypes.instanceOf(Immutable.OrderedMap).isRequired,
   currentEpisodeId: propTypes.number,
   focusedEpisodeId: propTypes.number,
   setFocusedEpisodeId: propTypes.func.isRequired

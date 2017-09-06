@@ -3,8 +3,8 @@ import propTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { MapSidebar as MapSidebarComponent } from '../../components';
 import selectors from '../../rootSelectors';
-import * as models from '../../models';
 import { actions as mapActions } from '../../redux/map';
+import Immutable from 'immutable';
 
 class MapSidebar extends Component {
 
@@ -16,8 +16,8 @@ class MapSidebar extends Component {
 }
 
 MapSidebar.propTypes = {
-  seasons: propTypes.instanceOf(models.SeasonMap).isRequired,
-  episodes: propTypes.instanceOf(models.EpisodeMap).isRequired,
+  seasons: propTypes.instanceOf(Immutable.OrderedMap).isRequired,
+  episodes: propTypes.instanceOf(Immutable.OrderedMap).isRequired,
   currentEpisodeId: propTypes.number,
   focusedEpisodeId: propTypes.number,
   setFocusedEpisodeId: propTypes.func.isRequired

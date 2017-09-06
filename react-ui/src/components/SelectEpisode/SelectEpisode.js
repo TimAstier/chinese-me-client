@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import { EpisodeCard } from '../../containers';
 import { ScrollableAppWrapper } from '../Shared';
-import * as models from '../../models';
+import Immutable from 'immutable';
 
 const ScreenWrapper = styled.div`
   margin: 30px auto 50px;
@@ -61,7 +61,7 @@ class SelectEpisode extends Component {
 }
 
 SelectEpisode.propTypes = {
-  episodes: propTypes.instanceOf(models.EpisodeMap).isRequired,
+  episodes: propTypes.instanceOf(Immutable.OrderedMap).isRequired,
   title: propTypes.string.isRequired
 };
 

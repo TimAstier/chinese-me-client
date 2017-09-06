@@ -19,9 +19,9 @@ function* fetchMapData(action) {
 }
 
 function* navigateToStudyScreen(action) {
+  yield put(uiActions.closeMapModal());
   yield put(studyActions.setInitialized(false)); // Hide screen content
   yield put(push(action.payload.link));
-  yield put(uiActions.closeMapModal());
 }
 
 // This ensures that mapData is always sync with the currentEpisode

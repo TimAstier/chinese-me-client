@@ -13,11 +13,12 @@ class EpisodeScreen extends Component {
     return this.props.initScreen(this.props.location.pathname);
   }
 
-  // componentDidUpdate(prevProps) {
-  //   if (this.props.location.pathname !== prevProps.location.pathname) {
-  //     console.log('changed!');
-  //   }
-  // }
+  componentDidUpdate(prevProps) {
+    if (this.props.location.pathname !== prevProps.location.pathname) {
+      return this.props.initScreen(this.props.location.pathname);
+    }
+    return null;
+  }
 
   render() {
     return this.props.initialized ?

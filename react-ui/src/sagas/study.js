@@ -81,6 +81,14 @@ function* defaultEpisodeScreenUi() {
   yield put(uiActions.set('playAudioButton', false));
 }
 
+// This allows to end initScreen (when going back to /select for example)
+function* finishOrExitScreen(action) {
+  return yield race({
+    initScreen: call(initScreen, action),
+    exit: take(sagaTypes.EXIT)
+  });
+}
+
 export default function* watchStudySagas() {
-  yield takeLatest(studyTypes.INIT_SCREEN, initScreen);
+  yield takeLatest(studyTypes.INIT_SCREEN, finishOrExitScreen);
 }

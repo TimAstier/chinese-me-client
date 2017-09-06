@@ -10,7 +10,8 @@ import getParamsFromUrl from '../utils/getParamsFromUrl';
 
 function* exitEpisode() {
   yield put(push('/study/select'));
-  yield put(entitiesActions.clear());
+  // Only clear entities directly linked to ONE episode
+  yield put(entitiesActions.clearAllBut(['episodes', 'seasons']));
 }
 
 function* askQuestion() {

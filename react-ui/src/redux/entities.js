@@ -9,7 +9,7 @@ export const types = {
   FETCH_FAIL: 'entities/FETCH_FAIL',
   RECEIVED: 'entities/RECEIVED',
   UPDATE: 'entities/UPDATE',
-  CLEAR: 'entities/CLEAR'
+  CLEAR_ALL_BUT: 'entities/CLEAR_ALL_BUT'
 };
 
 // High-order Reducer
@@ -32,8 +32,11 @@ export default function createNamedEntityReducer(reducerName, EntityModel, Entit
           return state;
         }
         return state.update(entityId, entity => entity.set(attribute, newValue));
-      case types.CLEAR:
-        return INITIAL_STATE;
+      case types.CLEAR_ALL_BUT:
+        if (action.payload.models.indexOf(reducerName) === -1) {
+          return INITIAL_STATE;
+        }
+        return state;
       default: return state;
     }
   };
@@ -51,7 +54,10 @@ const update = (entityName, entityId, attribute, newValue) => {
     payload: { entityName, entityId, attribute, newValue }
   };
 };
-const clear = () => ({ type: types.CLEAR });
+const clearAllBut = models => ({
+  type: types.CLEAR_ALL_BUT,
+  payload: { models }
+});
 
 export const actions = {
   fetch,
@@ -59,7 +65,7 @@ export const actions = {
   fetchFail,
   received,
   update,
-  clear
+  clearAllBut
 };
 
 // Selectors

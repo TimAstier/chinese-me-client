@@ -12,7 +12,7 @@ function* watchCreateUser() {
       const response = yield call(Api.post, '/users', values);
       console.log('New user created: ' + response.data.user.data.attributes.email);
       yield call(resolve);
-      yield put(push('/email_sent'));
+      yield put(push('/signup/email_sent'));
     } catch (error) {
       yield call(reject, new SubmissionError(error.response.data));
       console.log('User creation failed');

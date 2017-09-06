@@ -9,7 +9,7 @@ import selectors from '../rootSelectors';
 import getParamsFromUrl from '../utils/getParamsFromUrl';
 
 function* exitEpisode() {
-  yield put(push('/select'));
+  yield put(push('/study/select'));
   yield put(entitiesActions.clear());
 }
 

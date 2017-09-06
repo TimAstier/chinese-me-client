@@ -3,31 +3,42 @@ import propTypes from 'prop-types';
 import styled from 'styled-components';
 import { Field } from 'redux-form/immutable';
 
-const Input = styled.input`
-  width: 440px;
-  font-family: 'Open Sans';
-	font-size: 25px;
-	color: #454545;
-  outline: 0;
-  border-width: 0 0 2px 0;
-  border-color: #979797;
-  background: transparent;
-`;
-
 const Wrapper = styled.div`
   height: 100px;
 `;
 
-const Label = styled.label`
+const Input = styled.input`
+  width: 350px;
   font-family: 'Open Sans';
-  font-size: 14px;
-  color: #4990e2;
+  font-size: 22px;
+  color: #454545;
+  outline: 0;
+  border-width: 0 0 2px 0;
+  border-color: ${props => {
+    if (props.error) {
+      return '#f65859';
+    }
+    return props.active ? '#55b6ff' : '#b2babf';
+  }};
+  background: transparent;
+  ::placeholder {
+    color: #cdd6db;
+  }
+`;
+
+const Label = styled.label`
+  height: 16px;
+  font-family: 'Open Sans';
+  font-size: 16px;
+  color: ${props => props.active ? '#55b6ff' : '#b2babf'};
   display: block;
 `;
 
 const Error = styled.div`
   margin-top: 5px;
-  color: orangered;
+  font-family: 'Open Sans';
+	font-size: 14px;
+	color: #f65859;
 `;
 
 class TransparentInput extends Component {
@@ -39,12 +50,20 @@ class TransparentInput extends Component {
     label,
     type,
     placeholder,
-    meta: { touched, error, warning }
+    meta: { touched, error, warning, active }
   }) {
     return (
       <Wrapper>
-        <Label>{label}</Label>
-        <Input {...input} type={type} placeholder={placeholder}/>
+        <Label active={active}>
+          {input.value ? label : null}
+        </Label>
+        <Input
+          {...input}
+          type={type}
+          placeholder={placeholder}
+          error={touched && error}
+          active={active}
+        />
         {touched &&
           ((error &&
             <Error>

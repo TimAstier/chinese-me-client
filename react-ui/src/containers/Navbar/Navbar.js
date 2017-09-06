@@ -6,11 +6,8 @@ import { actions as sagaActions } from '../../sagas/actions';
 import { actions as uiActions } from '../../redux/ui';
 
 class Navbar extends Component {
-
   render() {
-    return (
-      <NavbarComponent { ...this.props } />
-    );
+    return <NavbarComponent { ...this.props } />;
   }
 }
 
@@ -23,6 +20,6 @@ export default connect(
   null,
   {
     askQuestion: sagaActions.askQuestion,
-    openMapModal: uiActions.openMapModal
+    openMapModal: uiActions.openMapModal,
   }
 )(Navbar);

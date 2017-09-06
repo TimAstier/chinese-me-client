@@ -1,32 +1,33 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import propTypes from 'prop-types';
-import { Logo, LoginForm } from '../.';
+import { LoginForm, OnboardingScreen } from '../.';
+import { Bold, Link } from '../Shared';
 
-const Wrapper = styled.div`
+// TODO: DRY this with login form
+
+const TitleWrapper = styled.div`
+  height: 95px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const Title = styled.div`
-  margin-top: 40px;
-  height: 45px;
+  justify-content: center;
+  align-items: flex-end;
   font-family: 'Open Sans';
-  font-size: 45px;
-  font-weight: 300;
-  text-align: center;
-  color: #454545;
+	font-size: 30px;
+	font-weight: 300;
+	line-height: 1.5;
+	color: #454545;
 `;
 
 const Footer = styled.div`
-  margin-top: 30px;
+  flex-grow: 1;
+  padding-top: 30px;
   text-align: center;
 `;
 
 const FooterText = styled.p`
   font-family: 'Open Sans';
-  font-size: 18px;
+  font-size: 16px;
+  line-height: 1.5;
   color: #bfbfbf;
 `;
 
@@ -34,15 +35,16 @@ class Page extends Component {
 
   render() {
     return (
-      <Wrapper>
-        <Logo />
-        <Title>Log into your ChineseMe account</Title>
+      <OnboardingScreen>
+        <TitleWrapper>
+          <p><Bold>Log in</Bold> to your ChineseMe account</p>
+        </TitleWrapper>
         <LoginForm onSubmit={this.props.onSubmit} />
         <Footer>
-          <FooterText>Don't have an account yet? Sign in.</FooterText>
-          <FooterText>Forgot your password?</FooterText>
+          <FooterText>Don't have an account yet? <Link>Sign in.</Link></FooterText>
+          <FooterText><Link>Forgot your password?</Link></FooterText>
         </Footer>
-      </Wrapper>
+      </OnboardingScreen>
     );
   }
 }

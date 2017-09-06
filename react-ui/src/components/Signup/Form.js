@@ -6,32 +6,37 @@ import { reduxForm } from 'redux-form/immutable';
 import { required, email } from '../../utils/formValidations';
 
 const Button = styled.button`
-  width: 440px;
-  height: 80px;
-  background-color: #4990e2;
+  width: 350px;
+  height: 60px;
+  border-radius: 10px;
+  background-color: #55b6ff;
+  box-shadow: 0 5px 18px 0 rgba(85, 182, 255, 0.5);
   font-family: 'Open Sans';
-	font-size: 25px;
+	font-size: 20px;
 	text-align: center;
 	color: #ffffff;
-  margin-top: 20px;
   outline: 0;
   border: 0;
+  :hover {
+    background-color: #5fb9fc;
+    box-shadow: 0 5px 30px 0 rgba(85, 182, 255, 0.8);
+  }
 `;
 
 const FieldsWrapper = styled.div`
-  margin-top: 20px;
+  min-height: 245px;
+  padding-top: 40px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  height: 300px;
 `;
 
 const FormErrorWrapper = styled.div`
   margin-top: 20px;
   font-family: 'Open Sans';
-	font-size: 25px;
+	font-size: 14px;
 	text-align: center;
-	color: orangered;
+	color: #f65859;
 `;
 
 const validate = values => {

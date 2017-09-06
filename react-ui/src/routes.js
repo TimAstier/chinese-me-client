@@ -29,20 +29,23 @@ export default (
     <Route path="signup" component={containers.SignupPage} />
     <Route path="signup/activated" component={components.ActivatedPage} />
     <Route path="signup/activate/:activationToken" component={containers.SignupActivate} />
-    <Route path="email_sent" component={components.EmailSentPage} />
+    <Route path="signup/email_sent" component={components.EmailSentPage} />
     <Route path="login" component={containers.LoginPage} />
-    <Route path="select" component={requireAuth(containers.SelectEpisode)} />
-    <Route path="study/:episodeId" component={requireAuth(containers.EpisodeScreen)}>
-      <Route path="title/:partNumber" component={requireAuth(containers.Title)} />
-      <Route path="character/:characterId/pinyin" component={requireAuth(containers.CharacterPinyin)} />
-      <Route path="character/:characterId/etymology" component={requireAuth(containers.CharacterEtymology)} />
-      <Route path="character/:characterId/writing" component={requireAuth(containers.CharacterWriting)} />
-      <Route path="grammar/:grammarId/explanation" component={requireAuth(containers.GrammarExplanation)} />
-      <Route path="dialog/:dialogId/listen" component={requireAuth(containers.Dialog)} />
-      <Route path="dialog/:dialogId/explore" component={requireAuth(containers.Dialog)} />
-      <Route path="dialog/:dialogId/roleplay" component={requireAuth(containers.Dialog)} />
-      <Route path="multipleChoice/:id" component={requireAuth(containers.MultipleChoice)} />
-      <Route path="audioToText/:id" component={requireAuth(containers.AudioToText)} />
+    <Route path="study" component={requireAuth(containers.Study)}>
+      <Route path="select" component={containers.SelectEpisode} />
+      <Route path=":episodeId" component={containers.EpisodeScreen}>
+        <Route path="title/:partNumber" component={containers.Title} />
+        <Route path="character/:characterId/pinyin" component={containers.CharacterPinyin} />
+        <Route path="character/:characterId/etymology" component={containers.CharacterEtymology} />
+        <Route path="character/:characterId/writing" component={containers.CharacterWriting} />
+        <Route path="grammar/:grammarId/explanation" component={containers.GrammarExplanation} />
+        <Route path="dialog/:dialogId/listen" component={containers.Dialog} />
+        <Route path="dialog/:dialogId/explore" component={containers.Dialog} />
+        <Route path="dialog/:dialogId/roleplay" component={containers.Dialog} />
+        <Route path="multipleChoice/:id" component={containers.MultipleChoice} />
+        <Route path="audioToText/:id" component={containers.AudioToText} />
+      </Route>
     </Route>
+
   </Route>
 );

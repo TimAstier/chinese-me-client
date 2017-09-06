@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import propTypes from 'prop-types';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
+import { FeedbackModal, Navbar, MapModal } from '../.';
 import { actions as sagaActions } from '../../sagas/actions';
 
 const Wrapper = styled.div`
@@ -13,20 +14,25 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 
-class App extends Component {
+class Study extends Component {
+  componentWillMount() {
+    return this.props.initApp();
+  }
+
   render() {
     return (
       <Wrapper>
+        <FeedbackModal />
+        <MapModal />
+        <Navbar />
         {this.props.children}
       </Wrapper>
     );
   }
 }
 
-App.propTypes = {
+Study.propTypes = {
   children: propTypes.object,
-  location: propTypes.object.isRequired,
-  router: propTypes.object.isRequired,
   initApp: propTypes.func.isRequired
 };
 
@@ -35,4 +41,4 @@ export default connect(
   {
     initApp: sagaActions.initApp
   }
-)(App);
+)(Study);

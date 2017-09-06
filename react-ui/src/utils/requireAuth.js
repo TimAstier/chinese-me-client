@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 // import { showFlashMessageWithTimeout } from '../redux/flashMessages';
 import selectors from '../rootSelectors';
 
-// Example of High Order Component
+// High Order Component
 
 export default function(ComposedComponent) {
   class Authenticate extends Component {

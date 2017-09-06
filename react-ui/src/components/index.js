@@ -19,7 +19,6 @@ export { default as GrammarExplanation } from './GrammarExplanation/GrammarExpla
 export { default as Introduction } from './Introduction/Introduction';
 export { default as LoginForm } from './Login/Form';
 export { default as LoginPage } from './Login/Page';
-export { default as Logo } from './Logo/Logo';
 export { default as MapContent } from './MapModal/MapContent';
 export { default as MapDialogItem } from './MapModal/MapDialogItem';
 export { default as MapGrammarItem } from './MapModal/MapGrammarItem';
@@ -29,6 +28,7 @@ export { default as Modal } from './Modal/Modal';
 export { default as ModeButton } from './Dialog/ModeButton';
 export { default as MultipleChoice } from './MultipleChoice/MultipleChoice';
 export { default as Navbar } from './Navbar/Navbar';
+export { default as OnboardingScreen } from './OnboardingScreen/OnboardingScreen';
 export { default as PlayAudioButton } from './PlayAudioButton/PlayAudioButton';
 export { default as Progressbar } from './Progressbar/Progressbar';
 export { default as ScreenButton } from './ScreenButton/ScreenButton';

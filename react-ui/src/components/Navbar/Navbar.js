@@ -85,7 +85,7 @@ class Navbar extends Component {
         <LeftMenuWrapper>
           <LeftMenuItem>
             <Clickable>
-              <div onClick={() => browserHistory.push('/select')}>
+              <div onClick={() => browserHistory.push('/study/select')}>
                 Home
               </div>
             </Clickable>
@@ -93,7 +93,7 @@ class Navbar extends Component {
           <LeftMenuItem>
             <Clickable>
               <div onClick={this.props.openMapModal}>
-                Map
+                Index
               </div>
             </Clickable>
           </LeftMenuItem>

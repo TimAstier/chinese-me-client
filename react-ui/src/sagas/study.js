@@ -16,6 +16,7 @@ import Api from '../utils/api';
 // 5. run
 // 6. onCompleted
 function* initScreen(action) {
+  console.log('test')
   // IMPORTANT: start by hiding screen content
   yield put(studyActions.setInitialized(false)); // Hide screen content
   yield call(defaultEpisodeScreenUi); // Init Episode Screen UI

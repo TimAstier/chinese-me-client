@@ -1,9 +1,8 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
+import Immutable, { fromJS } from 'immutable';
 import { SelectEpisode } from '../.';
-import EpisodeMap from '../../models/EpisodeMap';
-import { fromJS } from 'immutable';
 import Episode from '../../models/Episode';
 import Provider from '../../utils/Provider';
 
@@ -116,7 +115,7 @@ const episodes = fromJS(entities)
 storiesOf('SelectEpisode', module)
   .addDecorator(story => <Provider story={story()}/>)
   .add('without episodes', () =>
-    <SelectEpisode episodes={new EpisodeMap()} title={'Season 1'} />
+    <SelectEpisode episodes={new Immutable.Record()} title={'Season 1'} />
   )
   .add('with episodes', () =>
     <SelectEpisode episodes={episodes} title={'Season 1'} />

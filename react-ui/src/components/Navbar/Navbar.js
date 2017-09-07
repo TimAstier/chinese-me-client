@@ -86,7 +86,7 @@ class Navbar extends Component {
           <LeftMenuItem>
             <Clickable>
               <div onClick={() => browserHistory.push('/study/select')}>
-                Home
+                Episodes
               </div>
             </Clickable>
           </LeftMenuItem>

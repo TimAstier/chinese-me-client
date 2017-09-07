@@ -49,7 +49,7 @@ const TitleWrapper = styled.div`
   font-family: 'STKaitiSC';
   font-size: 24px;
   font-weight: 900;
-  color: #454545;
+  color: ${props => props.locked ? '#b2babf' : '#454545'};
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -129,7 +129,9 @@ class EpisodeCard extends Component {
           />
         </ImageWrapper>
         <NumberWrapper>{'Episode ' + this.props.number}</NumberWrapper>
-        <TitleWrapper>{this.props.title}</TitleWrapper>
+        <TitleWrapper locked={this.props.locked}>
+          {this.props.title}
+        </TitleWrapper>
         <StatusWrapper>{this.renderStatus()}</StatusWrapper>
         <ButtonWrapper>
           <ScreenButton

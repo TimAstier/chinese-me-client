@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { Episode, Character, Grammar, Dialog } from '../../models';
 
 import { MapModal } from '../../containers';
-import { MapSidebar, MapContent, CharacterBox, MapContentItem } from '../.';
+import { MapSidebar, MapContent, CharacterBox } from '../.';
 import Provider from '../../utils/Provider';
 
 const episodes = [
@@ -226,14 +226,6 @@ storiesOf('MapModal', module)
   .add('MapContent', () => {
     return (
       <MapContent />
-    );
-  })
-  .add('MapContentItem', () => {
-    return (
-      <MapContentItem
-        title="Hey"
-        completed
-      />
     );
   })
   .add('MapModal', () => {

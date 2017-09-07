@@ -67,6 +67,8 @@ class AudioToText extends Component {
           key={i}
           index={i}
           word={this.props.words.get(String(w))}
+          userAnswer={this.props.userAnswer}
+          currentBoxIndex={this.props.currentBoxIndex}
         />
       );
     });
@@ -108,7 +110,7 @@ AudioToText.propTypes = {
   words: propTypes.instanceOf(Immutable.OrderedMap).isRequired,
   currentBoxIndex: propTypes.number.isRequired,
   results: propTypes.instanceOf(List).isRequired,
-  status: propTypes.string.isRequired,
+  status: propTypes.oneOf(['question', 'finished']).isRequired,
   userAnswer: propTypes.string.isRequired
 };
 

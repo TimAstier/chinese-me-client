@@ -19,7 +19,7 @@ class AudioToText extends Component {
 AudioToText.propTypes = {
   currentBoxIndex: propTypes.number.isRequired,
   results: propTypes.instanceOf(List).isRequired,
-  status: propTypes.string.isRequired,
+  status: propTypes.oneOf(['question', 'finished']).isRequired,
   userAnswer: propTypes.string.isRequired,
   audioToText: propTypes.instanceOf(models.AudioToText).isRequired,
   words: propTypes.instanceOf(Immutable.OrderedMap).isRequired

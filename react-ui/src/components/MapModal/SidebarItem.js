@@ -73,7 +73,6 @@ class SidebarItem extends Component {
     `;
 
     // TODO: triangle on the right of focused episode
-    // TODO: Change checkmark into svg icon with right color
     return (
       <Wrapper onClick={() => this.props.setFocusedEpisodeId(episode.id)}>
         <List.Item>

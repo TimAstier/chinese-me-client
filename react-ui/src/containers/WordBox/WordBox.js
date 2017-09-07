@@ -32,9 +32,7 @@ WordBox.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  openFeedbackModal: selectors.getOpenFeedbackModal(state),
-  userAnswer: selectors.getAudioToTextUserAnswer(state),
-  currentBoxIndex: selectors.getCurrentBoxIndex(state)
+  openFeedbackModal: selectors.getOpenFeedbackModal(state)
 });
 
 export default connect(

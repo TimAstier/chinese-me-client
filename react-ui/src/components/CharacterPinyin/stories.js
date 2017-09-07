@@ -1,19 +1,19 @@
 /* eslint-disable react/jsx-wrap-multilines */
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-
-import { Character } from '../../models';
-import { EpisodeScreen, CharacterPinyin } from '../../containers';
 import Provider from '../../utils/Provider';
+import { Character } from '../../models';
+import { EpisodeScreen, CharacterPinyin } from '../.';
 
-// Mock dispatch functions
-const dispatchFunctions = {
-  askQuestion: () => {},
-  displayEpisodeOverview: () => {},
-  exit: () => {}
-};
-
-const handleChange = () => {};
+// CharacterPinyin.propTypes = {
+//   character: propTypes.instanceOf(Character).isRequired,
+//   status: propTypes.oneOf([ 'question', 'wrong', 'correct' ]).isRequired,
+//   attemptsLeft: propTypes.number.isRequired,
+//   openModal: propTypes.bool.isRequired,
+//   userAnswer: propTypes.string.isRequired,
+//   handleChange: propTypes.func.isRequired,
+//   openFeedbackModal: propTypes.bool.isRequired
+// };
 
 const character = new Character({
   id: 1,
@@ -21,99 +21,77 @@ const character = new Character({
   pinyinNumber: 'wo3'
 });
 
-const progressMenuOptions = {
-  type: 'character',
-  currentElement: 1,
-  totalElements: 4
+const mockProps = {
+  handleChange: () => {},
+  openFeedbackModal: false,
+  character
 };
 
 storiesOf('CharacterPinyin', module)
   .addDecorator(story => <Provider story={story()} />)
   .add('status: "question"', () =>
-    <EpisodeScreen
-      location={{pathname: ''}}
-      {...dispatchFunctions}
-      progressMenuOptions={progressMenuOptions}
-      openFeedbackModal={()=>{}}
-      skip
-    >
+    <EpisodeScreen exit={() => {}}>
       <CharacterPinyin
-        character={character}
         status={'question'}
         attemptsLeft={2}
         openModal={false}
         userAnswer=""
-        handleChange={handleChange}
+        {...mockProps}
+      />
+    </EpisodeScreen>
+  )
+  .add('userAnswer: "test"', () =>
+    <EpisodeScreen exit={() => {}}>
+      <CharacterPinyin
+        status={'question'}
+        attemptsLeft={2}
+        openModal={false}
+        userAnswer="test"
+        {...mockProps}
       />
     </EpisodeScreen>
   )
   .add('attemptsLeft: 2', () =>
-    <EpisodeScreen
-      {...dispatchFunctions}
-      progressMenuOptions={progressMenuOptions}
-      openFeedbackModal={()=>{}}
-      skip
-    >
+    <EpisodeScreen exit={() => {}}>
       <CharacterPinyin
-        character={character}
         status={'question'}
         attemptsLeft={2}
         openModal
         userAnswer=""
-        handleChange={handleChange}
+        {...mockProps}
       />
     </EpisodeScreen>
   )
   .add('attemptsLeft: 1', () =>
-    <EpisodeScreen
-      {...dispatchFunctions}
-      progressMenuOptions={progressMenuOptions}
-      openFeedbackModal={()=>{}}
-      skip
-    >
+    <EpisodeScreen exit={() => {}}>
       <CharacterPinyin
-        character={character}
         status={'question'}
         attemptsLeft={1}
         openModal
         userAnswer=""
-        handleChange={handleChange}
+        {...mockProps}
       />
     </EpisodeScreen>
   )
   .add('status: "wrong"', () =>
-    <EpisodeScreen
-      {...dispatchFunctions}
-      progressMenuOptions={progressMenuOptions}
-      openFeedbackModal={()=>{}}
-      skip
-      next
-    >
+    <EpisodeScreen exit={() => {}}>
       <CharacterPinyin
-        character={character}
         status={'wrong'}
         attemptsLeft={1}
         openModal={false}
-        userAnswer=""
-        handleChange={handleChange}
+        userAnswer="test"
+        {...mockProps}
       />
     </EpisodeScreen>
   )
   .add('status: "correct"', () =>
-    <EpisodeScreen
-      {...dispatchFunctions}
-      progressMenuOptions={progressMenuOptions}
-      openFeedbackModal={()=>{}}
-      skip
-      next
-    >
+    <EpisodeScreen exit={() => {}}>
       <CharacterPinyin
-        character={character}
         status={'correct'}
         attemptsLeft={2}
         openModal={false}
-        userAnswer=""
-        handleChange={handleChange}
+        userAnswer="test"
+        {...mockProps}
       />
     </EpisodeScreen>
   );

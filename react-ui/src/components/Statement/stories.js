@@ -1,10 +1,21 @@
 /* eslint-disable react/jsx-wrap-multilines */
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-
-import { Statement } from '../.';
 import Provider from '../../utils/Provider';
+import { Statement } from '../.';
 import Sentence from '../../models/Sentence';
+
+// Statement.propTypes = {
+//   sentences: propTypes.arrayOf(propTypes.instanceOf(models.Sentence)).isRequired,
+//   currentSentenceIndex: propTypes.number.isRequired,
+//   isAudioPlaying: propTypes.bool.isRequired,
+//   displayControls: propTypes.bool.isRequired,
+//   dialogMode: propTypes.string.isRequired
+//   read: propTypes.bool.isRequired,
+//   stopSentence: propTypes.func.isRequired,
+//   switchSentence: propTypes.func.isRequired,
+//   playSentence: propTypes.func.isRequired,
+// };
 
 const singleSentence = [
   new Sentence({
@@ -37,102 +48,102 @@ const threeSentences = [
 ];
 
 // Mock dispatch functions
-const dispatchFunctions = {
-  nextSentence: () => {},
-  previousSentence: () => {},
+const mockProps = {
   playSentence: () => {},
-  stopSentence: id => id
+  switchSentence: () => {},
+  stopSentence: () => {},
+  isAudioPlaying: false
 };
 
 storiesOf('Statement', module)
   .addDecorator(story => <Provider story={story()} />)
-  .add('isAudioPlaying: true', () =>
-    <Statement
-      sentences={[]}
-      currentSentenceIndex={0}
-      isAudioPlaying
-      { ...dispatchFunctions }
-      displayControls
-      read={false}
-    />
-  )
   .add('singleSentence', () =>
     <Statement
       sentences={singleSentence}
       currentSentenceIndex={0}
-      isAudioPlaying={false}
-      { ...dispatchFunctions }
       displayControls
       read={false}
+      dialogMode={'listen'}
+      { ...mockProps }
     />
   )
   .add('twoSentences: active[0]', () =>
     <Statement
       sentences={twoSentences}
       currentSentenceIndex={0}
-      { ...dispatchFunctions }
-      isAudioPlaying={false}
       displayControls
       read={false}
+      dialogMode={'listen'}
+      { ...mockProps }
     />
   )
   .add('twoSentences: active[1]', () =>
     <Statement
       sentences={twoSentences}
       currentSentenceIndex={1}
-      { ...dispatchFunctions }
-      isAudioPlaying={false}
       displayControls
       read={false}
+      dialogMode={'listen'}
+      { ...mockProps }
     />
   )
   .add('threeSentences: active[0]', () =>
     <Statement
       sentences={threeSentences}
       currentSentenceIndex={0}
-      { ...dispatchFunctions }
-      isAudioPlaying={false}
       displayControls
       read={false}
+      dialogMode={'listen'}
+      { ...mockProps }
     />
   )
   .add('threeSentences: active[1]', () =>
     <Statement
       sentences={threeSentences}
       currentSentenceIndex={1}
-      { ...dispatchFunctions }
-      isAudioPlaying={false}
       displayControls
       read={false}
+      dialogMode={'listen'}
+      { ...mockProps }
     />
   )
   .add('threeSentences: active[2]', () =>
     <Statement
       sentences={threeSentences}
       currentSentenceIndex={2}
-      { ...dispatchFunctions }
-      isAudioPlaying={false}
       displayControls
       read={false}
+      dialogMode={'listen'}
+      { ...mockProps }
     />
   )
   .add('displayControls: false', () =>
     <Statement
       sentences={threeSentences}
       currentSentenceIndex={2}
-      { ...dispatchFunctions }
-      isAudioPlaying={false}
       displayControls={false}
       read={false}
+      dialogMode={'listen'}
+      { ...mockProps }
     />
   )
   .add('read: true', () =>
     <Statement
       sentences={threeSentences}
       currentSentenceIndex={2}
-      { ...dispatchFunctions }
-      isAudioPlaying
       displayControls={false}
       read
+      dialogMode={'listen'}
+      { ...mockProps }
+    />
+  )
+  .add('mode: explore', () =>
+    <Statement
+      sentences={threeSentences}
+      currentSentenceIndex={2}
+      displayControls
+      read={false}
+      dialogMode={'explore'}
+      { ...mockProps }
     />
   );

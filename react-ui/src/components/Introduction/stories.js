@@ -1,8 +1,16 @@
+/* eslint-disable react/jsx-wrap-multilines */
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-
 import { EpisodeScreen, Introduction } from '../.';
 import Provider from '../../utils/Provider';
+
+// Introduction.propTypes = {
+//   objectives: propTypes.array.isRequired
+// };
+
+const mockProps = {
+  exit: () => {}
+};
 
 const objectives = [
   'How to introduce yourself more formally',
@@ -10,26 +18,15 @@ const objectives = [
   '来 lai2, to come'
 ];
 
-// Mock dispatch functions
-const dispatchFunctions = {
-  askQuestion: () => {},
-  displayEpisodeOverview: () => {},
-  exit: () => {}
-};
-
 storiesOf('Introduction', module)
   .addDecorator(story => <Provider story={story()} />)
-  .add('audio_playing', () => {
-    return (
-      <EpisodeScreen skip {...dispatchFunctions} >
-        <Introduction objectives={objectives} />
-      </EpisodeScreen>
-    );
-  })
-  .add('audio_finished', () => {
-    return (
-      <EpisodeScreen skip next {...dispatchFunctions} >
-        <Introduction objectives={objectives} />
-      </EpisodeScreen>
-    );
-  });
+  .add('audio_playing', () =>
+    <EpisodeScreen skip {...mockProps} >
+      <Introduction objectives={objectives} />
+    </EpisodeScreen>
+  )
+  .add('audio_finished', () =>
+  <EpisodeScreen skip next {...mockProps} >
+    <Introduction objectives={objectives} />
+  </EpisodeScreen>
+  );

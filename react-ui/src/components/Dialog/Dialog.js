@@ -73,10 +73,10 @@ class Dialog extends Component {
 
   renderAvatars() {
     const avatarComponents = [];
-    this.props.avatars.forEach(avatar => {
+    this.props.avatars.forEach((avatar, i) => {
       return avatarComponents.push(
         <Avatar
-          key={avatar.id}
+          key={i}
           avatar={avatar}
           chosen={avatar.id === this.props.chosenAvatarId ? true : undefined}
         />

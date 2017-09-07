@@ -17,7 +17,10 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
 // Selectors
 
 const getCurrentUrl = state => {
-  return state.get('locationBeforeTransitions').pathname;
+  if (state.get('locationBeforeTransitions')) {
+    return state.get('locationBeforeTransitions').pathname;
+  }
+  return '';
 };
 
 export const selectors = {

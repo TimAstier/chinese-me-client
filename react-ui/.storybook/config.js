@@ -14,6 +14,7 @@ function loadStories() {
   require('../src/components/EpisodeScreen/stories');
   require('../src/components/FeedbackModal/stories');
   require('../src/components/Introduction/stories');
+  require('../src/components/Login/stories');
   require('../src/components/MapModal/stories');
   require('../src/components/PlayAudioButton/stories');
   require('../src/components/ScreenButton/stories');

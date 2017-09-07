@@ -1,12 +1,17 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import Provider from '../../utils/Provider';
-
 import { EpisodeCard } from '../../containers';
 import Episode from '../../models/Episode';
 
-// Mock dispatchProp
-const startEpisode = id => id;
+// EpisodeCard.propTypes = {
+//   episode: propTypes.instanceOf(Episode).isRequired,
+//   startEpisode: propTypes.func.isRequired
+// };
+
+const mockProps = {
+  startEpisode: () => {}
+};
 
 const episodeA = new Episode({
   id: 1,
@@ -61,12 +66,12 @@ const episodeE = new Episode({
 storiesOf('EpisodeCard', module)
   .addDecorator(story => <Provider story={story()} />)
   .add('empty',
-    () => <EpisodeCard episode={episodeA} startEpisode={startEpisode}/>)
+    () => <EpisodeCard episode={episodeA} {...mockProps}/>)
   .add('locked',
-    () => <EpisodeCard episode={episodeB} startEpisode={startEpisode}/>)
+    () => <EpisodeCard episode={episodeB} {...mockProps}/>)
   .add('new',
-    () => <EpisodeCard episode={episodeC} startEpisode={startEpisode}/>)
+    () => <EpisodeCard episode={episodeC} {...mockProps}/>)
   .add('with score',
-    () => <EpisodeCard episode={episodeD} startEpisode={startEpisode}/>)
+    () => <EpisodeCard episode={episodeD} {...mockProps}/>)
   .add('missing imageUrl',
-    () => <EpisodeCard episode={episodeE} startEpisode={startEpisode}/>);
+    () => <EpisodeCard episode={episodeE} {...mockProps}/>);

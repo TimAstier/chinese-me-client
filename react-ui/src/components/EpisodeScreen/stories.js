@@ -1,81 +1,51 @@
 /* eslint-disable react/jsx-wrap-multilines */
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-
 import { EpisodeScreen } from '../.';
 import Provider from '../../utils/Provider';
 
+// EpisodeScreen.propTypes = {
+//   next: propTypes.bool,
+//   skip: propTypes.bool,
+//   playAudio: propTypes.bool,
+//   children: propTypes.object,
+//   exit: propTypes.func.isRequired
+// };
+
 // Mock dispatch functions
-const dispatchFunctions = {
-  askQuestion: () => {},
-  displayEpisodeOverview: () => {},
+const mockProps = {
   exit: () => {}
-};
-
-const stepsOptions = {
-  currentStep: 1,
-  stepIds: [4, 5, 9, 10]
-};
-
-const progressMenuOptions = {
-  type: 'character',
-  currentElement: 2,
-  totalElements: 4
 };
 
 storiesOf('EpisodeScreen', module)
   .addDecorator(story => <Provider story={story()} />)
   .add('without props', () =>
     <EpisodeScreen
-      {...dispatchFunctions}
+      {...mockProps}
     />
   )
   .add('next', () =>
     <EpisodeScreen
-      {...dispatchFunctions}
+      {...mockProps}
       next
     />
   )
   .add('skip', () =>
     <EpisodeScreen
-      {...dispatchFunctions}
+      {...mockProps}
       skip
     />
   )
   .add('skip & next', () =>
     <EpisodeScreen
-      {...dispatchFunctions}
+      {...mockProps}
       skip
       next
     />
   )
   .add('playAudio', () =>
     <EpisodeScreen
-      {...dispatchFunctions}
+      {...mockProps}
       playAudio
-    />
-  )
-  .add('progressMenu', () =>
-    <EpisodeScreen
-      {...dispatchFunctions}
-      progressMenuOptions={progressMenuOptions}
-    />
-  )
-  .add('screenLabel', () =>
-    <EpisodeScreen
-      {...dispatchFunctions}
-      screenLabel={'Dialog - Explore'}
-    />
-  )
-  .add('progress', () =>
-    <EpisodeScreen
-      {...dispatchFunctions}
-      progressMenuOptions={progressMenuOptions}
-    />
-  )
-  .add('title', () =>
-    <EpisodeScreen
-      {...dispatchFunctions}
-      screenLabel={'Dialog - Explore'}
     />
   );

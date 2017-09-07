@@ -13,10 +13,9 @@ const bouncy = keyframes`
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-
 `;
 
-const AvatarName = styled.div`
+const AvatarName = styled.div`  
   font-family: 'PingFangSC';
   font-size: 18px;
   font-weight: 500;
@@ -24,32 +23,57 @@ const AvatarName = styled.div`
   height: 38px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  padding-top: 5px;
+`;
+
+const Image = styled.img`
+  width: 60px;
+  height: 60px;
+  animation: ${props => props.isTalking ? bouncy : 'none'} 1200ms linear 0ms infinite;
+  margin-right: 5px;
+  margin-left: 5px;
+  border-radius: 50%;
+  border: solid 2px #dce6eb;
+  box-shadow: ${props => props.chosen ? '0 0 0pt 2pt #55b6ff' : '0 2px 5px 0 rgba(0, 0, 0, 0.08)'};
+`;
+
+// Example of extending styles with change of tag.
+// See: https://www.styled-components.com/docs/basics#extending-styles
+
+const ImagePlaceholder = Image.withComponent('div').extend`
+  background-color: #F2F7FA;
 `;
 
 class Avatar extends Component {
-  render() {
+  renderImage() {
     const isTalking = this.props.avatar.isTalking;
     const image = this.props.avatar[ this.props.avatar.mood + 'Image' ];
+    if (image) {
+      return (
+        <Image
+          src={image}
+          isTalking={isTalking}
+          chosen={this.props.chosen}
+        />
+      );
+    }
+    return (
+      <ImagePlaceholder
+        isTalking={isTalking}
+        chosen={this.props.chosen}
+      />
+    );
+  }
 
-    const Image = styled.img`
-      width: 60px;
-      height: 60px;
-      animation: ${isTalking ? bouncy : 'none'} 1200ms linear 0ms infinite;
-      margin-right: 5px;
-      margin-left: 5px;
-      border-radius: 50%;
-	    border: solid 2px #dce6eb;
-      box-shadow: ${this.props.chosen ? '0 0 0pt 2pt #55b6ff' : '0 2px 5px 0 rgba(0, 0, 0, 0.08)'}
-    `;
-    const name = this.props.chosen ?
-      this.props.avatar.name + ' (You)'
-      : this.props.avatar.name;
+  render() {
     return (
       <Wrapper>
-        <Image src={image} />
-        <AvatarName>{name}</AvatarName>
+        {this.renderImage()}
+        <AvatarName>
+          <div>{this.props.avatar.name}</div>
+          {this.props.chosen && <div>{'(You)'}</div>}
+        </AvatarName>
       </Wrapper>
     );
   }

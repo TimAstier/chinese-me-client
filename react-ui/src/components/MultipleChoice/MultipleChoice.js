@@ -64,7 +64,7 @@ const AnswerLabel = styled.div`
 `;
 
 const Explanation = styled.div`
-  width: 330px;
+  max-width: 330px;
   margin-top: 10px;
 	font-family: 'Open Sans';
 	font-size: 16px;

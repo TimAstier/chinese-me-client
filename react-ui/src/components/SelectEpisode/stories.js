@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react';
 import Immutable, { fromJS } from 'immutable';
 import { SelectEpisode } from '../.';
 import Episode from '../../models/Episode';
-import Provider from '../../utils/Provider';
+import { Provider } from '../../utils/testComponents';
 
 // SelectEpisode.propTypes = {
 //   episodes: propTypes.instanceOf(Immutable.OrderedMap).isRequired,

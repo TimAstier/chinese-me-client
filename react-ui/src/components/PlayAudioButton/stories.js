@@ -2,7 +2,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { PlayAudioButton } from '../../components';
-import Provider from '../../utils/Provider';
+import { Provider } from '../../utils/testComponents';
 
 // PlayAudioButton.propTypes = {
 //   onClick: propTypes.func.isRequired,

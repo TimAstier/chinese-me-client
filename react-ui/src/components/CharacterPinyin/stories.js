@@ -1,9 +1,9 @@
 /* eslint-disable react/jsx-wrap-multilines */
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import Provider from '../../utils/Provider';
 import { Character } from '../../models';
 import { EpisodeScreen, CharacterPinyin } from '../.';
+import { Provider } from '../../utils/testComponents';
 
 // CharacterPinyin.propTypes = {
 //   character: propTypes.instanceOf(Character).isRequired,

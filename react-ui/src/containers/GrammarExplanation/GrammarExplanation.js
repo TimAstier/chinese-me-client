@@ -1,19 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
-import { GrammarExplanation as GrammarExplanationComponent }
-  from '../../components';
+import { StudyVideo } from '../../components';
 import selectors from '../../rootSelectors';
 import { Grammar } from '../../models';
 
 class GrammarExplanation extends Component {
 
   render() {
-    return (
-      <GrammarExplanationComponent
-        grammar={this.props.grammar}
-      />
-    );
+    return <StudyVideo videoUrl={this.props.grammar.videoUrl} />;
   }
 }
 

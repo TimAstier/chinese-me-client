@@ -2,7 +2,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { EpisodeScreen, Title } from '../.';
-import Provider from '../../utils/Provider';
+import { Provider } from '../../utils/testComponents';
 
 // Title.propTypes = {
 //   partNumber: propTypes.number.isRequired

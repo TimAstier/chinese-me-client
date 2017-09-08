@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 import { MapModal as MapModalComponent } from '../../components';
-import * as models from '../../models';
 import selectors from '../../rootSelectors';
 import { actions as uiActions } from '../../redux/ui';
 
@@ -15,10 +14,7 @@ class MapModal extends Component {
 
 MapModal.propTypes = {
   open: propTypes.bool.isRequired,
-  handleClose: propTypes.func.isRequired,
-  characters: propTypes.arrayOf(propTypes.instanceOf(models.Character)),
-  grammars: propTypes.arrayOf(propTypes.instanceOf(models.Grammar)),
-  dialogs: propTypes.arrayOf(propTypes.instanceOf(models.Dialog))
+  handleClose: propTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({

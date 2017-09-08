@@ -1,8 +1,8 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import Provider from '../../utils/Provider';
 import { EpisodeCard } from '../../containers';
 import Episode from '../../models/Episode';
+import { Provider } from '../../utils/testComponents';
 
 // EpisodeCard.propTypes = {
 //   episode: propTypes.instanceOf(Episode).isRequired,

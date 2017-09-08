@@ -1,9 +1,9 @@
 /* eslint-disable react/jsx-wrap-multilines */
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import Provider from '../../utils/Provider';
 import { Statement } from '../.';
 import Sentence from '../../models/Sentence';
+import { Provider } from '../../utils/testComponents';
 
 // Statement.propTypes = {
 //   sentences: propTypes.arrayOf(propTypes.instanceOf(models.Sentence)).isRequired,

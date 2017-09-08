@@ -1,10 +1,10 @@
 /* eslint-disable react/jsx-wrap-multilines */
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import Provider from '../../utils/Provider';
 import { fromJS, List, OrderedMap } from 'immutable';
 import { EpisodeScreen, AudioToText } from '../.';
 import * as models from '../../models';
+import { Provider } from '../../utils/testComponents';
 
 // AudioToText.propTypes = {
 //   audioToText: propTypes.instanceOf(models.AudioToText).isRequired,
@@ -18,31 +18,31 @@ import * as models from '../../models';
 // Mock entities sent by server
 const entities = {
   1: {
-    id: '1',
+    id: 1,
     order: 1,
     chinese: '你好',
     pinyin: 'ni3hao3'
   },
   2: {
-    id: '2',
+    id: 2,
     order: 2,
     chinese: '我',
     pinyin: 'wo3'
   },
   3: {
-    id: '3',
+    id: 3,
     order: 3,
     chinese: '想',
     pinyin: 'xiang3'
   },
   4: {
-    id: '4',
+    id: 4,
     order: 4,
     chinese: '学',
     pinyin: 'xue2'
   },
   5: {
-    id: '5',
+    id: 5,
     order: 5,
     chinese: '中文',
     pinyin: 'zhong1wen2'

@@ -2,8 +2,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { Study } from '../../containers';
-import TestWrapper from '../../utils/TestWrapper';
-import Provider from '../../utils/Provider';
+import { Provider, TestWrapper } from '../../utils/testComponents';
 
 // Navbar.propTypes = {
 //   askQuestion: propTypes.func.isRequired,

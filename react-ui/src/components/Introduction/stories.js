@@ -2,7 +2,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { EpisodeScreen, Introduction } from '../.';
-import Provider from '../../utils/Provider';
+import { Provider } from '../../utils/testComponents';
 
 // Introduction.propTypes = {
 //   objectives: propTypes.array.isRequired

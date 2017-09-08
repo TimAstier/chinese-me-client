@@ -2,7 +2,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { FeedbackModal } from '../.';
-import Provider from '../../utils/Provider';
+import { Provider } from '../../utils/testComponents';
 
 // FeedbackModal.propTypes = {
 //   open: propTypes.bool.isRequired,

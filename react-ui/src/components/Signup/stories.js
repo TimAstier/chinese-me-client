@@ -2,7 +2,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { SignupPage, EmailSentPage, ActivatedPage } from '../.';
-import Provider from '../../utils/Provider';
+import { Provider } from '../../utils/testComponents';
 
 // Page.propTypes = {
 //   onSubmit: propTypes.func.isRequired

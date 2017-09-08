@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
-import { Character } from '../../models';
 import styled from 'styled-components';
 import { VideoPlayer } from '../../containers';
 
@@ -11,7 +10,7 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 
-class CharacterEtymology extends Component {
+class StudyVideo extends Component {
   render() {
     // List of video events available here:
     // https://facebook.github.io/react/blog/2015/09/10/react-v0.14-rc1.html
@@ -20,15 +19,15 @@ class CharacterEtymology extends Component {
         <VideoPlayer
           width={676}
           height={380}
-          src={this.props.character.etymologyUrl}
+          src={this.props.videoUrl}
         />
       </Wrapper>
     );
   }
 }
 
-CharacterEtymology.propTypes = {
-  character: propTypes.instanceOf(Character).isRequired
+StudyVideo.propTypes = {
+  videoUrl: propTypes.string.isRequired
 };
 
-export default CharacterEtymology;
+export default StudyVideo;

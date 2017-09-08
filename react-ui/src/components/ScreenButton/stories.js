@@ -2,7 +2,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { ScreenButton } from '../../containers';
-import Provider from '../../utils/Provider';
+import { Provider } from '../../utils/testComponents';
 
 // ScreenButton.propTypes = {
 //   text: propTypes.string.isRequired,

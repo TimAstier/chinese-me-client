@@ -23,7 +23,7 @@ class ScreenWrapper extends Component {
 }
 
 ScreenWrapper.propTypes = {
-  children: propTypes.array
+  children: propTypes.object
 };
 
 export default ScreenWrapper;

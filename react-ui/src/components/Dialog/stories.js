@@ -1,10 +1,10 @@
 /* eslint-disable react/jsx-wrap-multilines */
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import Provider from '../../utils/Provider';
 import { Avatar } from '../../models';
 import Sentence from '../../models/Sentence';
 import { EpisodeScreen, Dialog } from '../.';
+import { Provider } from '../../utils/testComponents';
 
 // Dialog.propTypes = {
   // sentences: propTypes.arrayOf(propTypes.instanceOf(models.Sentence)).isRequired,

@@ -2,7 +2,8 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { EpisodeScreen } from '../.';
-import Provider from '../../utils/Provider';
+import { Provider, PlaceholderFixedWidth, PlaceholderFullWidth }
+  from '../../utils/testComponents';
 
 // EpisodeScreen.propTypes = {
 //   next: propTypes.bool,
@@ -48,4 +49,14 @@ storiesOf('EpisodeScreen', module)
       {...mockProps}
       playAudio
     />
+  )
+  .add('PlaceholderFixedWidth', () =>
+    <EpisodeScreen {...mockProps}>
+      <PlaceholderFixedWidth />
+    </EpisodeScreen>
+  )
+  .add('PlaceholderFullWidth', () =>
+    <EpisodeScreen {...mockProps}>
+      <PlaceholderFullWidth />
+    </EpisodeScreen>
   );

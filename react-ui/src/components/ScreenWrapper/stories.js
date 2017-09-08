@@ -6,7 +6,10 @@ import { PlaceholderFixedWidth, PlaceholderFullWidth }
   from '../../utils/testComponents';
 
 // ScreenWrapper.propTypes = {
-//   children: propTypes.node
+//   children: propTypes.oneOfType([
+//   propTypes.object,
+//   propTypes.array
+// ])
 // };
 
 storiesOf('ScreenWrapper', module)

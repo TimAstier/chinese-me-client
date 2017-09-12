@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import propTypes from 'prop-types';
 import { LoginForm, OnboardingScreen } from '../.';
-import { Bold, Link } from '../Shared';
+import { Bold, Link as LinkComponent } from '../Shared';
+import { Link } from 'react-router';
 
 // TODO: DRY this with login form
 
@@ -24,10 +25,10 @@ const Footer = styled.div`
   text-align: center;
 `;
 
-const FooterText = styled.p`
+const FooterText = styled.div`
   font-family: 'Open Sans';
   font-size: 16px;
-  line-height: 1.5;
+  line-height: 3;
   color: #bfbfbf;
 `;
 
@@ -41,8 +42,13 @@ class Page extends Component {
         </TitleWrapper>
         <LoginForm onSubmit={this.props.onSubmit} />
         <Footer>
-          <FooterText>Don't have an account yet? <Link>Sign in.</Link></FooterText>
-          <FooterText><Link>Forgot your password?</Link></FooterText>
+          <FooterText>
+            <p>
+              Don't have an account yet?
+              <LinkComponent><Link to="/signup"> Sign in.</Link></LinkComponent>
+            </p>
+          </FooterText>
+          <FooterText><LinkComponent>Forgot your password?</LinkComponent></FooterText>
         </Footer>
       </OnboardingScreen>
     );

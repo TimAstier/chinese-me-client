@@ -10,6 +10,7 @@ function loadStories() {
   require('../src/components/Avatar/stories');
   require('../src/components/CharacterPinyin/stories');
   require('../src/components/ChoiceBox/stories');
+  require('../src/components/CircleTimer/stories');
   require('../src/components/Dialog/stories');
   require('../src/components/ElementsNav/stories');
   require('../src/components/EpisodeCard/stories');

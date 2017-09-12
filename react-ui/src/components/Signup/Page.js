@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import propTypes from 'prop-types';
 import { SignupForm, OnboardingScreen } from '../.';
-import { Bold, Link } from '../Shared';
+import { Bold, Link as LinkComponent } from '../Shared';
+import { Link } from 'react-router';
 
 // TODO: DRY this with login form
 
@@ -24,7 +25,7 @@ const Footer = styled.div`
   text-align: center;
 `;
 
-const FooterText = styled.p`
+const FooterText = styled.div`
   font-family: 'Open Sans';
   font-size: 16px;
   line-height: 1.5;
@@ -42,12 +43,18 @@ class Page extends Component {
         <SignupForm onSubmit={this.props.onSubmit} />
         <Footer>
           <FooterText>
-            Already have an account? <Link>Log in.</Link>
+            <p>
+              Already have an account?
+              <LinkComponent><Link to="/login"> Log in.</Link></LinkComponent>
+            </p>
           </FooterText>
           <FooterText>
-            By Clicking "Create your ChineseMe account",
-            <br/>
-            I agree to ChineseMe's <Link>Terms of Service.</Link>
+            <p>
+              <br/>
+              By Clicking "Create your ChineseMe account",
+              <br/>
+              I agree to ChineseMe's <LinkComponent>Terms of Service.</LinkComponent>
+            </p>
           </FooterText>
         </Footer>
       </OnboardingScreen>

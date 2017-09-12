@@ -1,8 +1,10 @@
 /* eslint-disable react/jsx-wrap-multilines */
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { Bold, Clickable, Link, ScrollableAppWrapper } from './.';
+import { Bold, Clickable, Link as LinkComponent, ScrollableAppWrapper }
+  from './.';
 import { TestWrapper } from '../../utils/testComponents';
+import { Link } from 'react-router';
 
 // Bold.propTypes = {
 //   children: propTypes.node.isRequired
@@ -28,7 +30,10 @@ storiesOf('Shared', module)
   <Clickable>Clickable</Clickable>
   )
   .add('Link', () =>
-  <Link>Link</Link>
+  <LinkComponent>Custom link text</LinkComponent>
+  )
+  .add('Link with react-router Link', () =>
+  <LinkComponent><Link>react-router Link</Link></LinkComponent>
   )
   .add('ScrollableAppWrapper', () =>
   <ScrollableAppWrapper>

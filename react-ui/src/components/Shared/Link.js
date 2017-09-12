@@ -4,6 +4,9 @@ import styled from 'styled-components';
 
 const Wrapper = styled.span`
   color: #55b6ff;
+  a {
+    color: inherit;
+  }
 `;
 
 class Link extends Component {

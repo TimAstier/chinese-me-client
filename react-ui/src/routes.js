@@ -26,6 +26,7 @@ import * as components from './components';
 // TODO: use ReviewScreen and ExamScreen containers
 export default (
   <Route path="/" component={containers.App}>
+    <Route path="lesson/:id" component={containers.Lesson} />
     <Route path="signup" component={containers.SignupPage} />
     <Route path="signup/activated" component={components.ActivatedPage} />
     <Route path="signup/activate/:activationToken" component={containers.SignupActivate} />

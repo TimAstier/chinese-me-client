@@ -82,6 +82,8 @@ const getMultipleChoices = state => state.get('multipleChoices');
 const getAudioToTexts = state => state.get('audioToTexts');
 const getWords = state => state.get('words');
 const getReviews = state => state.get('reviews');
+const getExamples = state => state.get('examples');
+const getLessons = state => state.get('lessons');
 
 export const selectors = {
   getAvatars,
@@ -95,5 +97,7 @@ export const selectors = {
   getMultipleChoices,
   getAudioToTexts,
   getWords,
-  getReviews
+  getReviews,
+  getExamples,
+  getLessons
 };

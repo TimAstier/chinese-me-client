@@ -34,7 +34,8 @@ export const types = {
   ELEMENTS_NAV_PREVIOUS_CLICK: 'signal/ELEMENTS_NAV_PREVIOUS_CLICK',
   ELEMENTS_NAV_NEXT_CLICK: 'signal/ELEMENTS_NAV_NEXT_CLICK',
   NEXT_SCREEN: 'signal/NEXT_SCREEN',
-  REVIEW_COMPLETED: 'signal/REVIEW_COMPLETED'
+  REVIEW_COMPLETED: 'signal/REVIEW_COMPLETED',
+  INIT_LESSON: 'signal/INIT_LESSON'
 };
 
 // Action Creators
@@ -100,6 +101,10 @@ const nextScreen = () => ({
 const reviewCompleted = () => ({
   type: types.REVIEW_COMPLETED
 });
+const initLesson = id => ({
+  type: types.INIT_LESSON,
+  payload: { id }
+});
 
 export const actions = {
   next,
@@ -131,5 +136,6 @@ export const actions = {
   elementsNavPreviousClick,
   elementsNavNextClick,
   nextScreen,
-  reviewCompleted
+  reviewCompleted,
+  initLesson
 };

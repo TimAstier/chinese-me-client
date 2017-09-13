@@ -15,6 +15,7 @@ export { default as EpisodeScreen } from './EpisodeScreen/EpisodeScreen';
 export { default as FeedbackModal } from './FeedbackModal/FeedbackModal';
 export { default as Footer } from './Footer/Footer';
 export { default as Introduction } from './Introduction/Introduction';
+export { default as Lesson } from './Lesson/Lesson';
 export { default as LoginForm } from './Login/Form';
 export { default as LoginPage } from './Login/Page';
 export { default as MapContent } from './MapModal/MapContent';

@@ -16,6 +16,7 @@ import * as fromRouting from './redux/routing';
 import * as fromMap from './redux/map';
 import * as fromMultipleChoice from './redux/multipleChoice';
 import * as fromVideo from './redux/video';
+import * as fromLesson from './redux/lesson';
 
 // TODO: DRY selectors (like getNext/Previous ids)
 
@@ -77,6 +78,11 @@ const multipleChoiceSelectors = bindSelectors(
 const videoSelectors = bindSelectors(
   state => state.get('video'),
   fromVideo.selectors
+);
+
+const lessonSelectors = bindSelectors(
+  state => state.get('lesson'),
+  fromLesson.selectors
 );
 
 const getCurrentDialog = createSelector(
@@ -579,6 +585,26 @@ const getCurrentSeasonEpisodes = createSelector(
   }
 );
 
+const getCurrentLesson = createSelector(
+  entitySelectors.getLessons,
+  lessonSelectors.getCurrentLessonId,
+  (lessons, id) => lessons.get(id)
+);
+
+const getCurrentExamples = createSelector(
+  getCurrentLesson,
+  entitySelectors.getExamples,
+  (lesson, examples) => {
+    const arrayOfExamples = [];
+    if (lesson && examples) {
+      lesson.examples.forEach(e => {
+        arrayOfExamples.push(examples.get(String(e)));
+      });
+    }
+    return arrayOfExamples;
+  }
+);
+
 const selectors = {
   ...entitySelectors,
   ...studySelectors,
@@ -592,6 +618,7 @@ const selectors = {
   ...mapSelectors,
   ...multipleChoiceSelectors,
   ...videoSelectors,
+  ...lessonSelectors,
   getCurrentEpisode,
   getFocusedEpisode,
   getCurrentDialog,
@@ -629,7 +656,9 @@ const selectors = {
   getCompletionPercentage,
   getCurrentReviewExercise,
   getReviewNavParams,
-  getCurrentSeasonEpisodes
+  getCurrentSeasonEpisodes,
+  getCurrentLesson,
+  getCurrentExamples
 };
 
 export default selectors;

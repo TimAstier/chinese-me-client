@@ -4,7 +4,7 @@ import iconFb from '../../images/iconFb.svg';
 import iconTwitter from '../../images/iconTwitter.svg';
 import iconMedium from '../../images/iconMedium.svg';
 
-const Wrapper = styled.div`
+const Wrapper = styled.footer`
   height: 148px;
   width: 100%;
   background-color: #f8f8f8;

@@ -18,7 +18,7 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 
-class StaticEpisode extends Component {
+class Lesson extends Component {
 
   componentWillMount() {
     const { seasonNumber, lessonNumber } = this.props.params;
@@ -43,7 +43,6 @@ class StaticEpisode extends Component {
         <LessonComponent
           initialized={this.props.initialized}
           content={content[`S${seasonNumber}E${lessonNumber}`]}
-          examples={this.props.examples}
           lesson={this.props.lesson}
         />
       </Wrapper>
@@ -51,18 +50,16 @@ class StaticEpisode extends Component {
   }
 }
 
-StaticEpisode.propTypes = {
+Lesson.propTypes = {
   params: propTypes.object.isRequired,
   initialized: propTypes.bool.isRequired,
   initLesson: propTypes.func.isRequired,
-  examples: propTypes.arrayOf(propTypes.instanceOf(models.Example)).isRequired,
   lesson: propTypes.instanceOf(models.Lesson),
   location: propTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
   initialized: selectors.getLessonInitiliazed(state),
-  examples: selectors.getCurrentExamples(state),
   lesson: selectors.getCurrentLesson(state)
 });
 
@@ -71,4 +68,4 @@ export default connect(
   {
     initLesson: sagaActions.initLesson
   }
-)(StaticEpisode);
+)(Lesson);

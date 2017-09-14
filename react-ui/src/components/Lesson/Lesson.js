@@ -25,8 +25,7 @@ class Lesson extends Component {
         <ScreenWrapper>
           {this.props.initialized &&
             <ContentHOC
-              examples={this.props.examples}
-              number={this.props.lesson.number }
+              lesson={this.props.lesson}
               content={Content}
             />
           }
@@ -39,7 +38,6 @@ class Lesson extends Component {
 Lesson.propTypes = {
   content: propTypes.func.isRequired,
   initialized: propTypes.bool.isRequired,
-  examples: propTypes.arrayOf(propTypes.instanceOf(models.Example)).isRequired,
   lesson: propTypes.instanceOf(models.Lesson)
 };
 

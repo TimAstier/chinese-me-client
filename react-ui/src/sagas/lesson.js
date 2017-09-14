@@ -6,7 +6,6 @@ import { actions as studyActions } from '../redux/study';
 
 function* fetchLessonData(action) {
   const { seasonNumber, lessonNumber } = action.payload;
-  // Set lesson Id in CB TODO
   yield call(
     fetchEntities,
     [
@@ -20,6 +19,7 @@ function* fetchLessonData(action) {
 
 function* initLesson(action) {
   yield put(lessonActions.setInitialized(false));
+  // TODO: Check data
   yield put(studyActions.setCurrentSeasonId(action.payload.seasonNumber));
   yield put(lessonActions.setCurrentLessonNumber(action.payload.lessonNumber));
   yield call(fetchLessonData, action);

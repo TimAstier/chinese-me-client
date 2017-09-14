@@ -4,7 +4,9 @@ const DialogRecord = Immutable.Record({
   id: null,
   order: null,
   introAudioUrl: '',
-  title: '',
+  englishTitle: '',
+  chineseTitle: '',
+  englishIntro: '',
   avatars: [],
   statements: [],
   completed: false

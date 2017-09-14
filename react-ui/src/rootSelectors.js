@@ -17,6 +17,7 @@ import * as fromMap from './redux/map';
 import * as fromMultipleChoice from './redux/multipleChoice';
 import * as fromVideo from './redux/video';
 import * as fromLesson from './redux/lesson';
+import * as models from './models';
 
 // TODO: DRY selectors (like getNext/Previous ids)
 
@@ -588,20 +589,11 @@ const getCurrentSeasonEpisodes = createSelector(
 const getCurrentLesson = createSelector(
   entitySelectors.getLessons,
   lessonSelectors.getCurrentLessonId,
-  (lessons, id) => lessons.get(id)
-);
-
-const getCurrentExamples = createSelector(
-  getCurrentLesson,
-  entitySelectors.getExamples,
-  (lesson, examples) => {
-    const arrayOfExamples = [];
-    if (lesson && examples) {
-      lesson.examples.forEach(e => {
-        arrayOfExamples.push(examples.get(String(e)));
-      });
+  (lessons, id) => {
+    if (!lessons || !id) {
+      return new models.Lesson();
     }
-    return arrayOfExamples;
+    return lessons.get(id);
   }
 );
 
@@ -657,8 +649,7 @@ const selectors = {
   getCurrentReviewExercise,
   getReviewNavParams,
   getCurrentSeasonEpisodes,
-  getCurrentLesson,
-  getCurrentExamples
+  getCurrentLesson
 };
 
 export default selectors;

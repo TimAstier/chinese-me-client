@@ -6,7 +6,7 @@ import { fetchEntities } from './entities';
 export default function* initApp() {
   while (true) { // eslint-disable-line no-constant-condition
     yield take(sagaTypes.INIT_APP);
-    yield call(fetchEntities, '/seasons');
-    yield call(fetchEntities, '/episodes');
+    yield call(fetchEntities, ['/seasons']);
+    yield call(fetchEntities, ['/episodes']);
   }
 }

@@ -11,7 +11,7 @@ export function* checkData(id) {
 }
 
 export function* fetchData(episodeId) {
-  return yield call(fetchEntities, '/episode/' + episodeId + '/grammars');
+  return yield call(fetchEntities, ['/episode/' + episodeId + '/grammars']);
   // TODO: handle fetch error
 }
 

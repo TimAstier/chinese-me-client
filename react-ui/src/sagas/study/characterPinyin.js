@@ -18,7 +18,7 @@ export function* checkData(id) {
 }
 
 export function* fetchData(episodeId) {
-  return yield call(fetchEntities, '/episode/' + episodeId + '/characters');
+  return yield call(fetchEntities, ['/episode/' + episodeId + '/characters']);
   // TODO: handle fetch error
 }
 

@@ -19,7 +19,7 @@ export function* checkData(id) {
 }
 
 export function* fetchData(episodeId) {
-  yield call(fetchEntities, '/episode/' + episodeId + '/review');
+  yield call(fetchEntities, ['/episode/' + episodeId + '/review']);
   // TODO: handle fetch error
   const reviews = yield select(selectors.getReviews);
   const exercises = reviews.getIn([episodeId, 'exercises']);

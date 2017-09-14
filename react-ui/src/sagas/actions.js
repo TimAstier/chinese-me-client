@@ -101,9 +101,9 @@ const nextScreen = () => ({
 const reviewCompleted = () => ({
   type: types.REVIEW_COMPLETED
 });
-const initLesson = id => ({
+const initLesson = (seasonNumber, lessonNumber) => ({
   type: types.INIT_LESSON,
-  payload: { id }
+  payload: { seasonNumber, lessonNumber }
 });
 
 export const actions = {

@@ -3,12 +3,12 @@ import * as c from '../components';
 import { getGrammarLetter } from '../../../utils/lessonContent';
 import propTypes from 'prop-types';
 
-class Lesson8 extends Component {
+class S1E3 extends Component {
   render() {
     const { example } = this.props;
     return (
       <div>
-        <c.LessonTitle>Episode 7: 你家人都在中国吗？</c.LessonTitle>
+        <c.LessonTitle>Episode 3: 你家人都在中国吗？</c.LessonTitle>
         <c.PartTitle>Grammar</c.PartTitle>
         <c.GrammarTitle letter={getGrammarLetter()}>
           都, <b>dōu</b>, <i>both</i>; <i>all</i>
@@ -22,10 +22,10 @@ class Lesson8 extends Component {
         {example()}
         <br/>
         <p>In order to say <i>both... and</i>, the speaker will list two or more things followed by 都 <b>dōu</b>.</p>
+        {example()}
+        <br/>
         <p>In the pattern above, you may have noticed that Chinese uses a special comma as a break between items in a list which is different from the comma used to create a pause in sentences. Here is a sentence using both kinds of commas:</p>
-        <br/>
         <p>Often, 都 <b>dōu</b> is used together with another word meaning *all*, for example 所有 <b>suǒyǒu</b>:</p>
-        <br/>
         <c.GrammarTitle letter={getGrammarLetter()}>
           都 meaning <i>even</i>
         </c.GrammarTitle>
@@ -68,9 +68,9 @@ class Lesson8 extends Component {
   }
 }
 
-Lesson8.propTypes = {
+S1E3.propTypes = {
   number: propTypes.number.isRequired,
   example: propTypes.func.isRequired
 };
 
-export default Lesson8;
+export default S1E3;

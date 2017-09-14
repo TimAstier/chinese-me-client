@@ -3,12 +3,12 @@ import * as c from '../components';
 import { getGrammarLetter, getGrammarSentenceCode }
   from '../../../utils/lessonContent';
 
-class Lesson1 extends Component {
+class S1E1 extends Component {
 
   render() {
     return (
       <div>
-        <c.LessonTitle>Lesson1: Introducing yourself</c.LessonTitle>
+        <c.LessonTitle>Lesson 1: Introducing yourself</c.LessonTitle>
         <c.PartTitle>Grammar</c.PartTitle>
         <c.GrammarTitle letter={getGrammarLetter()}>
           Numbers to 99
@@ -41,4 +41,4 @@ class Lesson1 extends Component {
   }
 }
 
-export default Lesson1;
+export default S1E1;

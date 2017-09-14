@@ -18,7 +18,7 @@ export function* checkDialogData(id) {
 }
 
 export function* fetchDialogData(episodeId) {
-  return yield call(fetchEntities, '/episode/' + episodeId + '/dialogs');
+  return yield call(fetchEntities, ['/episode/' + episodeId + '/dialogs']);
   // TODO: handle fetch error
 }
 

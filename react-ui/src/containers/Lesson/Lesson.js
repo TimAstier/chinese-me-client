@@ -21,18 +21,20 @@ const Wrapper = styled.div`
 class StaticEpisode extends Component {
 
   componentWillMount() {
-    return this.props.initLesson(this.props.params.id);
+    const { seasonNumber, lessonNumber } = this.props.params;
+    return this.props.initLesson(seasonNumber, lessonNumber);
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.params.id !== prevProps.params.id) {
-      return this.props.initLesson(this.props.params.id);
+    const { seasonNumber, lessonNumber } = this.props.params;
+    if (this.props.location.pathname !== prevProps.location.pathname) {
+      return this.props.initLesson(seasonNumber, lessonNumber);
     }
     return null;
   }
 
   render() {
-    const episodeId = this.props.params.id;
+    const { seasonNumber, lessonNumber } = this.props.params;
     return (
       <Wrapper>
         <FeedbackModal />
@@ -40,7 +42,7 @@ class StaticEpisode extends Component {
         <Navbar />
         <LessonComponent
           initialized={this.props.initialized}
-          content={content['Lesson' + episodeId]}
+          content={content[`S${seasonNumber}E${lessonNumber}`]}
           examples={this.props.examples}
           lesson={this.props.lesson}
         />
@@ -54,7 +56,8 @@ StaticEpisode.propTypes = {
   initialized: propTypes.bool.isRequired,
   initLesson: propTypes.func.isRequired,
   examples: propTypes.arrayOf(propTypes.instanceOf(models.Example)).isRequired,
-  lesson: propTypes.instanceOf(models.Lesson)
+  lesson: propTypes.instanceOf(models.Lesson),
+  location: propTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({

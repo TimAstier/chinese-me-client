@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import * as c from '../components';
 import { getGrammarLetter } from '../../../utils/lessonContent';
-import propTypes from 'prop-types';
+import { content as contentPropTypes } from '../../../helpers/propTypes';
 
-class S1E3 extends Component {
+export default class S1E3 extends Component {
+  static propTypes = contentPropTypes
+
   render() {
     const { example, lessonTitle, dialog } = this.props;
     return (
@@ -26,21 +28,9 @@ class S1E3 extends Component {
         <br/>
         <p>In the pattern above, you may have noticed that Chinese uses a special comma as a break between items in a list which is different from the comma used to create a pause in sentences. Here is a sentence using both kinds of commas:</p>
         <p>Often, 都 <b>dōu</b> is used together with another word meaning *all*, for example 所有 <b>suǒyǒu</b>:</p>
-        <c.GrammarTitle letter={getGrammarLetter()}>
-          都 meaning <i>even</i>
-        </c.GrammarTitle>
         <p>Placed after a noun or pronoun, 都 <b>dōu</b> can mean <i>even</i>:</p>
         {dialog()}
       </div>
     );
   }
 }
-
-S1E3.propTypes = {
-  number: propTypes.number.isRequired,
-  example: propTypes.func.isRequired,
-  lessonTitle: propTypes.func.isRequired,
-  dialog: propTypes.func.isRequired
-};
-
-export default S1E3;

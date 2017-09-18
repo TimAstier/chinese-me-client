@@ -5,6 +5,7 @@ export { default as Avatar } from './Avatar';
 export { default as Character } from './Character';
 export { default as Dialog } from './Dialog';
 export { default as Episode } from './Episode';
+export { default as Example } from './Example';
 export { default as Grammar } from './Grammar';
 export { default as Lesson } from './Lesson';
 export { default as MultipleChoice } from './MultipleChoice';

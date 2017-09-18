@@ -580,9 +580,10 @@ const getCurrentSeasonEpisodes = createSelector(
   entitySelectors.getEpisodes,
   studySelectors.getCurrentSeasonId,
   (episodes, seasonId) => {
-    return episodes
-      .filter(e => e.seasonId === seasonId)
+    const result = episodes
+      .filter(e => e.seasonId === Number(seasonId))
       .sortBy(item => item.number);
+    return result;
   }
 );
 

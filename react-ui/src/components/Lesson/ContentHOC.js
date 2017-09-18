@@ -28,8 +28,8 @@ class ContentHOC extends Component {
           code={getGrammarSentenceCode(number)}
           chinese={examples[count].chinese}
           pinyin={examples[count].pinyin}
-          translation={examples[count].english}
-          literalTranslation={examples[count].literalEnglish}
+          translation={examples[count].translations[0].translation}
+          literalTranslation={examples[count].translations[0].literalTranslation}
         />
       );
     };
@@ -47,9 +47,10 @@ class ContentHOC extends Component {
       return (
         <div>
           <c.PartTitle>{`会话：${dialogs[count].chineseTitle}`}</c.PartTitle>
+          <p>{dialogs[count].translations[0].intro}</p>
           <p>{dialogs[count].englishIntro}</p>
           {this.renderDialog(dialogs[count], 'chinese')}
-          <c.PartTitle>{`Dialog：${dialogs[count].englishTitle}`}</c.PartTitle>
+          <c.PartTitle>{`Dialog：${dialogs[count].translations[0].titleTranslation}`}</c.PartTitle>
           {this.renderDialog(dialogs[count], 'translation')}
         </div>
       );
@@ -57,14 +58,18 @@ class ContentHOC extends Component {
   }
 
   renderDialog = (dialog, type) => {
-    const sentenceType = type === 'chinese' ? 'chinese' : 'english';
+    const sentenceType = type === 'chinese' ? 'chinese' : 'translation';
     const name = type === 'chinese' ? 'chineseName' : 'name';
     const array = [];
     let text = '';
     dialog.statements.forEach((statement, i) => {
       text = '';
       statement.sentences.forEach(sentence => {
-        text = text + ' ' + sentence[sentenceType];
+        if (sentenceType === 'chinese') {
+          text = text + ' ' + sentence.chinese;
+        } else {
+          text = text + ' ' + sentence.translations[0].translation;
+        }
       });
       array.push(
         <c.Statement

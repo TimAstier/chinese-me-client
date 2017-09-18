@@ -4,12 +4,12 @@ const DialogRecord = Immutable.Record({
   id: null,
   order: null,
   introAudioUrl: '',
-  englishTitle: '',
   chineseTitle: '',
-  englishIntro: '',
   avatars: [],
   statements: [],
-  completed: false
+  completed: false,
+  titleTranslation: '',
+  intro: ''
 });
 
 class Dialog extends DialogRecord {

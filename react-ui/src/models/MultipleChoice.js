@@ -5,9 +5,9 @@ const MultipleChoiceRecord = Immutable.Record({
   question: '',
   choices: [],
   correctAnswer: null,
-  explanation: '',
   episodeId: null,
-  order: null
+  order: null,
+  explanation: ''
 });
 
 class MultipleChoice extends MultipleChoiceRecord {}

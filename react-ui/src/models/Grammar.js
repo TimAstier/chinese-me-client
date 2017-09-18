@@ -3,9 +3,9 @@ import Immutable from 'immutable';
 const GrammarRecord = Immutable.Record({
   id: null,
   order: null,
+  completed: false,
   title: '',
-  videoUrl: '',
-  completed: false
+  videoUrl: ''
 });
 
 class Grammar extends GrammarRecord {}

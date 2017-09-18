@@ -84,7 +84,7 @@ class MapContent extends Component {
         return (
           <MapDialogItem
             key={i}
-            title={d.title}
+            title={d.chineseTitle}
             completed={d.userDialogs.length !== 0 ? true : undefined}
             onClick={() => this.props.mapLinkClick(
               '/study/' + this.props.episode.id + '/dialog/' + d.id + '/listen'
@@ -103,7 +103,7 @@ class MapContent extends Component {
         return (
           <MapGrammarItem
             key={i}
-            title={g.title}
+            title={g.translations[0].title}
             completed={g.userGrammars.length !== 0 ? true : undefined}
             onClick={() => this.props.mapLinkClick(
               '/study/' + this.props.episode.id + '/grammar/' + g.id + '/explanation'

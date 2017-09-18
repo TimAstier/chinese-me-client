@@ -171,7 +171,7 @@ class Statement extends Component {
           {this.renderStatement('chinese')}
         </ChineseWrapper>
         <L1Wrapper>
-          {this.renderStatement('english')}
+          {this.renderStatement('translation')}
         </L1Wrapper>
         {this.renderControlWrapper()}
       </Wrapper>

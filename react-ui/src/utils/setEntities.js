@@ -13,6 +13,17 @@ const setEntities = (state, newEntities, Model) => {
         }
       }
     }
+    // Un-next translations
+    if (entity.getIn(['attributes', 'translations'])) {
+      const translations = entity
+        .getIn(['attributes', 'translations']).get(0).toJS();
+      for (const translatedField in translations) {
+        if (translations.hasOwnProperty(translatedField)) {
+          object[translatedField] = translations[translatedField];
+        }
+      }
+      delete attributes.translations;
+    }
     return new Model({
       ...attributes,
       ...object // relationships

@@ -43,8 +43,12 @@ export const INITIAL_STATE = Immutable.Map({
 export default function reducer(state = INITIAL_STATE, action = {}) {
   switch (action.type) {
     case types.CLEAR:
-    case sagaTypes.EXIT:
       return INITIAL_STATE;
+    case sagaTypes.EXIT:
+      // Clear all but currentSeasonId and currentEpisodeId
+      return state.merge(
+        INITIAL_STATE.delete('currentSeasonId').delete('currentEpisodeId')
+      );
     case types.SET_CURRENT_SEASON_ID:
       return state.set('currentSeasonId', action.payload.id);
     case types.SET_CURRENT_EPISODE_ID:

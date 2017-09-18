@@ -46,7 +46,11 @@ class ContentHOC extends Component {
       }
       return (
         <div>
-          <c.PartTitle>{`会话：${dialogs[count].chineseTitle}`}</c.PartTitle>
+          <c.PartTitle
+            linkUrl={`/study/${this.props.lesson.id}/dialog/${dialogs[count].id}/listen`}
+          >
+            {`会话：${dialogs[count].chineseTitle}`}
+          </c.PartTitle>
           <p>{dialogs[count].translations[0].intro}</p>
           <p>{dialogs[count].englishIntro}</p>
           {this.renderDialog(dialogs[count], 'chinese')}
@@ -83,6 +87,14 @@ class ContentHOC extends Component {
     return array;
   }
 
+  reviewDumper = () => {
+    return (
+      <c.PartTitle linkUrl={`/study/${this.props.lesson.id}/title/4`}>
+        Review
+      </c.PartTitle>
+    );
+  }
+
   render() {
     const { number, examples, dialogs } = this.props.lesson;
     const Content = this.props.content;
@@ -92,6 +104,7 @@ class ContentHOC extends Component {
         number={number}
         example={this.examplesDumper(examples)}
         dialog={this.dialogsDumper(dialogs)}
+        review={this.reviewDumper}
       />
     );
   }

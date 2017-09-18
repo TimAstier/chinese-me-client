@@ -12,6 +12,7 @@ function* fetchLessonData(action) {
       `/season/${seasonNumber}/lesson/${lessonNumber}`,
       function* (response) { // eslint-disable-line func-names
         yield put(lessonActions.setCurrentLessonId(response.data.data.id));
+        yield put(studyActions.setCurrentEpisodeId(response.data.data.id));
       }
     ]);
   // TODO: handle fetch error

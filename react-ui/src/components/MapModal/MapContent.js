@@ -35,6 +35,20 @@ const EpisodeTitle = styled.div`
   margin-left: 20px;
 `;
 
+const LessonLinkWrapper = styled.div`
+  flex-grow: 1;
+  display: flex;
+  padding-top: 10px;
+  flex-direction: row-reverse;
+`;
+
+const LessonLink = styled.div`
+  font-family: 'Open Sans';
+  font-size: 20px;
+  color: #55b6ff;
+  cursor: pointer;
+`;
+
 const ContentWrapper = styled.div`
   height: 525px;
   overflow-y: auto;
@@ -132,6 +146,13 @@ class MapContent extends Component {
           <EpisodeTitle>
             {episode.title}
           </EpisodeTitle>
+          <LessonLinkWrapper>
+            <LessonLink onClick={() => this.props.mapLinkClick(
+              `/study/season/${this.props.episode.seasonId}/lesson/${this.props.episode.number}`
+            )}>
+              Read online
+            </LessonLink>
+          </LessonLinkWrapper>
         </TitleWrapper>
         <ContentWrapper>
           {episode.characters.length !== 0 &&
@@ -139,7 +160,6 @@ class MapContent extends Component {
               name="Characters"
               completedElements={mapCharactersCompletedCount}
               totalElements={episode.characters.length}
-              completed={mapCharactersCompletedCount === episode.characters.length}
               onClick={() => this.props.mapLinkClick(
                 '/study/' + this.props.episode.id + '/title/1'
               )}
@@ -151,7 +171,6 @@ class MapContent extends Component {
               name="Grammar"
               completedElements={mapGrammarsCompletedCount}
               totalElements={episode.grammars.length}
-              completed={mapGrammarsCompletedCount === episode.grammars.length}
               onClick={() => this.props.mapLinkClick(
                 '/study/' + this.props.episode.id + '/title/2'
               )}
@@ -163,7 +182,6 @@ class MapContent extends Component {
               name="Dialog"
               completedElements={mapDialogsCompletedCount}
               totalElements={episode.dialogs.length}
-              completed={mapDialogsCompletedCount === episode.dialogs.length}
               onClick={() => this.props.mapLinkClick(
                 '/study/' + this.props.episode.id + '/title/3'
               )}

@@ -5,7 +5,7 @@ import logo from '../../images/logo.svg';
 import iconSendFeedback from '../../images/iconSendFeedback.svg';
 import userIcon from '../../images/defaultMaleUserIcon.svg';
 import Clickable from '../Shared/Clickable';
-import { browserHistory } from 'react-router';
+import { Link } from 'react-router';
 
 const Wrapper = styled.div`
   align-self: stretch;
@@ -37,7 +37,7 @@ const LeftMenuItem = styled.div`
 `;
 
 const RightMenuWrapper = styled.div`
-  width: 217px;
+  width: 130px;
   margin-left: auto;
   display: flex;
 `;
@@ -46,19 +46,6 @@ const UserMenuWrapper = styled.div`
   flex-grow: 1;
   display: flex;
   align-items: center;
-`;
-
-const UsernameWrapper = styled.div`
-  flex-grow: 2;
-  display: flex:
-  justify-content: center;
-  align-items: center;
-  font-family: 'Open Sans';
-	font-size: 14px;
-	font-weight: bold;
-	text-align: right;
-	color: #ffffff;
-  margin-right: 10px;
 `;
 
 const UserIconWrapper = styled.div`
@@ -84,26 +71,20 @@ class Navbar extends Component {
         <LogoWrapper><img src={logo} alt="chineseMe logo"/></LogoWrapper>
         <LeftMenuWrapper>
           <LeftMenuItem>
-            <Clickable>
-              <div onClick={() => browserHistory.push('/study/select')}>
-                Episodes
-              </div>
-            </Clickable>
+            <Link to="/study/select" style={{ color: '#ffffff' }}>
+              Episodes
+            </Link>
           </LeftMenuItem>
           <LeftMenuItem>
             <Clickable>
               <div onClick={this.props.openMapModal}>
-                Index
+                Links
               </div>
             </Clickable>
           </LeftMenuItem>
         </LeftMenuWrapper>
         <RightMenuWrapper>
           <UserMenuWrapper>
-            <UsernameWrapper>
-              <div>Hi,</div>
-              <div>Zhengkuan</div>
-            </UsernameWrapper>
             <UserIconWrapper>
               <img src={userIcon} alt="user icon"/>
             </UserIconWrapper>

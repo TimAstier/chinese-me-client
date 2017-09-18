@@ -7,6 +7,7 @@ export { default as CharacterPinyin } from './CharacterPinyin/CharacterPinyin';
 export { default as ChapterHeader } from './MapModal/ChapterHeader';
 export { default as ChoiceBox } from './ChoiceBox/ChoiceBox';
 export { default as CircleTimer } from './CircleTimer/CircleTimer';
+export { default as ContentHOC } from './Lesson/ContentHOC';
 export { default as Dialog } from './Dialog/Dialog';
 export { default as ElementsNav } from './ElementsNav/ElementsNav';
 export { default as EpisodeCard } from './EpisodeCard/EpisodeCard';

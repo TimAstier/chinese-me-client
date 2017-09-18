@@ -87,8 +87,11 @@ const TopMiddleDownWrapper = styled.div`
 
 const ExitIcon = styled.div`
   font-family: Open Sans;
-  font-size: 20px;
+  
   color: #959595;
+  div:nth-child(2) {
+    font-size: 14px;
+  }
 `;
 
 class EpisodeScreen extends Component {
@@ -122,7 +125,8 @@ class EpisodeScreen extends Component {
           <TopLeftWrapper>
             <Clickable>
               <ExitIcon onClick={this.props.exit}>
-                Exit
+                <div>Book</div>
+                <div>version</div>
               </ExitIcon>
             </Clickable>
           </TopLeftWrapper>

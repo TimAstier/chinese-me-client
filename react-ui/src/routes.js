@@ -26,15 +26,15 @@ import * as components from './components';
 // TODO: use ReviewScreen and ExamScreen containers
 export default (
   <Route path="/" component={containers.App}>
-    <Route path="season/:seasonNumber/lesson/:lessonNumber" component={containers.Lesson} />
     <Route path="signup" component={containers.SignupPage} />
     <Route path="signup/activated" component={components.ActivatedPage} />
     <Route path="signup/activate/:activationToken" component={containers.SignupActivate} />
     <Route path="signup/email_sent" component={components.EmailSentPage} />
     <Route path="login" component={containers.LoginPage} />
-    <Route path="study" component={requireAuth(containers.Study)}>
+    <Route path="study" component={containers.Study}>
+      <Route path="season/:seasonNumber/lesson/:lessonNumber" component={containers.Lesson} />
       <Route path="select" component={containers.SelectEpisode} />
-      <Route path=":episodeId" component={containers.EpisodeScreen}>
+      <Route path=":episodeId" component={requireAuth(containers.EpisodeScreen)}>
         <Route path="title/:partNumber" component={containers.Title} />
         <Route path="character/:characterId/pinyin" component={containers.CharacterPinyin} />
         <Route path="character/:characterId/etymology" component={containers.CharacterEtymology} />

@@ -3,7 +3,7 @@ import propTypes from 'prop-types';
 import { ScrollableAppWrapper } from '../Shared';
 import styled from 'styled-components';
 import * as models from '../../models';
-import ContentHOC from './ContentHOC';
+import { ContentHOC } from '../.';
 
 const ScreenWrapper = styled.div`
   margin: 30px auto 50px;

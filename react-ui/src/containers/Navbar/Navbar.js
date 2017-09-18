@@ -20,6 +20,6 @@ export default connect(
   null,
   {
     askQuestion: sagaActions.askQuestion,
-    openMapModal: uiActions.openMapModal,
+    openMapModal: uiActions.openMapModal
   }
 )(Navbar);

@@ -18,6 +18,33 @@ class ContentHOC extends Component {
     );
   }
 
+  newCharactersDumper = characters => {
+    return () => {
+      if (characters.length === 0) {
+        // eslint-disable-next-line no-console
+        console.log('Error: tried to render unexisting characters in Lesson');
+        return <Placeholder>{'{NEW_CHARACTERS PLACEHOLDER}'}</Placeholder>;
+      }
+      const array = [];
+      characters.forEach((character, i) => {
+        array.push(
+          <c.Character
+            key={i}
+            simpChar={character.simpChar}
+            pinyin={character.pinyin}
+          />
+        );
+      });
+      return (
+        <div>
+          <br/>
+          <c.PartTitle>New characters</c.PartTitle>
+          {array}
+        </div>
+      );
+    };
+  };
+
   examplesDumper = examples => {
     const { number } = this.props.lesson;
     let count = -1;
@@ -51,6 +78,7 @@ class ContentHOC extends Component {
       }
       return (
         <div>
+          <br/>
           <c.PartTitle
             linkUrl={`/study/${this.props.lesson.id}/dialog/${dialogs[count].id}/listen`}
           >
@@ -101,12 +129,13 @@ class ContentHOC extends Component {
   }
 
   render() {
-    const { number, examples, dialogs } = this.props.lesson;
+    const { number, examples, dialogs, characters } = this.props.lesson;
     const Content = this.props.content;
     return (
       <Content
         lessonTitle={this.lessonTitle.bind(this)}
         number={number}
+        newCharacters={this.newCharactersDumper(characters)}
         example={this.examplesDumper(examples)}
         dialog={this.dialogsDumper(dialogs)}
         review={this.reviewDumper}

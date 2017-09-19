@@ -7,7 +7,7 @@ export default class S1E1 extends Component {
   static propTypes = contentPropTypes
 
   render() {
-    const { example, lessonTitle, dialog, review } = this.props;
+    const { newCharacters, example, lessonTitle, dialog, review } = this.props;
     return (
       <div>
         {lessonTitle()}
@@ -28,6 +28,7 @@ export default class S1E1 extends Component {
         <p>Often, 都 <b>dōu</b> is used together with another word meaning *all*, for example 所有 <b>suǒyǒu</b>:</p>
         <p>Placed after a noun or pronoun, 都 <b>dōu</b> can mean <i>even</i>:</p>
         {dialog()}
+        {newCharacters()}
         {review()}
       </div>
     );

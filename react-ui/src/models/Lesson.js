@@ -4,6 +4,7 @@ const LessonRecord = Immutable.Record({
   id: null,
   title: '',
   number: 0,
+  characters: [],
   examples: [],
   dialogs: []
 });

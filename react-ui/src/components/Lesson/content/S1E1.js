@@ -11,6 +11,7 @@ export default class S1E1 extends Component {
     return (
       <div>
         {lessonTitle()}
+        {newCharacters()}
         <c.GrammarTitle letter={getGrammarLetter()}>
           Pronunciation of 一
         </c.GrammarTitle>
@@ -26,6 +27,7 @@ export default class S1E1 extends Component {
         </c.GrammarTitle>
         <p>These pronouns function very much like in English.</p>
         {example()}
+        <br/>
         {example()}
         <c.GrammarTitle letter={getGrammarLetter()}>
           Measure words or &quot;classifiers&quot;.
@@ -42,16 +44,22 @@ export default class S1E1 extends Component {
             {example()}
             <p>But if we point at a <em>particular</em> book or books, we need to use a classifier:</p>
             {example()}
+            <br/>
             {example()}
+            <br/>
             {example()}
+            <br/>
             {example()}
+            <br/>
             {example()}
+            <br/>
             {example()}
             <c.GrammarTitle letter={getGrammarLetter()}>
               那 or 那么, meaning <em>in that case</em> or <em>so</em>
             </c.GrammarTitle>
             <p>Used as a response to a statement, 那 <strong>nà</strong> or  那么 <strong>nàme̊</strong> can mean <em>in that case</em>, <em>OK then</em>:</p>
             {example()}
+            <br/>
             <p>It can also be used to start a phrase where the speaker wants to emphasize a connection to what has just been said, similar to English <em>so</em>. It is often shortened to just 那 <strong>nà</strong>:</p>
             {example()}
             <c.GrammarTitle letter={getGrammarLetter()}>
@@ -65,7 +73,6 @@ export default class S1E1 extends Component {
             <p>The character 个 is not only a measure word; it can also appear in other words. In this lesson, for example, we have the expression 我个人 <strong>wǒ gèrén</strong> <em>I personally</em> (I PARTICULAR-PERSON):</p>
             {example()}
             {dialog()}
-            {newCharacters()}
             {review()}
       </div>
     );

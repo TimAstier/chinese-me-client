@@ -8,12 +8,18 @@ const ChineseWrapper = styled.div`
   margin: 8px 0px;
 `;
 
+const Placeholder = styled.span`
+  color: red;
+`;
+
 class Statement extends Component {
   renderChinese() {
     return (
       <ChineseWrapper>
         {this.props.name ? this.props.name + ' : ' : '- '}
-        {this.props.text}
+        {this.props.text ?
+          this.props.text
+            : <Placeholder>{'MISSING CHINESE'}</Placeholder>}
       </ChineseWrapper>
     );
   }
@@ -22,7 +28,9 @@ class Statement extends Component {
     return (
       <div>
         {this.props.name ? this.props.name + ' : ' : '- '}
-        {<b>{this.props.text}</b>}
+        {this.props.text ?
+          <b>{this.props.text}</b>
+          : <Placeholder>{'MISSING PINYIN'}</Placeholder>}
       </div>
     );
   }
@@ -31,7 +39,9 @@ class Statement extends Component {
     return (
       <div>
         {this.props.name ? this.props.name + ' : ' : '- '}
-        {<i>{this.props.text}</i>}
+        {this.props.text ?
+          <i>{this.props.text}</i>
+          : <Placeholder>{'MISSING TRANSLATION'}</Placeholder>}
       </div>
     );
   }
@@ -49,7 +59,7 @@ class Statement extends Component {
 Statement.propTypes = {
   type: propTypes.oneOf(['chinese', 'pinyin', 'translation']).isRequired,
   name: propTypes.string,
-  text: propTypes.string.isRequired
+  text: propTypes.string
 };
 
 export default Statement;

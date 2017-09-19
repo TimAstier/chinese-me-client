@@ -21,8 +21,6 @@ class ContentHOC extends Component {
   newCharactersDumper = characters => {
     return () => {
       if (characters.length === 0) {
-        // eslint-disable-next-line no-console
-        console.log('Error: tried to render unexisting characters in Lesson');
         return <Placeholder>{'{NEW_CHARACTERS PLACEHOLDER}'}</Placeholder>;
       }
       const array = [];
@@ -51,17 +49,21 @@ class ContentHOC extends Component {
     return () => {
       count++;
       if (count >= examples.length) {
-        // eslint-disable-next-line no-console
-        console.log('Error: tried to render unexisting example in Lesson');
         return <Placeholder>{`{EXAMPLE #${count + 1} PLACEHOLDER}`}</Placeholder>;
       }
+      const translation = examples[count].translations[0] ?
+        examples[count].translations[0].translation
+        : undefined;
+      const literalTranslation = examples[count].translations[0] ?
+        examples[count].translations[0].literalTranslation
+        : undefined;
       return (
         <c.Example
           code={getGrammarSentenceCode(number)}
           chinese={examples[count].chinese}
           pinyin={examples[count].pinyin}
-          translation={examples[count].translations[0].translation}
-          literalTranslation={examples[count].translations[0].literalTranslation}
+          translation={translation}
+          literalTranslation={literalTranslation}
         />
       );
     };
@@ -72,8 +74,6 @@ class ContentHOC extends Component {
     return () => {
       count++;
       if (count >= dialogs.length) {
-        // eslint-disable-next-line no-console
-        console.log('Error: tried to render unexisting dialog in Lesson');
         return <Placeholder>{'{DIALOG PLACEHOLDER}'}</Placeholder>;
       }
       return (
@@ -105,7 +105,11 @@ class ContentHOC extends Component {
         if (sentenceType === 'chinese') {
           text = text + ' ' + sentence.chinese;
         } else {
-          text = text + ' ' + sentence.translations[0].translation;
+          if (sentence.translations[0]) {
+            text = text + ' ' + sentence.translations[0].translation;
+          } else {
+            text = undefined;
+          }
         }
       });
       array.push(

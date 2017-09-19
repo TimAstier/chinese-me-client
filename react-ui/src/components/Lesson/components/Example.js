@@ -7,7 +7,7 @@ const Wrapper = styled.div`
 `;
 
 const NumberWrapper = styled.div`
-  width: 30px;
+  width: 40px;
 `;
 
 const SentenceWrapper = styled.div`
@@ -23,6 +23,10 @@ const Translation = styled.span`
   font-style: italic;
 `;
 
+const Placeholder = styled.span`
+  color: red;
+`;
+
 class Example extends Component {
 
   render() {
@@ -32,7 +36,10 @@ class Example extends Component {
         <SentenceWrapper>
           <span>{this.props.chinese}</span>
           <Pinyin>{this.props.pinyin}</Pinyin>
-          <Translation>{this.props.translation}</Translation>
+          {this.props.translation ?
+            <Translation>{this.props.translation}</Translation>
+            : <Placeholder>{'MISSING TRANSLATION'}</Placeholder>
+          }
           {this.props.literalTranslation &&
             <span>{this.props.literalTranslation}</span>}
         </SentenceWrapper>
@@ -45,7 +52,7 @@ Example.propTypes = {
   code: propTypes.string.isRequired,
   chinese: propTypes.string.isRequired,
   pinyin: propTypes.string.isRequired,
-  translation: propTypes.string.isRequired,
+  translation: propTypes.string,
   literalTranslation: propTypes.string
 };
 

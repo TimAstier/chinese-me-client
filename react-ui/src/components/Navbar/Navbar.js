@@ -86,7 +86,8 @@ class Navbar extends Component {
         <RightMenuWrapper>
           <UserMenuWrapper>
             <UserIconWrapper>
-              <img src={userIcon} alt="user icon"/>
+              {this.props.isAuthenticated &&
+                <img src={userIcon} alt="user icon"/>}
             </UserIconWrapper>
           </UserMenuWrapper>
           <SendFeedbackWrapper>
@@ -106,7 +107,8 @@ class Navbar extends Component {
 
 Navbar.propTypes = {
   askQuestion: propTypes.func.isRequired,
-  openMapModal: propTypes.func.isRequired
+  openMapModal: propTypes.func.isRequired,
+  isAuthenticated: propTypes.bool.isRequired
 };
 
 export default Navbar;

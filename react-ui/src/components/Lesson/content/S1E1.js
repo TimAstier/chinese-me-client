@@ -21,7 +21,7 @@ export default class S1E1 extends Component {
         <p>If you want to clarify, you can add the exact number, together with the appropriate measure word, before 都 <b>dōu</b>:</p>
         {example()}
         <br/>
-        <br/>
+        {example()}
         <p>In order to say <i>both... and</i>, the speaker will list two or more things followed by 都 <b>dōu</b>.</p>
         <br/>
         <p>In the pattern above, you may have noticed that Chinese uses a special comma as a break between items in a list which is different from the comma used to create a pause in sentences. Here is a sentence using both kinds of commas:</p>

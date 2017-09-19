@@ -17,13 +17,13 @@ class PartTitle extends Component {
       return <H2>{this.props.children}</H2>;
     }
     return (
-        <Link to={this.props.linkUrl}>
-          <H2>
-            <LinkComponent>
-              {this.props.children}
-            </LinkComponent>
-          </H2>
-        </Link>
+      <H2>
+        <LinkComponent>
+          <Link to={this.props.linkUrl}>
+            {this.props.children}
+          </Link>
+        </LinkComponent>
+      </H2>
     );
   }
 }

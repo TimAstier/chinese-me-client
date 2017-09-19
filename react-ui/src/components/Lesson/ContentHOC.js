@@ -3,6 +3,11 @@ import propTypes from 'prop-types';
 import * as c from './components';
 import { getGrammarSentenceCode } from '../../utils/lessonContent';
 import * as models from '../../models';
+import styled from 'styled-components';
+
+const Placeholder = styled.p`
+  color: red;
+`;
 
 class ContentHOC extends Component {
 
@@ -21,7 +26,7 @@ class ContentHOC extends Component {
       if (count >= examples.length) {
         // eslint-disable-next-line no-console
         console.log('Error: tried to render unexisting example in Lesson');
-        return null;
+        return <Placeholder>{'{EXAMPLE PLACEHOLDER}'}</Placeholder>;
       }
       return (
         <c.Example
@@ -42,7 +47,7 @@ class ContentHOC extends Component {
       if (count >= dialogs.length) {
         // eslint-disable-next-line no-console
         console.log('Error: tried to render unexisting dialog in Lesson');
-        return null;
+        return <Placeholder>{'{DIALOG PLACEHOLDER}'}</Placeholder>;
       }
       return (
         <div>

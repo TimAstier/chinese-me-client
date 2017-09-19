@@ -53,7 +53,7 @@ class ContentHOC extends Component {
       if (count >= examples.length) {
         // eslint-disable-next-line no-console
         console.log('Error: tried to render unexisting example in Lesson');
-        return <Placeholder>{'{EXAMPLE PLACEHOLDER}'}</Placeholder>;
+        return <Placeholder>{`{EXAMPLE #${count + 1} PLACEHOLDER}`}</Placeholder>;
       }
       return (
         <c.Example

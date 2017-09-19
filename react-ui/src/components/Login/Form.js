@@ -36,6 +36,7 @@ const FormErrorWrapper = styled.div`
   font-family: 'Open Sans';
   font-size: 14px;
   color: #f65859;
+  text-align: center;
 `;
 
 class Form extends Component {

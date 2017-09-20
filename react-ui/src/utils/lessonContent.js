@@ -1,9 +1,5 @@
-import createCounter from './createCounter';
 import integerToAlphabet from './integerToAlphabet';
 
-const grammarCounter = createCounter();
-const grammarSentenceCounter = createCounter();
-
-export const getGrammarLetter = () => integerToAlphabet(grammarCounter());
-export const getGrammarSentenceCode = lessonNumber =>
-  lessonNumber + ':' + grammarSentenceCounter();
+export const getGrammarLetter = count => integerToAlphabet(count);
+export const getGrammarSentenceCode = (lessonNumber, count) =>
+  lessonNumber + ':' + count;

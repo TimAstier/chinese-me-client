@@ -13,16 +13,16 @@ class Title extends Component {
 
   render() {
     return (
-        <H3>
-          {this.props.letter + '. '}
-          {<span>{this.props.children}</span>}
-        </H3>
+      <H3>
+        {this.props.letter + '. '}
+        {<span>{this.props.title}</span>}
+      </H3>
     );
   }
 }
 
 Title.propTypes = {
-  children: propTypes.oneOfType([propTypes.string, propTypes.array]).isRequired,
+  title: propTypes.object.isRequired,
   letter: propTypes.string.isRequired
 };
 

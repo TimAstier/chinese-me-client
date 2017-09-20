@@ -71,7 +71,7 @@ class Navbar extends Component {
         <LogoWrapper><img src={logo} alt="chineseMe logo"/></LogoWrapper>
         <LeftMenuWrapper>
           <LeftMenuItem>
-            <Link to="/study/select" style={{ color: '#ffffff' }}>
+            <Link to="/study" style={{ color: '#ffffff' }}>
               Episodes
             </Link>
           </LeftMenuItem>

@@ -5,5 +5,6 @@ export const content = {
   newCharacters: propTypes.func.isRequired,
   example: propTypes.func.isRequired,
   lessonTitle: propTypes.func.isRequired,
-  dialog: propTypes.func.isRequired
+  dialog: propTypes.func.isRequired,
+  grammarTitle: propTypes.func.isRequired
 };

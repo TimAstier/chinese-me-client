@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import * as c from './components';
-import { getGrammarSentenceCode } from '../../utils/lessonContent';
+import { getGrammarSentenceCode, getGrammarLetter }
+  from '../../utils/lessonContent';
 import * as models from '../../models';
 import styled from 'styled-components';
 
@@ -19,6 +20,19 @@ class ContentHOC extends Component {
         title={title}
       />
     );
+  }
+
+  grammarTitle = () => {
+    let count = 0;
+    return title => {
+      count++;
+      return (
+        <c.GrammarTitle
+          letter={getGrammarLetter(count)}
+          title={title}
+        />
+      );
+    };
   }
 
   newCharactersDumper = characters => {
@@ -62,7 +76,7 @@ class ContentHOC extends Component {
         : undefined;
       return (
         <c.Example
-          code={getGrammarSentenceCode(number)}
+          code={getGrammarSentenceCode(number, count + 1)}
           chinese={examples[count].chinese}
           pinyin={examples[count].pinyin}
           translation={translation}
@@ -150,6 +164,7 @@ class ContentHOC extends Component {
         example={this.examplesDumper(examples)}
         dialog={this.dialogsDumper(dialogs)}
         review={this.reviewDumper}
+        grammarTitle={this.grammarTitle()}
       />
     );
   }

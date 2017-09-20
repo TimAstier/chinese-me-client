@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import * as c from '../components';
-import { getGrammarLetter } from '../../../utils/lessonContent';
 import { content as contentPropTypes } from '../../../helpers/propTypes';
 import styled from 'styled-components';
 
@@ -16,15 +15,14 @@ export default class S1E1 extends Component {
   static propTypes = contentPropTypes
 
   render() {
-    const { newCharacters, example, lessonTitle, dialog, review } = this.props;
+    const { newCharacters, example, lessonTitle, dialog, review, grammarTitle }
+      = this.props;
     return (
       <Book>
         {lessonTitle()}
         {newCharacters()}
         <c.PartTitle>Grammar</c.PartTitle>
-        <c.GrammarTitle letter={getGrammarLetter()}>
-          Pronunciation of 一
-        </c.GrammarTitle>
+        {grammarTitle(<span>Pronunciation of 一</span>)}
         <p>We have seen that the word 不, <strong>bù</strong>, <em>no</em>, <em>not</em>, has different tones depending on the tone of the character coming after it. The same is true for the number 一, <em>one</em>:</p>
         <p>On its own, for example in a phone number or when we count, it is pronounced <strong>yī</strong>, with tone one:</p>
         <c.Ul>
@@ -40,16 +38,12 @@ export default class S1E1 extends Component {
           <li>一点 <strong>yì diǎn</strong> <em>a bit</em>; <em>a little bit</em></li>
           <li>一点 <strong>yì diǎndiǎn</strong> <em>a tiny bit</em>; <em>a tiny little bit</em></li>
         </c.Ul>
-        <c.GrammarTitle letter={getGrammarLetter()}>
-          The demonstrative pronouns 这 <strong>zhè</strong> <em>this</em> and 那 <strong>nà</strong> <em>that</em>.
-        </c.GrammarTitle>
+        {grammarTitle(<span>The demonstrative pronouns 这 <strong>zhè</strong> <em>this</em> and 那 <strong>nà</strong> <em>that</em>.</span>)}
         <p>These pronouns function very much like in English.</p>
         {example()}
         <br/>
         {example()}
-        <c.GrammarTitle letter={getGrammarLetter()}>
-          Measure words or &quot;classifiers&quot;.
-        </c.GrammarTitle>
+        {grammarTitle(<span>Measure words or &quot;classifiers&quot;.</span>)}
         <p><em>Measure words</em>, also called <em>classifiers</em>, are an important feature of Chinese. Measure words exist in all languages: in <em>one liter of milk</em>, for example, <em>liter</em> is the measure word for <em>milk</em>; the same goes for two <em>rolls</em> of tape, a <em>little bit</em> of English and a <em>group</em> of people.</p>
         <p>But Chinese uses measure words for <em>all</em> nouns, not just things that can be &quot;measured&quot; like a liter of milk. You cannot just say <em>a book</em> or <em>a language</em>; you have to say <em>a &quot;volume&quot; of book</em> and <em>a &quot;portal&quot; of language</em>. English has a similar phenomenon with uncountable nouns:
           we say <em>a piece of news</em> rather than just <em>a news</em>. Here, <em>piece</em> is the measure word for <em>news</em>. The difference is that Chinese treats <em>all</em> nouns in this way.</p>
@@ -89,22 +83,16 @@ export default class S1E1 extends Component {
         {example()}
         <br/>
         {example()}
-        <c.GrammarTitle letter={getGrammarLetter()}>
-          那 or 那么, meaning <em>in that case</em> or <em>so</em>
-        </c.GrammarTitle>
+        {grammarTitle(<span>那 or 那么, meaning <em>in that case</em> or <em>so</em></span>)}
         <p>Used as a response to a statement, 那 <strong>nà</strong> or  那么 <strong>nàme̊</strong> can mean <em>in that case</em>, <em>OK then</em>:</p>
         {example()}
         <br/>
         <p>It can also be used to start a phrase where the speaker wants to emphasize a connection to what has just been said, similar to English <em>so</em>. It is often shortened to just 那 <strong>nà</strong>:</p>
         {example()}
-        <c.GrammarTitle letter={getGrammarLetter()}>
-          Follow-on questions using 呢
-        </c.GrammarTitle>
+        {grammarTitle(<span>Follow-on questions using 呢</span>)}
         <p>In this lesson, we encounter a new question particle, 呢 <strong>ne̊</strong>. It has several uses; in the present case, it is used to pose follow-on questions of the type <em>what about you?</em></p>
         {example()}
-        <c.GrammarTitle letter={getGrammarLetter()}>
-          我个人 <em>I personally</em>
-        </c.GrammarTitle>
+        {grammarTitle(<span>我个人 <em>I personally</em></span>)}
         <p>The character 个 is not only a measure word; it can also appear in other words. In this lesson, for example, we have the expression 我个人 <strong>wǒ gèrén</strong> <em>I personally</em> (I PARTICULAR-PERSON):</p>
         {example()}
         {dialog()}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router';
+import { Route, IndexRoute } from 'react-router';
 // import { IndexRoute } from 'react-router';
 import requireAuth from './utils/requireAuth';
 import * as containers from './containers';
@@ -32,8 +32,8 @@ export default (
     <Route path="signup/email_sent" component={components.EmailSentPage} />
     <Route path="login" component={containers.LoginPage} />
     <Route path="study" component={containers.Study}>
+      <IndexRoute component={containers.SelectEpisode} />
       <Route path="season/:seasonNumber/lesson/:lessonNumber" component={containers.Lesson} />
-      <Route path="select" component={containers.SelectEpisode} />
       <Route path=":episodeId" component={requireAuth(containers.EpisodeScreen)}>
         <Route path="title/:partNumber" component={containers.Title} />
         <Route path="character/:characterId/pinyin" component={containers.CharacterPinyin} />
@@ -47,6 +47,5 @@ export default (
         <Route path="audioToText/:id" component={containers.AudioToText} />
       </Route>
     </Route>
-
   </Route>
 );

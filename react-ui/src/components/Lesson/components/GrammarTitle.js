@@ -3,7 +3,7 @@ import propTypes from 'prop-types';
 import styled from 'styled-components';
 
 const H3 = styled.h3`
-  font-size: 16px;
+  font-size: 18px;
   font-family: 'Calibri';
   color: black;
   font-weight: normal;

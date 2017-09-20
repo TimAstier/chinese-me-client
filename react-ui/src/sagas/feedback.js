@@ -1,8 +1,7 @@
-import { takeEvery, call, put, select, all } from 'redux-saga/effects';
+import { takeEvery, call, put, all } from 'redux-saga/effects';
 import { delay } from 'redux-saga';
 import { types as sagaTypes } from './actions';
 import Api from '../utils/api';
-import selectors from '../rootSelectors';
 import { actions as uiActions } from '../redux/ui';
 
 function* sendFeedback(action) {
@@ -10,13 +9,12 @@ function* sendFeedback(action) {
   const { values, resolve, reject } = action.payload;
   const subject = values.get('subject');
   const message = values.get('message');
-  const userId = yield select(selectors.getCurrentUserId);
   try {
     yield all([
       call(
         Api.post,
         '/feedbacks',
-        { subject, message, userId }
+        { subject, message }
       ),
       yield delay(1000)
     ]);

@@ -15,6 +15,12 @@ const SentenceWrapper = styled.div`
   flex-direction: column;
 `;
 
+const Chinese = styled.span`
+  font-size: 20px;
+  font-family: 'STKaitiSC';
+  margin-bottom: 5px;
+`;
+
 const Pinyin = styled.span`
   font-weight: bold;
 `;
@@ -34,7 +40,7 @@ class Example extends Component {
       <Wrapper>
         <NumberWrapper>{this.props.code}</NumberWrapper>
         <SentenceWrapper>
-          <span>{this.props.chinese}</span>
+          <Chinese>{this.props.chinese}</Chinese>
           <Pinyin>{this.props.pinyin}</Pinyin>
           {this.props.translation ?
             <Translation>{this.props.translation}</Translation>

@@ -14,7 +14,10 @@ class ContentHOC extends Component {
   lessonTitle = () => {
     const { number, title } = this.props.lesson;
     return (
-      <c.LessonTitle>{`Episode ${number}: ${title}`}</c.LessonTitle>
+      <c.LessonTitle
+        label={`Episode ${number}`}
+        title={title}
+      />
     );
   }
 
@@ -82,12 +85,16 @@ class ContentHOC extends Component {
           <c.PartTitle
             linkUrl={`/study/${this.props.lesson.id}/dialog/${dialogs[count].id}/listen`}
           >
-            {`会话：${dialogs[count].chineseTitle}`}
+            {dialogs[count].chineseTitle ?
+              `会话：${dialogs[count].chineseTitle}`
+                : <Placeholder>{'{MISSING CHINESE_TITLE}'}</Placeholder>}
           </c.PartTitle>
           <p>{dialogs[count].translations[0].intro}</p>
-          <p>{dialogs[count].englishIntro}</p>
           {this.renderDialog(dialogs[count], 'chinese')}
-          <c.PartTitle>{`Dialog：${dialogs[count].translations[0].titleTranslation}`}</c.PartTitle>
+          { dialogs[count].translations[0] && dialogs[count].translations[0].titleTranslation ?
+            <c.PartTitle>{`Dialog：${dialogs[count].translations[0].titleTranslation}`}</c.PartTitle>
+            : <c.PartTitle><Placeholder>{'{MISSING TRANSLATION_TITLE}'}</Placeholder></c.PartTitle>
+          }
           {this.renderDialog(dialogs[count], 'translation')}
         </div>
       );

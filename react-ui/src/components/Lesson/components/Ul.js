@@ -4,6 +4,9 @@ import styled from 'styled-components';
 
 const StyledUl = styled.ul`
   list-style-type: none;
+  li {
+    line-height: 25px;
+  }
 `;
 
 class Ul extends Component {
@@ -16,7 +19,7 @@ class Ul extends Component {
 }
 
 Ul.propTypes = {
-  children: propTypes.array.isRequired
+  children: propTypes.oneOfType([propTypes.array, propTypes.object]).isRequired
 };
 
 export default Ul;

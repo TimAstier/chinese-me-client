@@ -5,7 +5,7 @@ import { Link as LinkComponent } from '../../Shared';
 import { Link } from 'react-router';
 
 const H2 = styled.h2`
-  font-size: 18px;
+  font-size: 20px;
   font-family: 'Calibri';
   color: black;
 `;
@@ -29,7 +29,7 @@ class PartTitle extends Component {
 }
 
 PartTitle.propTypes = {
-  children: propTypes.string.isRequired,
+  children: propTypes.oneOfType([propTypes.string, propTypes.object]).isRequired,
   linkUrl: propTypes.string
 };
 

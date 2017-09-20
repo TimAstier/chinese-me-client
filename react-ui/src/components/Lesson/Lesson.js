@@ -20,18 +20,19 @@ const ScreenWrapper = styled.div`
 class Lesson extends Component {
   render() {
     const Content = this.props.content;
-    return (
-      <ScrollableAppWrapper>
-        <ScreenWrapper>
-          {this.props.initialized &&
+    if (this.props.initialized) {
+      return (
+        <ScrollableAppWrapper>
+          <ScreenWrapper>
             <ContentHOC
               lesson={this.props.lesson}
               content={Content}
             />
-          }
-        </ScreenWrapper>
-      </ScrollableAppWrapper>
-    );
+          </ScreenWrapper>
+        </ScrollableAppWrapper>
+      );
+    }
+    return null;
   }
 }
 

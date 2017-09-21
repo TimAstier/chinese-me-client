@@ -69,7 +69,7 @@ class Navbar extends Component {
     return (
       <Wrapper>
         <LogoWrapper>
-          <Link to="/study" style={{ color: '#ffffff' }}>
+          <Link to="/">
             <img src={logo} alt="chineseMe logo"/>
           </Link>
         </LogoWrapper>

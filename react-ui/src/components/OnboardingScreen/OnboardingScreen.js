@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
 import logo from '../../images/whiteBackgroundLogo.svg';
+import { Link } from 'react-router';
 
 const Wrapper = styled.div`
   width: 640px;
@@ -49,7 +50,9 @@ class OnboardingScreen extends Component {
           {this.props.children}
         </ContentWrapper>
         <Footer>
-          <img src={logo} alt="ChineseMe logo" />
+          <Link to="/">
+            <img src={logo} alt="ChineseMe logo" />
+          </Link>
         </Footer>
       </Wrapper>
     );

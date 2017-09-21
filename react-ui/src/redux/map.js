@@ -1,6 +1,5 @@
 import { fromJS } from 'immutable';
 import { types as studyTypes } from './study';
-import { types as sagaTypes } from '../sagas/actions';
 
 // Action types
 
@@ -28,8 +27,6 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
         focusedEpisodeId: action.payload.id,
         isLoading: true
       });
-    case sagaTypes.EXIT:
-      return state.set('focusedEpisodeId', null);
     case types.SET_DATA:
       return state.merge({
         characters: action.payload.data.characters,

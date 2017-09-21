@@ -34,7 +34,9 @@ export const types = {
   ELEMENTS_NAV_PREVIOUS_CLICK: 'signal/ELEMENTS_NAV_PREVIOUS_CLICK',
   ELEMENTS_NAV_NEXT_CLICK: 'signal/ELEMENTS_NAV_NEXT_CLICK',
   NEXT_SCREEN: 'signal/NEXT_SCREEN',
-  REVIEW_COMPLETED: 'signal/REVIEW_COMPLETED'
+  REVIEW_COMPLETED: 'signal/REVIEW_COMPLETED',
+  START_EPISODE: 'signal/START_EPISODE',
+  RUN_EPISODE_SCREEN: 'signal/RUN_EPISODE_SCREEN'
 };
 
 // Action Creators
@@ -100,6 +102,14 @@ const nextScreen = () => ({
 const reviewCompleted = () => ({
   type: types.REVIEW_COMPLETED
 });
+const startEpisode = id => ({
+  type: types.START_EPISODE,
+  payload: { id }
+});
+const runEpisodeScreen = url => ({
+  type: types.RUN_EPISODE_SCREEN,
+  payload: { url }
+});
 
 export const actions = {
   next,
@@ -131,5 +141,7 @@ export const actions = {
   elementsNavPreviousClick,
   elementsNavNextClick,
   nextScreen,
-  reviewCompleted
+  reviewCompleted,
+  startEpisode,
+  runEpisodeScreen
 };

@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import { put, call, race, take, takeLatest } from 'redux-saga/effects';
-import { types as studyTypes, actions as studyActions } from '../redux/study';
+import { actions as studyActions } from '../redux/study';
 import { actions as uiActions } from '../redux/ui';
 import { elementTypes, elementTypesToTrack } from '../constants/study';
 import { actions as sagaActions, types as sagaTypes } from './actions';
@@ -15,7 +15,7 @@ import Api from '../utils/api';
 // 4. initUi
 // 5. run
 // 6. onCompleted
-function* initScreen(action) {
+function* runEpisodeScreen(action) {
   // IMPORTANT: start by hiding screen content
   yield put(studyActions.setInitialized(false)); // Hide screen content
   yield call(defaultEpisodeScreenUi); // Init Episode Screen UI
@@ -84,11 +84,11 @@ function* defaultEpisodeScreenUi() {
 // This allows to end initScreen (when leaving episodeScreen for example)
 function* finishOrExitScreen(action) {
   return yield race({
-    initScreen: call(initScreen, action),
+    runEpisodeScreen: call(runEpisodeScreen, action),
     exit: take(sagaTypes.EXIT)
   });
 }
 
 export default function* watchStudySagas() {
-  yield takeLatest(studyTypes.INIT_SCREEN, finishOrExitScreen);
+  yield takeLatest(sagaTypes.RUN_EPISODE_SCREEN, finishOrExitScreen);
 }

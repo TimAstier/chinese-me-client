@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { actions as studyActions } from '../../redux/study';
+import { actions as sagaActions } from '../../sagas/actions';
 import { Episode } from '../../models';
 import propTypes from 'prop-types';
 
@@ -35,6 +35,6 @@ EpisodeCard.propTypes = {
 export default connect(
   null,
   {
-    startEpisode: studyActions.startEpisode
+    startEpisode: sagaActions.startEpisode
   }
 )(EpisodeCard);

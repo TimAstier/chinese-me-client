@@ -1,14 +1,17 @@
 /* eslint-disable no-constant-condition */
 import { takeEvery, put, call, all, select } from 'redux-saga/effects';
 import { actions as sagaActions, types as sagaTypes } from './actions';
-import { types as studyTypes, actions as studyActions } from '../redux/study';
+import { actions as studyActions } from '../redux/study';
 import { actions as entitiesActions } from '../redux/entities';
 import { actions as uiActions } from '../redux/ui';
+import { actions as mapActions } from '../redux/map';
 import { push } from 'react-router-redux';
 import selectors from '../rootSelectors';
 import getParamsFromUrl from '../utils/getParamsFromUrl';
 
 function* exitEpisode() {
+  yield put(mapActions.setFocusedEpisodeId(null));
+  yield put(studyActions.setCurrentEpisodeId(null));
   yield put(push('/study'));
   // Only clear entities directly linked to ONE episode
   yield put(entitiesActions.clearAllBut(['episodes', 'seasons']));
@@ -96,7 +99,7 @@ function* startEpisode(action) {
 
 export default function* watchEpisodeSagas() {
   yield all([
-    takeEvery(studyTypes.START_EPISODE, startEpisode),
+    takeEvery(sagaTypes.START_EPISODE, startEpisode),
     takeEvery(sagaTypes.EXIT, exitEpisode),
     takeEvery(sagaTypes.ASK_QUESTION, askQuestion),
     takeEvery(sagaTypes.NEXT_SCREEN, nextScreen)

@@ -8,13 +8,15 @@ import { push } from 'react-router-redux';
 import selectors from '../rootSelectors';
 
 function* fetchMapData(action) {
-  try {
-    const episodeId = action.payload.id;
-    const response = yield call(Api.get, '/episodes/' + episodeId + '/map');
-    yield put(mapActions.setData(response.data.data.attributes));
-    yield put(mapActions.fetchSuccess());
-  } catch (error) {
-    yield put(yield put(mapActions.fetchFail(error)));
+  const episodeId = action.payload.id;
+  if ( episodeId !== null ) {
+    try {
+      const response = yield call(Api.get, '/episodes/' + episodeId + '/map');
+      yield put(mapActions.setData(response.data.data.attributes));
+      yield put(mapActions.fetchSuccess());
+    } catch (error) {
+      yield put(yield put(mapActions.fetchFail(error)));
+    }
   }
 }
 

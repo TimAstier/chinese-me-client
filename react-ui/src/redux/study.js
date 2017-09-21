@@ -1,5 +1,4 @@
 import Immutable from 'immutable';
-import { types as sagaTypes } from '../sagas/actions';
 
 // Action Types
 
@@ -13,7 +12,6 @@ export const types = {
   SET_CURRENT_SENTENCE_ID: 'study/SET_CURRENT_SENTENCE_ID',
   SET_CURRENT_MULTIPLE_CHOICE_ID: 'study/SET_CURRENT_MULTIPLE_CHOICE_ID',
   SET_CURRENT_AUDIO_TO_TEXT_ID: 'study/SET_CURRENT_AUDIO_TO_TEXT_ID',
-  START_EPISODE: 'study/START_EPISODE',
   SET_DIALOG_MODE: 'study/SET_DIALOG_MODE',
   SET_PART_NUMBER: 'study/SET_PART_NUMBER',
   SET_CHOSEN_AVATAR_ID: 'study/CHOSEN_AVATAR_ID',
@@ -44,15 +42,9 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
   switch (action.type) {
     case types.CLEAR:
       return INITIAL_STATE;
-    case sagaTypes.EXIT:
-      // Clear all but currentSeasonId and currentEpisodeId
-      return state.merge(
-        INITIAL_STATE.delete('currentSeasonId').delete('currentEpisodeId')
-      );
     case types.SET_CURRENT_SEASON_ID:
       return state.set('currentSeasonId', action.payload.id);
     case types.SET_CURRENT_EPISODE_ID:
-    case types.START_EPISODE:
       return state.set('currentEpisodeId', action.payload.id);
     case types.SET_CURRENT_DIALOG_ID:
       return state.set('currentDialogId', action.payload.id);
@@ -74,8 +66,6 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
       return state.set('chosenAvatarId', action.payload.id);
     case types.SET_CURRENT_CHARACTER_ID:
       return state.set('currentCharacterId', action.payload.id);
-    case types.INIT_SCREEN:
-      return state.set('initialized', false);
     case types.SET_INITIALIZED:
       return state.set('initialized', action.payload);
     default: return state;
@@ -140,11 +130,6 @@ const setCurrentAudioToTextId = id => {
   };
 };
 
-const startEpisode = id => ({
-  type: types.START_EPISODE,
-  payload: { id }
-});
-
 const setDialogMode = mode => {
   const modes = ['listen', 'explore', 'roleplay'];
   if (modes.findIndex(e => e === mode) === -1) {
@@ -177,11 +162,6 @@ const setInitialized = payload => ({
   payload
 });
 
-const initScreen = url => ({
-  type: types.INIT_SCREEN,
-  payload: { url }
-});
-
 export const actions = {
   setCurrentSeasonId,
   setCurrentEpisodeId,
@@ -191,13 +171,11 @@ export const actions = {
   setCurrentSentenceId,
   setCurrentMultipleChoiceId,
   setCurrentAudioToTextId,
-  startEpisode,
   setDialogMode,
   setPartNumber,
   setChosenAvatarId,
   setCurrentCharacterId,
-  setInitialized,
-  initScreen
+  setInitialized
 };
 
 // Selectors

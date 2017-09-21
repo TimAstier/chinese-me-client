@@ -68,17 +68,16 @@ class Navbar extends Component {
   render() {
     return (
       <Wrapper>
-        <LogoWrapper><img src={logo} alt="chineseMe logo"/></LogoWrapper>
+        <LogoWrapper>
+          <Link to="/study" style={{ color: '#ffffff' }}>
+            <img src={logo} alt="chineseMe logo"/>
+          </Link>
+        </LogoWrapper>
         <LeftMenuWrapper>
-          <LeftMenuItem>
-            <Link to="/study" style={{ color: '#ffffff' }}>
-              Episodes
-            </Link>
-          </LeftMenuItem>
           <LeftMenuItem>
             <Clickable>
               <div onClick={this.props.openMapModal}>
-                Links
+                Index
               </div>
             </Clickable>
           </LeftMenuItem>

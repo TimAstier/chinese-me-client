@@ -88,7 +88,6 @@ const getAudioToTexts = state => state.get('audioToTexts');
 const getWords = state => state.get('words');
 const getReviews = state => state.get('reviews');
 const getExamples = state => state.get('examples');
-const getLessons = state => state.get('lessons');
 
 export const selectors = {
   getAvatars,
@@ -103,6 +102,5 @@ export const selectors = {
   getAudioToTexts,
   getWords,
   getReviews,
-  getExamples,
-  getLessons
+  getExamples
 };

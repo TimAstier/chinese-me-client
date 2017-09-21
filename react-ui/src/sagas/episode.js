@@ -4,18 +4,16 @@ import { actions as sagaActions, types as sagaTypes } from './actions';
 import { types as studyTypes, actions as studyActions } from '../redux/study';
 import { actions as entitiesActions } from '../redux/entities';
 import { actions as uiActions } from '../redux/ui';
-import { actions as lessonActions } from '../redux/lesson';
 import { push } from 'react-router-redux';
 import selectors from '../rootSelectors';
 import getParamsFromUrl from '../utils/getParamsFromUrl';
 
 function* exitEpisode() {
-  yield put(lessonActions.setInitialized(false));
-  const episode = yield select(selectors.getCurrentEpisode);
-  yield put(push(`/study/season/${episode.seasonId}/lesson/${episode.number}`));
+  yield put(push('/study'));
   // Only clear entities directly linked to ONE episode
   yield put(entitiesActions.clearAllBut(['episodes', 'seasons']));
 }
+
 
 function* askQuestion() {
   yield put(uiActions.openFeedbackModal());

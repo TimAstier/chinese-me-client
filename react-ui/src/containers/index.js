@@ -10,7 +10,6 @@ export { default as EpisodeCard } from './EpisodeCard/EpisodeCard';
 export { default as EpisodeScreen } from './EpisodeScreen/EpisodeScreen';
 export { default as FeedbackModal } from './FeedbackModal/FeedbackModal';
 export { default as GrammarExplanation } from './GrammarExplanation/GrammarExplanation';
-export { default as Lesson } from './Lesson/Lesson';
 export { default as LoginPage } from './Login/Page';
 export { default as MapContent } from './MapModal/MapContent';
 export { default as MapModal } from './MapModal/MapModal';

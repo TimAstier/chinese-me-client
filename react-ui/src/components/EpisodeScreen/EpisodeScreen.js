@@ -125,8 +125,7 @@ class EpisodeScreen extends Component {
           <TopLeftWrapper>
             <Clickable>
               <ExitIcon onClick={this.props.exit}>
-                <div>Book</div>
-                <div>version</div>
+                Exit
               </ExitIcon>
             </Clickable>
           </TopLeftWrapper>

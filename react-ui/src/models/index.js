@@ -7,7 +7,6 @@ export { default as Dialog } from './Dialog';
 export { default as Episode } from './Episode';
 export { default as Example } from './Example';
 export { default as Grammar } from './Grammar';
-export { default as Lesson } from './Lesson';
 export { default as MultipleChoice } from './MultipleChoice';
 export { default as Review } from './Review';
 export { default as Season } from './Season';

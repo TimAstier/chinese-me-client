@@ -4,7 +4,7 @@ import propTypes from 'prop-types';
 import { actions as sagaActions } from '../../sagas/actions';
 
 class SignupActivate extends Component {
-  componentWillMount() {
+  componentDidMount() {
     const activationToken = this.props.routeParams.activationToken;
     return this.props.activate(activationToken);
   }

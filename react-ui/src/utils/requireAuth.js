@@ -8,26 +8,26 @@ import selectors from '../rootSelectors';
 
 export default function(ComposedComponent) {
   class Authenticate extends Component {
-    componentWillMount() {
+    componentDidMount() {
       if (!this.props.isAuthenticated) {
         // this.props.showFlashMessageWithTimeout({
         //   type: 'error',
         //   text: 'You need to login to access this page.'
         // }, 5000);
-        this.props.router.push('/login');
+        this.props.router.push('/signup');
       }
     }
 
-    // componentWillUpdate(nextProps) {
-    //   if (!nextProps.isAuthenticated) {
-    //     this.context.router.push('/');
-    //   }
-    // }
+    componentWillUpdate(nextProps) {
+      if (!nextProps.isAuthenticated) {
+        this.context.router.push('/signup');
+      }
+    }
 
     render() {
-      return (
+      return this.props.isAuthenticated ?
         <ComposedComponent {...this.props} />
-      );
+        : null;
     }
   }
 

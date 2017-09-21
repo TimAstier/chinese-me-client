@@ -15,7 +15,7 @@ const Wrapper = styled.div`
 `;
 
 class Study extends Component {
-  componentWillMount() {
+  componentDidMount() {
     return this.props.initApp();
   }
 

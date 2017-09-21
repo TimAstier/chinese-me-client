@@ -1,5 +1,4 @@
 import { fromJS } from 'immutable';
-import { types as studyTypes } from './study';
 
 // Action types
 
@@ -22,7 +21,6 @@ export const INITIAL_STATE = fromJS({
 export default function reducer(state = INITIAL_STATE, action = {}) {
   switch (action.type) {
     case types.SET_FOCUSED_EPISODE_ID:
-    case studyTypes.SET_CURRENT_EPISODE_ID:
       return state.merge({
         focusedEpisodeId: action.payload.id,
         isLoading: true

@@ -94,6 +94,7 @@ function* findNextUrl(params) {
 }
 
 function* startEpisode(action) {
+  yield put(mapActions.setFocusedEpisodeId(action.payload.id));
   return yield put(push('/study/' + action.payload.id + '/title/1'));
 }
 

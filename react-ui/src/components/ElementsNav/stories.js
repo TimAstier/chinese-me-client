@@ -57,6 +57,14 @@ storiesOf('ElementsNav', module)
       {...mockProps}
     />
   )
+  .add('10_of_99', () =>
+    <ElementsNav
+      type="character"
+      currentElement={10}
+      totalElements={99}
+      {...mockProps}
+    />
+  )
   .add('2 lefts', () =>
     <ElementsNav
       type="exercise"

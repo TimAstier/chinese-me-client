@@ -1,34 +1,34 @@
 const setEntities = (state, newEntities, Model) => {
   // Assumes the JSON Api is returning entities and relations
   // in the correct order
-  const records = newEntities.map(entity => {
-    const attributes = entity.get('attributes').toJS();
-    const object = {};
-    // Find all relationship Ids
-    if (entity.get('relationships')) {
-      const relationships = entity.get('relationships').toJS();
-      for (const entity in relationships) {
-        if (relationships.hasOwnProperty(entity)) {
-          object[entity] = relationships[entity].data.map(e => Number(e.id));
+  const records = {};
+  for (const newEntity in newEntities) {
+    if (newEntities.hasOwnProperty(newEntity)) {
+      const entity = newEntities[newEntity];
+      const attributes = entity.attributes;
+      const object = {};
+      // Find all relationship ids
+      if (entity.hasOwnProperty('relationships')) {
+        const relationships = entity.relationships;
+        for (const r in relationships) {
+          if (relationships.hasOwnProperty(r)) {
+            object[r] = relationships[r].data.map(e => Number(e.id));
+          }
         }
       }
-    }
-    // Un-next translations
-    if (entity.getIn(['attributes', 'translations'])) {
-      const translations = entity
-        .getIn(['attributes', 'translations']).get(0).toJS();
-      for (const translatedField in translations) {
-        if (translations.hasOwnProperty(translatedField)) {
-          object[translatedField] = translations[translatedField];
+      // Un-nest translations
+      if (attributes.hasOwnProperty('translations')) {
+        const translations = attributes.translations[0];
+        for (const translatedField in translations) {
+          if (translations.hasOwnProperty(translatedField)) {
+            object[translatedField] = translations[translatedField];
+          }
         }
+        delete attributes.translations;
       }
-      delete attributes.translations;
+      records[attributes.id] = new Model({ ...attributes, ...object });
     }
-    return new Model({
-      ...attributes,
-      ...object // relationships
-    });
-  });
+  }
   return state.merge(records);
 };
 

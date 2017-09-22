@@ -30,7 +30,6 @@ function* runEpisodeScreen(action) {
   } else {
     isDataLoaded = true;
   }
-  console.log(isDataLoaded)
   if (!isDataLoaded) { // Fetch data
     yield call(funcs.fetchData, episodeId);
     // TODO: handle fetch error

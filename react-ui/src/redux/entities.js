@@ -1,4 +1,4 @@
-import Immutable, { fromJS } from 'immutable';
+import Immutable from 'immutable';
 import setEntities from '../utils/setEntities';
 
 // Action Types
@@ -23,7 +23,9 @@ export default function createNamedEntityReducer(reducerName, EntityModel) {
         if (!action.entities[reducerName]) { return state; }
         return setEntities(
           state,
-          fromJS(action.entities[reducerName]),
+          // Select only the slice of the normalized response
+          // that matters for this entity reducer
+          action.entities[reducerName],
           EntityModel
         );
       case types.UPDATE:

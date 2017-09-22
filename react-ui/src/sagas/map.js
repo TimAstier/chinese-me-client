@@ -7,10 +7,8 @@ import { push } from 'react-router-redux';
 import selectors from '../rootSelectors';
 
 function* fetchMapData(action) {
-  console.log(action.payload.id)
   const episodeId = action.payload.id;
   if ( episodeId !== null ) {
-    console.log('fetch map data')
     try {
       const response = yield call(Api.get, '/episodes/' + episodeId + '/map');
       yield put(mapActions.setData(response.data.data.attributes));

@@ -10,12 +10,13 @@ import getParamsFromUrl from '../utils/getParamsFromUrl';
 import Api from '../utils/api';
 
 // Every screenType has those five "studyFunctions" (generators):
-// 1. checkData
+// 1. isDataLoaded
 // 2. fetchData
-// 3. initStudyData
-// 4. initUi
-// 5. run
-// 6. onCompleted
+// 3. checkData
+// 4. initStudyData
+// 5. initUi
+// 6. run
+
 function* runEpisodeScreen(action) {
   // IMPORTANT: start by hiding screen content
   yield put(studyActions.setInitialized(false)); // Hide screen content
@@ -28,7 +29,7 @@ function* runEpisodeScreen(action) {
   const funcs = getStudyFunctions(screenType); // Get studyFunctions
   let isDataLoaded = undefined;
   if (elementTypes.indexOf(elementType) !== -1) { // Check data
-    isDataLoaded = yield call(funcs.checkData, elementId);
+    isDataLoaded = yield call(funcs.isDataLoaded, elementId);
   } else {
     isDataLoaded = true;
   }
@@ -36,14 +37,17 @@ function* runEpisodeScreen(action) {
     yield call(funcs.fetchData, episodeId);
     // TODO: handle fetch error
   }
-  yield call(funcs.initStudyData); // Init studyData
-  yield call(funcs.initUi); // Init UI
-  yield put(studyActions.setInitialized(true)); // Display screen content
-  const result = yield call(runScreenSaga, funcs); // Run Saga(s) for the screen
-  if (elementTypesToTrack.indexOf(elementType) !== -1) { // Save progression on the server
-    if (result.skip || result.next) {
-      const completedCode = result.skip ? 1 : 2;
-      yield call(Api.post, `/${elementType}/${elementId}/completed`, { completedCode, mode });
+  const checkData = yield call(funcs.checkData); // Check if data is sufficient to run the screen
+  if (checkData) {
+    yield call(funcs.initStudyData); // Init studyData
+    yield call(funcs.initUi); // Init UI
+    yield put(studyActions.setInitialized(true)); // Display screen content
+    const result = yield call(runScreenSaga, funcs); // Run Saga(s) for the screen
+    if (elementTypesToTrack.indexOf(elementType) !== -1) { // Save progression on the server
+      if (result.skip || result.next) {
+        const completedCode = result.skip ? 1 : 2;
+        yield call(Api.post, `/${elementType}/${elementId}/completed`, { completedCode, mode });
+      }
     }
   }
   return yield put(sagaActions.nextScreen()); // Go to next screen
@@ -52,8 +56,9 @@ function* runEpisodeScreen(action) {
 function getStudyFunctions(screenType) {
   const module = mapScreenTypeToModule(screenType);
   return {
-    checkData: module.checkData,
+    isDataLoaded: module.isDataLoaded,
     fetchData: module.fetchData,
+    checkData: module.checkData,
     initStudyData: module.initStudyData,
     initUi: module.initUi,
     run: module.run

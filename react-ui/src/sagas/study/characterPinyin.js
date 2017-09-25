@@ -11,7 +11,7 @@ import { playSuccessSound, playWrongSound } from '../audio';
 import { actions as studyActions } from '../../redux/study';
 import { fetchEntities } from '../entities';
 
-export function* checkData(id) {
+export function* isDataLoaded(id) {
   yield put(studyActions.setCurrentCharacterId(id));
   const currentElement = yield select(selectors.getCurrentCharacter);
   return (currentElement === undefined) ? false : true;
@@ -20,6 +20,10 @@ export function* checkData(id) {
 export function* fetchData(episodeId) {
   return yield call(fetchEntities, ['/episode/' + episodeId + '/characters']);
   // TODO: handle fetch error
+}
+
+export function checkData() {
+  return true;
 }
 
 export function* initStudyData() {

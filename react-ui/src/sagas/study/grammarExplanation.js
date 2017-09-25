@@ -4,7 +4,7 @@ import { actions as studyActions } from '../../redux/study';
 import { actions as videoActions } from '../../redux/video';
 import { fetchEntities } from '../entities';
 
-export function* checkData(id) {
+export function* isDataLoaded(id) {
   yield put(studyActions.setCurrentGrammarId(id));
   const currentElement = yield select(selectors.getCurrentGrammar);
   return (currentElement === undefined) ? false : true;
@@ -13,6 +13,11 @@ export function* checkData(id) {
 export function* fetchData(episodeId) {
   return yield call(fetchEntities, ['/episode/' + episodeId + '/grammars']);
   // TODO: handle fetch error
+}
+
+export function* checkData() {
+  const currentElement = yield select(selectors.getCurrentGrammar);
+  return currentElement.videoUrl ? true : false;
 }
 
 export function* initStudyData() {

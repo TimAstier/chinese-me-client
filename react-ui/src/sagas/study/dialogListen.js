@@ -6,12 +6,16 @@ import selectors from '../../rootSelectors';
 import { types as sagaTypes } from '../actions';
 import { next, playSentence, checkDialogData, fetchDialogData } from './dialog';
 
-export function* checkData(id) {
+export function* isDataLoaded(id) {
   yield call(checkDialogData, id);
 }
 
 export function* fetchData(episodeId) {
   yield call(fetchDialogData, episodeId);
+}
+
+export function checkData() {
+  return true;
 }
 
 export function* initUi() {

@@ -5,7 +5,7 @@ import selectors from '../../rootSelectors';
 import { actions as reviewActions } from '../../redux/review';
 import { fetchEntities } from '../entities';
 
-export function* checkData(id) {
+export function* isDataLoaded(id) {
   if (id === '4') { // Review
     const initialized = yield select(selectors.getReviewInitialized);
     return initialized;
@@ -20,6 +20,10 @@ export function* fetchData(episodeId) {
   const exercises = reviews.getIn([episodeId, 'exercises']);
   yield put(reviewActions.setExercises(exercises));
   yield put(reviewActions.setInitialized(true));
+}
+
+export function checkData() {
+  return true;
 }
 
 export function* initUi() {

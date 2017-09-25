@@ -8,7 +8,7 @@ import { actions as fromUi } from '../../redux/ui';
 import { playSuccessSound, playWrongSound } from '../audio';
 import { actions as reviewActions } from '../../redux/review';
 
-export function* checkData(id) {
+export function* isDataLoaded(id) {
   yield put(studyActions.setCurrentMultipleChoiceId(id));
   const initialized = yield select(selectors.getReviewInitialized);
   if (!initialized) {
@@ -25,6 +25,10 @@ export function* fetchData(episodeId) {
   const exercises = reviews.getIn([episodeId, 'exercises']);
   yield put(reviewActions.setExercises(exercises));
   yield put(reviewActions.setInitialized(true));
+}
+
+export function checkData() {
+  return true;
 }
 
 export function* initStudyData() {

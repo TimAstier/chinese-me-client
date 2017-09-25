@@ -2,6 +2,7 @@
 import { put, call, race, take, takeLatest } from 'redux-saga/effects';
 import { actions as studyActions } from '../redux/study';
 import { actions as uiActions } from '../redux/ui';
+import { actions as mapActions } from '../redux/map';
 import { elementTypes, elementTypesToTrack } from '../constants/study';
 import { actions as sagaActions, types as sagaTypes } from './actions';
 import mapScreenTypeToModule from '../helpers/mapScreenTypeToModule';
@@ -22,6 +23,7 @@ function* runEpisodeScreen(action) {
   const { episodeId, elementType, elementId, mode }
     = getParamsFromUrl(action.payload.url); // Get params from url
   yield put(studyActions.setCurrentEpisodeId(episodeId)); // Set currentEpisodeId
+  yield put(mapActions.setFocusedEpisodeId(episodeId)); // Set focusedEpisodeId
   const screenType = elementType + '/' + mode; // Define screenType
   const funcs = getStudyFunctions(screenType); // Get studyFunctions
   let isDataLoaded = undefined;

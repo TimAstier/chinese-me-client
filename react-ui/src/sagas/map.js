@@ -9,12 +9,20 @@ import selectors from '../rootSelectors';
 function* fetchMapData(action) {
   const episodeId = action.payload.id;
   if ( episodeId !== null ) {
-    try {
-      const response = yield call(Api.get, '/episodes/' + episodeId + '/map');
-      yield put(mapActions.setData(response.data.data.attributes));
-      yield put(mapActions.fetchSuccess());
-    } catch (error) {
-      yield put(yield put(mapActions.fetchFail(error)));
+    const loadedEpisodeId = yield select(selectors.getMapLoadedEpisodeId);
+    if (String(episodeId) !== loadedEpisodeId) {
+      yield put(mapActions.setIsDataLoaded(false));
+    }
+    const isDataLoaded = yield select(selectors.getIsMapDataLoaded);
+    if (!isDataLoaded) {
+      try {
+        yield put(mapActions.setIsLoading(true));
+        const response = yield call(Api.get, '/episodes/' + episodeId + '/map');
+        yield put(mapActions.setData(response.data.data.attributes));
+        yield put(mapActions.fetchSuccess());
+      } catch (error) {
+        yield put(yield put(mapActions.fetchFail(error)));
+      }
     }
   }
 }

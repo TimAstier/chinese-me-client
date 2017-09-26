@@ -5,7 +5,6 @@ const CharacterRecord = Immutable.Record({
   simpChar: '',
   pinyin: '',
   pinyinNumber: '',
-  audioUrl: '',
   completed: false,
   etymologyUrl: '',
   writingUrl: ''

@@ -529,7 +529,6 @@ const getCompletionPercentage = createSelector(
   getMapCharactersCompletedDeepCount,
   getMapDialogsCompletedDeepCount,
   getMapGrammarsCompletedCount,
-  // TODO: include grammar deepcount (once more screenTypes)
   getCurrentCharactersCount,
   getCurrentDialogsCount,
   getCurrentGrammarsCount,
@@ -538,9 +537,9 @@ const getCompletionPercentage = createSelector(
       return undefined;
     }
     const review = episode.get('review') ? 1 : 0;
-    const ratioC = completeC / (totalC * 3);
-    const ratioG = completeG / totalG;
-    const ratioD = completeD / (totalD * 3); // Estimate Dialogs to take more time
+    const ratioC = totalC ? completeC / (totalC * 3) : 0;
+    const ratioG = totalG ? completeG / totalG : 0;
+    const ratioD = totalD ? completeD / (totalD * 3) : 0; // Estimate Dialogs to take more time
     const result = Math.round((ratioC + ratioG + ratioD * 2 + review * 2) / 6 * 100);
     return result ? result : 0;
   }

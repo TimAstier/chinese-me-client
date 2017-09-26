@@ -46,6 +46,9 @@ $ git commit --allow-empty -m "empty commit"
 $ git push heroku master
 ```
 
+## Data licenses:
+Pinyin sounds: https://github.com/pffy/mp3-chinese-pinyin-sound
+
 ## Environments
 - development - http://localhost:3000
 - staging - https://floating-dusk-88295.herokuapp.com

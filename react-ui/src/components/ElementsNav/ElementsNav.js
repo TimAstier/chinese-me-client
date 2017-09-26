@@ -35,7 +35,7 @@ const RightChevronWrapper = styled.div`
 `;
 
 const LabelWrapper = styled.div`
-  width: 160px;
+  width: 180px;
   font-family: 'Open Sans';
 	font-size: 18px;
 	color: #b2babf;

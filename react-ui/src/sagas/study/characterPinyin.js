@@ -38,7 +38,10 @@ export function* initUi() {
 
 export function* run() {
   const currentChar = yield select(selectors.getCurrentCharacter);
-  yield put(fromAudio.set('audioUrl', currentChar.audioUrl));
+  const audioUrl = currentChar.audioUrl ?
+    currentChar.audioUrl
+    : `https://s3.eu-west-2.amazonaws.com/chineseme/pinyin/${currentChar.pinyinNumber}.m4a`;
+  yield put(fromAudio.set('audioUrl', audioUrl));
   while (true) { // eslint-disable-line no-constant-condition
     let attemptsLeft = yield select(selectors.getCharacterPinyinAttemptsLeft);
     while (attemptsLeft >= 0) {

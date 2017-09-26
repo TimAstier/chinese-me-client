@@ -27,7 +27,6 @@ function* nextScreen() {
   const { episodeId, elementType, elementId, mode } = urlParams;
   const screenType = elementType + '/' + mode; // Define screenType
   const nextUrl = yield call(findNextUrl, { screenType, episodeId, elementId }); // Find next URL
-  yield put(studyActions.setInitialized(false)); // Hide screen content
   return yield put(push(nextUrl)); // Push url
 }
 

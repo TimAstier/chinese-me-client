@@ -59,7 +59,7 @@ class MapSidebar extends Component {
   }
 
   generatePanels() {
-    const { seasons } = this.props;
+    const seasons = this.props.seasons.sortBy(e => e.number);
     const panels = [];
     seasons.valueSeq().forEach(season => {
       return panels.push({

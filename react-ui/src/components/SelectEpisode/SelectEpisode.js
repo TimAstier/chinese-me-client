@@ -52,7 +52,7 @@ class SelectEpisode extends Component {
     return (
       <ScrollableAppWrapper>
         <ScreenWrapper>
-          <TitleWrapper>{'Episodes in ' + this.props.title}</TitleWrapper>
+          <TitleWrapper>{this.props.title}</TitleWrapper>
           <EpisodeCardsWrapper>{this.renderEpisodeCards()}</EpisodeCardsWrapper>
         </ScreenWrapper>
       </ScrollableAppWrapper>

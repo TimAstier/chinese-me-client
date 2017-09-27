@@ -5,8 +5,11 @@ const AvatarRecord = Immutable.Record({
   name: '',
   chineseName: '',
   happyImage: '',
-  blinkImage: '',
+  normalImage: '',
   surprisedImage: '',
+  questionImage: '',
+  embarrassedImage: '',
+  sadImage: '',
   isTalking: false,
   mood: 'happy'
 });

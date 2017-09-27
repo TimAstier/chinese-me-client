@@ -10,7 +10,10 @@ import howler from 'howler';
 // Sub-routines
 
 export function *playSound(src, muted = false) {
-  const sound = new howler.Howl({ src });
+  const sound = new howler.Howl({
+    src,
+    html5: true // Fix CORS errors. See https://github.com/goldfire/howler.js/issues/64
+  });
   sound.mute(muted);
   // Create an event channel
   const channel = eventChannel(emitter => {

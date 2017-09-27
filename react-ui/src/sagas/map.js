@@ -1,6 +1,7 @@
 import { all, takeLatest, call, put, takeEvery, select } from 'redux-saga/effects';
 import { types as mapTypes, actions as mapActions } from '../redux/map';
 import { types as sagaTypes } from './actions';
+import { actions as studyActions } from '../redux/study';
 import { types as uiTypes, actions as uiActions } from '../redux/ui';
 import Api from '../utils/api';
 import { push } from 'react-router-redux';
@@ -29,6 +30,7 @@ function* fetchMapData(action) {
 
 function* navigateToStudyScreen(action) {
   yield put(uiActions.closeMapModal());
+  yield put(studyActions.setInitialized(false)); // Hide screen content
   yield put(push(action.payload.link));
 }
 

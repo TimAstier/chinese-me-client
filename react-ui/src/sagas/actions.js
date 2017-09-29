@@ -36,7 +36,8 @@ export const types = {
   NEXT_SCREEN: 'signal/NEXT_SCREEN',
   REVIEW_COMPLETED: 'signal/REVIEW_COMPLETED',
   START_EPISODE: 'signal/START_EPISODE',
-  RUN_EPISODE_SCREEN: 'signal/RUN_EPISODE_SCREEN'
+  RUN_EPISODE_SCREEN: 'signal/RUN_EPISODE_SCREEN',
+  UNMOUNT_EPISODE_SCREEN: 'signal/UNMOUNT_EPISODE_SCREEN'
 };
 
 // Action Creators
@@ -110,6 +111,9 @@ const runEpisodeScreen = url => ({
   type: types.RUN_EPISODE_SCREEN,
   payload: { url }
 });
+const unmountEpisodeScreen = () => ({
+  type: types.UNMOUNT_EPISODE_SCREEN
+});
 
 export const actions = {
   next,
@@ -143,5 +147,6 @@ export const actions = {
   nextScreen,
   reviewCompleted,
   startEpisode,
-  runEpisodeScreen
+  runEpisodeScreen,
+  unmountEpisodeScreen
 };

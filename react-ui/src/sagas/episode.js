@@ -9,12 +9,15 @@ import { push } from 'react-router-redux';
 import selectors from '../rootSelectors';
 import getParamsFromUrl from '../utils/getParamsFromUrl';
 
-function* exitEpisode() {
+function* unmount() {
   yield put(mapActions.setFocusedEpisodeId(null));
   yield put(studyActions.setCurrentEpisodeId(null));
-  yield put(push('/study'));
   // Only clear entities directly linked to ONE episode
   yield put(entitiesActions.clearAllBut(['episodes', 'seasons']));
+}
+
+function* exit() {
+  yield put(push('/study'));
 }
 
 
@@ -101,7 +104,8 @@ function* startEpisode(action) {
 export default function* watchEpisodeSagas() {
   yield all([
     takeEvery(sagaTypes.START_EPISODE, startEpisode),
-    takeEvery(sagaTypes.EXIT, exitEpisode),
+    takeEvery(sagaTypes.EXIT, exit),
+    takeEvery(sagaTypes.UNMOUNT_EPISODE_SCREEN, unmount),
     takeEvery(sagaTypes.ASK_QUESTION, askQuestion),
     takeEvery(sagaTypes.NEXT_SCREEN, nextScreen)
   ]);

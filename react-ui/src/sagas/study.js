@@ -89,13 +89,14 @@ function* defaultEpisodeScreenUi() {
 }
 
 // This allows to end initScreen (when leaving episodeScreen for example)
-function* finishOrExitScreen(action) {
+function* finishOrExit(action) {
   return yield race({
     runEpisodeScreen: call(runEpisodeScreen, action),
+    unmount: take(sagaTypes.UNMOUNT_EPISODE_SCREEN),
     exit: take(sagaTypes.EXIT)
   });
 }
 
 export default function* watchStudySagas() {
-  yield takeLatest(sagaTypes.RUN_EPISODE_SCREEN, finishOrExitScreen);
+  yield takeLatest(sagaTypes.RUN_EPISODE_SCREEN, finishOrExit);
 }

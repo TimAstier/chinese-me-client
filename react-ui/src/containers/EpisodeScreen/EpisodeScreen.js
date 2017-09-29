@@ -19,6 +19,13 @@ class EpisodeScreen extends Component {
     return null;
   }
 
+  componentWillUnmount() {
+    // dispatch a signal to
+    // 1: operate some cleanup in the store
+    // 2: cancel study sagas
+    return this.props.unmountEpisodeScreen();
+  }
+
   render() {
     return this.props.initialized ?
       <EpisodeScreenComponent { ...this.props } />
@@ -34,7 +41,8 @@ EpisodeScreen.propTypes = {
   playAudio: propTypes.bool,
   runEpisodeScreen: propTypes.func.isRequired,
   initialized: propTypes.bool.isRequired,
-  location: propTypes.object.isRequired
+  location: propTypes.object.isRequired,
+  unmountEpisodeScreen: propTypes.func.isRequired
 };
 
 const mapStateToProps = state => {
@@ -50,6 +58,7 @@ export default connect(
   mapStateToProps,
   {
     exit: sagaActions.exit,
-    runEpisodeScreen: sagaActions.runEpisodeScreen
+    runEpisodeScreen: sagaActions.runEpisodeScreen,
+    unmountEpisodeScreen: sagaActions.unmountEpisodeScreen
   }
 )(EpisodeScreen);

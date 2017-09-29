@@ -5,7 +5,6 @@ import logo from '../../images/logo.svg';
 import iconSendFeedback from '../../images/iconSendFeedback.svg';
 import userIcon from '../../images/defaultMaleUserIcon.svg';
 import Clickable from '../Shared/Clickable';
-import { Link } from 'react-router';
 
 const Wrapper = styled.div`
   align-self: stretch;
@@ -69,9 +68,7 @@ class Navbar extends Component {
     return (
       <Wrapper>
         <LogoWrapper>
-          <Link to="/">
-            <img src={logo} alt="chineseMe logo"/>
-          </Link>
+          <img src={logo} alt="chineseMe logo"/>
         </LogoWrapper>
         <LeftMenuWrapper>
           <LeftMenuItem>

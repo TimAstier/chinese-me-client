@@ -12,6 +12,7 @@ import getParamsFromUrl from '../utils/getParamsFromUrl';
 function* unmount() {
   yield put(mapActions.setFocusedEpisodeId(null));
   yield put(studyActions.setCurrentEpisodeId(null));
+  yield put(studyActions.setInitialized(false));
   // Only clear entities directly linked to ONE episode
   yield put(entitiesActions.clearAllBut(['episodes', 'seasons']));
 }

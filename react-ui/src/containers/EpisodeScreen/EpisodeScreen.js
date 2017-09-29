@@ -4,12 +4,21 @@ import { connect } from 'react-redux';
 
 import { EpisodeScreen as EpisodeScreenComponent } from '../../components';
 import { actions as sagaActions } from '../../sagas/actions';
+import { actions as studyActions } from '../../redux/study';
 import selectors from '../../rootSelectors';
+import { Episode } from '../../models';
 
 class EpisodeScreen extends Component {
 
   componentDidMount() {
     return this.props.runEpisodeScreen(this.props.location.pathname);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.episode && this.props.episode !== nextProps.episode) {
+      return this.props.setCurrentSeasonId(nextProps.episode.seasonId);
+    }
+    return null;
   }
 
   componentDidUpdate(prevProps) {
@@ -42,7 +51,9 @@ EpisodeScreen.propTypes = {
   runEpisodeScreen: propTypes.func.isRequired,
   initialized: propTypes.bool.isRequired,
   location: propTypes.object.isRequired,
-  unmountEpisodeScreen: propTypes.func.isRequired
+  unmountEpisodeScreen: propTypes.func.isRequired,
+  episode: propTypes.instanceOf(Episode),
+  setCurrentSeasonId: propTypes.func.isRequired
 };
 
 const mapStateToProps = state => {
@@ -50,7 +61,8 @@ const mapStateToProps = state => {
     next: selectors.getNextButton(state),
     skip: selectors.getSkipButton(state),
     playAudio: selectors.getPlayAudioButton(state),
-    initialized: selectors.getInitialized(state)
+    initialized: selectors.getInitialized(state),
+    episode: selectors.getCurrentEpisode(state)
   };
 };
 
@@ -59,6 +71,7 @@ export default connect(
   {
     exit: sagaActions.exit,
     runEpisodeScreen: sagaActions.runEpisodeScreen,
-    unmountEpisodeScreen: sagaActions.unmountEpisodeScreen
+    unmountEpisodeScreen: sagaActions.unmountEpisodeScreen,
+    setCurrentSeasonId: studyActions.setCurrentSeasonId
   }
 )(EpisodeScreen);

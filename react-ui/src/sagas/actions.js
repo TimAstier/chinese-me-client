@@ -97,8 +97,9 @@ const elementsNavPreviousClick = () => ({
 const elementsNavNextClick = () => ({
   type: types.ELEMENTS_NAV_NEXT_CLICK
 });
-const nextScreen = () => ({
-  type: types.NEXT_SCREEN
+const nextScreen = shouldUrlBeSkipped => ({
+  type: types.NEXT_SCREEN,
+  payload: { shouldUrlBeSkipped }
 });
 const reviewCompleted = () => ({
   type: types.REVIEW_COMPLETED

@@ -38,6 +38,7 @@ function* runEpisodeScreen(action) {
     // TODO: handle fetch error
   }
   const checkData = yield call(funcs.checkData); // Check if data is sufficient to run the screen
+  let shouldUrlBeSkipped = false;
   if (checkData) {
     yield call(funcs.initStudyData); // Init studyData
     yield call(funcs.initUi); // Init UI
@@ -49,8 +50,10 @@ function* runEpisodeScreen(action) {
         yield call(Api.post, `/${elementType}/${elementId}/completed`, { completedCode, mode });
       }
     }
+  } else {
+    shouldUrlBeSkipped = true;
   }
-  return yield put(sagaActions.nextScreen()); // Go to next screen
+  return yield put(sagaActions.nextScreen(shouldUrlBeSkipped)); // Go to next screen
 }
 
 function getStudyFunctions(screenType) {

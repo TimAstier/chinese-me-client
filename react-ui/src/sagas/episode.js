@@ -5,7 +5,7 @@ import { actions as studyActions } from '../redux/study';
 import { actions as entitiesActions } from '../redux/entities';
 import { actions as uiActions } from '../redux/ui';
 import { actions as mapActions } from '../redux/map';
-import { push } from 'react-router-redux';
+import { push, replace } from 'react-router-redux';
 import selectors from '../rootSelectors';
 import getParamsFromUrl from '../utils/getParamsFromUrl';
 
@@ -26,13 +26,18 @@ function* askQuestion() {
   yield put(uiActions.openFeedbackModal());
 }
 
-function* nextScreen() {
+function* nextScreen(action) {
+  const shouldUrlBeSkipped = action.payload.shouldUrlBeSkipped;
   const urlParams = getParamsFromUrl(yield select(selectors.getCurrentUrl));
   const { episodeId, elementType, elementId, mode } = urlParams;
   const screenType = elementType + '/' + mode; // Define screenType
   const nextUrl = yield call(findNextUrl, { screenType, episodeId, elementId }); // Find next URL
   yield put(studyActions.setInitialized(false));
-  return yield put(push(nextUrl)); // Push url
+  // Push next url. If the screen's checkData function returned false,
+  // we don't keep this URL in history.
+  // This ensure a clean brower history, allowing next/previous browser events
+  // to work properly.
+  return yield put(shouldUrlBeSkipped ? replace(nextUrl) : push(nextUrl));
 }
 
 // TODO: DRY and simplifiy this

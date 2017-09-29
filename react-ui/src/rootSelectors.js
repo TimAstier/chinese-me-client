@@ -579,6 +579,17 @@ const getCurrentSeasonEpisodes = createSelector(
   }
 );
 
+const getCurrentSeason = createSelector(
+  studySelectors.getCurrentSeasonId,
+  entitySelectors.getSeasons,
+  (id, seasons) => {
+    if (!id || !seasons) {
+      return undefined;
+    }
+    return seasons.get(String(id)) ? seasons.get(String(id)) : undefined;
+  }
+);
+
 const selectors = {
   ...entitySelectors,
   ...studySelectors,
@@ -629,7 +640,8 @@ const selectors = {
   getCompletionPercentage,
   getCurrentReviewExercise,
   getReviewNavParams,
-  getCurrentSeasonEpisodes
+  getCurrentSeasonEpisodes,
+  getCurrentSeason
 };
 
 export default selectors;

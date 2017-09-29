@@ -156,7 +156,7 @@ EpisodeCard.propTypes = {
   locked: propTypes.bool.isRequired,
   title: propTypes.string.isRequired,
   score: propTypes.number,
-  imageUrl: propTypes.string.isRequired
+  imageUrl: propTypes.string
 };
 
 export default EpisodeCard;

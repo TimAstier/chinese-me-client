@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { Accordion, List } from 'semantic-ui-react';
 import SidebarItem from './SidebarItem';
 import Immutable from 'immutable';
+import { Season } from '../../models';
 
 const Wrapper = styled.div`
   width: 277px;
@@ -71,13 +72,8 @@ class MapSidebar extends Component {
   }
 
   render() {
-    const { episodes, seasons, focusedEpisodeId } = this.props;
-    let focusedSeasonId = 0;
-    let defaultActiveIndex = undefined;
-    if (focusedEpisodeId) {
-      focusedSeasonId = episodes.get(String(focusedEpisodeId)).seasonId;
-      defaultActiveIndex = seasons.get(String(focusedSeasonId)).number - 1;
-    }
+    const { currentSeason } = this.props;
+    const defaultActiveIndex = currentSeason ? currentSeason.number : undefined;
     return (
       <Wrapper>
         <ContentWrapper>
@@ -98,7 +94,8 @@ MapSidebar.propTypes = {
   episodes: propTypes.instanceOf(Immutable.OrderedMap).isRequired,
   currentEpisodeId: propTypes.number,
   focusedEpisodeId: propTypes.number,
-  setFocusedEpisodeId: propTypes.func.isRequired
+  setFocusedEpisodeId: propTypes.func.isRequired,
+  currentSeason: propTypes.instanceOf(Season)
 };
 
 export default MapSidebar;

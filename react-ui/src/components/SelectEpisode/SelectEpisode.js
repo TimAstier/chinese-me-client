@@ -62,7 +62,7 @@ class SelectEpisode extends Component {
 
 SelectEpisode.propTypes = {
   episodes: propTypes.instanceOf(Immutable.OrderedMap).isRequired,
-  title: propTypes.string.isRequired
+  title: propTypes.string
 };
 
 export default SelectEpisode;

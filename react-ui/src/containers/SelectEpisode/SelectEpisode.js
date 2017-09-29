@@ -5,26 +5,29 @@ import propTypes from 'prop-types';
 import { SelectEpisode as SelectEpisodeComponent } from '../../components';
 import selectors from '../../rootSelectors';
 import Immutable from 'immutable';
+import { Season } from '../../models';
 
 class SelectEpisodeScreen extends Component {
   render() {
-    // TODO: Set season number from real data
+    const season = this.props.currentSeason;
     return (
       <SelectEpisodeComponent
         episodes={this.props.episodes}
-        title={'Season 1'}
+        title={season ? `Season ${season.number}` : null}
       />
     );
   }
 }
 
 SelectEpisodeScreen.propTypes = {
-  episodes: propTypes.instanceOf(Immutable.OrderedMap).isRequired
+  episodes: propTypes.instanceOf(Immutable.OrderedMap).isRequired,
+  currentSeason: propTypes.instanceOf(Season)
 };
 
 const mapStateToProps = state => {
   return {
-    episodes: selectors.getCurrentSeasonEpisodes(state)
+    episodes: selectors.getCurrentSeasonEpisodes(state),
+    currentSeason: selectors.getCurrentSeason(state)
   };
 };
 

@@ -14,13 +14,13 @@ export default function(ComposedComponent) {
         //   type: 'error',
         //   text: 'You need to login to access this page.'
         // }, 5000);
-        this.props.router.push('/signup');
+        this.props.router.replace('/signup');
       }
     }
 
     componentWillUpdate(nextProps) {
       if (!nextProps.isAuthenticated) {
-        this.context.router.push('/signup');
+        this.context.router.replace('/signup');
       }
     }
 

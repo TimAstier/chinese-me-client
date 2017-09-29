@@ -42,7 +42,7 @@ function* runEpisodeScreen(action) {
     yield call(funcs.initStudyData); // Init studyData
     yield call(funcs.initUi); // Init UI
     yield put(studyActions.setInitialized(true)); // Display screen content
-    const result = yield call(runScreenSaga, funcs); // Run Saga(s) for the screen
+    const result = yield call(runScreenSaga, funcs.run); // Run Saga(s) for the screen
     if (elementTypesToTrack.indexOf(elementType) !== -1) { // Save progression on the server
       if (result.skip || result.next) {
         const completedCode = result.skip ? 1 : 2;
@@ -65,10 +65,10 @@ function getStudyFunctions(screenType) {
   };
 }
 
-function* runScreenSaga(studyFuncs) {
-  if (studyFuncs.run) {
+function* runScreenSaga(run) {
+  if (run) {
     return yield race({
-      runScreen: call(studyFuncs.run),
+      runScreen: call(run),
       next: take(sagaTypes.NEXT),
       skip: take(sagaTypes.SKIP),
       exit: take(sagaTypes.EXIT)

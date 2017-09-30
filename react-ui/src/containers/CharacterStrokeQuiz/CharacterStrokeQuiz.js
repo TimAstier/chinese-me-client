@@ -11,7 +11,7 @@ class CharacterStrokeQuiz extends Component {
   render() {
     return (
       <CharacterStrokeQuizComponent
-        simpChar={this.props.character.simpChar}
+        character={this.props.character}
         strokeQuizCompleted={this.props.strokeQuizCompleted}
       />
     );

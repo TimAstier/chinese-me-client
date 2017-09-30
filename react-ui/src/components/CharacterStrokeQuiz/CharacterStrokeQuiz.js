@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import HanziWriter from 'hanzi-writer';
 import styled from 'styled-components';
+import { Character } from '../../models';
 
 const Wrapper = styled.div`
   display: flex;
@@ -31,18 +32,21 @@ let hanziRef = null;
 class CharacterStrokeQuiz extends Component {
 
   componentDidMount() {
-    const hanziWriter = new HanziWriter(hanziRef, this.props.simpChar, {
-      width: 300,
-      height: 300,
-      showOutline: true,
-      showCharacter: false,
-      strokeAnimationDuration: 1000,
-      delayBetweenStrokes: 0,
-      showHintAfterMisses: 1
-    });
-    hanziWriter.quiz({
-      onComplete: () => this.props.strokeQuizCompleted()
-    });
+    if (this.props.character.hanziData) {
+      const hanziWriter = new HanziWriter(hanziRef, this.props.character.hanziData, {
+        charDataLoader: data => data,
+        width: 300,
+        height: 300,
+        showOutline: true,
+        showCharacter: false,
+        strokeAnimationDuration: 1000,
+        delayBetweenStrokes: 0,
+        showHintAfterMisses: 1
+      });
+      hanziWriter.quiz({
+        onComplete: () => this.props.strokeQuizCompleted()
+      });
+    }
   }
 
   hanziWrapper() {}
@@ -61,7 +65,7 @@ class CharacterStrokeQuiz extends Component {
 }
 
 CharacterStrokeQuiz.propTypes = {
-  simpChar: propTypes.string.isRequired,
+  character: propTypes.instanceOf(Character).isRequired,
   strokeQuizCompleted: propTypes.func.isRequired
 };
 

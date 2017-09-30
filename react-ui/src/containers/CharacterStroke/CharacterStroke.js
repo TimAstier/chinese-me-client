@@ -11,7 +11,7 @@ class CharacterStroke extends Component {
   render() {
     return (
       <CharacterStrokeComponent
-        simpChar={this.props.character.simpChar}
+        character={this.props.character}
         strokeAnimationFinished={this.props.strokeAnimationFinished}
       />
     );

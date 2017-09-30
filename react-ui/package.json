@@ -17,7 +17,7 @@
   "dependencies": {
     "axios": "^0.15.3",
     "classnames": "^2.2.5",
-    "hanzi-writer": "^0.2.0",
+    "hanzi-writer": "https://github.com/TimAstier/hanzi-writer/tarball/master",
     "howler": "^2.0.4",
     "immutable": "^3.8.1",
     "json-api-normalizer": "^0.4.1",

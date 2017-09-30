@@ -9,6 +9,7 @@ function loadStories() {
   require('../src/components/AudioToText/stories');
   require('../src/components/Avatar/stories');
   require('../src/components/CharacterPinyin/stories');
+  require('../src/components/CharacterStroke/stories');
   require('../src/components/ChoiceBox/stories');
   require('../src/components/CircleTimer/stories');
   require('../src/components/Dialog/stories');

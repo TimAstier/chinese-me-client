@@ -68,6 +68,8 @@ function* findNextUrl(params) {
         default: return '/error';
       }
     case 'character/pinyin':
+      return '/study/' + episodeId + '/character/' + elementId + '/stroke';
+    case 'character/stroke':
       return '/study/' + episodeId + '/character/' + elementId + '/etymology';
     case 'character/etymology':
       return '/study/' + episodeId + '/character/' + elementId + '/writing';

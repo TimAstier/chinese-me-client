@@ -37,7 +37,8 @@ export const types = {
   REVIEW_COMPLETED: 'signal/REVIEW_COMPLETED',
   START_EPISODE: 'signal/START_EPISODE',
   RUN_EPISODE_SCREEN: 'signal/RUN_EPISODE_SCREEN',
-  UNMOUNT_EPISODE_SCREEN: 'signal/UNMOUNT_EPISODE_SCREEN'
+  UNMOUNT_EPISODE_SCREEN: 'signal/UNMOUNT_EPISODE_SCREEN',
+  STROKE_ANIMATION_FINISHED: 'signal/STROKE_ANIMATION_FINISHED'
 };
 
 // Action Creators
@@ -115,6 +116,9 @@ const runEpisodeScreen = url => ({
 const unmountEpisodeScreen = () => ({
   type: types.UNMOUNT_EPISODE_SCREEN
 });
+const strokeAnimationFinished = () => ({
+  type: types.STROKE_ANIMATION_FINISHED
+});
 
 export const actions = {
   next,
@@ -149,5 +153,6 @@ export const actions = {
   reviewCompleted,
   startEpisode,
   runEpisodeScreen,
-  unmountEpisodeScreen
+  unmountEpisodeScreen,
+  strokeAnimationFinished
 };

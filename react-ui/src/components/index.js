@@ -4,6 +4,7 @@ export { default as AudioToText } from './AudioToText/AudioToText';
 export { default as Avatar } from './Avatar/Avatar';
 export { default as CharacterBox } from './MapModal/CharacterBox';
 export { default as CharacterPinyin } from './CharacterPinyin/CharacterPinyin';
+export { default as CharacterStroke } from './CharacterStroke/CharacterStroke';
 export { default as ChapterHeader } from './MapModal/ChapterHeader';
 export { default as ChoiceBox } from './ChoiceBox/ChoiceBox';
 export { default as CircleTimer } from './CircleTimer/CircleTimer';

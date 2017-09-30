@@ -37,6 +37,7 @@ export default (
         <Route path="title/:partNumber" component={containers.Title} />
         <Route path="character/:characterId/pinyin" component={containers.CharacterPinyin} />
         <Route path="character/:characterId/stroke" component={containers.CharacterStroke} />
+        <Route path="character/:characterId/strokeQuiz" component={containers.CharacterStrokeQuiz} />
         <Route path="character/:characterId/etymology" component={containers.CharacterEtymology} />
         <Route path="character/:characterId/writing" component={containers.CharacterWriting} />
         <Route path="grammar/:grammarId/explanation" component={containers.GrammarExplanation} />

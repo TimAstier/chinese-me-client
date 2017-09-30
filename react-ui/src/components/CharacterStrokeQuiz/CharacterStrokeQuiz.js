@@ -28,7 +28,7 @@ const HanziWrapper = styled.div`
 
 let hanziRef = null;
 
-class CharacterStroke extends Component {
+class CharacterStrokeQuiz extends Component {
 
   componentDidMount() {
     const hanziWriter = new HanziWriter(hanziRef, this.props.simpChar, {
@@ -40,8 +40,8 @@ class CharacterStroke extends Component {
       delayBetweenStrokes: 0,
       showHintAfterMisses: 1
     });
-    hanziWriter.animateCharacter({
-      onComplete: () => this.props.strokeAnimationFinished()
+    hanziWriter.quiz({
+      onComplete: () => this.props.strokeQuizCompleted()
     });
   }
 
@@ -51,7 +51,7 @@ class CharacterStroke extends Component {
     let div;
     return (
       <Wrapper>
-        <LabelWrapper>Watch how it is written</LabelWrapper>
+        <LabelWrapper>Practice writing</LabelWrapper>
         <HanziWrapper>
           <div ref={div => {hanziRef = div;}} />
         </HanziWrapper>
@@ -60,9 +60,9 @@ class CharacterStroke extends Component {
   }
 }
 
-CharacterStroke.propTypes = {
+CharacterStrokeQuiz.propTypes = {
   simpChar: propTypes.string.isRequired,
-  strokeAnimationFinished: propTypes.func.isRequired
+  strokeQuizCompleted: propTypes.func.isRequired
 };
 
-export default CharacterStroke;
+export default CharacterStrokeQuiz;

@@ -38,7 +38,8 @@ export const types = {
   START_EPISODE: 'signal/START_EPISODE',
   RUN_EPISODE_SCREEN: 'signal/RUN_EPISODE_SCREEN',
   UNMOUNT_EPISODE_SCREEN: 'signal/UNMOUNT_EPISODE_SCREEN',
-  STROKE_ANIMATION_FINISHED: 'signal/STROKE_ANIMATION_FINISHED'
+  STROKE_ANIMATION_FINISHED: 'signal/STROKE_ANIMATION_FINISHED',
+  STROKE_QUIZ_COMPLETED: 'signal/STROKE_QUIZ_COMPLETED'
 };
 
 // Action Creators
@@ -119,6 +120,9 @@ const unmountEpisodeScreen = () => ({
 const strokeAnimationFinished = () => ({
   type: types.STROKE_ANIMATION_FINISHED
 });
+const strokeQuizCompleted = () => ({
+  type: types.STROKE_QUIZ_COMPLETED
+});
 
 export const actions = {
   next,
@@ -154,5 +158,6 @@ export const actions = {
   startEpisode,
   runEpisodeScreen,
   unmountEpisodeScreen,
-  strokeAnimationFinished
+  strokeAnimationFinished,
+  strokeQuizCompleted
 };

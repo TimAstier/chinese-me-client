@@ -70,6 +70,8 @@ function* findNextUrl(params) {
     case 'character/pinyin':
       return '/study/' + episodeId + '/character/' + elementId + '/stroke';
     case 'character/stroke':
+      return '/study/' + episodeId + '/character/' + elementId + '/strokeQuiz';
+    case 'character/strokeQuiz':
       return '/study/' + episodeId + '/character/' + elementId + '/etymology';
     case 'character/etymology':
       return '/study/' + episodeId + '/character/' + elementId + '/writing';

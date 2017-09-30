@@ -18,8 +18,9 @@ export function* fetchData(episodeId) {
   // TODO: handle fetch error
 }
 
-export function checkData() {
-  return true;
+export function* checkData() {
+  const currentElement = yield select(selectors.getCurrentCharacter);
+  return currentElement.hanziData ? true : false;
 }
 
 export function* initStudyData() {}

@@ -37,6 +37,7 @@ export { default as SelectEpisode } from './SelectEpisode/SelectEpisode';
 export { default as SignupForm } from './Signup/Form';
 export { default as SignupPage } from './Signup/Page';
 export { default as Statement } from './Statement/Statement';
+export { default as StatementWrapper } from './Dialog/StatementWrapper';
 export { default as StudyVideo } from './StudyVideo/StudyVideo';
 export { default as Title } from './Title/Title';
 export { default as TransparentInput } from './TransparentInput/TransparentInput';

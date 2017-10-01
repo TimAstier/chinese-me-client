@@ -2,11 +2,8 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { Avatar, ModeButton } from '../.';
-import { Statement } from '../../containers';
+import { Avatar, ModeButton, StatementWrapper } from '../.';
 import * as models from '../../models';
-import iconPrevious from '../../images/iconPrevious.svg';
-import iconNext from '../../images/iconNext.svg';
 
 const Wrapper = styled.div`
   flex: 1 0 0;
@@ -23,47 +20,8 @@ const ModeMenu = styled.div`
 
 `;
 
-const StatementWrapper = styled.div`
-  min-height: 310px;
-  display: flex;
-  justify-content: center;
-`;
-
 const PersonalitiesWrapper = styled.div`
   min-height: 148px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const LeftChevronWrapper = styled.div`
-  width: 90px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-`;
-
-const RightChevronWrapper = styled.div`
-  width: 90px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-`;
-
-const ChevronWrapper = styled.button`
-  width: 50px;
-  height: 50px;
-  outline: none;
-  border: none;
-  background-color: #cdd6db;
-  :hover {
-    background-color: #b2babf;
-  }
-  :active {
-    background-color: #454545;
-  }
-  cursor: pointer;
-  border-radius: 25px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -110,31 +68,15 @@ class Dialog extends Component {
             onClick={() => dialogLinkClick(baseUrl + '/roleplay')}
           />
         </ModeMenu>
-        <StatementWrapper>
-          <LeftChevronWrapper>
-            {dialogMode === 'explore' && currentStatementIndex > 0 &&
-              <ChevronWrapper
-                onClick={() => previousStatement()}
-              >
-                <img src={iconPrevious} alt="previous statement" />
-              </ChevronWrapper>
-            }
-          </LeftChevronWrapper>
-          <Statement
-            sentences={sentences}
-            currentSentenceIndex={currentSentenceIndex}
-            dialogMode={dialogMode}
-          />
-          <RightChevronWrapper>
-            {dialogMode === 'explore' && currentStatementIndex < statementsCount - 1 &&
-              <ChevronWrapper
-                onClick={() => nextStatement()}
-              >
-                <img src={iconNext} alt="next statement" />
-              </ChevronWrapper>
-            }
-          </RightChevronWrapper>
-        </StatementWrapper>
+        <StatementWrapper
+          dialogMode={dialogMode}
+          sentences={sentences}
+          currentSentenceIndex={currentSentenceIndex}
+          currentStatementIndex={currentStatementIndex}
+          statementsCount={statementsCount}
+          nextStatement={nextStatement}
+          previousStatement={previousStatement}
+        />
         <PersonalitiesWrapper>
           {this.renderAvatars()}
         </PersonalitiesWrapper>

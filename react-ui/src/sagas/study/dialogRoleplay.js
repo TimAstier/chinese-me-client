@@ -28,9 +28,9 @@ export function* initStudyData() {
   yield put(fromStudy.setCurrentStatementId(currentDialog.statements[0]));
   const currentStatement = yield select(selectors.getCurrentStatement);
   yield put(fromStudy.setCurrentSentenceId(currentStatement.sentences[0]));
-  yield put(fromStudy.setChosenAvatarId(4)); // TODO: select avatar
 }
 
 export function* run() {
+  yield put(fromStudy.setChosenAvatarId(4)); // TODO: select avatar
   yield call(dialogListenRun, 'roleplay');
 }

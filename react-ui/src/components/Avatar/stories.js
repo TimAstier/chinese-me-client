@@ -43,6 +43,12 @@ storiesOf('Avatar', module)
       avatar={avatar1}
     />
   )
+  .add('diameter: 120', () =>
+    <Avatar
+      avatar={avatar1}
+      diameter={120}
+    />
+  )
   .add('isTalking: true', () =>
     <Avatar
       avatar={avatar2}
@@ -52,6 +58,13 @@ storiesOf('Avatar', module)
     <Avatar
       avatar={avatar1}
       chosen
+    />
+  )
+  .add('chosen && displayYou', () =>
+    <Avatar
+      avatar={avatar1}
+      chosen
+      displayYou
     />
   )
   .add('missing image', () =>

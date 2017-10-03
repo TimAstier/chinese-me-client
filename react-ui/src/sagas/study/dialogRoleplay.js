@@ -1,7 +1,8 @@
-import { put, select, call } from 'redux-saga/effects';
+import { put, select, call, take } from 'redux-saga/effects';
 import { actions as fromUi } from '../../redux/ui';
-import { actions as fromStudy } from '../../redux/study';
+import { actions as fromStudy, types as studyTypes } from '../../redux/study';
 import selectors from '../../rootSelectors';
+import { types as sagaTypes } from '../actions';
 import { run as dialogListenRun } from './dialogListen';
 import { checkDialogData, fetchDialogData } from './dialog';
 
@@ -23,7 +24,7 @@ export function* initUi() {
 }
 
 export function* initStudyData() {
-  yield put(fromStudy.setDialogMode('roleplay'));
+  yield put(fromStudy.setDialogMode('choserole'));
   const currentDialog = yield select(selectors.getCurrentDialog);
   yield put(fromStudy.setCurrentStatementId(currentDialog.statements[0]));
   const currentStatement = yield select(selectors.getCurrentStatement);
@@ -31,6 +32,14 @@ export function* initStudyData() {
 }
 
 export function* run() {
-  yield put(fromStudy.setChosenAvatarId(4)); // TODO: select avatar
+  const avatars = yield select(selectors.getCurrentAvatars);
+  // No need to chose an avatar if there is only one personality in the dialog
+  if (avatars.length === 1) {
+    yield put(fromStudy.setChosenAvatarId(avatars[0].id));
+  } else {
+    yield take(studyTypes.SET_CHOSEN_AVATAR_ID);
+  }
+  yield take(sagaTypes.START_ROLEPLAY);
+  yield put(fromStudy.setDialogMode('roleplay'));
   yield call(dialogListenRun, 'roleplay');
 }

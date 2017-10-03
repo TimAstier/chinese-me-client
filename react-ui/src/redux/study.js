@@ -131,10 +131,9 @@ const setCurrentAudioToTextId = id => {
 };
 
 const setDialogMode = mode => {
-  const modes = ['listen', 'explore', 'roleplay'];
+  const modes = ['listen', 'explore', 'roleplay', 'choserole'];
   if (modes.findIndex(e => e === mode) === -1) {
-    console.log('Unknown dialog mode'); // eslint-disable-line no-console
-    return {};
+    throw new Error('Unknown dialog mode');
   }
   return {
     type: types.SET_DIALOG_MODE,

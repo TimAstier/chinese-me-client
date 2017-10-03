@@ -28,14 +28,15 @@ const AvatarName = styled.div`
 `;
 
 const Image = styled.img`
-  width: 60px;
-  height: 60px;
+  width: ${props => props.diameter ? `${props.diameter}px` : '60px'};
+  height: ${props => props.diameter ? `${props.diameter}px` : '60px'};
   animation: ${props => props.isTalking ? bouncy : 'none'} 1200ms linear 0ms infinite;
-  margin-right: 5px;
-  margin-left: 5px;
+  margin-right: ${props => props.diameter ? `${Math.round(props.diameter / 6)}px` : '5px'};
+  margin-left: ${props => props.diameter ? `${Math.round(props.diameter / 6)}px` : '5px'};
   border-radius: 50%;
   border: solid 2px #dce6eb;
   box-shadow: ${props => props.chosen ? '0 0 0pt 2pt #55b6ff' : '0 2px 5px 0 rgba(0, 0, 0, 0.08)'};
+  cursor: ${props => !props.onClick ? 'default' : 'pointer'};
 `;
 
 // Example of extending styles with change of tag.
@@ -43,18 +44,23 @@ const Image = styled.img`
 
 const ImagePlaceholder = Image.withComponent('div').extend`
   background-color: #F2F7FA;
+  cursor: ${props => !props.onClick ? 'default' : 'pointer'};
 `;
 
 class Avatar extends Component {
   renderImage() {
+    const onClick = this.props.onClick ? this.props.onClick : undefined;
     const isTalking = this.props.avatar.isTalking;
     const image = this.props.avatar[ this.props.avatar.mood + 'Image' ];
+    const chosen = this.props.chosen;
     if (image) {
       return (
         <Image
           src={image}
           isTalking={isTalking}
-          chosen={this.props.chosen}
+          chosen={chosen}
+          diameter={this.props.diameter}
+          onClick={!chosen ? onClick : undefined}
         />
       );
     }
@@ -62,6 +68,8 @@ class Avatar extends Component {
       <ImagePlaceholder
         isTalking={isTalking}
         chosen={this.props.chosen}
+        diameter={this.props.diameter}
+        onClick={!chosen ? onClick : undefined}
       />
     );
   }
@@ -72,7 +80,7 @@ class Avatar extends Component {
         {this.renderImage()}
         <AvatarName>
           <div>{this.props.avatar.name}</div>
-          {this.props.chosen && <div>{'(You)'}</div>}
+          {this.props.displayYou && this.props.chosen && <div>{'(You)'}</div>}
         </AvatarName>
       </Wrapper>
     );
@@ -81,7 +89,10 @@ class Avatar extends Component {
 
 Avatar.propTypes = {
   avatar: propTypes.instanceOf(models.Avatar),
-  chosen: propTypes.bool
+  chosen: propTypes.bool,
+  diameter: propTypes.number,
+  onClick: propTypes.func,
+  displayYou: propTypes.bool
 };
 
 export default Avatar;

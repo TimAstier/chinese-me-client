@@ -8,6 +8,7 @@ export { default as CharacterStroke } from './CharacterStroke/CharacterStroke';
 export { default as CharacterStrokeQuiz } from './CharacterStrokeQuiz/CharacterStrokeQuiz';
 export { default as ChapterHeader } from './MapModal/ChapterHeader';
 export { default as ChoiceBox } from './ChoiceBox/ChoiceBox';
+export { default as ChoseRole } from './Dialog/ChoseRole';
 export { default as CircleTimer } from './CircleTimer/CircleTimer';
 export { default as Dialog } from './Dialog/Dialog';
 export { default as ElementsNav } from './ElementsNav/ElementsNav';

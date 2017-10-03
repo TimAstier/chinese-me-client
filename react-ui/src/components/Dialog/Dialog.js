@@ -3,6 +3,7 @@ import propTypes from 'prop-types';
 import styled from 'styled-components';
 
 import { Avatar, ModeButton, StatementWrapper } from '../.';
+import { ChoseRole } from '../../containers';
 import * as models from '../../models';
 
 const Wrapper = styled.div`
@@ -28,6 +29,31 @@ const PersonalitiesWrapper = styled.div`
 `;
 
 class Dialog extends Component {
+  // TODO: use containers and components instead of renderMethods
+  renderModeMenu() {
+    const { currentEpisodeId, currentDialogId, dialogMode, dialogLinkClick }
+      = this.props;
+    const baseUrl = `/study/${currentEpisodeId}/dialog/${currentDialogId}`;
+    return (
+      <ModeMenu>
+        <ModeButton
+          active={dialogMode === 'listen'}
+          label="Listen"
+          onClick={() => dialogLinkClick(baseUrl + '/listen')}
+        />
+        <ModeButton
+          active={dialogMode === 'explore'}
+          label="Explore"
+          onClick={() => dialogLinkClick(baseUrl + '/explore')}
+        />
+        <ModeButton
+          active={dialogMode === 'roleplay' || dialogMode === 'choserole'}
+          label="Roleplay"
+          onClick={() => dialogLinkClick(baseUrl + '/roleplay')}
+        />
+      </ModeMenu>
+    );
+  }
 
   renderAvatars() {
     const avatarComponents = [];
@@ -37,49 +63,43 @@ class Dialog extends Component {
           key={i}
           avatar={avatar}
           chosen={avatar.id === this.props.chosenAvatarId ? true : undefined}
+          displayYou
         />
       );
     });
     return avatarComponents;
   }
 
-  render() {
-    const { sentences, currentSentenceIndex, currentEpisodeId, currentDialogId,
-    currentStatementIndex, statementsCount, nextStatement, previousStatement,
-    dialogMode, dialogLinkClick }
+  renderDialog() {
+    const { sentences, currentSentenceIndex, currentStatementIndex,
+      statementsCount, nextStatement, previousStatement, dialogMode }
       = this.props;
-    const baseUrl = `/study/${currentEpisodeId}/dialog/${currentDialogId}`;
     return (
-      <Wrapper>
-        <ModeMenu>
-          <ModeButton
-            active={dialogMode === 'listen'}
-            label="Listen"
-            onClick={() => dialogLinkClick(baseUrl + '/listen')}
-          />
-          <ModeButton
-            active={dialogMode === 'explore'}
-            label="Explore"
-            onClick={() => dialogLinkClick(baseUrl + '/explore')}
-          />
-          <ModeButton
-            active={dialogMode === 'roleplay'}
-            label="Roleplay"
-            onClick={() => dialogLinkClick(baseUrl + '/roleplay')}
-          />
-        </ModeMenu>
+      <div>
         <StatementWrapper
           dialogMode={dialogMode}
           sentences={sentences}
-          currentSentenceIndex={currentSentenceIndex}
-          currentStatementIndex={currentStatementIndex}
           statementsCount={statementsCount}
+          currentStatementIndex={currentStatementIndex}
+          currentSentenceIndex={currentSentenceIndex}
           nextStatement={nextStatement}
           previousStatement={previousStatement}
         />
         <PersonalitiesWrapper>
           {this.renderAvatars()}
         </PersonalitiesWrapper>
+      </div>
+    );
+  }
+
+  render() {
+    return (
+      <Wrapper>
+        {this.renderModeMenu()}
+        {this.props.dialogMode !== 'choserole' ?
+          this.renderDialog()
+            : <ChoseRole/>
+        }
       </Wrapper>
     );
   }

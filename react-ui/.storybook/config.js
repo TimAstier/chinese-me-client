@@ -11,11 +11,13 @@ function loadStories() {
   require('../src/components/CharacterPinyin/stories');
   require('../src/components/CharacterStroke/stories');
   require('../src/components/ChoiceBox/stories');
-  require('../src/components/CircleTimer/stories');
   require('../src/components/Dialog/stories');
   require('../src/components/ElementsNav/stories');
   require('../src/components/EpisodeCard/stories');
   require('../src/components/EpisodeScreen/stories');
+  require('../src/components/Exam/ExamProgressbar_stories');
+  require('../src/components/Exam/ExamScoreLabel_stories');
+  require('../src/components/Exam/CircleTimer_stories');
   require('../src/components/FeedbackModal/stories');
   require('../src/components/Footer/stories');
   require('../src/components/Footer/stories');
@@ -32,6 +34,7 @@ function loadStories() {
   require('../src/components/SelectEpisode/stories');
   require('../src/components/Shared/stories');
   require('../src/components/Signup/stories');
+  require('../src/components/Star/stories');
   require('../src/components/Statement/stories');
   require('../src/components/StudyVideo/stories');
   require('../src/components/Title/stories');

@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
 import iconLock from '../../images/iconLock.svg';
-import iconStarFilled from '../../images/iconStarFilled.svg';
-import iconStarEmpty from '../../images/iconStarEmpty.svg';
-import { ScreenButton } from '../.';
+import { ScreenButton, Star } from '../.';
 
 
 const Wrapper = styled.div`
@@ -93,9 +91,9 @@ class EpisodeCard extends Component {
   renderStars() {
     return (
       <StarsWrapper>
-        <img src={this.props.score >= 7 ? iconStarFilled : iconStarEmpty} alt=""/>
-        <img src={this.props.score >= 8 ? iconStarFilled : iconStarEmpty} alt=""/>
-        <img src={this.props.score >= 9 ? iconStarFilled : iconStarEmpty} alt=""/>
+        <Star filled={this.props.score >= 7} />
+        <Star filled={this.props.score >= 8} />
+        <Star filled={this.props.score >= 9} />
       </StarsWrapper>
     );
   }

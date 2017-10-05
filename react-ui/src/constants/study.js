@@ -4,7 +4,8 @@ export const elementTypes = [
   'grammar',
   'multipleChoice',
   'audioToText',
-  'title'
+  'title',
+  'exam'
 ];
 
 export const elementTypesToTrack = [
@@ -17,6 +18,6 @@ export const elementTypesWithMenu = [
   'character',
   'dialog',
   'grammar',
-  'multipleChoice',
-  'audioToText'
+  'review',
+  'exam'
 ];

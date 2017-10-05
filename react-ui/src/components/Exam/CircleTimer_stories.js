@@ -5,8 +5,8 @@ import { storiesOf } from '@storybook/react';
 import { CircleTimer } from '../.';
 
 // CircleTimer.propTypes = {
-//   progress: propTypes.number.isRequired,
-//   time: propTypes.string.isRequired
+//   timeLeft: propTypes.number.isRequired,
+//   timeLabel: propTypes.string.isRequired
 // };
 
 storiesOf('CircleTimer', module)

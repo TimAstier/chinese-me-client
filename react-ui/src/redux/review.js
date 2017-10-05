@@ -1,10 +1,11 @@
 import { fromJS } from 'immutable';
 
 // Types
+
 export const types = {
   SET_INITIALIZED: 'review/SET_INITIALIZED',
   SET_EXERCISES: 'review/SET_EXERCISES',
-  CORRECT_ANSWER: 'review/CORECT_ANSWER',
+  CORRECT_ANSWER: 'review/CORRECT_ANSWER',
   WRONG_ANSWER: 'review/WRONG_ANSWER'
 };
 

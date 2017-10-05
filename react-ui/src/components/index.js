@@ -15,6 +15,7 @@ export { default as ElementsNav } from './ElementsNav/ElementsNav';
 export { default as EpisodeCard } from './EpisodeCard/EpisodeCard';
 export { default as EmailSentPage } from './Signup/EmailSentPage';
 export { default as EpisodeScreen } from './EpisodeScreen/EpisodeScreen';
+export { default as Exam } from './Exam/Exam';
 export { default as ExamProgressbar } from './Exam/ExamProgressbar';
 export { default as ExamScoreLabel } from './Exam/ExamScoreLabel';
 export { default as FeedbackModal } from './FeedbackModal/FeedbackModal';

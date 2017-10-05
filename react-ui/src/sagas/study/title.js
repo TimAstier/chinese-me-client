@@ -5,21 +5,34 @@ import selectors from '../../rootSelectors';
 import { actions as reviewActions } from '../../redux/review';
 import { fetchEntities } from '../entities';
 
-export function* isDataLoaded(id) {
-  if (id === '4') { // Review
+export function* isDataLoaded() {
+  const currentUrl = yield select(selectors.getCurrentUrl);
+  const partNumber = currentUrl.split('/')[4];
+  if (partNumber === '4') { // Review
     const initialized = yield select(selectors.getReviewInitialized);
+    return initialized;
+  }
+  if (partNumber === '5') { // Exam
+    const initialized = yield select(selectors.getExamInitialized);
     return initialized;
   }
   return true;
 }
 
 export function* fetchData(episodeId) {
-  yield call(fetchEntities, ['/episode/' + episodeId + '/review']);
-  // TODO: handle fetch error
-  const reviews = yield select(selectors.getReviews);
-  const exercises = reviews.getIn([episodeId, 'exercises']);
-  yield put(reviewActions.setExercises(exercises));
-  yield put(reviewActions.setInitialized(true));
+  const currentUrl = yield select(selectors.getCurrentUrl);
+  const partNumber = currentUrl.split('/')[4];
+  if (partNumber === '4') {
+    yield call(fetchEntities, ['/episode/' + episodeId + '/review']);
+    // TODO: handle fetch error
+    const reviews = yield select(selectors.getReviews);
+    const exercises = reviews.getIn([episodeId, 'exercises']);
+    yield put(reviewActions.setExercises(exercises));
+    yield put(reviewActions.setInitialized(true));
+  } else if (partNumber === '5') {
+    yield call(fetchEntities, ['/episode/' + episodeId + '/exam']);
+    // TODO: handle fetch error
+  }
 }
 
 export function checkData() {

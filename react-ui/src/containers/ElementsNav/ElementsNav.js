@@ -21,8 +21,9 @@ class ElementsNav extends Component {
       case 'character': return this.props.charactersNavParams;
       case 'dialog': return this.props.dialogsNavParams;
       case 'grammar': return this.props.grammarsNavParams;
-      case 'multipleChoice':
-      case 'audioToText': return this.props.reviewNavParams;
+      // case 'multipleChoice':
+      // case 'audioToText': return this.props.reviewNavParams;
+      case 'exam': return this.props.examNavParams;
       default: return undefined;
     }
   }
@@ -49,6 +50,7 @@ ElementsNav.propTypes = {
   grammarsNavParams: propTypes.object,
   dialogsNavParams: propTypes.object,
   reviewNavParams: propTypes.object,
+  examNavParams: propTypes.object,
   currentUrl: propTypes.string.isRequired,
   elementsNavPreviousClick: propTypes.func.isRequired,
   elementsNavNextClick: propTypes.func.isRequired,
@@ -59,6 +61,7 @@ const mapStateToProps = state => ({
   dialogsNavParams: selectors.getDialogsNavParams(state),
   grammarsNavParams: selectors.getGrammarsNavParams(state),
   reviewNavParams: selectors.getReviewNavParams(state),
+  examNavParams: selectors.getExamNavParams(state),
   currentUrl: selectors.getCurrentUrl(state)
 });
 

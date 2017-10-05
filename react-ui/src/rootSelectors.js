@@ -11,6 +11,7 @@ import * as fromAudio from './redux/audio';
 import * as fromAudioToText from './redux/audioToText';
 import * as fromCharacterPinyin from './redux/characterPinyin';
 import * as fromAuth from './redux/auth';
+import * as fromExam from './redux/exam';
 import * as fromReview from './redux/review';
 import * as fromRouting from './redux/routing';
 import * as fromMap from './redux/map';
@@ -77,6 +78,11 @@ const multipleChoiceSelectors = bindSelectors(
 const videoSelectors = bindSelectors(
   state => state.get('video'),
   fromVideo.selectors
+);
+
+const examSelectors = bindSelectors(
+  state => state.get('exam'),
+  fromExam.selectors
 );
 
 const getCurrentDialog = createSelector(
@@ -568,6 +574,22 @@ const getReviewNavParams = createSelector(
   }
 );
 
+const getExamNavParams = createSelector(
+  examSelectors.getExamScoreMax,
+  examSelectors.getExamCurrentExerciseIndex,
+  (scoreMax, index) => {
+    try {
+      return {
+        type: 'question',
+        currentElement: index,
+        totalElements: scoreMax,
+      };
+    } catch (e) {
+      return undefined;
+    }
+  }
+);
+
 const getCurrentSeasonEpisodes = createSelector(
   entitySelectors.getEpisodes,
   studySelectors.getCurrentSeasonId,
@@ -603,6 +625,7 @@ const selectors = {
   ...mapSelectors,
   ...multipleChoiceSelectors,
   ...videoSelectors,
+  ...examSelectors,
   getCurrentEpisode,
   getFocusedEpisode,
   getCurrentDialog,
@@ -641,7 +664,8 @@ const selectors = {
   getCurrentReviewExercise,
   getReviewNavParams,
   getCurrentSeasonEpisodes,
-  getCurrentSeason
+  getCurrentSeason,
+  getExamNavParams
 };
 
 export default selectors;

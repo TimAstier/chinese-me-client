@@ -55,7 +55,7 @@ class CharacterStrokeQuiz extends Component {
     let div;
     return (
       <Wrapper>
-        <LabelWrapper>Practice writing</LabelWrapper>
+        <LabelWrapper>Your turn!</LabelWrapper>
         <HanziWrapper>
           <div ref={div => {hanziRef = div;}} />
         </HanziWrapper>

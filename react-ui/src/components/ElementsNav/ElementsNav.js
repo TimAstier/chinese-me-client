@@ -99,7 +99,7 @@ class ElementsNav extends Component {
       <Wrapper>
         <ProgressWrapper>
           <LeftChevronWrapper>
-            {currentElement > 1 &&
+            {currentElement > 1 && type !== 'question' &&
               <IconWrapper>
                 <img
                   src={iconElementPrevious}
@@ -114,7 +114,7 @@ class ElementsNav extends Component {
             : this.renderWithLeft()
           }
           <RightChevronWrapper>
-            {currentElement && currentElement < totalElements &&
+            {currentElement && currentElement < totalElements && type !== 'question' &&
               <IconWrapper>
                 <img
                   src={iconElementNext}

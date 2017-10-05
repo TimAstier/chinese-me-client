@@ -1,6 +1,6 @@
 import { Map } from 'immutable';
 
-// Action types
+// Types
 
 export const types = {
   SET: 'ui/SET',
@@ -14,6 +14,7 @@ export const types = {
 };
 
 // Reducer
+
 export const INITIAL_STATE = Map({
   nextButton: false,
   skipButton: true,
@@ -49,7 +50,7 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
   }
 }
 
-// Action Creators
+// Actions
 
 const set = (attribute, value) => ({
   type: types.SET,

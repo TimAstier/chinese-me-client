@@ -21,7 +21,6 @@ function* exit() {
   yield put(push('/study'));
 }
 
-
 function* askQuestion() {
   yield put(uiActions.openFeedbackModal());
 }
@@ -64,7 +63,7 @@ function* findNextUrl(params) {
           const exercise = yield select(selectors.getCurrentReviewExercise);
           return '/study/' + episodeId + '/' + exercise.get('type') + '/' + exercise.get('id');
         case 5: // final exam
-          return '/study/' + episodeId + '/finalExam';
+          return '/study/' + episodeId + '/exam';
         default: return '/error';
       }
     case 'character/pinyin':

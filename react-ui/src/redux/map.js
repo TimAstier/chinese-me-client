@@ -1,6 +1,6 @@
 import { fromJS } from 'immutable';
 
-// Action types
+// Types
 
 export const types = {
   SET_FOCUSED_EPISODE_ID: 'map/SET_FOCUSED_EPISODE_ID',
@@ -12,6 +12,7 @@ export const types = {
 };
 
 // Reducer
+
 export const INITIAL_STATE = fromJS({
   focusedEpisodeId: null,
   loadedEpisodeId: null,
@@ -51,7 +52,7 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
   }
 }
 
-// Action Creators
+// Actions
 
 const setFocusedEpisodeId = id => ({
   type: types.SET_FOCUSED_EPISODE_ID,

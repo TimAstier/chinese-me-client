@@ -55,7 +55,7 @@ class CharacterStroke extends Component {
     let div;
     return (
       <Wrapper>
-        <LabelWrapper>Watch how it is written</LabelWrapper>
+        <LabelWrapper>Watch:</LabelWrapper>
         <HanziWrapper>
           <div ref={div => {hanziRef = div;}} />
         </HanziWrapper>

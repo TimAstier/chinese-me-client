@@ -1,6 +1,6 @@
 import { fromJS } from 'immutable';
 
-// Action Types
+// Types
 
 export const types = {
   AUTOPLAY_OFF: 'video/AUTOPLAY_OFF',
@@ -23,7 +23,7 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
   }
 }
 
-// Action Creators
+// Actions
 
 const autoPlayOff = () => ({
   type: types.AUTOPLAY_OFF

@@ -36,8 +36,12 @@ class EpisodeScreen extends Component {
   }
 
   render() {
+    const elementType = this.props.currentUrl.split('/')[3];
     return this.props.initialized ?
-      <EpisodeScreenComponent { ...this.props } />
+      <EpisodeScreenComponent
+        { ...this.props }
+        elementType={elementType}
+      />
       : <EpisodeScreenComponent exit={this.props.exit} />;
   }
 }
@@ -53,7 +57,8 @@ EpisodeScreen.propTypes = {
   location: propTypes.object.isRequired,
   unmountEpisodeScreen: propTypes.func.isRequired,
   episode: propTypes.instanceOf(Episode),
-  setCurrentSeasonId: propTypes.func.isRequired
+  setCurrentSeasonId: propTypes.func.isRequired,
+  currentUrl: propTypes.string.isRequired
 };
 
 const mapStateToProps = state => {
@@ -62,7 +67,8 @@ const mapStateToProps = state => {
     skip: selectors.getSkipButton(state),
     playAudio: selectors.getPlayAudioButton(state),
     initialized: selectors.getInitialized(state),
-    episode: selectors.getCurrentEpisode(state)
+    episode: selectors.getCurrentEpisode(state),
+    currentUrl: selectors.getCurrentUrl(state)
   };
 };
 

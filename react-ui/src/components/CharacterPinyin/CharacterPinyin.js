@@ -238,7 +238,7 @@ class CharacterPinyin extends Component {
           </ModalContent>
         </Modal>
         <LabelWrapper>
-          Type the pinyin of this character
+          Type the pinyin!
         </LabelWrapper>
         <CharacterBoxWrapper>
           <CharacterBox>

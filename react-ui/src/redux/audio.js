@@ -1,6 +1,6 @@
 import { fromJS } from 'immutable';
 
-// Action Types
+// Types
 
 export const types = {
   SET: 'audio/SET'
@@ -21,7 +21,7 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
   }
 }
 
-// Action Creators
+// Actions
 
 const set = (attribute, value) => ({
   type: types.SET,

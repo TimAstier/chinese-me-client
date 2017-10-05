@@ -1,7 +1,7 @@
 import isEmpty from 'lodash/isEmpty';
 import { fromJS } from 'immutable';
 
-// Action Types
+// Types
 
 export const types = {
   SET_CURRENT_USER: 'auth/SET_CURRENT_USER'
@@ -28,7 +28,7 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
   }
 }
 
-// Action Creators
+// Actions
 
 export function setCurrentUser(user) {
   return {

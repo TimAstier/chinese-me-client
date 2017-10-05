@@ -1,7 +1,7 @@
 import Immutable from 'immutable';
 import setEntities from '../utils/setEntities';
 
-// Action Types
+// Types
 
 export const types = {
   FETCH: 'entities/FETCH',
@@ -47,7 +47,7 @@ export default function createNamedEntityReducer(reducerName, EntityModel) {
   };
 }
 
-// Action Creators
+// Actions
 
 const fetch = endpoint => ({ type: types.FETCH, payload: { endpoint } });
 const fetchSuccess = () => ({ type: types.FETCH_SUCCESS });

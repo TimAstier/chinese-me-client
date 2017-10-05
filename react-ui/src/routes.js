@@ -46,6 +46,7 @@ export default (
         <Route path="dialog/:dialogId/roleplay" component={containers.Dialog} />
         <Route path="multipleChoice/:id" component={containers.MultipleChoice} />
         <Route path="audioToText/:id" component={containers.AudioToText} />
+        <Route path="exam" component={containers.Exam} />
       </Route>
     </Route>
   </Route>

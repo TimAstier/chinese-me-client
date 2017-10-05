@@ -1,6 +1,6 @@
 import { Map } from 'immutable';
 
-// Action Types
+// Types
 
 export const types = {
   SET_STATUS: 'characterPinyin/SET_STATUS',
@@ -31,7 +31,7 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
   }
 }
 
-// Action Creators
+// Actions
 
 const setStatus = string => ({
   type: types.SET_STATUS,

@@ -97,16 +97,28 @@ const ExitIcon = styled.div`
 class EpisodeScreen extends Component {
 
   renderTopMiddleWrapper() {
-    return (
-      <TopMiddleWrapper>
-        <TopMiddleUpWrapper>
-          <Progressbar />
-        </TopMiddleUpWrapper>
-        <TopMiddleDownWrapper>
-          <ElementsNav />
-        </TopMiddleDownWrapper>
-      </TopMiddleWrapper>
-    );
+    if (this.props.elementType && ['character', 'dialog', 'grammar', 'review'].findIndex(e => e === this.props.elementType) !== -1) {
+      return (
+        <TopMiddleWrapper>
+          <TopMiddleUpWrapper>
+            <Progressbar />
+          </TopMiddleUpWrapper>
+          <TopMiddleDownWrapper>
+            <ElementsNav />
+          </TopMiddleDownWrapper>
+        </TopMiddleWrapper>
+      );
+    } else if (this.props.elementType && ['exam'].findIndex(e => e === this.props.elementType) !== -1) {
+      return (
+        <TopMiddleWrapper>
+          <TopMiddleUpWrapper>
+            <ElementsNav />
+          </TopMiddleUpWrapper>
+          <TopMiddleDownWrapper />
+        </TopMiddleWrapper>
+      );
+    }
+    return null;
   }
 
   renderBottomMiddleWrapper() {
@@ -163,6 +175,7 @@ class EpisodeScreen extends Component {
 }
 
 EpisodeScreen.propTypes = {
+  elementType: propTypes.string,
   next: propTypes.bool,
   skip: propTypes.bool,
   playAudio: propTypes.bool,

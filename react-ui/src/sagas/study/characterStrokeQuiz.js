@@ -1,12 +1,12 @@
 import { put, take, select, call } from 'redux-saga/effects';
 // import { types as uiTypes } from '../../redux/ui';
-import { delay } from 'redux-saga';
 import { actions as fromUi } from '../../redux/ui';
 import selectors from '../../rootSelectors';
 import { actions as fromStudy } from '../../redux/study';
-import { actions as fromSagas, types as sagaTypes } from '../actions';
+import { types as sagaTypes } from '../actions';
 import { actions as fromAudio } from '../../redux/audio';
 import { fetchEntities } from '../entities';
+import { playSuccessSound } from '../audio';
 
 export function* isDataLoaded(id) {
   yield put(fromStudy.setCurrentCharacterId(id));
@@ -36,6 +36,5 @@ export function* run() {
   const audioUrl = `https://s3.eu-west-2.amazonaws.com/chineseme/pinyin/${currentChar.pinyinNumber}.m4a`;
   yield put(fromAudio.set('audioUrl', audioUrl));
   yield take(sagaTypes.STROKE_QUIZ_COMPLETED);
-  yield put(fromSagas.playAudio());
-  yield delay(2000);
+  yield call(playSuccessSound);
 }

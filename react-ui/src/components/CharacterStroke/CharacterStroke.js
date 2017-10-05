@@ -39,7 +39,7 @@ class CharacterStroke extends Component {
         height: 300,
         showOutline: true,
         showCharacter: false,
-        strokeAnimationDuration: 1000,
+        strokeAnimationDuration: 600,
         delayBetweenStrokes: 0,
         showHintAfterMisses: 1
       });

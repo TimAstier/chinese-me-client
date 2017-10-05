@@ -3,6 +3,7 @@ import propTypes from 'prop-types';
 import HanziWriter from 'hanzi-writer';
 import styled from 'styled-components';
 import { Character } from '../../models';
+import iconCorrect from '../../images/iconCorrect.svg';
 
 const Wrapper = styled.div`
   display: flex;
@@ -21,6 +22,13 @@ const LabelWrapper = styled.div`
   color: #454545;
 `;
 
+const IconWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  height: 80px;
+  visibility: ${props => props.hideCheck ? 'hidden' : 'visible'};
+`;
+
 const HanziWrapper = styled.div`
   flex-grow: 1;
   display: flex;
@@ -30,6 +38,12 @@ const HanziWrapper = styled.div`
 let hanziRef = null;
 
 class CharacterStrokeQuiz extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      hideCheck: true
+    };
+  }
 
   componentDidMount() {
     if (this.props.character.hanziData) {
@@ -39,12 +53,17 @@ class CharacterStrokeQuiz extends Component {
         height: 300,
         showOutline: true,
         showCharacter: false,
-        strokeAnimationDuration: 1000,
+        strokeAnimationDuration: 600,
         delayBetweenStrokes: 0,
         showHintAfterMisses: 1
       });
       hanziWriter.quiz({
-        onComplete: () => this.props.strokeQuizCompleted()
+        onComplete: () => {
+          this.props.strokeQuizCompleted();
+          return this.setState({
+            hideCheck: false
+          });
+        }
       });
     }
   }
@@ -59,6 +78,9 @@ class CharacterStrokeQuiz extends Component {
         <HanziWrapper>
           <div ref={div => {hanziRef = div;}} />
         </HanziWrapper>
+        <IconWrapper hideCheck={this.state.hideCheck}>
+          <img src={iconCorrect} alt="icon-correct" />
+        </IconWrapper>
       </Wrapper>
     );
   }

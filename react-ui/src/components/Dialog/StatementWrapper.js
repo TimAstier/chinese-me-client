@@ -26,7 +26,7 @@ const RightChevronWrapper = styled.div`
   justify-content: flex-end;
 `;
 
-const ChevronWrapper = styled.button`
+const ChevronWrapper = styled.div`
   width: 50px;
   height: 50px;
   outline: none;

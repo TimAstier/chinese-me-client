@@ -40,7 +40,8 @@ export const types = {
   UNMOUNT_EPISODE_SCREEN: 'signal/UNMOUNT_EPISODE_SCREEN',
   STROKE_ANIMATION_FINISHED: 'signal/STROKE_ANIMATION_FINISHED',
   STROKE_QUIZ_COMPLETED: 'signal/STROKE_QUIZ_COMPLETED',
-  START_ROLEPLAY: 'signal/START_ROLEPLAY'
+  START_ROLEPLAY: 'signal/START_ROLEPLAY',
+  PAUSE: 'signal/PAUSE'
 };
 
 // Action Creators
@@ -127,6 +128,7 @@ const strokeQuizCompleted = () => ({
 const startRoleplay = () => ({
   type: types.START_ROLEPLAY
 });
+const pause = () => ({ type: types.PAUSE });
 export const actions = {
   next,
   skip,
@@ -163,5 +165,6 @@ export const actions = {
   unmountEpisodeScreen,
   strokeAnimationFinished,
   strokeQuizCompleted,
-  startRoleplay
+  startRoleplay,
+  pause
 };

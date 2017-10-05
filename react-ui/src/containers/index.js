@@ -22,6 +22,7 @@ export { default as MapSidebar } from './MapModal/MapSidebar';
 export { default as Modal } from './Modal/Modal';
 export { default as MultipleChoice } from './MultipleChoice/MultipleChoice';
 export { default as Navbar } from './Navbar/Navbar';
+export { default as PauseButton } from './PauseButton/PauseButton';
 export { default as PlayAudioButton } from './PlayAudioButton/PlayAudioButton';
 export { default as Progressbar } from './Progressbar/Progressbar';
 export { default as ScreenButton } from './ScreenButton/ScreenButton';

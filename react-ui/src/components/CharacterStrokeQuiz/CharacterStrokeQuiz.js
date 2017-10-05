@@ -23,9 +23,9 @@ const LabelWrapper = styled.div`
 `;
 
 const IconWrapper = styled.div`
-  display: flex;
-  justify-content: center;
+  text-align: center;
   height: 80px;
+  padding-top: 20px;
   visibility: ${props => props.hideCheck ? 'hidden' : 'visible'};
 `;
 

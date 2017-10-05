@@ -50,6 +50,12 @@ storiesOf('EpisodeScreen', module)
       playAudio
     />
   )
+  .add('pause', () =>
+    <EpisodeScreen
+      {...mockProps}
+      pause
+    />
+  )
   .add('PlaceholderFixedWidth', () =>
     <EpisodeScreen {...mockProps}>
       <PlaceholderFixedWidth />

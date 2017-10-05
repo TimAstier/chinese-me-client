@@ -89,6 +89,7 @@ function* defaultEpisodeScreenUi() {
   yield put(uiActions.set('nextButton', false));
   yield put(uiActions.closeModal());
   yield put(uiActions.set('playAudioButton', false));
+  yield put(uiActions.set('pauseButton', false));
 }
 
 // This allows to end initScreen (when leaving episodeScreen for example)

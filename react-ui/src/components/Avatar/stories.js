@@ -60,13 +60,6 @@ storiesOf('Avatar', module)
       chosen
     />
   )
-  .add('chosen && displayYou', () =>
-    <Avatar
-      avatar={avatar1}
-      chosen
-      displayYou
-    />
-  )
   .add('missing image', () =>
     <Avatar
       avatar={avatar3}

@@ -63,7 +63,6 @@ class Dialog extends Component {
           key={i}
           avatar={avatar}
           chosen={avatar.id === this.props.chosenAvatarId ? true : undefined}
-          displayYou
         />
       );
     });

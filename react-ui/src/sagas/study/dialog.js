@@ -44,7 +44,8 @@ export function* playSentence(mode = 'explore') {
     const src = [sentence.audioUrl];
     yield race({ // Allow stopping sound via "End" button
       task: call(playSound, src, muted),
-      cancel: take(sagaTypes.STOP_SENTENCE)
+      stopSentence: take(sagaTypes.STOP_SENTENCE),
+      pause: take(sagaTypes.PAUSE)
     });
     if (mode === 'roleplay' && muted === true) {
       yield delay(1000); // Give more time to the user to read the sentence

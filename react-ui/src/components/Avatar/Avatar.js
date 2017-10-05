@@ -79,8 +79,7 @@ class Avatar extends Component {
       <Wrapper>
         {this.renderImage()}
         <AvatarName>
-          <div>{this.props.avatar.name}</div>
-          {this.props.displayYou && this.props.chosen && <div>{'(You)'}</div>}
+          <div>{this.props.chosen ? 'Me' : this.props.avatar.name}</div>
         </AvatarName>
       </Wrapper>
     );
@@ -91,8 +90,7 @@ Avatar.propTypes = {
   avatar: propTypes.instanceOf(models.Avatar),
   chosen: propTypes.bool,
   diameter: propTypes.number,
-  onClick: propTypes.func,
-  displayYou: propTypes.bool
+  onClick: propTypes.func
 };
 
 export default Avatar;

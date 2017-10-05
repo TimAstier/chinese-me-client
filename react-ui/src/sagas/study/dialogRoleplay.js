@@ -29,6 +29,7 @@ export function* initStudyData() {
   yield put(fromStudy.setCurrentStatementId(currentDialog.statements[0]));
   const currentStatement = yield select(selectors.getCurrentStatement);
   yield put(fromStudy.setCurrentSentenceId(currentStatement.sentences[0]));
+  yield put(fromStudy.setPaused(false));
 }
 
 export function* run() {
@@ -41,5 +42,6 @@ export function* run() {
   }
   yield take(sagaTypes.START_ROLEPLAY);
   yield put(fromStudy.setDialogMode('roleplay'));
+  yield put(fromUi.set('pauseButton', true));
   yield call(dialogListenRun, 'roleplay');
 }

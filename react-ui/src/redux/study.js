@@ -1,4 +1,5 @@
 import Immutable from 'immutable';
+import { types as sagaTypes } from '../sagas/actions';
 
 // Action Types
 
@@ -17,7 +18,8 @@ export const types = {
   SET_CHOSEN_AVATAR_ID: 'study/CHOSEN_AVATAR_ID',
   SET_CURRENT_CHARACTER_ID: 'study/SET_CURRENT_CHARACTER_ID',
   INIT_SCREEN: 'study/INIT_SCREEN',
-  SET_INITIALIZED: 'study/SET_INITIALIZED'
+  SET_INITIALIZED: 'study/SET_INITIALIZED',
+  SET_PAUSED: 'study/SET_PAUSED'
 };
 
 // Reducers
@@ -35,7 +37,8 @@ export const INITIAL_STATE = Immutable.Map({
   dialogMode: '',
   partNumber: null,
   chosenAvatarId: null,
-  initialized: false
+  initialized: false,
+  paused: false
 });
 
 export default function reducer(state = INITIAL_STATE, action = {}) {
@@ -68,6 +71,10 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
       return state.set('currentCharacterId', action.payload.id);
     case types.SET_INITIALIZED:
       return state.set('initialized', action.payload);
+    case types.SET_PAUSED:
+      return state.set('paused', action.payload);
+    case sagaTypes.PAUSE:
+      return state.set('paused', !state.get('paused'));
     default: return state;
   }
 }
@@ -161,6 +168,11 @@ const setInitialized = payload => ({
   payload
 });
 
+const setPaused = payload => ({
+  type: types.SET_PAUSED,
+  payload
+});
+
 export const actions = {
   setCurrentSeasonId,
   setCurrentEpisodeId,
@@ -174,7 +186,8 @@ export const actions = {
   setPartNumber,
   setChosenAvatarId,
   setCurrentCharacterId,
-  setInitialized
+  setInitialized,
+  setPaused
 };
 
 // Selectors
@@ -192,6 +205,7 @@ const getPartNumber = state => state.get('partNumber');
 const getChosenAvatarId = state => state.get('chosenAvatarId');
 const getCurrentCharacterId = state => state.get('currentCharacterId');
 const getInitialized = state => state.get('initialized');
+const getStudyPaused = state => state.get('paused');
 
 export const selectors = {
   getCurrentSeasonId,
@@ -206,5 +220,6 @@ export const selectors = {
   getPartNumber,
   getChosenAvatarId,
   getCurrentCharacterId,
-  getInitialized
+  getInitialized,
+  getStudyPaused
 };

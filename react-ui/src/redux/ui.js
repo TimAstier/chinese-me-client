@@ -20,6 +20,7 @@ export const INITIAL_STATE = Map({
   skipButton: true,
   openModal: false,
   playAudioButton: false,
+  pauseButton: false,
   openFeedbackModal: false,
   feedbackStatus: 'writing',
   openMapModal: false
@@ -84,6 +85,7 @@ const getNextButton = state => state.get('nextButton');
 const getSkipButton = state => state.get('skipButton');
 const getOpenModal = state => state.get('openModal');
 const getPlayAudioButton = state => state.get('playAudioButton');
+const getPauseButton = state => state.get('pauseButton');
 const getOpenFeedbackModal = state => state.get('openFeedbackModal');
 const getFeedbackStatus = state => state.get('feedbackStatus');
 const getOpenMapModal = state => state.get('openMapModal');
@@ -93,6 +95,7 @@ export const selectors = {
   getSkipButton,
   getOpenModal,
   getPlayAudioButton,
+  getPauseButton,
   getOpenFeedbackModal,
   getFeedbackStatus,
   getOpenMapModal

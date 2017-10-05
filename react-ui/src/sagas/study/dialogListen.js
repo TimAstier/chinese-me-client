@@ -22,6 +22,7 @@ export function* initUi() {
   yield put(fromUi.set('skipButton', true));
   yield put(fromUi.set('nextButton', false));
   yield put(fromUi.set('playAudioButton', false));
+  yield put(fromUi.set('pauseButton', true));
 }
 
 export function* initStudyData() {
@@ -31,6 +32,7 @@ export function* initStudyData() {
   const currentStatement = yield select(selectors.getCurrentStatement);
   yield put(fromStudy.setCurrentSentenceId(currentStatement.sentences[0]));
   yield put(fromStudy.setChosenAvatarId(null));
+  yield put(fromStudy.setPaused(false));
 }
 
 export function* run(mode = 'listen') {
@@ -38,9 +40,17 @@ export function* run(mode = 'listen') {
   const sentencesCount =
     yield select(selectors.getSentencesCountInCurrentDialog);
   for (let i = 0; i < sentencesCount - 1; i++) {
-    yield delay(500); // Create spaces between audios
-    yield call(next, mode);
+    const paused = yield select(selectors.getStudyPaused);
+    if (paused) {
+      yield take(sagaTypes.PAUSE);
+      yield call(playSentence, mode);
+      i--;
+    } else {
+      yield delay(500); // Create spaces between audios
+      yield call(next, mode);
+    }
   }
+  yield put(fromUi.set('pauseButton', false));
   yield put(fromUi.set('nextButton', true));
   yield take(sagaTypes.NEXT);
 }

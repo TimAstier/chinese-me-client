@@ -41,7 +41,7 @@ class CharacterStrokeQuiz extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      hideCheck: true
+      finished: false
     };
   }
 
@@ -61,7 +61,7 @@ class CharacterStrokeQuiz extends Component {
         onComplete: () => {
           this.props.strokeQuizCompleted();
           return this.setState({
-            hideCheck: false
+            finished: true
           });
         }
       });
@@ -74,11 +74,11 @@ class CharacterStrokeQuiz extends Component {
     let div;
     return (
       <Wrapper>
-        <LabelWrapper>Your turn!</LabelWrapper>
+        <LabelWrapper>{!this.state.finished ? 'Your turn!' : ''}</LabelWrapper>
         <HanziWrapper>
           <div ref={div => {hanziRef = div;}} />
         </HanziWrapper>
-        <IconWrapper hideCheck={this.state.hideCheck}>
+        <IconWrapper hideCheck={!this.state.finished}>
           <img src={iconCorrect} alt="icon-correct" />
         </IconWrapper>
       </Wrapper>

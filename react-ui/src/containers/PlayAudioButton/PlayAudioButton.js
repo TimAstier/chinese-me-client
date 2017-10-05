@@ -6,6 +6,25 @@ import { actions } from '../../sagas/actions';
 import selectors from '../../rootSelectors';
 
 class PlayAudioButton extends Component {
+  constructor() {
+    super();
+    this.handleEnterKeyPress = this.handleEnterKeyPress.bind(this);
+  }
+
+  componentDidMount() {
+    document.addEventListener('keydown', this.handleEnterKeyPress);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.handleEnterKeyPress);
+  }
+
+  handleEnterKeyPress(event) {
+    if (event.keyCode === 32) {
+      return this.props.onClick ? this.props.onClick() : this.props.playAudio();
+    }
+    return null;
+  }
 
   render() {
     return (

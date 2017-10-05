@@ -1,5 +1,4 @@
 import { put, take, select, fork, call } from 'redux-saga/effects';
-import { delay } from 'redux-saga';
 import { types as sagaTypes } from '../actions';
 import { types as uiTypes } from '../../redux/ui';
 import { actions as fromUi } from '../../redux/ui';
@@ -48,10 +47,9 @@ export function* run() {
       const userAnswer = yield select(selectors.getCharacterPinyinUserAnswer);
       const expectedAnswer = currentChar.pinyinNumber;
       if (userAnswer === expectedAnswer) {
-        yield fork(playSuccessSound);
         yield put(fromCharacterPinyin.setStatus('correct'));
         yield put(fromUi.set('playAudioButton', false));
-        yield delay(2000);
+        yield call(playSuccessSound);
         yield put(fromSagas.next());
       } else {
         if (attemptsLeft !== 0) {

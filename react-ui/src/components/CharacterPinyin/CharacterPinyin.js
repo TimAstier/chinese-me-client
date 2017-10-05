@@ -238,7 +238,7 @@ class CharacterPinyin extends Component {
           </ModalContent>
         </Modal>
         <LabelWrapper>
-          Type the pinyin!
+          {this.props.status === 'question' ? 'Type the pinyin!' : ''}
         </LabelWrapper>
         <CharacterBoxWrapper>
           <CharacterBox>

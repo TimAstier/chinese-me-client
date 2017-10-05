@@ -1,5 +1,6 @@
 import { put, take, select, call } from 'redux-saga/effects';
 // import { types as uiTypes } from '../../redux/ui';
+import { delay } from 'redux-saga';
 import { actions as fromUi } from '../../redux/ui';
 import selectors from '../../rootSelectors';
 import { actions as fromStudy } from '../../redux/study';
@@ -36,6 +37,5 @@ export function* run() {
   yield put(fromAudio.set('audioUrl', audioUrl));
   yield take(sagaTypes.STROKE_ANIMATION_FINISHED);
   yield put(fromSagas.playAudio());
-  yield put(fromUi.set('nextButton', true));
-  yield take(sagaTypes.NEXT);
+  yield delay(1500);
 }

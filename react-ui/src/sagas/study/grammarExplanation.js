@@ -27,3 +27,5 @@ export function* initStudyData() {
 export function* initUi() {}
 
 // export function* run() {}
+
+// export function* clean() {}

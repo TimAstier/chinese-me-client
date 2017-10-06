@@ -35,3 +35,5 @@ export function* run() {
   yield put(sagaActions.playSentence());
   yield take(sagaTypes.NEXT_SCREEN);
 }
+
+// export function* clean() {}

@@ -1,9 +1,10 @@
-import { put, select, call, take, race } from 'redux-saga/effects';
+import { put, select, call, take, race, fork } from 'redux-saga/effects';
+import { delay } from 'redux-saga';
 import { actions as fromUi } from '../../redux/ui';
 import selectors from '../../rootSelectors';
 import { fetchEntities } from '../entities';
 import { actions as examActions } from '../../redux/exam';
-import { types as sagaTypes } from '../actions';
+import { actions as sagaActions, types as sagaTypes } from '../actions';
 import { actions as studyActions } from '../../redux/study';
 import getStudyFunctions from '../../helpers/getStudyFunctions';
 
@@ -37,27 +38,50 @@ export function* initUi() {
 
 export function* initStudyData() {}
 
+function* timer() {
+  let time;
+  while(true) { // eslint-disable-line
+    yield delay(1000);
+    time = yield select(selectors.getExamTime);
+    if (time === 0) {
+      return yield put(sagaActions.outOfTime());
+    }
+    yield put(examActions.decrementTime());
+  }
+}
+
+function* runExam() {
+  const exercises = yield select(selectors.getExamExercises);
+  for (let i = 0; i < exercises.size; i++) {
+    const exercise = exercises.get(i);
+    const funcs = getStudyFunctions(exercise.get('type') + '/');
+    yield put(studyActions.setCurrentMultipleChoiceId(exercise.get('id')));
+    yield call(funcs.initStudyData);
+    yield put(examActions.setInitialized(true));
+    const runExercise = yield race({
+      success: call(funcs.run, 'exam'),
+      exit: take(sagaTypes.EXIT)
+    });
+    if (runExercise.hasOwnProperty('success')) {
+      if (runExercise.success) {
+        yield put(examActions.correctAnswer());
+      } else {
+        yield put(examActions.wrongAnswer());
+      }
+    }
+    yield put(examActions.setInitialized(false));
+  }
+}
+
 export function* run() {
-  // TODO: for every exercise: (FIRST, TRY WITH ONE)
-  // const episodeId = yield select(selectors.getCurrentEpisodeId);
-  const currentExercise = yield select(selectors.getExamCurrentExercise);
-  // const url = `/study/${episodeId}/${currentExercise.get('type')}/${currentExercise.get('id')}`;
-  const funcs = getStudyFunctions(currentExercise.get('type') + '/')
-  // console.log(url)
-  console.log(funcs)
-  // Set currentXXXId in study reducer
-  yield put(studyActions.setCurrentMultipleChoiceId(currentExercise.get('id')));
-  // Initialize study data (using URL)
-  yield call(funcs.initStudyData); // Init studyData
-  // set ExamInitialized to true
-  yield put(examActions.setInitialized(true));
-  // run the run saga
+  yield fork(timer);
   yield race({
-    runScreen: call(funcs.run),
-    next: take(sagaTypes.NEXT),
-    skip: take(sagaTypes.SKIP),
-    exit: take(sagaTypes.EXIT)
+    runExam: call(runExam),
+    outOfTime: take(sagaTypes.OUT_OF_TIME)
   });
-  // once done, switch ExamInitialized back to false
-  yield take(sagaTypes.EXAM_COMPLETED);
+  // TODO: Send results to the server
+}
+
+export function* clean() {
+  yield put(examActions.clean());
 }

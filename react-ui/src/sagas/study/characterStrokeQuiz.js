@@ -35,3 +35,5 @@ export function* run() {
   yield take(sagaTypes.STROKE_QUIZ_COMPLETED);
   yield call(playSuccessSound);
 }
+
+// export function* clean() {}

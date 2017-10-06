@@ -36,6 +36,7 @@ class ElementsNav extends Component {
     }
     return elementsNavParams ?
       <ElementsNavComponent
+        elementType={elementType}
         {...elementsNavParams}
         onPreviousClick={this.onPreviousClick.bind(this)}
         onNextClick={this.onNextClick.bind(this)}

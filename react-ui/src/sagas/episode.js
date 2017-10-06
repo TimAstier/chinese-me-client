@@ -93,14 +93,8 @@ function* findNextUrl(params) {
       return '/study/' + episodeId + '/dialog/' + elementId + '/roleplay';
     case 'dialog/roleplay':
       return '/study/' + episodeId + '/title/4';
-    // case 'audioToText/':
-    // case 'multipleChoice/':
-    //   const exercise = yield select(selectors.getCurrentReviewExercise);
-    //   if (exercise === null) {
-    //     yield put(sagaActions.reviewCompleted());
-    //     return '/study/' + episodeId + '/title/5';
-    //   }
-    //   return '/study/' + episodeId + '/' + exercise.get('type') + '/' + exercise.get('id');
+    case 'exam/':
+      return '/study/' + episodeId + '/result';
     default:
       return '/error';
   }

@@ -1,4 +1,4 @@
-import { take, put, cancelled, select, call, takeLatest }
+import { take, put, cancelled, select, call, takeLatest, all }
   from 'redux-saga/effects';
 import { eventChannel, END } from 'redux-saga';
 import { actions as fromAudio } from '../redux/audio';
@@ -59,5 +59,9 @@ export function* playWrongSound() {
 // Watchers
 
 export default function* watchAudioSagas() {
-  yield takeLatest(sagaTypes.PLAY_AUDIO, playAudio);
+  yield all([
+    takeLatest(sagaTypes.PLAY_AUDIO, playAudio),
+    takeLatest(sagaTypes.PLAY_SUCCESS_SOUND, playSuccessSound),
+    takeLatest(sagaTypes.PLAY_WRONG_SOUND, playWrongSound)
+  ]);
 }

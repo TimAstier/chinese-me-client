@@ -39,3 +39,5 @@ export function* run() {
   yield put(fromSagas.playAudio());
   yield delay(1500);
 }
+
+// export function* clean() {}

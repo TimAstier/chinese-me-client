@@ -45,3 +45,5 @@ export function* run() {
   yield put(fromUi.set('pauseButton', true));
   yield call(dialogListenRun, 'roleplay');
 }
+
+// export function* clean() {}

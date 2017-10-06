@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { put, call, race, take, takeLatest } from 'redux-saga/effects';
+import { put, call, race, take, takeLatest, cancelled } from 'redux-saga/effects';
 import { actions as studyActions } from '../redux/study';
 import { actions as uiActions } from '../redux/ui';
 import { actions as mapActions } from '../redux/map';
@@ -16,6 +16,7 @@ import Api from '../utils/api';
 // 4. initStudyData
 // 5. initUi
 // 6. run
+// 7. clean
 
 function* runEpisodeScreen(action) {
   // IMPORTANT: start by hiding screen content
@@ -43,7 +44,16 @@ function* runEpisodeScreen(action) {
     yield call(funcs.initStudyData); // Init studyData
     yield call(funcs.initUi); // Init UI
     yield put(studyActions.setInitialized(true)); // Display screen content
-    const result = yield call(runScreenSaga, funcs.run); // Run Saga(s) for the screen
+    let result;
+    try {
+      result = yield call(runScreenSaga, funcs.run); // Run Saga(s) for the screen
+    } finally {
+      if (yield cancelled()) {
+        if (funcs.clean) {
+          yield call(funcs.clean);
+        }
+      }
+    }
     if (elementTypesToTrack.indexOf(elementType) !== -1) { // Save progression on the server
       if (result.skip || result.next) {
         const completedCode = result.skip ? 1 : 2;

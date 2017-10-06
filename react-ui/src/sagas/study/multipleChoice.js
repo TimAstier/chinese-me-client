@@ -1,11 +1,10 @@
-import { put, select, call, take, fork } from 'redux-saga/effects';
+import { put, select, call, take } from 'redux-saga/effects';
 import selectors from '../../rootSelectors';
 import { actions as studyActions } from '../../redux/study';
 import { fetchEntities } from '../entities';
 import { actions as multipleChoiceActions } from '../../redux/multipleChoice';
-import { types as sagaTypes } from '../actions';
+import { actions as sagaActions, types as sagaTypes } from '../actions';
 import { actions as fromUi } from '../../redux/ui';
-import { playSuccessSound, playWrongSound } from '../audio';
 import { actions as reviewActions } from '../../redux/review';
 
 export function* isDataLoaded(id) {
@@ -37,21 +36,26 @@ export function* initStudyData() {
 
 export function* initUi() {}
 
-export function* run() {
+export function* run(mode = 'normal') {
   const multipleChoice = yield select(selectors.getCurrentMultipleChoice);
   yield take(sagaTypes.CHECK_ANSWER);
   yield put(fromUi.set('skipButton', false));
   const userAnswer = yield select(selectors.getMultipleChoiceUserAnswer);
-  // TODO: update Review reducer (remaining questions?)
   if (multipleChoice.get('correctAnswer') === userAnswer) {
-    yield put(reviewActions.correctAnswer());
-    yield fork(playSuccessSound);
+    yield put(sagaActions.playSuccessSound());
     yield put(multipleChoiceActions.setStatus('correct'));
+    if (mode === 'exam') {
+      return true;
+    }
   } else {
-    yield put(reviewActions.wrongAnswer());
-    yield fork(playWrongSound);
+    yield put(sagaActions.playWrongSound());
     yield put(multipleChoiceActions.setStatus('wrong'));
+    if (mode === 'exam') {
+      return false;
+    }
   }
   yield put(fromUi.set('nextButton', true));
-  yield take(sagaTypes.NEXT);
+  return yield take(sagaTypes.NEXT);
 }
+
+// export function* clean() {}

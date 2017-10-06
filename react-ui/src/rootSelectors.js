@@ -581,7 +581,7 @@ const getExamNavParams = createSelector(
     try {
       return {
         type: 'question',
-        currentElement: index,
+        currentElement: index + 1,
         totalElements: scoreMax,
       };
     } catch (e) {

@@ -54,3 +54,5 @@ export function* run(mode = 'listen') {
   yield put(fromUi.set('nextButton', true));
   yield take(sagaTypes.NEXT);
 }
+
+// export function* clean() {}

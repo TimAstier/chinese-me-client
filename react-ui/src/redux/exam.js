@@ -8,7 +8,8 @@ export const types = {
   SET_EXERCISES: 'exam/SET_EXERCISES',
   CORRECT_ANSWER: 'exam/CORRECT_ANSWER',
   WRONG_ANSWER: 'exam/WRONG_ANSWER',
-  DECREMENT_TIME: 'exam/DECREMENT_TIME'
+  DECREMENT_TIME: 'exam/DECREMENT_TIME',
+  CLEAN: 'exam/CLEAN'
 };
 
 // Reducer
@@ -32,6 +33,8 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
       return state.set('results', state.get('results').push(0));
     case types.DECREMENT_TIME:
       return state.set('time', state.get('time') - 1);
+    case types.CLEAN:
+      return INITIAL_STATE;
     default:
       return state;
   }
@@ -50,13 +53,15 @@ const setExercises = exercises => ({
 const correctAnswer = () => ({ type: types.CORRECT_ANSWER });
 const wrongAnswer = () => ({ type: types.WRONG_ANSWER });
 const decrementTime = () => ({ type: types.DECREMENT_TIME });
+const clean = () => ({ type: types.CLEAN });
 
 export const actions = {
   setInitialized,
   setExercises,
   correctAnswer,
   wrongAnswer,
-  decrementTime
+  decrementTime,
+  clean
 };
 
 // Selectors

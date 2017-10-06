@@ -62,6 +62,7 @@ const IconWrapper = styled.div`
   }
 `;
 
+// TODO: Separate ElementsNav and XX Left into 2 different components
 class ElementsNav extends Component {
 
   renderWithPosition() {
@@ -132,7 +133,7 @@ class ElementsNav extends Component {
           <LeftChevronWrapper>
             {this.renderLeftChevron()}
           </LeftChevronWrapper>
-          { this.props.currentElement ?
+          { this.props.currentElement || this.props.elementType === 'exam' ?
             this.renderWithPosition()
             : this.renderWithLeft()
           }
@@ -146,6 +147,7 @@ class ElementsNav extends Component {
 }
 
 ElementsNav.propTypes = {
+  elementType: propTypes.string.isRequired,
   type: propTypes.string.isRequired,
   currentElement: propTypes.number,
   totalElements: propTypes.number.isRequired,

@@ -18,8 +18,6 @@ class Exam extends Component {
   }
 
   render() {
-    // TODO: Pass an Initialized props from Exam reducer.
-    // Render exercice container in Exam component only when initialized
     const container =
       this.mapTypeToContainer(this.props.currentExercise.get('type'));
     return (

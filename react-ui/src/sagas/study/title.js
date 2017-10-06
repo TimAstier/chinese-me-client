@@ -54,3 +54,5 @@ export function* initUi() {
 export function* initStudyData() {}
 
 // export function* run() {}
+
+// export function* clean() {}

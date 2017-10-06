@@ -5,19 +5,23 @@ import { Title as TitleComponent } from '../../components';
 import selectors from '../../rootSelectors';
 
 class Title extends Component {
+
   render() {
+    const partNumber = this.props.currentUrl.split('/')[4];
     return (
-      <TitleComponent { ...this.props } />
+      <TitleComponent
+        partNumber={partNumber}
+      />
     );
   }
 }
 
 Title.propTypes = {
-  partNumber: propTypes.number.isRequired,
+  currentUrl: propTypes.string.isRequired
 };
 
 const mapStateToProps = state => ({
-  partNumber: selectors.getPartNumber(state)
+  currentUrl: selectors.getCurrentUrl(state)
 });
 
 export default connect(

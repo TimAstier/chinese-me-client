@@ -23,7 +23,7 @@ import * as components from './components';
 // Hit URL -> Component Render -> trigger saga -> next -> push next URL
 /* ----- */
 
-// TODO: use ReviewScreen and ExamScreen containers
+// TODO: use Review container
 export default (
   <Route path="/" component={containers.App}>
     <Route path="signup" component={containers.SignupPage} />
@@ -44,8 +44,6 @@ export default (
         <Route path="dialog/:dialogId/listen" component={containers.Dialog} />
         <Route path="dialog/:dialogId/explore" component={containers.Dialog} />
         <Route path="dialog/:dialogId/roleplay" component={containers.Dialog} />
-        <Route path="multipleChoice/:id" component={containers.MultipleChoice} />
-        <Route path="audioToText/:id" component={containers.AudioToText} />
         <Route path="exam" component={containers.Exam} />
       </Route>
     </Route>

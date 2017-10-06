@@ -41,7 +41,8 @@ export const types = {
   STROKE_ANIMATION_FINISHED: 'signal/STROKE_ANIMATION_FINISHED',
   STROKE_QUIZ_COMPLETED: 'signal/STROKE_QUIZ_COMPLETED',
   START_ROLEPLAY: 'signal/START_ROLEPLAY',
-  PAUSE: 'signal/PAUSE'
+  PAUSE: 'signal/PAUSE',
+  EXAM_COMPLETED: 'signal/EXAM_COMPLETED'
 };
 
 // Action Creators
@@ -129,6 +130,7 @@ const startRoleplay = () => ({
   type: types.START_ROLEPLAY
 });
 const pause = () => ({ type: types.PAUSE });
+const examCompleted = () => ({ type: types.EXAM_COMPLETED });
 export const actions = {
   next,
   skip,
@@ -166,5 +168,6 @@ export const actions = {
   strokeAnimationFinished,
   strokeQuizCompleted,
   startRoleplay,
-  pause
+  pause,
+  examCompleted
 };

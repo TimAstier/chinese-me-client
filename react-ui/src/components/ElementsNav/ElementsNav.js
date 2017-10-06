@@ -93,36 +93,51 @@ class ElementsNav extends Component {
     );
   }
 
-  render() {
+  renderLeftChevron() {
+    const { type, currentElement } = this.props;
+    if (currentElement > 1 && type !== 'question') {
+      return (
+        <IconWrapper>
+          <img
+            src={iconElementPrevious}
+            alt={'previous ' + type}
+            onClick={this.props.onPreviousClick()}
+          />
+        </IconWrapper>
+      );
+    }
+    return null;
+  }
+
+  renderRightChevron() {
     const { type, currentElement, totalElements } = this.props;
+    if (currentElement && currentElement < totalElements && type !== 'question') {
+      return (
+        <IconWrapper>
+          <img
+            src={iconElementNext}
+            alt={'previous ' + type}
+            onClick={this.props.onNextClick()}
+          />
+        </IconWrapper>
+      );
+    }
+    return null;
+  }
+
+  render() {
     return (
       <Wrapper>
         <ProgressWrapper>
           <LeftChevronWrapper>
-            {currentElement > 1 && type !== 'question' &&
-              <IconWrapper>
-                <img
-                  src={iconElementPrevious}
-                  alt={'previous ' + type}
-                  onClick={this.props.onPreviousClick()}
-                />
-              </IconWrapper>
-            }
+            {this.renderLeftChevron()}
           </LeftChevronWrapper>
           { this.props.currentElement ?
             this.renderWithPosition()
             : this.renderWithLeft()
           }
           <RightChevronWrapper>
-            {currentElement && currentElement < totalElements && type !== 'question' &&
-              <IconWrapper>
-                <img
-                  src={iconElementNext}
-                  alt={'previous ' + type}
-                  onClick={this.props.onNextClick()}
-                />
-              </IconWrapper>
-            }
+            {this.renderRightChevron()}
           </RightChevronWrapper>
         </ProgressWrapper>
       </Wrapper>

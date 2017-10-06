@@ -5,7 +5,7 @@ import { actions as uiActions } from '../redux/ui';
 import { actions as mapActions } from '../redux/map';
 import { elementTypes, elementTypesToTrack } from '../constants/study';
 import { actions as sagaActions, types as sagaTypes } from './actions';
-import mapScreenTypeToModule from '../helpers/mapScreenTypeToModule';
+import getStudyFunctions from '../helpers/getStudyFunctions';
 import getParamsFromUrl from '../utils/getParamsFromUrl';
 import Api from '../utils/api';
 
@@ -56,18 +56,6 @@ function* runEpisodeScreen(action) {
   return yield put(sagaActions.nextScreen(shouldUrlBeSkipped)); // Go to next screen
 }
 
-function getStudyFunctions(screenType) {
-  const module = mapScreenTypeToModule(screenType);
-  return {
-    isDataLoaded: module.isDataLoaded,
-    fetchData: module.fetchData,
-    checkData: module.checkData,
-    initStudyData: module.initStudyData,
-    initUi: module.initUi,
-    run: module.run
-  };
-}
-
 function* runScreenSaga(run) {
   if (run) {
     return yield race({
@@ -93,7 +81,7 @@ function* defaultEpisodeScreenUi() {
 }
 
 // This allows to end initScreen (when leaving episodeScreen for example)
-function* finishOrExit(action) {
+export function* finishOrExit(action) {
   return yield race({
     runEpisodeScreen: call(runEpisodeScreen, action),
     unmount: take(sagaTypes.UNMOUNT_EPISODE_SCREEN),

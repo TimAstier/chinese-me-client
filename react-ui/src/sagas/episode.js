@@ -1,6 +1,6 @@
 /* eslint-disable no-constant-condition */
 import { takeEvery, put, call, all, select } from 'redux-saga/effects';
-import { actions as sagaActions, types as sagaTypes } from './actions';
+import { types as sagaTypes } from './actions';
 import { actions as studyActions } from '../redux/study';
 import { actions as entitiesActions } from '../redux/entities';
 import { actions as uiActions } from '../redux/ui';
@@ -45,24 +45,25 @@ function* findNextUrl(params) {
   let currentEpisode = 0;
   switch (screenType) {
     case 'title/':
-      const partNumber = yield select(selectors.getPartNumber);
+      const currentUrl = yield select(selectors.getCurrentUrl);
+      const partNumber = currentUrl.split('/')[4];
       switch (partNumber) {
-        case 1: // characters
+        case '1': // characters
           currentEpisode = yield select(selectors.getCurrentEpisode);
           const characterId = currentEpisode.characters[0];
           return '/study/' + episodeId + '/character/' + characterId + '/pinyin';
-        case 2: // grammar
+        case '2': // grammar
           currentEpisode = yield select(selectors.getCurrentEpisode);
           const grammarId = currentEpisode.grammars[0];
           return '/study/' + episodeId + '/grammar/' + grammarId + '/explanation';
-        case 3: // dialogs
+        case '3': // dialogs
           currentEpisode = yield select(selectors.getCurrentEpisode);
           const dialogId = currentEpisode.dialogs[0];
           return '/study/' + episodeId + '/dialog/' + dialogId + '/listen';
-        case 4: // review
+        case '4': // review
           const exercise = yield select(selectors.getCurrentReviewExercise);
           return '/study/' + episodeId + '/' + exercise.get('type') + '/' + exercise.get('id');
-        case 5: // final exam
+        case '5': // final exam
           return '/study/' + episodeId + '/exam';
         default: return '/error';
       }
@@ -92,14 +93,14 @@ function* findNextUrl(params) {
       return '/study/' + episodeId + '/dialog/' + elementId + '/roleplay';
     case 'dialog/roleplay':
       return '/study/' + episodeId + '/title/4';
-    case 'audioToText/':
-    case 'multipleChoice/':
-      const exercise = yield select(selectors.getCurrentReviewExercise);
-      if (exercise === null) {
-        yield put(sagaActions.reviewCompleted());
-        return '/study/' + episodeId + '/title/5';
-      }
-      return '/study/' + episodeId + '/' + exercise.get('type') + '/' + exercise.get('id');
+    // case 'audioToText/':
+    // case 'multipleChoice/':
+    //   const exercise = yield select(selectors.getCurrentReviewExercise);
+    //   if (exercise === null) {
+    //     yield put(sagaActions.reviewCompleted());
+    //     return '/study/' + episodeId + '/title/5';
+    //   }
+    //   return '/study/' + episodeId + '/' + exercise.get('type') + '/' + exercise.get('id');
     default:
       return '/error';
   }

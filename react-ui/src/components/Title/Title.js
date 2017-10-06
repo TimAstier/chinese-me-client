@@ -52,11 +52,11 @@ class Title extends Component {
 
   mapPartNumberToTitleAndIcon() {
     switch (this.props.partNumber) {
-      case 1: return { title: 'CHARACTERS', icon: iconCharacter };
-      case 2: return { title: 'GRAMMAR', icon: iconGrammar };
-      case 3: return { title: 'DIALOGS', icon: iconDialog };
-      case 4: return { title: 'REVIEW', icon: iconReview };
-      case 5: return { title: 'FINAL EXAM', icon: iconExam };
+      case '1': return { title: 'CHARACTERS', icon: iconCharacter };
+      case '2': return { title: 'GRAMMAR', icon: iconGrammar };
+      case '3': return { title: 'DIALOGS', icon: iconDialog };
+      case '4': return { title: 'REVIEW', icon: iconReview };
+      case '5': return { title: 'FINAL EXAM', icon: iconExam };
       default: return console.log('unkown part number');
     }
   }
@@ -78,7 +78,7 @@ class Title extends Component {
 }
 
 Title.propTypes = {
-  partNumber: propTypes.number.isRequired
+  partNumber: propTypes.string.isRequired
 };
 
 export default Title;

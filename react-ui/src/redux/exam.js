@@ -13,43 +13,10 @@ export const types = {
 
 // Reducer
 
-// TODO: Use real data
-const testData = [{
-  type: 'a',
-  id: 1
-}, {
-  type: 'b',
-  id: 2
-}, {
-  type: 'a',
-  id: 3
-}, {
-  type: 'a',
-  id: 4
-}, {
-  type: 'a',
-  id: 5
-}, {
-  type: 'a',
-  id: 6
-}, {
-  type: 'a',
-  id: 7
-}, {
-  type: 'a',
-  id: 8
-}, {
-  type: 'a',
-  id: 9
-}, {
-  type: 'a',
-  id: 10
-}];
-
 export const INITIAL_STATE = fromJS({
   initialized: false,
-  exercises: testData, // [ { type, id } ] <- As in review
-  results: [0, 0, 0, 1, 0],
+  exercises: [], // [ { type, id } ] <- As in review
+  results: [],
   time: 300 // in seconds
 });
 
@@ -126,8 +93,7 @@ const getExamCurrentExercise = createSelector(
   getExamExercises,
   getExamCurrentExerciseIndex,
   (exercises, index) => {
-    console.log(exercises.get(5))
-    return exercises.get(5);
+    return exercises.get(index);
   }
 );
 

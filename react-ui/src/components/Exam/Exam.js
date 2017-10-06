@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
-import { ExamScoreLabel, ExamProgressbar, Star, MultipleChoice } from '../.';
+import { ExamScoreLabel, ExamProgressbar, Star } from '../.';
 import { CircleTimer } from '../../containers';
 
 const Wrapper = styled.div`
@@ -24,7 +24,8 @@ const RightWrapper = styled.div`
 const MiddleWrapper = styled.div`
   flex-grow: 1;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   margin-top: -30px;
 `;
 
@@ -69,6 +70,7 @@ class Exam extends Component {
         </LeftWrapper>
         <MiddleWrapper>
           <CircleTimer />
+          {this.props.initialized && <this.props.container/>}
         </MiddleWrapper>
         <RightWrapper />
       </Wrapper>
@@ -78,7 +80,9 @@ class Exam extends Component {
 
 Exam.propTypes = {
   score: propTypes.number.isRequired,
-  scoreMax: propTypes.number.isRequired
+  scoreMax: propTypes.number.isRequired,
+  container: propTypes.func.isRequired,
+  initialized: propTypes.bool.isRequired
 };
 
 export default Exam;

@@ -1,11 +1,12 @@
 import { put, take, select, call } from 'redux-saga/effects';
+import { delay } from 'redux-saga';
 // import { types as uiTypes } from '../../redux/ui';
 import { actions as fromUi } from '../../redux/ui';
 import selectors from '../../rootSelectors';
 import { actions as fromStudy } from '../../redux/study';
 import { types as sagaTypes } from '../actions';
 import { fetchEntities } from '../entities';
-import { playSuccessSound } from '../audio';
+import { actions as sagaActions } from '../actions';
 
 export function* isDataLoaded(id) {
   yield put(fromStudy.setCurrentCharacterId(id));
@@ -33,7 +34,8 @@ export function* initUi() {
 
 export function* run() {
   yield take(sagaTypes.STROKE_QUIZ_COMPLETED);
-  yield call(playSuccessSound);
+  yield put(sagaActions.playSuccessSound());
+  yield delay(1000);
 }
 
 // export function* clean() {}

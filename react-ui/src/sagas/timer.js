@@ -1,3 +1,6 @@
+// Timer concept coming from Jack Hsu
+// https://jaysoo.ca/2016/01/03/managing-processes-in-redux-using-sagas/
+
 import { actionChannel, call, take, put, race, select } from 'redux-saga/effects';
 import { actions, types } from '../redux/timer';
 import selectors from '../rootSelectors';

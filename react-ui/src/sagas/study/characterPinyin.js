@@ -1,4 +1,5 @@
-import { put, take, select, fork, call } from 'redux-saga/effects';
+import { put, take, select, call } from 'redux-saga/effects';
+import { delay } from 'redux-saga';
 import { types as sagaTypes } from '../actions';
 import { types as uiTypes } from '../../redux/ui';
 import { actions as fromUi } from '../../redux/ui';
@@ -6,7 +7,6 @@ import { actions as fromCharacterPinyin } from '../../redux/characterPinyin';
 import { actions as fromSagas } from '../actions';
 import { actions as fromAudio } from '../../redux/audio';
 import selectors from '../../rootSelectors';
-import { playSuccessSound, playWrongSound } from '../audio';
 import { actions as studyActions } from '../../redux/study';
 import { fetchEntities } from '../entities';
 
@@ -35,7 +35,7 @@ export function* initUi() {
   yield put(fromUi.set('playAudioButton', true));
 }
 
-export function* run() {
+export function* run(mode) {
   const currentChar = yield select(selectors.getCurrentCharacter);
   const audioUrl = `https://s3.eu-west-2.amazonaws.com/chineseme/pinyin/${currentChar.pinyinNumber}.m4a`;
   yield put(fromAudio.set('audioUrl', audioUrl));
@@ -47,20 +47,26 @@ export function* run() {
       const userAnswer = yield select(selectors.getCharacterPinyinUserAnswer);
       const expectedAnswer = currentChar.pinyinNumber;
       if (userAnswer === expectedAnswer) {
+        yield put(fromSagas.playSuccessSound());
+        if (mode === 'exam') {
+          return true;
+        }
         yield put(fromCharacterPinyin.setStatus('correct'));
         yield put(fromUi.set('playAudioButton', false));
-        yield call(playSuccessSound);
+        yield delay(1000);
         yield put(fromSagas.next());
       } else {
+        yield put(fromSagas.playWrongSound());
+        if (mode === 'exam') {
+          return false;
+        }
         if (attemptsLeft !== 0) {
-          yield fork(playWrongSound);
           yield put(fromCharacterPinyin.setUserAnswer(''));
           yield put(fromUi.openModal());
           yield take(uiTypes.CLOSE_MODAL);
           yield put(fromCharacterPinyin.setAttemptsLeft(attemptsLeft - 1));
           attemptsLeft --;
         } else {
-          yield fork(playWrongSound);
           yield put(fromCharacterPinyin.setStatus('wrong'));
           yield put(fromUi.set('nextButton', true));
           yield take(sagaTypes.NEXT);

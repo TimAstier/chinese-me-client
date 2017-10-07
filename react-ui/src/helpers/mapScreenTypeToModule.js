@@ -12,12 +12,16 @@ import * as fromMultipleChoice from '../sagas/study/multipleChoice';
 import * as fromAudioToText from '../sagas/study/audioToText';
 import * as fromExam from '../sagas/study/exam';
 
+// TODO: Issue: Study screenTypes and Exam screenTypes are not always consistent
+// Maybe harmonize them or spleet between two files?
+
 export default function mapScreenTypeToModule(screenType) {
   switch (screenType) {
     case 'title/': return fromTitle;
     case 'character/etymology': return fromCharacterEtymology;
     case 'character/stroke': return fromCharacterStroke;
     case 'character/strokeQuiz': return fromCharacterStrokeQuiz;
+    case 'characterPinyin/':
     case 'character/pinyin': return fromCharacterPinyin;
     case 'character/writing': return fromCharacterWriting;
     case 'grammar/explanation': return fromGrammarExplanation;
@@ -27,6 +31,6 @@ export default function mapScreenTypeToModule(screenType) {
     case 'multipleChoice/': return fromMultipleChoice;
     case 'audioToText/': return fromAudioToText;
     case 'exam/': return fromExam;
-    default: return console.log('unknown screenType');
+    default: return console.log('unknown screenType', screenType);
   }
 }

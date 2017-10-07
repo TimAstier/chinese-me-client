@@ -1,3 +1,13 @@
+// HOW TO add a new exercise type:
+// 1. Retrieve data and exercise element from server (update service, serializer)
+// 2. Update Exam container to render appropriate container
+// 3. Be sure the exerciseType is supported
+//   - setCurrentXXX in runExam saga
+//   - in getStudyFunctions
+// 4. Update exercise saga to
+//   - return success bool
+//   - avoid non-exam effects (like nextButton). use 'exam' mode.
+
 import { put, select, call, take, race } from 'redux-saga/effects';
 import { actions as fromUi } from '../../redux/ui';
 import selectors from '../../rootSelectors';
@@ -47,8 +57,13 @@ function* runExam() {
   const exercises = yield select(selectors.getExamExercises);
   for (let i = 0; i < exercises.size; i++) {
     const exercise = exercises.get(i);
-    const type = exercise.get('type');
+    let type = exercise.get('type');
     const funcs = getStudyFunctions(type + '/');
+    // TODO: Find a solution to get consistent Types
+    // Here: use a mapping function: mapTypeToStateSlice
+    if (type === 'characterPinyin') {
+      type = 'character';
+    }
     yield put(studyActions[`setCurrent${capitalizeFirstLetter(type)}Id`](exercise.get('id')));
     yield call(defaultEpisodeScreenUi);
     yield call(funcs.initStudyData);

@@ -19,9 +19,6 @@ export function checkData() {
 }
 
 export function* initUi() {
-  yield put(uiActions.set('skipButton', true));
-  yield put(uiActions.set('nextButton', false));
-  yield put(uiActions.set('playAudioButton', false));
   yield put(uiActions.set('pauseButton', true));
 }
 

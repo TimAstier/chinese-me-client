@@ -26,11 +26,7 @@ export function* checkData() {
 
 export function* initStudyData() {}
 
-export function* initUi() {
-  yield put(uiActions.set('skipButton', true));
-  yield put(uiActions.set('againButton', true));
-  yield put(uiActions.closeModal());
-}
+export function* initUi() {}
 
 export function* run(mode) {
   yield take(sagaTypes.STROKE_QUIZ_COMPLETED);

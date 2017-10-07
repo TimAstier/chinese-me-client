@@ -15,7 +15,6 @@ import { fetchEntities } from '../entities';
 import { actions as examActions } from '../../redux/exam';
 import { types as sagaTypes } from '../actions';
 import getStudyFunctions from '../../helpers/getStudyFunctions';
-import { defaultEpisodeScreenUi } from '../study';
 import { actions as timerActions, types as timerTypes } from '../../redux/timer';
 import mapExerciseTypeToSetCurrentAction
   from '../../helpers/mapExerciseTypeToSetCurrentAction';
@@ -45,12 +44,19 @@ export function checkData() {
 
 export function* initUi() {
   yield put(uiActions.set('skipButton', false));
-  yield put(uiActions.set('nextButton', false));
 }
 
 export function* initStudyData() {
   yield put(examActions.setInitialized(false));
   yield put(timerActions.reset());
+}
+
+function* defaultExamUi() {
+  yield put(uiActions.set('skipButton', false));
+  yield put(uiActions.set('nextButton', false));
+  yield put(uiActions.closeModal());
+  yield put(uiActions.set('playAudioButton', false));
+  yield put(uiActions.set('pauseButton', false));
 }
 
 function* runExam() {
@@ -61,7 +67,7 @@ function* runExam() {
     const funcs = getStudyFunctions(type + '/');
     const setCurrent = mapExerciseTypeToSetCurrentAction(type);
     yield put(setCurrent(exercise.get('id')));
-    yield call(defaultEpisodeScreenUi);
+    yield call(defaultExamUi);
     yield call(funcs.initStudyData);
     yield call(funcs.initUi);
     yield put(examActions.setInitialized(true));

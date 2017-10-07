@@ -11,7 +11,7 @@ const Wrapper = styled.div`
 `;
 
 const LabelWrapper = styled.div`
-  height: 100px;
+  min-height: 100px;
   display: flex;
   justify-content: center;
   align-items: flex-end;

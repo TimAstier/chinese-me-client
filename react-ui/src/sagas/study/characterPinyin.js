@@ -30,8 +30,6 @@ export function* initStudyData() {
 }
 
 export function* initUi() {
-  yield put(uiActions.set('skipButton', true));
-  yield put(uiActions.closeModal());
   yield put(uiActions.set('playAudioButton', true));
 }
 

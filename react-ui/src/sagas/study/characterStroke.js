@@ -26,10 +26,7 @@ export function* checkData() {
 
 export function* initStudyData() {}
 
-export function* initUi() {
-  yield put(uiActions.set('skipButton', true));
-  yield put(uiActions.closeModal());
-}
+export function* initUi() {}
 
 export function* run() {
   const currentChar = yield select(selectors.getCurrentCharacter);

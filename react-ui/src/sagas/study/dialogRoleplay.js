@@ -18,10 +18,7 @@ export function checkData() {
   return true;
 }
 
-export function* initUi() {
-  yield put(uiActions.set('skipButton', true));
-  yield put(uiActions.set('nextButton', false));
-}
+export function* initUi() {}
 
 export function* initStudyData() {
   yield put(studyActions.setDialogMode('choserole'));

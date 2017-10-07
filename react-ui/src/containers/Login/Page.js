@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 import { LoginPage as LoginPageComponent } from '../../components';
-import { actions } from '../../sagas/actions';
+import { actions as sagaActions } from '../../sagas/actions';
 
 class Page extends Component {
   // From a thread 'integrate redux-sagas with redux-form'
@@ -27,6 +27,6 @@ Page.propTypes = {
 export default connect(
   null,
   {
-    loginRequest: actions.loginRequest
+    loginRequest: sagaActions.loginRequest
   }
 )(Page);

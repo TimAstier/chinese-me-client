@@ -3,9 +3,9 @@ import selectors from '../../rootSelectors';
 import { actions as studyActions } from '../../redux/study';
 import { actions as audioToTextActions } from '../../redux/audioToText';
 import { types as sagaTypes, actions as sagaActions } from '../actions';
-import { actions as fromUi } from '../../redux/ui';
+import { actions as uiActions } from '../../redux/ui';
 import { Map } from 'immutable';
-import { actions as fromAudio } from '../../redux/audio';
+import { actions as audioActions } from '../../redux/audio';
 
 export function* isDataLoaded(id) {
   yield put(studyActions.setCurrentAudioToTextId(id));
@@ -30,8 +30,8 @@ export function checkData() {
 }
 
 export function* initStudyData() {
-  yield put(fromUi.set('skipButton', false));
-  yield put(fromUi.set('playAudioButton', true));
+  yield put(uiActions.set('skipButton', false));
+  yield put(uiActions.set('playAudioButton', true));
 }
 
 export function* initUi() {
@@ -40,7 +40,7 @@ export function* initUi() {
 
 export function* run(mode) {
   const currentAudioToText = yield select(selectors.getCurrentAudioToText);
-  yield put(fromAudio.set('audioUrl', currentAudioToText.audioUrl));
+  yield put(audioActions.set('audioUrl', currentAudioToText.audioUrl));
   yield put(sagaActions.playAudio());
   const wordIds = currentAudioToText.words;
   const words = yield select(selectors.getWords);
@@ -68,7 +68,7 @@ export function* run(mode) {
     }
   }
   yield put(audioToTextActions.setStatus('finished'));
-  yield put(fromUi.set('nextButton', true));
+  yield put(uiActions.set('nextButton', true));
   return yield take(sagaTypes.NEXT);
 }
 

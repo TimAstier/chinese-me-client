@@ -1,14 +1,13 @@
 import { takeEvery, select, put, all, call, takeLatest, race, take }
   from 'redux-saga/effects';
 import { delay } from 'redux-saga';
-import { types as sagaTypes, actions as fromSaga } from '../actions';
-import { actions as fromStudy } from '../../redux/study';
-import { actions as fromEntities } from '../../redux/entities';
+import { types as sagaTypes, actions as sagaActions } from '../actions';
+import { actions as studyActions } from '../../redux/study';
+import { actions as entitiesActions } from '../../redux/entities';
 import { actions as fromUi } from '../../redux/ui';
 import { playSound } from '../audio';
 import selectors from '../../rootSelectors';
 import { fetchEntities } from '../entities';
-import { actions as studyActions } from '../../redux/study';
 import { push } from 'react-router-redux';
 
 export function* checkDialogData(id) {
@@ -31,9 +30,9 @@ export function* playSentence(mode = 'explore') {
   const statement = yield select(selectors.getCurrentStatement);
   const sentence = yield select(selectors.getCurrentSentence);
   try {
-    yield put(fromEntities
+    yield put(entitiesActions
       .update('avatars', String(statement.avatarId), 'mood', sentence.mood));
-    yield put(fromEntities
+    yield put(entitiesActions
       .update('avatars', String(statement.avatarId), 'isTalking', true));
     // Mute sound in Role Play
     let muted = false;
@@ -53,7 +52,7 @@ export function* playSentence(mode = 'explore') {
   } finally {
     // Once the sound ends OR is cancelled,
     // stop avatar animation and display next button
-    yield put(fromEntities
+    yield put(entitiesActions
       .update('avatars', String(statement.avatarId), 'isTalking', false));
     if (mode === 'explore') {
       yield put(fromUi.set('nextButton', true));
@@ -64,9 +63,9 @@ export function* playSentence(mode = 'explore') {
 function* nextSentence(mode = 'explore') {
   // Go to next Sentence
   const nextSentenceId = yield select(selectors.getNextSentenceId);
-  yield put(fromStudy.setCurrentSentenceId(nextSentenceId));
+  yield put(studyActions.setCurrentSentenceId(nextSentenceId));
   if (mode === 'explore') {
-    yield put(fromSaga.playSentence());
+    yield put(sagaActions.playSentence());
   } else {
     yield call(playSentence, mode);
   }
@@ -74,28 +73,28 @@ function* nextSentence(mode = 'explore') {
 
 // Only used in explore mode
 function* switchSentence(action) {
-  yield put(fromStudy.setCurrentSentenceId(action.payload.id));
-  yield put(fromSaga.playSentence());
+  yield put(studyActions.setCurrentSentenceId(action.payload.id));
+  yield put(sagaActions.playSentence());
 }
 
 // function* previousSentence() {
 //   // Go to previous Sentence
 //   const previousSentenceId = yield select(selectors.getPreviousSentenceId);
-//   yield put(fromStudy.setCurrentSentenceId(previousSentenceId));
-//   yield put(fromSaga.playSentence());
+//   yield put(studyActions.setCurrentSentenceId(previousSentenceId));
+//   yield put(sagaActions.playSentence());
 // }
 
 function* nextStatement(mode = 'explore') {
-  yield put(fromSaga.stopSentence());
+  yield put(sagaActions.stopSentence());
   const nextStatementId = yield select(selectors.getNextStatementId);
   if (nextStatementId === undefined) {
-    yield put(fromSaga.endDialog());
+    yield put(sagaActions.endDialog());
   } else {
-    yield put(fromStudy.setCurrentStatementId(nextStatementId));
+    yield put(studyActions.setCurrentStatementId(nextStatementId));
     const statement = yield select(selectors.getCurrentStatement);
-    yield put(fromStudy.setCurrentSentenceId(statement.sentences[0]));
+    yield put(studyActions.setCurrentSentenceId(statement.sentences[0]));
     if (mode === 'explore') {
-      yield put(fromSaga.playSentence());
+      yield put(sagaActions.playSentence());
     } else {
       yield call(playSentence, mode);
     }
@@ -104,12 +103,12 @@ function* nextStatement(mode = 'explore') {
 
 // Only used in explore mode
 function* previousStatement() {
-  yield put(fromSaga.stopSentence());
+  yield put(sagaActions.stopSentence());
   const previousStatementId = yield select(selectors.getPreviousStatementId);
-  yield put(fromStudy.setCurrentStatementId(previousStatementId));
+  yield put(studyActions.setCurrentStatementId(previousStatementId));
   const statement = yield select(selectors.getCurrentStatement);
-  yield put(fromStudy.setCurrentSentenceId(statement.sentences[0]));
-  yield put(fromSaga.playSentence());
+  yield put(studyActions.setCurrentSentenceId(statement.sentences[0]));
+  yield put(sagaActions.playSentence());
 }
 
 export function* next(mode = 'explore') {

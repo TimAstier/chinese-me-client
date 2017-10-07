@@ -3,8 +3,7 @@ import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 import { Statement as StatementComponent } from '../../components';
 import selectors from '../../rootSelectors';
-
-import { actions } from '../../sagas/actions';
+import { actions as sagaActions } from '../../sagas/actions';
 
 class Statement extends Component {
 
@@ -38,8 +37,8 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   {
-    playSentence: actions.playSentence,
-    stopSentence: actions.stopSentence,
-    switchSentence: actions.switchSentence
+    playSentence: sagaActions.playSentence,
+    stopSentence: sagaActions.stopSentence,
+    switchSentence: sagaActions.switchSentence
   }
 )(Statement);

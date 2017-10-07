@@ -1,7 +1,7 @@
 import { take, put, cancelled, select, call, takeLatest, all }
   from 'redux-saga/effects';
 import { eventChannel, END } from 'redux-saga';
-import { actions as fromAudio } from '../redux/audio';
+import { actions as audioActions } from '../redux/audio';
 import selectors from '../rootSelectors';
 import { types as sagaTypes } from './actions';
 import sounds from '../constants/sounds';
@@ -28,7 +28,7 @@ export function *playSound(src, muted = false) {
   });
 
   sound.play();
-  yield put(fromAudio.set('isPlaying', true));
+  yield put(audioActions.set('isPlaying', true));
 
   try {
     while (true) { // eslint-disable-line no-constant-condition
@@ -39,7 +39,7 @@ export function *playSound(src, muted = false) {
     if (yield cancelled()) {
       sound.unload();
     }
-    yield put(fromAudio.set('isPlaying', false));
+    yield put(audioActions.set('isPlaying', false));
   }
 }
 

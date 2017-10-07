@@ -9,7 +9,7 @@
 //   - avoid non-exam effects (like nextButton). use 'exam' mode.
 
 import { put, select, call, take, race } from 'redux-saga/effects';
-import { actions as fromUi } from '../../redux/ui';
+import { actions as uiActions } from '../../redux/ui';
 import selectors from '../../rootSelectors';
 import { fetchEntities } from '../entities';
 import { actions as examActions } from '../../redux/exam';
@@ -44,8 +44,8 @@ export function checkData() {
 }
 
 export function* initUi() {
-  yield put(fromUi.set('skipButton', false));
-  yield put(fromUi.set('nextButton', false));
+  yield put(uiActions.set('skipButton', false));
+  yield put(uiActions.set('nextButton', false));
 }
 
 export function* initStudyData() {

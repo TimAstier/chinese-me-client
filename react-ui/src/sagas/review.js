@@ -2,14 +2,14 @@ import { all, select, call, takeEvery, put } from 'redux-saga/effects';
 import { types as sagaTypes } from './actions';
 import Api from '../utils/api';
 import selectors from '../rootSelectors';
-import { actions as entityActions } from '../redux/entities';
+import { actions as entitiesActions } from '../redux/entities';
 
 function* reviewCompleted() {
   try {
     const episodeId = yield select(selectors.getCurrentEpisodeId);
     const response = yield call(Api.post, '/review/' + episodeId);
     if (response.data) {
-      yield put(entityActions.update('episodes', episodeId, 'review', true));
+      yield put(entitiesActions.update('episodes', episodeId, 'review', true));
     } else {
       console.log('Review not updated to true in DB.');
     }

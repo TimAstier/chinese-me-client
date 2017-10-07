@@ -1,7 +1,7 @@
 import { put, select, call, take } from 'redux-saga/effects';
 import { delay } from 'redux-saga';
-import { actions as fromUi } from '../../redux/ui';
-import { actions as fromStudy } from '../../redux/study';
+import { actions as uiActions } from '../../redux/ui';
+import { actions as studyActions } from '../../redux/study';
 import selectors from '../../rootSelectors';
 import { types as sagaTypes } from '../actions';
 import { next, playSentence, checkDialogData, fetchDialogData } from './dialog';
@@ -19,20 +19,20 @@ export function checkData() {
 }
 
 export function* initUi() {
-  yield put(fromUi.set('skipButton', true));
-  yield put(fromUi.set('nextButton', false));
-  yield put(fromUi.set('playAudioButton', false));
-  yield put(fromUi.set('pauseButton', true));
+  yield put(uiActions.set('skipButton', true));
+  yield put(uiActions.set('nextButton', false));
+  yield put(uiActions.set('playAudioButton', false));
+  yield put(uiActions.set('pauseButton', true));
 }
 
 export function* initStudyData() {
-  yield put(fromStudy.setDialogMode('listen'));
+  yield put(studyActions.setDialogMode('listen'));
   const currentDialog = yield select(selectors.getCurrentDialog);
-  yield put(fromStudy.setCurrentStatementId(currentDialog.statements[0]));
+  yield put(studyActions.setCurrentStatementId(currentDialog.statements[0]));
   const currentStatement = yield select(selectors.getCurrentStatement);
-  yield put(fromStudy.setCurrentSentenceId(currentStatement.sentences[0]));
-  yield put(fromStudy.setChosenAvatarId(null));
-  yield put(fromStudy.setPaused(false));
+  yield put(studyActions.setCurrentSentenceId(currentStatement.sentences[0]));
+  yield put(studyActions.setChosenAvatarId(null));
+  yield put(studyActions.setPaused(false));
 }
 
 export function* run(mode = 'listen') {
@@ -50,8 +50,8 @@ export function* run(mode = 'listen') {
       yield call(next, mode);
     }
   }
-  yield put(fromUi.set('pauseButton', false));
-  yield put(fromUi.set('nextButton', true));
+  yield put(uiActions.set('pauseButton', false));
+  yield put(uiActions.set('nextButton', true));
   yield take(sagaTypes.NEXT);
 }
 

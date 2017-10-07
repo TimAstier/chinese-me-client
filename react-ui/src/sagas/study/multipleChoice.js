@@ -3,7 +3,7 @@ import selectors from '../../rootSelectors';
 import { actions as studyActions } from '../../redux/study';
 import { actions as multipleChoiceActions } from '../../redux/multipleChoice';
 import { actions as sagaActions, types as sagaTypes } from '../actions';
-import { actions as fromUi } from '../../redux/ui';
+import { actions as uiActions } from '../../redux/ui';
 
 export function* isDataLoaded(id) {
   yield put(studyActions.setCurrentMultipleChoiceId(id));
@@ -34,7 +34,7 @@ export function* initStudyData() {
 }
 
 export function* initUi() {
-  yield put(fromUi.set('skipButton', false));
+  yield put(uiActions.set('skipButton', false));
 }
 
 export function* run(mode) {
@@ -54,7 +54,7 @@ export function* run(mode) {
       return false;
     }
   }
-  yield put(fromUi.set('nextButton', true));
+  yield put(uiActions.set('nextButton', true));
   return yield take(sagaTypes.NEXT);
 }
 

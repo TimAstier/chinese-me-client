@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 import { Modal as ModalComponent } from '../../components';
-import { actions } from '../../redux/ui';
+import { actions as uiActions } from '../../redux/ui';
 
 class Modal extends Component {
 
@@ -26,6 +26,6 @@ Modal.propTypes = {
 export default connect(
   null,
   {
-    handleClose: () => actions.closeModal()
+    handleClose: () => uiActions.closeModal()
   }
 )(Modal);

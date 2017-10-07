@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 import { PlayAudioButton as PlayAudioButtonComponent } from '../../components';
-import { actions } from '../../sagas/actions';
+import { actions as sagaActions } from '../../sagas/actions';
 import selectors from '../../rootSelectors';
 
 class PlayAudioButton extends Component {
@@ -52,5 +52,5 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   {
-    playAudio: actions.playAudio
+    playAudio: sagaActions.playAudio
   })(PlayAudioButton);

@@ -2,10 +2,10 @@ import { put, take, select, call } from 'redux-saga/effects';
 import { delay } from 'redux-saga';
 import { types as sagaTypes } from '../actions';
 import { types as uiTypes } from '../../redux/ui';
-import { actions as fromUi } from '../../redux/ui';
-import { actions as fromCharacterPinyin } from '../../redux/characterPinyin';
-import { actions as fromSagas } from '../actions';
-import { actions as fromAudio } from '../../redux/audio';
+import { actions as uiActions } from '../../redux/ui';
+import { actions as characterPinyinActions } from '../../redux/characterPinyin';
+import { actions as sagaActions } from '../actions';
+import { actions as audioActions } from '../../redux/audio';
 import selectors from '../../rootSelectors';
 import { actions as studyActions } from '../../redux/study';
 import { fetchEntities } from '../entities';
@@ -26,49 +26,49 @@ export function checkData() {
 }
 
 export function* initStudyData() {
-  yield put(fromCharacterPinyin.init());
+  yield put(characterPinyinActions.init());
 }
 
 export function* initUi() {
-  yield put(fromUi.set('skipButton', true));
-  yield put(fromUi.closeModal());
-  yield put(fromUi.set('playAudioButton', true));
+  yield put(uiActions.set('skipButton', true));
+  yield put(uiActions.closeModal());
+  yield put(uiActions.set('playAudioButton', true));
 }
 
 export function* run(mode) {
   const currentChar = yield select(selectors.getCurrentCharacter);
   const audioUrl = `https://s3.eu-west-2.amazonaws.com/chineseme/pinyin/${currentChar.pinyinNumber}.m4a`;
-  yield put(fromAudio.set('audioUrl', audioUrl));
+  yield put(audioActions.set('audioUrl', audioUrl));
   while (true) { // eslint-disable-line no-constant-condition
     let attemptsLeft = yield select(selectors.getCharacterPinyinAttemptsLeft);
     while (attemptsLeft >= 0) {
-      yield put(fromSagas.playAudio());
+      yield put(sagaActions.playAudio());
       yield take(sagaTypes.CHECK_ANSWER);
       const userAnswer = yield select(selectors.getCharacterPinyinUserAnswer);
       const expectedAnswer = currentChar.pinyinNumber;
       if (userAnswer === expectedAnswer) {
-        yield put(fromSagas.playSuccessSound());
+        yield put(sagaActions.playSuccessSound());
         if (mode === 'exam') {
           return true;
         }
-        yield put(fromCharacterPinyin.setStatus('correct'));
-        yield put(fromUi.set('playAudioButton', false));
+        yield put(characterPinyinActions.setStatus('correct'));
+        yield put(uiActions.set('playAudioButton', false));
         yield delay(1000);
-        yield put(fromSagas.next());
+        yield put(sagaActions.next());
       } else {
-        yield put(fromSagas.playWrongSound());
+        yield put(sagaActions.playWrongSound());
         if (mode === 'exam') {
           return false;
         }
         if (attemptsLeft !== 0) {
-          yield put(fromCharacterPinyin.setUserAnswer(''));
-          yield put(fromUi.openModal());
+          yield put(characterPinyinActions.setUserAnswer(''));
+          yield put(uiActions.openModal());
           yield take(uiTypes.CLOSE_MODAL);
-          yield put(fromCharacterPinyin.setAttemptsLeft(attemptsLeft - 1));
+          yield put(characterPinyinActions.setAttemptsLeft(attemptsLeft - 1));
           attemptsLeft --;
         } else {
-          yield put(fromCharacterPinyin.setStatus('wrong'));
-          yield put(fromUi.set('nextButton', true));
+          yield put(characterPinyinActions.setStatus('wrong'));
+          yield put(uiActions.set('nextButton', true));
           yield take(sagaTypes.NEXT);
         }
       }

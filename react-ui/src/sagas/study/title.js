@@ -1,5 +1,5 @@
 import { put, select, call } from 'redux-saga/effects';
-import { actions as fromUi } from '../../redux/ui';
+import { actions as uiActions } from '../../redux/ui';
 import selectors from '../../rootSelectors';
 // import { actions as reviewActions } from '../../redux/review';
 import { actions as examActions } from '../../redux/exam';
@@ -47,8 +47,8 @@ export function checkData() {
 }
 
 export function* initUi() {
-  yield put(fromUi.set('skipButton', false));
-  yield put(fromUi.set('nextButton', true));
+  yield put(uiActions.set('skipButton', false));
+  yield put(uiActions.set('nextButton', true));
 }
 
 export function* initStudyData() {}

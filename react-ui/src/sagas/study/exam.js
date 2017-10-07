@@ -2,8 +2,8 @@
 // 1. Retrieve data and exercise element from server (update service, serializer)
 // 2. Update Exam container to render appropriate container
 // 3. Be sure the exerciseType is supported
-//   - setCurrentXXX in runExam saga
-//   - in getStudyFunctions
+//   - in mapExerciseTypeToSetCurrentAction helper
+//   - in getStudyFunctions function
 // 4. Update exercise saga to
 //   - return success bool
 //   - avoid non-exam effects (like nextButton). use 'exam' mode.
@@ -14,11 +14,11 @@ import selectors from '../../rootSelectors';
 import { fetchEntities } from '../entities';
 import { actions as examActions } from '../../redux/exam';
 import { types as sagaTypes } from '../actions';
-import { actions as studyActions } from '../../redux/study';
 import getStudyFunctions from '../../helpers/getStudyFunctions';
-import { capitalizeFirstLetter } from '../../utils/strings';
 import { defaultEpisodeScreenUi } from '../study';
 import { actions as timerActions, types as timerTypes } from '../../redux/timer';
+import mapExerciseTypeToSetCurrentAction
+  from '../../helpers/mapExerciseTypeToSetCurrentAction';
 
 export function* isDataLoaded() {
   // id is not defined since there is no elementId
@@ -57,14 +57,10 @@ function* runExam() {
   const exercises = yield select(selectors.getExamExercises);
   for (let i = 0; i < exercises.size; i++) {
     const exercise = exercises.get(i);
-    let type = exercise.get('type');
+    const type = exercise.get('type');
     const funcs = getStudyFunctions(type + '/');
-    // TODO: Find a solution to get consistent Types
-    // Here: use a mapping function: mapTypeToStateSlice
-    if (type === 'characterPinyin') {
-      type = 'character';
-    }
-    yield put(studyActions[`setCurrent${capitalizeFirstLetter(type)}Id`](exercise.get('id')));
+    const setCurrent = mapExerciseTypeToSetCurrentAction(type);
+    yield put(setCurrent(exercise.get('id')));
     yield call(defaultEpisodeScreenUi);
     yield call(funcs.initStudyData);
     yield call(funcs.initUi);

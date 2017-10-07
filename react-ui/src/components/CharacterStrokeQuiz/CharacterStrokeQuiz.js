@@ -30,12 +30,15 @@ const IconWrapper = styled.div`
 `;
 
 const HanziWrapper = styled.div`
-  flex-grow: 1;
+  min-height: 300px;
   display: flex;
   justify-content: center;
 `;
 
 let hanziRef = null;
+
+// TODO: Improve hanzi-writer implementation (separate)
+// Maybe use the timer example (side effect)
 
 class CharacterStrokeQuiz extends Component {
   constructor(props) {
@@ -60,6 +63,10 @@ class CharacterStrokeQuiz extends Component {
       hanziWriter.quiz({
         onComplete: () => {
           this.props.strokeQuizCompleted();
+          // TODO: move this logic into hanzi-writer saga
+          if (this.props.timerStatus === 'running') {
+            return null;
+          }
           return this.setState({
             finished: true
           });
@@ -88,7 +95,8 @@ class CharacterStrokeQuiz extends Component {
 
 CharacterStrokeQuiz.propTypes = {
   character: propTypes.instanceOf(Character).isRequired,
-  strokeQuizCompleted: propTypes.func.isRequired
+  strokeQuizCompleted: propTypes.func.isRequired,
+  timerStatus: propTypes.string.isRequired
 };
 
 export default CharacterStrokeQuiz;

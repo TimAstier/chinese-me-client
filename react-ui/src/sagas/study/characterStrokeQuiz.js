@@ -32,10 +32,13 @@ export function* initUi() {
   yield put(uiActions.closeModal());
 }
 
-export function* run() {
+export function* run(mode) {
   yield take(sagaTypes.STROKE_QUIZ_COMPLETED);
   yield put(sagaActions.playSuccessSound());
-  yield delay(1000);
+  if (mode === 'exam') {
+    return true;
+  }
+  return yield delay(1000);
 }
 
 // export function* clean() {}

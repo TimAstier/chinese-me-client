@@ -1,9 +1,9 @@
 // HOW TO add a new exercise type:
 // 1. Retrieve data and exercise element from server (update service, serializer)
-// 2. Update Exam container to render appropriate container
+// 2. Update Exam container to render appropriate container (mapTypeToContainer)
 // 3. Be sure the exerciseType is supported
 //   - in mapExerciseTypeToSetCurrentAction helper
-//   - in getStudyFunctions function
+//   - in mapScreenTypeToModule helper
 // 4. Update exercise saga to
 //   - return success bool
 //   - avoid non-exam effects (like nextButton). use 'exam' mode.
@@ -90,7 +90,6 @@ function* runExam() {
 }
 
 export function* run() {
-  // yield fork(timer);
   yield put(timerActions.start());
   yield race({
     runExam: call(runExam),

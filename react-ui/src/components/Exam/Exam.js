@@ -3,7 +3,8 @@ import propTypes from 'prop-types';
 import styled from 'styled-components';
 import { ExamScoreLabel, ExamProgressbar, Star } from '../.';
 import { CircleTimer } from '../../containers';
-import { MultipleChoice, AudioToText, CharacterPinyin } from '../../containers';
+import { MultipleChoice, AudioToText, CharacterPinyin, CharacterStrokeQuiz }
+  from '../../containers';
 
 const Wrapper = styled.div`
   flex-grow: 1;
@@ -52,8 +53,9 @@ class Exam extends Component {
       case 'multipleChoice': return <MultipleChoice/>;
       case 'audioToText': return <AudioToText/>;
       case 'characterPinyin': return <CharacterPinyin/>;
+      case 'characterStrokeQuiz': return <CharacterStrokeQuiz/>;
       default:
-        console.log('Unkown exercise type'); // eslint-disable-line no-console
+        console.log('Unkown exercise type', type); // eslint-disable-line no-console
         return null;
     }
   }

@@ -4,6 +4,7 @@ const mapExerciseTypeToSetCurrentAction = type => {
   switch (type) {
     case 'multipleChoice': return studyActions.setCurrentMultipleChoiceId;
     case 'audioToText': return studyActions.setCurrentAudioToTextId;
+    case 'characterStrokeQuiz':
     case 'characterPinyin': return studyActions.setCurrentCharacterId;
     default: return console.log('unknown exercise type', type); // eslint-disable-line
   }

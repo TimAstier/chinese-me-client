@@ -20,6 +20,7 @@ export default function mapScreenTypeToModule(screenType) {
     case 'title/': return fromTitle;
     case 'character/etymology': return fromCharacterEtymology;
     case 'character/stroke': return fromCharacterStroke;
+    case 'characterStrokeQuiz/':
     case 'character/strokeQuiz': return fromCharacterStrokeQuiz;
     case 'characterPinyin/':
     case 'character/pinyin': return fromCharacterPinyin;

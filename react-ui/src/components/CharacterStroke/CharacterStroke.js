@@ -22,7 +22,7 @@ const LabelWrapper = styled.div`
 `;
 
 const HanziWrapper = styled.div`
-  flex-grow: 1;
+  min-height: 300px;
   display: flex;
   justify-content: center;
 `;

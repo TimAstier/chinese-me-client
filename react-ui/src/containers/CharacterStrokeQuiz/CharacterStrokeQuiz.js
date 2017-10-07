@@ -10,21 +10,20 @@ class CharacterStrokeQuiz extends Component {
 
   render() {
     return (
-      <CharacterStrokeQuizComponent
-        character={this.props.character}
-        strokeQuizCompleted={this.props.strokeQuizCompleted}
-      />
+      <CharacterStrokeQuizComponent { ...this.props }/>
     );
   }
 }
 
 CharacterStrokeQuiz.propTypes = {
   character: propTypes.instanceOf(Character).isRequired,
-  strokeQuizCompleted: propTypes.func.isRequired
+  strokeQuizCompleted: propTypes.func.isRequired,
+  timerStatus: propTypes.string.isRequired
 };
 
 const mapStateToProps = state => ({
-  character: selectors.getCurrentCharacter(state)
+  character: selectors.getCurrentCharacter(state),
+  timerStatus: selectors.getTimerStatus(state)
 });
 
 export default connect(

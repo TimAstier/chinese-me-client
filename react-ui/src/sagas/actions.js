@@ -44,8 +44,7 @@ export const types = {
   PAUSE: 'signal/PAUSE',
   EXAM_COMPLETED: 'signal/EXAM_COMPLETED',
   PLAY_SUCCESS_SOUND: 'signal/PLAY_SUCCESS_SOUND',
-  PLAY_WRONG_SOUND: 'signal/PLAY_WRONG_SOUND',
-  OUT_OF_TIME: 'signal/OUT_OF_TIME'
+  PLAY_WRONG_SOUND: 'signal/PLAY_WRONG_SOUND'
 };
 
 // Action Creators
@@ -136,7 +135,7 @@ const pause = () => ({ type: types.PAUSE });
 const examCompleted = () => ({ type: types.EXAM_COMPLETED });
 const playSuccessSound = () => ({ type: types.PLAY_SUCCESS_SOUND });
 const playWrongSound = () => ({ type: types.PLAY_WRONG_SOUND });
-const outOfTime = () => ({ type: types.OUT_OF_TIME });
+
 export const actions = {
   next,
   skip,
@@ -177,6 +176,5 @@ export const actions = {
   pause,
   examCompleted,
   playSuccessSound,
-  playWrongSound,
-  outOfTime
+  playWrongSound
 };

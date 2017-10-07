@@ -82,7 +82,7 @@ function* runScreenSaga(run) {
   });
 }
 
-function* defaultEpisodeScreenUi() {
+export function* defaultEpisodeScreenUi() {
   yield put(uiActions.set('skipButton', true));
   yield put(uiActions.set('nextButton', false));
   yield put(uiActions.closeModal());

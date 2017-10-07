@@ -17,6 +17,7 @@ import * as fromRouting from './redux/routing';
 import * as fromMap from './redux/map';
 import * as fromMultipleChoice from './redux/multipleChoice';
 import * as fromVideo from './redux/video';
+import * as fromTimer from './redux/timer';
 
 // TODO: DRY selectors (like getNext/Previous ids)
 
@@ -83,6 +84,11 @@ const videoSelectors = bindSelectors(
 const examSelectors = bindSelectors(
   state => state.get('exam'),
   fromExam.selectors
+);
+
+const timerSelectors = bindSelectors(
+  state => state.get('timer'),
+  fromTimer.selectors
 );
 
 const getCurrentDialog = createSelector(
@@ -626,6 +632,7 @@ const selectors = {
   ...multipleChoiceSelectors,
   ...videoSelectors,
   ...examSelectors,
+  ...timerSelectors,
   getCurrentEpisode,
   getFocusedEpisode,
   getCurrentDialog,

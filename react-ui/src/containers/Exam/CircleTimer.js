@@ -22,8 +22,8 @@ CircleTimer.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  timeLeft: selectors.getExamTimeLeft(state),
-  timeLabel: selectors.getExamTimeLabel(state)
+  timeLeft: selectors.getTimerTimeLeft(state),
+  timeLabel: selectors.getTimerTimeLabel(state)
 });
 
 export default connect(

@@ -11,5 +11,6 @@ export { default as multipleChoice } from './multipleChoice';
 export { default as review } from './review';
 export { default as routing } from './routing';
 export { default as study } from './study';
+export { default as timer } from './timer';
 export { default as ui } from './ui';
 export { default as video } from './video';

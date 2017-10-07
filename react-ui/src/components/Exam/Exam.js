@@ -3,6 +3,7 @@ import propTypes from 'prop-types';
 import styled from 'styled-components';
 import { ExamScoreLabel, ExamProgressbar, Star } from '../.';
 import { CircleTimer } from '../../containers';
+import { MultipleChoice, AudioToText } from '../../containers';
 
 const Wrapper = styled.div`
   flex-grow: 1;
@@ -46,7 +47,20 @@ const ProgressbarWrapper = styled.div`
 
 class Exam extends Component {
 
+  mapTypeToContainer(type) {
+    switch (type) {
+      case 'multipleChoice': return <MultipleChoice/>;
+      case 'audioToText': return <AudioToText/>;
+      default:
+        console.log('Unkown exercise type'); // eslint-disable-line no-console
+        return null;
+    }
+  }
+
   render() {
+    const container =
+      this.mapTypeToContainer(this.props.currentExercise.get('type'));
+    console.log(this.props.currentExercise.get('type'))
     return (
       <Wrapper>
         <LeftWrapper>
@@ -70,7 +84,7 @@ class Exam extends Component {
         </LeftWrapper>
         <MiddleWrapper>
           <CircleTimer />
-          {this.props.initialized && <this.props.container/>}
+          {this.props.initialized && container}
         </MiddleWrapper>
         <RightWrapper />
       </Wrapper>
@@ -81,7 +95,7 @@ class Exam extends Component {
 Exam.propTypes = {
   score: propTypes.number.isRequired,
   scoreMax: propTypes.number.isRequired,
-  container: propTypes.func.isRequired,
+  currentExercise: propTypes.node.isRequired,
   initialized: propTypes.bool.isRequired
 };
 

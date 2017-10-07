@@ -8,7 +8,6 @@ export const types = {
   SET_EXERCISES: 'exam/SET_EXERCISES',
   CORRECT_ANSWER: 'exam/CORRECT_ANSWER',
   WRONG_ANSWER: 'exam/WRONG_ANSWER',
-  DECREMENT_TIME: 'exam/DECREMENT_TIME',
   CLEAN: 'exam/CLEAN'
 };
 
@@ -17,8 +16,7 @@ export const types = {
 export const INITIAL_STATE = fromJS({
   initialized: false,
   exercises: [], // [ { type, id } ] <- As in review
-  results: [],
-  time: 300 // in seconds
+  results: []
 });
 
 export default function reducer(state = INITIAL_STATE, action = {}) {
@@ -31,8 +29,6 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
       return state.set('results', state.get('results').push(1));
     case types.WRONG_ANSWER:
       return state.set('results', state.get('results').push(0));
-    case types.DECREMENT_TIME:
-      return state.set('time', state.get('time') - 1);
     case types.CLEAN:
       return INITIAL_STATE;
     default:
@@ -52,7 +48,6 @@ const setExercises = exercises => ({
 });
 const correctAnswer = () => ({ type: types.CORRECT_ANSWER });
 const wrongAnswer = () => ({ type: types.WRONG_ANSWER });
-const decrementTime = () => ({ type: types.DECREMENT_TIME });
 const clean = () => ({ type: types.CLEAN });
 
 export const actions = {
@@ -60,7 +55,6 @@ export const actions = {
   setExercises,
   correctAnswer,
   wrongAnswer,
-  decrementTime,
   clean
 };
 
@@ -69,7 +63,6 @@ export const actions = {
 const getExamInitialized = state => state.get('initialized');
 const getExamExercises = state => state.get('exercises');
 const getExamResults = state => state.get('results');
-const getExamTime = state => state.get('time');
 const getExamScore = createSelector(
   getExamResults,
   results => results.filter(e => e === 1).size
@@ -82,18 +75,6 @@ const getExamCurrentExerciseIndex = createSelector(
   getExamResults,
   results => results.size
 );
-const getExamTimeLeft = createSelector(
-  getExamTime,
-  time => time / INITIAL_STATE.get('time')
-);
-const getExamTimeLabel = createSelector(
-  getExamTime,
-  time => {
-    const min = Math.floor(time / 60);
-    const sec = time % 60;
-    return `${min}:${sec < 10 ? `0${sec}` : sec}`;
-  }
-);
 const getExamCurrentExercise = createSelector(
   getExamExercises,
   getExamCurrentExerciseIndex,
@@ -105,12 +86,9 @@ const getExamCurrentExercise = createSelector(
 export const selectors = {
   getExamInitialized,
   getExamExercises,
-  getExamTime,
   getExamResults,
   getExamScore,
   getExamScoreMax,
   getExamCurrentExerciseIndex,
-  getExamTimeLeft,
-  getExamTimeLabel,
   getExamCurrentExercise
 };

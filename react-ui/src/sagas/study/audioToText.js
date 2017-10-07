@@ -52,6 +52,10 @@ export function* run(mode) {
     const success = word.get('pinyin') === userAnswer;
     if (!success) {
       yield put(sagaActions.playWrongSound());
+      // In exam, skip the end if the user makes one mistake
+      if (mode === 'exam') {
+        return false;
+      }
     }
     yield put(audioToTextActions.addResult(Map({ success, userAnswer })));
     yield put(audioToTextActions.setUserAnswer(''));
@@ -61,10 +65,6 @@ export function* run(mode) {
     yield put(sagaActions.playSuccessSound());
     if (mode === 'exam') {
       return true;
-    }
-  } else {
-    if (mode === 'exam') {
-      return false;
     }
   }
   yield put(audioToTextActions.setStatus('finished'));

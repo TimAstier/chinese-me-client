@@ -13,6 +13,7 @@ export { default as ElementsNav } from './ElementsNav/ElementsNav';
 export { default as EpisodeCard } from './EpisodeCard/EpisodeCard';
 export { default as EpisodeScreen } from './EpisodeScreen/EpisodeScreen';
 export { default as Exam } from './Exam/Exam';
+export { default as ExamResult } from './ExamResult/ExamResult';
 export { default as FeedbackModal } from './FeedbackModal/FeedbackModal';
 export { default as GrammarExplanation } from './GrammarExplanation/GrammarExplanation';
 export { default as LoginPage } from './Login/Page';

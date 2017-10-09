@@ -5,6 +5,7 @@ import { createSelector } from 'reselect';
 
 export const types = {
   SET_INITIALIZED: 'exam/SET_INITIALIZED',
+  SET_COMPLETED: 'exam/SET_COMPLETED',
   SET_EXERCISES: 'exam/SET_EXERCISES',
   CORRECT_ANSWER: 'exam/CORRECT_ANSWER',
   WRONG_ANSWER: 'exam/WRONG_ANSWER',
@@ -15,6 +16,7 @@ export const types = {
 
 export const INITIAL_STATE = fromJS({
   initialized: false,
+  completed: false,
   exercises: [], // [ { type, id } ] <- As in review
   results: []
 });
@@ -23,6 +25,8 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
   switch (action.type) {
     case types.SET_INITIALIZED:
       return state.set('initialized', action.payload.initialized);
+    case types.SET_COMPLETED:
+      return state.set('completed', action.payload.completed);
     case types.SET_EXERCISES:
       return state.set('exercises', fromJS(action.payload.exercises));
     case types.CORRECT_ANSWER:
@@ -42,6 +46,10 @@ const setInitialized = initialized => ({
   type: types.SET_INITIALIZED,
   payload: { initialized }
 });
+const setCompleted = completed => ({
+  type: types.SET_COMPLETED,
+  payload: { completed }
+});
 const setExercises = exercises => ({
   type: types.SET_EXERCISES,
   payload: { exercises }
@@ -52,6 +60,7 @@ const clean = () => ({ type: types.CLEAN });
 
 export const actions = {
   setInitialized,
+  setCompleted,
   setExercises,
   correctAnswer,
   wrongAnswer,
@@ -61,6 +70,7 @@ export const actions = {
 // Selectors
 
 const getExamInitialized = state => state.get('initialized');
+const getExamCompleted = state => state.get('completed');
 const getExamExercises = state => state.get('exercises');
 const getExamResults = state => state.get('results');
 const getExamScore = createSelector(
@@ -85,6 +95,7 @@ const getExamCurrentExercise = createSelector(
 
 export const selectors = {
   getExamInitialized,
+  getExamCompleted,
   getExamExercises,
   getExamResults,
   getExamScore,

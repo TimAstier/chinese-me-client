@@ -48,6 +48,7 @@ export function* initUi() {
 
 export function* initStudyData() {
   yield put(examActions.setInitialized(false));
+  yield put(examActions.setCompleted(false));
   yield put(timerActions.reset());
 }
 
@@ -93,6 +94,7 @@ function* runExam() {
       }
     }
   }
+  yield put(examActions.setCompleted(true));
 }
 
 export function* run() {

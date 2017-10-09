@@ -7,14 +7,17 @@ import selectors from '../../rootSelectors';
 class Exam extends Component {
 
   render() {
-    return (
-      <ExamComponent
-        score={this.props.score}
-        scoreMax={this.props.scoreMax}
-        currentExercise={this.props.currentExercise}
-        initialized={this.props.initialized}
-      />
-    );
+    if (this.props.currentExercise) {
+      return (
+        <ExamComponent
+          score={this.props.score}
+          scoreMax={this.props.scoreMax}
+          currentExercise={this.props.currentExercise}
+          initialized={this.props.initialized}
+        />
+      );
+    }
+    return null;
   }
 }
 

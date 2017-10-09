@@ -1,7 +1,6 @@
 import { put, take, select, call } from 'redux-saga/effects';
 // import { types as uiTypes } from '../../redux/ui';
 import { delay } from 'redux-saga';
-import { actions as uiActions } from '../../redux/ui';
 import selectors from '../../rootSelectors';
 import { actions as studyActions } from '../../redux/study';
 import { actions as sagaActions, types as sagaTypes } from '../actions';

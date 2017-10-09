@@ -18,6 +18,8 @@ function loadStories() {
   require('../src/components/Exam/ExamProgressbar_stories');
   require('../src/components/Exam/ExamScoreLabel_stories');
   require('../src/components/Exam/CircleTimer_stories');
+  require('../src/components/ExamResult/CircleProgressbar_stories');
+  require('../src/components/ExamResult/ExamResult_stories');
   require('../src/components/FeedbackModal/stories');
   require('../src/components/Footer/stories');
   require('../src/components/Footer/stories');

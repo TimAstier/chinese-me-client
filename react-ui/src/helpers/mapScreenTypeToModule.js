@@ -11,6 +11,7 @@ import * as fromDialogRoleplay from '../sagas/study/dialogRoleplay';
 import * as fromMultipleChoice from '../sagas/study/multipleChoice';
 import * as fromAudioToText from '../sagas/study/audioToText';
 import * as fromExam from '../sagas/study/exam';
+import * as fromExamResult from '../sagas/study/examResult';
 
 // TODO: Issue: Study screenTypes and Exam screenTypes are not always consistent
 // Maybe harmonize them or spleet between two files?
@@ -32,6 +33,7 @@ export default function mapScreenTypeToModule(screenType) {
     case 'multipleChoice/': return fromMultipleChoice;
     case 'audioToText/': return fromAudioToText;
     case 'exam/': return fromExam;
+    case 'result/': return fromExamResult;
     default: return console.log('unknown screenType', screenType);
   }
 }

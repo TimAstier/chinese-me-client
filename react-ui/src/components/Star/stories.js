@@ -10,4 +10,6 @@ import { Star } from '../.';
 
 storiesOf('Star', module)
   .add('filled', () => <Star filled />)
-  .add('filled: false', () => <Star filled={false} />);
+  .add('filled: false', () => <Star filled={false} />)
+  .add('filled, big', () => <Star filled big/>)
+  .add('filled: false, big', () => <Star filled={false} big/>);

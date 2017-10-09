@@ -26,6 +26,7 @@ export { default as Navbar } from './Navbar/Navbar';
 export { default as PauseButton } from './PauseButton/PauseButton';
 export { default as PlayAudioButton } from './PlayAudioButton/PlayAudioButton';
 export { default as Progressbar } from './Progressbar/Progressbar';
+export { default as Review } from './Review/Review';
 export { default as ScreenButton } from './ScreenButton/ScreenButton';
 export { default as SelectEpisode } from './SelectEpisode/SelectEpisode';
 export { default as SignupPage } from './Signup/Page';

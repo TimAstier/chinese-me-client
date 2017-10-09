@@ -1,4 +1,5 @@
 import { fromJS } from 'immutable';
+import { createSelector } from 'reselect';
 
 // Types
 
@@ -6,7 +7,8 @@ export const types = {
   SET_INITIALIZED: 'review/SET_INITIALIZED',
   SET_EXERCISES: 'review/SET_EXERCISES',
   CORRECT_ANSWER: 'review/CORRECT_ANSWER',
-  WRONG_ANSWER: 'review/WRONG_ANSWER'
+  WRONG_ANSWER: 'review/WRONG_ANSWER',
+  CLEAN: 'review/CLEAN'
 };
 
 // Reducer
@@ -28,6 +30,8 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
       return state.set('exercises',
         state.get('exercises').delete(0).push(state.get('exercises').get(0))
       );
+    case types.CLEAN:
+      return INITIAL_STATE;
     default:
       return state;
   }
@@ -45,20 +49,29 @@ const setExercises = exercises => ({
 });
 const correctAnswer = () => ({ type: types.CORRECT_ANSWER });
 const wrongAnswer = () => ({ type: types.WRONG_ANSWER });
+const clean = () => ({ type: types.CLEAN });
 
 export const actions = {
   setInitialized,
   setExercises,
   correctAnswer,
-  wrongAnswer
+  wrongAnswer,
+  clean
 };
 
 // Selectors
 
 const getReviewInitialized = state => state.get('initialized');
 const getReviewExercises = state => state.get('exercises');
+const getReviewCurrentExercise = createSelector(
+  getReviewExercises,
+  exercises => {
+    return exercises.get(0) ? exercises.get(0) : null;
+  }
+);
 
 export const selectors = {
   getReviewInitialized,
-  getReviewExercises
+  getReviewExercises,
+  getReviewCurrentExercise
 };

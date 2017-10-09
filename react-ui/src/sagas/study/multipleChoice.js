@@ -4,6 +4,7 @@ import { actions as studyActions } from '../../redux/study';
 import { actions as multipleChoiceActions } from '../../redux/multipleChoice';
 import { actions as sagaActions, types as sagaTypes } from '../actions';
 import { actions as uiActions } from '../../redux/ui';
+import { actions as reviewActions } from '../../redux/review';
 
 export function* isDataLoaded(id) {
   yield put(studyActions.setCurrentMultipleChoiceId(id));
@@ -38,6 +39,7 @@ export function* initUi() {
 }
 
 export function* run(mode) {
+  let success = null;
   const multipleChoice = yield select(selectors.getCurrentMultipleChoice);
   yield take(sagaTypes.CHECK_ANSWER);
   const userAnswer = yield select(selectors.getMultipleChoiceUserAnswer);
@@ -47,14 +49,21 @@ export function* run(mode) {
     if (mode === 'exam') {
       return true;
     }
+    success = true;
   } else {
     yield put(sagaActions.playWrongSound());
     yield put(multipleChoiceActions.setStatus('wrong'));
     if (mode === 'exam') {
       return false;
     }
+    success = false;
   }
   yield put(uiActions.set('nextButton', true));
+  if (mode === 'review') {
+    yield take(sagaTypes.NEXT_QUESTION);
+    yield put(reviewActions.setInitialized(false));
+    return yield put(success ? reviewActions.correctAnswer() : reviewActions.wrongAnswer());
+  }
   return yield take(sagaTypes.NEXT);
 }
 

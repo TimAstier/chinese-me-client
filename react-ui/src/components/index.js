@@ -39,6 +39,7 @@ export { default as OnboardingScreen } from './OnboardingScreen/OnboardingScreen
 export { default as PauseButton } from './PauseButton/PauseButton';
 export { default as PlayAudioButton } from './PlayAudioButton/PlayAudioButton';
 export { default as Progressbar } from './Progressbar/Progressbar';
+export { default as Review } from './Review/Review';
 export { default as ScreenButton } from './ScreenButton/ScreenButton';
 export { default as ScreenWrapper } from './ScreenWrapper/ScreenWrapper';
 export { default as SelectEpisode } from './SelectEpisode/SelectEpisode';

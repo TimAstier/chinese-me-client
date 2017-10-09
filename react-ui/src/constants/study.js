@@ -5,6 +5,7 @@ export const elementTypes = [
   'multipleChoice',
   'audioToText',
   'title',
+  'review',
   'exam'
 ];
 

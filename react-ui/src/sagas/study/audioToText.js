@@ -6,6 +6,7 @@ import { types as sagaTypes, actions as sagaActions } from '../actions';
 import { actions as uiActions } from '../../redux/ui';
 import { Map } from 'immutable';
 import { actions as audioActions } from '../../redux/audio';
+import { actions as reviewActions } from '../../redux/review';
 
 export function* isDataLoaded(id) {
   yield put(studyActions.setCurrentAudioToTextId(id));
@@ -17,13 +18,7 @@ export function* isDataLoaded(id) {
   return (currentElement === undefined) ? false : true;
 }
 
-export function* fetchData() {
-  // TODO: review this to fetch data individually if necessary
-  // yield call(fetchEntities, ['/episode/' + episodeId + '/review']);
-  // // TODO: handle fetch error
-  // const reviews = yield select(selectors.getReviews);
-  // const exercises = reviews.getIn([episodeId, 'exercises']);
-}
+export function* fetchData() {}
 
 export function checkData() {
   return true;
@@ -69,6 +64,11 @@ export function* run(mode) {
   }
   yield put(audioToTextActions.setStatus('finished'));
   yield put(uiActions.set('nextButton', true));
+  if (mode === 'review') {
+    yield take(sagaTypes.NEXT_QUESTION);
+    yield put(reviewActions.setInitialized(false));
+    return yield put(questionSuccess ? reviewActions.correctAnswer() : reviewActions.wrongAnswer());
+  }
   return yield take(sagaTypes.NEXT);
 }
 

@@ -3,8 +3,7 @@ import propTypes from 'prop-types';
 import styled from 'styled-components';
 import { ExamScoreLabel, ExamProgressbar, Star } from '../.';
 import { CircleTimer } from '../../containers';
-import { MultipleChoice, AudioToText, CharacterPinyin, CharacterStrokeQuiz }
-  from '../../containers';
+import mapTypeToContainers from '../../helpers/mapTypeToContainers';
 
 const Wrapper = styled.div`
   flex-grow: 1;
@@ -48,21 +47,9 @@ const ProgressbarWrapper = styled.div`
 
 class Exam extends Component {
 
-  mapTypeToContainer(type) {
-    switch (type) {
-      case 'multipleChoice': return <MultipleChoice/>;
-      case 'audioToText': return <AudioToText/>;
-      case 'characterPinyin': return <CharacterPinyin/>;
-      case 'characterStrokeQuiz': return <CharacterStrokeQuiz/>;
-      default:
-        console.log('Unkown exercise type', type); // eslint-disable-line no-console
-        return null;
-    }
-  }
-
   render() {
-    const container =
-      this.mapTypeToContainer(this.props.currentExercise.get('type'));
+    const Container =
+      mapTypeToContainers(this.props.currentExercise.get('type'));
     return (
       <Wrapper>
         <LeftWrapper>
@@ -86,7 +73,7 @@ class Exam extends Component {
         </LeftWrapper>
         <MiddleWrapper>
           <CircleTimer />
-          {this.props.initialized && container}
+          {this.props.initialized && <Container/>}
         </MiddleWrapper>
         <RightWrapper />
       </Wrapper>

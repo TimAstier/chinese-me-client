@@ -61,8 +61,7 @@ function* findNextUrl(params) {
           const dialogId = currentEpisode.dialogs[0];
           return '/study/' + episodeId + '/dialog/' + dialogId + '/listen';
         case '4': // review
-          const exercise = yield select(selectors.getCurrentReviewExercise);
-          return '/study/' + episodeId + '/' + exercise.get('type') + '/' + exercise.get('id');
+          return '/study/' + episodeId + '/review';
         case '5': // final exam
           return '/study/' + episodeId + '/exam';
         default: return '/error';
@@ -93,6 +92,8 @@ function* findNextUrl(params) {
       return '/study/' + episodeId + '/dialog/' + elementId + '/roleplay';
     case 'dialog/roleplay':
       return '/study/' + episodeId + '/title/4';
+    case 'review/':
+      return '/study/' + episodeId + '/title/5';
     case 'exam/':
       return '/study/' + episodeId + '/result';
     case 'result/':

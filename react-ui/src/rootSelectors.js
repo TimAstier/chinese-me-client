@@ -557,13 +557,6 @@ const getCompletionPercentage = createSelector(
   }
 );
 
-const getCurrentReviewExercise = createSelector(
-  reviewSelectors.getReviewExercises,
-  exercises => {
-    return exercises.get(0) ? exercises.get(0) : null;
-  }
-);
-
 const getReviewNavParams = createSelector(
   studySelectors.getCurrentEpisodeId,
   reviewSelectors.getReviewExercises,
@@ -685,7 +678,6 @@ const selectors = {
   getMapGrammarsCompletedCount,
   getGrammarsNavParams,
   getCompletionPercentage,
-  getCurrentReviewExercise,
   getReviewNavParams,
   getCurrentSeasonEpisodes,
   getCurrentSeason,

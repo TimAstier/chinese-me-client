@@ -17,7 +17,7 @@ export const types = {
 export const INITIAL_STATE = fromJS({
   initialized: false,
   completed: false,
-  exercises: [], // [ { type, id } ] <- As in review
+  exercises: [], // [ { type, id } ]
   results: []
 });
 

@@ -4,6 +4,7 @@ import { ScreenButton as ScreenButtonComponent } from '../../components';
 import { connect } from 'react-redux';
 import { actions as sagaActions } from '../../sagas/actions';
 import { actions as uiActions } from '../../redux/ui';
+import selectors from '../../rootSelectors';
 
 // Note:
 // ScreenButtons with the primary prop are mounted with an eventListener
@@ -37,7 +38,9 @@ class ScreenButton extends Component {
       return this.props.onClick;
     }
     switch (submitAction) {
-      case 'next': return this.props.next;
+      case 'next':
+        // This prevents calling nextScreen while doing review
+        return this.props.isReviewInitialized ? this.props.nextQuestion : this.props.next;
       case 'skip': return this.props.skip;
       case 'closeModal': return this.props.handleCloseModal;
       case 'checkAnswer': return this.props.checkAnswer;
@@ -73,15 +76,22 @@ ScreenButton.propTypes = {
   skip: propTypes.func.isRequired,
   handleCloseModal: propTypes.func.isRequired,
   checkAnswer: propTypes.func.isRequired,
-  onClick: propTypes.func
+  onClick: propTypes.func,
+  isReviewInitialized: propTypes.bool.isRequired,
+  nextQuestion: propTypes.func.isRequired
 };
 
+const mapStateToProps = state => ({
+  isReviewInitialized: selectors.getReviewInitialized(state)
+});
+
 export default connect(
-  null,
+  mapStateToProps,
   {
     next: sagaActions.next,
     skip: sagaActions.skip,
     handleCloseModal: uiActions.closeModal,
-    checkAnswer: sagaActions.checkAnswer
+    checkAnswer: sagaActions.checkAnswer,
+    nextQuestion: sagaActions.nextQuestion
   }
 )(ScreenButton);

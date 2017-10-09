@@ -28,8 +28,8 @@ const AvatarName = styled.div`
 `;
 
 const Image = styled.img`
-  width: ${props => props.diameter ? `${props.diameter}px` : '60px'};
-  height: ${props => props.diameter ? `${props.diameter}px` : '60px'};
+  width: ${props => props.diameter ? `${props.diameter}px` : '70px'};
+  height: ${props => props.diameter ? `${props.diameter}px` : '70px'};
   animation: ${props => props.isTalking ? bouncy : 'none'} 1200ms linear 0ms infinite;
   margin-right: ${props => props.diameter ? `${Math.round(props.diameter / 6)}px` : '5px'};
   margin-left: ${props => props.diameter ? `${Math.round(props.diameter / 6)}px` : '5px'};

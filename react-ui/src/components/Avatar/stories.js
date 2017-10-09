@@ -10,16 +10,16 @@ import { Avatar as AvatarModel } from '../../models';
 // };
 
 const avatar1 = new AvatarModel({
-  happyImage: 'https://s3.eu-west-2.amazonaws.com/chineseme/liyu_happy.png',
+  happyImage: 'https://s3.eu-west-2.amazonaws.com/chineseme/personalities/liyu_head.png',
   isTalking: false,
-  name: 'Liyu',
+  name: 'Marvin',
   mood: 'happy'
 });
 
 const avatar2 = new AvatarModel({
-  blinkImage: 'https://s3.eu-west-2.amazonaws.com/chineseme/liyu_blink.png',
+  blinkImage: 'https://s3.eu-west-2.amazonaws.com/chineseme/personalities/marvin_head.png',
   isTalking: true,
-  name: 'Liyu',
+  name: 'Marvin',
   mood: 'blink'
 });
 

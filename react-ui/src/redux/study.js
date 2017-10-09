@@ -25,7 +25,7 @@ export const types = {
 // Reducers
 
 export const INITIAL_STATE = Immutable.Map({
-  currentSeasonId: 1, // TODO: set this dynamically
+  currentSeasonId: null,
   currentEpisodeId: null,
   currentCharacterId: null,
   currentGrammarId: null,

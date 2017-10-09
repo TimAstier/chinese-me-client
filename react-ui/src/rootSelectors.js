@@ -618,6 +618,23 @@ const getCurrentSeason = createSelector(
   }
 );
 
+const getFirstSeasonId = createSelector(
+  entitySelectors.getSeasons,
+  seasons => {
+    let minNumber = 9999; // Should be lower than the number of seasons :)
+    let id = null;
+    seasons
+      .entrySeq()
+      .forEach(e => {
+        if (e[1].number < minNumber) {
+          minNumber = e[1].number;
+          id = e[0];
+        }
+      });
+    return id;
+  }
+);
+
 const selectors = {
   ...entitySelectors,
   ...studySelectors,
@@ -672,7 +689,8 @@ const selectors = {
   getReviewNavParams,
   getCurrentSeasonEpisodes,
   getCurrentSeason,
-  getExamNavParams
+  getExamNavParams,
+  getFirstSeasonId
 };
 
 export default selectors;

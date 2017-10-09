@@ -12,7 +12,7 @@ const Wrapper = styled.div`
 `;
 
 const LabelWrapper = styled.div`
-  min-height: 100px;
+  min-height: 60px;
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -23,8 +23,16 @@ const LabelWrapper = styled.div`
 `;
 
 const HanziWrapper = styled.div`
-  min-height: 250px;
-  width: 250px;
+  margin-top: 20px;
+  width: 200px;
+  min-height: 200px;
+  border-radius: 15px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 7px 0 rgba(0, 0, 0, 0.08);
+  border: solid 2px #dce6eb;
+  font-size: 100px;
+  font-family: 'STKaitiSC';
+	color: #454545;
   display: flex;
 `;
 
@@ -36,8 +44,8 @@ class CharacterStroke extends Component {
     if (this.props.character.hanziData) {
       const hanziWriter = new HanziWriter(hanziRef, this.props.character.hanziData, {
         charDataLoader: data => data,
-        width: 250,
-        height: 250,
+        width: 200,
+        height: 200,
         showOutline: true,
         showCharacter: false,
         strokeAnimationDuration: 600,

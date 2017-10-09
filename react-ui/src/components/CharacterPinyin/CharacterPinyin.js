@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
+import HanziWriter from 'hanzi-writer';
 import { Character } from '../../models';
 import { ScreenButton } from '../../containers';
 import { Modal } from '../../containers';
@@ -11,10 +12,11 @@ const Wrapper = styled.div`
   flex: 1 0 0;
   display: flex;
   flex-direction: column;
+  align-items: center;
 `;
 
 const LabelWrapper = styled.div`
-  flex-basis: 74px;
+  min-height: 60px;
   font-family: 'Open Sans';
   font-size: 24px;
 	font-weight: 600;
@@ -24,15 +26,8 @@ const LabelWrapper = styled.div`
   align-items: flex-end;
 `;
 
-const CharacterBoxWrapper = styled.div`
-  flex-basis: 190px;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-`;
-
 const InputWrapper = styled.div`
-  flex-basis: 70px;
+  min-height: 70px;
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -45,9 +40,10 @@ const CheckWrapper = styled.div`
   align-items: flex-end;
 `;
 
-const CharacterBox = styled.div`
-  width: 160px;
-  height: 160px;
+const HanziWrapper = styled.div`
+  margin-top: 20px;
+  width: 200px;
+  min-height: 200px;
   border-radius: 15px;
   background-color: #ffffff;
   box-shadow: 0 2px 7px 0 rgba(0, 0, 0, 0.08);
@@ -56,8 +52,6 @@ const CharacterBox = styled.div`
   font-family: 'STKaitiSC';
 	color: #454545;
   display: flex;
-  justify-content: center;
-  align-items: center;
 `;
 
 const AnswerWrapper = styled.div`
@@ -150,7 +144,25 @@ const Input = styled.input`
   outline: none;
 `;
 
+let hanziRef = null;
+
 class CharacterPinyin extends Component {
+
+  componentDidMount() {
+    if (this.props.character.hanziData) {
+      const hanziWriter = new HanziWriter(hanziRef, this.props.character.hanziData, { // eslint-disable-line
+        charDataLoader: data => data,
+        width: 200,
+        height: 200,
+        showOutline: false,
+        showCharacter: true,
+        strokeAnimationDuration: 600,
+        delayBetweenStrokes: 0,
+        showHintAfterMisses: 1
+      });
+    }
+  }
+
   isFinished() {
     const status = this.props.status;
     return status === 'wrong' || status === 'correct';
@@ -240,11 +252,9 @@ class CharacterPinyin extends Component {
         <LabelWrapper>
           {this.props.status === 'question' ? 'Type the pinyin!' : ''}
         </LabelWrapper>
-        <CharacterBoxWrapper>
-          <CharacterBox>
-            {this.props.character.simpChar}
-          </CharacterBox>
-        </CharacterBoxWrapper>
+        <HanziWrapper>
+          <div ref={div => {hanziRef = div;}} />
+        </HanziWrapper>
         {this.renderInputWrapper()}
         {this.isFinished() ?
           this.renderAnswerWrapper()

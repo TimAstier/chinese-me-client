@@ -13,7 +13,7 @@ const Wrapper = styled.div`
 `;
 
 const LabelWrapper = styled.div`
-  min-height: 100px;
+  min-height: 60px;
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -31,8 +31,9 @@ const IconWrapper = styled.div`
 `;
 
 const HanziWrapper = styled.div`
+  margin-top: 20px;
   width: 200px;
-  height: 200px;
+  min-height: 200px;
   border-radius: 15px;
   background-color: #ffffff;
   box-shadow: 0 2px 7px 0 rgba(0, 0, 0, 0.08);

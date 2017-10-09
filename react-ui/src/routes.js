@@ -31,9 +31,9 @@ export default (
     <Route path="signup/activate/:activationToken" component={containers.SignupActivate} />
     <Route path="signup/email_sent" component={components.EmailSentPage} />
     <Route path="login" component={containers.LoginPage} />
-    <Route path="study" component={containers.Study}>
+    <Route path="study" component={requireAuth(containers.Study)}>
       <IndexRoute component={containers.SelectEpisode} />
-      <Route path=":episodeId" component={requireAuth(containers.EpisodeScreen)}>
+      <Route path=":episodeId" component={containers.EpisodeScreen}>
         <Route path="title/:partNumber" component={containers.Title} />
         <Route path="character/:characterId/pinyin" component={containers.CharacterPinyin} />
         <Route path="character/:characterId/stroke" component={containers.CharacterStroke} />

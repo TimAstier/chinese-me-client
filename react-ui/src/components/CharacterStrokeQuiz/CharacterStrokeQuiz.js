@@ -9,6 +9,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  align-items: center;
 `;
 
 const LabelWrapper = styled.div`
@@ -30,9 +31,16 @@ const IconWrapper = styled.div`
 `;
 
 const HanziWrapper = styled.div`
-  min-height: 300px;
+  width: 200px;
+  height: 200px;
+  border-radius: 15px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 7px 0 rgba(0, 0, 0, 0.08);
+  border: solid 2px #dce6eb;
+  font-size: 100px;
+  font-family: 'STKaitiSC';
+	color: #454545;
   display: flex;
-  justify-content: center;
 `;
 
 let hanziRef = null;
@@ -52,8 +60,8 @@ class CharacterStrokeQuiz extends Component {
     if (this.props.character.hanziData) {
       const hanziWriter = new HanziWriter(hanziRef, this.props.character.hanziData, {
         charDataLoader: data => data,
-        width: 300,
-        height: 300,
+        width: 200,
+        height: 200,
         showOutline: true,
         showCharacter: false,
         strokeAnimationDuration: 600,
@@ -74,8 +82,6 @@ class CharacterStrokeQuiz extends Component {
       });
     }
   }
-
-  hanziWrapper() {}
 
   render() {
     let div;

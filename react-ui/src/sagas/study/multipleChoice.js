@@ -16,15 +16,7 @@ export function* isDataLoaded(id) {
   return (currentElement === undefined) ? false : true;
 }
 
-export function* fetchData() {
-  // TODO: review this to fetch data individually if necessary
-  // yield call(fetchEntities, ['/episode/' + episodeId + '/review']);
-  // // TODO: handle fetch error
-  // const reviews = yield select(selectors.getReviews);
-  // const exercises = reviews.getIn([episodeId, 'exercises']);
-  // yield put(reviewActions.setExercises(exercises));
-  // yield put(reviewActions.setInitialized(true));
-}
+export function* fetchData() {}
 
 export function checkData() {
   return true;

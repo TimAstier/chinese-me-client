@@ -6,6 +6,7 @@ import { actions as studyActions } from '../../redux/study';
 import { types as sagaTypes } from '../actions';
 import { fetchEntities } from '../entities';
 import { actions as sagaActions } from '../actions';
+import { actions as reviewActions } from '../../redux/review';
 
 export function* isDataLoaded(id) {
   yield put(studyActions.setCurrentCharacterId(id));
@@ -32,6 +33,11 @@ export function* run(mode) {
   yield put(sagaActions.playSuccessSound());
   if (mode === 'exam') {
     return true;
+  }
+  if (mode === 'review') {
+    yield delay(1000);
+    yield put(reviewActions.setInitialized(false));
+    return yield put(reviewActions.correctAnswer());
   }
   return yield delay(1000);
 }

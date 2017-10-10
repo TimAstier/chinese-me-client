@@ -21,8 +21,7 @@ class ElementsNav extends Component {
       case 'character': return this.props.charactersNavParams;
       case 'dialog': return this.props.dialogsNavParams;
       case 'grammar': return this.props.grammarsNavParams;
-      // case 'multipleChoice':
-      // case 'audioToText': return this.props.reviewNavParams;
+      case 'review': return this.props.reviewNavParams;
       case 'exam': return this.props.examNavParams;
       default: return undefined;
     }

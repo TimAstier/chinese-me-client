@@ -9,6 +9,7 @@ import { actions as audioActions } from '../../redux/audio';
 import selectors from '../../rootSelectors';
 import { actions as studyActions } from '../../redux/study';
 import { fetchEntities } from '../entities';
+import { actions as reviewActions } from '../../redux/review';
 
 export function* isDataLoaded(id) {
   yield put(studyActions.setCurrentCharacterId(id));
@@ -51,11 +52,17 @@ export function* run(mode) {
         }
         yield put(characterPinyinActions.setStatus('correct'));
         yield put(uiActions.set('playAudioButton', false));
+        if (mode === 'review') {
+          yield delay(1000);
+          yield put(reviewActions.setInitialized(false));
+          return yield put(reviewActions.correctAnswer());
+        }
         yield delay(1000);
         yield put(sagaActions.next());
       } else {
         yield put(sagaActions.playWrongSound());
         if (mode === 'exam') {
+          // In exam, skip the end if the user makes one mistake
           return false;
         }
         if (attemptsLeft !== 0) {
@@ -67,6 +74,11 @@ export function* run(mode) {
         } else {
           yield put(characterPinyinActions.setStatus('wrong'));
           yield put(uiActions.set('nextButton', true));
+          if (mode === 'review') {
+            yield take(sagaTypes.NEXT_QUESTION);
+            yield put(reviewActions.setInitialized(false));
+            return yield put(reviewActions.wrongAnswer());
+          }
           yield take(sagaTypes.NEXT);
         }
       }

@@ -97,26 +97,44 @@ const ExitIcon = styled.div`
 class EpisodeScreen extends Component {
 
   renderTopMiddleWrapper() {
-    if (this.props.elementType && ['character', 'dialog', 'grammar', 'review'].findIndex(e => e === this.props.elementType) !== -1) {
-      return (
-        <TopMiddleWrapper>
-          <TopMiddleUpWrapper>
-            <Progressbar />
-          </TopMiddleUpWrapper>
-          <TopMiddleDownWrapper>
-            <ElementsNav />
-          </TopMiddleDownWrapper>
-        </TopMiddleWrapper>
-      );
-    } else if (this.props.elementType && ['exam'].findIndex(e => e === this.props.elementType) !== -1) {
-      return (
-        <TopMiddleWrapper>
-          <TopMiddleUpWrapper>
-            <ElementsNav />
-          </TopMiddleUpWrapper>
-          <TopMiddleDownWrapper />
-        </TopMiddleWrapper>
-      );
+    const { elementType } = this.props;
+    if (elementType) {
+      switch (elementType) {
+        case 'character':
+        case 'dialog':
+        case 'grammar':
+          return (
+            <TopMiddleWrapper>
+              <TopMiddleUpWrapper>
+                <Progressbar />
+              </TopMiddleUpWrapper>
+              <TopMiddleDownWrapper>
+                <ElementsNav />
+              </TopMiddleDownWrapper>
+            </TopMiddleWrapper>
+          );
+        case 'review':
+          return (
+            <TopMiddleWrapper>
+              <TopMiddleUpWrapper/>
+              <TopMiddleDownWrapper>
+                <ElementsNav />
+              </TopMiddleDownWrapper>
+            </TopMiddleWrapper>
+          );
+        case 'exam':
+          return (
+            <TopMiddleWrapper>
+              <TopMiddleUpWrapper>
+                <ElementsNav />
+              </TopMiddleUpWrapper>
+              <TopMiddleDownWrapper />
+            </TopMiddleWrapper>
+          );
+        default:
+          console.log('Unknown ElementsNav type:', elementType); // eslint-disable-line
+          return null;
+      }
     }
     return null;
   }

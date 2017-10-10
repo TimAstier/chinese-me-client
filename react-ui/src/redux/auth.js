@@ -1,5 +1,6 @@
 import isEmpty from 'lodash/isEmpty';
 import { fromJS } from 'immutable';
+import { EventTypes } from 'redux-segment';
 
 // Types
 
@@ -33,7 +34,23 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
 export function setCurrentUser(user) {
   return {
     type: types.SET_CURRENT_USER,
-    user
+    user,
+    meta: {
+      analytics: [{
+        eventType: EventTypes.identify,
+        eventPayload: {
+          userId: user.id,
+          traits: {
+            email: user.email
+          }
+        },
+      }, {
+        eventType: EventTypes.track,
+        eventPayload: {
+          event: types.SET_CURRENT_USER
+        }
+      }],
+    },
   };
 }
 

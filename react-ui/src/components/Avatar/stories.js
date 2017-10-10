@@ -17,7 +17,7 @@ const avatar1 = new AvatarModel({
 });
 
 const avatar2 = new AvatarModel({
-  blinkImage: 'https://s3.eu-west-2.amazonaws.com/chineseme/personalities/marvin_head.png',
+  blinkImage: 'https://s3.eu-west-2.amazonaws.com/chineseme/personalities/liyu_head.png',
   isTalking: true,
   name: 'Marvin',
   mood: 'blink'

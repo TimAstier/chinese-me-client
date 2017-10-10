@@ -34,8 +34,8 @@ const Image = styled.img`
   margin-right: ${props => props.diameter ? `${Math.round(props.diameter / 6)}px` : '5px'};
   margin-left: ${props => props.diameter ? `${Math.round(props.diameter / 6)}px` : '5px'};
   border-radius: 50%;
-  border: solid 2px #dce6eb;
-  box-shadow: ${props => props.chosen ? '0 0 0pt 2pt #55b6ff' : '0 2px 5px 0 rgba(0, 0, 0, 0.08)'};
+  border: ${props => props.chosen ? 'solid 2px #dce6eb' : 'none'};
+  box-shadow: ${props => props.chosen ? '0 0 0pt 2pt #55b6ff' : 'none'};
   cursor: ${props => !props.onClick ? 'default' : 'pointer'};
 `;
 
@@ -44,6 +44,8 @@ const Image = styled.img`
 
 const ImagePlaceholder = Image.withComponent('div').extend`
   background-color: #F2F7FA;
+  border: solid 2px #dce6eb;
+  box-shadow: ${props => props.chosen ? '0 0 0pt 2pt #55b6ff' : '0 2px 5px 0 rgba(0, 0, 0, 0.08)'};
   cursor: ${props => !props.onClick ? 'default' : 'pointer'};
 `;
 

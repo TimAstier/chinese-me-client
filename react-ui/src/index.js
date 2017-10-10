@@ -7,6 +7,7 @@ import { Router, browserHistory, Redirect } from 'react-router';
 import { syncHistoryWithStore, routerMiddleware } from 'react-router-redux';
 import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 import { Map } from 'immutable';
+import { createTracker } from 'redux-segment';
 
 import rootReducer from './rootReducer';
 import setAuthorizationToken from './utils/setAuthorizationToken';
@@ -17,12 +18,16 @@ import routes from './routes';
 import rootSaga from './rootSaga';
 
 const initialState = Map();
+const tracker = createTracker(); // Create redux-segment tracker
+
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(
   rootReducer,
   initialState,
   composeWithDevTools(
-    applyMiddleware(sagaMiddleware),
+    // Note: Make sure to include the tracker after thunk or promise middleware
+    // so that it sees actual actions.
+    applyMiddleware(sagaMiddleware, tracker),
     applyMiddleware(routerMiddleware(browserHistory))
   )
 );

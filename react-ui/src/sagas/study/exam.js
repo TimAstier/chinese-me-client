@@ -21,6 +21,12 @@ import mapExerciseTypeToSetCurrentAction
 
 export function* isDataLoaded() {
   // id is not defined since there is no elementId
+  const completed = yield select(selectors.getExamCompleted);
+  // reload data if previous exam data from another completed exam is already loaded
+  if (completed) {
+    yield put(examActions.clean());
+    return false;
+  }
   const currentExercise = yield select(selectors.getExamCurrentExercise);
   return currentExercise ? true : false;
 }

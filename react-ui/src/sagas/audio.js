@@ -56,12 +56,22 @@ export function* playWrongSound() {
   yield call(playSound, [sounds.wrong]);
 }
 
+export function* playLevelWinSound() {
+  yield call(playSound, [sounds.levelWin]);
+}
+
+export function* playLevelFailSound() {
+  yield call(playSound, [sounds.levelFail]);
+}
+
 // Watchers
 
 export default function* watchAudioSagas() {
   yield all([
     takeLatest(sagaTypes.PLAY_AUDIO, playAudio),
     takeLatest(sagaTypes.PLAY_SUCCESS_SOUND, playSuccessSound),
-    takeLatest(sagaTypes.PLAY_WRONG_SOUND, playWrongSound)
+    takeLatest(sagaTypes.PLAY_WRONG_SOUND, playWrongSound),
+    takeLatest(sagaTypes.PLAY_LEVEL_WIN_SOUND, playLevelWinSound),
+    takeLatest(sagaTypes.PLAY_LEVEL_FAIL_SOUND, playLevelFailSound)
   ]);
 }

@@ -12,6 +12,7 @@ export function* isDataLoaded() {
     return false;
   }
   if (partNumber === '5') { // Exam
+    yield put(examActions.clean());
     return false;
   }
   return true;

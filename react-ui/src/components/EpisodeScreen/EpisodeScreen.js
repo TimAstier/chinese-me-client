@@ -98,45 +98,41 @@ class EpisodeScreen extends Component {
 
   renderTopMiddleWrapper() {
     const { elementType } = this.props;
-    if (elementType) {
-      switch (elementType) {
-        case 'character':
-        case 'dialog':
-        case 'grammar':
-          return (
-            <TopMiddleWrapper>
-              <TopMiddleUpWrapper>
-                <Progressbar />
-              </TopMiddleUpWrapper>
-              <TopMiddleDownWrapper>
-                <ElementsNav />
-              </TopMiddleDownWrapper>
-            </TopMiddleWrapper>
-          );
-        case 'review':
-          return (
-            <TopMiddleWrapper>
-              <TopMiddleUpWrapper/>
-              <TopMiddleDownWrapper>
-                <ElementsNav />
-              </TopMiddleDownWrapper>
-            </TopMiddleWrapper>
-          );
-        case 'exam':
-          return (
-            <TopMiddleWrapper>
-              <TopMiddleUpWrapper>
-                <ElementsNav />
-              </TopMiddleUpWrapper>
-              <TopMiddleDownWrapper />
-            </TopMiddleWrapper>
-          );
-        default:
-          console.log('Unknown ElementsNav type:', elementType); // eslint-disable-line
-          return null;
-      }
+    switch (elementType) {
+      case 'character':
+      case 'dialog':
+      case 'grammar':
+        return (
+          <TopMiddleWrapper>
+            <TopMiddleUpWrapper>
+              <Progressbar />
+            </TopMiddleUpWrapper>
+            <TopMiddleDownWrapper>
+              <ElementsNav />
+            </TopMiddleDownWrapper>
+          </TopMiddleWrapper>
+        );
+      case 'review':
+        return (
+          <TopMiddleWrapper>
+            <TopMiddleUpWrapper/>
+            <TopMiddleDownWrapper>
+              <ElementsNav />
+            </TopMiddleDownWrapper>
+          </TopMiddleWrapper>
+        );
+      case 'exam':
+        return (
+          <TopMiddleWrapper>
+            <TopMiddleUpWrapper>
+              <ElementsNav />
+            </TopMiddleUpWrapper>
+            <TopMiddleDownWrapper />
+          </TopMiddleWrapper>
+        );
+      default:
+        return null;
     }
-    return null;
   }
 
   renderBottomMiddleWrapper() {

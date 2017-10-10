@@ -45,6 +45,8 @@ export const types = {
   EXAM_COMPLETED: 'signal/EXAM_COMPLETED',
   PLAY_SUCCESS_SOUND: 'signal/PLAY_SUCCESS_SOUND',
   PLAY_WRONG_SOUND: 'signal/PLAY_WRONG_SOUND',
+  PLAY_LEVEL_WIN_SOUND: 'signal/PLAY_LEVEL_WIN_SOUND',
+  PLAY_LEVEL_FAIL_SOUND: 'signal/PLAY_LEVEL_FAIL_SOUND',
   NEXT_QUESTION: 'signal/NEXT_QUESTION'
 };
 
@@ -136,6 +138,8 @@ const pause = () => ({ type: types.PAUSE });
 const examCompleted = () => ({ type: types.EXAM_COMPLETED });
 const playSuccessSound = () => ({ type: types.PLAY_SUCCESS_SOUND });
 const playWrongSound = () => ({ type: types.PLAY_WRONG_SOUND });
+const playLevelWinSound = () => ({ type: types.PLAY_LEVEL_WIN_SOUND });
+const playLevelFailSound = () => ({ type: types.PLAY_LEVEL_FAIL_SOUND });
 const nextQuestion = () => ({ type: types.NEXT_QUESTION });
 
 export const actions = {
@@ -179,5 +183,7 @@ export const actions = {
   examCompleted,
   playSuccessSound,
   playWrongSound,
+  playLevelWinSound,
+  playLevelFailSound,
   nextQuestion
 };

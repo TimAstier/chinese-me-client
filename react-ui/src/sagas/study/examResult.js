@@ -1,5 +1,8 @@
-import { put, select } from 'redux-saga/effects';
+import { put, select, take } from 'redux-saga/effects';
+import { delay } from 'redux-saga';
+import { actions as sagaActions, types as sagaTypes } from '../actions';
 import { actions as uiActions } from '../../redux/ui';
+import { actions as examActions } from '../../redux/exam';
 import selectors from '../../rootSelectors';
 
 export function isDataLoaded() {
@@ -20,6 +23,13 @@ export function* initUi() {
 
 export function* initStudyData() {}
 
-// export function* run() {}
+export function* run() {
+  const score = yield select(selectors.getExamScore);
+  yield delay(1000);
+  yield put(score >= 7 ? sagaActions.playLevelWinSound() : sagaActions.playLevelFailSound());
+  yield take(sagaTypes.NEXT);
+}
 
-// export function* clean() {}
+export function* clean() {
+  yield put(examActions.clean());
+}

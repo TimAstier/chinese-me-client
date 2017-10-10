@@ -26,7 +26,7 @@ class CircleProgressbar extends Component {
     const options = {
       strokeWidth: 10,
       easing: 'easeInOut',
-      duration: 1400,
+      duration: 1500,
       color: this.props.score >= 7 ? '#91ca49' : '#55b6ff',
       trailColor: '#eaf2f6',
       trailWidth: 10,

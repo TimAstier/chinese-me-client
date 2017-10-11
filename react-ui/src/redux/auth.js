@@ -12,10 +12,7 @@ export const types = {
 
 export const INITIAL_STATE = fromJS({
   isAuthenticated: false,
-  user: {
-    id: 0,
-    email: ''
-  }
+  user: {}
 });
 
 export default function reducer(state = INITIAL_STATE, action = {}) {
@@ -41,13 +38,14 @@ export function setCurrentUser(user) {
         eventPayload: {
           userId: user.id,
           traits: {
-            email: user.email
+            email: user.email,
+            createdAt: user.createdAt
           }
         },
       }, {
         eventType: EventTypes.track,
         eventPayload: {
-          event: types.SET_CURRENT_USER
+          event: 'User Logged in'
         }
       }],
     },

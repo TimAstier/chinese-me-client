@@ -35,7 +35,7 @@ export function* initUi() {
   yield put(uiActions.set('playAudioButton', true));
 }
 
-export function* run(mode) {
+export function* run(mode = 'free') {
   const currentChar = yield select(selectors.getCurrentCharacter);
   const audioUrl = pinyinNumberToAudioUrl(currentChar.pinyinNumber);
   yield put(audioActions.set('audioUrl', audioUrl));
@@ -47,6 +47,17 @@ export function* run(mode) {
       const userAnswer = yield select(selectors.getCharacterPinyinUserAnswer);
       const expectedAnswer = currentChar.pinyinNumber;
       if (userAnswer === expectedAnswer) {
+        // Tracking
+        yield put(sagaActions.exerciseCompleted({
+          id: currentChar.get('id'),
+          type: 'characterPinyin',
+          mode,
+          success: true,
+          userAnswer,
+          expectedAnswer,
+          attemptsLeft
+        }));
+        // End Tracking
         yield put(sagaActions.playSuccessSound());
         if (mode === 'exam') {
           return true;
@@ -61,6 +72,17 @@ export function* run(mode) {
         yield delay(1000);
         yield put(sagaActions.next());
       } else {
+        // Tracking
+        yield put(sagaActions.exerciseCompleted({
+          id: currentChar.get('id'),
+          type: 'characterPinyin',
+          mode,
+          success: false,
+          userAnswer,
+          expectedAnswer,
+          attemptsLeft
+        }));
+        // End Tracking
         yield put(sagaActions.playWrongSound());
         if (mode === 'exam') {
           // In exam, skip the end if the user makes one mistake

@@ -44,7 +44,7 @@ class VideoPlayer extends Component {
         height={this.props.height}
         controls
         autoPlay={this.props.autoPlay}
-        onEnded={this.props.videoEnded}
+        onEnded={this.props.onEnded}
       >
         <source src={this.props.src} type="video/mp4" />
         Your browser does not support the video tag.
@@ -58,7 +58,7 @@ VideoPlayer.propTypes = {
   height: propTypes.number.isRequired,
   autoPlay: propTypes.bool,
   src: propTypes.string.isRequired,
-  videoEnded: propTypes.func.isRequired
+  onEnded: propTypes.func.isRequired
 };
 
 export default VideoPlayer;

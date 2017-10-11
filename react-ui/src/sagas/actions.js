@@ -1,3 +1,5 @@
+import { EventTypes } from 'redux-segment';
+
 // Those actions are signals
 // Unlike delta actions, they do not modify the state
 // They only tell the saga watchers that something happened
@@ -22,6 +24,7 @@ export const types = {
   CHECK_ANSWER: 'signal/CHECK_ANSWER',
   FETCH_EPISODES: 'signal/FETCH_EPISODES',
   CREATE_NEW_USER: 'signal/CREATE_NEW_USER',
+  NEW_USER_CREATED: 'signal/NEW_USER_CREATED',
   LOGIN_REQUEST: 'signal/LOGIN_REQUEST',
   LOGIN_ERROR: 'signal/LOGIN_ERROR',
   LOGOUT: 'signal/LOGOUT',
@@ -47,7 +50,8 @@ export const types = {
   PLAY_WRONG_SOUND: 'signal/PLAY_WRONG_SOUND',
   PLAY_LEVEL_WIN_SOUND: 'signal/PLAY_LEVEL_WIN_SOUND',
   PLAY_LEVEL_FAIL_SOUND: 'signal/PLAY_LEVEL_FAIL_SOUND',
-  NEXT_QUESTION: 'signal/NEXT_QUESTION'
+  NEXT_QUESTION: 'signal/NEXT_QUESTION',
+  EXERCISE_COMPLETED: 'signal/EXERCISE_COMPLETED'
 };
 
 // Action Creators
@@ -75,6 +79,26 @@ const createNewUser = payload => ({
   type: types.CREATE_NEW_USER,
   payload
 });
+const newUserCreated = attributes => ({
+  type: types.NEW_USER_CREATED,
+  meta: {
+    analytics: [{
+      eventType: EventTypes.identify,
+      eventPayload: {
+        userId: attributes.id,
+        traits: {
+          email: attributes.email,
+          createdAt: attributes.createdAt
+        }
+      },
+    }, {
+      eventType: EventTypes.track,
+      eventPayload: {
+        event: 'New user Created'
+      }
+    }]
+  }
+});
 const loginRequest = payload => ({
   type: types.LOGIN_REQUEST,
   payload
@@ -98,8 +122,19 @@ const dialogLinkClick = link => ({
   type: types.DIALOG_LINK_CLICK,
   payload: { link }
 });
-const videoEnded = () => ({
-  type: types.VIDEO_ENDED
+const videoEnded = src => ({
+  type: types.VIDEO_ENDED,
+  meta: {
+    analytics: {
+      eventType: EventTypes.track,
+      eventPayload: {
+        event: 'Video Ended',
+        properties: {
+          src
+        }
+      }
+    }
+  }
 });
 const elementsNavPreviousClick = () => ({
   type: types.ELEMENTS_NAV_PREVIOUS_CLICK
@@ -135,12 +170,46 @@ const startRoleplay = () => ({
   type: types.START_ROLEPLAY
 });
 const pause = () => ({ type: types.PAUSE });
-const examCompleted = () => ({ type: types.EXAM_COMPLETED });
+const examCompleted = data => {
+  return {
+    type: types.EXAM_COMPLETED,
+    meta: {
+      analytics: {
+        eventType: EventTypes.track,
+        eventPayload: {
+          event: 'Exam Completed',
+          properties: {
+            seasonId: data.seasonId,
+            seasonNumber: data.seasonNumber,
+            episodeId: data.episodeId,
+            episodeNumber: data.episodeNumber,
+            score: data.score,
+            timeLeft: data.timeLeft,
+            exercises: data.exercises.toJS(),
+            results: data.results.toJS()
+          }
+        }
+      }
+    }
+  };
+};
 const playSuccessSound = () => ({ type: types.PLAY_SUCCESS_SOUND });
 const playWrongSound = () => ({ type: types.PLAY_WRONG_SOUND });
 const playLevelWinSound = () => ({ type: types.PLAY_LEVEL_WIN_SOUND });
 const playLevelFailSound = () => ({ type: types.PLAY_LEVEL_FAIL_SOUND });
 const nextQuestion = () => ({ type: types.NEXT_QUESTION });
+const exerciseCompleted = data => ({
+  type: types.EXERCISE_COMPLETED,
+  meta: {
+    analytics: {
+      eventType: EventTypes.track,
+      eventPayload: {
+        event: 'Exercise Completed',
+        properties: { ...data }
+      }
+    }
+  }
+});
 
 export const actions = {
   next,
@@ -160,6 +229,7 @@ export const actions = {
   playAudio,
   checkAnswer,
   createNewUser,
+  newUserCreated,
   loginRequest,
   loginError,
   logout,
@@ -185,5 +255,6 @@ export const actions = {
   playWrongSound,
   playLevelWinSound,
   playLevelFailSound,
-  nextQuestion
+  nextQuestion,
+  exerciseCompleted
 };

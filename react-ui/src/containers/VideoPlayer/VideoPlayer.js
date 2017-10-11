@@ -9,7 +9,13 @@ class VideoPlayer extends Component {
 
   render() {
     return (
-      <VideoPlayerComponent { ...this.props } />
+      <VideoPlayerComponent
+        width={this.props.width}
+        height={this.props.height}
+        autoPlay={this.props.autoPlay}
+        src={this.props.src}
+        onEnded={() => this.props.videoEnded(this.props.src)}
+      />
     );
   }
 }

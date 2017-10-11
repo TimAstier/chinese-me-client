@@ -27,6 +27,23 @@ export function* run() {
   const score = yield select(selectors.getExamScore);
   yield delay(1000);
   yield put(score >= 7 ? sagaActions.playLevelWinSound() : sagaActions.playLevelFailSound());
+  // Tracking
+  const exercises = yield select(selectors.getExamExercises);
+  const results = yield select(selectors.getExamResults);
+  const timeLeft = yield select(selectors.getTimerTime);
+  const currentEpisode = yield select(selectors.getCurrentEpisode);
+  const currentSeason = yield select(selectors.getCurrentSeason);
+  yield put(sagaActions.examCompleted({
+    seasonId: currentSeason.get('id'),
+    seasonNumber: currentSeason.get('number'),
+    episodeId: currentEpisode.get('id'),
+    episodeNumber: currentEpisode.get('number'),
+    score,
+    timeLeft,
+    exercises,
+    results
+  }));
+  // End Tracking
   yield take(sagaTypes.NEXT);
 }
 

@@ -28,7 +28,7 @@ export function* initStudyData() {}
 
 export function* initUi() {}
 
-export function* run(mode) {
+export function* run(mode = 'free') {
   yield take(sagaTypes.STROKE_QUIZ_COMPLETED);
   yield put(sagaActions.playSuccessSound());
   if (mode === 'exam') {

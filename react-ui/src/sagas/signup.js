@@ -4,13 +4,14 @@ import { push } from 'react-router-redux';
 import { types } from './actions';
 import Api from '../utils/api';
 import { SubmissionError } from 'redux-form/immutable';
+import { actions as sagaActions } from './actions';
 
 function* watchCreateUser() {
   while (true) { // eslint-disable-line no-constant-condition
     const { payload: { values, resolve, reject } } = yield take(types.CREATE_NEW_USER);
     try {
       const response = yield call(Api.post, '/users', values);
-      console.log('New user created: ' + response.data.user.data.attributes.email);
+      yield put(sagaActions.newUserCreated(response.data.user.data.attributes));
       yield call(resolve);
       yield put(push('/signup/email_sent'));
     } catch (error) {

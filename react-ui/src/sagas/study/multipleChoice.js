@@ -30,12 +30,23 @@ export function* initUi() {
   yield put(uiActions.set('skipButton', false));
 }
 
-export function* run(mode) {
+export function* run(mode = 'free') {
   let success = null;
   const multipleChoice = yield select(selectors.getCurrentMultipleChoice);
   yield take(sagaTypes.CHECK_ANSWER);
   const userAnswer = yield select(selectors.getMultipleChoiceUserAnswer);
-  if (multipleChoice.get('correctAnswer') === userAnswer) {
+  const expectedAnswer = multipleChoice.get('correctAnswer');
+  if ( expectedAnswer === userAnswer) {
+    // Tracking
+    yield put(sagaActions.exerciseCompleted({
+      id: multipleChoice.get('id'),
+      type: 'multipleChoice',
+      mode,
+      success: true,
+      userAnswer: multipleChoice.get('choices')[userAnswer],
+      expectedAnswer: multipleChoice.get('choices')[expectedAnswer]
+    }));
+    // End Tracking
     yield put(sagaActions.playSuccessSound());
     yield put(multipleChoiceActions.setStatus('correct'));
     if (mode === 'exam') {
@@ -43,6 +54,16 @@ export function* run(mode) {
     }
     success = true;
   } else {
+    // Tracking
+    yield put(sagaActions.exerciseCompleted({
+      id: multipleChoice.get('id'),
+      type: 'multipleChoice',
+      mode,
+      success: false,
+      userAnswer: multipleChoice.get('choices')[userAnswer],
+      expectedAnswer: multipleChoice.get('choices')[expectedAnswer]
+    }));
+    // End Tracking
     yield put(sagaActions.playWrongSound());
     yield put(multipleChoiceActions.setStatus('wrong'));
     if (mode === 'exam') {

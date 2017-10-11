@@ -95,7 +95,7 @@ class AudioToText extends Component {
             Write the pinyin, with tones, of the words you hear
           </MainGuideline>
           <SecondaryGuideline>
-            (Write the original tones of each word without tone sandhi)
+            (If there is tone sandhi, write the actual tone that you hear)
           </SecondaryGuideline>
         </GuidelineWrapper>
         <WordBoxesWrapper>{this.renderWordBoxes()}</WordBoxesWrapper>

@@ -33,7 +33,7 @@ export function* initUi() {
   yield put(audioToTextActions.init());
 }
 
-export function* run(mode) {
+export function* run(mode = 'free') {
   const currentAudioToText = yield select(selectors.getCurrentAudioToText);
   yield put(audioActions.set('audioUrl', currentAudioToText.audioUrl));
   yield put(sagaActions.playAudio());
@@ -48,6 +48,16 @@ export function* run(mode) {
     if (!success) {
       yield put(sagaActions.playWrongSound());
       // In exam, skip the end if the user makes one mistake
+      // Tracking
+      const prematureResults = yield select(selectors.getAudioToTextResults);
+      yield put(sagaActions.exerciseCompleted({
+        id: currentAudioToText.get('id'),
+        type: 'audioToText',
+        mode,
+        success: false,
+        results: prematureResults.toJS()
+      }));
+      // End Tracking
       if (mode === 'exam') {
         return false;
       }
@@ -56,6 +66,16 @@ export function* run(mode) {
     yield put(audioToTextActions.setUserAnswer(''));
   }
   const questionSuccess = yield select(selectors.getAudioToTextSuccess);
+  // Tracking
+  const results = yield select(selectors.getAudioToTextResults);
+  yield put(sagaActions.exerciseCompleted({
+    id: currentAudioToText.get('id'),
+    type: 'audioToText',
+    mode,
+    success: questionSuccess,
+    results: results.toJS()
+  }));
+  // End Tracking
   if (questionSuccess) {
     yield put(sagaActions.playSuccessSound());
     if (mode === 'exam') {

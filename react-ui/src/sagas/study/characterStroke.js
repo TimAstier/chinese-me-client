@@ -6,6 +6,7 @@ import { actions as studyActions } from '../../redux/study';
 import { actions as sagaActions, types as sagaTypes } from '../actions';
 import { actions as audioActions } from '../../redux/audio';
 import { fetchEntities } from '../entities';
+import pinyinNumberToAudioUrl from '../../utils/pinyinNumberToAudioUrl';
 
 export function* isDataLoaded(id) {
   yield put(studyActions.setCurrentCharacterId(id));
@@ -29,7 +30,7 @@ export function* initUi() {}
 
 export function* run() {
   const currentChar = yield select(selectors.getCurrentCharacter);
-  const audioUrl = `https://s3.eu-west-2.amazonaws.com/chineseme/pinyin/${currentChar.pinyinNumber}.m4a`;
+  const audioUrl = pinyinNumberToAudioUrl(currentChar.pinyinNumber);
   yield put(audioActions.set('audioUrl', audioUrl));
   yield take(sagaTypes.STROKE_ANIMATION_FINISHED);
   yield put(sagaActions.playAudio());

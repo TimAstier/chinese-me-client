@@ -10,6 +10,7 @@ import selectors from '../../rootSelectors';
 import { actions as studyActions } from '../../redux/study';
 import { fetchEntities } from '../entities';
 import { actions as reviewActions } from '../../redux/review';
+import pinyinNumberToAudioUrl from '../../utils/pinyinNumberToAudioUrl';
 
 export function* isDataLoaded(id) {
   yield put(studyActions.setCurrentCharacterId(id));
@@ -36,7 +37,7 @@ export function* initUi() {
 
 export function* run(mode) {
   const currentChar = yield select(selectors.getCurrentCharacter);
-  const audioUrl = `https://s3.eu-west-2.amazonaws.com/chineseme/pinyin/${currentChar.pinyinNumber}.m4a`;
+  const audioUrl = pinyinNumberToAudioUrl(currentChar.pinyinNumber);
   yield put(audioActions.set('audioUrl', audioUrl));
   while (true) { // eslint-disable-line no-constant-condition
     let attemptsLeft = yield select(selectors.getCharacterPinyinAttemptsLeft);

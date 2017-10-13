@@ -30,7 +30,7 @@ Modal.propTypes = {
   size: propTypes.oneOf(['small', 'large', 'fullscreen']).isRequired,
   open: propTypes.bool.isRequired,
   children: propTypes.node,
-  handleClose: propTypes.func.isRequired,
+  handleClose: propTypes.func,
   basic: propTypes.bool,
   closeIcon: propTypes.oneOf(['close', undefined])
 };

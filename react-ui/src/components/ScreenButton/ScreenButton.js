@@ -41,6 +41,7 @@ class Screen extends Component {
     return (
       <Button
         onClick={this.props.onClick}
+        data={this.props.data}
       >
         {text}
       </Button>
@@ -55,7 +56,8 @@ Screen.propTypes = {
   onClick: propTypes.func,
   height: propTypes.number,
   width: propTypes.number,
-  fontSize: propTypes.number
+  fontSize: propTypes.number,
+  data: propTypes.string
 };
 
 export default Screen;

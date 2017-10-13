@@ -31,6 +31,7 @@ function loadStories() {
   require('../src/components/OnboardingScreen/stories');
   require('../src/components/PlayAudioButton/stories');
   require('../src/components/Progressbar/stories');
+  require('../src/components/QuestionModal/stories');
   require('../src/components/ScreenButton/stories');
   require('../src/components/ScreenWrapper/stories');
   require('../src/components/SelectEpisode/stories');

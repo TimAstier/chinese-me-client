@@ -39,7 +39,8 @@ export function setCurrentUser(user) {
           userId: user.id,
           traits: {
             email: user.email,
-            createdAt: user.createdAt
+            createdAt: user.createdAt,
+            settings: user.settings
           }
         },
       }, {

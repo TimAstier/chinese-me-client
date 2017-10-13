@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { FeedbackModal, Navbar, MapModal } from '../.';
+import { FeedbackModal, Navbar, MapModal, QuestionModal } from '../.';
 import { actions as sagaActions } from '../../sagas/actions';
 
 const Wrapper = styled.div`
@@ -24,6 +24,7 @@ class Study extends Component {
       <Wrapper>
         <FeedbackModal />
         <MapModal />
+        <QuestionModal />
         <Navbar />
         {this.props.children}
       </Wrapper>

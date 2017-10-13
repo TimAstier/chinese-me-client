@@ -51,7 +51,8 @@ export const types = {
   PLAY_LEVEL_WIN_SOUND: 'signal/PLAY_LEVEL_WIN_SOUND',
   PLAY_LEVEL_FAIL_SOUND: 'signal/PLAY_LEVEL_FAIL_SOUND',
   NEXT_QUESTION: 'signal/NEXT_QUESTION',
-  EXERCISE_COMPLETED: 'signal/EXERCISE_COMPLETED'
+  EXERCISE_COMPLETED: 'signal/EXERCISE_COMPLETED',
+  CLOSED_QUESTION_ANSWERED: 'signal/CLOSED_QUESTION_ANSWERED'
 };
 
 // Action Creators
@@ -88,7 +89,8 @@ const newUserCreated = attributes => ({
         userId: attributes.id,
         traits: {
           email: attributes.email,
-          createdAt: attributes.createdAt
+          createdAt: attributes.createdAt,
+          settings: attributes.settings
         }
       },
     }, {
@@ -210,6 +212,10 @@ const exerciseCompleted = data => ({
     }
   }
 });
+const closedQuestionAnswered = answer => ({
+  type: types.CLOSED_QUESTION_ANSWERED,
+  payload: { answer }
+});
 
 export const actions = {
   next,
@@ -256,5 +262,6 @@ export const actions = {
   playLevelWinSound,
   playLevelFailSound,
   nextQuestion,
-  exerciseCompleted
+  exerciseCompleted,
+  closedQuestionAnswered
 };

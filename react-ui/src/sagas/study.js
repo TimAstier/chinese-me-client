@@ -60,6 +60,8 @@ function* runEpisodeScreen(action) {
         yield call(Api.post, `/${elementType}/${elementId}/completed`, { completedCode, mode });
       }
     }
+    // TODO: Ask user preference if not already defined
+    // console.log(screenType)
   } else {
     shouldUrlBeSkipped = true;
   }

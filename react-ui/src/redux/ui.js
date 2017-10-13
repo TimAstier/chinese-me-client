@@ -10,7 +10,9 @@ export const types = {
   CLOSE_FEEDBACK_MODAL: 'ui/CLOSE_FEEDBACK_MODAL',
   OPEN_MAP_MODAL: 'ui/OPEN_MAP_MODAL',
   CLOSE_MAP_MODAL: 'ui/CLOSE_MAP_MODAL',
-  UPDATE_FEEDBACK_STATUS: 'ui/UPDATE_FEEDBACK_STATUS'
+  UPDATE_FEEDBACK_STATUS: 'ui/UPDATE_FEEDBACK_STATUS',
+  OPEN_QUESTION_MODAL: 'ui/OPEN_QUESTION_MODAL',
+  CLOSE_QUESTION_MODAL: 'ui/CLOSE_QUESTION_MODAL'
 };
 
 // Reducer
@@ -23,7 +25,8 @@ export const INITIAL_STATE = Map({
   pauseButton: false,
   openFeedbackModal: false,
   feedbackStatus: 'writing',
-  openMapModal: false
+  openMapModal: false,
+  openQuestionModal: false
 });
 
 export default function reducer(state = INITIAL_STATE, action = {}) {
@@ -47,6 +50,10 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
       return state.set('openMapModal', true);
     case types.CLOSE_MAP_MODAL:
       return state.set('openMapModal', false);
+    case types.OPEN_QUESTION_MODAL:
+      return state.set('openQuestionModal', true);
+    case types.CLOSE_QUESTION_MODAL:
+      return state.set('openQuestionModal', false);
     default: return state;
   }
 }
@@ -67,6 +74,8 @@ const updateFeedbackStatus = status => ({
 });
 const openMapModal = () => ({ type: types.OPEN_MAP_MODAL });
 const closeMapModal = () => ({ type: types.CLOSE_MAP_MODAL });
+const openQuestionModal = () => ({ type: types.OPEN_QUESTION_MODAL });
+const closeQuestionModal = () => ({ type: types.CLOSE_QUESTION_MODAL });
 
 export const actions = {
   set,
@@ -76,7 +85,9 @@ export const actions = {
   closeFeedbackModal,
   updateFeedbackStatus,
   openMapModal,
-  closeMapModal
+  closeMapModal,
+  openQuestionModal,
+  closeQuestionModal
 };
 
 // Selectors
@@ -89,6 +100,7 @@ const getPauseButton = state => state.get('pauseButton');
 const getOpenFeedbackModal = state => state.get('openFeedbackModal');
 const getFeedbackStatus = state => state.get('feedbackStatus');
 const getOpenMapModal = state => state.get('openMapModal');
+const getOpenQuestionModal = state => state.get('openQuestionModal');
 
 export const selectors = {
   getNextButton,
@@ -98,5 +110,6 @@ export const selectors = {
   getPauseButton,
   getOpenFeedbackModal,
   getFeedbackStatus,
-  getOpenMapModal
+  getOpenMapModal,
+  getOpenQuestionModal
 };

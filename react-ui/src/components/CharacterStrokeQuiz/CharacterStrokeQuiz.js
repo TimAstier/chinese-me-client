@@ -4,6 +4,10 @@ import HanziWriter from 'hanzi-writer';
 import styled from 'styled-components';
 import { Character } from '../../models';
 import iconCorrect from '../../images/iconCorrect.svg';
+import HanziWrapper from '../Character/HanziWrapper';
+import Meaning from '../Character/Meaning';
+import Pinyin from '../Character/Pinyin';
+import hanziWriterConfig from '../../constants/hanziWriterConfig';
 
 const Wrapper = styled.div`
   display: flex;
@@ -13,7 +17,7 @@ const Wrapper = styled.div`
 `;
 
 const LabelWrapper = styled.div`
-  min-height: 60px;
+  min-height: 35px;
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -28,20 +32,6 @@ const IconWrapper = styled.div`
   height: 80px;
   padding-top: 20px;
   visibility: ${props => props.hideCheck ? 'hidden' : 'visible'};
-`;
-
-const HanziWrapper = styled.div`
-  margin-top: 20px;
-  width: 200px;
-  min-height: 200px;
-  border-radius: 15px;
-  background-color: #ffffff;
-  box-shadow: 0 2px 7px 0 rgba(0, 0, 0, 0.08);
-  border: solid 2px #dce6eb;
-  font-size: 100px;
-  font-family: 'STKaitiSC';
-	color: #454545;
-  display: flex;
 `;
 
 let hanziRef = null;
@@ -61,13 +51,7 @@ class CharacterStrokeQuiz extends Component {
     if (this.props.character.hanziData) {
       const hanziWriter = new HanziWriter(hanziRef, this.props.character.hanziData, {
         charDataLoader: data => data,
-        width: 200,
-        height: 200,
-        showOutline: true,
-        showCharacter: false,
-        strokeAnimationDuration: 600,
-        delayBetweenStrokes: 0,
-        showHintAfterMisses: 1
+        ...hanziWriterConfig
       });
       hanziWriter.quiz({
         onComplete: () => {
@@ -85,13 +69,14 @@ class CharacterStrokeQuiz extends Component {
   }
 
   render() {
-    let div;
     return (
       <Wrapper>
-        <LabelWrapper>{!this.state.finished ? 'Your turn!' : ''}</LabelWrapper>
-        <HanziWrapper>
-          <div ref={div => {hanziRef = div;}} />
-        </HanziWrapper>
+        {this.props.hideLabel !== true &&
+          <LabelWrapper>{!this.state.finished ? 'Your turn!' : ''}</LabelWrapper>
+        }
+        <HanziWrapper reference={div => {hanziRef = div;}} />
+        <Pinyin text={this.props.character.pinyinNumber} />
+        <Meaning text={this.props.character.meaning} />
         <IconWrapper hideCheck={!this.state.finished}>
           <img src={iconCorrect} alt="icon-correct" />
         </IconWrapper>
@@ -103,7 +88,8 @@ class CharacterStrokeQuiz extends Component {
 CharacterStrokeQuiz.propTypes = {
   character: propTypes.instanceOf(Character).isRequired,
   strokeQuizCompleted: propTypes.func.isRequired,
-  timerStatus: propTypes.string.isRequired
+  timerStatus: propTypes.string.isRequired,
+  hideLabel: propTypes.bool
 };
 
 export default CharacterStrokeQuiz;

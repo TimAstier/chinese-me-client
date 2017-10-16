@@ -2,18 +2,18 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import mapTypeToContainers from '../../helpers/mapTypeToContainers';
 
-class Exam extends Component {
+class Review extends Component {
 
   render() {
     const Container =
       mapTypeToContainers(this.props.currentExercise.get('type'));
-    return this.props.initialized ? <Container/> : null;
+    return this.props.initialized ? <Container hideLabel /> : null;
   }
 }
 
-Exam.propTypes = {
+Review.propTypes = {
   currentExercise: propTypes.node.isRequired,
   initialized: propTypes.bool.isRequired
 };
 
-export default Exam;
+export default Review;

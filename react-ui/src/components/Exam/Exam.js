@@ -73,7 +73,7 @@ class Exam extends Component {
         </LeftWrapper>
         <MiddleWrapper>
           <CircleTimer />
-          {this.props.initialized && <Container/>}
+          {this.props.initialized && <Container hideLabel />}
         </MiddleWrapper>
         <RightWrapper />
       </Wrapper>

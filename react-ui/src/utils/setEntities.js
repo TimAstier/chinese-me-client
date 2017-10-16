@@ -18,6 +18,7 @@ const setEntities = (state, newEntities, Model) => {
       }
       // Un-nest translations
       if (attributes.hasOwnProperty('translations')) {
+        // TODO: Server should send the translation that corresponds to user settings
         const translations = attributes.translations[0];
         for (const translatedField in translations) {
           if (translations.hasOwnProperty(translatedField)) {

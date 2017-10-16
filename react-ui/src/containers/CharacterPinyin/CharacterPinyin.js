@@ -33,7 +33,8 @@ CharacterPinyin.propTypes = {
   openModal: propTypes.bool.isRequired,
   userAnswer: propTypes.string.isRequired,
   setUserAnswer: propTypes.func.isRequired,
-  openFeedbackModal: propTypes.bool.isRequired
+  openFeedbackModal: propTypes.bool.isRequired,
+  hideLabel: propTypes.bool
 };
 
 const mapStateToProps = state => ({

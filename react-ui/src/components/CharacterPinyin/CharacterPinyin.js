@@ -7,6 +7,9 @@ import { ScreenButton } from '../../containers';
 import { Modal } from '../../containers';
 import iconWrong from '../../images/iconWrong.svg';
 import iconCorrect from '../../images/iconCorrect.svg';
+import HanziWrapper from '../Character/HanziWrapper';
+import Meaning from '../Character/Meaning';
+import hanziWriterConfig from '../../constants/hanziWriterConfig';
 
 const Wrapper = styled.div`
   flex: 1 0 0;
@@ -16,7 +19,7 @@ const Wrapper = styled.div`
 `;
 
 const LabelWrapper = styled.div`
-  min-height: 60px;
+  min-height: 35px;
   font-family: 'Open Sans';
   font-size: 24px;
 	font-weight: 600;
@@ -40,22 +43,8 @@ const CheckWrapper = styled.div`
   align-items: flex-end;
 `;
 
-const HanziWrapper = styled.div`
-  margin-top: 20px;
-  width: 200px;
-  min-height: 200px;
-  border-radius: 15px;
-  background-color: #ffffff;
-  box-shadow: 0 2px 7px 0 rgba(0, 0, 0, 0.08);
-  border: solid 2px #dce6eb;
-  font-size: 100px;
-  font-family: 'STKaitiSC';
-	color: #454545;
-  display: flex;
-`;
-
 const AnswerWrapper = styled.div`
-  flex-basis: 120px;
+  min-height: 120px;
   display: flex;
   justify-content: center;
   align-items: stretch;
@@ -133,7 +122,7 @@ const Input = styled.input`
   width: 160px;
   height: 50px;
   border-radius: 10px;
-  background-color: ${props => props.isFinsihed ? '#f2f7fa' : '#ffffff'};
+  background-color: ${props => props.isFinished ? '#f2f7fa' : '#ffffff'};
   box-shadow: 0 0 8px 0 rgba(85, 182, 255, 0.6);
   border: solid 2px ${props => props.isFinsihed ? '#cdd6db' : '#55b6ff'};
   font-family: 'Open Sans';
@@ -152,13 +141,7 @@ class CharacterPinyin extends Component {
     if (this.props.character.hanziData) {
       const hanziWriter = new HanziWriter(hanziRef, this.props.character.hanziData, { // eslint-disable-line
         charDataLoader: data => data,
-        width: 200,
-        height: 200,
-        showOutline: false,
-        showCharacter: true,
-        strokeAnimationDuration: 600,
-        delayBetweenStrokes: 0,
-        showHintAfterMisses: 1
+        ...hanziWriterConfig
       });
     }
   }
@@ -249,13 +232,14 @@ class CharacterPinyin extends Component {
             </ModalControls>
           </ModalContent>
         </Modal>
-        <LabelWrapper>
-          {this.props.status === 'question' ? 'Type the pinyin!' : ''}
-        </LabelWrapper>
-        <HanziWrapper>
-          <div ref={div => {hanziRef = div;}} />
-        </HanziWrapper>
+        {this.props.hideLabel !== true &&
+          <LabelWrapper>
+            {this.props.status === 'question' ? 'Type the pinyin!' : ''}
+          </LabelWrapper>
+        }
+        <HanziWrapper reference={div => {hanziRef = div;}}/>
         {this.renderInputWrapper()}
+        <Meaning text={this.props.character.meaning} />
         {this.isFinished() ?
           this.renderAnswerWrapper()
           : this.renderCheckWrapper()
@@ -272,7 +256,8 @@ CharacterPinyin.propTypes = {
   openModal: propTypes.bool.isRequired,
   userAnswer: propTypes.string.isRequired,
   handleChange: propTypes.func.isRequired,
-  openFeedbackModal: propTypes.bool.isRequired
+  openFeedbackModal: propTypes.bool.isRequired,
+  hideLabel: propTypes.bool
 };
 
 export default CharacterPinyin;

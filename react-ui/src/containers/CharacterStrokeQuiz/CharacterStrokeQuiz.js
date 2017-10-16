@@ -18,7 +18,8 @@ class CharacterStrokeQuiz extends Component {
 CharacterStrokeQuiz.propTypes = {
   character: propTypes.instanceOf(Character).isRequired,
   strokeQuizCompleted: propTypes.func.isRequired,
-  timerStatus: propTypes.string.isRequired
+  timerStatus: propTypes.string.isRequired,
+  hideLabel: propTypes.bool
 };
 
 const mapStateToProps = state => ({

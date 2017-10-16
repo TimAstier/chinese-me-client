@@ -8,7 +8,8 @@ const CharacterRecord = Immutable.Record({
   completed: false,
   etymologyUrl: '',
   writingUrl: '',
-  hanziData: null
+  hanziData: null,
+  meaning: ''
 });
 
 class Character extends CharacterRecord {}

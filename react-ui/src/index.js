@@ -12,7 +12,7 @@ import { createTracker } from 'redux-segment';
 import rootReducer from './rootReducer';
 import setAuthorizationToken from './utils/setAuthorizationToken';
 import jwtDecode from 'jwt-decode';
-import { setCurrentUser } from './redux/auth';
+import { actions as authActions } from './redux/auth';
 
 import routes from './routes';
 import rootSaga from './rootSaga';
@@ -53,7 +53,7 @@ const history = syncHistoryWithStore(browserHistory, store, {
 // Log in returning users automatically
 if (localStorage.jwtToken) {
   setAuthorizationToken(localStorage.jwtToken);
-  store.dispatch(setCurrentUser(jwtDecode(localStorage.jwtToken)));
+  store.dispatch(authActions.setCurrentUser(jwtDecode(localStorage.jwtToken)));
 }
 
 render(

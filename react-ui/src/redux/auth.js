@@ -12,7 +12,7 @@ export const types = {
 
 export const INITIAL_STATE = fromJS({
   isAuthenticated: false,
-  user: {}
+  user: {} // id, email, iat, createdAt
 });
 
 export default function reducer(state = INITIAL_STATE, action = {}) {
@@ -28,7 +28,7 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
 
 // Actions
 
-export function setCurrentUser(user) {
+const setCurrentUser = user => {
   return {
     type: types.SET_CURRENT_USER,
     user,
@@ -51,7 +51,11 @@ export function setCurrentUser(user) {
       }],
     },
   };
-}
+};
+
+export const actions = {
+  setCurrentUser
+};
 
 // Selectors
 

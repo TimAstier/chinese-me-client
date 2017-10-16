@@ -3,7 +3,7 @@ import { types, actions } from './actions';
 import Api from '../utils/api';
 import setAuthorizationToken from '../utils/setAuthorizationToken';
 import jwtDecode from 'jwt-decode';
-import { setCurrentUser } from '../redux/auth';
+import { actions as authActions } from '../redux/auth';
 import { push } from 'react-router-redux';
 import { SubmissionError } from 'redux-form/immutable';
 import serverErrors from '../constants/serverErrors';
@@ -11,13 +11,13 @@ import serverErrors from '../constants/serverErrors';
 function* login(token) {
   localStorage.setItem('jwtToken', token);
   setAuthorizationToken(token);
-  yield put(setCurrentUser(jwtDecode(token)));
+  yield put(authActions.setCurrentUser(jwtDecode(token)));
 }
 
 function* logout() {
   localStorage.removeItem('jwtToken');
   setAuthorizationToken(false);
-  yield put(setCurrentUser({}));
+  yield put(authActions.setCurrentUser({}));
 }
 
 function* authorize(params) {

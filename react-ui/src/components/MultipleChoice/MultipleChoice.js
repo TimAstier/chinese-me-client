@@ -5,6 +5,7 @@ import { ChoiceBox } from '../.';
 import { ScreenButton } from '../../containers';
 import iconWrong from '../../images/iconWrong.svg';
 import iconCorrect from '../../images/iconCorrect.svg';
+import createArrayOfRandomIntegers from '../../utils/createArrayOfRandomIntegers';
 
 const Wrapper = styled.div`
   flex: 1 0 0;
@@ -74,6 +75,27 @@ const Explanation = styled.div`
 `;
 
 class MultipleChoice extends Component {
+  constructor(props) {
+    super(props);
+    // Create a randomized array of integers used to display choices.
+    // This allows to display choices in a random order every time
+    // this component is rendered, while keeping the same display if the
+    // component re-renders.
+
+    this.state = {
+      randomIntegers: createArrayOfRandomIntegers(props.choices.length - 1)
+    };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    // Create a new randomIntegers state for a new question.
+    // This happens when several multipleChoice exercises are tested in a row.
+    if (this.props.question !== nextProps.question) {
+      this.setState({
+        randomIntegers: createArrayOfRandomIntegers(nextProps.choices.length - 1)
+      });
+    }
+  }
 
   isFinished() {
     const status = this.props.status;
@@ -112,7 +134,8 @@ class MultipleChoice extends Component {
   }
 
   renderChoices() {
-    return this.props.choices.map((choice, i) => {
+    // Note: The correct answer is always the first one in the choices array
+    const choices = this.props.choices.map((choice, i) => {
       const onClick = () => this.props.setUserAnswer(i);
       return (
         <ChoiceBox
@@ -122,11 +145,13 @@ class MultipleChoice extends Component {
           setUserAnswer={this.props.setUserAnswer}
           focused={i === this.props.userAnswer}
           disabled={this.props.status !== 'question' && i !== this.props.userAnswer}
-          wrong={this.props.status !== 'question' && i === this.props.userAnswer && i !== this.props.correctAnswer}
-          correct={this.props.status !== 'question' && i === this.props.correctAnswer}
+          wrong={this.props.status !== 'question' && i === this.props.userAnswer && i !== 0}
+          correct={this.props.status !== 'question' && i === 0}
         />
       );
     });
+    const shuffledChoices = this.state.randomIntegers.map(e => choices[e]);
+    return shuffledChoices;
   }
 
   render() {
@@ -149,7 +174,6 @@ MultipleChoice.propTypes = {
   status: propTypes.oneOf([ 'question', 'wrong', 'correct' ]).isRequired,
   userAnswer: propTypes.number,
   setUserAnswer: propTypes.func.isRequired,
-  correctAnswer: propTypes.oneOf([0, 1, 2]).isRequired,
   explanation: propTypes.string.isRequired
 };
 

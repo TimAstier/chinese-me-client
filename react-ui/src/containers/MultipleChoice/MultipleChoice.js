@@ -16,7 +16,6 @@ class MultipleChoice extends Component {
         status={this.props.status}
         userAnswer={this.props.userAnswer}
         setUserAnswer={this.props.setUserAnswer}
-        correctAnswer={this.props.multipleChoice.correctAnswer}
         explanation={this.props.multipleChoice.explanation}
       />
     );

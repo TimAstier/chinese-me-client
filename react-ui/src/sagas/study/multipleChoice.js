@@ -35,7 +35,9 @@ export function* run(mode = 'free') {
   const multipleChoice = yield select(selectors.getCurrentMultipleChoice);
   yield take(sagaTypes.CHECK_ANSWER);
   const userAnswer = yield select(selectors.getMultipleChoiceUserAnswer);
-  const expectedAnswer = multipleChoice.get('correctAnswer');
+  // Note: the correct answer is always the first one in the choices array
+  // Choices are randomized in the render method of the MultipleChoice component
+  const expectedAnswer = 0;
   if ( expectedAnswer === userAnswer) {
     // Tracking
     yield put(sagaActions.exerciseCompleted({

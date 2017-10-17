@@ -3,8 +3,7 @@ import propTypes from 'prop-types';
 import styled from 'styled-components';
 import HanziWriter from 'hanzi-writer';
 import { Character } from '../../models';
-import { ScreenButton } from '../../containers';
-import { Modal } from '../../containers';
+import { ScreenButton, HintModal } from '../../containers';
 import iconWrong from '../../images/iconWrong.svg';
 import iconCorrect from '../../images/iconCorrect.svg';
 import HanziWrapper from '../Character/HanziWrapper';
@@ -81,43 +80,6 @@ const PinyinNumber = styled.div`
   color: #55b6ff;
 `;
 
-const ModalContent = styled.div`
-  text-align: center;
-  background-color: white;
-  color: #454545;
-  height: 260px;
-  display: flex;
-  flex-direction: column;
-`;
-
-const ModalTitle = styled.div`
-  flex: 1 0 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-	font-family: 'Open Sans';
-  font-weight: 600;
-	font-size: 30px;
-	color: #454545;
-`;
-
-const ModalMessage = styled.div`
-  flex: 1 0 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: 'Open Sans';
-	font-size: 25px;
-	color: #454545;
-`;
-
-const ModalControls = styled.div`
-  flex: 2 0 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
 const Input = styled.input`
   width: 160px;
   height: 50px;
@@ -136,6 +98,13 @@ const Input = styled.input`
 let hanziRef = null;
 
 class CharacterPinyin extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      modalTitle: '',
+      modalMessage: ''
+    };
+  }
 
   componentDidMount() {
     if (this.props.character.hanziData) {
@@ -153,6 +122,7 @@ class CharacterPinyin extends Component {
 
   renderInputWrapper() {
     // This way of setting autofocus allow the input to be re-focused
+    // NOTE: seems broken
     // when the modal is closed. It uses innerRef instead of ref
     // to work with styled-components.
     // It also unfocus the input if the feedback modal is open
@@ -209,29 +179,10 @@ class CharacterPinyin extends Component {
     );
   }
 
-  renderMessage() {
-    if (this.props.attemptsLeft > 1) {
-      return 'You can try ' + this.props.attemptsLeft + ' more times before seeing the answer.';
-    }
-    return 'You have one more try.';
-  }
-
   render() {
     return (
       <Wrapper>
-        <Modal open={this.props.openModal} size="small">
-          <ModalContent>
-            <ModalTitle>Wrong answer</ModalTitle>
-            <ModalMessage>{this.renderMessage()}</ModalMessage>
-            <ModalControls>
-              <ScreenButton
-                primary
-                text="Try again"
-                action={'closeModal'}
-              />
-            </ModalControls>
-          </ModalContent>
-        </Modal>
+        <HintModal/>
         {this.props.hideLabel !== true &&
           <LabelWrapper>
             {this.props.status === 'question' ? 'Type the pinyin!' : ''}
@@ -252,8 +203,6 @@ class CharacterPinyin extends Component {
 CharacterPinyin.propTypes = {
   character: propTypes.instanceOf(Character).isRequired,
   status: propTypes.oneOf([ 'question', 'wrong', 'correct' ]).isRequired,
-  attemptsLeft: propTypes.number.isRequired,
-  openModal: propTypes.bool.isRequired,
   userAnswer: propTypes.string.isRequired,
   handleChange: propTypes.func.isRequired,
   openFeedbackModal: propTypes.bool.isRequired,

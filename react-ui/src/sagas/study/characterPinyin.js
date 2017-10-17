@@ -46,7 +46,8 @@ export function* run(mode = 'free') {
       yield take(sagaTypes.CHECK_ANSWER);
       const userAnswer = yield select(selectors.getCharacterPinyinUserAnswer);
       const expectedAnswer = currentChar.pinyinNumber;
-      if (userAnswer === expectedAnswer) {
+      // Compare userAnswer without spaces with the expected answer
+      if (userAnswer.replace(/\s+/g, '') === expectedAnswer) {
         // Tracking
         yield put(sagaActions.exerciseCompleted({
           id: currentChar.get('id'),
@@ -89,9 +90,9 @@ export function* run(mode = 'free') {
           return false;
         }
         if (attemptsLeft !== 0) {
+          yield put(uiActions.openHintModal());
+          yield take(uiTypes.CLOSE_HINT_MODAL);
           yield put(characterPinyinActions.setUserAnswer(''));
-          yield put(uiActions.openModal());
-          yield take(uiTypes.CLOSE_MODAL);
           yield put(characterPinyinActions.setAttemptsLeft(attemptsLeft - 1));
           attemptsLeft --;
         } else {

@@ -42,7 +42,7 @@ class ScreenButton extends Component {
         // This prevents calling nextScreen while doing review
         return this.props.isReviewInitialized ? this.props.nextQuestion : this.props.next;
       case 'skip': return this.props.skip;
-      case 'closeModal': return this.props.handleCloseModal;
+      case 'closeHintModal': return this.props.handleCloseHintModal;
       case 'checkAnswer': return this.props.checkAnswer;
       default: return () => {};
     }
@@ -71,10 +71,10 @@ ScreenButton.propTypes = {
   text: propTypes.string.isRequired,
   primary: propTypes.bool,
   disabled: propTypes.bool,
-  action: propTypes.oneOf(['next', 'skip', 'closeModal', 'checkAnswer']),
+  action: propTypes.oneOf(['next', 'skip', 'closeHintModal', 'checkAnswer']),
   next: propTypes.func.isRequired,
   skip: propTypes.func.isRequired,
-  handleCloseModal: propTypes.func.isRequired,
+  handleCloseHintModal: propTypes.func.isRequired,
   checkAnswer: propTypes.func.isRequired,
   onClick: propTypes.func,
   isReviewInitialized: propTypes.bool.isRequired,
@@ -90,7 +90,7 @@ export default connect(
   {
     next: sagaActions.next,
     skip: sagaActions.skip,
-    handleCloseModal: uiActions.closeModal,
+    handleCloseHintModal: uiActions.closeHintModal,
     checkAnswer: sagaActions.checkAnswer,
     nextQuestion: sagaActions.nextQuestion
   }

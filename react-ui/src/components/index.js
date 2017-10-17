@@ -23,6 +23,7 @@ export { default as ExamResultScoreLabel } from './ExamResult/ExamResultScoreLab
 export { default as ExamScoreLabel } from './Exam/ExamScoreLabel';
 export { default as FeedbackModal } from './FeedbackModal/FeedbackModal';
 export { default as Footer } from './Footer/Footer';
+export { default as HintModal } from './CharacterPinyin/HintModal';
 export { default as Introduction } from './Introduction/Introduction';
 export { default as LoginForm } from './Login/Form';
 export { default as LoginPage } from './Login/Page';

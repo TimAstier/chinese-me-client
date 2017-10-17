@@ -61,7 +61,7 @@ export function* initStudyData() {
 function* defaultExamUi() {
   yield put(uiActions.set('skipButton', false));
   yield put(uiActions.set('nextButton', false));
-  yield put(uiActions.closeModal());
+  yield put(uiActions.closeHintModal());
   yield put(uiActions.set('playAudioButton', false));
   yield put(uiActions.set('pauseButton', false));
 }

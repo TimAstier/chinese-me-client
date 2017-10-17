@@ -114,7 +114,7 @@ function* runScreenSaga(run) {
 export function* defaultEpisodeScreenUi() {
   yield put(uiActions.set('skipButton', true));
   yield put(uiActions.set('nextButton', false));
-  yield put(uiActions.closeModal());
+  yield put(uiActions.closeHintModal());
   yield put(uiActions.set('playAudioButton', false));
   yield put(uiActions.set('pauseButton', false));
 }

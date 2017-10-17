@@ -4,8 +4,8 @@ import { Map } from 'immutable';
 
 export const types = {
   SET: 'ui/SET',
-  OPEN_MODAL: 'ui/OPEN_MODAL',
-  CLOSE_MODAL: 'ui/CLOSE_MODAL',
+  OPEN_HINT_MODAL: 'ui/OPEN_HINT_MODAL',
+  CLOSE_HINT_MODAL: 'ui/CLOSE_HINT_MODAL',
   OPEN_FEEDBACK_MODAL: 'ui/OPEN_FEEDBACK_MODAL',
   CLOSE_FEEDBACK_MODAL: 'ui/CLOSE_FEEDBACK_MODAL',
   OPEN_MAP_MODAL: 'ui/OPEN_MAP_MODAL',
@@ -20,7 +20,7 @@ export const types = {
 export const INITIAL_STATE = Map({
   nextButton: false,
   skipButton: true,
-  openModal: false,
+  openHintModal: false,
   playAudioButton: false,
   pauseButton: false,
   openFeedbackModal: false,
@@ -33,10 +33,10 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
   switch (action.type) {
     case types.SET:
       return state.set(action.payload.attribute, action.payload.value);
-    case types.OPEN_MODAL:
-      return state.set('openModal', true);
-    case types.CLOSE_MODAL:
-      return state.set('openModal', false);
+    case types.OPEN_HINT_MODAL:
+      return state.set('openHintModal', true);
+    case types.CLOSE_HINT_MODAL:
+      return state.set('openHintModal', false);
     case types.OPEN_FEEDBACK_MODAL:
       return state.merge({
         'feedbackStatus': 'writing',
@@ -64,8 +64,8 @@ const set = (attribute, value) => ({
   type: types.SET,
   payload: { attribute, value }
 });
-const openModal = () => ({ type: types.OPEN_MODAL });
-const closeModal = () => ({ type: types.CLOSE_MODAL });
+const openHintModal = () => ({ type: types.OPEN_HINT_MODAL });
+const closeHintModal = () => ({ type: types.CLOSE_HINT_MODAL });
 const openFeedbackModal = () => ({ type: types.OPEN_FEEDBACK_MODAL });
 const closeFeedbackModal = () => ({ type: types.CLOSE_FEEDBACK_MODAL });
 const updateFeedbackStatus = status => ({
@@ -79,8 +79,8 @@ const closeQuestionModal = () => ({ type: types.CLOSE_QUESTION_MODAL });
 
 export const actions = {
   set,
-  openModal,
-  closeModal,
+  openHintModal,
+  closeHintModal,
   openFeedbackModal,
   closeFeedbackModal,
   updateFeedbackStatus,
@@ -94,7 +94,7 @@ export const actions = {
 
 const getNextButton = state => state.get('nextButton');
 const getSkipButton = state => state.get('skipButton');
-const getOpenModal = state => state.get('openModal');
+const getOpenHintModal = state => state.get('openHintModal');
 const getPlayAudioButton = state => state.get('playAudioButton');
 const getPauseButton = state => state.get('pauseButton');
 const getOpenFeedbackModal = state => state.get('openFeedbackModal');
@@ -105,7 +105,7 @@ const getOpenQuestionModal = state => state.get('openQuestionModal');
 export const selectors = {
   getNextButton,
   getSkipButton,
-  getOpenModal,
+  getOpenHintModal,
   getPlayAudioButton,
   getPauseButton,
   getOpenFeedbackModal,

@@ -7,6 +7,7 @@ import HanziWrapper from '../Character/HanziWrapper';
 import Meaning from '../Character/Meaning';
 import Pinyin from '../Character/Pinyin';
 import hanziWriterConfig from '../../constants/hanziWriterConfig';
+import pinyinize from 'pinyinize';
 
 const Wrapper = styled.div`
   display: flex;
@@ -47,7 +48,7 @@ class CharacterStroke extends Component {
       <Wrapper>
         <LabelWrapper>Watch:</LabelWrapper>
         <HanziWrapper reference={div => {hanziRef = div;}} />
-        <Pinyin text={this.props.character.pinyinNumber} />
+        <Pinyin text={pinyinize(this.props.character.pinyinNumber)} />
         <Meaning text={this.props.character.meaning} />
       </Wrapper>
     );

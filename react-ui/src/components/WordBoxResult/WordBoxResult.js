@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import iconSmallCorrect from '../../images/iconSmallCorrect.svg';
 import iconSmallWrong from '../../images/iconSmallWrong.svg';
 import { Word } from '../../models';
-
+import pinyinize from 'pinyinize';
 
 const Wrapper = styled.div`
   width: 100px;
@@ -53,7 +53,10 @@ class WordBoxResult extends Component {
     return (
       <Wrapper>
         <CorrectAnswerWrapper>
-          {this.props.word.pinyin}
+          {this.props.success ?
+            pinyinize(this.props.word.pinyin)
+            : this.props.word.pinyin
+          }
         </CorrectAnswerWrapper>
         <ChineseWrapper>
           {this.props.word.chinese}

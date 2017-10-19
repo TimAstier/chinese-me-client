@@ -37,7 +37,7 @@ class QuestionModal extends Component {
 QuestionModal.propTypes = {
   open: propTypes.bool.isRequired,
   type: propTypes.string.isRequired,
-  onClick: propTypes.func.isRequired,
+  onClick: propTypes.func.isRequired
 };
 
 export default QuestionModal;

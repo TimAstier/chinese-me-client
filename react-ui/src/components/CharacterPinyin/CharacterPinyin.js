@@ -9,6 +9,7 @@ import iconCorrect from '../../images/iconCorrect.svg';
 import HanziWrapper from '../Character/HanziWrapper';
 import Meaning from '../Character/Meaning';
 import hanziWriterConfig from '../../constants/hanziWriterConfig';
+import pinyinize from 'pinyinize';
 
 const Wrapper = styled.div`
   flex: 1 0 0;
@@ -131,7 +132,11 @@ class CharacterPinyin extends Component {
         <Input
           isFinished={this.isFinished()}
           type="text"
-          value={this.props.userAnswer}
+          value={
+            this.props.status === 'correct' ?
+            pinyinize(this.props.userAnswer.replace(/\s+/g, ''))
+            : this.props.userAnswer
+          }
           onChange={this.props.handleChange}
           innerRef={this.props.openFeedbackModal ?
             undefined

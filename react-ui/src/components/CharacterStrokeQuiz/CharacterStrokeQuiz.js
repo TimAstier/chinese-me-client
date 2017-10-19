@@ -8,6 +8,7 @@ import HanziWrapper from '../Character/HanziWrapper';
 import Meaning from '../Character/Meaning';
 import Pinyin from '../Character/Pinyin';
 import hanziWriterConfig from '../../constants/hanziWriterConfig';
+import pinyinize from 'pinyinize';
 
 const Wrapper = styled.div`
   display: flex;
@@ -75,7 +76,7 @@ class CharacterStrokeQuiz extends Component {
           <LabelWrapper>{!this.state.finished ? 'Your turn!' : ''}</LabelWrapper>
         }
         <HanziWrapper reference={div => {hanziRef = div;}} />
-        <Pinyin text={this.props.character.pinyinNumber} />
+        <Pinyin text={pinyinize(this.props.character.pinyinNumber)} />
         <Meaning text={this.props.character.meaning} />
         <IconWrapper hideCheck={!this.state.finished}>
           <img src={iconCorrect} alt="icon-correct" />

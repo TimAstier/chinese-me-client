@@ -123,7 +123,6 @@ class CharacterPinyin extends Component {
 
   renderInputWrapper() {
     // This way of setting autofocus allow the input to be re-focused
-    // NOTE: seems broken
     // when the modal is closed. It uses innerRef instead of ref
     // to work with styled-components.
     // It also unfocus the input if the feedback modal is open

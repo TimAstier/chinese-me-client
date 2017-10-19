@@ -7,7 +7,7 @@ class Review extends Component {
   render() {
     const Container =
       mapTypeToContainers(this.props.currentExercise.get('type'));
-    return this.props.initialized ? <Container hideLabel /> : null;
+    return this.props.initialized ? <Container /> : null;
   }
 }
 

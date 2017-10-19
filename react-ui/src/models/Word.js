@@ -4,7 +4,8 @@ const WordRecord = Immutable.Record({
   id: null,
   order: '',
   chinese: '',
-  pinyin: ''
+  pinyin: '',
+  meanings: []
 });
 
 class Word extends WordRecord {}

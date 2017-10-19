@@ -36,6 +36,7 @@ export { default as Modal } from './Modal/Modal';
 export { default as ModeButton } from './Dialog/ModeButton';
 export { default as MultipleChoice } from './MultipleChoice/MultipleChoice';
 export { default as Navbar } from './Navbar/Navbar';
+export { default as NewWordLink } from './Statement/NewWordLink';
 export { default as OnboardingScreen } from './OnboardingScreen/OnboardingScreen';
 export { default as PauseButton } from './PauseButton/PauseButton';
 export { default as PlayAudioButton } from './PlayAudioButton/PlayAudioButton';
@@ -56,3 +57,4 @@ export { default as TransparentInput } from './TransparentInput/TransparentInput
 export { default as VideoPlayer } from './VideoPlayer/VideoPlayer';
 export { default as WordBox } from './WordBox/WordBox';
 export { default as WordBoxResult } from './WordBoxResult/WordBoxResult';
+export { default as WordModal } from './WordModal/WordModal';

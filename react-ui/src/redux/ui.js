@@ -1,4 +1,5 @@
 import { Map } from 'immutable';
+import { types as sagaTypes } from '../sagas/actions';
 
 // Types
 
@@ -12,7 +13,8 @@ export const types = {
   CLOSE_MAP_MODAL: 'ui/CLOSE_MAP_MODAL',
   UPDATE_FEEDBACK_STATUS: 'ui/UPDATE_FEEDBACK_STATUS',
   OPEN_QUESTION_MODAL: 'ui/OPEN_QUESTION_MODAL',
-  CLOSE_QUESTION_MODAL: 'ui/CLOSE_QUESTION_MODAL'
+  CLOSE_QUESTION_MODAL: 'ui/CLOSE_QUESTION_MODAL',
+  CLOSE_WORD_MODAL: 'ui/CLOSE_WORD_MODAL'
 };
 
 // Reducer
@@ -26,7 +28,8 @@ export const INITIAL_STATE = Map({
   openFeedbackModal: false,
   feedbackStatus: 'writing',
   openMapModal: false,
-  openQuestionModal: false
+  openQuestionModal: false,
+  openWordModal: false
 });
 
 export default function reducer(state = INITIAL_STATE, action = {}) {
@@ -54,6 +57,10 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
       return state.set('openQuestionModal', true);
     case types.CLOSE_QUESTION_MODAL:
       return state.set('openQuestionModal', false);
+    case sagaTypes.NEW_WORD_LINK_CLICKED:
+      return state.set('openWordModal', true);
+    case types.CLOSE_WORD_MODAL:
+      return state.set('openWordModal', false);
     default: return state;
   }
 }
@@ -76,6 +83,8 @@ const openMapModal = () => ({ type: types.OPEN_MAP_MODAL });
 const closeMapModal = () => ({ type: types.CLOSE_MAP_MODAL });
 const openQuestionModal = () => ({ type: types.OPEN_QUESTION_MODAL });
 const closeQuestionModal = () => ({ type: types.CLOSE_QUESTION_MODAL });
+const openWordModal = () => ({ type: types.OPEN_WORD_MODAL });
+const closeWordModal = () => ({ type: types.CLOSE_WORD_MODAL });
 
 export const actions = {
   set,
@@ -87,7 +96,9 @@ export const actions = {
   openMapModal,
   closeMapModal,
   openQuestionModal,
-  closeQuestionModal
+  closeQuestionModal,
+  openWordModal,
+  closeWordModal
 };
 
 // Selectors
@@ -101,6 +112,7 @@ const getOpenFeedbackModal = state => state.get('openFeedbackModal');
 const getFeedbackStatus = state => state.get('feedbackStatus');
 const getOpenMapModal = state => state.get('openMapModal');
 const getOpenQuestionModal = state => state.get('openQuestionModal');
+const getOpenWordModal = state => state.get('openWordModal');
 
 export const selectors = {
   getNextButton,
@@ -111,5 +123,6 @@ export const selectors = {
   getOpenFeedbackModal,
   getFeedbackStatus,
   getOpenMapModal,
-  getOpenQuestionModal
+  getOpenQuestionModal,
+  getOpenWordModal
 };

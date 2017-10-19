@@ -3,8 +3,10 @@ import propTypes from 'prop-types';
 import styled, { keyframes } from 'styled-components';
 import * as models from '../../models';
 import { Clickable } from '../Shared';
-import { PlayAudioButton } from '../../containers';
+import { PlayAudioButton, WordModal, NewWordLink } from '../../containers';
 import iconYourTurn from '../../images/iconYourTurn.svg';
+import findWordsPosition from '../../utils/findWordsPosition';
+import isEmpty from 'lodash/isEmpty';
 
 const blinker = keyframes`
   50% { opacity: 0; }
@@ -98,6 +100,25 @@ const FormatedSentences = styled.div`
 
 class Statement extends Component {
 
+  renderSentenceWithWords(chineseText) {
+    const wordsPosition = findWordsPosition(chineseText, this.props.words);
+    if (!isEmpty(wordsPosition)) {
+      const { words, positions } = wordsPosition;
+      const result = chineseText.split('');
+      positions.forEach((p, i) => {
+        result[p] = (
+          <NewWordLink
+            key={i}
+            simpChar={result[p]}
+            words={words[i]}
+          />
+        );
+      });
+      return result;
+    }
+    return chineseText;
+  }
+
   renderStatement(language) {
     const { sentences, currentSentenceIndex, switchSentence, dialogMode }
       = this.props;
@@ -116,7 +137,10 @@ class Statement extends Component {
             : () => switchSentence(s.id)
           }
         >
-          {s[language]}
+          {!(dialogMode === 'explore' && language === 'chinese' && active) ?
+            s[language]
+            : this.renderSentenceWithWords(s.chinese)
+          }
         </Sentence>
       );
     });
@@ -167,6 +191,7 @@ class Statement extends Component {
   render() {
     return (
       <Wrapper>
+        <WordModal />
         <ChineseWrapper>
           {this.renderStatement('chinese')}
         </ChineseWrapper>
@@ -181,6 +206,7 @@ class Statement extends Component {
 
 Statement.propTypes = {
   sentences: propTypes.arrayOf(propTypes.instanceOf(models.Sentence)).isRequired,
+  words: propTypes.arrayOf(propTypes.instanceOf(models.Word)).isRequired,
   currentSentenceIndex: propTypes.number.isRequired,
   isAudioPlaying: propTypes.bool.isRequired,
   playSentence: propTypes.func.isRequired,

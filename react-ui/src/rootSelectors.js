@@ -162,6 +162,17 @@ const getCurrentAudioToText = createSelector(
   (audioToTexts, id) => audioToTexts.get(String(id))
 );
 
+const getCurrentWord = createSelector(
+  entitySelectors.getWords,
+  studySelectors.getCurrentWordId,
+  (words, id) => {
+    if (words.get(String(id))) {
+      return words.get(String(id));
+    }
+    return undefined;
+  }
+);
+
 const getCurrentSentenceIndex = createSelector(
   getCurrentStatement,
   studySelectors.getCurrentSentenceId,
@@ -198,6 +209,21 @@ const getCurrentAvatars = createSelector(
       });
     }
     return arrayOfAvatars;
+  }
+);
+
+// TODO: get hasManyRelations
+const getCurrentWords = createSelector(
+  getCurrentDialog,
+  entitySelectors.getWords,
+  (dialog, words) => {
+    const arrayOfWords = [];
+    if (dialog && words) {
+      dialog.words.forEach(w => {
+        arrayOfWords.push(words.get(String(w)));
+      });
+    }
+    return arrayOfWords;
   }
 );
 
@@ -708,7 +734,9 @@ const selectors = {
   getCurrentSentences,
   getCurrentMultipleChoice,
   getCurrentAudioToText,
+  getCurrentWord,
   getCurrentAvatars,
+  getCurrentWords,
   getNextSentenceId,
   // getPreviousSentenceId,
   getNextStatementId,

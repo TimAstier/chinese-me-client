@@ -3,10 +3,12 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { Statement } from '../.';
 import Sentence from '../../models/Sentence';
+import Word from '../../models/Word';
 import { Provider } from '../../utils/testComponents';
 
 // Statement.propTypes = {
 //   sentences: propTypes.arrayOf(propTypes.instanceOf(models.Sentence)).isRequired,
+//   words: propTypes.arrayOf(propTypes.instanceOf(models.Word)).isRequired,
 //   currentSentenceIndex: propTypes.number.isRequired,
 //   isAudioPlaying: propTypes.bool.isRequired,
 //   displayControls: propTypes.bool.isRequired,
@@ -16,6 +18,32 @@ import { Provider } from '../../utils/testComponents';
 //   switchSentence: propTypes.func.isRequired,
 //   playSentence: propTypes.func.isRequired,
 // };
+
+const words = [
+  new Word({
+    id: 1,
+    chinese: '是'
+  }),
+  new Word({
+    id: 2,
+    chinese: '姓'
+  })
+];
+
+const words2 = [
+  new Word({
+    id: 1,
+    chinese: '我'
+  }),
+  new Word({
+    id: 2,
+    chinese: '美'
+  }),
+  new Word({
+    id: 3,
+    chinese: '美国'
+  })
+];
 
 const singleSentence = [
   new Sentence({
@@ -60,6 +88,7 @@ storiesOf('Statement', module)
   .add('singleSentence', () =>
     <Statement
       sentences={singleSentence}
+      words={words}
       currentSentenceIndex={0}
       displayControls
       read={false}
@@ -70,6 +99,7 @@ storiesOf('Statement', module)
   .add('twoSentences: active[0]', () =>
     <Statement
       sentences={twoSentences}
+      words={words}
       currentSentenceIndex={0}
       displayControls
       read={false}
@@ -80,6 +110,7 @@ storiesOf('Statement', module)
   .add('twoSentences: active[1]', () =>
     <Statement
       sentences={twoSentences}
+      words={words}
       currentSentenceIndex={1}
       displayControls
       read={false}
@@ -90,6 +121,7 @@ storiesOf('Statement', module)
   .add('threeSentences: active[0]', () =>
     <Statement
       sentences={threeSentences}
+      words={words}
       currentSentenceIndex={0}
       displayControls
       read={false}
@@ -100,6 +132,7 @@ storiesOf('Statement', module)
   .add('threeSentences: active[1]', () =>
     <Statement
       sentences={threeSentences}
+      words={words}
       currentSentenceIndex={1}
       displayControls
       read={false}
@@ -110,6 +143,7 @@ storiesOf('Statement', module)
   .add('threeSentences: active[2]', () =>
     <Statement
       sentences={threeSentences}
+      words={words}
       currentSentenceIndex={2}
       displayControls
       read={false}
@@ -120,6 +154,7 @@ storiesOf('Statement', module)
   .add('displayControls: false', () =>
     <Statement
       sentences={threeSentences}
+      words={words}
       currentSentenceIndex={2}
       displayControls={false}
       read={false}
@@ -130,6 +165,7 @@ storiesOf('Statement', module)
   .add('read: true', () =>
     <Statement
       sentences={threeSentences}
+      words={words}
       currentSentenceIndex={2}
       displayControls={false}
       read
@@ -140,7 +176,8 @@ storiesOf('Statement', module)
   .add('mode: explore', () =>
     <Statement
       sentences={threeSentences}
-      currentSentenceIndex={2}
+      words={words2}
+      currentSentenceIndex={1}
       displayControls
       read={false}
       dialogMode={'explore'}

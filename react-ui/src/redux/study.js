@@ -34,6 +34,7 @@ export const INITIAL_STATE = Immutable.Map({
   currentSentenceId: null,
   currentMultipleChoiceId: null,
   currentAudioToTextId: null,
+  currentWordId: null,
   dialogMode: '',
   partNumber: null,
   chosenAvatarId: null,
@@ -61,6 +62,8 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
       return state.set('currentMultipleChoiceId', action.payload.id);
     case types.SET_CURRENT_AUDIO_TO_TEXT_ID:
       return state.set('currentAudioToTextId', action.payload.id);
+    case sagaTypes.NEW_WORD_LINK_CLICKED:
+      return state.set('currentWordId', action.payload.id);
     case types.SET_DIALOG_MODE:
       return state.set('dialogMode', action.payload.mode);
     case types.SET_PART_NUMBER:
@@ -137,6 +140,13 @@ const setCurrentAudioToTextId = id => {
   };
 };
 
+const setCurrentWordId = id => {
+  return {
+    type: types.SET_CURRENT_WORD_ID,
+    payload: { id }
+  };
+};
+
 const setDialogMode = mode => {
   const modes = ['listen', 'explore', 'roleplay', 'choserole'];
   if (modes.findIndex(e => e === mode) === -1) {
@@ -182,6 +192,7 @@ export const actions = {
   setCurrentSentenceId,
   setCurrentMultipleChoiceId,
   setCurrentAudioToTextId,
+  setCurrentWordId,
   setDialogMode,
   setPartNumber,
   setChosenAvatarId,
@@ -200,6 +211,7 @@ const getCurrentStatementId = state => state.get('currentStatementId');
 const getCurrentSentenceId = state => state.get('currentSentenceId');
 const getCurrentMultipleChoiceId = state => state.get('currentMultipleChoiceId');
 const getCurrentAudioToTextId = state => state.get('currentAudioToTextId');
+const getCurrentWordId = state => state.get('currentWordId');
 const getDialogMode = state => state.get('dialogMode');
 const getPartNumber = state => state.get('partNumber');
 const getChosenAvatarId = state => state.get('chosenAvatarId');
@@ -216,6 +228,7 @@ export const selectors = {
   getCurrentSentenceId,
   getCurrentMultipleChoiceId,
   getCurrentAudioToTextId,
+  getCurrentWordId,
   getDialogMode,
   getPartNumber,
   getChosenAvatarId,

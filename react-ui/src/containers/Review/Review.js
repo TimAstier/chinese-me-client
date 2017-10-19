@@ -5,7 +5,6 @@ import { Review as ReviewComponent } from '../../components';
 import selectors from '../../rootSelectors';
 
 class Review extends Component {
-
   render() {
     if (this.props.currentExercise) {
       return (

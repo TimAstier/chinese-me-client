@@ -4,6 +4,7 @@ import propTypes from 'prop-types';
 import { Statement as StatementComponent } from '../../components';
 import selectors from '../../rootSelectors';
 import { actions as sagaActions } from '../../sagas/actions';
+import * as models from '../../models';
 
 class Statement extends Component {
 
@@ -23,14 +24,16 @@ Statement.propTypes = {
   displayControls: propTypes.bool.isRequired,
   read: propTypes.bool.isRequired,
   switchSentence: propTypes.func.isRequired,
-  dialogMode: propTypes.string.isRequired
+  dialogMode: propTypes.string.isRequired,
+  words: propTypes.arrayOf(propTypes.instanceOf(models.Word)).isRequired
 };
 
 const mapStateToProps = state => {
   return {
     isAudioPlaying: selectors.getIsPlaying(state),
     displayControls: selectors.getDialogMode(state) === 'explore',
-    read: selectors.getIsChosenAvatarTalking(state)
+    read: selectors.getIsChosenAvatarTalking(state),
+    words: selectors.getCurrentWords(state)
   };
 };
 

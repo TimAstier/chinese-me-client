@@ -52,7 +52,8 @@ export const types = {
   PLAY_LEVEL_FAIL_SOUND: 'signal/PLAY_LEVEL_FAIL_SOUND',
   NEXT_QUESTION: 'signal/NEXT_QUESTION',
   EXERCISE_COMPLETED: 'signal/EXERCISE_COMPLETED',
-  CLOSED_QUESTION_ANSWERED: 'signal/CLOSED_QUESTION_ANSWERED'
+  CLOSED_QUESTION_ANSWERED: 'signal/CLOSED_QUESTION_ANSWERED',
+  NEW_WORD_LINK_CLICKED: 'signal/NEW_WORD_LINK_CLICKED'
 };
 
 // Action Creators
@@ -217,6 +218,11 @@ const closedQuestionAnswered = answer => ({
   payload: { answer }
 });
 
+const newWordLinkClicked = id => ({
+  type: types.NEW_WORD_LINK_CLICKED,
+  payload: {id}
+});
+
 export const actions = {
   next,
   skip,
@@ -263,5 +269,6 @@ export const actions = {
   playLevelFailSound,
   nextQuestion,
   exerciseCompleted,
-  closedQuestionAnswered
+  closedQuestionAnswered,
+  newWordLinkClicked
 };

@@ -44,7 +44,7 @@ export function* run(mode = 'free') {
     yield put(audioToTextActions.setCurrentBoxIndex(i));
     yield take(sagaTypes.CHECK_ANSWER);
     const userAnswer = yield select(selectors.getAudioToTextUserAnswer);
-    const success = word.get('pinyin') === userAnswer;
+    const success = word.get('pinyin') === userAnswer.replace(/\s+/g, '');
     if (!success) {
       yield put(sagaActions.playWrongSound());
       // In exam, skip the end if the user makes one mistake

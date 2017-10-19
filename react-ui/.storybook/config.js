@@ -45,6 +45,7 @@ function loadStories() {
   require('../src/components/VideoPlayer/stories');
   require('../src/components/WordBox/stories');
   require('../src/components/WordBoxResult/stories');
+  require('../src/components/WordModal/stories');
 }
 
 configure(loadStories, module);

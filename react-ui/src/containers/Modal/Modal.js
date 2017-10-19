@@ -26,6 +26,6 @@ Modal.propTypes = {
 export default connect(
   null,
   {
-    handleClose: () => uiActions.closeModal()
+    handleClose: () => uiActions.closeHintModal()
   }
 )(Modal);

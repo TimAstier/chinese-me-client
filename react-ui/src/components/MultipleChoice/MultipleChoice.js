@@ -81,7 +81,6 @@ class MultipleChoice extends Component {
     // This allows to display choices in a random order every time
     // this component is rendered, while keeping the same display if the
     // component re-renders.
-
     this.state = {
       randomIntegers: createArrayOfRandomIntegers(props.choices.length - 1)
     };

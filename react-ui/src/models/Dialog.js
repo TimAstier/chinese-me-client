@@ -7,6 +7,7 @@ const DialogRecord = Immutable.Record({
   chineseTitle: '',
   avatars: [],
   statements: [],
+  words: [],
   completed: false,
   titleTranslation: '',
   intro: ''

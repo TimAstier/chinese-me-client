@@ -9,7 +9,6 @@ import selectors from '../../rootSelectors';
 import { Episode } from '../../models';
 
 class EpisodeScreen extends Component {
-
   componentDidMount() {
     return this.props.runEpisodeScreen(this.props.location.pathname);
   }

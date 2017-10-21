@@ -70,4 +70,28 @@ describe('findWordPosition', () => {
     const expectedResult = {};
     expect(wordsPosition).toEqual(expectedResult);
   });
+
+  it('does not match partial words contained in a matching word', () => {
+    const string = '我老公是老师。';
+    const words = ['老公'];
+    const wordRecords = words.map(w => r(w));
+    const wordsPosition = findWordsPosition(string, wordRecords);
+    const expectedResult = {
+      positions: [1, 2],
+      words: [[r('老公')], [r('老公')]]
+    };
+    expect(wordsPosition).toEqual(expectedResult);
+  });
+
+  it('does not match partially matched words after one match', () => {
+    const string = '我老公在一家公司做事。';
+    const words = ['老公'];
+    const wordRecords = words.map(w => r(w));
+    const wordsPosition = findWordsPosition(string, wordRecords);
+    const expectedResult = {
+      positions: [1, 2],
+      words: [[r('老公')], [r('老公')]]
+    };
+    expect(wordsPosition).toEqual(expectedResult);
+  });
 });

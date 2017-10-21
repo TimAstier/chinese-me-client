@@ -1,30 +1,29 @@
 // See tests for examples
+import times from 'lodash/times';
+import isEmpty from 'lodash/isEmpty';
+import findIndexes from './findIndexes';
 
 const findWordsPosition = (string, wordRecords) => {
   const positions = [];
-  const words = [];
-  const arrayOfChars = string.split('');
-  const containedWordRecords = [];
-  wordRecords.forEach(record => {
-    if (string.indexOf(record.get('chinese')) !== -1) {
-      containedWordRecords.push(record);
+  let words = [];
+  times(string.length, () => words.push([]));
+  wordRecords
+    .filter(record => string.indexOf(record.get('chinese') !== -1))
+    .forEach(record => {
+      const matchIndexes = findIndexes(string, record.get('chinese'));
+      matchIndexes.forEach(index => {
+        for (let i = 0; i < record.get('chinese').length; i++) {
+          words[index + i].push(record);
+        }
+      });
+    });
+  words.forEach((array, i) => {
+    if (!isEmpty(array)) {
+      positions.push(i);
     }
   });
-  arrayOfChars.forEach((char, i) => {
-    let matchedOnce = false;
-    containedWordRecords.forEach(record => {
-      if (record.get('chinese').indexOf(char) !== -1) {
-        if (!matchedOnce) {
-          positions.push(i);
-          words.push([record]);
-          matchedOnce = true;
-        } else {
-          words[words.length - 1].push(record);
-        }
-      }
-    });
-  });
-  return positions.length === 0 ? {} : { positions, words };
+  words = words.filter(array => !isEmpty(array));
+  return isEmpty(positions) ? {} : { positions, words };
 };
 
 export default findWordsPosition;

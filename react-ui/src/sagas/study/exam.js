@@ -109,7 +109,6 @@ export function* run() {
     runExam: call(runExam),
     outOfTime: take(timerTypes.OUT_OF_TIME)
   });
-  // TODO: Send results to the server
 }
 
 export function* clean() {

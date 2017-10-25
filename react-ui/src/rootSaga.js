@@ -1,7 +1,7 @@
 // single entry point to start all Sagas at once
 import { all } from 'redux-saga/effects';
 
-import initApp from './sagas/init';
+import { initApp, reloadApp } from './sagas/init';
 import watchEpisodeSagas from './sagas/episode';
 import watchAudioSagas from './sagas/audio';
 import watchSignupSagas from './sagas/signup';
@@ -17,6 +17,7 @@ import runTimer from './sagas/timer';
 export default function* rootSaga() {
   yield all([
     initApp(),
+    reloadApp(),
     watchEpisodeSagas(),
     watchAudioSagas(),
     watchSignupSagas(),

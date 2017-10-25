@@ -138,6 +138,13 @@ const getFocusedEpisode = createSelector(
   }
 );
 
+const getUnlockedEpisodes = createSelector(
+  entitySelectors.getEpisodes,
+  episodes => {
+    return episodes.filter(episode => episode.get('locked') === false);
+  }
+);
+
 const getCurrentStatement = createSelector(
   entitySelectors.getStatements,
   studySelectors.getCurrentStatementId,
@@ -725,6 +732,7 @@ const selectors = {
   ...settingsSelectors,
   getCurrentEpisode,
   getFocusedEpisode,
+  getUnlockedEpisodes,
   getCurrentDialog,
   getCurrentDialogStatementsCount,
   getCurrentStatement,

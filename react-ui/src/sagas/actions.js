@@ -31,6 +31,7 @@ export const types = {
   SEND_FEEDBACK: 'signal/SEND_FEEDBACK',
   ACTIVATE: 'signal/ACTIVATE',
   INIT_APP: 'signal/INIT_APP',
+  RELOAD_APP: 'signal/RELOAD_APP',
   MAP_LINK_CLICK: 'signal/MAP_LINK_CLICK',
   DIALOG_LINK_CLICK: 'signal/DIALOG_LINK_CLICK',
   VIDEO_ENDED: 'signal/VIDEO_ENDED',
@@ -117,6 +118,7 @@ const activate = payload => ({
   payload
 });
 const initApp = () => ({ type: types.INIT_APP });
+const reloadApp = () => ({ type: types.RELOAD_APP });
 const mapLinkClick = link => ({
   type: types.MAP_LINK_CLICK,
   payload: { link }
@@ -248,6 +250,7 @@ export const actions = {
   sendFeedback,
   activate,
   initApp,
+  reloadApp,
   mapLinkClick,
   dialogLinkClick,
   videoEnded,

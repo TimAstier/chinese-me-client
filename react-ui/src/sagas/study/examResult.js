@@ -1,9 +1,10 @@
-import { put, select, take } from 'redux-saga/effects';
+import { put, select, take, call } from 'redux-saga/effects';
 import { delay } from 'redux-saga';
 import { actions as sagaActions, types as sagaTypes } from '../actions';
 import { actions as uiActions } from '../../redux/ui';
 import { actions as examActions } from '../../redux/exam';
 import selectors from '../../rootSelectors';
+import Api from '../../utils/api';
 
 export function isDataLoaded() {
   return true;
@@ -27,7 +28,7 @@ export function* run() {
   const score = yield select(selectors.getExamScore);
   yield delay(1000);
   yield put(score >= 7 ? sagaActions.playLevelWinSound() : sagaActions.playLevelFailSound());
-  // Tracking
+  // Tracking and save
   const exercises = yield select(selectors.getExamExercises);
   const results = yield select(selectors.getExamResults);
   const timeLeft = yield select(selectors.getTimerTime);
@@ -43,7 +44,17 @@ export function* run() {
     exercises,
     results
   }));
-  // End Tracking
+  // End Tracking and save
+  // Save score in DB
+  yield call(Api.post, '/episode/exam/completed',
+    {
+      episodeId: currentEpisode.get('id'),
+      score
+    }
+  );
+  yield put(sagaActions.reloadApp());
+  // const entities = normalize(response.data);
+  // yield put(actions.received(entities));
   yield take(sagaTypes.NEXT);
 }
 

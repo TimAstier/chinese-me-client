@@ -97,7 +97,7 @@ function* findNextUrl(params) {
     case 'exam/':
       return '/study/' + episodeId + '/result';
     case 'result/':
-      return '/';
+      return '/study';
     default:
       return '/error';
   }

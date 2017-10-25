@@ -132,15 +132,17 @@ class EpisodeCard extends Component {
         </TitleWrapper>
         <StatusWrapper>{this.renderStatus()}</StatusWrapper>
         <ButtonWrapper>
-          <ScreenButton
-            text={this.renderButtonText()}
-            primary={!this.props.locked && !this.props.score}
-            disabled={this.props.locked}
-            onClick={this.props.onClick}
-            height={40}
-            width={140}
-            fontSize={16}
-          />
+          {!this.props.locked &&
+            <ScreenButton
+              text={this.renderButtonText()}
+              primary={!this.props.score}
+              onClick={this.props.onClick}
+              height={40}
+              width={140}
+              fontSize={16}
+            />
+          }
+
         </ButtonWrapper>
       </Wrapper>
     );

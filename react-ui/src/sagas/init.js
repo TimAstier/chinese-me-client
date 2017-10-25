@@ -5,12 +5,21 @@ import { fetchEntities } from './entities';
 import selectors from '../rootSelectors';
 
 // This is called only one time, when Study containers mounts
-export default function* initApp() {
+export function* initApp() {
   while (true) { // eslint-disable-line no-constant-condition
     yield take(sagaTypes.INIT_APP);
     yield call(fetchEntities, ['/seasons']);
     yield call(fetchEntities, ['/episodes']);
     const firstSeasonId = yield select(selectors.getFirstSeasonId);
     yield put(studyActions.setCurrentSeasonId(firstSeasonId));
+  }
+}
+
+// Called after an exam to update episode status
+export function* reloadApp() {
+  while (true) { // eslint-disable-line no-constant-condition
+    yield take(sagaTypes.RELOAD_APP);
+    yield call(fetchEntities, ['/seasons']);
+    yield call(fetchEntities, ['/episodes']);
   }
 }

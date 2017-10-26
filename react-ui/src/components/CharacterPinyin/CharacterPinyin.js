@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
-import HanziWriter from 'hanzi-writer';
 import { Character } from '../../models';
-import { ScreenButton, HintModal } from '../../containers';
+import { ScreenButton, HintModal, HanziWrapper } from '../../containers';
 import iconWrong from '../../images/iconWrong.svg';
 import iconCorrect from '../../images/iconCorrect.svg';
-import HanziWrapper from '../Character/HanziWrapper';
 import Meaning from '../Character/Meaning';
-import hanziWriterConfig from '../../constants/hanziWriterConfig';
 import pinyinize from 'pinyinize';
 
 const Wrapper = styled.div`
@@ -96,8 +93,6 @@ const Input = styled.input`
   outline: none;
 `;
 
-let hanziRef = null;
-
 class CharacterPinyin extends Component {
   constructor(props) {
     super(props);
@@ -105,15 +100,6 @@ class CharacterPinyin extends Component {
       modalTitle: '',
       modalMessage: ''
     };
-  }
-
-  componentDidMount() {
-    if (this.props.character.hanziData) {
-      const hanziWriter = new HanziWriter(hanziRef, this.props.character.hanziData, { // eslint-disable-line
-        charDataLoader: data => data,
-        ...hanziWriterConfig
-      });
-    }
   }
 
   isFinished() {
@@ -192,7 +178,10 @@ class CharacterPinyin extends Component {
             {this.props.status === 'question' ? 'Type the pinyin!' : ''}
           </LabelWrapper>
         }
-        <HanziWrapper reference={div => {hanziRef = div;}}/>
+        <HanziWrapper
+          char={this.props.character.simpChar}
+          mode="characterPinyin"
+        />
         {this.renderInputWrapper()}
         <Meaning text={this.props.character.meaning} />
         {this.isFinished() ?

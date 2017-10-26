@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
-import HanziWriter from 'hanzi-writer';
 import styled from 'styled-components';
 import { Character } from '../../models';
 import iconCorrect from '../../images/iconCorrect.svg';
-import HanziWrapper from '../Character/HanziWrapper';
+import { HanziWrapper } from '../../containers';
 import Meaning from '../Character/Meaning';
 import Pinyin from '../Character/Pinyin';
-import hanziWriterConfig from '../../constants/hanziWriterConfig';
 import pinyinize from 'pinyinize';
 
 const Wrapper = styled.div`
@@ -35,11 +33,6 @@ const IconWrapper = styled.div`
   visibility: ${props => props.hideCheck ? 'hidden' : 'visible'};
 `;
 
-let hanziRef = null;
-
-// TODO: Improve hanzi-writer implementation (separate)
-// Maybe use the timer example (side effect)
-
 class CharacterStrokeQuiz extends Component {
   constructor(props) {
     super(props);
@@ -48,25 +41,14 @@ class CharacterStrokeQuiz extends Component {
     };
   }
 
-  componentDidMount() {
-    if (this.props.character.hanziData) {
-      const hanziWriter = new HanziWriter(hanziRef, this.props.character.hanziData, {
-        charDataLoader: data => data,
-        ...hanziWriterConfig
-      });
-      hanziWriter.quiz({
-        onComplete: () => {
-          this.props.strokeQuizCompleted();
-          // TODO: move this logic into hanzi-writer saga
-          if (this.props.timerStatus === 'running') {
-            return null;
-          }
-          return this.setState({
-            finished: true
-          });
-        }
-      });
+  onQuizComplete() {
+    this.props.strokeQuizCompleted();
+    if (this.props.timerStatus === 'running') {
+      return null;
     }
+    return this.setState({
+      finished: true
+    });
   }
 
   render() {
@@ -75,7 +57,11 @@ class CharacterStrokeQuiz extends Component {
         {this.props.hideLabel !== true &&
           <LabelWrapper>{!this.state.finished ? 'Your turn!' : ''}</LabelWrapper>
         }
-        <HanziWrapper reference={div => {hanziRef = div;}} />
+        <HanziWrapper
+          char={this.props.character.simpChar}
+          mode="strokeQuiz"
+          onQuizComplete={this.onQuizComplete.bind(this)}
+        />
         <Pinyin text={pinyinize(this.props.character.pinyinNumber)} />
         <Meaning text={this.props.character.meaning} />
         <IconWrapper hideCheck={!this.state.finished}>
@@ -90,7 +76,7 @@ CharacterStrokeQuiz.propTypes = {
   character: propTypes.instanceOf(Character).isRequired,
   strokeQuizCompleted: propTypes.func.isRequired,
   timerStatus: propTypes.string.isRequired,
-  hideLabel: propTypes.bool
+  hideLabel: propTypes.bool,
 };
 
 export default CharacterStrokeQuiz;

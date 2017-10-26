@@ -7,6 +7,7 @@ import { actions as sagaActions } from '../../sagas/actions';
 const Wrapper = styled.div`
   height: 100%;
   width: 100%;
+  min-height: 750px;
   background-color: #fefefe;
   display: flex;
   flex-direction: column;

@@ -1,4 +1,5 @@
 import { put, select, take, call } from 'redux-saga/effects';
+import { delay } from 'redux-saga';
 import { actions as sagaActions, types as sagaTypes } from '../actions';
 import { actions as uiActions } from '../../redux/ui';
 import { actions as examActions } from '../../redux/exam';
@@ -25,6 +26,7 @@ export function* initStudyData() {}
 
 export function* run() {
   const score = yield select(selectors.getExamScore);
+  yield delay(500);
   yield put(score >= 7 ? sagaActions.playLevelWinSound() : sagaActions.playLevelFailSound());
   // Tracking and save
   const exercises = yield select(selectors.getExamExercises);

@@ -14,7 +14,8 @@ export const types = {
   UPDATE_FEEDBACK_STATUS: 'ui/UPDATE_FEEDBACK_STATUS',
   OPEN_QUESTION_MODAL: 'ui/OPEN_QUESTION_MODAL',
   CLOSE_QUESTION_MODAL: 'ui/CLOSE_QUESTION_MODAL',
-  CLOSE_WORD_MODAL: 'ui/CLOSE_WORD_MODAL'
+  CLOSE_WORD_MODAL: 'ui/CLOSE_WORD_MODAL',
+  SET_DEFAULT_EPISODE_SCREEN_UI: 'ui/SET_DEFAULT_EPISODE_SCREEN_UI'
 };
 
 // Reducer
@@ -62,6 +63,15 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
       return state.set('openWordModal', true);
     case types.CLOSE_WORD_MODAL:
       return state.set('openWordModal', false);
+    case types.SET_DEFAULT_EPISODE_SCREEN_UI:
+      return state.merge({
+        skipButton: true,
+        nextButton: false,
+        playAudioButton: false,
+        pauseButton: false,
+        hanziAgainButton: false,
+        openHintModal: false
+      });
     default: return state;
   }
 }
@@ -86,6 +96,9 @@ const openQuestionModal = () => ({ type: types.OPEN_QUESTION_MODAL });
 const closeQuestionModal = () => ({ type: types.CLOSE_QUESTION_MODAL });
 const openWordModal = () => ({ type: types.OPEN_WORD_MODAL });
 const closeWordModal = () => ({ type: types.CLOSE_WORD_MODAL });
+const setDefaultEpisodeScreenUi = () => ({
+  type: types.SET_DEFAULT_EPISODE_SCREEN_UI
+});
 
 export const actions = {
   set,
@@ -99,7 +112,8 @@ export const actions = {
   openQuestionModal,
   closeQuestionModal,
   openWordModal,
-  closeWordModal
+  closeWordModal,
+  setDefaultEpisodeScreenUi
 };
 
 // Selectors

@@ -64,7 +64,7 @@ function* runEpisodeScreen(action) {
   }
   const checkData = yield call(funcs.checkData); // Check if data is sufficient to run the screen
   if (checkData) {
-    yield call(defaultEpisodeScreenUi); // Init Episode Screen UI
+    yield put(uiActions.setDefaultEpisodeScreenUi()); // Init Episode Screen UI
     yield call(funcs.initStudyData); // Init studyData
     yield call(funcs.initUi); // Init UI
     yield put(studyActions.setInitialized(true)); // Display screen content
@@ -109,15 +109,6 @@ function* runScreenSaga(run) {
     skip: take(sagaTypes.SKIP),
     exit: take(sagaTypes.EXIT)
   });
-}
-
-export function* defaultEpisodeScreenUi() {
-  yield put(uiActions.set('skipButton', true));
-  yield put(uiActions.set('nextButton', false));
-  yield put(uiActions.closeHintModal());
-  yield put(uiActions.set('playAudioButton', false));
-  yield put(uiActions.set('pauseButton', false));
-  yield put(uiActions.set('hanziAgainButton', false));
 }
 
 // This allows to end initScreen (when leaving episodeScreen for example)

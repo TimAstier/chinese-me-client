@@ -117,6 +117,7 @@ export function* defaultEpisodeScreenUi() {
   yield put(uiActions.closeHintModal());
   yield put(uiActions.set('playAudioButton', false));
   yield put(uiActions.set('pauseButton', false));
+  yield put(uiActions.set('hanziAgainButton', false));
 }
 
 // This allows to end initScreen (when leaving episodeScreen for example)

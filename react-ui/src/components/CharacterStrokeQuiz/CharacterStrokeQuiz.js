@@ -3,7 +3,7 @@ import propTypes from 'prop-types';
 import styled from 'styled-components';
 import { Character } from '../../models';
 import iconCorrect from '../../images/iconCorrect.svg';
-import { HanziWrapper } from '../../containers';
+import { Hanzi } from '../../containers';
 import Meaning from '../Character/Meaning';
 import Pinyin from '../Character/Pinyin';
 import pinyinize from 'pinyinize';
@@ -55,11 +55,11 @@ class CharacterStrokeQuiz extends Component {
     return (
       <Wrapper>
         {this.props.hideLabel !== true &&
-          <LabelWrapper>{!this.state.finished ? 'Your turn!' : ''}</LabelWrapper>
+          <LabelWrapper>{!this.state.finished && !this.props.watchAgain ? 'Your turn!' : ''}</LabelWrapper>
         }
-        <HanziWrapper
+        <Hanzi
           char={this.props.character.simpChar}
-          mode="strokeQuiz"
+          mode="quiz"
           onQuizComplete={this.onQuizComplete.bind(this)}
         />
         <Pinyin text={pinyinize(this.props.character.pinyinNumber)} />
@@ -77,6 +77,7 @@ CharacterStrokeQuiz.propTypes = {
   strokeQuizCompleted: propTypes.func.isRequired,
   timerStatus: propTypes.string.isRequired,
   hideLabel: propTypes.bool,
+  watchAgain: propTypes.bool.isRequired
 };
 
 export default CharacterStrokeQuiz;

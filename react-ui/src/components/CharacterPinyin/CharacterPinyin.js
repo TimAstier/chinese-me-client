@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
 import { Character } from '../../models';
-import { ScreenButton, HintModal, HanziWrapper } from '../../containers';
+import { ScreenButton, HintModal, Hanzi } from '../../containers';
 import iconWrong from '../../images/iconWrong.svg';
 import iconCorrect from '../../images/iconCorrect.svg';
 import Meaning from '../Character/Meaning';
@@ -178,9 +178,9 @@ class CharacterPinyin extends Component {
             {this.props.status === 'question' ? 'Type the pinyin!' : ''}
           </LabelWrapper>
         }
-        <HanziWrapper
+        <Hanzi
           char={this.props.character.simpChar}
-          mode="characterPinyin"
+          mode="static"
         />
         {this.renderInputWrapper()}
         <Meaning text={this.props.character.meaning} />

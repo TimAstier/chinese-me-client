@@ -58,7 +58,8 @@ EpisodeScreen.propTypes = {
   episode: propTypes.instanceOf(Episode),
   setCurrentSeasonId: propTypes.func.isRequired,
   currentUrl: propTypes.string.isRequired,
-  pause: propTypes.bool
+  pause: propTypes.bool,
+  hanziAgain: propTypes.bool
 };
 
 const mapStateToProps = state => {
@@ -67,6 +68,7 @@ const mapStateToProps = state => {
     skip: selectors.getSkipButton(state),
     playAudio: selectors.getPlayAudioButton(state),
     pause: selectors.getPauseButton(state),
+    hanziAgain: selectors.getHanziAgainButton(state),
     initialized: selectors.getInitialized(state),
     episode: selectors.getCurrentEpisode(state),
     currentUrl: selectors.getCurrentUrl(state)

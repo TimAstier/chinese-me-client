@@ -12,6 +12,7 @@ import * as fromAudioToText from './redux/audioToText';
 import * as fromCharacterPinyin from './redux/characterPinyin';
 import * as fromAuth from './redux/auth';
 import * as fromExam from './redux/exam';
+import * as fromHanzi from './redux/hanzi';
 import * as fromReview from './redux/review';
 import * as fromRouting from './redux/routing';
 import * as fromMap from './redux/map';
@@ -85,6 +86,11 @@ const videoSelectors = bindSelectors(
 const examSelectors = bindSelectors(
   state => state.get('exam'),
   fromExam.selectors
+);
+
+const hanziSelectors = bindSelectors(
+  state => state.get('hanzi'),
+  fromHanzi.selectors
 );
 
 const timerSelectors = bindSelectors(
@@ -730,6 +736,7 @@ const selectors = {
   ...examSelectors,
   ...timerSelectors,
   ...settingsSelectors,
+  ...hanziSelectors,
   getCurrentEpisode,
   getFocusedEpisode,
   getUnlockedEpisodes,

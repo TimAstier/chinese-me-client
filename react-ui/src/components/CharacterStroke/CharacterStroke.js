@@ -5,7 +5,7 @@ import { Character } from '../../models';
 import Meaning from '../Character/Meaning';
 import Pinyin from '../Character/Pinyin';
 import pinyinize from 'pinyinize';
-import { HanziWrapper } from '../../containers';
+import { Hanzi } from '../../containers';
 
 const Wrapper = styled.div`
   display: flex;
@@ -31,9 +31,9 @@ class CharacterStroke extends Component {
     return (
       <Wrapper>
         <LabelWrapper>Watch:</LabelWrapper>
-        <HanziWrapper
+        <Hanzi
           char={this.props.character.simpChar}
-          mode="stroke"
+          mode="animation"
         />
         <Pinyin text={pinyinize(this.props.character.pinyinNumber)} />
         <Meaning text={this.props.character.meaning} />

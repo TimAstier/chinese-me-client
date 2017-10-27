@@ -19,12 +19,14 @@ CharacterStrokeQuiz.propTypes = {
   character: propTypes.instanceOf(Character).isRequired,
   timerStatus: propTypes.string.isRequired,
   hideLabel: propTypes.bool,
-  strokeQuizCompleted: propTypes.func.isRequired
+  strokeQuizCompleted: propTypes.func.isRequired,
+  watchAgain: propTypes.bool.isRequired
 };
 
 const mapStateToProps = state => ({
   character: selectors.getCurrentCharacter(state),
-  timerStatus: selectors.getTimerStatus(state)
+  timerStatus: selectors.getTimerStatus(state),
+  watchAgain: selectors.getHanziWatchAgain(state)
 });
 
 export default connect(

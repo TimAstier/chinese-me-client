@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
 import { ScreenWrapper } from '../.';
-import { ElementsNav, ScreenButton, PlayAudioButton, Progressbar, PauseButton }
-  from '../../containers';
+import { ElementsNav, ScreenButton, PlayAudioButton, Progressbar,
+  PauseButton, HanziAgainButton } from '../../containers';
 import { Clickable } from '../Shared';
 
 // 2nd level wrappers
@@ -136,12 +136,15 @@ class EpisodeScreen extends Component {
   }
 
   renderBottomMiddleWrapper() {
-    const { playAudio, pause } = this.props;
+    const { playAudio, pause, hanziAgain } = this.props;
     if (playAudio) {
       return <PlayAudioButton />;
     }
     if (pause) {
       return <PauseButton />;
+    }
+    if (hanziAgain) {
+      return <HanziAgainButton />;
     }
     return null;
   }
@@ -196,6 +199,7 @@ EpisodeScreen.propTypes = {
   next: propTypes.bool,
   skip: propTypes.bool,
   playAudio: propTypes.bool,
+  hanziAgain: propTypes.bool,
   pause: propTypes.bool,
   children: propTypes.object,
   exit: propTypes.func.isRequired

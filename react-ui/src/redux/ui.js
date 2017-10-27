@@ -25,6 +25,7 @@ export const INITIAL_STATE = Map({
   openHintModal: false,
   playAudioButton: false,
   pauseButton: false,
+  hanziAgainButton: false,
   openFeedbackModal: false,
   feedbackStatus: 'writing',
   openMapModal: false,
@@ -113,6 +114,7 @@ const getFeedbackStatus = state => state.get('feedbackStatus');
 const getOpenMapModal = state => state.get('openMapModal');
 const getOpenQuestionModal = state => state.get('openQuestionModal');
 const getOpenWordModal = state => state.get('openWordModal');
+const getHanziAgainButton = state => state.get('hanziAgainButton');
 
 export const selectors = {
   getNextButton,
@@ -124,5 +126,6 @@ export const selectors = {
   getFeedbackStatus,
   getOpenMapModal,
   getOpenQuestionModal,
-  getOpenWordModal
+  getOpenWordModal,
+  getHanziAgainButton
 };

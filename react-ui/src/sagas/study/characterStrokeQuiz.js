@@ -7,6 +7,7 @@ import { types as sagaTypes } from '../actions';
 import { fetchEntities } from '../entities';
 import { actions as sagaActions } from '../actions';
 import { actions as reviewActions } from '../../redux/review';
+import { actions as uiActions } from '../../redux/ui';
 
 export function* isDataLoaded(id) {
   yield put(studyActions.setCurrentCharacterId(id));
@@ -29,11 +30,15 @@ export function* initStudyData() {}
 export function* initUi() {}
 
 export function* run(mode = 'free') {
+  if (mode !== 'exam') {
+    yield put(uiActions.set('hanziAgainButton', true));
+  }
   yield take(sagaTypes.STROKE_QUIZ_COMPLETED);
   yield put(sagaActions.playSuccessSound());
   if (mode === 'exam') {
     return true;
   }
+  yield put(uiActions.set('hanziAgainButton', false));
   if (mode === 'review') {
     yield delay(1000);
     yield put(reviewActions.setInitialized(false));

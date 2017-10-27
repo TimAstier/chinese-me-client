@@ -21,7 +21,7 @@ const Wrapper = styled.div`
   display: flex;
 `;
 
-class HanziWrapper extends Component {
+class Hanzi extends Component {
 
   /* componentDidMount is the proper lifecycle method for initializing
   ** the writer. That’s because we get it called when React mounts the
@@ -36,30 +36,48 @@ class HanziWrapper extends Component {
       strokeHighlightDuration: 200,
       delayBetweenStrokes: 300,
       showHintAfterMisses: 1,
-      showCharacter: this.props.mode === 'characterPinyin',
-      showOutline: this.props.mode === 'stroke'
+      showCharacter: this.props.mode === 'static',
+      showOutline: this.props.mode === 'animation'
     });
-    if (this.props.mode === 'stroke') {
-      this.writer.animateCharacter({
-        onComplete: () => this.props.strokeAnimationFinished()
-      });
-    }
-    if (this.props.mode === 'strokeQuiz') {
-      this.writer.quiz({
-        onComplete: () => this.props.onQuizComplete()
-      });
+    switch (this.props.mode) {
+      case 'animation': return this.animateCharacter();
+      case 'quiz': return this.quiz();
+      default: return null;
     }
   }
 
   componentWillReceiveProps(nextProps) {
+    // Happens when moving through characters with ElementsNav
     if (this.props.char !== nextProps.char) {
       this.writer.setCharacter(nextProps.char);
+    }
+    // Happens when clicking watchAgain button in CharacterStrokeQuiz
+    if (this.props.watchAgain === false && nextProps.watchAgain === true) {
+      this.writer.cancelQuiz();
+      this.writer.animateCharacter({
+        onComplete: () => {
+          this.props.setWatchAgain(false);
+          this.quiz();
+        }
+      });
     }
   }
 
   // Force a single-render
   shouldComponentUpdate() {
     return false;
+  }
+
+  animateCharacter() {
+    this.writer.animateCharacter({
+      onComplete: () => this.props.strokeAnimationFinished()
+    });
+  }
+
+  quiz() {
+    this.writer.quiz({
+      onComplete: () => this.props.onQuizComplete()
+    });
   }
 
   render() {
@@ -71,11 +89,13 @@ class HanziWrapper extends Component {
   }
 }
 
-HanziWrapper.propTypes = {
+Hanzi.propTypes = {
   char: propTypes.string.isRequired,
-  mode: propTypes.string.isRequired,
+  mode: propTypes.oneOf(['static', 'animation', 'quiz']).isRequired,
   strokeAnimationFinished: propTypes.func.isRequired,
-  onQuizComplete: propTypes.func
+  onQuizComplete: propTypes.func,
+  watchAgain: propTypes.bool.isRequired,
+  setWatchAgain: propTypes.func.isRequired
 };
 
-export default HanziWrapper;
+export default Hanzi;

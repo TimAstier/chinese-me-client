@@ -7,16 +7,19 @@ import { NewWordPopup } from '../.';
 const LinkWrapper = styled.span`
   cursor: pointer;
   color: #55b6ff;
+  :hover {
+    color: #4799d7;
+  }
 `;
 
 const ListLink = styled.div`
   font-family: 'STKaitiSC';
   font-size: 18px;
-  cursor: pointer;
-  color: #454545;
   margin: 10px 0px;
+  cursor: pointer;
+  color: #55b6ff;
   :hover {
-    color: #55b6ff;
+    color: #4799d7;
   }
 `;
 

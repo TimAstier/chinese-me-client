@@ -63,8 +63,11 @@ class MapSidebar extends Component {
     const seasons = this.props.seasons.sortBy(e => e.number);
     const panels = [];
     seasons.valueSeq().forEach(season => {
+      // TODO: Add a title field in DB (in a translation table)
+      const title = season.number === 0 ? 'The Basics' : 'Season '
+        + season.number;
       return panels.push({
-        title: 'Season ' + season.number,
+        title,
         content: this.renderEpisodesList(season.id)
       });
     });

@@ -8,12 +8,24 @@ import Immutable from 'immutable';
 import { Season } from '../../models';
 
 class SelectEpisodeScreen extends Component {
-  render() {
+
+  // TODO: Add a title field in DB (in a translation table)
+  title() {
     const season = this.props.currentSeason;
+    if (!season) {
+      return null;
+    }
+    if (season.number === 0) {
+      return 'The Basics';
+    }
+    return `Season ${season.number}`;
+  }
+
+  render() {
     return (
       <SelectEpisodeComponent
         episodes={this.props.episodes}
-        title={season ? `Season ${season.number}` : null}
+        title={this.title()}
       />
     );
   }

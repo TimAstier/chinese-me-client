@@ -72,4 +72,52 @@ storiesOf('MultipleChoice', module)
         {...mockProps}
       />
     </EpisodeScreen>
+  )
+  .add('longer choiceBox', () =>
+    <EpisodeScreen exit={() => {}}>
+      <MultipleChoice
+        question="国 can be remembered as"
+        choices={[
+          'Jade in the mouth',
+          'Borders protecting riches',
+          'A stone in prison'
+        ]}
+        status="correct"
+        userAnswer={0}
+        correctAnswer={0}
+        explanation="叫 is used for full names"
+        {...mockProps}
+      />
+    </EpisodeScreen>
+  )
+  .add('maximum choiceBox width', () =>
+    <EpisodeScreen exit={() => {}}>
+      <MultipleChoice
+        question="中 used to represent"
+        choices={[
+          'A big person',
+          'A shield',
+          'A battledrum with flags around which to gather'
+        ]}
+        status="correct"
+        userAnswer={0}
+        correctAnswer={0}
+        explanation="叫 is used for full names"
+        {...mockProps}
+      />
+    </EpisodeScreen>
+  )
+  .add('long question', () =>
+    <EpisodeScreen exit={() => {}}>
+      <MultipleChoice
+        question="This is such a long question that it used to break the design
+        and move the scoreBar that was supposed to be fixed on the left."
+        choices={['叫', '会', '姓']}
+        status="correct"
+        userAnswer={0}
+        correctAnswer={0}
+        explanation="叫 is used for full names"
+        {...mockProps}
+      />
+    </EpisodeScreen>
   );

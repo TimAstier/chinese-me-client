@@ -1,4 +1,5 @@
 import { put, select, take } from 'redux-saga/effects';
+import { delay } from 'redux-saga';
 import selectors from '../../rootSelectors';
 import { actions as studyActions } from '../../redux/study';
 import { actions as multipleChoiceActions } from '../../redux/multipleChoice';
@@ -31,55 +32,42 @@ export function* initUi() {
 }
 
 export function* run(mode = 'free') {
-  let success = null;
   const multipleChoice = yield select(selectors.getCurrentMultipleChoice);
   yield take(sagaTypes.CHECK_ANSWER);
   const userAnswer = yield select(selectors.getMultipleChoiceUserAnswer);
   // Note: the correct answer is always the first one in the choices array
   // Choices are randomized in the render method of the MultipleChoice component
   const expectedAnswer = 0;
-  if ( expectedAnswer === userAnswer) {
-    // Tracking
-    yield put(sagaActions.exerciseCompleted({
-      id: multipleChoice.get('id'),
-      type: 'multipleChoice',
-      mode,
-      success: true,
-      userAnswer: multipleChoice.get('choices')[userAnswer],
-      expectedAnswer: multipleChoice.get('choices')[expectedAnswer]
-    }));
-    // End Tracking
+  const success = expectedAnswer === userAnswer;
+  // Tracking
+  yield put(sagaActions.exerciseCompleted({
+    id: multipleChoice.get('id'),
+    type: 'multipleChoice',
+    mode,
+    success,
+    userAnswer: multipleChoice.get('choices')[userAnswer],
+    expectedAnswer: multipleChoice.get('choices')[expectedAnswer]
+  }));
+  // End Tracking
+  if (success) {
     yield put(sagaActions.playSuccessSound());
     yield put(multipleChoiceActions.setStatus('correct'));
     if (mode === 'exam') {
       return true;
     }
-    success = true;
-  } else {
-    // Tracking
-    yield put(sagaActions.exerciseCompleted({
-      id: multipleChoice.get('id'),
-      type: 'multipleChoice',
-      mode,
-      success: false,
-      userAnswer: multipleChoice.get('choices')[userAnswer],
-      expectedAnswer: multipleChoice.get('choices')[expectedAnswer]
-    }));
-    // End Tracking
-    yield put(sagaActions.playWrongSound());
-    yield put(multipleChoiceActions.setStatus('wrong'));
-    if (mode === 'exam') {
-      return false;
-    }
-    success = false;
+    yield delay(1000);
+    yield put(reviewActions.setInitialized(false));
+    return yield put(reviewActions.correctAnswer());
+  }
+  yield put(sagaActions.playWrongSound());
+  yield put(multipleChoiceActions.setStatus('wrong'));
+  if (mode === 'exam') {
+    return false;
   }
   yield put(uiActions.set('nextButton', true));
-  if (mode === 'review') {
-    yield take(sagaTypes.NEXT_QUESTION);
-    yield put(reviewActions.setInitialized(false));
-    return yield put(success ? reviewActions.correctAnswer() : reviewActions.wrongAnswer());
-  }
-  return yield take(sagaTypes.NEXT);
+  yield take(sagaTypes.NEXT_QUESTION);
+  yield put(reviewActions.setInitialized(false));
+  return yield put(reviewActions.wrongAnswer());
 }
 
 // export function* clean() {}

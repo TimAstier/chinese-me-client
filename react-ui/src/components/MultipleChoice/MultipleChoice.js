@@ -114,7 +114,6 @@ class MultipleChoice extends Component {
     );
   }
 
-  // TODO: DRY (same in characterPinyin)
   renderAnswerWrapper() {
     return (
       <AnswerWrapper>
@@ -124,10 +123,12 @@ class MultipleChoice extends Component {
             alt={this.props.status === 'correct' ? 'icon-correct' : 'icon-wrong'}
           />
         </AnswerIconWrapper>
-        <CorrectAnswerWrapper>
-          <AnswerLabel>Explanation:</AnswerLabel>
-          <Explanation>{this.props.explanation}</Explanation>
-        </CorrectAnswerWrapper>
+        { this.props.status === 'wrong' &&
+          <CorrectAnswerWrapper>
+            <AnswerLabel>Explanation:</AnswerLabel>
+            <Explanation>{this.props.explanation}</Explanation>
+          </CorrectAnswerWrapper>
+        }
       </AnswerWrapper>
     );
   }

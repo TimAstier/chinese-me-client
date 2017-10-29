@@ -720,6 +720,20 @@ const getCharacterPinyinHints = createSelector(
   }
 );
 
+const getFocusedSeasonNumber = createSelector(
+  mapSelectors.getFocusedEpisodeId,
+  entitySelectors.getEpisodes,
+  entitySelectors.getSeasons,
+  (episodeId, episodes, seasons) => {
+    if (!episodeId) {
+      return null;
+    }
+    const episode = episodes.get(String(episodeId));
+    const season = seasons.get(String(episode.get('seasonId')));
+    return season.get('number');
+  }
+);
+
 const selectors = {
   ...entitySelectors,
   ...studySelectors,
@@ -780,7 +794,8 @@ const selectors = {
   getCurrentSeason,
   getExamNavParams,
   getFirstSeasonId,
-  getCharacterPinyinHints
+  getCharacterPinyinHints,
+  getFocusedSeasonNumber
 };
 
 export default selectors;

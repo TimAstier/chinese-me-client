@@ -16,6 +16,7 @@ class MapContent extends Component {
 }
 
 MapContent.propTypes = {
+  focusedSeasonNumber: propTypes.number,
   episode: propTypes.instanceOf(models.Episode),
   characters: propTypes.array.isRequired,
   grammars: propTypes.array.isRequired,
@@ -27,6 +28,7 @@ MapContent.propTypes = {
 };
 
 const mapStateToProps = state => ({
+  focusedSeasonNumber: selectors.getFocusedSeasonNumber(state),
   episode: selectors.getFocusedEpisode(state),
   characters: selectors.getMapCharacters(state).toJS(),
   grammars: selectors.getMapGrammars(state).toJS(),

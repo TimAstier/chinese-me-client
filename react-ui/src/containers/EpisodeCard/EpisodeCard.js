@@ -22,6 +22,7 @@ class EpisodeCard extends Component {
         title={this.props.episode.title}
         score={this.props.episode.score}
         imageUrl={this.props.episode.imageUrl}
+        currentSeasonNumber={this.props.currentSeasonNumber}
       />
     );
   }
@@ -29,7 +30,8 @@ class EpisodeCard extends Component {
 
 EpisodeCard.propTypes = {
   episode: propTypes.instanceOf(Episode).isRequired,
-  startEpisode: propTypes.func.isRequired
+  startEpisode: propTypes.func.isRequired,
+  currentSeasonNumber: propTypes.number
 };
 
 export default connect(

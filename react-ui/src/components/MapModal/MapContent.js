@@ -127,7 +127,9 @@ class MapContent extends Component {
       <Wrapper>
         <TitleWrapper>
           <EpisodeNumber>
-            {`Episode ${episode.number}:`}
+            {
+              (this.props.focusedSeasonNumber !== 0 ? 'Episode ' : 'Lesson ')
+            + episode.number + ':'}
           </EpisodeNumber>
           <EpisodeTitle>
             {episode.title}
@@ -192,6 +194,7 @@ MapContent.propTypes = {
   characters: propTypes.array.isRequired,
   grammars: propTypes.array.isRequired,
   dialogs: propTypes.array.isRequired,
+  focusedSeasonNumber: propTypes.number,
   episode: propTypes.instanceOf(models.Episode),
   mapLinkClick: propTypes.func.isRequired,
   mapCharactersCompletedCount: propTypes.number.isRequired,

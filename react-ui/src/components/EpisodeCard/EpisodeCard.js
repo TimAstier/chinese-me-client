@@ -126,7 +126,12 @@ class EpisodeCard extends Component {
             alt={`episode ${this.props.number}`}
           />
         </ImageWrapper>
-        <NumberWrapper>{'Episode ' + this.props.number}</NumberWrapper>
+        <NumberWrapper>
+          {
+            (this.props.currentSeasonNumber !== 0 ? 'Episode ' : 'Lesson ')
+              + this.props.number
+          }
+        </NumberWrapper>
         <TitleWrapper locked={this.props.locked}>
           {this.props.title}
         </TitleWrapper>
@@ -156,7 +161,8 @@ EpisodeCard.propTypes = {
   locked: propTypes.bool.isRequired,
   title: propTypes.string.isRequired,
   score: propTypes.number,
-  imageUrl: propTypes.string
+  imageUrl: propTypes.string,
+  currentSeasonNumber: propTypes.number
 };
 
 export default EpisodeCard;

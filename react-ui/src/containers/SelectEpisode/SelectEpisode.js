@@ -26,6 +26,11 @@ class SelectEpisodeScreen extends Component {
       <SelectEpisodeComponent
         episodes={this.props.episodes}
         title={this.title()}
+        currentSeasonNumber={
+          this.props.currentSeason ?
+          this.props.currentSeason.get('number')
+          : undefined
+        }
       />
     );
   }

@@ -1,4 +1,5 @@
 import { put, select, take } from 'redux-saga/effects';
+import { delay } from 'redux-saga';
 import selectors from '../../rootSelectors';
 import { actions as studyActions } from '../../redux/study';
 import { actions as audioToTextActions } from '../../redux/audioToText';
@@ -66,6 +67,7 @@ export function* run(mode = 'free') {
     yield put(audioToTextActions.setUserAnswer(''));
   }
   const questionSuccess = yield select(selectors.getAudioToTextSuccess);
+  yield put(uiActions.set('playAudioButton', false));
   // Tracking
   const results = yield select(selectors.getAudioToTextResults);
   yield put(sagaActions.exerciseCompleted({
@@ -81,13 +83,17 @@ export function* run(mode = 'free') {
     if (mode === 'exam') {
       return true;
     }
+    yield put(audioToTextActions.setStatus('finished'));
+    yield delay(1000);
+    yield put(reviewActions.setInitialized(false));
+    return yield put(reviewActions.correctAnswer());
   }
   yield put(audioToTextActions.setStatus('finished'));
   yield put(uiActions.set('nextButton', true));
   if (mode === 'review') {
     yield take(sagaTypes.NEXT_QUESTION);
     yield put(reviewActions.setInitialized(false));
-    return yield put(questionSuccess ? reviewActions.correctAnswer() : reviewActions.wrongAnswer());
+    return yield put(reviewActions.wrongAnswer());
   }
   return yield take(sagaTypes.NEXT);
 }

@@ -7,7 +7,6 @@ import { Word } from '../../models';
 import pinyinize from 'pinyinize';
 
 const Wrapper = styled.div`
-  width: 100px;
   margin: 0 5px;
   display: flex;
   flex-direction: column;

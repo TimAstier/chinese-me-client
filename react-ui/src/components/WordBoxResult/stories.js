@@ -10,9 +10,15 @@ import { Word } from '../../models';
 //   userAnswer: propTypes.string.isRequired
 // };
 
-const word = new Word({
+const word1 = new Word({
   id: null,
   chinese: '柴',
+  pinyin: 'chai2'
+});
+
+const word2 = new Word({
+  id: null,
+  chinese: '五百三十九',
   pinyin: 'chai2'
 });
 
@@ -21,13 +27,20 @@ storiesOf('WordBoxResult', module)
     <WordBoxResult
       success
       userAnswer={'chai2'}
-      word={word}
+      word={word1}
     />
   )
   .add('success: false', () =>
     <WordBoxResult
       success={false}
       userAnswer={'zhong1'}
-      word={word}
+      word={word1}
+    />
+  )
+  .add('long word', () =>
+    <WordBoxResult
+      success={false}
+      userAnswer={'zhong1'}
+      word={word2}
     />
   );

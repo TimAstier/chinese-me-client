@@ -508,99 +508,77 @@ const getMapGrammarsCompletedCount = createSelector(
 );
 
 // Count screenTypes individually
-const getMapCharactersCompletedDeepCount = createSelector(
-  mapSelectors.getMapCharacters,
-  characters => {
-    let count = 0;
-    characters.forEach(c => {
-      if (c.get('userCharacters').size !== 0) {
-        if (c.getIn(['userCharacters', 0, 'pinyin']) !== 0) {
-          count++;
-        }
-        if (c.getIn(['userCharacters', 0, 'etymology']) !== 0) {
-          count++;
-        }
-        if (c.getIn(['userCharacters', 0, 'writing']) !== 0) {
-          count++;
-        }
-      }
-    });
-    return count;
-  }
-);
+// const getMapCharactersCompletedDeepCount = createSelector(
+//   mapSelectors.getMapCharacters,
+//   characters => {
+//     let count = 0;
+//     characters.forEach(c => {
+//       if (c.get('userCharacters').size !== 0) {
+//         if (c.getIn(['userCharacters', 0, 'pinyin']) !== 0) {
+//           count++;
+//         }
+//         if (c.getIn(['userCharacters', 0, 'etymology']) !== 0) {
+//           count++;
+//         }
+//         if (c.getIn(['userCharacters', 0, 'writing']) !== 0) {
+//           count++;
+//         }
+//       }
+//     });
+//     return count;
+//   }
+// );
 
-const getMapDialogsCompletedDeepCount = createSelector(
-  mapSelectors.getMapDialogs,
-  dialogs => {
-    let count = 0;
-    dialogs.forEach(d => {
-      if (d.get('userDialogs').size !== 0) {
-        if (d.getIn(['userDialogs', 0, 'listen']) !== 0) {
-          count++;
-        }
-        if (d.getIn(['userDialogs', 0, 'explore']) !== 0) {
-          count++;
-        }
-        if (d.getIn(['userDialogs', 0, 'roleplay']) !== 0) {
-          count++;
-        }
-      }
-    });
-    return count;
-  }
-);
+// const getMapDialogsCompletedDeepCount = createSelector(
+//   mapSelectors.getMapDialogs,
+//   dialogs => {
+//     let count = 0;
+//     dialogs.forEach(d => {
+//       if (d.get('userDialogs').size !== 0) {
+//         if (d.getIn(['userDialogs', 0, 'listen']) !== 0) {
+//           count++;
+//         }
+//         if (d.getIn(['userDialogs', 0, 'explore']) !== 0) {
+//           count++;
+//         }
+//         if (d.getIn(['userDialogs', 0, 'roleplay']) !== 0) {
+//           count++;
+//         }
+//       }
+//     });
+//     return count;
+//   }
+// );
 
-const getCurrentCharactersCount = createSelector(
-  getCurrentEpisode,
-  episode => {
-    if (!episode) {
-      return undefined;
-    }
-    return episode.characters.length;
-  }
-);
-
-const getCurrentDialogsCount = createSelector(
-  getCurrentEpisode,
-  episode => {
-    if (!episode) {
-      return undefined;
-    }
-    return episode.dialogs.length;
-  }
-);
-
-const getCurrentGrammarsCount = createSelector(
-  getCurrentEpisode,
-  episode => {
-    if (!episode) {
-      return undefined;
-    }
-    return episode.grammars.length;
-  }
-);
-
-
-const getCompletionPercentage = createSelector(
-  getCurrentEpisode,
-  getMapCharactersCompletedDeepCount,
-  getMapDialogsCompletedDeepCount,
-  getMapGrammarsCompletedCount,
-  getCurrentCharactersCount,
-  getCurrentDialogsCount,
-  getCurrentGrammarsCount,
-  (episode, completeC, completeD, completeG, totalC, totalD, totalG) => {
-    if (!episode) {
-      return undefined;
-    }
-    const review = episode.get('review') ? 1 : 0;
-    const ratioC = totalC ? completeC / (totalC * 3) : 0;
-    const ratioG = totalG ? completeG / totalG : 0;
-    const ratioD = totalD ? completeD / (totalD * 3) : 0; // Estimate Dialogs to take more time
-    const result = Math.round((ratioC + ratioG + ratioD * 2 + review * 2) / 6 * 100);
-    return result ? result : 0;
-  }
-);
+// const getCurrentCharactersCount = createSelector(
+//   getCurrentEpisode,
+//   episode => {
+//     if (!episode) {
+//       return undefined;
+//     }
+//     return episode.characters.length;
+//   }
+// );
+//
+// const getCurrentDialogsCount = createSelector(
+//   getCurrentEpisode,
+//   episode => {
+//     if (!episode) {
+//       return undefined;
+//     }
+//     return episode.dialogs.length;
+//   }
+// );
+//
+// const getCurrentGrammarsCount = createSelector(
+//   getCurrentEpisode,
+//   episode => {
+//     if (!episode) {
+//       return undefined;
+//     }
+//     return episode.grammars.length;
+//   }
+// );
 
 const getReviewNavParams = createSelector(
   studySelectors.getCurrentEpisodeId,
@@ -734,6 +712,56 @@ const getFocusedSeasonNumber = createSelector(
   }
 );
 
+const getElementsNavParams = createSelector(
+  routingSelectors.getElementType,
+  getCharactersNavParams,
+  getGrammarsNavParams,
+  getDialogsNavParams,
+  getReviewNavParams,
+  getExamNavParams,
+  (elementType, cParams, gParams, dParams, rParams, eParams) => {
+    switch (elementType) {
+      case 'character': return cParams;
+      case 'grammar': return gParams;
+      case 'dialog': return dParams;
+      case 'review': return rParams;
+      case 'exam': return eParams;
+      default: return undefined;
+    }
+  }
+);
+
+const getCharacterCompletion = createSelector(
+  getCharactersNavParams,
+  params => params ? (params.currentElement - 1) / (params.totalElements - 1) * 100 : 0
+);
+
+const getGrammarCompletion = createSelector(
+  getGrammarsNavParams,
+  params => params ? (params.currentElement - 1) / (params.totalElements - 1) * 100 : 0
+);
+
+const getDialogCompletion = createSelector(
+  getCurrentStatementIndex,
+  getCurrentDialogStatementsCount,
+  (index, count) => index / (count - 1) * 100
+);
+
+const getProgressbarCompletion = createSelector(
+  routingSelectors.getElementType,
+  getCharacterCompletion,
+  getGrammarCompletion,
+  getDialogCompletion,
+  (elementType, cComp, gComp, dComp) => {
+    switch (elementType) {
+      case 'character': return cComp;
+      case 'grammar': return gComp;
+      case 'dialog': return dComp;
+      default: return undefined;
+    }
+  }
+);
+
 const selectors = {
   ...entitySelectors,
   ...studySelectors,
@@ -788,14 +816,18 @@ const selectors = {
   getMapDialogsCompletedCount,
   getMapGrammarsCompletedCount,
   getGrammarsNavParams,
-  getCompletionPercentage,
   getReviewNavParams,
   getCurrentSeasonEpisodes,
   getCurrentSeason,
   getExamNavParams,
   getFirstSeasonId,
   getCharacterPinyinHints,
-  getFocusedSeasonNumber
+  getFocusedSeasonNumber,
+  getElementsNavParams,
+  getCharacterCompletion,
+  getGrammarCompletion,
+  getDialogCompletion,
+  getProgressbarCompletion
 };
 
 export default selectors;

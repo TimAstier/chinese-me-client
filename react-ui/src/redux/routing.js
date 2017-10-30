@@ -36,7 +36,13 @@ const getCurrentScreenType = createSelector(
   }
 );
 
+const getElementType = createSelector(
+  getCurrentUrl,
+  url => url ? url.split('/')[3] : ''
+);
+
 export const selectors = {
   getCurrentUrl,
-  getCurrentScreenType
+  getCurrentScreenType,
+  getElementType
 };

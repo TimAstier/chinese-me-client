@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
 import { ScreenWrapper } from '../.';
-import { ElementsNav, ScreenButton, PlayAudioButton, Progressbar,
-  PauseButton, HanziAgainButton } from '../../containers';
+import TopMiddleWrapper from './TopMiddleWrapper';
+import { ScreenButton, PlayAudioButton, PauseButton, HanziAgainButton }
+  from '../../containers';
 import { Clickable } from '../Shared';
 
 // 2nd level wrappers
@@ -63,28 +64,6 @@ const TopRightWrapper = styled.div`
   align-items: center;
 `;
 
-const TopMiddleWrapper = styled.div`
-  flex: 1 0 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-
-const TopMiddleUpWrapper = styled.div`
-  height: 43px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const TopMiddleDownWrapper = styled.div`
-  height: 28px;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-`;
-
 const ExitIcon = styled.div`
   font-family: Open Sans;
   
@@ -95,45 +74,6 @@ const ExitIcon = styled.div`
 `;
 
 class EpisodeScreen extends Component {
-
-  renderTopMiddleWrapper() {
-    const { elementType } = this.props;
-    switch (elementType) {
-      case 'character':
-      case 'dialog':
-      case 'grammar':
-        return (
-          <TopMiddleWrapper>
-            <TopMiddleUpWrapper>
-              <Progressbar />
-            </TopMiddleUpWrapper>
-            <TopMiddleDownWrapper>
-              <ElementsNav />
-            </TopMiddleDownWrapper>
-          </TopMiddleWrapper>
-        );
-      case 'review':
-        return (
-          <TopMiddleWrapper>
-            <TopMiddleUpWrapper/>
-            <TopMiddleDownWrapper>
-              <ElementsNav />
-            </TopMiddleDownWrapper>
-          </TopMiddleWrapper>
-        );
-      case 'exam':
-        return (
-          <TopMiddleWrapper>
-            <TopMiddleUpWrapper>
-              <ElementsNav />
-            </TopMiddleUpWrapper>
-            <TopMiddleDownWrapper />
-          </TopMiddleWrapper>
-        );
-      default:
-        return null;
-    }
-  }
 
   renderBottomMiddleWrapper() {
     const { playAudio, pause, hanziAgain } = this.props;
@@ -161,7 +101,7 @@ class EpisodeScreen extends Component {
               </ExitIcon>
             </Clickable>
           </TopLeftWrapper>
-          {this.renderTopMiddleWrapper()}
+          <TopMiddleWrapper elementType={this.props.elementType} />
           <TopRightWrapper />
         </TopWrapper>
         <MiddleWrapper>

@@ -35,11 +35,10 @@ class EpisodeScreen extends Component {
   }
 
   render() {
-    const elementType = this.props.currentUrl.split('/')[3];
     return this.props.initialized ?
       <EpisodeScreenComponent
         { ...this.props }
-        elementType={elementType}
+        elementType={this.props.elementType}
       />
       : <EpisodeScreenComponent exit={this.props.exit} />;
   }
@@ -57,7 +56,7 @@ EpisodeScreen.propTypes = {
   unmountEpisodeScreen: propTypes.func.isRequired,
   episode: propTypes.instanceOf(Episode),
   setCurrentSeasonId: propTypes.func.isRequired,
-  currentUrl: propTypes.string.isRequired,
+  elementType: propTypes.string.isRequired,
   pause: propTypes.bool,
   hanziAgain: propTypes.bool
 };
@@ -71,7 +70,8 @@ const mapStateToProps = state => {
     hanziAgain: selectors.getHanziAgainButton(state),
     initialized: selectors.getInitialized(state),
     episode: selectors.getCurrentEpisode(state),
-    currentUrl: selectors.getCurrentUrl(state)
+    currentUrl: selectors.getCurrentUrl(state),
+    elementType: selectors.getElementType(state)
   };
 };
 

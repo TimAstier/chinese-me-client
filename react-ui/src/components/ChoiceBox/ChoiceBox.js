@@ -42,6 +42,7 @@ class ChoiceBox extends Component {
   render() {
     const Wrapper = styled.div`
       height: 58px;
+      min-width: 250px;
       max-width: 400px;
       border-radius: 48px;
       background-color: ${this.backgroundColor()};

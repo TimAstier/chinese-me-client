@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
+import { Motion, spring } from 'react-motion';
 
 const Wrapper = styled.div`
   width: 600px;
@@ -13,8 +14,10 @@ const Wrapper = styled.div`
 class Progressbar extends Component {
 
   render() {
+    const width = this.props.completionPercentage ?
+      this.props.completionPercentage * 6 : 0;
     const Progress = styled.div`
-      width: ${this.props.completionPercentage * 6 + 'px'};
+      width: ${props => props.width + 'px'};
       height: 15px;
       border-radius: 10px;
       background-image: linear-gradient(to right, #8edcff, #55b6ff);
@@ -22,14 +25,21 @@ class Progressbar extends Component {
     `;
     return (
       <Wrapper>
-        <Progress />
+        <Motion
+          defaultStyle={{ y: 0 }}
+          style={{ y: spring(width) }}
+        >
+          { ({ y }) => (
+            <Progress width={y}/>
+          )}
+        </Motion>
       </Wrapper>
     );
   }
 }
 
 Progressbar.propTypes = {
-  completionPercentage: propTypes.number.isRequired
+  completionPercentage: propTypes.number
 };
 
 export default Progressbar;

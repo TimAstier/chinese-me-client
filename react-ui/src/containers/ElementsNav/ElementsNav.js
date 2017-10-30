@@ -4,7 +4,6 @@ import propTypes from 'prop-types';
 import { ElementsNav as ElementsNavComponent } from '../../components';
 import selectors from '../../rootSelectors';
 import { actions as sagaActions } from '../../sagas/actions';
-import { elementTypesWithMenu } from '../../constants/study';
 
 class ElementsNav extends Component {
 
@@ -16,27 +15,11 @@ class ElementsNav extends Component {
     return () => this.props.elementsNavNextClick();
   }
 
-  mapOptionsToScreenType(elementType) {
-    switch (elementType) {
-      case 'character': return this.props.charactersNavParams;
-      case 'dialog': return this.props.dialogsNavParams;
-      case 'grammar': return this.props.grammarsNavParams;
-      case 'review': return this.props.reviewNavParams;
-      case 'exam': return this.props.examNavParams;
-      default: return undefined;
-    }
-  }
-
   render() {
-    const elementType = this.props.currentUrl.split('/')[3];
-    let elementsNavParams = undefined;
-    if (elementTypesWithMenu.indexOf(elementType) !== -1) {
-      elementsNavParams = this.mapOptionsToScreenType(elementType);
-    }
-    return elementsNavParams ?
+    return this.props.elementsNavParams ?
       <ElementsNavComponent
-        elementType={elementType}
-        {...elementsNavParams}
+        elementType={this.props.elementType}
+        {...this.props.elementsNavParams}
         onPreviousClick={this.onPreviousClick.bind(this)}
         onNextClick={this.onNextClick.bind(this)}
       />
@@ -45,24 +28,15 @@ class ElementsNav extends Component {
 }
 
 ElementsNav.propTypes = {
+  elementType: propTypes.string.isRequired,
   elementsNavParams: propTypes.object,
-  charactersNavParams: propTypes.object,
-  grammarsNavParams: propTypes.object,
-  dialogsNavParams: propTypes.object,
-  reviewNavParams: propTypes.object,
-  examNavParams: propTypes.object,
-  currentUrl: propTypes.string.isRequired,
   elementsNavPreviousClick: propTypes.func.isRequired,
   elementsNavNextClick: propTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
-  charactersNavParams: selectors.getCharactersNavParams(state),
-  dialogsNavParams: selectors.getDialogsNavParams(state),
-  grammarsNavParams: selectors.getGrammarsNavParams(state),
-  reviewNavParams: selectors.getReviewNavParams(state),
-  examNavParams: selectors.getExamNavParams(state),
-  currentUrl: selectors.getCurrentUrl(state)
+  elementType: selectors.getElementType(state),
+  elementsNavParams: selectors.getElementsNavParams(state)
 });
 
 export default connect(
@@ -72,5 +46,3 @@ export default connect(
     elementsNavNextClick: sagaActions.elementsNavNextClick
   }
 )(ElementsNav);
-
-// elementsNavParams: propTypes.object,

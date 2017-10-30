@@ -14,7 +14,7 @@ const Wrapper = styled.div`
 const CharacterWrapper = styled.div`
   min-height: 110px;
   padding-left: 40px;
-  font-family: 'STKaitiSC';
+  font-family: ChineseFont;
 	font-size: 70px;
 	font-weight: bold;
 	color: #454545;

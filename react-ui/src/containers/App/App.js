@@ -1,8 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { injectGlobal } from 'styled-components';
 import { actions as sagaActions } from '../../sagas/actions';
+
+// eslint-disable-next-line no-unused-expressions
+injectGlobal`
+  @font-face {
+    font-family: ChineseFont;
+    src: url('https://s3.eu-west-2.amazonaws.com/chineseme/fonts/FZKTJW.TTF') format('opentype');
+  }
+`;
 
 const Wrapper = styled.div`
   height: 100%;

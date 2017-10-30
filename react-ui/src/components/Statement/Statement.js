@@ -28,8 +28,8 @@ const ChineseWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  font-family: 'STKaitiSC';
-	font-size: 22px;
+  font-family: ChineseFont;
+	font-size: 30px;
 	font-weight: 900;
 	line-height: 1.5;
   flex-wrap: wrap;
@@ -42,7 +42,7 @@ const L1Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   font-family: 'Open Sans';
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 900;
   line-height: 1.5;
   color: #454545;

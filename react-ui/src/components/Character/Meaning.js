@@ -8,7 +8,7 @@ class Meaning extends Component {
     const Wrapper = styled.div`
       margin-top: 15px;
       font-family: 'Open Sans';
-      font-size: 26px;
+      font-size: 25px;
       font-style: italic;
       color: #454545;
     `;

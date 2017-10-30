@@ -85,8 +85,8 @@ const Input = styled.input`
   background-color: ${props => props.isFinished ? '#f2f7fa' : '#ffffff'};
   box-shadow: 0 0 8px 0 rgba(85, 182, 255, 0.6);
   border: solid 2px ${props => props.isFinsihed ? '#cdd6db' : '#55b6ff'};
-  font-family: 'Open Sans';
-  font-size: 20px;
+  font-family: 'Ubuntu';
+  font-size: 30px;
   text-align: center;
   color: #454545;
   -webkit-appearance: none;

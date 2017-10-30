@@ -10,8 +10,8 @@ class Pinyin extends Component {
       display: flex;
       justify-content: center;
       align-items: center;
-      font-family: 'Open Sans';
-      font-size: 20px;
+      font-family: 'Ubuntu';
+      font-size: 30px;
       color: #454545;
       padding-top: 20px;
     `;

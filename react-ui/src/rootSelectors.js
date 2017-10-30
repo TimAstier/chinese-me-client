@@ -116,7 +116,7 @@ const getCurrentDialog = createSelector(
 
 const getCurrentDialogStatementsCount = createSelector(
   getCurrentDialog,
-  dialog => dialog.countStatements()
+  dialog => dialog ? dialog.countStatements() : undefined
 );
 
 const getCurrentStatementIndex = createSelector(
@@ -744,7 +744,7 @@ const getGrammarCompletion = createSelector(
 const getDialogCompletion = createSelector(
   getCurrentStatementIndex,
   getCurrentDialogStatementsCount,
-  (index, count) => index / (count - 1) * 100
+  (index, count) => (index && count) ? index / (count - 1) * 100 : 0
 );
 
 const getProgressbarCompletion = createSelector(

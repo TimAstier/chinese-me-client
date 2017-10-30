@@ -26,7 +26,7 @@ export const INITIAL_STATE = fromJS({
 export default function reducer(state = INITIAL_STATE, action = {}) {
   switch (action.type) {
     case types.SET_FOCUSED_EPISODE_ID:
-      return state.set('focusedEpisodeId', String(action.payload.id));
+      return state.set('focusedEpisodeId', action.payload.id);
     case types.SET_DATA:
       return state.merge({
         loadedEpisodeId: String(action.payload.data.id),

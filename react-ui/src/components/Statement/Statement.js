@@ -21,6 +21,7 @@ const Wrapper = styled.div`
   border: solid 2px #dce6eb;
   display: flex;
   flex-direction: column;
+  cursor: default;
 `;
 
 const ChineseWrapper = styled.div`
@@ -86,9 +87,6 @@ const Sentence = styled.span`
   padding-left: ${props => props.padded ? '10px' : '0px'};
   opacity: ${props => props.active ? 1 : 0.3};
   cursor: ${props => props.active || props.dialogMode !== 'explore' ? 'normal' : 'pointer'};
-  :hover {
-    opacity: ${props => props.dialogMode === 'explore' ? 1 : 'none'};
-  }
 `;
 
 const FormatedSentences = styled.div`

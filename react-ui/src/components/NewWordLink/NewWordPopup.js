@@ -16,7 +16,7 @@ const popupStyle = {
 
 const LinkWrapper = styled.span`
   cursor: pointer;
-  color: #55b6ff;
+  color: #454545;
 `;
 
 class NewWordPopup extends Component {

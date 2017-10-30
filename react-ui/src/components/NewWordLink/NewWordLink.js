@@ -6,20 +6,20 @@ import { NewWordPopup } from '../.';
 
 const LinkWrapper = styled.span`
   cursor: pointer;
-  color: #55b6ff;
+  color: #454545;
   :hover {
-    color: #4799d7;
+    color: #55b6ff;
   }
 `;
 
 const ListLink = styled.div`
-  font-family: 'STKaitiSC';
+  font-family: ChineseFont;
   font-size: 18px;
   margin: 10px 0px;
   cursor: pointer;
-  color: #55b6ff;
+  color: #454545;
   :hover {
-    color: #4799d7;
+    color: #55b6ff;
   }
 `;
 

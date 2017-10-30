@@ -16,7 +16,9 @@ const Wrapper = styled.div`
 
 const QuestionWrapper = styled.div`
   min-height: 104px;
+  max-width: 900px;
   display: flex;
+  text-align: center;
   align-items: flex-end;
   font-family: 'STKaitiSC';
   font-size: 30px;

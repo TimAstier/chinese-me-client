@@ -41,22 +41,25 @@ class ChoiceBox extends Component {
 
   render() {
     const Wrapper = styled.div`
-      width: 250px;
       height: 58px;
+      max-width: 400px;
       border-radius: 48px;
       background-color: ${this.backgroundColor()};
       box-shadow: ${this.boxShadow()};
       border: ${this.border()};
       display: flex;
+      text-align: center;
       justify-content: center;
       align-items: center;
       font-family: 'STKaitiSC';
-    	font-size: 30px;
+    	font-size: ${this.props.label.length < 25 ? '30px' : '20px'};
     	font-weight: bold;
     	color: ${this.color()};
       cursor: pointer;
       margin-top: 5px;
       margin-bottom: 10px;
+      padding-right: 20px;
+      padding-left: 20px;
     `;
 
     return (

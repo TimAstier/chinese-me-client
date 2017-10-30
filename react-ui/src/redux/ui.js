@@ -70,7 +70,8 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
         playAudioButton: false,
         pauseButton: false,
         hanziAgainButton: false,
-        openHintModal: false
+        openHintModal: false,
+        openQuestionModal: false
       });
     default: return state;
   }

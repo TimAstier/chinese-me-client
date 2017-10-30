@@ -2,6 +2,8 @@
 // You need to use a custom reducer (https://github.com/gajus/redux-immutable)
 import Immutable from 'immutable';
 import { LOCATION_CHANGE } from 'react-router-redux';
+import { createSelector } from 'reselect';
+import getParamsFromUrl from '../utils/getParamsFromUrl';
 
 // Reducer
 
@@ -25,6 +27,16 @@ const getCurrentUrl = state => {
   return '';
 };
 
+const getCurrentScreenType = createSelector(
+  getCurrentUrl,
+  url => {
+    const params = getParamsFromUrl(url); // Get params from url
+    const screenType = params.elementType + '/' + params.mode; // Define screenType
+    return screenType;
+  }
+);
+
 export const selectors = {
-  getCurrentUrl
+  getCurrentUrl,
+  getCurrentScreenType
 };

@@ -74,7 +74,7 @@ class Navbar extends Component {
           <LeftMenuItem>
             <Clickable>
               <div onClick={this.props.openMapModal}>
-                Table of contents
+                Table of Contents
               </div>
             </Clickable>
           </LeftMenuItem>

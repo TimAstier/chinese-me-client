@@ -24,7 +24,7 @@ VideoPlayer.propTypes = {
   width: propTypes.number.isRequired,
   height: propTypes.number.isRequired,
   autoPlay: propTypes.bool,
-  src: propTypes.string.isRequired,
+  src: propTypes.string,
   videoEnded: propTypes.func.isRequired
 };
 

@@ -7,7 +7,7 @@ import screenTypeToUserSettings from '../utils/screenTypeToUserSettings';
 import selectors from '../rootSelectors';
 
 // Returns setting or false;
-function* shouldAskQuestion(screenType) {
+export function* shouldAskQuestion(screenType) {
   const setting = screenTypeToUserSettings(screenType);
   // Check if this screenType has a related setting
   if (setting !== null) {
@@ -24,13 +24,10 @@ function* shouldAskQuestion(screenType) {
 }
 
 // Called in study sagas, runEpisodeScreen
-export function* askQuestion(screenType) {
-  const setting = yield call(shouldAskQuestion, screenType);
-  if (setting) {
-    yield put(uiActions.openQuestionModal());
-    const action = yield take(sagaTypes.CLOSED_QUESTION_ANSWERED);
-    yield call(sendClosedQuestionAnswer, [setting, action.payload.answer]);
-  }
+export function* askQuestion(setting) {
+  yield put(uiActions.openQuestionModal());
+  const action = yield take(sagaTypes.CLOSED_QUESTION_ANSWERED);
+  yield call(sendClosedQuestionAnswer, [setting, action.payload.answer]);
 }
 
 function* sendClosedQuestionAnswer(params) {

@@ -23,11 +23,13 @@ class QuestionModal extends Component {
 
 QuestionModal.propTypes = {
   open: propTypes.bool.isRequired,
-  closedQuestionAnswered: propTypes.func.isRequired
+  closedQuestionAnswered: propTypes.func.isRequired,
+  screenType: propTypes.string.isRequired
 };
 
 const mapStateToProps = state => ({
-  open: selectors.getOpenQuestionModal(state)
+  open: selectors.getOpenQuestionModal(state),
+  screenType: selectors.getCurrentScreenType(state)
 });
 
 export default connect(

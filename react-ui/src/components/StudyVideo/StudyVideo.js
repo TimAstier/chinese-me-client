@@ -27,7 +27,7 @@ class StudyVideo extends Component {
 }
 
 StudyVideo.propTypes = {
-  videoUrl: propTypes.string.isRequired
+  videoUrl: propTypes.string
 };
 
 export default StudyVideo;

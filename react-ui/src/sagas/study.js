@@ -8,7 +8,6 @@ import { actions as sagaActions, types as sagaTypes } from './actions';
 import getStudyFunctions from '../helpers/getStudyFunctions';
 import getParamsFromUrl from '../utils/getParamsFromUrl';
 import Api from '../utils/api';
-import { askQuestion } from './questionModal';
 import screenTypeToUserSettings from '../utils/screenTypeToUserSettings';
 import selectors from '../rootSelectors';
 import { actions as settingsActions } from '../redux/settings';
@@ -83,11 +82,6 @@ function* runEpisodeScreen(action) {
         const completedCode = result.skip ? 1 : 2;
         yield call(Api.post, `/${elementType}/${elementId}/completed`, { completedCode, mode });
       }
-    }
-    // If the screenType depends on a setting which if not already defined,
-    // ask user's preference. We don't ask in case of a Skip from the user.
-    if (!result.skip) {
-      yield call(askQuestion, screenType);
     }
   } else {
     shouldUrlBeSkipped = true;

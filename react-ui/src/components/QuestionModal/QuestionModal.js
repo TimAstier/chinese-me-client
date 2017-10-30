@@ -2,17 +2,21 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import { Modal } from '../.';
 import ClosedQuestion from './ClosedQuestion';
+import constants from '../../constants/closedQuestion';
 
 class QuestionModal extends Component {
   renderContent() {
     switch (this.props.type) {
       case 'closedQuestion':
+        if (!constants.hasOwnProperty(this.props.screenType)) {
+          return null;
+        }
         return (
           <ClosedQuestion
             onClick={this.props.onClick}
-            label="Did you find this useful?"
-            choiceA="Yes, I want to see more."
-            choiceB="No, please skip this next time."
+            label={constants[this.props.screenType].label}
+            choiceA={constants[this.props.screenType].choiceA}
+            choiceB={constants[this.props.screenType].choiceB}
           />
         );
       default:
@@ -37,7 +41,8 @@ class QuestionModal extends Component {
 QuestionModal.propTypes = {
   open: propTypes.bool.isRequired,
   type: propTypes.string.isRequired,
-  onClick: propTypes.func.isRequired
+  onClick: propTypes.func.isRequired,
+  screenType: propTypes.string.isRequired
 };
 
 export default QuestionModal;

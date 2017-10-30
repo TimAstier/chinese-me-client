@@ -1,8 +1,11 @@
-import { put, select, call } from 'redux-saga/effects';
+import { put, select, call, take } from 'redux-saga/effects';
 import selectors from '../../rootSelectors';
 import { actions as studyActions } from '../../redux/study';
 import { actions as videoActions } from '../../redux/video';
+import { actions as uiActions } from '../../redux/ui';
 import { fetchEntities } from '../entities';
+import { shouldAskQuestion, askQuestion } from '../questionModal';
+import { types as sagaTypes } from '../actions';
 
 export function* isDataLoaded(id) {
   yield put(studyActions.setCurrentCharacterId(id));
@@ -20,12 +23,21 @@ export function* checkData() {
   return currentElement.etymologyUrl ? true : false;
 }
 
-export function* initStudyData() {
-  yield put(videoActions.autoPlayOn());
-}
+export function* initStudyData() {}
 
 export function* initUi() {}
 
-// export function* run() {}
+export function* run() {
+  yield put(videoActions.autoPlayOn());
+  yield take(sagaTypes.VIDEO_ENDED);
+  // If the screenType depends on a setting which if not already defined,
+  // ask user's preference. We don't ask in case of a Skip from the user.
+  const setting = yield call(shouldAskQuestion, 'character/etymology');
+  if (setting) {
+    return yield call(askQuestion, setting);
+  }
+  yield put(uiActions.set('nextButton', true));
+  return yield take(sagaTypes.NEXT);
+}
 
 // export function* clean() {}

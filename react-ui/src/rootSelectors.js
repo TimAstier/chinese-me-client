@@ -4,6 +4,9 @@
 
 import { createSelector } from 'reselect';
 import bindSelectors from './utils/bindSelectors';
+import insertVariables from './utils/insertVariables';
+import { Map } from 'immutable';
+import countries from 'i18n-iso-countries';
 import * as fromEntities from './redux/entities';
 import * as fromStudy from './redux/study';
 import * as fromUi from './redux/ui';
@@ -21,7 +24,13 @@ import * as fromVideo from './redux/video';
 import * as fromTimer from './redux/timer';
 import * as fromSettings from './redux/settings';
 
+
+// Install i18n-iso-countries locals
+countries.registerLocale(require('i18n-iso-countries/langs/en.json'));
+countries.registerLocale(require('i18n-iso-countries/langs/zh.json'));
+
 // TODO: DRY selectors (like getNext/Previous ids)
+// TODO: split in separate files
 
 const entitySelectors = bindSelectors(
   state => state.get('entities'),
@@ -208,6 +217,34 @@ const getCurrentSentences = createSelector(
       });
     }
     return arrayOfSentences;
+  }
+);
+
+// Add dynamically generated translations to the settings map.
+const getAugmentedSettings = createSelector(
+  settingsSelectors.getSettings,
+  settings => {
+    const getCountryName = (alpha3, language) => {
+      return alpha3 ? countries.getName(alpha3, language) : undefined;
+    };
+    const augmentedSettings = settings.merge(Map({
+      nationalityZh: getCountryName(settings.get('nationality'), 'zh'),
+      nationalityEn: getCountryName(settings.get('nationality'), 'en')
+    }));
+    return augmentedSettings.toJS();
+  }
+);
+
+const getSentencesWithValues = createSelector(
+  getCurrentSentences,
+  getAugmentedSettings,
+  (sentences, settings) => {
+    return sentences.map(s => {
+      return s.merge(Map({
+        chinese: insertVariables(s.get('chinese'), settings),
+        translation: insertVariables(s.get('translation'), settings)
+      }));
+    });
   }
 );
 
@@ -798,6 +835,7 @@ const selectors = {
   getCurrentSentence,
   getCurrentSentenceIndex,
   getCurrentSentences,
+  getSentencesWithValues,
   getCurrentStatementLength,
   getCurrentMultipleChoice,
   getCurrentAudioToText,

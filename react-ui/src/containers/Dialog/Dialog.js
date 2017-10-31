@@ -33,7 +33,7 @@ Dialog.propTypes = {
 const mapStateToProps = state => {
   return {
     avatars: selectors.getCurrentAvatars(state),
-    sentences: selectors.getCurrentSentences(state),
+    sentences: selectors.getSentencesWithValues(state),
     currentSentenceIndex: selectors.getCurrentSentenceIndex(state),
     chosenAvatarId: selectors.getChosenAvatarId(state) || 0,
     dialogMode: selectors.getDialogMode(state),

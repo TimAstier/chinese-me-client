@@ -6,6 +6,7 @@ import iconCheck from '../../images/iconCheck.svg';
 const Wrapper = styled.div`
   width: 40px;
 	height: 40px;
+  position: relative;
 	border-radius: 10px;
 	background-color: #edf6fc;
   display: flex;

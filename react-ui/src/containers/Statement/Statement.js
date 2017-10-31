@@ -10,7 +10,7 @@ class Statement extends Component {
 
   render() {
     return (
-      <StatementComponent {...this.props} />
+      <StatementComponent { ...this.props } />
     );
   }
 }
@@ -25,17 +25,17 @@ Statement.propTypes = {
   read: propTypes.bool.isRequired,
   switchSentence: propTypes.func.isRequired,
   dialogMode: propTypes.string.isRequired,
-  words: propTypes.arrayOf(propTypes.instanceOf(models.Word)).isRequired
+  words: propTypes.arrayOf(propTypes.instanceOf(models.Word)).isRequired,
+  currentStatementLength: propTypes.number.isRequired
 };
 
-const mapStateToProps = state => {
-  return {
-    isAudioPlaying: selectors.getIsPlaying(state),
-    displayControls: selectors.getDialogMode(state) === 'explore',
-    read: selectors.getIsChosenAvatarTalking(state),
-    words: selectors.getCurrentWords(state)
-  };
-};
+const mapStateToProps = state => ({
+  isAudioPlaying: selectors.getIsPlaying(state),
+  displayControls: selectors.getDialogMode(state) === 'explore',
+  read: selectors.getIsChosenAvatarTalking(state),
+  words: selectors.getCurrentWords(state),
+  currentStatementLength: selectors.getCurrentStatementLength(state)
+});
 
 export default connect(
   mapStateToProps,

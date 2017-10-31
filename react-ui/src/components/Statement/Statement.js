@@ -30,7 +30,7 @@ const ChineseWrapper = styled.div`
   justify-content: center;
   align-items: flex-end;
   font-family: ChineseFont;
-	font-size: 30px;
+	font-size: ${props => props.length > 29 ? '22px' : '30px'};
 	font-weight: 900;
 	line-height: 1.5;
   flex-wrap: wrap;
@@ -92,6 +92,7 @@ const Sentence = styled.span`
 const FormatedSentences = styled.div`
   padding-left: 30px;
   padding-right: 30px;
+  max-width: 500px;
   line-height: 1.2;
   text-align: center;
 `;
@@ -190,7 +191,7 @@ class Statement extends Component {
     return (
       <Wrapper>
         <WordModal />
-        <ChineseWrapper>
+        <ChineseWrapper length={this.props.currentStatementLength}>
           {this.renderStatement('chinese')}
         </ChineseWrapper>
         <L1Wrapper>
@@ -212,7 +213,8 @@ Statement.propTypes = {
   displayControls: propTypes.bool.isRequired,
   read: propTypes.bool.isRequired,
   switchSentence: propTypes.func.isRequired,
-  dialogMode: propTypes.string.isRequired
+  dialogMode: propTypes.string.isRequired,
+  currentStatementLength: propTypes.number.isRequired
 };
 
 export default Statement;

@@ -12,8 +12,8 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'STKaitiSC';
-	font-size: 18px;
+  font-family: ChineseFont;
+	font-size: 20px;
 	font-weight: 900;
 	color: #454545;
   margin: 7px;

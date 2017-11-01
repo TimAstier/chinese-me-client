@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 import { MapContent as MapContentComponent } from '../../components';
 import * as models from '../../models';
-import selectors from '../../rootSelectors';
+import s from '../../rootSelectors';
 import { actions as sagaActions } from '../../sagas/actions';
 
 class MapContent extends Component {
@@ -28,14 +28,14 @@ MapContent.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  focusedSeasonNumber: selectors.getFocusedSeasonNumber(state),
-  episode: selectors.getFocusedEpisode(state),
-  characters: selectors.getMapCharacters(state).toJS(),
-  grammars: selectors.getMapGrammars(state).toJS(),
-  dialogs: selectors.getMapDialogs(state).toJS(),
-  mapCharactersCompletedCount: selectors.getMapCharactersCompletedCount(state),
-  mapDialogsCompletedCount: selectors.getMapDialogsCompletedCount(state),
-  mapGrammarsCompletedCount: selectors.getMapGrammarsCompletedCount(state)
+  focusedSeasonNumber: s.getFocusedSeasonNumber(state),
+  episode: s.getFocusedEpisode(state),
+  characters: s.map.getCharacters(state).toJS(),
+  grammars: s.map.getGrammars(state).toJS(),
+  dialogs: s.map.getDialogs(state).toJS(),
+  mapCharactersCompletedCount: s.getMapCharactersCompletedCount(state),
+  mapDialogsCompletedCount: s.getMapDialogsCompletedCount(state),
+  mapGrammarsCompletedCount: s.getMapGrammarsCompletedCount(state)
 });
 
 export default connect(

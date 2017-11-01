@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 import { QuestionModal as QuestionModalComponent } from '../../components';
-import selectors from '../../rootSelectors';
+import s from '../../rootSelectors';
 import { actions as sagaActions } from '../../sagas/actions';
 
 class QuestionModal extends Component {
@@ -28,8 +28,8 @@ QuestionModal.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  open: selectors.getOpenQuestionModal(state),
-  screenType: selectors.getCurrentScreenType(state)
+  open: s.ui.getOpenQuestionModal(state),
+  screenType: s.routing.getCurrentScreenType(state)
 });
 
 export default connect(

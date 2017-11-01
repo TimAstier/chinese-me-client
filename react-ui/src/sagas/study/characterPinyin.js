@@ -40,11 +40,11 @@ export function* run(mode = 'free') {
   const audioUrl = pinyinNumberToAudioUrl(currentChar.pinyinNumber);
   yield put(audioActions.set('audioUrl', audioUrl));
   while (true) { // eslint-disable-line no-constant-condition
-    let attemptsLeft = yield select(selectors.getCharacterPinyinAttemptsLeft);
+    let attemptsLeft = yield select(selectors.characterPinyin.getAttemptsLeft);
     while (attemptsLeft >= 0) {
       yield put(sagaActions.playAudio());
       yield take(sagaTypes.CHECK_ANSWER);
-      const userAnswer = yield select(selectors.getCharacterPinyinUserAnswer);
+      const userAnswer = yield select(selectors.characterPinyin.getUserAnswer);
       const expectedAnswer = currentChar.pinyinNumber;
       // Compare userAnswer without spaces with the expected answer
       if (userAnswer.replace(/\s+/g, '') === expectedAnswer) {

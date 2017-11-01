@@ -72,12 +72,12 @@ export const actions = {
 
 // Selectors
 
-const getAudioToTextUserAnswer = state => state.get('userAnswer');
+const getUserAnswer = state => state.get('userAnswer');
 const getCurrentBoxIndex = state => state.get('currentBoxIndex');
-const getAudioToTextResults = state => state.get('results');
-const getAudioToTextStatus = state => state.get('status');
-const getAudioToTextSuccess = createSelector(
-  getAudioToTextResults,
+const getResults = state => state.get('results');
+const getStatus = state => state.get('status');
+const getSuccess = createSelector(
+  getResults,
   results => {
     const wrongAnswersCount = results.filter(result => {
       return result.get('success') === false;
@@ -87,9 +87,9 @@ const getAudioToTextSuccess = createSelector(
 );
 
 export const selectors = {
-  getAudioToTextUserAnswer,
+  getUserAnswer,
   getCurrentBoxIndex,
-  getAudioToTextResults,
-  getAudioToTextStatus,
-  getAudioToTextSuccess
+  getResults,
+  getStatus,
+  getSuccess
 };

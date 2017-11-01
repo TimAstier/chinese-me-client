@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { WordBox as WordBoxComponent } from '../../components';
-import selectors from '../../rootSelectors';
+import s from '../../rootSelectors';
 import { actions as audioToTextActions } from '../../redux/audioToText';
 import { Word } from '../../models';
 
@@ -32,7 +32,7 @@ WordBox.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  openFeedbackModal: selectors.getOpenFeedbackModal(state)
+  openFeedbackModal: s.ui.getOpenFeedbackModal(state)
 });
 
 export default connect(

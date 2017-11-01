@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 import { Exam as ExamComponent } from '../../components';
-import selectors from '../../rootSelectors';
+import s from '../../rootSelectors';
 
 class Exam extends Component {
 
@@ -29,10 +29,10 @@ Exam.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  score: selectors.getExamScore(state),
-  scoreMax: selectors.getExamScoreMax(state),
-  currentExercise: selectors.getExamCurrentExercise(state),
-  initialized: selectors.getExamInitialized(state)
+  score: s.exam.getScore(state),
+  scoreMax: s.exam.getScoreMax(state),
+  currentExercise: s.exam.getCurrentExercise(state),
+  initialized: s.exam.getInitialized(state)
 });
 
 export default connect(

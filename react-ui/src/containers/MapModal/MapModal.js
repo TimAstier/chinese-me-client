@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 import { MapModal as MapModalComponent } from '../../components';
-import selectors from '../../rootSelectors';
+import s from '../../rootSelectors';
 import { actions as uiActions } from '../../redux/ui';
 
 class MapModal extends Component {
@@ -18,7 +18,7 @@ MapModal.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  open: selectors.getOpenMapModal(state)
+  open: s.ui.getOpenMapModal(state)
 });
 
 export default connect(

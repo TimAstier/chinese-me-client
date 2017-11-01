@@ -4,7 +4,7 @@ import propTypes from 'prop-types';
 import { Navbar as NavbarComponent } from '../../components';
 import { actions as sagaActions } from '../../sagas/actions';
 import { actions as uiActions } from '../../redux/ui';
-import selectors from '../../rootSelectors';
+import s from '../../rootSelectors';
 
 class Navbar extends Component {
   render() {
@@ -19,7 +19,7 @@ Navbar.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  isAuthenticated: selectors.getIsAuthenticated(state)
+  isAuthenticated: s.auth.getIsAuthenticated(state)
 });
 
 export default connect(

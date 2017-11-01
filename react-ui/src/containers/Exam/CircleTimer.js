@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 import { CircleTimer as CircleTimerComponent } from '../../components';
-import selectors from '../../rootSelectors';
+import s from '../../rootSelectors';
 
 class CircleTimer extends Component {
 
@@ -22,8 +22,8 @@ CircleTimer.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  timeLeft: selectors.getTimerTimeLeft(state),
-  timeLabel: selectors.getTimerTimeLabel(state)
+  timeLeft: s.timer.getTimeLeft(state),
+  timeLabel: s.timer.getTimeLabel(state)
 });
 
 export default connect(

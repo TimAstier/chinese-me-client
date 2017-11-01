@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 import { FeedbackModal as FeedbackModalComponent } from '../../components';
-import selectors from '../../rootSelectors';
+import s from '../../rootSelectors';
 import { actions as uiActions } from '../../redux/ui';
 import { actions as sagaActions } from '../../sagas/actions';
 
@@ -31,8 +31,8 @@ FeedbackModal.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  open: selectors.getOpenFeedbackModal(state),
-  status: selectors.getFeedbackStatus(state)
+  open: s.ui.getOpenFeedbackModal(state),
+  status: s.ui.getFeedbackStatus(state)
 });
 
 export default connect(

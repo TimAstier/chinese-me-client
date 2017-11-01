@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 import { Statement as StatementComponent } from '../../components';
-import selectors from '../../rootSelectors';
+import s from '../../rootSelectors';
 import { actions as sagaActions } from '../../sagas/actions';
 import * as models from '../../models';
 
@@ -30,11 +30,11 @@ Statement.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  isAudioPlaying: selectors.getIsPlaying(state),
-  displayControls: selectors.getDialogMode(state) === 'explore',
-  read: selectors.getIsChosenAvatarTalking(state),
-  words: selectors.getCurrentWords(state),
-  currentStatementLength: selectors.getCurrentStatementLength(state)
+  isAudioPlaying: s.audio.getIsPlaying(state),
+  displayControls: s.study.getDialogMode(state) === 'explore',
+  read: s.getIsChosenAvatarTalking(state),
+  words: s.getCurrentWords(state),
+  currentStatementLength: s.getCurrentStatementLength(state)
 });
 
 export default connect(

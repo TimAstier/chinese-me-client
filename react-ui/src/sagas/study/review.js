@@ -10,7 +10,7 @@ import mapExerciseTypeToSetCurrentAction
 
 export function* isDataLoaded() {
   // id is not defined since there is no elementId
-  const currentExercise = yield select(selectors.getReviewCurrentExercise);
+  const currentExercise = yield select(selectors.review.getCurrentExercise);
   return currentExercise ? true : false;
 }
 
@@ -50,7 +50,7 @@ function* defaultExamUi() {
 export function* run() {
   let completed = false;
   while (completed === false) {
-    const exercise = yield select(selectors.getReviewCurrentExercise);
+    const exercise = yield select(selectors.review.getCurrentExercise);
     const type = exercise.get('type');
     const funcs = getStudyFunctions(type + '/');
     const setCurrent = mapExerciseTypeToSetCurrentAction(type);
@@ -63,7 +63,7 @@ export function* run() {
       run: call(funcs.run, 'review'),
       exit: take(sagaTypes.EXIT)
     });
-    const nextExercise = yield select(selectors.getReviewCurrentExercise);
+    const nextExercise = yield select(selectors.review.getCurrentExercise);
     if (!nextExercise) {
       completed = true;
     }

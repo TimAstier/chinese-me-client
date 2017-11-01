@@ -6,7 +6,7 @@ import { actions as reviewActions } from '../../redux/review';
 import { fetchEntities } from '../entities';
 
 export function* isDataLoaded() {
-  const currentUrl = yield select(selectors.getCurrentUrl);
+  const currentUrl = yield select(selectors.routing.getCurrentUrl);
   const partNumber = currentUrl.split('/')[4];
   if (partNumber === '4') { // Review
     return false;
@@ -19,7 +19,7 @@ export function* isDataLoaded() {
 }
 
 export function* fetchData(episodeId) {
-  const currentUrl = yield select(selectors.getCurrentUrl);
+  const currentUrl = yield select(selectors.routing.getCurrentUrl);
   const partNumber = currentUrl.split('/')[4];
   if (partNumber === '4') { // Review
     // Fetch exercise entities, then store exercises array in Review state slice

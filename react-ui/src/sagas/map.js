@@ -10,11 +10,11 @@ import selectors from '../rootSelectors';
 function* fetchMapData(action) {
   const episodeId = action.payload.id;
   if ( episodeId !== null ) {
-    const loadedEpisodeId = yield select(selectors.getMapLoadedEpisodeId);
+    const loadedEpisodeId = yield select(selectors.map.getLoadedEpisodeId);
     if (String(episodeId) !== loadedEpisodeId) {
       yield put(mapActions.setIsDataLoaded(false));
     }
-    const isDataLoaded = yield select(selectors.getIsMapDataLoaded);
+    const isDataLoaded = yield select(selectors.map.getIsDataLoaded);
     if (!isDataLoaded) {
       try {
         yield put(mapActions.setIsLoading(true));
@@ -37,8 +37,8 @@ function* navigateToStudyScreen(action) {
 // This ensures that mapData is always sync with the currentEpisode
 // (mapData is used to calculate completionPercentage in Progressbar)
 function* syncWithCurrentEpisode() {
-  const currentEpisodeId = yield select(selectors.getCurrentEpisodeId);
-  const focusedEpisodeId = yield select(selectors.getFocusedEpisodeId);
+  const currentEpisodeId = yield select(selectors.study.getCurrentEpisodeId);
+  const focusedEpisodeId = yield select(selectors.map.getFocusedEpisodeId);
   if (currentEpisodeId) {
     if (currentEpisodeId !== focusedEpisodeId) { // no need to sync if already synced
       yield put(mapActions.setFocusedEpisodeId(currentEpisodeId));

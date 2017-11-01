@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { EpisodeScreen as EpisodeScreenComponent } from '../../components';
 import { actions as sagaActions } from '../../sagas/actions';
 import { actions as studyActions } from '../../redux/study';
-import selectors from '../../rootSelectors';
+import s from '../../rootSelectors';
 import { Episode } from '../../models';
 
 class EpisodeScreen extends Component {
@@ -63,15 +63,15 @@ EpisodeScreen.propTypes = {
 
 const mapStateToProps = state => {
   return {
-    next: selectors.getNextButton(state),
-    skip: selectors.getSkipButton(state),
-    playAudio: selectors.getPlayAudioButton(state),
-    pause: selectors.getPauseButton(state),
-    hanziAgain: selectors.getHanziAgainButton(state),
-    initialized: selectors.getInitialized(state),
-    episode: selectors.getCurrentEpisode(state),
-    currentUrl: selectors.getCurrentUrl(state),
-    elementType: selectors.getElementType(state)
+    next: s.ui.getNextButton(state),
+    skip: s.ui.getSkipButton(state),
+    playAudio: s.ui.getPlayAudioButton(state),
+    pause: s.ui.getPauseButton(state),
+    hanziAgain: s.ui.getHanziAgainButton(state),
+    initialized: s.study.getInitialized(state),
+    episode: s.getCurrentEpisode(state),
+    currentUrl: s.routing.getCurrentUrl(state),
+    elementType: s.routing.getElementType(state)
   };
 };
 

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Title as TitleComponent } from '../../components';
-import selectors from '../../rootSelectors';
+import s from '../../rootSelectors';
 
 class Title extends Component {
 
@@ -21,7 +21,7 @@ Title.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  currentUrl: selectors.getCurrentUrl(state)
+  currentUrl: s.routing.getCurrentUrl(state)
 });
 
 export default connect(

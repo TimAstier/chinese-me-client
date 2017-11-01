@@ -4,7 +4,7 @@ import { ScreenButton as ScreenButtonComponent } from '../../components';
 import { connect } from 'react-redux';
 import { actions as sagaActions } from '../../sagas/actions';
 import { actions as uiActions } from '../../redux/ui';
-import selectors from '../../rootSelectors';
+import s from '../../rootSelectors';
 
 // Note:
 // ScreenButtons with the primary prop are mounted with an eventListener
@@ -82,7 +82,7 @@ ScreenButton.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  isReviewInitialized: selectors.getReviewInitialized(state)
+  isReviewInitialized: s.review.getInitialized(state)
 });
 
 export default connect(

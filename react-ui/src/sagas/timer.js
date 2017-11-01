@@ -19,7 +19,7 @@ function* runTimer() {
 
   while (yield take(channel)) {
     while (true) { // eslint-disable-line 
-      const time = yield select(selectors.getTimerTime);
+      const time = yield select(selectors.timer.getTime);
       if (!time) {
         yield put(timerActions.outOfTime());
         break;

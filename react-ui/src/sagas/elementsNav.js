@@ -5,7 +5,7 @@ import getParamsFromUrl from '../utils/getParamsFromUrl';
 import selectors from '../rootSelectors';
 
 function* previous() {
-  const urlParams = getParamsFromUrl(yield select(selectors.getCurrentUrl));
+  const urlParams = getParamsFromUrl(yield select(selectors.routing.getCurrentUrl));
   const { episodeId, elementType } = urlParams;
   let previousElementId = undefined;
   switch (elementType) {
@@ -23,7 +23,7 @@ function* previous() {
 }
 
 function* next() {
-  const urlParams = getParamsFromUrl(yield select(selectors.getCurrentUrl));
+  const urlParams = getParamsFromUrl(yield select(selectors.routing.getCurrentUrl));
   const { episodeId, elementType } = urlParams;
   let nextElementId = undefined;
   switch (elementType) {

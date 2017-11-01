@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 import { actions as sagaActions } from '../../sagas/actions';
 import { PauseButton as PauseButtonComponent } from '../../components';
-import selectors from '../../rootSelectors';
+import s from '../../rootSelectors';
 
 class PauseButton extends Component {
   constructor() {
@@ -42,7 +42,7 @@ PauseButton.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  paused: selectors.getStudyPaused(state)
+  paused: s.study.getPaused(state)
 });
 
 export default connect(

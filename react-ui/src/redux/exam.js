@@ -69,37 +69,37 @@ export const actions = {
 
 // Selectors
 
-const getExamInitialized = state => state.get('initialized');
-const getExamCompleted = state => state.get('completed');
-const getExamExercises = state => state.get('exercises');
-const getExamResults = state => state.get('results');
-const getExamScore = createSelector(
-  getExamResults,
+const getInitialized = state => state.get('initialized');
+const getCompleted = state => state.get('completed');
+const getExercises = state => state.get('exercises');
+const getResults = state => state.get('results');
+const getScore = createSelector(
+  getResults,
   results => results.filter(e => e === 1).size
 );
-const getExamScoreMax = createSelector(
-  getExamExercises,
+const getScoreMax = createSelector(
+  getExercises,
   exercises => exercises.size
 );
-const getExamCurrentExerciseIndex = createSelector(
-  getExamResults,
+const getCurrentExerciseIndex = createSelector(
+  getResults,
   results => results.size
 );
-const getExamCurrentExercise = createSelector(
-  getExamExercises,
-  getExamCurrentExerciseIndex,
+const getCurrentExercise = createSelector(
+  getExercises,
+  getCurrentExerciseIndex,
   (exercises, index) => {
     return exercises.get(index);
   }
 );
 
 export const selectors = {
-  getExamInitialized,
-  getExamCompleted,
-  getExamExercises,
-  getExamResults,
-  getExamScore,
-  getExamScoreMax,
-  getExamCurrentExerciseIndex,
-  getExamCurrentExercise
+  getInitialized,
+  getCompleted,
+  getExercises,
+  getResults,
+  getScore,
+  getScoreMax,
+  getCurrentExerciseIndex,
+  getCurrentExercise
 };

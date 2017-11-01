@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 import { CharacterStroke as CharacterStrokeComponent } from '../../components';
 import { Character } from '../../models';
-import selectors from '../../rootSelectors';
+import s from '../../rootSelectors';
 import { actions as sagaActions } from '../../sagas/actions';
 
 class CharacterStroke extends Component {
@@ -24,7 +24,7 @@ CharacterStroke.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  character: selectors.getCurrentCharacter(state)
+  character: s.getCurrentCharacter(state)
 });
 
 export default connect(

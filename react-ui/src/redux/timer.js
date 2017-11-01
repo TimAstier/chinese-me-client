@@ -51,14 +51,14 @@ export const actions = {
 
 // Selectors
 
-const getTimerStatus = state => state.get('status');
-const getTimerTime = state => state.get('time');
-const getTimerTimeLeft = createSelector(
-  getTimerTime,
+const getStatus = state => state.get('status');
+const getTime = state => state.get('time');
+const getTimeLeft = createSelector(
+  getTime,
   time => time / INITIAL_STATE.get('time')
 );
-const getTimerTimeLabel = createSelector(
-  getTimerTime,
+const getTimeLabel = createSelector(
+  getTime,
   time => {
     const min = Math.floor(time / 60);
     const sec = time % 60;
@@ -67,8 +67,8 @@ const getTimerTimeLabel = createSelector(
 );
 
 export const selectors = {
-  getTimerStatus,
-  getTimerTime,
-  getTimerTimeLeft,
-  getTimerTimeLabel
+  getStatus,
+  getTime,
+  getTimeLeft,
+  getTimeLabel
 };

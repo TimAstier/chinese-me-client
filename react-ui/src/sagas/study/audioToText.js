@@ -11,7 +11,7 @@ import { actions as reviewActions } from '../../redux/review';
 
 export function* isDataLoaded(id) {
   yield put(studyActions.setCurrentAudioToTextId(id));
-  const initialized = yield select(selectors.getReviewInitialized);
+  const initialized = yield select(selectors.review.getInitialized);
   if (!initialized) {
     return false;
   }
@@ -39,18 +39,18 @@ export function* run(mode = 'free') {
   yield put(audioActions.set('audioUrl', currentAudioToText.audioUrl));
   yield put(sagaActions.playAudio());
   const wordIds = currentAudioToText.words;
-  const words = yield select(selectors.getWords);
+  const words = yield select(selectors.entities.getWords);
   for (let i = 0; i < wordIds.length; i++) {
     const word = words.get(String(wordIds[i]));
     yield put(audioToTextActions.setCurrentBoxIndex(i));
     yield take(sagaTypes.CHECK_ANSWER);
-    const userAnswer = yield select(selectors.getAudioToTextUserAnswer);
+    const userAnswer = yield select(selectors.audioToText.getUserAnswer);
     const success = word.get('pinyin') === userAnswer.replace(/\s+/g, '');
     if (!success) {
       yield put(sagaActions.playWrongSound());
       // In exam, skip the end if the user makes one mistake
       // Tracking
-      const prematureResults = yield select(selectors.getAudioToTextResults);
+      const prematureResults = yield select(selectors.audioToText.getResults);
       yield put(sagaActions.exerciseCompleted({
         id: currentAudioToText.get('id'),
         type: 'audioToText',
@@ -66,10 +66,10 @@ export function* run(mode = 'free') {
     yield put(audioToTextActions.addResult(Map({ success, userAnswer })));
     yield put(audioToTextActions.setUserAnswer(''));
   }
-  const questionSuccess = yield select(selectors.getAudioToTextSuccess);
+  const questionSuccess = yield select(selectors.audioToText.getSuccess);
   yield put(uiActions.set('playAudioButton', false));
   // Tracking
-  const results = yield select(selectors.getAudioToTextResults);
+  const results = yield select(selectors.audioToText.getResults);
   yield put(sagaActions.exerciseCompleted({
     id: currentAudioToText.get('id'),
     type: 'audioToText',

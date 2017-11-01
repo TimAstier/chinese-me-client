@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
-import selectors from '../../rootSelectors';
+import s from '../../rootSelectors';
 import { HintModal as HintModalComponent } from '../../components';
 
 class HintModal extends Component {
@@ -26,8 +26,8 @@ HintModal.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  hints: selectors.getCharacterPinyinHints(state),
-  openHintModal: selectors.getOpenHintModal(state)
+  hints: s.getCharacterPinyinHints(state),
+  openHintModal: s.ui.getOpenHintModal(state)
 });
 
 export default connect(

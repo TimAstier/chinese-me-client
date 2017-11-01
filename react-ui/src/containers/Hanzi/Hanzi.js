@@ -4,7 +4,7 @@ import propTypes from 'prop-types';
 import { Hanzi as HanziComponent } from '../../components';
 import { actions as sagaActions } from '../../sagas/actions';
 import { actions as hanziActions } from '../../redux/hanzi';
-import selectors from '../../rootSelectors';
+import s from '../../rootSelectors';
 
 class Hanzi extends Component {
 
@@ -25,7 +25,7 @@ Hanzi.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  watchAgain: selectors.getHanziWatchAgain(state)
+  watchAgain: s.hanzi.getWatchAgain(state)
 });
 
 export default connect(

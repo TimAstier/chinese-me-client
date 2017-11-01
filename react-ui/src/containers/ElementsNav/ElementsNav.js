@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 import { ElementsNav as ElementsNavComponent } from '../../components';
-import selectors from '../../rootSelectors';
+import s from '../../rootSelectors';
 import { actions as sagaActions } from '../../sagas/actions';
 
 class ElementsNav extends Component {
@@ -35,8 +35,8 @@ ElementsNav.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  elementType: selectors.getElementType(state),
-  elementsNavParams: selectors.getElementsNavParams(state)
+  elementType: s.routing.getElementType(state),
+  elementsNavParams: s.getElementsNavParams(state)
 });
 
 export default connect(

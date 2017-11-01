@@ -61,12 +61,12 @@ export const actions = {
 
 // Selectors
 
-const getCharacterPinyinStatus = state => state.get('status');
-const getCharacterPinyinAttemptsLeft = state => state.get('attemptsLeft');
-const getCharacterPinyinUserAnswer = state => state.get('userAnswer');
+const getStatus = state => state.get('status');
+const getAttemptsLeft = state => state.get('attemptsLeft');
+const getUserAnswer = state => state.get('userAnswer');
 
 export const selectors = {
-  getCharacterPinyinStatus,
-  getCharacterPinyinAttemptsLeft,
-  getCharacterPinyinUserAnswer
+  getStatus,
+  getAttemptsLeft,
+  getUserAnswer
 };

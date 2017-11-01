@@ -21,13 +21,13 @@ import mapExerciseTypeToSetCurrentAction
 
 export function* isDataLoaded() {
   // id is not defined since there is no elementId
-  const completed = yield select(selectors.getExamCompleted);
+  const completed = yield select(selectors.exam.getCompleted);
   // reload data if previous exam data from another completed exam is already loaded
   if (completed) {
     yield put(examActions.clean());
     return false;
   }
-  const currentExercise = yield select(selectors.getExamCurrentExercise);
+  const currentExercise = yield select(selectors.exam.getCurrentExercise);
   return currentExercise ? true : false;
 }
 
@@ -67,7 +67,7 @@ function* defaultExamUi() {
 }
 
 function* runExam() {
-  const exercises = yield select(selectors.getExamExercises);
+  const exercises = yield select(selectors.exam.getExercises);
   for (let i = 0; i < exercises.size; i++) {
     const exercise = exercises.get(i);
     const type = exercise.get('type');

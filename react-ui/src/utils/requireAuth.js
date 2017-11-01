@@ -43,7 +43,7 @@ export default function(ComposedComponent) {
 
   function mapStateToProps(state) {
     return {
-      isAuthenticated: selectors.getIsAuthenticated(state)
+      isAuthenticated: selectors.auth.getIsAuthenticated(state)
     };
   }
 

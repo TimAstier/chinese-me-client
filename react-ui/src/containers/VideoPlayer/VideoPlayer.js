@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { VideoPlayer as VideoPlayerComponent } from '../../components';
-import selectors from '../../rootSelectors';
+import s from '../../rootSelectors';
 import { actions as sagaActions } from '../../sagas/actions';
 
 class VideoPlayer extends Component {
@@ -29,7 +29,7 @@ VideoPlayer.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  autoPlay: selectors.getAutoPlay(state)
+  autoPlay: s.video.getAutoPlay(state)
 });
 
 export default connect(

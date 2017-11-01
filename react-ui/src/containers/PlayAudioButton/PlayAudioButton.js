@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 import { PlayAudioButton as PlayAudioButtonComponent } from '../../components';
 import { actions as sagaActions } from '../../sagas/actions';
-import selectors from '../../rootSelectors';
+import s from '../../rootSelectors';
 
 class PlayAudioButton extends Component {
   constructor() {
@@ -46,7 +46,7 @@ PlayAudioButton.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  isPlaying: selectors.getIsPlaying(state)
+  isPlaying: s.audio.getIsPlaying(state)
 });
 
 export default connect(

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { AudioToText as AudioToTextComponent } from '../../components';
-import selectors from '../../rootSelectors';
+import s from '../../rootSelectors';
 import { List } from 'immutable';
 import * as models from '../../models';
 import Immutable from 'immutable';
@@ -26,12 +26,12 @@ AudioToText.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  currentBoxIndex: selectors.getCurrentBoxIndex(state),
-  results: selectors.getAudioToTextResults(state),
-  status: selectors.getAudioToTextStatus(state),
-  userAnswer: selectors.getAudioToTextUserAnswer(state),
-  audioToText: selectors.getCurrentAudioToText(state),
-  words: selectors.getWords(state)
+  currentBoxIndex: s.audioToText.getCurrentBoxIndex(state),
+  results: s.audioToText.getResults(state),
+  status: s.audioToText.getStatus(state),
+  userAnswer: s.audioToText.getUserAnswer(state),
+  audioToText: s.getCurrentAudioToText(state),
+  words: s.getWords(state)
 });
 
 export default connect(

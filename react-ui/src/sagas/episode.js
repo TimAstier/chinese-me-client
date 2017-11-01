@@ -27,7 +27,7 @@ function* askQuestion() {
 
 function* nextScreen(action) {
   const shouldUrlBeSkipped = action.payload.shouldUrlBeSkipped;
-  const urlParams = getParamsFromUrl(yield select(selectors.getCurrentUrl));
+  const urlParams = getParamsFromUrl(yield select(selectors.routing.getCurrentUrl));
   const { episodeId, elementType, elementId, mode } = urlParams;
   const screenType = elementType + '/' + mode; // Define screenType
   const nextUrl = yield call(findNextUrl, { screenType, episodeId, elementId }); // Find next URL
@@ -45,7 +45,7 @@ function* findNextUrl(params) {
   let currentEpisode = 0;
   switch (screenType) {
     case 'title/':
-      const currentUrl = yield select(selectors.getCurrentUrl);
+      const currentUrl = yield select(selectors.routing.getCurrentUrl);
       const partNumber = currentUrl.split('/')[4];
       switch (partNumber) {
         case '1': // characters

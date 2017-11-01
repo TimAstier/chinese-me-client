@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 import { WordModal as WordModalComponent } from '../../components';
-import selectors from '../../rootSelectors';
+import s from '../../rootSelectors';
 import { Word } from '../../models';
 import { actions as uiActions } from '../../redux/ui';
 
@@ -21,8 +21,8 @@ WordModal.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  open: selectors.getOpenWordModal(state),
-  word: selectors.getCurrentWord(state)
+  open: s.ui.getOpenWordModal(state),
+  word: s.getCurrentWord(state)
 });
 
 export default connect(

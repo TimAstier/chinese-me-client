@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 
 import { SelectEpisode as SelectEpisodeComponent } from '../../components';
-import selectors from '../../rootSelectors';
+import s from '../../rootSelectors';
 import Immutable from 'immutable';
 import { Season } from '../../models';
 
@@ -43,8 +43,8 @@ SelectEpisodeScreen.propTypes = {
 
 const mapStateToProps = state => {
   return {
-    episodes: selectors.getCurrentSeasonEpisodes(state),
-    currentSeason: selectors.getCurrentSeason(state)
+    episodes: s.getCurrentSeasonEpisodes(state),
+    currentSeason: s.getCurrentSeason(state)
   };
 };
 

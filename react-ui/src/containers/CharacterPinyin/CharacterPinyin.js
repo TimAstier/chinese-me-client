@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { CharacterPinyin as CharacterPinyinComponent } from '../../components';
 
 import { Character } from '../../models';
-import selectors from '../../rootSelectors';
+import s from '../../rootSelectors';
 import { actions as characterPinyinActions } from '../../redux/characterPinyin';
 
 class CharacterPinyin extends Component {
@@ -36,10 +36,10 @@ CharacterPinyin.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  character: selectors.getCurrentCharacter(state),
-  status: selectors.getCharacterPinyinStatus(state),
-  userAnswer: selectors.getCharacterPinyinUserAnswer(state),
-  openFeedbackModal: selectors.getOpenFeedbackModal(state)
+  character: s.getCurrentCharacter(state),
+  status: s.characterPinyin.getStatus(state),
+  userAnswer: s.characterPinyin.getUserAnswer(state),
+  openFeedbackModal: s.ui.getOpenFeedbackModal(state)
 });
 
 const mapDispatchToProps = () => ({

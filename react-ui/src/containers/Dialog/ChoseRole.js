@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 import { ChoseRole as ChoseRoleComponent } from '../../components';
 import { Avatar } from '../../models';
-import selectors from '../../rootSelectors';
+import s from '../../rootSelectors';
 import { actions as studyActions } from '../../redux/study';
 import { actions as sagaActions } from '../../sagas/actions';
 
@@ -25,8 +25,8 @@ ChoseRole.propTypes = {
 
 const mapStateToProps = state => {
   return {
-    avatars: selectors.getCurrentAvatars(state),
-    chosenAvatarId: selectors.getChosenAvatarId(state) || 0
+    avatars: s.getCurrentAvatars(state),
+    chosenAvatarId: s.study.getChosenAvatarId(state) || 0
   };
 };
 

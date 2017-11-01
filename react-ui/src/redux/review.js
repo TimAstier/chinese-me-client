@@ -61,17 +61,17 @@ export const actions = {
 
 // Selectors
 
-const getReviewInitialized = state => state.get('initialized');
-const getReviewExercises = state => state.get('exercises');
-const getReviewCurrentExercise = createSelector(
-  getReviewExercises,
+const getInitialized = state => state.get('initialized');
+const getExercises = state => state.get('exercises');
+const getCurrentExercise = createSelector(
+  getExercises,
   exercises => {
     return exercises.get(0) ? exercises.get(0) : null;
   }
 );
 
 export const selectors = {
-  getReviewInitialized,
-  getReviewExercises,
-  getReviewCurrentExercise
+  getInitialized,
+  getExercises,
+  getCurrentExercise
 };

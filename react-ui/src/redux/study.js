@@ -217,7 +217,7 @@ const getPartNumber = state => state.get('partNumber');
 const getChosenAvatarId = state => state.get('chosenAvatarId');
 const getCurrentCharacterId = state => state.get('currentCharacterId');
 const getInitialized = state => state.get('initialized');
-const getStudyPaused = state => state.get('paused');
+const getPaused = state => state.get('paused');
 
 export const selectors = {
   getCurrentSeasonId,
@@ -234,5 +234,5 @@ export const selectors = {
   getChosenAvatarId,
   getCurrentCharacterId,
   getInitialized,
-  getStudyPaused
+  getPaused
 };

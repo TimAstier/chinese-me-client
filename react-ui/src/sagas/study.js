@@ -27,7 +27,7 @@ function* runEpisodeScreen(action) {
   let isDataLoaded = undefined;
   yield put(studyActions.setInitialized(false)); // Hide screen content
   // Load settings if not already initialized
-  const settingsInitialized = yield select(selectors.getSettingsInitialized);
+  const settingsInitialized = yield select(selectors.settings.getInitialized);
   if (settingsInitialized === false) {
     try {
       const savedSettings = yield call(Api.get, '/users/settings');
@@ -44,7 +44,7 @@ function* runEpisodeScreen(action) {
   // Skip screen if there is a related setting set to false
   const setting = screenTypeToUserSettings(screenType);
   if (screenType) {
-    const userSettings = yield select(selectors.getSettings);
+    const userSettings = yield select(selectors.settings.getSettings);
     const userSetting = userSettings.get(setting);
     if (userSetting === false) {
       shouldUrlBeSkipped = true;

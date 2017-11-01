@@ -37,7 +37,7 @@ export function* run(mode = 'listen') {
   const sentencesCount =
     yield select(selectors.getSentencesCountInCurrentDialog);
   for (let i = 0; i < sentencesCount - 1; i++) {
-    const paused = yield select(selectors.getStudyPaused);
+    const paused = yield select(selectors.study.getPaused);
     if (paused) {
       yield take(sagaTypes.PAUSE);
       yield call(playSentence, mode);

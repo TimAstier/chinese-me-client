@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 import { Review as ReviewComponent } from '../../components';
-import selectors from '../../rootSelectors';
+import s from '../../rootSelectors';
 
 class Review extends Component {
   render() {
@@ -24,8 +24,8 @@ Review.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  currentExercise: selectors.getReviewCurrentExercise(state),
-  initialized: selectors.getReviewInitialized(state)
+  currentExercise: s.review.getCurrentExercise(state),
+  initialized: s.review.getInitialized(state)
 });
 
 export default connect(

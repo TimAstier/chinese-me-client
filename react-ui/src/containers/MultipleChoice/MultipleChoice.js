@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 import { MultipleChoice as MultipleChoiceComponent } from '../../components';
-import selectors from '../../rootSelectors';
+import s from '../../rootSelectors';
 import { actions as multipleChoiceActions } from '../../redux/multipleChoice';
 import * as models from '../../models';
 
@@ -30,9 +30,9 @@ MultipleChoice.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  multipleChoice: selectors.getCurrentMultipleChoice(state),
-  status: selectors.getMultipleChoiceStatus(state),
-  userAnswer: selectors.getMultipleChoiceUserAnswer(state)
+  multipleChoice: s.getCurrentMultipleChoice(state),
+  status: s.multipleChoice.getStatus(state),
+  userAnswer: s.multipleChoice.getUserAnswer(state)
 });
 
 export default connect(

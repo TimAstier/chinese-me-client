@@ -95,17 +95,17 @@ export const actions = {
 // Selectors
 
 const getFocusedEpisodeId = state => state.get('focusedEpisodeId');
-const getMapCharacters = state => state.get('characters');
-const getMapGrammars = state => state.get('grammars');
-const getMapDialogs = state => state.get('dialogs');
-const getIsMapDataLoaded = state => state.get('isDataLoaded');
-const getMapLoadedEpisodeId = state => state.get('loadedEpisodeId');
+const getCharacters = state => state.get('characters');
+const getGrammars = state => state.get('grammars');
+const getDialogs = state => state.get('dialogs');
+const getIsDataLoaded = state => state.get('isDataLoaded');
+const getLoadedEpisodeId = state => state.get('loadedEpisodeId');
 
 export const selectors = {
   getFocusedEpisodeId,
-  getMapCharacters,
-  getMapGrammars,
-  getMapDialogs,
-  getIsMapDataLoaded,
-  getMapLoadedEpisodeId
+  getCharacters,
+  getGrammars,
+  getDialogs,
+  getIsDataLoaded,
+  getLoadedEpisodeId
 };

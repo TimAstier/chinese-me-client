@@ -36,10 +36,10 @@ export const actions = {
 
 // Selectors
 
-const getSettingsInitialized = state => state.get('initialized');
+const getInitialized = state => state.get('initialized');
 const getSettings = state => state;
 
 export const selectors = {
-  getSettingsInitialized,
+  getInitialized,
   getSettings
 };

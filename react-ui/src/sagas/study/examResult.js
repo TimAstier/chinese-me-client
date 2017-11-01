@@ -13,7 +13,7 @@ export function isDataLoaded() {
 // export function* fetchData() {}
 
 export function* checkData() {
-  const completed = yield select(selectors.getExamCompleted);
+  const completed = yield select(selectors.exam.getCompleted);
   return completed;
 }
 
@@ -25,13 +25,13 @@ export function* initUi() {
 export function* initStudyData() {}
 
 export function* run() {
-  const score = yield select(selectors.getExamScore);
+  const score = yield select(selectors.exam.getScore);
   yield delay(500);
   yield put(score >= 7 ? sagaActions.playLevelWinSound() : sagaActions.playLevelFailSound());
   // Tracking and save
-  const exercises = yield select(selectors.getExamExercises);
-  const results = yield select(selectors.getExamResults);
-  const timeLeft = yield select(selectors.getTimerTime);
+  const exercises = yield select(selectors.exam.getExercises);
+  const results = yield select(selectors.exam.getResults);
+  const timeLeft = yield select(selectors.timer.getTime);
   const currentEpisode = yield select(selectors.getCurrentEpisode);
   const currentSeason = yield select(selectors.getCurrentSeason);
   yield put(sagaActions.examCompleted({

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { MapSidebar as MapSidebarComponent } from '../../components';
-import selectors from '../../rootSelectors';
+import s from '../../rootSelectors';
 import { actions as mapActions } from '../../redux/map';
 import Immutable from 'immutable';
 import { Season } from '../../models';
@@ -26,11 +26,11 @@ MapSidebar.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  currentEpisodeId: Number(selectors.getCurrentEpisodeId(state)),
-  seasons: selectors.getSeasons(state),
-  episodes: selectors.getUnlockedEpisodes(state),
-  focusedEpisodeId: Number(selectors.getFocusedEpisodeId(state)),
-  currentSeason: selectors.getCurrentSeason(state)
+  currentEpisodeId: Number(s.study.getCurrentEpisodeId(state)),
+  seasons: s.entities.getSeasons(state),
+  episodes: s.getUnlockedEpisodes(state),
+  focusedEpisodeId: Number(s.map.getFocusedEpisodeId(state)),
+  currentSeason: s.getCurrentSeason(state)
 });
 
 export default connect(

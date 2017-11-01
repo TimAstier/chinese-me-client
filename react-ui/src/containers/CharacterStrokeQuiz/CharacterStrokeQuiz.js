@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 import { CharacterStrokeQuiz as CharacterStrokeQuizComponent } from '../../components';
 import { Character } from '../../models';
-import selectors from '../../rootSelectors';
+import s from '../../rootSelectors';
 import { actions as sagaActions } from '../../sagas/actions';
 
 class CharacterStrokeQuiz extends Component {
@@ -24,9 +24,9 @@ CharacterStrokeQuiz.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  character: selectors.getCurrentCharacter(state),
-  timerStatus: selectors.getTimerStatus(state),
-  watchAgain: selectors.getHanziWatchAgain(state)
+  character: s.getCurrentCharacter(state),
+  timerStatus: s.timer.getStatus(state),
+  watchAgain: s.hanzi.getWatchAgain(state)
 });
 
 export default connect(

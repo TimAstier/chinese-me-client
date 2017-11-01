@@ -28,7 +28,7 @@ export function* playSentence(mode = 'explore') {
   }
   // Animate and update avatar mood
   const statement = yield select(selectors.getCurrentStatement);
-  const sentence = yield select(selectors.getCurrentSentence);
+  const sentence = yield select(selectors.getCurrentSentenceWithValues);
   try {
     yield put(entitiesActions
       .update('avatars', String(statement.avatarId), 'mood', sentence.mood));
@@ -41,8 +41,9 @@ export function* playSentence(mode = 'explore') {
     }
     // Find sound of currentSentence and play it
     const src = [sentence.audioUrl];
+    const text = sentence.chinese;
     yield race({ // Allow stopping sound via "End" button
-      task: call(playSound, src, muted),
+      task: call(playSound, src, muted, text),
       stopSentence: take(sagaTypes.STOP_SENTENCE),
       pause: take(sagaTypes.PAUSE)
     });
@@ -76,13 +77,6 @@ function* switchSentence(action) {
   yield put(studyActions.setCurrentSentenceId(action.payload.id));
   yield put(sagaActions.playSentence());
 }
-
-// function* previousSentence() {
-//   // Go to previous Sentence
-//   const previousSentenceId = yield select(selectors.getPreviousSentenceId);
-//   yield put(studyActions.setCurrentSentenceId(previousSentenceId));
-//   yield put(sagaActions.playSentence());
-// }
 
 function* nextStatement(mode = 'explore') {
   yield put(sagaActions.stopSentence());

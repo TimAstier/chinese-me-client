@@ -50,10 +50,10 @@ export const actions = {
 
 // Selectors
 
-const getMultipleChoiceStatus = state => state.get('status');
-const getMultipleChoiceUserAnswer = state => state.get('userAnswer');
+const getStatus = state => state.get('status');
+const getUserAnswer = state => state.get('userAnswer');
 
 export const selectors = {
-  getMultipleChoiceStatus,
-  getMultipleChoiceUserAnswer
+  getStatus,
+  getUserAnswer
 };

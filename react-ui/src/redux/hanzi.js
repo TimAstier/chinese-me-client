@@ -34,8 +34,8 @@ export const actions = {
 
 // Selectors
 
-const getHanziWatchAgain = state => state.get('watchAgain');
+const getWatchAgain = state => state.get('watchAgain');
 
 export const selectors = {
-  getHanziWatchAgain
+  getWatchAgain
 };

@@ -9,7 +9,18 @@ import howler from 'howler';
 
 // Sub-routines
 
-export function *playSound(src, muted = false) {
+export function *playSound(src, muted = false, text) {
+  // Use responsiveVoice if there is no sound URL
+  if (src[0] === null) {
+    const responsiveVoice = window.responsiveVoice;
+    if (responsiveVoice.voiceSupport()) {
+      return responsiveVoice.speak(text, 'Chinese Female', {
+        rate: 1,
+        onstart: () => console.log('started'),
+        onend: () => console.log('ended')
+      });
+    }
+  }
   const sound = new howler.Howl({
     src,
     html5: true // Fix CORS errors. See https://github.com/goldfire/howler.js/issues/64
@@ -44,7 +55,7 @@ export function *playSound(src, muted = false) {
 }
 
 function* playAudio() {
-  const audioUrl = yield select(selectors.getAudioUrl);
+  const audioUrl = yield select(selectors.audio.getAudioUrl);
   yield call(playSound, [audioUrl]);
 }
 

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 import * as models from '../../models';
 import { Dialog as DialogComponent } from '../../components';
-import selectors from '../../rootSelectors';
+import s from '../../rootSelectors';
 import { actions as sagaActions } from '../../sagas/actions';
 
 class Dialog extends Component {
@@ -32,15 +32,15 @@ Dialog.propTypes = {
 
 const mapStateToProps = state => {
   return {
-    avatars: selectors.getCurrentAvatars(state),
-    sentences: selectors.getSentencesWithValues(state),
-    currentSentenceIndex: selectors.getCurrentSentenceIndex(state),
-    chosenAvatarId: selectors.getChosenAvatarId(state) || 0,
-    dialogMode: selectors.getDialogMode(state),
-    currentEpisodeId: selectors.getCurrentEpisodeId(state),
-    currentDialogId: selectors.getCurrentDialogId(state),
-    statementsCount: selectors.getCurrentDialogStatementsCount(state),
-    currentStatementIndex: selectors.getCurrentStatementIndex(state)
+    avatars: s.getCurrentAvatars(state),
+    sentences: s.getSentencesWithValues(state),
+    currentSentenceIndex: s.getCurrentSentenceIndex(state),
+    chosenAvatarId: s.study.getChosenAvatarId(state) || 0,
+    dialogMode: s.study.getDialogMode(state),
+    currentEpisodeId: s.study.getCurrentEpisodeId(state),
+    currentDialogId: s.study.getCurrentDialogId(state),
+    statementsCount: s.getCurrentDialogStatementsCount(state),
+    currentStatementIndex: s.getCurrentStatementIndex(state)
   };
 };
 

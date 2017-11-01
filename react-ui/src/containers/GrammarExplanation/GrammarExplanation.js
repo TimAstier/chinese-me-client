@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 import { StudyVideo } from '../../components';
-import selectors from '../../rootSelectors';
+import s from '../../rootSelectors';
 import { Grammar } from '../../models';
 
 class GrammarExplanation extends Component {
@@ -17,7 +17,7 @@ GrammarExplanation.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  grammar: selectors.getCurrentGrammar(state)
+  grammar: s.getCurrentGrammar(state)
 });
 
 export default connect(

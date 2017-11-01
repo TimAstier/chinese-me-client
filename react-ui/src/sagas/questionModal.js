@@ -12,7 +12,7 @@ export function* shouldAskQuestion(screenType) {
   // Check if this screenType has a related setting
   if (setting !== null) {
     // Check if the current user has a preference
-    const userSettings = yield select(selectors.getSettings);
+    const userSettings = yield select(selectors.settings.getSettings);
     const userSetting = userSettings.get(setting);
     if (userSetting === null) {
       // There is this field in userSettings, but it is still uninitialized

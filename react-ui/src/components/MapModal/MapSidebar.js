@@ -7,7 +7,7 @@ import Immutable from 'immutable';
 import { Season } from '../../models';
 
 const Wrapper = styled.div`
-  width: 277px;
+  min-width: 277px;
   height: 610px;
   border-radius: 15px;
   background-color: #f2f7fa;

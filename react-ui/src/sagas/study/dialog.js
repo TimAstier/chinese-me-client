@@ -5,10 +5,12 @@ import { types as sagaTypes, actions as sagaActions } from '../actions';
 import { actions as studyActions } from '../../redux/study';
 import { actions as entitiesActions } from '../../redux/entities';
 import { actions as fromUi } from '../../redux/ui';
-import { playSound } from '../audio';
+import { playSound, voiceText } from '../audio';
 import selectors from '../../rootSelectors';
 import { fetchEntities } from '../entities';
 import { push } from 'react-router-redux';
+
+const ADDITIONAL_DELAY_IN_ROLEPLAY = 1000;
 
 export function* checkDialogData(id) {
   yield put(studyActions.setCurrentDialogId(id));
@@ -39,16 +41,17 @@ export function* playSentence(mode = 'explore') {
     if (mode === 'roleplay') {
       muted = yield select(selectors.getIsChosenAvatarTalking);
     }
-    // Find sound of currentSentence and play it
-    const src = [sentence.audioUrl];
-    const text = sentence.chinese;
+    // Play current sentence
     yield race({ // Allow stopping sound via "End" button
-      task: call(playSound, src, muted, text),
+      task: sentence.audioUrl ?
+        call(playSound, [ sentence.audioUrl ], muted)
+        : call(voiceText, sentence.chinese, muted),
       stopSentence: take(sagaTypes.STOP_SENTENCE),
       pause: take(sagaTypes.PAUSE)
     });
     if (mode === 'roleplay' && muted === true) {
-      yield delay(1000); // Give more time to the user to read the sentence
+      // Give more time to the user to read the sentence
+      yield delay(ADDITIONAL_DELAY_IN_ROLEPLAY);
     }
   } finally {
     // Once the sound ends OR is cancelled,

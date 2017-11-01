@@ -9,24 +9,56 @@ import howler from 'howler';
 
 // Sub-routines
 
-export function *playSound(src, muted = false, text) {
-  // Use responsiveVoice if there is no sound URL
-  if (src[0] === null) {
-    const responsiveVoice = window.responsiveVoice;
-    if (responsiveVoice.voiceSupport()) {
-      return responsiveVoice.speak(text, 'Chinese Female', {
-        rate: 1,
-        onstart: () => console.log('started'),
-        onend: () => console.log('ended')
-      });
+/*
+** eventChannel is a factory function (not an Effect) that creates a Channel
+** for events from event sources.
+** See more info in docs:
+** https://github.com/redux-saga/redux-saga/blob/master/docs/advanced/Channels.md#using-the-eventchannel-factory-to-connect-to-external-events
+*/
+
+export function *voiceText(text, muted = false) {
+  // See ResponsiveVoice Api: https://responsivevoice.org/api/
+  const voicer = window.responsiveVoice;
+  if (voicer.voiceSupport()) {
+    const channel = eventChannel(emitter => {
+      voicer.speak(
+        text,
+        'Chinese Female',
+        {
+          volume: muted ? 0 : 1,
+          rate: 0.8,
+          onend: () => emitter(END)
+        }
+      );
+      // Unsubscribe method
+      return () => {
+        voicer.cancel();
+      };
+    });
+
+    yield put(audioActions.set('isPlaying', true));
+
+    try {
+      while (true) { // eslint-disable-line no-constant-condition
+        yield take(channel); // The loop breaks via the END in the channel
+      }
+    } finally {
+      // Audio is done playing OR playSound was cancelled
+      if (yield cancelled()) {
+        voicer.cancel();
+      }
+      yield put(audioActions.set('isPlaying', false));
     }
   }
+}
+
+export function *playSound(src, muted = false) {
   const sound = new howler.Howl({
     src,
     html5: true // Fix CORS errors. See https://github.com/goldfire/howler.js/issues/64
   });
   sound.mute(muted);
-  // Create an event channel
+
   const channel = eventChannel(emitter => {
     sound.on('end', () => {
       emitter(END); // Ends the channel

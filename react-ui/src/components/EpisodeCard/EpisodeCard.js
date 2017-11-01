@@ -3,6 +3,7 @@ import propTypes from 'prop-types';
 import styled from 'styled-components';
 import iconLock from '../../images/iconLock.svg';
 import { ScreenButton, Star } from '../.';
+import containsChinese from '../../utils/containsChinese';
 
 
 const Wrapper = styled.div`
@@ -44,7 +45,7 @@ const NumberWrapper = styled.div`
 
 const TitleWrapper = styled.div`
   height: 34px;
-  font-family: 'STKaitiSC';
+  font-family: ${props => props.chineseFont ? 'ChineseFont' : 'STKaitiSC' };
   font-size: 24px;
   font-weight: 900;
   color: ${props => props.locked ? '#b2babf' : '#454545'};
@@ -132,7 +133,10 @@ class EpisodeCard extends Component {
               + this.props.number
           }
         </NumberWrapper>
-        <TitleWrapper locked={this.props.locked}>
+        <TitleWrapper
+          locked={this.props.locked}
+          chineseFont={containsChinese(this.props.title)}
+        >
           {this.props.title}
         </TitleWrapper>
         <StatusWrapper>{this.renderStatus()}</StatusWrapper>

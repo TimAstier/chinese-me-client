@@ -3,37 +3,46 @@ import { types as sagaTypes } from './actions';
 import Api from '../utils/api';
 import { actions as uiActions } from '../redux/ui';
 import { actions as settingsActions } from '../redux/settings';
-import screenTypeToUserSettings from '../utils/screenTypeToUserSettings';
+import { actions as questionActions } from '../redux/question';
 import selectors from '../rootSelectors';
+import { default as settingsConstants } from '../constants/settings';
 
 // Returns setting or false;
-export function* shouldAskQuestion(screenType) {
-  const setting = screenTypeToUserSettings(screenType);
-  // Check if this screenType has a related setting
-  if (setting !== null) {
-    // Check if the current user has a preference
-    const userSettings = yield select(selectors.settings.getSettings);
-    const userSetting = userSettings.get(setting);
-    if (userSetting === null) {
-      // There is this field in userSettings, but it is still uninitialized
-      // Therefore we should ask question
-      return setting;
-    }
+export function* shouldAskQuestion(setting) {
+  // Check if setting is already defined
+  const userSettings = yield select(selectors.settings.getSettings);
+  const userSetting = userSettings.get(settingsConstants[setting].name);
+  if (userSetting === null) {
+    // There is this field in userSettings, but it is still uninitialized
+    // Therefore we should ask question
+    return true;
   }
   return false;
 }
 
-// Called in study sagas, runEpisodeScreen
+/* Called in
+** 1. study sagas (runEpisodeScreen)
+** 2. userData sagas (askUserSettings)
+*/
 export function* askQuestion(setting) {
+  console.log('Ask user setting: ', setting)
+  yield put(questionActions.setSetting(setting));
   yield put(uiActions.openQuestionModal());
-  const action = yield take(sagaTypes.CLOSED_QUESTION_ANSWERED);
-  yield call(sendClosedQuestionAnswer, [setting, action.payload.answer]);
+  const action = yield take(sagaTypes.QUESTION_ANSWERED);
+  yield call(sendQuestionAnswer, [setting, action.payload.answer]);
 }
 
-function* sendClosedQuestionAnswer(params) {
+function* sendQuestionAnswer(params) {
+  const setting = settingsConstants[params[0]].name;
+  let value = undefined;
+  if (typeof params[1] === 'string') {
+    // Raw data
+    value = params[1] === 'A' ? true : false; // closedQuestion answer
+  } else {
+    // Data from registered redux-form
+    value = params[1].values.get('value');
+  }
   yield put(uiActions.closeQuestionModal());
-  const setting = params[0];
-  const value = params[1] === 'A' ? true : false;
   try {
     const savedSettings = yield call(
       Api.post,

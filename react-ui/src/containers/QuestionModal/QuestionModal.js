@@ -3,38 +3,26 @@ import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 import { QuestionModal as QuestionModalComponent } from '../../components';
 import s from '../../rootSelectors';
-import { actions as sagaActions } from '../../sagas/actions';
 
 class QuestionModal extends Component {
 
   render() {
-    const onClick = e => {
-      return this.props.closedQuestionAnswered(e.target.getAttribute('data'));
-    };
-    return (
-      <QuestionModalComponent
-        type="closedQuestion"
-        onClick={onClick}
-        { ...this.props }
-      />
-    );
+    return <QuestionModalComponent { ...this.props } />;
   }
 }
 
 QuestionModal.propTypes = {
   open: propTypes.bool.isRequired,
-  closedQuestionAnswered: propTypes.func.isRequired,
-  screenType: propTypes.string.isRequired
+  setting: propTypes.string.isRequired,
+  questionType: propTypes.string.isRequired
 };
 
 const mapStateToProps = state => ({
   open: s.ui.getOpenQuestionModal(state),
-  screenType: s.routing.getCurrentScreenType(state)
+  setting: s.question.getSetting(state),
+  questionType: s.question.getType(state)
 });
 
 export default connect(
-  mapStateToProps,
-  {
-    closedQuestionAnswered: sagaActions.closedQuestionAnswered
-  }
+  mapStateToProps
 )(QuestionModal);

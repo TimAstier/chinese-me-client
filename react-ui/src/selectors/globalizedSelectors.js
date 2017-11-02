@@ -4,6 +4,7 @@
 
 import bindSelectors from '../utils/bindSelectors';
 
+import * as fromApp from '../redux/app';
 import * as fromAudio from '../redux/audio';
 import * as fromAudioToText from '../redux/audioToText';
 import * as fromAuth from '../redux/auth';
@@ -13,6 +14,7 @@ import * as fromExam from '../redux/exam';
 import * as fromHanzi from '../redux/hanzi';
 import * as fromMap from '../redux/map';
 import * as fromMultipleChoice from '../redux/multipleChoice';
+import * as fromQuestion from '../redux/question';
 import * as fromReview from '../redux/review';
 import * as fromRouting from '../redux/routing';
 import * as fromSettings from '../redux/settings';
@@ -21,7 +23,12 @@ import * as fromTimer from '../redux/timer';
 import * as fromUi from '../redux/ui';
 import * as fromVideo from '../redux/video';
 
-// TODO: DRY
+// TODO: DRY (idea: export a name constant from every duck)
+
+const appSelectors = bindSelectors(
+  state => state.get('app'),
+  fromApp.selectors
+);
 
 const audioSelectors = bindSelectors(
   state => state.get('audio'),
@@ -103,7 +110,13 @@ const videoSelectors = bindSelectors(
   fromVideo.selectors
 );
 
+const questionSelectors = bindSelectors(
+  state => state.get('question'),
+  fromQuestion.selectors
+);
+
 const globalizedSelectors = {
+  app: appSelectors,
   entities: entitiesSelectors,
   study: studySelectors,
   ui: uiSelectors,
@@ -120,6 +133,7 @@ const globalizedSelectors = {
   timer: timerSelectors,
   settings: settingsSelectors,
   hanzi: hanziSelectors,
+  question: questionSelectors
 };
 
 export default globalizedSelectors;

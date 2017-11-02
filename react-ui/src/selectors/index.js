@@ -48,6 +48,7 @@ export { default as getPreviousDialogId } from './getPreviousDialogId';
 export { default as getPreviousGrammarId } from './getPreviousGrammarId';
 export { default as getPreviousStatementId } from './getPreviousStatementId';
 export { default as getProgressbarCompletion } from './getProgressbarCompletion';
+export { default as getRequiredUserData } from './getRequiredUserData';
 export { default as getReviewNavParams } from './getReviewNavParams';
 export { default as getSentencesCountInCurrentDialog } from './getSentencesCountInCurrentDialog';
 export { default as getSentencesWithValues } from './getSentencesWithValues';

@@ -9,6 +9,7 @@ import s from '../../rootSelectors';
 import { Episode } from '../../models';
 
 class EpisodeScreen extends Component {
+
   componentDidMount() {
     return this.props.runEpisodeScreen(this.props.location.pathname);
   }
@@ -21,6 +22,7 @@ class EpisodeScreen extends Component {
   }
 
   componentDidUpdate(prevProps) {
+    // Rerun study saga when the URL changes
     if (this.props.location.pathname !== prevProps.location.pathname) {
       return this.props.runEpisodeScreen(this.props.location.pathname);
     }
@@ -58,7 +60,8 @@ EpisodeScreen.propTypes = {
   setCurrentSeasonId: propTypes.func.isRequired,
   elementType: propTypes.string.isRequired,
   pause: propTypes.bool,
-  hanziAgain: propTypes.bool
+  hanziAgain: propTypes.bool,
+  appInitialized: propTypes.bool.isRequired
 };
 
 const mapStateToProps = state => {
@@ -71,7 +74,8 @@ const mapStateToProps = state => {
     initialized: s.study.getInitialized(state),
     episode: s.getCurrentEpisode(state),
     currentUrl: s.routing.getCurrentUrl(state),
-    elementType: s.routing.getElementType(state)
+    elementType: s.routing.getElementType(state),
+    appInitialized: s.app.getInitialized(state)
   };
 };
 

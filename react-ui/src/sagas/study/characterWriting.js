@@ -7,7 +7,6 @@ import { fetchEntities } from '../entities';
 import { shouldAskQuestion, askQuestion } from '../questionModal';
 import { types as sagaTypes } from '../actions';
 
-
 export function* isDataLoaded(id) {
   yield put(studyActions.setCurrentCharacterId(id));
   const currentElement = yield select(selectors.getCurrentCharacter);
@@ -31,10 +30,9 @@ export function* initUi() {}
 export function* run() {
   yield put(videoActions.autoPlayOn());
   yield take(sagaTypes.VIDEO_ENDED);
-  // If the screenType depends on a setting which if not already defined,
-  // ask user's preference. We don't ask in case of a Skip from the user.
-  const setting = yield call(shouldAskQuestion, 'character/writing');
-  if (setting) {
+  const setting = 'CALLIGRAPHY_VIDEO';
+  const ask = yield call(shouldAskQuestion, setting);
+  if (ask) {
     return yield call(askQuestion, setting);
   }
   yield put(uiActions.set('nextButton', true));

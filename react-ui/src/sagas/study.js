@@ -11,6 +11,7 @@ import Api from '../utils/api';
 import screenTypeToUserSettings from '../utils/screenTypeToUserSettings';
 import selectors from '../rootSelectors';
 import { actions as settingsActions } from '../redux/settings';
+import { askUserSettings } from './userData';
 
 // Every screenType has those five "studyFunctions" (generators):
 // 1. isDataLoaded
@@ -21,11 +22,7 @@ import { actions as settingsActions } from '../redux/settings';
 // 6. run
 // 7. clean
 
-function* runEpisodeScreen(action) {
-  // IMPORTANT: start by hiding screen content
-  let shouldUrlBeSkipped = false;
-  let isDataLoaded = undefined;
-  yield put(studyActions.setInitialized(false)); // Hide screen content
+function* loadSettings() {
   // Load settings if not already initialized
   const settingsInitialized = yield select(selectors.settings.getInitialized);
   if (settingsInitialized === false) {
@@ -36,21 +33,35 @@ function* runEpisodeScreen(action) {
       // TODO: handle errors
     }
   }
-  const { episodeId, elementType, elementId, mode }
-    = getParamsFromUrl(action.payload.url); // Get params from url
-  yield put(studyActions.setCurrentEpisodeId(episodeId)); // Set currentEpisodeId
-  yield put(mapActions.setFocusedEpisodeId(episodeId)); // Set focusedEpisodeId
-  const screenType = elementType + '/' + mode; // Define screenType
+}
+
+function* checkUserPreference(screenType, shouldUrlBeSkipped) {
   // Skip screen if there is a related setting set to false
+  let skip = shouldUrlBeSkipped;
   const setting = screenTypeToUserSettings(screenType);
   if (screenType) {
     const userSettings = yield select(selectors.settings.getSettings);
     const userSetting = userSettings.get(setting);
     if (userSetting === false) {
-      shouldUrlBeSkipped = true;
-      return yield put(sagaActions.nextScreen(shouldUrlBeSkipped));
+      skip = true;
+      yield put(sagaActions.nextScreen(skip));
     }
   }
+}
+
+function* runEpisodeScreen(action) {
+  // IMPORTANT: start by hiding screen content
+  let shouldUrlBeSkipped = false;
+  let isDataLoaded = undefined;
+  yield put(studyActions.setInitialized(false)); // Hide screen content
+  yield call(loadSettings);
+  const { episodeId, elementType, elementId, mode }
+    = getParamsFromUrl(action.payload.url); // Get params from url
+  yield put(studyActions.setCurrentEpisodeId(episodeId)); // Set currentEpisodeId
+  yield put(mapActions.setFocusedEpisodeId(episodeId)); // Set focusedEpisodeId
+  yield call(askUserSettings); // Ask user data if needed
+  const screenType = elementType + '/' + mode; // Define screenType
+  yield call(checkUserPreference, screenType, shouldUrlBeSkipped);
   const funcs = getStudyFunctions(screenType); // Get studyFunctions
   if (elementTypes.indexOf(elementType) !== -1) { // Check data
     isDataLoaded = yield call(funcs.isDataLoaded, elementId);

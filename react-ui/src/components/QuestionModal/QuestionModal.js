@@ -1,38 +1,25 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import { Modal } from '../.';
-import ClosedQuestion from './ClosedQuestion';
-import constants from '../../constants/closedQuestion';
+import { ClosedQuestion, OpenQuestion } from '../../containers';
+import { QuestionTypeException } from '../../exceptions';
 
 class QuestionModal extends Component {
   renderContent() {
-    switch (this.props.type) {
+    switch (this.props.questionType) {
       case 'closedQuestion':
-        if (!constants.hasOwnProperty(this.props.screenType)) {
-          return null;
-        }
-        return (
-          <ClosedQuestion
-            onClick={this.props.onClick}
-            label={constants[this.props.screenType].label}
-            choiceA={constants[this.props.screenType].choiceA}
-            choiceB={constants[this.props.screenType].choiceB}
-          />
-        );
+        return <ClosedQuestion setting={this.props.setting} />;
+      case 'openQuestion':
+        return <OpenQuestion setting={this.props.setting} />;
       default:
-        console.log('Unknown question type:', this.props.type); // eslint-disable-line no-console
-        return null;
+        throw new QuestionTypeException(this.props.questionType);
     }
   }
 
   render() {
-    const { open } = this.props;
     return (
-      <Modal
-        open={open}
-        size="small"
-      >
-        {this.renderContent()}
+      <Modal open={this.props.open} size="small">
+        {this.props.setting && this.props.questionType && this.renderContent()}
       </Modal>
     );
   }
@@ -40,9 +27,8 @@ class QuestionModal extends Component {
 
 QuestionModal.propTypes = {
   open: propTypes.bool.isRequired,
-  type: propTypes.string.isRequired,
-  onClick: propTypes.func.isRequired,
-  screenType: propTypes.string.isRequired
+  questionType: propTypes.string.isRequired,
+  setting: propTypes.string.isRequired
 };
 
 export default QuestionModal;

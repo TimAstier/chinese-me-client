@@ -31,6 +31,8 @@ export { default as PauseButton } from './PauseButton/PauseButton';
 export { default as PlayAudioButton } from './PlayAudioButton/PlayAudioButton';
 export { default as Progressbar } from './Progressbar/Progressbar';
 export { default as QuestionModal } from './QuestionModal/QuestionModal';
+export { default as ClosedQuestion } from './QuestionModal/ClosedQuestion';
+export { default as OpenQuestion } from './QuestionModal/OpenQuestion';
 export { default as Review } from './Review/Review';
 export { default as ScreenButton } from './ScreenButton/ScreenButton';
 export { default as SelectEpisode } from './SelectEpisode/SelectEpisode';

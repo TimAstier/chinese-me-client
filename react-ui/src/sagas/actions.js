@@ -53,7 +53,7 @@ export const types = {
   PLAY_LEVEL_FAIL_SOUND: 'signal/PLAY_LEVEL_FAIL_SOUND',
   NEXT_QUESTION: 'signal/NEXT_QUESTION',
   EXERCISE_COMPLETED: 'signal/EXERCISE_COMPLETED',
-  CLOSED_QUESTION_ANSWERED: 'signal/CLOSED_QUESTION_ANSWERED',
+  QUESTION_ANSWERED: 'signal/QUESTION_ANSWERED',
   NEW_WORD_LINK_CLICKED: 'signal/NEW_WORD_LINK_CLICKED'
 };
 
@@ -215,8 +215,8 @@ const exerciseCompleted = data => ({
     }
   }
 });
-const closedQuestionAnswered = answer => ({
-  type: types.CLOSED_QUESTION_ANSWERED,
+const questionAnswered = answer => ({
+  type: types.QUESTION_ANSWERED,
   payload: { answer }
 });
 
@@ -272,6 +272,6 @@ export const actions = {
   playLevelFailSound,
   nextQuestion,
   exerciseCompleted,
-  closedQuestionAnswered,
+  questionAnswered,
   newWordLinkClicked
 };

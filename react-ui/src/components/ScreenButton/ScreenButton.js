@@ -37,7 +37,6 @@ class Screen extends Component {
         background-color: ${ activeBackgroundColor() };
       }
     `;
-
     return (
       <Button
         onClick={this.props.onClick}

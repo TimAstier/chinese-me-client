@@ -43,6 +43,7 @@ class OpenQuestionForm extends Component {
           type={type}
           error={touched && error}
           active={active}
+          onBlur=""
         />
     );
   }
@@ -66,7 +67,6 @@ class OpenQuestionForm extends Component {
             width={300}
             text={'Submit'}
             primary
-            type="submit"
           />
         </Wrapper>
       </form>

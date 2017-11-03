@@ -31,7 +31,6 @@ class SelectQuestionForm extends Component {
             width={300}
             text={'Submit'}
             primary
-            type="submit"
           />
         </Wrapper>
       </form>

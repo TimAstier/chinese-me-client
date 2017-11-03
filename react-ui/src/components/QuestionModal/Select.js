@@ -30,7 +30,7 @@ class Select extends Component {
 
   renderField({ input, renderOptions, choices }) {
     return (
-      <StyledSelect {...input}>
+      <StyledSelect {...input} onBlur="">
         <option value="" />
         {renderOptions(choices)}
       </StyledSelect>

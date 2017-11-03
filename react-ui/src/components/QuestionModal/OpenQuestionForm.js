@@ -19,7 +19,7 @@ const Input = styled.input`
   box-shadow: 0 0 8px 0 rgba(85, 182, 255, 0.6);
   border: solid 2px #55b6ff;
   font-family: 'Open Sans';
-  font-size: 30px;
+  font-size: 16px;
   text-align: center;
   color: #454545;
   -webkit-appearance: none;

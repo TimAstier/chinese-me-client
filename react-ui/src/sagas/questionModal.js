@@ -25,22 +25,27 @@ export function* shouldAskQuestion(setting) {
 ** 2. userData sagas (askUserSettings)
 */
 export function* askQuestion(setting) {
-  console.log('Ask user setting: ', setting)
   yield put(questionActions.setSetting(setting));
   yield put(uiActions.openQuestionModal());
   const action = yield take(sagaTypes.QUESTION_ANSWERED);
   yield call(sendQuestionAnswer, [setting, action.payload.answer]);
 }
 
+// TODO: Clean this
+// A little bit messy because closedQuestions are not built with redux form.
 function* sendQuestionAnswer(params) {
   const setting = settingsConstants[params[0]].name;
   let value = undefined;
+  let resolve;
+  let reject;
   if (typeof params[1] === 'string') {
     // Raw data
     value = params[1] === 'A' ? true : false; // closedQuestion answer
   } else {
     // Data from registered redux-form
     value = params[1].values.get('value');
+    resolve = params[1].resolve;
+    reject = params[1].reject;
   }
   yield put(uiActions.closeQuestionModal());
   try {
@@ -50,7 +55,9 @@ function* sendQuestionAnswer(params) {
       { setting, value }
     );
     yield put(settingsActions.set(savedSettings.data));
+    if (resolve) { yield call(resolve); }
   } catch (error) {
+    if (reject) { yield call(reject, error.response.data.errors[0].message); }
     // TODO: handle errors
   }
 }

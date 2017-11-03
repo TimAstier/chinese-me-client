@@ -2,7 +2,7 @@ import { select, take, call } from 'redux-saga/effects';
 import selectors from '../rootSelectors';
 import { types as appTypes } from '../redux/app';
 import trim from 'lodash/trim';
-import { askQuestion } from './questionModal';
+import { shouldAskQuestion, askQuestion } from './questionModal';
 
 function* ensureAppInitialized() {
   const appInitialized = yield select(selectors.app.getInitialized);
@@ -13,12 +13,14 @@ function* ensureAppInitialized() {
 
 export function* askUserSettings() {
   yield call(ensureAppInitialized);
-  const requiredUserData = yield select(selectors.getRequiredUserData);
+  let requiredUserData = yield select(selectors.getRequiredUserData);
   if (requiredUserData) {
+    requiredUserData = requiredUserData.map(e => trim(e));
     for (const setting of requiredUserData) {
-      console.log(setting)
-      // TODO: do not ask if already exist (reuse existing saga)
-      yield call(askQuestion, trim(setting));
+      const ask = yield call(shouldAskQuestion, setting);
+      if (ask) {
+        yield call(askQuestion, setting);
+      }
     }
   }
 }

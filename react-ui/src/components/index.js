@@ -46,7 +46,7 @@ export { default as PlayAudioButton } from './PlayAudioButton/PlayAudioButton';
 export { default as Progressbar } from './Progressbar/Progressbar';
 export { default as QuestionModal } from './QuestionModal/QuestionModal';
 export { default as ClosedQuestion } from './QuestionModal/ClosedQuestion';
-export { default as OpenQuestion } from './QuestionModal/OpenQuestion';
+export { default as Question } from './QuestionModal/Question';
 export { default as Review } from './Review/Review';
 export { default as ScreenButton } from './ScreenButton/ScreenButton';
 export { default as ScreenWrapper } from './ScreenWrapper/ScreenWrapper';

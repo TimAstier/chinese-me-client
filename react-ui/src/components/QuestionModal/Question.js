@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
 import OpenQuestionForm from './OpenQuestionForm';
+import SelectQuestionForm from './SelectQuestionForm';
 
 const Wrapper = styled.div`
   height: 230px;
@@ -20,21 +21,33 @@ const QuestionWrapper = styled.div`
   margin-bottom: 20px;
 `;
 
-class OpenQuestion extends Component {
+class Question extends Component {
 
   render() {
     return (
       <Wrapper>
         <QuestionWrapper>{ this.props.label }</QuestionWrapper>
-        <OpenQuestionForm onSubmit={this.props.onSubmit}/>
+        { this.props.choices ?
+          <SelectQuestionForm
+            onSubmit={ this.props.onSubmit }
+            choices={ this.props.choices }
+          />
+          : <OpenQuestionForm onSubmit={ this.props.onSubmit } />
+        }
       </Wrapper>
     );
   }
 }
 
-OpenQuestion.propTypes = {
+Question.propTypes = {
   label: propTypes.string.isRequired,
+  choices: propTypes.arrayOf(
+    propTypes.shape({
+      value: propTypes.string,
+      label: propTypes.string
+    })
+  ),
   onSubmit: propTypes.func.isRequired
 };
 
-export default OpenQuestion;
+export default Question;

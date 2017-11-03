@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 import { Question as QuestionComponent } from '../../components';
-import { default as openQuestionConstants } from '../../constants/openQuestion';
+import { default as selectQuestionConstants } from '../../constants/selectQuestion';
 import { actions as sagaActions } from '../../sagas/actions';
 
-class OpenQuestion extends Component {
+class SelectQuestion extends Component {
 
   onSubmit(values) {
     return new Promise((resolve, reject) => {
@@ -14,16 +14,18 @@ class OpenQuestion extends Component {
   }
 
   render() {
+    const { label, choices } = selectQuestionConstants[this.props.setting];
     return (
       <QuestionComponent
-        label={openQuestionConstants[this.props.setting].label}
+        label={label}
+        choices={choices}
         onSubmit={this.onSubmit.bind(this)}
       />
     );
   }
 }
 
-OpenQuestion.propTypes = {
+SelectQuestion.propTypes = {
   setting: propTypes.string.isRequired,
   questionAnswered: propTypes.func.isRequired
 };
@@ -33,4 +35,4 @@ export default connect(
   {
     questionAnswered: sagaActions.questionAnswered
   }
-)(OpenQuestion);
+)(SelectQuestion);

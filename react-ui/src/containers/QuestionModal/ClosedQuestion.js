@@ -12,12 +12,14 @@ class ClosedQuestion extends Component {
   }
 
   render() {
+    const { label, choiceA, choiceB } =
+      closedQuestionConstants[this.props.setting];
     return (
       <ClosedQuestionComponent
         onClick={this.handleClick.bind(this)}
-        label={closedQuestionConstants[this.props.setting].label}
-        choiceA={closedQuestionConstants[this.props.setting].choiceA}
-        choiceB={closedQuestionConstants[this.props.setting].choiceB}
+        label={label}
+        choiceA={choiceA}
+        choiceB={choiceB}
       />
     );
   }

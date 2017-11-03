@@ -13,7 +13,7 @@ const settings = {
   },
   NATIONALITY: {
     name: 'nationality',
-    questionType: 'openQuestion'
+    questionType: 'selectQuestion'
   }
 };
 

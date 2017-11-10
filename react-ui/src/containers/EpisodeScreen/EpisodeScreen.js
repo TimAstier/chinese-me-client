@@ -23,8 +23,6 @@ class EpisodeScreen extends Component {
   componentDidUpdate(prevProps) {
     // Rerun study saga when the URL changes
     if (this.props.url !== prevProps.url) {
-      console.log('RUN IT')
-      console.log('this.props.url: ', this.props.url)
       this.props.runEpisodeScreen(this.props.url);
     }
   }
@@ -48,7 +46,6 @@ class EpisodeScreen extends Component {
 
 EpisodeScreen.propTypes = {
   next: propTypes.bool,
-  skip: propTypes.bool,
   children: propTypes.node.isRequired,
   exit: propTypes.func.isRequired,
   playAudio: propTypes.bool,
@@ -67,7 +64,6 @@ EpisodeScreen.propTypes = {
 const mapStateToProps = state => {
   return {
     next: s.ui.getNextButton(state),
-    skip: s.ui.getSkipButton(state),
     playAudio: s.ui.getPlayAudioButton(state),
     pause: s.ui.getPauseButton(state),
     hanziAgain: s.ui.getHanziAgainButton(state),

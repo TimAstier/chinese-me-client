@@ -66,8 +66,8 @@ export function* runStudySaga(url) {
       }
     }
     if (elementTypesToTrack.indexOf(elementType) !== -1) { // Save progression on the server
-      if (result.skip || result.next) {
-        const completedCode = result.skip ? 1 : 2;
+      if (result.next) {
+        const completedCode = 1;
         yield call(Api.post, `/${elementType}/${elementId}/completed`, { completedCode, mode });
       }
     }
@@ -80,13 +80,11 @@ function* runScreenSaga(run) {
     return yield race({
       runScreen: call(run),
       next: take(sagaTypes.NEXT),
-      skip: take(sagaTypes.SKIP),
       exit: take(sagaTypes.EXIT)
     });
   }
   return yield race({
     next: take(sagaTypes.NEXT),
-    skip: take(sagaTypes.SKIP),
     exit: take(sagaTypes.EXIT)
   });
 }

@@ -26,7 +26,6 @@ export { default as Footer } from './Footer/Footer';
 export { default as Hanzi } from './Hanzi/Hanzi';
 export { default as HanziAgainButton } from './HanziAgainButton/HanziAgainButton';
 export { default as HintModal } from './CharacterPinyin/HintModal';
-export { default as Introduction } from './Introduction/Introduction';
 export { default as LoginForm } from './Login/Form';
 export { default as LoginPage } from './Login/Page';
 export { default as MapContent } from './MapModal/MapContent';

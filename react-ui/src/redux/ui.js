@@ -23,7 +23,6 @@ export const types = {
 
 export const INITIAL_STATE = Map({
   nextButton: false,
-  skipButton: true,
   openHintModal: false,
   playAudioButton: false,
   pauseButton: false,
@@ -66,7 +65,6 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
       return state.set('openWordModal', false);
     case types.SET_DEFAULT_EPISODE_SCREEN_UI:
       return state.merge({
-        skipButton: true,
         nextButton: false,
         playAudioButton: false,
         pauseButton: false,
@@ -121,7 +119,6 @@ export const actions = {
 // Selectors
 
 const getNextButton = state => state.get('nextButton');
-const getSkipButton = state => state.get('skipButton');
 const getOpenHintModal = state => state.get('openHintModal');
 const getPlayAudioButton = state => state.get('playAudioButton');
 const getPauseButton = state => state.get('pauseButton');
@@ -134,7 +131,6 @@ const getHanziAgainButton = state => state.get('hanziAgainButton');
 
 export const selectors = {
   getNextButton,
-  getSkipButton,
   getOpenHintModal,
   getPlayAudioButton,
   getPauseButton,

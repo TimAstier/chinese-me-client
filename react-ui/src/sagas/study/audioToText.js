@@ -30,7 +30,6 @@ export function checkData() {
 }
 
 export function* initStudyData() {
-  yield put(uiActions.set('skipButton', false));
   yield put(uiActions.set('playAudioButton', true));
 }
 
@@ -102,6 +101,4 @@ export function* run(mode = 'free') {
   return yield take(sagaTypes.NEXT);
 }
 
-export function* clean() {
-  console.log('clean!')
-}
+// export function* clean() {}

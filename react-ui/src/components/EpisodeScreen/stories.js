@@ -7,7 +7,6 @@ import { Provider, PlaceholderFixedWidth, PlaceholderFullWidth }
 
 // EpisodeScreen.propTypes = {
 //   next: propTypes.bool,
-//   skip: propTypes.bool,
 //   playAudio: propTypes.bool,
 //   children: propTypes.object,
 //   exit: propTypes.func.isRequired
@@ -28,19 +27,6 @@ storiesOf('EpisodeScreen', module)
   .add('next', () =>
     <EpisodeScreen
       {...mockProps}
-      next
-    />
-  )
-  .add('skip', () =>
-    <EpisodeScreen
-      {...mockProps}
-      skip
-    />
-  )
-  .add('skip & next', () =>
-    <EpisodeScreen
-      {...mockProps}
-      skip
       next
     />
   )

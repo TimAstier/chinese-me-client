@@ -9,7 +9,6 @@ import { EventTypes } from 'redux-segment';
 
 export const types = {
   NEXT: 'signal/NEXT',
-  SKIP: 'signal/SKIP',
   NEXT_SENTENCE: 'signal/NEXT_SENTENCE',
   SWITCH_SENTENCE: 'signal/SWITCH_SENTENCE',
   NEXT_STATEMENT: 'signal/NEXT_STATEMENT',
@@ -60,7 +59,6 @@ export const types = {
 // Action Creators
 
 const next = () => ({ type: types.NEXT });
-const skip = () => ({ type: types.SKIP });
 const nextSentence = () => ({ type: types.NEXT_SENTENCE });
 const switchSentence = id => ({
   type: types.SWITCH_SENTENCE,
@@ -231,7 +229,6 @@ const setEpisodeData = episodeId => ({
 
 export const actions = {
   next,
-  skip,
   nextSentence,
   switchSentence,
   nextStatement,

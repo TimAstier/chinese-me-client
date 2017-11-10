@@ -48,9 +48,7 @@ export function checkData() {
   return true;
 }
 
-export function* initUi() {
-  yield put(uiActions.set('skipButton', false));
-}
+export function* initUi() {}
 
 export function* initStudyData() {
   yield put(examActions.setInitialized(false));
@@ -59,7 +57,6 @@ export function* initStudyData() {
 }
 
 function* defaultExamUi() {
-  yield put(uiActions.set('skipButton', false));
   yield put(uiActions.set('nextButton', false));
   yield put(uiActions.closeHintModal());
   yield put(uiActions.set('playAudioButton', false));

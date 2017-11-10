@@ -1,4 +1,3 @@
-import * as fromTitle from '../sagas/study/title';
 import * as fromCharacterEtymology from '../sagas/study/characterEtymology';
 import * as fromCharacterPinyin from '../sagas/study/characterPinyin';
 import * as fromCharacterStroke from '../sagas/study/characterStroke';
@@ -20,7 +19,6 @@ import * as fromVideo from '../sagas/study/video';
 
 export default function mapScreenTypeToModule(screenType) {
   switch (screenType) {
-    case 'title/': return fromTitle;
     case 'character/etymology': return fromCharacterEtymology;
     case 'character/stroke': return fromCharacterStroke;
     case 'characterStrokeQuiz/':

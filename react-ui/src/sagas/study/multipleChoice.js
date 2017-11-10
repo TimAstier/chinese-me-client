@@ -27,9 +27,7 @@ export function* initStudyData() {
   yield put(multipleChoiceActions.init());
 }
 
-export function* initUi() {
-  yield put(uiActions.set('skipButton', false));
-}
+export function* initUi() {}
 
 export function* run(mode = 'free') {
   const multipleChoice = yield select(selectors.getCurrentMultipleChoice);

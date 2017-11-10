@@ -90,7 +90,7 @@ class EpisodeScreen extends Component {
   }
 
   render() {
-    const { next, skip } = this.props;
+    const { next } = this.props;
     return (
       <ScreenWrapper>
         <TopWrapper>
@@ -108,14 +108,7 @@ class EpisodeScreen extends Component {
           {this.props.children}
         </MiddleWrapper>
         <BottomWrapper>
-          <BottomLeftWrapper>
-            {skip &&
-              <ScreenButton
-                text="Skip"
-                action="skip"
-              />
-            }
-          </BottomLeftWrapper>
+          <BottomLeftWrapper />
           <BottomMiddleWrapper>
             {this.renderBottomMiddleWrapper()}
           </BottomMiddleWrapper>
@@ -137,7 +130,6 @@ class EpisodeScreen extends Component {
 EpisodeScreen.propTypes = {
   elementType: propTypes.string,
   next: propTypes.bool,
-  skip: propTypes.bool,
   playAudio: propTypes.bool,
   hanziAgain: propTypes.bool,
   pause: propTypes.bool,

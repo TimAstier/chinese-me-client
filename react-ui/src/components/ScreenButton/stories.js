@@ -8,9 +8,8 @@ import { Provider } from '../../utils/testComponents';
 //   text: propTypes.string.isRequired,
 //   primary: propTypes.bool,
 //   disabled: propTypes.bool,
-//   action: propTypes.oneOf(['next', 'skip', 'closeModal', 'checkAnswer']),
+//   action: propTypes.oneOf(['next', 'closeModal', 'checkAnswer']),
 //   next: propTypes.func.isRequired,
-//   skip: propTypes.func.isRequired,
 //   handleCloseModal: propTypes.func.isRequired,
 //   checkAnswer: propTypes.func.isRequired,
 //   onClick: propTypes.func
@@ -28,7 +27,7 @@ storiesOf('ScreenButton', module)
   .add('secondary', () =>
     <ScreenButton
       text="Skip"
-      action="skip"
+      action="next"
     />
   )
   .add('action: "next"', () =>

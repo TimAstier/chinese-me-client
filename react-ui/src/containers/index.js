@@ -42,7 +42,6 @@ export { default as SignupPage } from './Signup/Page';
 export { default as SignupActivate } from './Signup/Activate';
 export { default as Statement } from './Statement/Statement';
 export { default as Study } from './Study/Study';
-export { default as Title } from './Title/Title';
 export { default as Video } from './Video/Video';
 export { default as VideoPlayer } from './VideoPlayer/VideoPlayer';
 export { default as WordBox } from './WordBox/WordBox';

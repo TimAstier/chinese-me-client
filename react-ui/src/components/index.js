@@ -57,7 +57,6 @@ export { default as Star } from './Star/Star';
 export { default as Statement } from './Statement/Statement';
 export { default as StatementWrapper } from './Dialog/StatementWrapper';
 export { default as StudyVideo } from './StudyVideo/StudyVideo';
-export { default as Title } from './Title/Title';
 export { default as TransparentInput } from './TransparentInput/TransparentInput';
 export { default as VideoPlayer } from './VideoPlayer/VideoPlayer';
 export { default as WordBox } from './WordBox/WordBox';

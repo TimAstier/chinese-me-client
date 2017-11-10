@@ -40,7 +40,6 @@ function loadStories() {
   require('../src/components/Star/stories');
   require('../src/components/Statement/stories');
   require('../src/components/StudyVideo/stories');
-  require('../src/components/Title/stories');
   require('../src/components/TransparentInput/stories');
   require('../src/components/VideoPlayer/stories');
   require('../src/components/WordBox/stories');

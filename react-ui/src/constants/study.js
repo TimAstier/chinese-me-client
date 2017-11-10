@@ -4,6 +4,7 @@ export const elementTypes = [
   'grammar',
   'multipleChoice',
   'audioToText',
+  'video',
   'title',
   'review',
   'exam'

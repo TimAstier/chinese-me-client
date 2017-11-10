@@ -32,7 +32,7 @@ export default (
     <Route path="login" component={containers.LoginPage} />
     <Route path="study" component={requireAuth(containers.Study)}>
       <IndexRoute component={containers.SelectEpisode} />
-      <Route path=":episodeId" component={containers.EpisodeScreen}>
+      <Route path=":episodeId" component={containers.EpisodeHOC}>
         <Route path="title/:partNumber" component={containers.Title} />
         <Route path="character/:characterId/pinyin" component={containers.CharacterPinyin} />
         <Route path="character/:characterId/stroke" component={containers.CharacterStroke} />
@@ -43,6 +43,8 @@ export default (
         <Route path="dialog/:dialogId/listen" component={containers.Dialog} />
         <Route path="dialog/:dialogId/explore" component={containers.Dialog} />
         <Route path="dialog/:dialogId/roleplay" component={containers.Dialog} />
+        <Route path="audioToText/:audioToTextId" component={containers.AudioToText} />
+        <Route path="video/:videoId" component={containers.Video} />
         <Route path="review" component={containers.Review}/>
         <Route path="exam" component={containers.Exam} />
         <Route path="result" component={containers.ExamResult} />

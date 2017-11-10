@@ -23,6 +23,7 @@ export { default as getCurrentSentenceWithValues } from './getCurrentSentenceWit
 export { default as getCurrentStatement } from './getCurrentStatement';
 export { default as getCurrentStatementIndex } from './getCurrentStatementIndex';
 export { default as getCurrentStatementLength } from './getCurrentStatementLength';
+export { default as getCurrentVideo } from './getCurrentVideo';
 export { default as getCurrentWord } from './getCurrentWord';
 export { default as getCurrentWords } from './getCurrentWords';
 export { default as getDialogCompletion } from './getDialogCompletion';

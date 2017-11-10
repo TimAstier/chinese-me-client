@@ -11,4 +11,5 @@ export { default as MultipleChoice } from './MultipleChoice';
 export { default as Season } from './Season';
 export { default as Sentence } from './Sentence';
 export { default as Statement } from './Statement';
+export { default as Video } from './Video';
 export { default as Word } from './Word';

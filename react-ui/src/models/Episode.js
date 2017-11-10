@@ -14,7 +14,8 @@ const EpisodeRecord = Immutable.Record({
   characters: [],
   grammars: [],
   multipleChoices: [],
-  audioToTexts: []
+  audioToTexts: [],
+  videos: []
 });
 
 class Episode extends EpisodeRecord {}

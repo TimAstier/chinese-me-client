@@ -111,7 +111,9 @@ export function* run() {
   });
 }
 
-export function* clean() {
-  yield put(timerActions.stop());
-  yield put(examActions.clean());
+export function* clean(isCancelled) {
+  if (isCancelled) {
+    yield put(timerActions.stop());
+    yield put(examActions.clean());
+  }
 }

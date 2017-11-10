@@ -11,29 +11,29 @@ import { Episode } from '../../models';
 class EpisodeScreen extends Component {
 
   componentDidMount() {
-    return this.props.runEpisodeScreen(this.props.location.pathname);
+    this.props.runEpisodeScreen(this.props.url);
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.episode && this.props.episode !== nextProps.episode) {
-      return this.props.setCurrentSeasonId(nextProps.episode.seasonId);
+      this.props.setCurrentSeasonId(nextProps.episode.seasonId);
     }
-    return null;
   }
 
   componentDidUpdate(prevProps) {
     // Rerun study saga when the URL changes
-    if (this.props.location.pathname !== prevProps.location.pathname) {
-      return this.props.runEpisodeScreen(this.props.location.pathname);
+    if (this.props.url !== prevProps.url) {
+      console.log('RUN IT')
+      console.log('this.props.url: ', this.props.url)
+      this.props.runEpisodeScreen(this.props.url);
     }
-    return null;
   }
 
   componentWillUnmount() {
     // dispatch a signal to
     // 1: operate some cleanup in the store
     // 2: cancel study sagas
-    return this.props.unmountEpisodeScreen();
+    this.props.unmountEpisodeScreen();
   }
 
   render() {
@@ -49,14 +49,14 @@ class EpisodeScreen extends Component {
 EpisodeScreen.propTypes = {
   next: propTypes.bool,
   skip: propTypes.bool,
-  children: propTypes.object,
+  children: propTypes.node.isRequired,
   exit: propTypes.func.isRequired,
   playAudio: propTypes.bool,
   runEpisodeScreen: propTypes.func.isRequired,
   initialized: propTypes.bool.isRequired,
-  location: propTypes.object.isRequired,
+  url: propTypes.string.isRequired,
   unmountEpisodeScreen: propTypes.func.isRequired,
-  episode: propTypes.instanceOf(Episode),
+  episode: propTypes.instanceOf(Episode).isRequired,
   setCurrentSeasonId: propTypes.func.isRequired,
   elementType: propTypes.string.isRequired,
   pause: propTypes.bool,
@@ -73,7 +73,6 @@ const mapStateToProps = state => {
     hanziAgain: s.ui.getHanziAgainButton(state),
     initialized: s.study.getInitialized(state),
     episode: s.getCurrentEpisode(state),
-    currentUrl: s.routing.getCurrentUrl(state),
     elementType: s.routing.getElementType(state),
     appInitialized: s.app.getInitialized(state)
   };

@@ -32,7 +32,7 @@ export function* initStudyData() {
 
 export function* run() {
   yield put(sagaActions.playSentence());
-  yield take(sagaTypes.NEXT_SCREEN);
+  yield take(sagaTypes.NEXT);
 }
 
 // export function* clean() {}

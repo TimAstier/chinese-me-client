@@ -13,6 +13,7 @@ export const types = {
   SET_CURRENT_SENTENCE_ID: 'study/SET_CURRENT_SENTENCE_ID',
   SET_CURRENT_MULTIPLE_CHOICE_ID: 'study/SET_CURRENT_MULTIPLE_CHOICE_ID',
   SET_CURRENT_AUDIO_TO_TEXT_ID: 'study/SET_CURRENT_AUDIO_TO_TEXT_ID',
+  SET_CURRENT_VIDEO_ID: 'study/SET_CURRENT_VIDEO_ID',
   SET_DIALOG_MODE: 'study/SET_DIALOG_MODE',
   SET_PART_NUMBER: 'study/SET_PART_NUMBER',
   SET_CHOSEN_AVATAR_ID: 'study/CHOSEN_AVATAR_ID',
@@ -35,6 +36,7 @@ export const INITIAL_STATE = Immutable.Map({
   currentMultipleChoiceId: null,
   currentAudioToTextId: null,
   currentWordId: null,
+  currentVideoId: null,
   dialogMode: '',
   partNumber: null,
   chosenAvatarId: null,
@@ -72,13 +74,16 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
       return state.set('chosenAvatarId', action.payload.id);
     case types.SET_CURRENT_CHARACTER_ID:
       return state.set('currentCharacterId', action.payload.id);
+    case types.SET_CURRENT_VIDEO_ID:
+      return state.set('currentVideoId', action.payload.id);
     case types.SET_INITIALIZED:
       return state.set('initialized', action.payload);
     case types.SET_PAUSED:
       return state.set('paused', action.payload);
     case sagaTypes.PAUSE:
       return state.set('paused', !state.get('paused'));
-    default: return state;
+    default:
+      return state;
   }
 }
 
@@ -147,6 +152,13 @@ const setCurrentWordId = id => {
   };
 };
 
+const setCurrentVideoId = id => {
+  return {
+    type: types.SET_CURRENT_VIDEO_ID,
+    payload: { id }
+  };
+};
+
 const setDialogMode = mode => {
   const modes = ['listen', 'explore', 'roleplay', 'choserole'];
   if (modes.findIndex(e => e === mode) === -1) {
@@ -198,7 +210,8 @@ export const actions = {
   setChosenAvatarId,
   setCurrentCharacterId,
   setInitialized,
-  setPaused
+  setPaused,
+  setCurrentVideoId
 };
 
 // Selectors
@@ -218,6 +231,7 @@ const getChosenAvatarId = state => state.get('chosenAvatarId');
 const getCurrentCharacterId = state => state.get('currentCharacterId');
 const getInitialized = state => state.get('initialized');
 const getPaused = state => state.get('paused');
+const getCurrentVideoId = state => state.get('currentVideoId');
 
 export const selectors = {
   getCurrentSeasonId,
@@ -234,5 +248,6 @@ export const selectors = {
   getChosenAvatarId,
   getCurrentCharacterId,
   getInitialized,
-  getPaused
+  getPaused,
+  getCurrentVideoId
 };

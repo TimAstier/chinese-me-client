@@ -2,7 +2,6 @@
 import { put, call, race, take, takeLatest, cancelled, select } from 'redux-saga/effects';
 import { actions as studyActions } from '../redux/study';
 import { actions as uiActions } from '../redux/ui';
-import { actions as mapActions } from '../redux/map';
 import { elementTypes, elementTypesToTrack } from '../constants/study';
 import { actions as sagaActions, types as sagaTypes } from './actions';
 import getStudyFunctions from '../helpers/getStudyFunctions';
@@ -49,16 +48,14 @@ function* checkUserPreference(screenType, shouldUrlBeSkipped) {
   }
 }
 
-function* runEpisodeScreen(action) {
+export function* runStudySaga(url) {
   // IMPORTANT: start by hiding screen content
   let shouldUrlBeSkipped = false;
   let isDataLoaded = undefined;
   yield put(studyActions.setInitialized(false)); // Hide screen content
   yield call(loadSettings);
   const { episodeId, elementType, elementId, mode }
-    = getParamsFromUrl(action.payload.url); // Get params from url
-  yield put(studyActions.setCurrentEpisodeId(episodeId)); // Set currentEpisodeId
-  yield put(mapActions.setFocusedEpisodeId(episodeId)); // Set focusedEpisodeId
+    = getParamsFromUrl(url); // Get params from url
   yield call(askUserSettings); // Ask user data if needed
   const screenType = elementType + '/' + mode; // Define screenType
   yield call(checkUserPreference, screenType, shouldUrlBeSkipped);
@@ -82,10 +79,9 @@ function* runEpisodeScreen(action) {
     try {
       result = yield call(runScreenSaga, funcs.run); // Run Saga(s) for the screen
     } finally {
-      if (yield cancelled()) {
-        if (funcs.clean) {
-          yield call(funcs.clean);
-        }
+      if (funcs.clean) {
+        const isCancelled = yield cancelled();
+        yield call(funcs.clean, isCancelled);
       }
     }
     if (elementTypesToTrack.indexOf(elementType) !== -1) { // Save progression on the server
@@ -97,7 +93,7 @@ function* runEpisodeScreen(action) {
   } else {
     shouldUrlBeSkipped = true;
   }
-  return yield put(sagaActions.nextScreen(shouldUrlBeSkipped)); // Go to next screen
+  yield put(sagaActions.nextScreen(shouldUrlBeSkipped)); // Go to next screen
 }
 
 function* runScreenSaga(run) {
@@ -117,14 +113,18 @@ function* runScreenSaga(run) {
 }
 
 // This allows to end initScreen (when leaving episodeScreen for example)
-export function* finishOrExit(action) {
+export function* finishOrExit(url) {
   return yield race({
-    runEpisodeScreen: call(runEpisodeScreen, action),
+    runStudySaga: call(runStudySaga, url),
     unmount: take(sagaTypes.UNMOUNT_EPISODE_SCREEN),
     exit: take(sagaTypes.EXIT)
   });
 }
 
+function* runEpisodeScreen(action) {
+  yield call(finishOrExit, action.payload.url);
+}
+
 export default function* watchStudySagas() {
-  yield takeLatest(sagaTypes.RUN_EPISODE_SCREEN, finishOrExit);
+  yield takeLatest(sagaTypes.RUN_EPISODE_SCREEN, runEpisodeScreen);
 }

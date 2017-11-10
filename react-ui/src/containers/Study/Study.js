@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { FeedbackModal, Navbar, MapModal, QuestionModal } from '../.';
 import { actions as sagaActions } from '../../sagas/actions';
+import s from '../../rootSelectors';
 
 const Wrapper = styled.div`
   height: 100%;
@@ -15,7 +16,7 @@ const Wrapper = styled.div`
 `;
 
 class Study extends Component {
-  componentDidMount() {
+  componentWillMount() {
     return this.props.initApp();
   }
 
@@ -26,7 +27,7 @@ class Study extends Component {
         <MapModal />
         <QuestionModal />
         <Navbar />
-        {this.props.children}
+        {this.props.initialized && this.props.children}
       </Wrapper>
     );
   }
@@ -34,11 +35,16 @@ class Study extends Component {
 
 Study.propTypes = {
   children: propTypes.object,
-  initApp: propTypes.func.isRequired
+  initApp: propTypes.func.isRequired,
+  initialized: propTypes.bool.isRequired,
 };
 
+const mapStateToProps = state => ({
+  initialized: s.app.getInitialized(state)
+});
+
 export default connect(
-  null,
+  mapStateToProps,
   {
     initApp: sagaActions.initApp
   }

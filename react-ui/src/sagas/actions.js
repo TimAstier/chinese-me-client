@@ -11,7 +11,6 @@ export const types = {
   NEXT: 'signal/NEXT',
   SKIP: 'signal/SKIP',
   NEXT_SENTENCE: 'signal/NEXT_SENTENCE',
-  // PREVIOUS_SENTENCE: 'signal/PREVIOUS_SENTENCE',
   SWITCH_SENTENCE: 'signal/SWITCH_SENTENCE',
   NEXT_STATEMENT: 'signal/NEXT_STATEMENT',
   PREVIOUS_STATEMENT: 'signal/PREVIOUS_STATEMENT',
@@ -54,7 +53,8 @@ export const types = {
   NEXT_QUESTION: 'signal/NEXT_QUESTION',
   EXERCISE_COMPLETED: 'signal/EXERCISE_COMPLETED',
   QUESTION_ANSWERED: 'signal/QUESTION_ANSWERED',
-  NEW_WORD_LINK_CLICKED: 'signal/NEW_WORD_LINK_CLICKED'
+  NEW_WORD_LINK_CLICKED: 'signal/NEW_WORD_LINK_CLICKED',
+  SET_EPISODE_DATA: 'signal/SET_EPISODE_DATA'
 };
 
 // Action Creators
@@ -62,7 +62,6 @@ export const types = {
 const next = () => ({ type: types.NEXT });
 const skip = () => ({ type: types.SKIP });
 const nextSentence = () => ({ type: types.NEXT_SENTENCE });
-// const previousSentence = () => ({ type: types.PREVIOUS_SENTENCE });
 const switchSentence = id => ({
   type: types.SWITCH_SENTENCE,
   payload: { id }
@@ -225,11 +224,15 @@ const newWordLinkClicked = id => ({
   payload: {id}
 });
 
+const setEpisodeData = episodeId => ({
+  type: types.SET_EPISODE_DATA,
+  payload: { id: episodeId }
+});
+
 export const actions = {
   next,
   skip,
   nextSentence,
-  // previousSentence,
   switchSentence,
   nextStatement,
   previousStatement,
@@ -273,5 +276,6 @@ export const actions = {
   nextQuestion,
   exerciseCompleted,
   questionAnswered,
-  newWordLinkClicked
+  newWordLinkClicked,
+  setEpisodeData
 };

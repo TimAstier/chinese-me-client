@@ -70,6 +70,8 @@ export function* run() {
   }
 }
 
-export function* clean() {
-  yield put(reviewActions.clean());
+export function* clean(isCancelled) {
+  if (isCancelled) {
+    yield put(reviewActions.clean());
+  }
 }

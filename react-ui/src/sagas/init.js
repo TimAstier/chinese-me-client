@@ -4,6 +4,7 @@ import { actions as studyActions } from '../redux/study';
 import { fetchEntities } from './entities';
 import selectors from '../rootSelectors';
 import { actions as appActions } from '../redux/app';
+import getParamsFromUrl from '../utils/getParamsFromUrl';
 
 // This is called only one time, when Study containers mounts
 export function* initApp() {
@@ -13,6 +14,11 @@ export function* initApp() {
     yield call(fetchEntities, ['/episodes']);
     const firstSeasonId = yield select(selectors.getFirstSeasonId);
     yield put(studyActions.setCurrentSeasonId(firstSeasonId));
+    const url = yield select(selectors.routing.getCurrentUrl);
+    const { episodeId } = getParamsFromUrl(url);
+    if (episodeId) {
+      yield put(studyActions.setCurrentEpisodeId(episodeId));
+    }
     yield put(appActions.setInitialized(true));
   }
 }

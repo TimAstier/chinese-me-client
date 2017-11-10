@@ -70,8 +70,7 @@ export function* run(mode = 'free') {
           yield put(reviewActions.setInitialized(false));
           return yield put(reviewActions.correctAnswer());
         }
-        yield delay(1000);
-        yield put(sagaActions.next());
+        return yield delay(1000);
       } else {
         // Tracking
         yield put(sagaActions.exerciseCompleted({

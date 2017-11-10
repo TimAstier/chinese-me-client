@@ -1,4 +1,4 @@
-import { put, select, take } from 'redux-saga/effects';
+import { put, select, take, call } from 'redux-saga/effects';
 import { delay } from 'redux-saga';
 import selectors from '../../rootSelectors';
 import { actions as studyActions } from '../../redux/study';
@@ -6,6 +6,7 @@ import { actions as audioToTextActions } from '../../redux/audioToText';
 import { types as sagaTypes, actions as sagaActions } from '../actions';
 import { actions as uiActions } from '../../redux/ui';
 import { Map } from 'immutable';
+import { fetchEntities } from '../entities';
 import { actions as audioActions } from '../../redux/audio';
 import { actions as reviewActions } from '../../redux/review';
 
@@ -19,7 +20,10 @@ export function* isDataLoaded(id) {
   return (currentElement === undefined) ? false : true;
 }
 
-export function* fetchData() {}
+export function* fetchData(episodeId) {
+  return yield call(fetchEntities, ['/episode/' + episodeId + '/audioToTexts']);
+  // TODO: handle fetch error
+}
 
 export function checkData() {
   return true;
@@ -98,4 +102,6 @@ export function* run(mode = 'free') {
   return yield take(sagaTypes.NEXT);
 }
 
-// export function* clean() {}
+export function* clean() {
+  console.log('clean!')
+}

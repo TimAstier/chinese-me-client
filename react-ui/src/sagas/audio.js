@@ -26,7 +26,7 @@ export function *voiceText(text, muted = false) {
         'Chinese Female',
         {
           volume: muted ? 0 : 1,
-          rate: 0.8,
+          rate: 0.5,
           onend: () => emitter(END)
         }
       );

@@ -58,6 +58,8 @@ export function* run() {
   yield take(sagaTypes.NEXT);
 }
 
-export function* clean() {
-  yield put(examActions.clean());
+export function* clean(isCancelled) {
+  if (isCancelled) {
+    yield put(examActions.clean());
+  }
 }

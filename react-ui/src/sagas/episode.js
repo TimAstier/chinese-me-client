@@ -104,8 +104,13 @@ function* findNextUrl(params) {
 }
 
 function* startEpisode(action) {
-  yield put(mapActions.setFocusedEpisodeId(action.payload.id));
+  yield put(studyActions.setCurrentEpisodeId(String(action.payload.id)));
   return yield put(push('/study/' + action.payload.id + '/title/1'));
+}
+
+function* setEpisodeData(action) {
+  yield put(studyActions.setCurrentEpisodeId(action.payload.id));
+  yield put(mapActions.setFocusedEpisodeId(action.payload.id));
 }
 
 export default function* watchEpisodeSagas() {
@@ -114,6 +119,7 @@ export default function* watchEpisodeSagas() {
     takeEvery(sagaTypes.EXIT, exit),
     takeEvery(sagaTypes.UNMOUNT_EPISODE_SCREEN, unmount),
     takeEvery(sagaTypes.ASK_QUESTION, askQuestion),
-    takeEvery(sagaTypes.NEXT_SCREEN, nextScreen)
+    takeEvery(sagaTypes.NEXT_SCREEN, nextScreen),
+    takeEvery(sagaTypes.SET_EPISODE_DATA, setEpisodeData)
   ]);
 }

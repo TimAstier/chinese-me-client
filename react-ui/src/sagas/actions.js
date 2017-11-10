@@ -33,8 +33,6 @@ export const types = {
   MAP_LINK_CLICK: 'signal/MAP_LINK_CLICK',
   DIALOG_LINK_CLICK: 'signal/DIALOG_LINK_CLICK',
   VIDEO_ENDED: 'signal/VIDEO_ENDED',
-  ELEMENTS_NAV_PREVIOUS_CLICK: 'signal/ELEMENTS_NAV_PREVIOUS_CLICK',
-  ELEMENTS_NAV_NEXT_CLICK: 'signal/ELEMENTS_NAV_NEXT_CLICK',
   NEXT_SCREEN: 'signal/NEXT_SCREEN',
   REVIEW_COMPLETED: 'signal/REVIEW_COMPLETED',
   START_EPISODE: 'signal/START_EPISODE',
@@ -137,12 +135,6 @@ const videoEnded = src => ({
       }
     }
   }
-});
-const elementsNavPreviousClick = () => ({
-  type: types.ELEMENTS_NAV_PREVIOUS_CLICK
-});
-const elementsNavNextClick = () => ({
-  type: types.ELEMENTS_NAV_NEXT_CLICK
 });
 const nextScreen = shouldUrlBeSkipped => ({
   type: types.NEXT_SCREEN,
@@ -254,8 +246,6 @@ export const actions = {
   mapLinkClick,
   dialogLinkClick,
   videoEnded,
-  elementsNavPreviousClick,
-  elementsNavNextClick,
   nextScreen,
   reviewCompleted,
   startEpisode,

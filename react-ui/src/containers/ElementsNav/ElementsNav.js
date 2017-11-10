@@ -3,16 +3,16 @@ import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 import { ElementsNav as ElementsNavComponent } from '../../components';
 import s from '../../rootSelectors';
-import { actions as sagaActions } from '../../sagas/actions';
+// import { actions as sagaActions } from '../../sagas/actions';
 
 class ElementsNav extends Component {
 
   onPreviousClick() {
-    return () => this.props.elementsNavPreviousClick();
+    return () => console.log('previous element');
   }
 
   onNextClick() {
-    return () => this.props.elementsNavNextClick();
+    return () => console.log('next element');
   }
 
   render() {
@@ -29,9 +29,7 @@ class ElementsNav extends Component {
 
 ElementsNav.propTypes = {
   elementType: propTypes.string.isRequired,
-  elementsNavParams: propTypes.object,
-  elementsNavPreviousClick: propTypes.func.isRequired,
-  elementsNavNextClick: propTypes.func.isRequired,
+  elementsNavParams: propTypes.object
 };
 
 const mapStateToProps = state => ({
@@ -40,9 +38,5 @@ const mapStateToProps = state => ({
 });
 
 export default connect(
-  mapStateToProps,
-  {
-    elementsNavPreviousClick: sagaActions.elementsNavPreviousClick,
-    elementsNavNextClick: sagaActions.elementsNavNextClick
-  }
+  mapStateToProps
 )(ElementsNav);

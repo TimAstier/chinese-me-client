@@ -11,18 +11,12 @@ import { ElementsNav } from '../.';
 //   onNextClick: propTypes.func.isRequired
 // };
 
-const mockProps = {
-  onPreviousClick: () => {},
-  onNextClick: () => {}
-};
-
 storiesOf('ElementsNav', module)
   .add('1_of_2', () =>
     <ElementsNav
       type="grammar"
       currentElement={1}
       totalElements={2}
-      {...mockProps}
     />
   )
   .add('2_of_2', () =>
@@ -30,7 +24,6 @@ storiesOf('ElementsNav', module)
       type="grammar"
       currentElement={2}
       totalElements={2}
-      {...mockProps}
     />
   )
   .add('1_of_3', () =>
@@ -38,7 +31,6 @@ storiesOf('ElementsNav', module)
       type="character"
       currentElement={1}
       totalElements={3}
-      {...mockProps}
     />
   )
   .add('2_of_3', () =>
@@ -46,7 +38,6 @@ storiesOf('ElementsNav', module)
       type="character"
       currentElement={2}
       totalElements={3}
-      {...mockProps}
     />
   )
   .add('3_of_3', () =>
@@ -54,7 +45,6 @@ storiesOf('ElementsNav', module)
       type="character"
       currentElement={3}
       totalElements={3}
-      {...mockProps}
     />
   )
   .add('10_of_99', () =>
@@ -62,14 +52,12 @@ storiesOf('ElementsNav', module)
       type="character"
       currentElement={10}
       totalElements={99}
-      {...mockProps}
     />
   )
   .add('2 lefts', () =>
     <ElementsNav
       type="exercise"
       totalElements={2}
-      {...mockProps}
     />
   )
   .add('1 left', () =>
@@ -83,6 +71,5 @@ storiesOf('ElementsNav', module)
     <ElementsNav
       type="exercise"
       totalElements={0}
-      {...mockProps}
     />
   );

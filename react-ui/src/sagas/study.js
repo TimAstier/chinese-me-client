@@ -9,7 +9,6 @@ import getParamsFromUrl from '../utils/getParamsFromUrl';
 import Api from '../utils/api';
 import selectors from '../rootSelectors';
 import { actions as settingsActions } from '../redux/settings';
-import { askUserSettings } from './userData';
 
 // Every screenType has those five "studyFunctions" (generators):
 // 1. isDataLoaded
@@ -40,7 +39,6 @@ export function* runStudySaga(url) {
   yield call(loadSettings);
   const { episodeId, elementType, elementId, mode }
     = getParamsFromUrl(url); // Get params from url
-  yield call(askUserSettings); // Ask user data if needed
   const screenType = elementType + '/' + mode; // Define screenType
   const funcs = getStudyFunctions(screenType); // Get studyFunctions
   if (elementTypes.indexOf(elementType) !== -1) { // Check data

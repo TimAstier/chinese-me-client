@@ -8,7 +8,7 @@ const Wrapper = styled.div`
   height: 32px;
   background-color: #f7f7f7;
   display: flex;
-  cursor: pointer;
+  cursor: ${props => props.onClick ? 'pointer' : 'normal'};
 `;
 
 const CheckmarkWrapper = styled.div`
@@ -64,7 +64,7 @@ ChapterHeader.propTypes = {
   name: propTypes.string.isRequired,
   completedElements: propTypes.number,
   totalElements: propTypes.number,
-  onClick: propTypes.func.isRequired
+  onClick: propTypes.func
 };
 
 export default ChapterHeader;

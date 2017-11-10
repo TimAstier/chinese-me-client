@@ -67,9 +67,7 @@ class MapContent extends Component {
             key={i}
             char={c.simpChar}
             completed={c.userCharacters.length !== 0}
-            onClick={() => this.props.mapLinkClick(
-              '/study/' + this.props.episode.id + '/character/' + c.id + '/pinyin'
-            )}
+            onClick={() => console.log('click on character!')}
           />
         );
       });
@@ -86,9 +84,7 @@ class MapContent extends Component {
             key={i}
             title={d.chineseTitle}
             completed={d.userDialogs.length !== 0 ? true : undefined}
-            onClick={() => this.props.mapLinkClick(
-              '/study/' + this.props.episode.id + '/dialog/' + d.id + '/listen'
-            )}
+            onClick={() => console.log('click on dialog!')}
           />
         );
       });
@@ -105,9 +101,7 @@ class MapContent extends Component {
             key={i}
             title={g.translations[0].title}
             completed={g.userGrammars.length !== 0 ? true : undefined}
-            onClick={() => this.props.mapLinkClick(
-              '/study/' + this.props.episode.id + '/grammar/' + g.id + '/explanation'
-            )}
+            onClick={() => console.log('click on grammar!')}
           />
         );
       });
@@ -141,9 +135,6 @@ class MapContent extends Component {
               name="Characters"
               completedElements={mapCharactersCompletedCount}
               totalElements={episode.characters.length}
-              onClick={() => this.props.mapLinkClick(
-                '/study/' + this.props.episode.id + '/title/1'
-              )}
             />
           }
           {this.renderCharacterBoxes()}
@@ -152,9 +143,6 @@ class MapContent extends Component {
               name="Grammar"
               completedElements={mapGrammarsCompletedCount}
               totalElements={episode.grammars.length}
-              onClick={() => this.props.mapLinkClick(
-                '/study/' + this.props.episode.id + '/title/2'
-              )}
             />
           }
           {this.renderGrammarItems()}
@@ -163,9 +151,6 @@ class MapContent extends Component {
               name="Dialog"
               completedElements={mapDialogsCompletedCount}
               totalElements={episode.dialogs.length}
-              onClick={() => this.props.mapLinkClick(
-                '/study/' + this.props.episode.id + '/title/3'
-              )}
             />
           }
           {this.renderDialogItems()}

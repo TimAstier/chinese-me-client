@@ -10,8 +10,6 @@ export { default as getCurrentDialog } from './getCurrentDialog';
 export { default as getCurrentDialogPosition } from './getCurrentDialogPosition';
 export { default as getCurrentDialogStatementsCount } from './getCurrentDialogStatementsCount';
 export { default as getCurrentEpisode } from './getCurrentEpisode';
-export { default as getCurrentGrammar } from './getCurrentGrammar';
-export { default as getCurrentGrammarPosition } from './getCurrentGrammarPosition';
 export { default as getCurrentMultipleChoice } from './getCurrentMultipleChoice';
 export { default as getCurrentSeason } from './getCurrentSeason';
 export { default as getCurrentSeasonEpisodes } from './getCurrentSeasonEpisodes';

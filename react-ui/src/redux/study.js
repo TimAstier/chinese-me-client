@@ -7,7 +7,6 @@ export const types = {
   CLEAR: 'study/CLEAR',
   SET_CURRENT_SEASON_ID: 'study/SET_CURRENT_SEASON_ID',
   SET_CURRENT_EPISODE_ID: 'study/SET_CURRENT_EPISODE_ID',
-  SET_CURRENT_GRAMMAR_ID: 'study/SET_CURRENT_GRAMMAR_ID',
   SET_CURRENT_DIALOG_ID: 'study/SET_CURRENT_DIALOG_ID',
   SET_CURRENT_STATEMENT_ID: 'study/SET_CURRENT_STATEMENT_ID',
   SET_CURRENT_SENTENCE_ID: 'study/SET_CURRENT_SENTENCE_ID',
@@ -28,7 +27,6 @@ export const INITIAL_STATE = Immutable.Map({
   currentSeasonId: null,
   currentEpisodeId: null,
   currentCharacterId: null,
-  currentGrammarId: null,
   currentDialogId: null,
   currentStatementId: null,
   currentSentenceId: null,
@@ -53,8 +51,6 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
       return state.set('currentEpisodeId', action.payload.id);
     case types.SET_CURRENT_DIALOG_ID:
       return state.set('currentDialogId', action.payload.id);
-    case types.SET_CURRENT_GRAMMAR_ID:
-      return state.set('currentGrammarId', action.payload.id);
     case types.SET_CURRENT_STATEMENT_ID:
       return state.set('currentStatementId', action.payload.id);
     case types.SET_CURRENT_SENTENCE_ID:
@@ -103,13 +99,6 @@ const setCurrentEpisodeId = id => {
 const setCurrentDialogId = id => {
   return {
     type: types.SET_CURRENT_DIALOG_ID,
-    payload: { id }
-  };
-};
-
-const setCurrentGrammarId = id => {
-  return {
-    type: types.SET_CURRENT_GRAMMAR_ID,
     payload: { id }
   };
 };
@@ -191,7 +180,6 @@ export const actions = {
   setCurrentSeasonId,
   setCurrentEpisodeId,
   setCurrentDialogId,
-  setCurrentGrammarId,
   setCurrentStatementId,
   setCurrentSentenceId,
   setCurrentMultipleChoiceId,
@@ -210,7 +198,6 @@ export const actions = {
 const getCurrentSeasonId = state => state.get('currentSeasonId');
 const getCurrentEpisodeId = state => state.get('currentEpisodeId');
 const getCurrentDialogId = state => state.get('currentDialogId');
-const getCurrentGrammarId = state => state.get('currentGrammarId');
 const getCurrentStatementId = state => state.get('currentStatementId');
 const getCurrentSentenceId = state => state.get('currentSentenceId');
 const getCurrentMultipleChoiceId = state => state.get('currentMultipleChoiceId');
@@ -227,7 +214,6 @@ export const selectors = {
   getCurrentSeasonId,
   getCurrentEpisodeId,
   getCurrentDialogId,
-  getCurrentGrammarId,
   getCurrentStatementId,
   getCurrentSentenceId,
   getCurrentMultipleChoiceId,

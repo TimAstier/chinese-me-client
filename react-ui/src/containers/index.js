@@ -16,7 +16,6 @@ export { default as EpisodeScreen } from './EpisodeScreen/EpisodeScreen';
 export { default as Exam } from './Exam/Exam';
 export { default as ExamResult } from './ExamResult/ExamResult';
 export { default as FeedbackModal } from './FeedbackModal/FeedbackModal';
-export { default as GrammarExplanation } from './GrammarExplanation/GrammarExplanation';
 export { default as Hanzi } from './Hanzi/Hanzi';
 export { default as HanziAgainButton } from './HanziAgainButton/HanziAgainButton';
 export { default as HintModal } from './CharacterPinyin/HintModal';

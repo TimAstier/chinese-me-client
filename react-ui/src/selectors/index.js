@@ -1,6 +1,5 @@
 // Keep in alphabetical order
 export { default as getAugmentedSettings } from './getAugmentedSettings';
-export { default as getCharacterCompletion } from './getCharacterCompletion';
 export { default as getCharacterPinyinHints } from './getCharacterPinyinHints';
 export { default as getCharactersNavParams } from './getCharactersNavParams';
 export { default as getCurrentAudioToText } from './getCurrentAudioToText';
@@ -33,7 +32,6 @@ export { default as getExamNavParams } from './getExamNavParams';
 export { default as getFirstSeasonId } from './getFirstSeasonId';
 export { default as getFocusedEpisode } from './getFocusedEpisode';
 export { default as getFocusedSeasonNumber } from './getFocusedSeasonNumber';
-export { default as getGrammarCompletion } from './getGrammarCompletion';
 export { default as getGrammarsNavParams } from './getGrammarsNavParams';
 export { default as getIsChosenAvatarTalking } from './getIsChosenAvatarTalking';
 export { default as getMapCharactersCompletedCount } from './getMapCharactersCompletedCount';

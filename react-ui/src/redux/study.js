@@ -15,7 +15,6 @@ export const types = {
   SET_CURRENT_AUDIO_TO_TEXT_ID: 'study/SET_CURRENT_AUDIO_TO_TEXT_ID',
   SET_CURRENT_VIDEO_ID: 'study/SET_CURRENT_VIDEO_ID',
   SET_DIALOG_MODE: 'study/SET_DIALOG_MODE',
-  SET_PART_NUMBER: 'study/SET_PART_NUMBER',
   SET_CHOSEN_AVATAR_ID: 'study/CHOSEN_AVATAR_ID',
   SET_CURRENT_CHARACTER_ID: 'study/SET_CURRENT_CHARACTER_ID',
   INIT_SCREEN: 'study/INIT_SCREEN',
@@ -68,8 +67,6 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
       return state.set('currentWordId', action.payload.id);
     case types.SET_DIALOG_MODE:
       return state.set('dialogMode', action.payload.mode);
-    case types.SET_PART_NUMBER:
-      return state.set('partNumber', action.payload.partNumber);
     case types.SET_CHOSEN_AVATAR_ID:
       return state.set('chosenAvatarId', action.payload.id);
     case types.SET_CURRENT_CHARACTER_ID:
@@ -170,11 +167,6 @@ const setDialogMode = mode => {
   };
 };
 
-const setPartNumber = partNumber => ({
-  type: types.SET_PART_NUMBER,
-  payload: { partNumber }
-});
-
 const setChosenAvatarId = id => ({
   type: types.SET_CHOSEN_AVATAR_ID,
   payload: { id }
@@ -206,7 +198,6 @@ export const actions = {
   setCurrentAudioToTextId,
   setCurrentWordId,
   setDialogMode,
-  setPartNumber,
   setChosenAvatarId,
   setCurrentCharacterId,
   setInitialized,
@@ -226,7 +217,6 @@ const getCurrentMultipleChoiceId = state => state.get('currentMultipleChoiceId')
 const getCurrentAudioToTextId = state => state.get('currentAudioToTextId');
 const getCurrentWordId = state => state.get('currentWordId');
 const getDialogMode = state => state.get('dialogMode');
-const getPartNumber = state => state.get('partNumber');
 const getChosenAvatarId = state => state.get('chosenAvatarId');
 const getCurrentCharacterId = state => state.get('currentCharacterId');
 const getInitialized = state => state.get('initialized');
@@ -244,7 +234,6 @@ export const selectors = {
   getCurrentAudioToTextId,
   getCurrentWordId,
   getDialogMode,
-  getPartNumber,
   getChosenAvatarId,
   getCurrentCharacterId,
   getInitialized,

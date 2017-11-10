@@ -2,12 +2,11 @@
 import { put, call, race, take, takeLatest, cancelled, select } from 'redux-saga/effects';
 import { actions as studyActions } from '../redux/study';
 import { actions as uiActions } from '../redux/ui';
+import { types as sagaTypes } from './actions';
 import { elementTypes, elementTypesToTrack } from '../constants/study';
-import { actions as sagaActions, types as sagaTypes } from './actions';
 import getStudyFunctions from '../helpers/getStudyFunctions';
 import getParamsFromUrl from '../utils/getParamsFromUrl';
 import Api from '../utils/api';
-import screenTypeToUserSettings from '../utils/screenTypeToUserSettings';
 import selectors from '../rootSelectors';
 import { actions as settingsActions } from '../redux/settings';
 import { askUserSettings } from './userData';
@@ -34,23 +33,8 @@ function* loadSettings() {
   }
 }
 
-function* checkUserPreference(screenType, shouldUrlBeSkipped) {
-  // Skip screen if there is a related setting set to false
-  let skip = shouldUrlBeSkipped;
-  const setting = screenTypeToUserSettings(screenType);
-  if (screenType) {
-    const userSettings = yield select(selectors.settings.getSettings);
-    const userSetting = userSettings.get(setting);
-    if (userSetting === false) {
-      skip = true;
-      yield put(sagaActions.nextScreen(skip));
-    }
-  }
-}
-
 export function* runStudySaga(url) {
   // IMPORTANT: start by hiding screen content
-  let shouldUrlBeSkipped = false;
   let isDataLoaded = undefined;
   yield put(studyActions.setInitialized(false)); // Hide screen content
   yield call(loadSettings);
@@ -58,7 +42,6 @@ export function* runStudySaga(url) {
     = getParamsFromUrl(url); // Get params from url
   yield call(askUserSettings); // Ask user data if needed
   const screenType = elementType + '/' + mode; // Define screenType
-  yield call(checkUserPreference, screenType, shouldUrlBeSkipped);
   const funcs = getStudyFunctions(screenType); // Get studyFunctions
   if (elementTypes.indexOf(elementType) !== -1) { // Check data
     isDataLoaded = yield call(funcs.isDataLoaded, elementId);
@@ -90,10 +73,8 @@ export function* runStudySaga(url) {
         yield call(Api.post, `/${elementType}/${elementId}/completed`, { completedCode, mode });
       }
     }
-  } else {
-    shouldUrlBeSkipped = true;
   }
-  yield put(sagaActions.nextScreen(shouldUrlBeSkipped)); // Go to next screen
+  // TODO Send an END signal
 }
 
 function* runScreenSaga(run) {

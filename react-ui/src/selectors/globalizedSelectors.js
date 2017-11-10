@@ -8,6 +8,7 @@ import * as fromApp from '../redux/app';
 import * as fromAudio from '../redux/audio';
 import * as fromAudioToText from '../redux/audioToText';
 import * as fromAuth from '../redux/auth';
+import * as fromBook from '../redux/book';
 import * as fromCharacterPinyin from '../redux/characterPinyin';
 import * as fromEntities from '../redux/entities';
 import * as fromExam from '../redux/exam';
@@ -43,6 +44,11 @@ const audioToTextSelectors = bindSelectors(
 const authSelectors = bindSelectors(
   state => state.get('auth'),
   fromAuth.selectors
+);
+
+const bookSelectors = bindSelectors(
+  state => state.get('book'),
+  fromBook.selectors
 );
 
 const characterPinyinSelectors = bindSelectors(
@@ -120,6 +126,7 @@ const globalizedSelectors = {
   entities: entitiesSelectors,
   study: studySelectors,
   ui: uiSelectors,
+  book: bookSelectors,
   audio: audioSelectors,
   audioToText: audioToTextSelectors,
   characterPinyin: characterPinyinSelectors,

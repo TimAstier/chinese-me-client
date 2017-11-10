@@ -1,6 +1,7 @@
 // Keep in alphabetical order
 export { default as App } from './App/App';
 export { default as AudioToText } from './AudioToText/AudioToText';
+export { default as Book } from './Book/Book';
 export { default as CharacterEtymology } from './CharacterEtymology/CharacterEtymology';
 export { default as CharacterPinyin } from './CharacterPinyin/CharacterPinyin';
 export { default as CharacterStroke } from './CharacterStroke/CharacterStroke';

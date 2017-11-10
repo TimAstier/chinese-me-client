@@ -2,6 +2,7 @@
 
 export { default as AudioToText } from './AudioToText';
 export { default as Avatar } from './Avatar';
+export { default as Book } from './Book';
 export { default as Character } from './Character';
 export { default as Dialog } from './Dialog';
 export { default as Episode } from './Episode';

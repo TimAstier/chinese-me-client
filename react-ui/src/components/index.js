@@ -2,6 +2,7 @@
 export { default as ActivatedPage } from './Signup/ActivatedPage';
 export { default as AudioToText } from './AudioToText/AudioToText';
 export { default as Avatar } from './Avatar/Avatar';
+export { default as Book } from './Book/Book';
 export { default as CharacterBox } from './MapModal/CharacterBox';
 export { default as CharacterPinyin } from './CharacterPinyin/CharacterPinyin';
 export { default as CharacterStroke } from './CharacterStroke/CharacterStroke';
@@ -11,6 +12,7 @@ export { default as ChoiceBox } from './ChoiceBox/ChoiceBox';
 export { default as ChoseRole } from './Dialog/ChoseRole';
 export { default as CircleTimer } from './Exam/CircleTimer';
 export { default as CircleProgressbar } from './ExamResult/CircleProgressbar';
+export { default as ContentHOC } from './Book/ContentHOC';
 export { default as Dialog } from './Dialog/Dialog';
 export { default as ElementsNav } from './ElementsNav/ElementsNav';
 export { default as EpisodeCard } from './EpisodeCard/EpisodeCard';

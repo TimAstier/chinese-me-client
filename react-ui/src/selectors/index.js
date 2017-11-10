@@ -3,6 +3,7 @@ export { default as getAugmentedSettings } from './getAugmentedSettings';
 export { default as getCharacterPinyinHints } from './getCharacterPinyinHints';
 export { default as getCurrentAudioToText } from './getCurrentAudioToText';
 export { default as getCurrentAvatars } from './getCurrentAvatars';
+export { default as getCurrentBook } from './getCurrentBook';
 export { default as getCurrentCharacter } from './getCurrentCharacter';
 export { default as getCurrentDialog } from './getCurrentDialog';
 export { default as getCurrentDialogStatementsCount } from './getCurrentDialogStatementsCount';

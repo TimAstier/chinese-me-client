@@ -51,7 +51,8 @@ export const types = {
   EXERCISE_COMPLETED: 'signal/EXERCISE_COMPLETED',
   QUESTION_ANSWERED: 'signal/QUESTION_ANSWERED',
   NEW_WORD_LINK_CLICKED: 'signal/NEW_WORD_LINK_CLICKED',
-  SET_EPISODE_DATA: 'signal/SET_EPISODE_DATA'
+  SET_EPISODE_DATA: 'signal/SET_EPISODE_DATA',
+  INIT_BOOK: 'signal/INIT_BOOK'
 };
 
 // Action Creators
@@ -219,6 +220,12 @@ const setEpisodeData = episodeId => ({
   payload: { id: episodeId }
 });
 
+const initBook = (seasonNumber, episodeNumber) => ({
+  type: types.INIT_BOOK,
+  payload: { seasonNumber, episodeNumber }
+});
+
+
 export const actions = {
   next,
   nextSentence,
@@ -264,5 +271,6 @@ export const actions = {
   exerciseCompleted,
   questionAnswered,
   newWordLinkClicked,
-  setEpisodeData
+  setEpisodeData,
+  initBook
 };

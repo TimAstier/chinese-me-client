@@ -91,6 +91,7 @@ const getWords = state => state.get('words');
 const getReviews = state => state.get('reviews');
 const getExamples = state => state.get('examples');
 const getVideos = state => state.get('videos');
+const getBooks = state => state.get('books');
 
 export const selectors = {
   getAvatars,
@@ -106,5 +107,6 @@ export const selectors = {
   getWords,
   getReviews,
   getExamples,
-  getVideos
+  getVideos,
+  getBooks
 };

@@ -5,6 +5,7 @@ export { default as app } from './app';
 export { default as audio } from './audio';
 export { default as audioToText } from './audioToText';
 export { default as auth } from './auth';
+export { default as book } from './book';
 export { default as characterPinyin } from './characterPinyin';
 export { default as exam } from './exam';
 export { default as hanzi } from './hanzi';

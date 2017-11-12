@@ -10,6 +10,10 @@ injectGlobal`
     font-family: ChineseFont;
     src: url('https://s3.eu-west-2.amazonaws.com/chineseme/fonts/FZKTJW.TTF') format('opentype');
   }
+  @font-face {
+    font-family: YingBi;
+    src: url('https://s3.eu-west-2.amazonaws.com/chineseme/fonts/FZYBKSJW.ttf') format('opentype');
+  }
 `;
 
 const Wrapper = styled.div`

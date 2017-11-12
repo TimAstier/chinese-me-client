@@ -6,7 +6,7 @@ import { Footer } from '../.';
 const Wrapper = styled.div`
   height: 100%;
   width: 100%;
-  background-color: #fefefe;
+  background-color: #F2F7FA;
   overflow-y: auto;
 `;
 

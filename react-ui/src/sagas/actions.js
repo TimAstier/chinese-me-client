@@ -72,7 +72,10 @@ const displayEpisodeOverview = () => ({ type: types.DISPLAY_EPISODE_OVERVIEW });
 const exit = () => ({ type: types.EXIT });
 const fetchEpisodes = () => ({ type: types.FETCH_EPISODES });
 const endDialog = () => ({ type: types.END_DIALOG });
-const playAudio = () => ({ type: types.PLAY_AUDIO });
+const playAudio = url => ({
+  type: types.PLAY_AUDIO,
+  payload: { url }
+});
 const checkAnswer = () => ({ type: types.CHECK_ANSWER });
 const createNewUser = payload => ({
   type: types.CREATE_NEW_USER,

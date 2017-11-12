@@ -1,36 +1,45 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
+import { Bookrow } from './.';
 
 const H1 = styled.h1`
   text-align: center;
-`;
-
-const Label = styled.span`
-  font-size: 20px;
-  font-family: 'Calibri';
+  margin-bottom: 40px;
 `;
 
 const Title = styled.span`
-  font-size: 30px;
-  font-family: 'STKaitiSC';
+  font-size: 34px;
+  font-style: bold;
+  font-family: 'Cambria';
+  color: #C0504D;
 `;
 
 class LessonTitle extends Component {
 
+  _label() {
+    const type = this.props.seasonNumber === 0 ? 'LESSON ' : 'EPISODE ';
+    return type + this.props.episodeNumber + ': ';
+  }
+
+  _title() {
+    return this._label() + this.props.title;
+  }
+
   render() {
     return (
+      <Bookrow marginBottom={30} center>
         <H1>
-          <Label>{this.props.label}</Label>
-          <br/>
-          <Title>{this.props.title}</Title>
+          <Title>{this._title()}</Title>
         </H1>
+      </Bookrow>
     );
   }
 }
 
 LessonTitle.propTypes = {
-  label: propTypes.string.isRequired,
+  episodeNumber: propTypes.number.isRequired,
+  seasonNumber: propTypes.number.isRequired,
   title: propTypes.string.isRequired
 };
 

@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
-
-const Wrapper = styled.div`
-  display: flex;
-`;
+import { Bookrow } from './.';
+import { Row } from '../../Shared';
 
 const NumberWrapper = styled.div`
   width: 40px;
@@ -16,8 +14,9 @@ const SentenceWrapper = styled.div`
 `;
 
 const Chinese = styled.span`
-  font-size: 20px;
-  font-family: 'STKaitiSC';
+  font-size: ${props => props.big ? '34px' : '22px'};
+  line-height: 1;
+  font-family: ChineseFont;
   margin-bottom: 5px;
 `;
 
@@ -35,9 +34,17 @@ const Placeholder = styled.span`
 
 class Example extends Component {
 
-  render() {
+  _renderBasic() {
     return (
-      <Wrapper>
+      <Chinese big={ this.props.big }>
+        { this.props.chinese }
+      </Chinese>
+    );
+  }
+
+  _renderFull() {
+    return (
+      <Row>
         <NumberWrapper>{this.props.code}</NumberWrapper>
         <SentenceWrapper>
           <Chinese>{this.props.chinese}</Chinese>
@@ -49,17 +56,38 @@ class Example extends Component {
           {this.props.literalTranslation &&
             <span>{this.props.literalTranslation}</span>}
         </SentenceWrapper>
-      </Wrapper>
+      </Row>
+    );
+  }
+
+  render() {
+    return (
+      <Bookrow
+        marginBottom={15}
+        button={
+          this.props.audioUrl ?
+          {
+            type: 'audio',
+            data: { url: this.props.audioUrl }
+          }
+          : undefined
+        }
+          >
+        { this.props.basic ? this._renderBasic() : this.renderFull() }
+      </Bookrow>
     );
   }
 }
 
 Example.propTypes = {
+  basic: propTypes.bool,
+  big: propTypes.bool,
   code: propTypes.string.isRequired,
   chinese: propTypes.string.isRequired,
-  pinyin: propTypes.string.isRequired,
+  pinyin: propTypes.string,
   translation: propTypes.string,
-  literalTranslation: propTypes.string
+  literalTranslation: propTypes.string,
+  audioUrl: propTypes.string
 };
 
 export default Example;

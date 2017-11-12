@@ -12,8 +12,10 @@ class Book extends Component {
       return (
         <ScrollableAppWrapper>
           <ContentHOC
+            season={this.props.season}
             book={this.props.book}
             content={Content}
+            settings={this.props.settings}
            />
         </ScrollableAppWrapper>
       );
@@ -25,7 +27,9 @@ class Book extends Component {
 Book.propTypes = {
   content: propTypes.func.isRequired,
   initialized: propTypes.bool.isRequired,
-  book: propTypes.instanceOf(models.Book)
+  season: propTypes.instanceOf(models.Season),
+  book: propTypes.instanceOf(models.Book),
+  settings: propTypes.object.isRequired
 };
 
 export default Book;

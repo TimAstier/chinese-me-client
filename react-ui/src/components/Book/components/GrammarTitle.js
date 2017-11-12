@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
+import { Bookrow } from './.';
 
 const H3 = styled.h3`
   font-size: 18px;
@@ -13,10 +14,12 @@ class Title extends Component {
 
   render() {
     return (
-      <H3>
-        {this.props.letter + '. '}
-        {<span>{this.props.title}</span>}
-      </H3>
+      <Bookrow>
+        <H3>
+          {this.props.letter + '. '}
+          {<span>{this.props.title}</span>}
+        </H3>
+      </Bookrow>
     );
   }
 }

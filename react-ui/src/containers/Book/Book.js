@@ -31,6 +31,8 @@ class Book extends Component {
           initialized={this.props.initialized}
           content={content[`S${seasonNumber}E${episodeNumber}`]}
           book={this.props.book}
+          season={this.props.season}
+          settings={this.props.settings}
         />
     );
   }
@@ -42,11 +44,15 @@ Book.propTypes = {
   initBook: propTypes.func.isRequired,
   book: propTypes.instanceOf(models.Book),
   location: propTypes.object.isRequired,
+  season: propTypes.instanceOf(models.Season),
+  settings: propTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
   initialized: s.book.getInitialized(state),
-  book: s.getCurrentBook(state)
+  book: s.getCurrentBook(state),
+  season: s.getCurrentSeason(state),
+  settings: s.getAugmentedSettings(state)
 });
 
 export default connect(

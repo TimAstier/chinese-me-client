@@ -86,8 +86,9 @@ export function *playSound(src, muted = false) {
   }
 }
 
-function* playAudio() {
-  const audioUrl = yield select(selectors.audio.getAudioUrl);
+function* playAudio(action) {
+  const audioUrl = action.payload.url ? action.payload.url :
+    yield select(selectors.audio.getAudioUrl);
   yield call(playSound, [audioUrl]);
 }
 

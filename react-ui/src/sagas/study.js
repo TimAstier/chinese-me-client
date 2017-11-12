@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { put, call, race, take, takeLatest, cancelled, select } from 'redux-saga/effects';
+import { put, call, race, take, takeLatest, cancelled } from 'redux-saga/effects';
 import { actions as studyActions } from '../redux/study';
 import { actions as uiActions } from '../redux/ui';
 import { types as sagaTypes } from './actions';
@@ -7,8 +7,7 @@ import { elementTypes, elementTypesToTrack } from '../constants/study';
 import getStudyFunctions from '../helpers/getStudyFunctions';
 import getParamsFromUrl from '../utils/getParamsFromUrl';
 import Api from '../utils/api';
-import selectors from '../rootSelectors';
-import { actions as settingsActions } from '../redux/settings';
+import { loadSettings } from './userData';
 
 // Every screenType has those five "studyFunctions" (generators):
 // 1. isDataLoaded
@@ -18,19 +17,6 @@ import { actions as settingsActions } from '../redux/settings';
 // 5. initUi
 // 6. run
 // 7. clean
-
-function* loadSettings() {
-  // Load settings if not already initialized
-  const settingsInitialized = yield select(selectors.settings.getInitialized);
-  if (settingsInitialized === false) {
-    try {
-      const savedSettings = yield call(Api.get, '/users/settings');
-      yield put(settingsActions.set(savedSettings.data));
-    } catch (error) {
-      // TODO: handle errors
-    }
-  }
-}
 
 export function* runStudySaga(url) {
   // IMPORTANT: start by hiding screen content

@@ -8,6 +8,8 @@ import iconAudioPlayingC from '../../images/iconAudioPlayingC.svg';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
+  height: 40px;
+  width: 40px;
   :hover {
     opacity: 0.92;
   }

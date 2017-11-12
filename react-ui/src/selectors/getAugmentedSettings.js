@@ -16,8 +16,6 @@ const getAugmentedSettings = createSelector(
   s.settings.getSettings,
   settings => {
     const augmentedSettings = settings.merge(Map({
-      // BUG: country names from  i18n-iso-countries give inconsistent result
-      // (mix of simp and trad characters)
       nationalityZh: getCountryName(settings.get('nationality'), 'zh'),
       nationalityEn: getCountryName(settings.get('nationality'), 'en')
     }));

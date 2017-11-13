@@ -38,8 +38,8 @@ class LessonTitle extends Component {
 }
 
 LessonTitle.propTypes = {
-  episodeNumber: propTypes.number.isRequired,
   seasonNumber: propTypes.number.isRequired,
+  episodeNumber: propTypes.number.isRequired,
   title: propTypes.string.isRequired
 };
 

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
-import { Link as LinkComponent } from '../../Shared';
-import { Link } from 'react-router';
+// import { Link as LinkComponent } from '../../Shared';
+// import { Link } from 'react-router';
 import { Bookrow } from './.';
 
 const H2 = styled.h2`
@@ -13,24 +13,21 @@ const H2 = styled.h2`
 
 class PartTitle extends Component {
 
-  _renderWithLink() {
-    return (
-      <LinkComponent>
-        <Link to={this.props.linkUrl}>
-          {this.props.children}
-        </Link>
-      </LinkComponent>
-    );
-  }
+  // _renderWithLink() {
+  //   return (
+  //     <LinkComponent>
+  //       <Link to={this.props.linkUrl}>
+  //         {this.props.children}
+  //       </Link>
+  //     </LinkComponent>
+  //   );
+  // }
 
   render() {
     return (
       <Bookrow marginBottom={15}>
         <H2>
-          { this.props.linkUrl ?
-            this._renderWithLink()
-            : this.props.children
-          }
+          { this.props.children }
         </H2>
       </Bookrow>
     );
@@ -38,8 +35,8 @@ class PartTitle extends Component {
 }
 
 PartTitle.propTypes = {
-  children: propTypes.oneOfType([propTypes.string, propTypes.object]).isRequired,
-  linkUrl: propTypes.string
+  children: propTypes.oneOfType([propTypes.string, propTypes.object]).isRequired
+  // linkUrl: propTypes.string
 };
 
 export default PartTitle;

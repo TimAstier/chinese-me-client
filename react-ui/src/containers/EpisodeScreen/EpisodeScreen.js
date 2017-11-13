@@ -35,6 +35,8 @@ class EpisodeScreen extends Component {
   }
 
   render() {
+    console.log('initialized: ', this.props.initialized);
+    console.log('episode: ', this.props.episode);
     return this.props.initialized ?
       <EpisodeScreenComponent
         { ...this.props }

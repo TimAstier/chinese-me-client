@@ -6,6 +6,7 @@ export { default as CharacterPractice } from './CharacterPractice';
 export { default as Example } from './Example';
 export { default as GrammarTitle } from './GrammarTitle';
 export { default as LessonTitle } from './LessonTitle';
+export { default as Link } from './Link';
 export { default as Page } from './Page';
 export { default as P } from './Paragraph';
 export { default as PartTitle } from './PartTitle';

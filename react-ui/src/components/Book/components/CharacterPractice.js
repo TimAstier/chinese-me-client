@@ -21,7 +21,13 @@ class CharacterPractice extends Component {
 
   render() {
     return (
-      <Bookrow marginBottom={15}>
+      <Bookrow
+        marginBottom={15}
+        button={{
+          type: 'writing',
+          data: { characterId: this.props.characterId }
+        }}
+      >
         {this._renderCharacterBoxes()}
       </Bookrow>
     );
@@ -29,7 +35,8 @@ class CharacterPractice extends Component {
 }
 
 CharacterPractice.propTypes = {
-  simpChar: propTypes.string.isRequired
+  simpChar: propTypes.string.isRequired,
+  characterId: propTypes.number.isRequired
 };
 
 export default CharacterPractice;

@@ -16,6 +16,7 @@ export function* isDataLoaded(id) {
 }
 
 export function* fetchData(episodeId) {
+  console.log('fetch!')
   return yield call(fetchEntities, ['/episode/' + episodeId + '/characters']);
   // TODO: handle fetch error
 }

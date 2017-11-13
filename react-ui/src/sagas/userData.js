@@ -1,10 +1,11 @@
-import { select, take, call, put } from 'redux-saga/effects';
+import { select, take, call, put, all, takeEvery } from 'redux-saga/effects';
 import selectors from '../rootSelectors';
 import { types as appTypes } from '../redux/app';
 import trim from 'lodash/trim';
 import { shouldAskQuestion, askQuestion } from './questionModal';
 import Api from '../utils/api';
 import { actions as settingsActions } from '../redux/settings';
+import { types as sagaTypes } from './actions';
 
 function* ensureAppInitialized() {
   const appInitialized = yield select(selectors.app.getInitialized);
@@ -38,4 +39,10 @@ export function* askUserSettings() {
       }
     }
   }
+}
+
+export default function* watchUserDataSagas() {
+  yield all([
+    takeEvery(sagaTypes.ASK_USER_SETTINGS, askUserSettings)
+  ]);
 }

@@ -1,3 +1,7 @@
+import * as bookComponents from './Book/components';
+
+export { bookComponents };
+
 // Keep in alphabetical order
 export { default as ActivatedPage } from './Signup/ActivatedPage';
 export { default as AudioToText } from './AudioToText/AudioToText';
@@ -12,7 +16,7 @@ export { default as ChoiceBox } from './ChoiceBox/ChoiceBox';
 export { default as ChoseRole } from './Dialog/ChoseRole';
 export { default as CircleTimer } from './Exam/CircleTimer';
 export { default as CircleProgressbar } from './ExamResult/CircleProgressbar';
-export { default as ContentHOC } from './Book/ContentHOC';
+export { default as ContentHOC } from './ContentHOC/ContentHOC';
 export { default as Dialog } from './Dialog/Dialog';
 export { default as ElementsNav } from './ElementsNav/ElementsNav';
 export { default as EpisodeCard } from './EpisodeCard/EpisodeCard';
@@ -63,3 +67,4 @@ export { default as VideoPlayer } from './VideoPlayer/VideoPlayer';
 export { default as WordBox } from './WordBox/WordBox';
 export { default as WordBoxResult } from './WordBoxResult/WordBoxResult';
 export { default as WordModal } from './WordModal/WordModal';
+export { default as WritingButton } from './WritingButton/WritingButton';

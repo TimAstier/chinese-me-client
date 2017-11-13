@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
-import * as c from './components';
-import { getGrammarSentenceCode, getGrammarLetter }
-  from '../../utils/bookContent';
+import { bookContainers as c } from '../../containers';
+import { getGrammarLetter } from '../../utils/bookContent';
 import * as models from '../../models';
 import styled from 'styled-components';
-import insertVariables from '../../utils/insertVariables';
+import { bookComponents } from '../.';
 
 const Placeholder = styled.p`
   color: red;
@@ -13,17 +12,16 @@ const Placeholder = styled.p`
 
 class ContentHOC extends Component {
 
-  lessonTitle = () => {
+  _lessonTitle = () => {
     return (
       <c.LessonTitle
         seasonNumber={this.props.season.number}
-        episodeNumber={this.props.book.number}
-        title={this.props.book.title}
+        episode={this.props.episode}
       />
     );
   }
 
-  grammarTitle = () => {
+  _grammarTitle = () => {
     let count = 0;
     return title => {
       count++;
@@ -36,31 +34,24 @@ class ContentHOC extends Component {
     };
   }
 
-  character = characters => {
-    return number => {
+  _character = characters => {
+    return (number, options = { practice: false }) => {
       if (characters.length === 0) {
         return <Placeholder>{'{CHARACTER PLACEHOLDER}'}</Placeholder>;
       }
       if (!characters[number]) {
         return <Placeholder>{`{CHARACTERS #${number} NOT FOUND}`}</Placeholder>;
       }
-      return <c.Character simpChar={characters[number].simpChar}/>;
+      return (
+        <c.Character
+          characterId={characters[number]}
+          options={options}
+        />
+      );
     };
   }
 
-  characterPractice = characters => {
-    return number => {
-      if (characters.length === 0) {
-        return <Placeholder>{'{CHARACTER_PRACTICE PLACEHOLDER}'}</Placeholder>;
-      }
-      if (!characters[number]) {
-        return <Placeholder>{`{CHARACTERS #${number} NOT FOUND}`}</Placeholder>;
-      }
-      return <c.CharacterPractice simpChar={characters[number].simpChar}/>;
-    };
-  }
-
-  newCharactersDumper = characters => {
+  _newCharactersDumper = characters => {
     return () => {
       if (characters.length === 0) {
         return <Placeholder>{'{NEW_CHARACTERS PLACEHOLDER}'}</Placeholder>;
@@ -69,53 +60,40 @@ class ContentHOC extends Component {
       characters.forEach((character, i) => {
         array.push(
           <c.Character
-            key={i}
-            simpChar={character.simpChar}
-            pinyinNumber={character.pinyinNumber}
+            key={characters[i]}
+            characterId={characters[i]}
+            options={{ practice: false }}
           />
         );
       });
       return (
         <div>
           <br/>
-          <c.PartTitle>New characters</c.PartTitle>
+          <bookComponents.PartTitle>New characters</bookComponents.PartTitle>
           {array}
         </div>
       );
     };
   };
 
-  examplesDumper = examples => {
-    const { number } = this.props.book;
+  _examplesDumper = examples => {
     let count = -1;
     return options => {
-      const { basic, big } = options;
       count++;
       if (count >= examples.length) {
         return <Placeholder>{`{EXAMPLE #${count + 1} PLACEHOLDER}`}</Placeholder>;
       }
-      const translation = examples[count].translations[0] ?
-        examples[count].translations[0].translation
-        : undefined;
-      const literalTranslation = examples[count].translations[0] ?
-        examples[count].translations[0].literalTranslation
-        : undefined;
       return (
         <c.Example
-          basic={basic}
-          big={big}
-          code={getGrammarSentenceCode(number, count + 1)}
-          chinese={insertVariables(examples[count].chinese, this.props.settings)}
-          pinyin={examples[count].pinyin}
-          translation={translation}
-          literalTranslation={literalTranslation}
-          audioUrl={examples[count].audioUrl}
+          episodeNumber={this.props.episode.number}
+          exampleId={examples[count]}
+          options={options}
         />
       );
     };
   };
 
-  dialogsDumper = dialogs => {
+  _dialogsDumper = dialogs => {
     let count = -1;
     return () => {
       count++;
@@ -126,7 +104,7 @@ class ContentHOC extends Component {
         <div>
           <br/>
           <c.PartTitle
-            linkUrl={`/study/${this.props.book.id}/dialog/${dialogs[count].id}/listen`}
+            linkUrl={`/study/${this.props.episode.id}/dialog/${dialogs[count].id}/listen`}
           >
             {dialogs[count].chineseTitle ?
               `会话：${dialogs[count].chineseTitle}`
@@ -144,7 +122,7 @@ class ContentHOC extends Component {
     };
   }
 
-  renderDialog = (dialog, type) => {
+  _renderDialog = (dialog, type) => {
     const sentenceType = type === 'chinese' ? 'chinese' : 'translation';
     const name = type === 'chinese' ? 'chineseName' : 'name';
     const array = [];
@@ -174,15 +152,15 @@ class ContentHOC extends Component {
     return array;
   }
 
-  reviewDumper = () => {
+  _reviewDumper = () => {
     return (
-      <c.PartTitle linkUrl={`/study/${this.props.book.id}/title/4`}>
+      <c.PartTitle linkUrl={`/study/${this.props.episode.id}/title/4`}>
         Review
       </c.PartTitle>
     );
   }
 
-  pageNumberDumper = () => {
+  _pageNumberDumper = () => {
     let count = 0;
     return () => {
       count++;
@@ -191,20 +169,18 @@ class ContentHOC extends Component {
   };
 
   render() {
-    const { number, examples, dialogs, characters } = this.props.book;
+    const { examples, dialogs, characters } = this.props.episode;
     const Content = this.props.content;
     return (
       <Content
-        lessonTitle={this.lessonTitle.bind(this)}
-        number={number}
-        newCharacters={this.newCharactersDumper(characters)}
-        example={this.examplesDumper(examples)}
-        dialog={this.dialogsDumper(dialogs)}
-        review={this.reviewDumper}
-        grammarTitle={this.grammarTitle()}
-        pageNumber={this.pageNumberDumper()}
-        character={this.character(characters)}
-        characterPractice={this.characterPractice(characters)}
+        lessonTitle={this._lessonTitle.bind(this)}
+        newCharacters={this._newCharactersDumper(characters)}
+        example={this._examplesDumper(examples)}
+        dialog={this._dialogsDumper(dialogs)}
+        review={this._reviewDumper}
+        grammarTitle={this._grammarTitle()}
+        pageNumber={this._pageNumberDumper()}
+        character={this._character(characters)}
       />
     );
   }
@@ -213,8 +189,7 @@ class ContentHOC extends Component {
 ContentHOC.propTypes = {
   content: propTypes.func.isRequired,
   season: propTypes.instanceOf(models.Season),
-  book: propTypes.instanceOf(models.Book),
-  settings: propTypes.object.isRequired
+  episode: propTypes.instanceOf(models.Episode),
 };
 
 export default ContentHOC;

@@ -1,3 +1,7 @@
+import * as bookContainers from './Book/containers';
+
+export { bookContainers };
+
 // Keep in alphabetical order
 export { default as App } from './App/App';
 export { default as AudioToText } from './AudioToText/AudioToText';
@@ -46,3 +50,4 @@ export { default as Video } from './Video/Video';
 export { default as VideoPlayer } from './VideoPlayer/VideoPlayer';
 export { default as WordBox } from './WordBox/WordBox';
 export { default as WordModal } from './WordModal/WordModal';
+export { default as WritingButton } from './WritingButton/WritingButton';

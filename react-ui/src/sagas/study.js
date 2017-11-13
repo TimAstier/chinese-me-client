@@ -27,15 +27,16 @@ export function* runStudySaga(url) {
     = getParamsFromUrl(url); // Get params from url
   const screenType = elementType + '/' + mode; // Define screenType
   const funcs = getStudyFunctions(screenType); // Get studyFunctions
-  if (elementTypes.indexOf(elementType) !== -1) { // Check data
-    isDataLoaded = yield call(funcs.isDataLoaded, elementId);
-  } else {
-    isDataLoaded = true;
-  }
-  if (!isDataLoaded) { // Fetch data
+  // if (elementTypes.indexOf(elementType) !== -1) { // Check data
+  yield call(funcs.isDataLoaded, elementId);
+  // } else {
+  //   isDataLoaded = true;
+  // }
+  //if (!isDataLoaded) { // Fetch data
     yield call(funcs.fetchData, episodeId);
     // TODO: handle fetch error
-  }
+  //}
+  console.log(isDataLoaded)
   const checkData = yield call(funcs.checkData); // Check if data is sufficient to run the screen
   if (checkData) {
     yield put(uiActions.setDefaultEpisodeScreenUi()); // Init Episode Screen UI

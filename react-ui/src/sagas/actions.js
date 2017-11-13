@@ -52,7 +52,8 @@ export const types = {
   QUESTION_ANSWERED: 'signal/QUESTION_ANSWERED',
   NEW_WORD_LINK_CLICKED: 'signal/NEW_WORD_LINK_CLICKED',
   SET_EPISODE_DATA: 'signal/SET_EPISODE_DATA',
-  INIT_BOOK: 'signal/INIT_BOOK'
+  INIT_BOOK: 'signal/INIT_BOOK',
+  ASK_USER_SETTINGS: 'signal/ASK_USER_SETTINGS'
 };
 
 // Action Creators
@@ -228,6 +229,10 @@ const initBook = (seasonNumber, episodeNumber) => ({
   payload: { seasonNumber, episodeNumber }
 });
 
+const askUserData = () => ({
+  type: types.ASK_USER_SETTINGS
+});
+
 
 export const actions = {
   next,
@@ -275,5 +280,6 @@ export const actions = {
   questionAnswered,
   newWordLinkClicked,
   setEpisodeData,
-  initBook
+  initBook,
+  askUserData
 };

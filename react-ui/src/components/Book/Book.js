@@ -13,10 +13,9 @@ class Book extends Component {
         <ScrollableAppWrapper>
           <ContentHOC
             season={this.props.season}
-            book={this.props.book}
+            episode={this.props.episode}
             content={Content}
-            settings={this.props.settings}
-           />
+          />
         </ScrollableAppWrapper>
       );
     }
@@ -28,8 +27,7 @@ Book.propTypes = {
   content: propTypes.func.isRequired,
   initialized: propTypes.bool.isRequired,
   season: propTypes.instanceOf(models.Season),
-  book: propTypes.instanceOf(models.Book),
-  settings: propTypes.object.isRequired
+  episode: propTypes.instanceOf(models.Episode),
 };
 
 export default Book;

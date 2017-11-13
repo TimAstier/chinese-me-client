@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
 import { Row } from '../../Shared';
-import { PlayAudioButton } from '../../../containers';
+import { PlayAudioButton, WritingButton } from '../../../containers';
 
 const Margin = styled.div`
     width: 125px;
@@ -26,12 +26,17 @@ class Bookrow extends Component {
     return <PlayAudioButton url={this.props.button.data.url}/>;
   }
 
+  _renderWritingButton() {
+    return <WritingButton characterId={this.props.button.data.characterId}/>;
+  }
+
   _renderButton() {
     if (!this.props.button) {
       return null;
     }
     switch (this.props.button.type) {
       case 'audio': return this._renderAudioButton();
+      case 'writing': return this._renderWritingButton();
       default: return null;
     }
   }
@@ -53,7 +58,7 @@ Bookrow.propTypes = {
   children: propTypes.node.isRequired,
   marginBottom: propTypes.number,
   button: propTypes.shape({
-    type: propTypes.oneOf(['audio']).isRequired,
+    type: propTypes.oneOf(['audio', 'writing']).isRequired,
     data: propTypes.object.isRequired
   }),
   center: propTypes.bool

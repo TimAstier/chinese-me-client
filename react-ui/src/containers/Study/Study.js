@@ -9,7 +9,7 @@ import s from '../../rootSelectors';
 const Wrapper = styled.div`
   height: 100%;
   width: 100%;
-  background-color: #fefefe;
+  background-color: #B2BABF;
   display: flex;
   flex-direction: column;
   align-items: center;

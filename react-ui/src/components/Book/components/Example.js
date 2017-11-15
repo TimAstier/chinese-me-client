@@ -64,8 +64,8 @@ class Example extends Component {
     return (
       <Bookrow
         marginBottom={15}
-        button={
-          this.props.audioUrl ?
+        buttonOptions={
+          this.props.audio && this.props.audioUrl ?
           {
             type: 'audio',
             data: { url: this.props.audioUrl }
@@ -87,7 +87,8 @@ Example.propTypes = {
   pinyin: propTypes.string,
   translation: propTypes.string,
   literalTranslation: propTypes.string,
-  audioUrl: propTypes.string
+  audioUrl: propTypes.string,
+  audio: propTypes.bool.isRequired
 };
 
 export default Example;

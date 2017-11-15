@@ -23,9 +23,9 @@ class CharacterPractice extends Component {
     return (
       <Bookrow
         marginBottom={15}
-        button={{
+        buttonOptions={{
           type: 'writing',
-          data: { characterId: this.props.characterId }
+          data: { elementId: this.props.characterId }
         }}
       >
         {this._renderCharacterBoxes()}

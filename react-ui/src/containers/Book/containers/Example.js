@@ -14,6 +14,7 @@ class Example extends Component {
       <c.Example
         basic={this.props.options.basic}
         big={this.props.options.big}
+        audio={this.props.options.audio}
         code={getGrammarSentenceCode(this.props.episodeNumber, this.props.example.number + 1)}
         chinese={insertVariables(this.props.example.chinese, this.props.settings)}
         pinyin={this.props.example.pinyin}
@@ -31,7 +32,8 @@ Example.propTypes = {
   settings: propTypes.object.isRequired,
   options: propTypes.shape({
     basic: propTypes.bool,
-    big: propTypes.bool
+    big: propTypes.bool,
+    audio: propTypes.bool
   }),
   episodeNumber: propTypes.number.isRequired
 };

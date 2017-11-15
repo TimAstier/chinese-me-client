@@ -6,9 +6,9 @@ import styled from 'styled-components';
 import { Bookrow } from './.';
 
 const H2 = styled.h2`
-  font-size: 24px;
+  font-size: ${props => props.secondary ? '22px' : '24px'};
   font-family: 'Calibri';
-  color: #4F81BD;
+  color: ${props => props.secondary ? '#C0504D' : '#4F81BD'};
 `;
 
 class PartTitle extends Component {
@@ -24,9 +24,10 @@ class PartTitle extends Component {
   // }
 
   render() {
+    const { secondary } = this.props;
     return (
       <Bookrow marginBottom={15}>
-        <H2>
+        <H2 secondary={secondary ? secondary : false}>
           { this.props.children }
         </H2>
       </Bookrow>
@@ -35,7 +36,8 @@ class PartTitle extends Component {
 }
 
 PartTitle.propTypes = {
-  children: propTypes.oneOfType([propTypes.string, propTypes.object]).isRequired
+  children: propTypes.oneOfType([propTypes.string, propTypes.object]).isRequired,
+  secondary: propTypes.bool
   // linkUrl: propTypes.string
 };
 

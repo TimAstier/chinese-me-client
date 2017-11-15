@@ -2,50 +2,64 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
 import { Row } from '../../Shared';
-import { PlayAudioButton, WritingButton } from '../../../containers';
+import { PlayAudioButton, bookContainers as C } from '../../../containers';
 
 const Margin = styled.div`
     width: 125px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: ${props => props.top ? 'flex-start' : 'center'};
 `;
 
 const Body = styled.div`
   flex-grow: 1;
-  max-width: 750px;
+  width: 750px;
   display: flex;
+  flex-direction: ${props => props.flexDirection};
   justify-content: ${props => props.center ? 'center' : 'flex-start'};
-  align-items: center;
+  align-items: ${props => props.flexDirection === 'row' ? 'center' : 'flex-start'};
 `;
 
 
 class Bookrow extends Component {
 
   _renderAudioButton() {
-    return <PlayAudioButton url={this.props.button.data.url}/>;
+    return <PlayAudioButton url={this.props.buttonOptions.data.url}/>;
   }
 
-  _renderWritingButton() {
-    return <WritingButton characterId={this.props.button.data.characterId}/>;
+  _renderBookButton() {
+    return (
+      <C.BookButton
+        buttonOptions={this.props.buttonOptions}
+      />
+    );
   }
 
   _renderButton() {
-    if (!this.props.button) {
+    if (!this.props.buttonOptions) {
       return null;
     }
-    switch (this.props.button.type) {
-      case 'audio': return this._renderAudioButton();
-      case 'writing': return this._renderWritingButton();
+    switch (this.props.buttonOptions.type) {
+      case 'audio':
+        return this._renderAudioButton();
+      case 'writing':
+      case 'dialog':
+        return this._renderBookButton(this.props.buttonOptions);
       default: return null;
     }
   }
 
   render() {
+    const { marginBottom } = this.props;
     return (
-      <Row marginBottom={this.props.marginBottom}>
-        <Margin>{this._renderButton()}</Margin>
-        <Body center={this.props.center}>
+      <Row marginBottom={marginBottom}>
+        <Margin top={this.props.buttonOptions ? this.props.buttonOptions.top : false}>
+          {this._renderButton()}
+        </Margin>
+        <Body
+          center={this.props.center}
+          flexDirection={this.props.flexDirection ? this.props.flexDirection : 'row'}
+        >
           { this.props.children }
         </Body>
         <Margin/>
@@ -57,10 +71,12 @@ class Bookrow extends Component {
 Bookrow.propTypes = {
   children: propTypes.node.isRequired,
   marginBottom: propTypes.number,
-  button: propTypes.shape({
-    type: propTypes.oneOf(['audio', 'writing']).isRequired,
-    data: propTypes.object.isRequired
+  buttonOptions: propTypes.shape({
+    type: propTypes.oneOf(['audio', 'writing', 'dialog']).isRequired,
+    data: propTypes.object.isRequired,
+    top: propTypes.bool
   }),
+  flexDirection: propTypes.oneOf(['row', 'column']),
   center: propTypes.bool
 };
 

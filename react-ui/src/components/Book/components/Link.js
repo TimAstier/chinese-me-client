@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
-import { Clickable } from '../../Shared';
 
 const Wrapper = styled.span`
   color: #55b6ff;

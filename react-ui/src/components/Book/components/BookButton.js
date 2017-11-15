@@ -1,38 +1,42 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
-import { Clickable } from '../Shared';
-import image from '../../images/handWithPen.png';
+import { Clickable } from '../../Shared';
 
 const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 20px;
-  width: 40px;
-	height: 40px;
+  width: 35px;
+	height: 35px;
 	border-radius: 24px;
-  border: solid 1px #cdd6db;
   :hover {
     background-color: #F2F7FA;
   }
 `;
 
-class WritingButton extends Component {
+const Img = styled.img`
+  max-width:80%;
+  max-height:80%;
+`;
+
+class BookButton extends Component {
 
   render() {
     return (
       <Clickable>
         <Wrapper onClick={this.props.onClick}>
-          <img src={image} />
+          <Img src={this.props.image} />
         </Wrapper>
       </Clickable>
     );
   }
 }
 
-WritingButton.propTypes = {
-  onClick: propTypes.func.isRequired
+BookButton.propTypes = {
+  onClick: propTypes.func.isRequired,
+  image: propTypes.string.isRequired
 };
 
-export default WritingButton;
+export default BookButton;

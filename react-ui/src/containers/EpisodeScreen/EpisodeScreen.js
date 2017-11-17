@@ -31,7 +31,7 @@ class EpisodeScreen extends Component {
     // dispatch a signal to
     // 1: operate some cleanup in the store
     // 2: cancel study sagas
-    this.props.unmountEpisodeScreen();
+    // this.props.unmountEpisodeScreen();
   }
 
   render() {

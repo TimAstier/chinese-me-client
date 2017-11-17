@@ -27,16 +27,7 @@ class EpisodeScreen extends Component {
     }
   }
 
-  componentWillUnmount() {
-    // dispatch a signal to
-    // 1: operate some cleanup in the store
-    // 2: cancel study sagas
-    // this.props.unmountEpisodeScreen();
-  }
-
   render() {
-    console.log('initialized: ', this.props.initialized);
-    console.log('episode: ', this.props.episode);
     return this.props.initialized ?
       <EpisodeScreenComponent
         { ...this.props }

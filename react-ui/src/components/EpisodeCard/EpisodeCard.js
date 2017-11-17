@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
-import iconLock from '../../images/iconLock.svg';
 import { ScreenButton, Star } from '../.';
 import containsChinese from '../../utils/containsChinese';
 
@@ -14,13 +13,6 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   margin: 15px;
-`;
-
-const LockedWrapper = styled(Wrapper)`
-  background-color: #f8f8f8;
-`;
-
-const NormalWrapper = styled(Wrapper)`
   background-color: #ffffff;
   box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.05);
 `;
@@ -48,7 +40,7 @@ const TitleWrapper = styled.div`
   font-family: ${props => props.chineseFont ? 'ChineseFont' : 'STKaitiSC' };
   font-size: 24px;
   font-weight: 900;
-  color: ${props => props.locked ? '#b2babf' : '#454545'};
+  color: #454545;
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -68,20 +60,6 @@ const ButtonWrapper = styled.div`
   align-items: flex-end;
 `;
 
-const NewLabel = styled.div`
-  width: 53px;
-  height: 25px;
-  border-radius: 12.5px;
-  background-color: #f66858;
-  font-family: 'Open Sans';
-	font-size: 14px;
-	font-weight: 600;
-	color: #ffffff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
 const StarsWrapper = styled.div`
   width: 55px;
   display: flex;
@@ -89,41 +67,26 @@ const StarsWrapper = styled.div`
 `;
 
 class EpisodeCard extends Component {
-  renderStars() {
-    return (
-      <StarsWrapper>
-        <Star filled={this.props.score >= 7} />
-        <Star filled={this.props.score >= 8} />
-        <Star filled={this.props.score >= 9} />
-      </StarsWrapper>
-    );
-  }
 
-  renderStatus() {
-    if (this.props.locked) {
-      return null;
-    } else if (this.props.score) {
-      return this.renderStars();
+  _renderStars() {
+    if (this.props.score) {
+      return (
+        <StarsWrapper>
+          <Star filled={this.props.score >= 7} />
+          <Star filled={this.props.score >= 8} />
+          <Star filled={this.props.score >= 9} />
+        </StarsWrapper>
+      );
     }
-    return <NewLabel>New</NewLabel>;
-  }
-
-  renderButtonText() {
-    if (this.props.locked) {
-      return 'Unlock';
-    } else if (this.props.score) {
-      return 'Study again';
-    }
-    return 'Start';
+    return null;
   }
 
   render() {
-    const Wrapper = this.props.locked ? LockedWrapper : NormalWrapper;
     return (
       <Wrapper>
         <ImageWrapper>
           <img
-            src={this.props.locked ? iconLock : this.props.imageUrl}
+            src={this.props.imageUrl}
             alt={`episode ${this.props.number}`}
           />
         </ImageWrapper>
@@ -134,24 +97,20 @@ class EpisodeCard extends Component {
           }
         </NumberWrapper>
         <TitleWrapper
-          locked={this.props.locked}
           chineseFont={containsChinese(this.props.title)}
         >
           {this.props.title}
         </TitleWrapper>
-        <StatusWrapper>{this.renderStatus()}</StatusWrapper>
+        <StatusWrapper>{this._renderStars()}</StatusWrapper>
         <ButtonWrapper>
-          {!this.props.locked &&
-            <ScreenButton
-              text={this.renderButtonText()}
-              primary={!this.props.score}
-              onClick={this.props.onClick}
-              height={40}
-              width={140}
-              fontSize={16}
-            />
-          }
-
+          <ScreenButton
+            text="Study"
+            primary={!this.props.score}
+            onClick={this.props.onClick}
+            height={40}
+            width={140}
+            fontSize={16}
+          />
         </ButtonWrapper>
       </Wrapper>
     );
@@ -162,7 +121,6 @@ EpisodeCard.propTypes = {
   id: propTypes.number.isRequired,
   number: propTypes.number.isRequired,
   onClick: propTypes.func,
-  locked: propTypes.bool.isRequired,
   title: propTypes.string.isRequired,
   score: propTypes.number,
   imageUrl: propTypes.string,

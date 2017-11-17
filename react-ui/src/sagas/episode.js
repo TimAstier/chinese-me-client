@@ -24,8 +24,9 @@ function* askQuestion() {
 }
 
 function* startEpisode(action) {
-  yield put(studyActions.setCurrentEpisodeId(String(action.payload.id)));
-  return yield put(push('/study/' + action.payload.id + '/title/1'));
+  const { seasonNumber, episodeNumber } = action.payload;
+  const url = `/study/season/${seasonNumber}/episode/${episodeNumber}`;
+  return yield put(push(url));
 }
 
 function* setEpisodeData(action) {

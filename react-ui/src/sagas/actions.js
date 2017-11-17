@@ -117,7 +117,10 @@ const activate = payload => ({
   type: types.ACTIVATE,
   payload
 });
-const initApp = () => ({ type: types.INIT_APP });
+const initApp = isAuthenticated => ({
+  type: types.INIT_APP,
+  payload: { isAuthenticated }
+});
 const reloadApp = () => ({ type: types.RELOAD_APP });
 const mapLinkClick = link => ({
   type: types.MAP_LINK_CLICK,
@@ -148,9 +151,9 @@ const nextScreen = shouldUrlBeSkipped => ({
 const reviewCompleted = () => ({
   type: types.REVIEW_COMPLETED
 });
-const startEpisode = id => ({
+const startEpisode = (seasonNumber, episodeNumber) => ({
   type: types.START_EPISODE,
-  payload: { id }
+  payload: { seasonNumber, episodeNumber }
 });
 const runEpisodeScreen = url => ({
   type: types.RUN_EPISODE_SCREEN,

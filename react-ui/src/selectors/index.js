@@ -39,4 +39,3 @@ export { default as getRequiredUserData } from './getRequiredUserData';
 export { default as getReviewNavParams } from './getReviewNavParams';
 export { default as getSentencesCountInCurrentDialog } from './getSentencesCountInCurrentDialog';
 export { default as getSentencesWithValues } from './getSentencesWithValues';
-export { default as getUnlockedEpisodes } from './getUnlockedEpisodes';

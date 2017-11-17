@@ -52,8 +52,6 @@ export function* run() {
     }
   );
   yield put(sagaActions.reloadApp());
-  // const entities = normalize(response.data);
-  // yield put(actions.received(entities));
   yield take(sagaTypes.NEXT);
 }
 

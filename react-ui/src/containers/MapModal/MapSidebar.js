@@ -28,7 +28,7 @@ MapSidebar.propTypes = {
 const mapStateToProps = state => ({
   currentEpisodeId: Number(s.study.getCurrentEpisodeId(state)),
   seasons: s.entities.getSeasons(state),
-  episodes: s.getUnlockedEpisodes(state),
+  episodes: s.entities.getEpisodes(state),
   focusedEpisodeId: Number(s.map.getFocusedEpisodeId(state)),
   currentSeason: s.getCurrentSeason(state)
 });

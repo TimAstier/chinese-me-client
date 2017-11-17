@@ -8,8 +8,10 @@ import { EpisodeCard as EpisodeCardComponent } from '../../components';
 
 class EpisodeCard extends Component {
   onClick() {
-    return this.props.episode.locked ? undefined :
-      () => this.props.startEpisode(this.props.episode.id);
+    return () => this.props.startEpisode(
+      this.props.seasonNumber,
+      this.props.episode.number
+    );
   }
 
   render() {
@@ -18,11 +20,10 @@ class EpisodeCard extends Component {
         onClick={this.onClick()}
         id={this.props.episode.id}
         number={this.props.episode.number}
-        locked={this.props.episode.locked}
         title={this.props.episode.title}
         score={this.props.episode.score}
         imageUrl={this.props.episode.imageUrl}
-        currentSeasonNumber={this.props.currentSeasonNumber}
+        seasonNumber={this.props.seasonNumber}
       />
     );
   }
@@ -31,7 +32,7 @@ class EpisodeCard extends Component {
 EpisodeCard.propTypes = {
   episode: propTypes.instanceOf(Episode).isRequired,
   startEpisode: propTypes.func.isRequired,
-  currentSeasonNumber: propTypes.number
+  seasonNumber: propTypes.number
 };
 
 export default connect(

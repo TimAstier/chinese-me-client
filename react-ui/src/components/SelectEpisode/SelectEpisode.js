@@ -42,7 +42,7 @@ class SelectEpisode extends Component {
         <EpisodeCard
           key={i}
           episode={episode}
-          currentSeasonNumber={this.props.currentSeasonNumber}
+          seasonNumber={this.props.currentSeasonNumber}
         />
       );
     });

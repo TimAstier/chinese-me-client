@@ -7,7 +7,6 @@ const EpisodeRecord = Immutable.Record({
   seasonId: null,
   number: 0,
   imageUrl: logo,
-  locked: true,
   score: null,
   requiredUserData: [],
   dialogs: [],

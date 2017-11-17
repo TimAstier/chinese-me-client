@@ -163,7 +163,7 @@ class MapContent extends Component {
           />
           <Space />
           <ChapterHeader
-            name="Final Exam"
+            name="Exam"
             completed={false}
             onClick={() => this.props.mapLinkClick(
               '/study/' + this.props.episode.id + '/title/5'

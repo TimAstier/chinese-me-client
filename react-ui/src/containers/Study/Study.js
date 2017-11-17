@@ -17,7 +17,8 @@ const Wrapper = styled.div`
 
 class Study extends Component {
   componentWillMount() {
-    return this.props.initApp();
+    const { initApp, isAuthenticated } = this.props;
+    return initApp(isAuthenticated);
   }
 
   render() {
@@ -37,10 +38,12 @@ Study.propTypes = {
   children: propTypes.object,
   initApp: propTypes.func.isRequired,
   initialized: propTypes.bool.isRequired,
+  isAuthenticated: propTypes.bool.isRequired
 };
 
 const mapStateToProps = state => ({
-  initialized: s.app.getInitialized(state)
+  initialized: s.app.getInitialized(state),
+  isAuthenticated: s.auth.getIsAuthenticated(state)
 });
 
 export default connect(

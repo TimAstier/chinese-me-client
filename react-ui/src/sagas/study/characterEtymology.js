@@ -4,7 +4,6 @@ import { actions as studyActions } from '../../redux/study';
 import { actions as videoActions } from '../../redux/video';
 import { actions as uiActions } from '../../redux/ui';
 import { fetchEntities } from '../entities';
-import { shouldAskQuestion, askQuestion } from '../questionModal';
 import { types as sagaTypes } from '../actions';
 
 export function* isDataLoaded(id) {
@@ -30,11 +29,6 @@ export function* initUi() {}
 export function* run() {
   yield put(videoActions.autoPlayOn());
   yield take(sagaTypes.VIDEO_ENDED);
-  const setting = 'ETYMOLOGY_VIDEO';
-  const ask = yield call(shouldAskQuestion, setting);
-  if (ask) {
-    return yield call(askQuestion, setting);
-  }
   yield put(uiActions.set('nextButton', true));
   return yield take(sagaTypes.NEXT);
 }

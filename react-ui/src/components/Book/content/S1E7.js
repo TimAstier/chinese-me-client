@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import * as c from '../components';
 import { content as contentPropTypes } from '../../../helpers/propTypes';
 
-export default class S1E1 extends Component {
+export default class S1E7 extends Component {
   static propTypes = contentPropTypes
 
   render() {

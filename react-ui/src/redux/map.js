@@ -1,4 +1,5 @@
 import { fromJS } from 'immutable';
+import { types as studyTypes } from './study';
 
 // Types
 
@@ -25,6 +26,7 @@ export const INITIAL_STATE = fromJS({
 
 export default function reducer(state = INITIAL_STATE, action = {}) {
   switch (action.type) {
+    case studyTypes.SET_CURRENT_EPISODE_ID:
     case types.SET_FOCUSED_EPISODE_ID:
       return state.set('focusedEpisodeId', action.payload.id);
     case types.SET_DATA:

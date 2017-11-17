@@ -12,6 +12,7 @@ function* fetchData(action) {
       `/season/${seasonNumber}/episode/${episodeNumber}`,
       function* (response) { // eslint-disable-line func-names
         yield put(studyActions.setCurrentEpisodeId(response.data.data.id));
+        yield put(studyActions.setCurrentSeasonId(response.data.data.attributes.seasonId));
       }
     ]);
 }

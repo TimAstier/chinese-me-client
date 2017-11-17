@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 import { bookComponents as c } from '../../../components';
 import { push } from 'react-router-redux';
-// import handWithPen from '../../../images/handWithPen.png';
 import dialogIcon from '../../../images/dialogIcon.png';
 import brushIcon from '../../../images/brushIcon.png';
 import storyIcon from '../../../images/storyIcon.png';
+import s from '../../../rootSelectors';
 
 class BookButton extends Component {
 
@@ -14,17 +14,17 @@ class BookButton extends Component {
     switch (this.props.buttonOptions.type) {
       case 'writing':
         return {
-          url: `/study/10/character/${this.props.buttonOptions.data.elementId}/writing`,
+          url: `/study/${this.props.episodeId}/character/${this.props.buttonOptions.data.elementId}/writing`,
           image: brushIcon
         };
       case 'dialog':
         return {
-          url: `/study/10/dialog/${this.props.buttonOptions.data.elementId}/listen`,
+          url: `/study/${this.props.episodeId}/dialog/${this.props.buttonOptions.data.elementId}/listen`,
           image: dialogIcon
         };
       case 'story':
         return {
-          url: `/study/10/character/${this.props.buttonOptions.data.elementId}/etymology`,
+          url: `/study/${this.props.episodeId}/character/${this.props.buttonOptions.data.elementId}/etymology`,
           image: storyIcon
         };
       default:
@@ -50,11 +50,16 @@ BookButton.propTypes = {
   buttonOptions: propTypes.shape({
     type: propTypes.oneOf(['writing', 'dialog', 'story']).isRequired,
     data: propTypes.object.isRequired
-  }).isRequired
+  }).isRequired,
+  episodeId: propTypes.string.isRequired
 };
 
+const mapStateToProps = state => ({
+  episodeId: s.study.getCurrentEpisodeId(state)
+});
+
 export default connect(
-  null,
+  mapStateToProps,
   {
     push
   }

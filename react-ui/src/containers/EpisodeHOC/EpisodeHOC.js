@@ -3,19 +3,19 @@ import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 import { EpisodeScreen } from '../.';
 import getParamsFromUrl from '../../utils/getParamsFromUrl';
-import { actions as sagaActions } from '../../sagas/actions';
+import { actions as studyActions } from '../../redux/study';
 
 class EpisodeHOC extends Component {
 
   componentWillMount() {
     const { episodeId } = getParamsFromUrl(this.props.location.pathname);
-    return this.props.setEpisodeData(episodeId);
+    return this.props.setCurrentEpisodeId(episodeId);
   }
 
   componentWillUpdate(nextProps) {
     if (this.props.location.pathname !== nextProps.location.pathname) {
       const { episodeId } = getParamsFromUrl(nextProps.location.pathname);
-      this.props.setEpisodeData(episodeId);
+      this.props.setCurrentEpisodeId(episodeId);
     }
   }
 
@@ -32,12 +32,12 @@ class EpisodeHOC extends Component {
 EpisodeHOC.propTypes = {
   location: propTypes.object.isRequired,
   children: propTypes.node.isRequired,
-  setEpisodeData: propTypes.func.isRequired
+  setCurrentEpisodeId: propTypes.func.isRequired
 };
 
 export default connect(
   null,
   {
-    setEpisodeData: sagaActions.setEpisodeData
+    setCurrentEpisodeId: studyActions.setCurrentEpisodeId
   }
 )(EpisodeHOC);

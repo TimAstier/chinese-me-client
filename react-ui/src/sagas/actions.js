@@ -70,7 +70,13 @@ const previousStatement = () => ({ type: types.PREVIOUS_STATEMENT });
 const stopSentence = () => ({ type: types.STOP_SENTENCE });
 const askQuestion = () => ({ type: types.ASK_QUESTION });
 const displayEpisodeOverview = () => ({ type: types.DISPLAY_EPISODE_OVERVIEW });
-const exit = () => ({ type: types.EXIT });
+const exit = (seasonNumber, episodeNumber) => ({
+  type: types.EXIT,
+  payload: {
+    seasonNumber,
+    episodeNumber
+  }
+});
 const fetchEpisodes = () => ({ type: types.FETCH_EPISODES });
 const endDialog = () => ({ type: types.END_DIALOG });
 const playAudio = url => ({

@@ -7,16 +7,10 @@ import { actions as uiActions } from '../redux/ui';
 import { actions as mapActions } from '../redux/map';
 import { push } from 'react-router-redux';
 
-// function* unmount() {
-//   yield put(mapActions.setFocusedEpisodeId(null));
-//   yield put(studyActions.setCurrentEpisodeId(null));
-//   yield put(studyActions.setInitialized(false));
-//   // Only clear entities directly linked to ONE episode
-//   yield put(entitiesActions.clearAllBut(['episodes', 'seasons']));
-// }
-
-function* exit() {
-  yield put(push('/study'));
+function* exit(action) {
+  const { seasonNumber, episodeNumber } = action.payload;
+  const url = `/study/season/${seasonNumber}/episode/${episodeNumber}`;
+  return yield put(push(url));
 }
 
 function* askQuestion() {

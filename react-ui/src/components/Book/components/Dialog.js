@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import { bookContainers as C } from '../../../containers';
 import { Bookrow } from './.';
-import styled from 'styled-components';
 
 class Dialog extends Component {
 

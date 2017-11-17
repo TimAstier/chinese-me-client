@@ -3,7 +3,7 @@ import { put, call, race, take, takeLatest, cancelled } from 'redux-saga/effects
 import { actions as studyActions } from '../redux/study';
 import { actions as uiActions } from '../redux/ui';
 import { types as sagaTypes } from './actions';
-import { elementTypes, elementTypesToTrack } from '../constants/study';
+import { elementTypesToTrack } from '../constants/study';
 import getStudyFunctions from '../helpers/getStudyFunctions';
 import getParamsFromUrl from '../utils/getParamsFromUrl';
 import Api from '../utils/api';
@@ -20,7 +20,7 @@ import { loadSettings } from './userData';
 
 export function* runStudySaga(url) {
   // IMPORTANT: start by hiding screen content
-  let isDataLoaded = undefined;
+  // let isDataLoaded = undefined;
   yield put(studyActions.setInitialized(false)); // Hide screen content
   yield call(loadSettings);
   const { episodeId, elementType, elementId, mode }
@@ -32,11 +32,10 @@ export function* runStudySaga(url) {
   // } else {
   //   isDataLoaded = true;
   // }
-  //if (!isDataLoaded) { // Fetch data
-    yield call(funcs.fetchData, episodeId);
+  // if (!isDataLoaded) { // Fetch data
+  yield call(funcs.fetchData, episodeId);
     // TODO: handle fetch error
-  //}
-  console.log(isDataLoaded)
+  // }
   const checkData = yield call(funcs.checkData); // Check if data is sufficient to run the screen
   if (checkData) {
     yield put(uiActions.setDefaultEpisodeScreenUi()); // Init Episode Screen UI
@@ -67,12 +66,14 @@ function* runScreenSaga(run) {
     return yield race({
       runScreen: call(run),
       next: take(sagaTypes.NEXT),
-      exit: take(sagaTypes.EXIT)
+      exit: take(sagaTypes.EXIT),
+      unmount: take(sagaTypes.UNMOUNT_EPISODE_SCREEN)
     });
   }
   return yield race({
     next: take(sagaTypes.NEXT),
-    exit: take(sagaTypes.EXIT)
+    exit: take(sagaTypes.EXIT),
+    unmount: take(sagaTypes.UNMOUNT_EPISODE_SCREEN)
   });
 }
 

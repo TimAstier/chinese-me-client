@@ -6,7 +6,7 @@ import { EpisodeScreen as EpisodeScreenComponent } from '../../components';
 import { actions as sagaActions } from '../../sagas/actions';
 import { actions as studyActions } from '../../redux/study';
 import s from '../../rootSelectors';
-import { Episode } from '../../models';
+import * as models from '../../models';
 
 class EpisodeScreen extends Component {
 
@@ -27,13 +27,25 @@ class EpisodeScreen extends Component {
     }
   }
 
+  componentWillUnmount() {
+    this.props.unmountEpisodeScreen();
+  }
+
+  _handleExit() {
+    return this.props.exit(
+      this.props.season.number,
+      this.props.episode.number
+    );
+  }
+
   render() {
     return this.props.initialized ?
       <EpisodeScreenComponent
         { ...this.props }
+        exit={this._handleExit.bind(this)}
         elementType={this.props.elementType}
       />
-      : <EpisodeScreenComponent exit={this.props.exit} />;
+      : <EpisodeScreenComponent exit={this._handleExit.bind(this)} />;
   }
 }
 
@@ -46,7 +58,8 @@ EpisodeScreen.propTypes = {
   initialized: propTypes.bool.isRequired,
   url: propTypes.string.isRequired,
   unmountEpisodeScreen: propTypes.func.isRequired,
-  episode: propTypes.instanceOf(Episode).isRequired,
+  episode: propTypes.instanceOf(models.Episode).isRequired,
+  season: propTypes.instanceOf(models.Season).isRequired,
   setCurrentSeasonId: propTypes.func.isRequired,
   elementType: propTypes.string.isRequired,
   pause: propTypes.bool,
@@ -62,6 +75,7 @@ const mapStateToProps = state => {
     hanziAgain: s.ui.getHanziAgainButton(state),
     initialized: s.study.getInitialized(state),
     episode: s.getCurrentEpisode(state),
+    season: s.getCurrentSeason(state),
     elementType: s.routing.getElementType(state),
     appInitialized: s.app.getInitialized(state)
   };

@@ -6,8 +6,7 @@ export default class S1E1 extends Component {
   static propTypes = contentPropTypes
 
   render() {
-    const { newCharacters, example, lessonTitle, dialog,
-      review, grammarTitle, pageNumber, character }
+    const { newCharacters, pageNumber }
       = this.props;
     return (
       <div>

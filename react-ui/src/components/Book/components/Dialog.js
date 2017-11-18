@@ -21,7 +21,6 @@ class Dialog extends Component {
     });
     return (
       <Bookrow
-        marginBottom={15}
         flexDirection={'column'}
         buttonOptions={{
           type: 'dialog',

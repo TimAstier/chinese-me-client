@@ -39,10 +39,10 @@ export default class S0E1 extends Component {
           <c.P>When Wang Yi presents herself, you hear four syllables. Here is how they are written in Chinese.</c.P>
           {example(0, { basic: true, big: true, audio: false })}
           <c.P>English, like most other languages, is written using a phonetic alphabet. When you read a word, you decipher the pronunciation and then you know which word it is. Chinese is the other way around: it is written with characters that indicate meaning. Each Chinese character corresponds to a spoken syllable. Listen:</c.P>
-          <c.Bookrow marginBottom={15}>{character(0, { mode: 'details' })}</c.Bookrow>
-          <c.Bookrow marginBottom={15}>{character(1, { mode: 'details' })}</c.Bookrow>
-          <c.Bookrow marginBottom={15}>{character(2, { mode: 'details' })}</c.Bookrow>
-          <c.Bookrow marginBottom={15}>{character(3, { mode: 'details' })}</c.Bookrow>
+          <c.Bookrow>{character(0, { mode: 'details' })}</c.Bookrow>
+          <c.Bookrow>{character(1, { mode: 'details' })}</c.Bookrow>
+          <c.Bookrow>{character(2, { mode: 'details' })}</c.Bookrow>
+          <c.Bookrow>{character(3, { mode: 'details' })}</c.Bookrow>
           <c.P>Let us practice a bit of pronunciation using this sentence. If you listen carefully one more time to this sentence, you will notice that each Chinese syllable has a tone. Practice pronouncing each syllable clearly, with the tone:</c.P>
           {example(0, { basic: true, big: true, audio: true })}
           <c.P>These tones are important, because there are many characters that sound exactly the same except for the tone. The classical example of this are four words that are all pronounced ma. As you can see, the pīnyīn spelling is the same for each character; the only difference is the tone mark. The diagrams on the left show the pitch contour of each tone.</c.P>
@@ -50,7 +50,6 @@ export default class S0E1 extends Component {
         <c.Page number={pageNumber()}>
           <c.P>The first means mother, and is pronounced with Tone 1, which is a long, flat tone pronounced at the top of the pitch range:</c.P>
           <c.Bookrow
-            marginBottom={15}
             buttonOptions={{
               type: 'audio',
               data: { url: 'replaceByText' }
@@ -59,7 +58,6 @@ export default class S0E1 extends Component {
           </c.Bookrow>
           <c.P>The second means hemp, and is pronounced with Tone 2, a short tone which starts at middle pitch and goes upward:</c.P>
           <c.Bookrow
-            marginBottom={15}
             buttonOptions={{
               type: 'audio',
               data: { url: 'replaceByText' }
@@ -68,7 +66,6 @@ export default class S0E1 extends Component {
           </c.Bookrow>
           <c.P>The third means horse, and is pronounced with Tone 3. This starts at a mid-high pitch, and then goes down so low that it almost breaks off at the bottom, before going slightly up again:</c.P>
           <c.Bookrow
-            marginBottom={15}
             buttonOptions={{
               type: 'audio',
               data: { url: 'replaceByText' }
@@ -77,7 +74,6 @@ export default class S0E1 extends Component {
           </c.Bookrow>
           <c.P>The fourth means scold, and is pronounced with Tone 4, which is a rapidly falling tone starting at the top of the speaker’s pitch range and going all the way down:</c.P>
           <c.Bookrow
-            marginBottom={15}
             buttonOptions={{
               type: 'audio',
               data: { url: 'replaceByText' }
@@ -86,7 +82,6 @@ export default class S0E1 extends Component {
           </c.Bookrow>
           <c.P>See if you can hear the right tones on the syllables:</c.P>
           <c.Bookrow
-            marginBottom={15}
             buttonOptions={{
               type: 'review'
             }}
@@ -102,14 +97,13 @@ export default class S0E1 extends Component {
         <c.Page number={pageNumber()}>
           <c.PartTitle>Pinyin – explaining Chinese pronunciation with English letters</c.PartTitle>
           <c.P>In order to help us remember the pronunciation of each character, the sound can be written using the Latin alphabet. Each syllable is written with its tone mark above:</c.P>
-          <c.Bookrow marginBottom={15}>{character(0, { mode: 'details' })}</c.Bookrow>
-          <c.Bookrow marginBottom={15}>{character(1, { mode: 'details' })}</c.Bookrow>
-          <c.Bookrow marginBottom={15}>{character(2, { mode: 'details' })}</c.Bookrow>
-          <c.Bookrow marginBottom={15}>{character(3, { mode: 'details' })}</c.Bookrow>
+          <c.Bookrow>{character(0, { mode: 'details' })}</c.Bookrow>
+          <c.Bookrow>{character(1, { mode: 'details' })}</c.Bookrow>
+          <c.Bookrow>{character(2, { mode: 'details' })}</c.Bookrow>
+          <c.Bookrow>{character(3, { mode: 'details' })}</c.Bookrow>
           <c.P>This spelling system is called pīnyīn. It is used in dictionaries and textbooks to teach pronunciation. It is also a way of inputting characters on computers and mobile phones. But Chinese people never actually read or communicate in pīnyīn – they always use characters.</c.P>
           <c.P>Try writing the pīnyīn spelling of the four characters we have learned so far:</c.P>
           <c.Bookrow
-            marginBottom={15}
             buttonOptions={{
               type: 'review'
             }}
@@ -118,20 +112,20 @@ export default class S0E1 extends Component {
           </c.Bookrow>
           <c.PartTitle>Oracle bones</c.PartTitle>
           <c.P>So where do the Chinese characters come from? We know from archaeological finds that they were originally pictures. During the Shāng dynasty, more than 3,000 years ago, the oracles at the royal court used the shells of turtles and shoulder blades of oxen to tell the future.</c.P>
-          <c.Bookrow marginBottom={15}><img src={'http://via.placeholder.com/350x150'}/></c.Bookrow>
+          <c.Bookrow><img src={'http://via.placeholder.com/350x150'}/></c.Bookrow>
         </c.Page>
         <c.Page number={pageNumber()}>
           <c.P>To do this, they placed glowing hot bronze rods against the bone until it cracked from the heat. The soothsayers interpreted these cracks as answers to their questions about the future.</c.P>
           <c.P>To record the questions and answers, they inscribed each bone with a pictorial script which archeologists have shown to be primitive forms of modern Chinese characters. We call them oracle bone characters.</c.P>
           <c.PartTitle>Pictograms</c.PartTitle>
           <c.P>The simplest and most ancient characters are pictures. Some of these are so clear, and so similar to the modern character, that they are still easy to understand – even when they are symbols of abstract concepts. On the oracle bone above, we immediately recognize the symbols for one, two and three.</c.P>
-          <c.Bookrow marginBottom={15}><img src={'http://via.placeholder.com/350x150'}/></c.Bookrow>
+          <c.Bookrow><img src={'http://via.placeholder.com/350x150'}/></c.Bookrow>
           <c.P>Some characters are a bit trickier to understand. The character for king, for example, was originally a picture of an ax head. Weapons were the ultimate source of power, so this picture was used to symbolize king.</c.P>
-          <c.Bookrow marginBottom={15}><img src={'http://via.placeholder.com/350x150'}/></c.Bookrow>
+          <c.Bookrow><img src={'http://via.placeholder.com/350x150'}/></c.Bookrow>
           <c.P>King is the most common family name in China. Today, it is written like this:</c.P>
           <c.PartTitle>Radicals for meaning – phonetics for sound</c.PartTitle>
           <c.P>As the written language developed and more characters were needed, the ancient scribes started combining simple pictorial elements into more complex characters. Some elements were chosen for meaning; others for sound. As an example, let us look at the character 叫 to be called. It is made up of two ancient character elements: 口 mouth, and 丩 two hooks. Why did the scribes choose these two components?</c.P>
-          <c.Bookrow marginBottom={15}><img src={'http://via.placeholder.com/350x150'}/></c.Bookrow>
+          <c.Bookrow><img src={'http://via.placeholder.com/350x150'}/></c.Bookrow>
           <c.P>The mouth element contributes meaning. This element appears in characters such as eat, drink, kiss and ask – all things which, like叫, you do with your mouth. A character component indicating meaning in this way is called a radical.</c.P>
         </c.Page>
         <c.Page number={pageNumber()}>
@@ -170,7 +164,7 @@ export default class S0E1 extends Component {
           <c.P>It has a long hook on the right hand side that needs to be given ample space to stretch out. The barb at the end of the hook gathers in the energy of the stroke and prevents it from flowing out of the character:</c.P>
           {character(3, { mode: 'box' })}
           <c.P>If this hook is too short, the whole character looks lopsided:</c.P>
-          <c.Bookrow marginBottom={15}><img src={'http://via.placeholder.com/350x150'}/></c.Bookrow>
+          <c.Bookrow><img src={'http://via.placeholder.com/350x150'}/></c.Bookrow>
           <c.P>Since it is one of the most common characters in the Chinese language, writing it quickly will save you lots of time. If you practice writing it elegantly, you will develop a rhythm which will eventually make you faster:</c.P>
           {character(3, { mode: 'practice' })}
           <c.PartTitle>New characters</c.PartTitle>

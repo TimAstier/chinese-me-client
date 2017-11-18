@@ -15,7 +15,7 @@ class Paragraph extends Component {
 
   render() {
     return (
-      <Bookrow marginBottom={15}>
+      <Bookrow>
         <Text>
           {this.props.children}
         </Text>

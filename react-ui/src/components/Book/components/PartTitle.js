@@ -26,7 +26,7 @@ class PartTitle extends Component {
   render() {
     const { secondary } = this.props;
     return (
-      <Bookrow marginBottom={15}>
+      <Bookrow>
         <H2 secondary={secondary ? secondary : false}>
           { this.props.children }
         </H2>

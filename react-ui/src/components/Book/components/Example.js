@@ -63,7 +63,6 @@ class Example extends Component {
   render() {
     return (
       <Bookrow
-        marginBottom={15}
         buttonOptions={
           this.props.audio && this.props.audioUrl ?
           {

@@ -7,7 +7,7 @@ class Character extends Component {
 
   render() {
     return (
-      <Bookrow marginBottom={15}>
+      <Bookrow>
         <CharacterBox simpChar={this.props.simpChar}/>
       </Bookrow>
     );

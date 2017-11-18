@@ -52,7 +52,7 @@ class Bookrow extends Component {
   render() {
     const { marginBottom } = this.props;
     return (
-      <Row marginBottom={marginBottom}>
+      <Row marginBottom={marginBottom || 15}>
         <Margin top={this.props.buttonOptions ? this.props.buttonOptions.top : false}>
           {this._renderButton()}
         </Margin>

@@ -71,8 +71,8 @@ class Example extends Component {
           }
           : undefined
         }
-          >
-        { this.props.basic ? this._renderBasic() : this.renderFull() }
+      >
+        { this.props.basic ? this._renderBasic() : this._renderFull() }
       </Bookrow>
     );
   }

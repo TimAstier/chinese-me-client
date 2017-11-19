@@ -21,14 +21,17 @@ class ContentHOC extends Component {
     );
   }
 
-  _grammarTitle = () => {
+  _grammarTitle = grammars => {
     let count = 0;
-    return title => {
+    return () => {
       count++;
+      if (!grammars[count - 1]) {
+        return <Placeholder>{'{GRAMMAR TITLE PLACEHOLDER}'}</Placeholder>;
+      }
       return (
         <C.GrammarTitle
           letter={getGrammarLetter(count)}
-          title={title}
+          grammarId={grammars[count - 1]}
         />
       );
     };
@@ -36,15 +39,15 @@ class ContentHOC extends Component {
 
   _character = characters => {
     return (number, options) => {
-      if (characters.length === 0) {
+      if (number > characters.length) {
         return <Placeholder>{'{CHARACTER PLACEHOLDER}'}</Placeholder>;
       }
-      if (!characters[number]) {
-        return <Placeholder>{`{CHARACTERS #${number + 1} NOT FOUND}`}</Placeholder>;
+      if (!characters[number - 1]) {
+        return <Placeholder>{`{CHARACTERS #${number} NOT FOUND}`}</Placeholder>;
       }
       return (
         <C.Character
-          characterId={characters[number]}
+          characterId={characters[number - 1]}
           options={options}
         />
       );
@@ -53,16 +56,16 @@ class ContentHOC extends Component {
 
   _example = examples => {
     return (number, options) => {
-      if (number >= examples.length) {
+      if (number > examples.length) {
         return <Placeholder>{'{EXAMPLE PLACEHOLDER}'}</Placeholder>;
       }
-      if (!examples[number]) {
-        return <Placeholder>{`{EXAMPLE #${number + 1} NOT FOUND}`}</Placeholder>;
+      if (!examples[number - 1]) {
+        return <Placeholder>{`{EXAMPLE #${number} NOT FOUND}`}</Placeholder>;
       }
       return (
         <C.Example
           episodeNumber={this.props.episode.number}
-          exampleId={examples[number]}
+          exampleId={examples[number - 1]}
           options={options}
         />
       );
@@ -71,15 +74,15 @@ class ContentHOC extends Component {
 
   _dialog = dialogs => {
     return (number, options) => {
-      if (number >= dialogs.length) {
+      if (number > dialogs.length) {
         return <Placeholder>{'{DIALOG PLACEHOLDER}'}</Placeholder>;
       }
-      if (!dialogs[number]) {
-        return <Placeholder>{`{DIALOG #${number + 1} NOT FOUND}`}</Placeholder>;
+      if (!dialogs[number - 1]) {
+        return <Placeholder>{`{DIALOG #${number} NOT FOUND}`}</Placeholder>;
       }
       return (
         <C.Dialog
-          dialogId={dialogs[number]}
+          dialogId={dialogs[number - 1]}
           options={options}
         />
       );
@@ -122,7 +125,7 @@ class ContentHOC extends Component {
   };
 
   render() {
-    const { examples, dialogs, characters } = this.props.episode;
+    const { examples, dialogs, characters, grammars } = this.props.episode;
     const Content = this.props.content;
     return (
       <Content
@@ -131,7 +134,7 @@ class ContentHOC extends Component {
         example={this._example(examples)}
         dialog={this._dialog(dialogs)}
         newCharacters={this._newCharactersDumper(characters)}
-        grammarTitle={this._grammarTitle()}
+        grammarTitle={this._grammarTitle(grammars)}
         pageNumber={this._pageNumberDumper()}
         review={this._reviewDumper}
       />

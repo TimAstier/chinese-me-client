@@ -18,6 +18,7 @@ const Body = styled.div`
   flex-direction: ${props => props.flexDirection};
   justify-content: ${props => props.center ? 'center' : 'flex-start'};
   align-items: ${props => props.flexDirection === 'row' ? 'center' : 'flex-start'};
+  background-color: ${props => props.backgroundColor};
 `;
 
 
@@ -59,6 +60,7 @@ class Bookrow extends Component {
         <Body
           center={this.props.center}
           flexDirection={this.props.flexDirection ? this.props.flexDirection : 'row'}
+          backgroundColor={this.props.backgroundColor ? this.props.backgroundColor : '#FFFFFF'}
         >
           { this.props.children }
         </Body>
@@ -76,6 +78,7 @@ Bookrow.propTypes = {
     data: propTypes.object.isRequired,
     top: propTypes.bool
   }),
+  backgroundColor: propTypes.string,
   flexDirection: propTypes.oneOf(['row', 'column']),
   center: propTypes.bool
 };

@@ -15,7 +15,7 @@ class Example extends Component {
         basic={this.props.options.basic}
         big={this.props.options.big}
         audio={this.props.options.audio}
-        code={getGrammarSentenceCode(this.props.episodeNumber, this.props.example.number + 1)}
+        code={getGrammarSentenceCode(this.props.episodeNumber, this.props.example.order)}
         chinese={insertVariables(this.props.example.chinese, this.props.settings)}
         pinyin={this.props.example.pinyin}
         translation={this.props.example.translation}

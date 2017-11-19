@@ -5,7 +5,7 @@ export { default as Character } from './Character';
 // export { default as CharacterBox } from './CharacterBox';
 export { default as Dialog } from './Dialog';
 export { default as Example } from './Example';
-// export { default as GrammarTitle } from './GrammarTitle';
+export { default as GrammarTitle } from './GrammarTitle';
 export { default as LessonTitle } from './LessonTitle';
 export { default as Link } from './Link';
 // export { default as Page } from './Page';

@@ -6,9 +6,9 @@ import styled from 'styled-components';
 import { Bookrow } from './.';
 
 const H2 = styled.h2`
-  font-size: ${props => props.secondary ? '22px' : '24px'};
+  font-size: ${props => props.fontSize};
   font-family: 'Calibri';
-  color: ${props => props.secondary ? '#C0504D' : '#4F81BD'};
+  color: ${props => props.color};
 `;
 
 class PartTitle extends Component {
@@ -23,11 +23,26 @@ class PartTitle extends Component {
   //   );
   // }
 
+  _fontSize() {
+    switch (this.props.type) {
+      case 'secondary': return '24px';
+      case 'tertiary': return '22px';
+      default: return '24px';
+    }
+  }
+
+  _color() {
+    switch (this.props.type) {
+      case 'secondary': return '#4F81BD';
+      case 'tertiary': return '#C0504D';
+      default: return '#CD3C44';
+    }
+  }
+
   render() {
-    const { secondary } = this.props;
     return (
-      <Bookrow>
-        <H2 secondary={secondary ? secondary : false}>
+      <Bookrow center={!this.props.type}>
+        <H2 fontSize={this._fontSize()} color={this._color()}>
           { this.props.children }
         </H2>
       </Bookrow>
@@ -37,7 +52,7 @@ class PartTitle extends Component {
 
 PartTitle.propTypes = {
   children: propTypes.oneOfType([propTypes.string, propTypes.object]).isRequired,
-  secondary: propTypes.bool
+  type: propTypes.oneOf(['secondary', 'tertiary'])
   // linkUrl: propTypes.string
 };
 

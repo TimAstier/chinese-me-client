@@ -4,17 +4,19 @@ import styled from 'styled-components';
 import { Bookrow } from './.';
 
 const H3 = styled.h3`
-  font-size: 18px;
+  font-size: 24px;
   font-family: 'Calibri';
-  color: black;
+  color: #8B3244;
   font-weight: normal;
 `;
 
-class Title extends Component {
+class GrammarTitle extends Component {
 
   render() {
     return (
-      <Bookrow>
+      <Bookrow
+        backgroundColor={'#F3F3F3'}
+      >
         <H3>
           {this.props.letter + '. '}
           {<span>{this.props.title}</span>}
@@ -24,9 +26,9 @@ class Title extends Component {
   }
 }
 
-Title.propTypes = {
-  title: propTypes.object.isRequired,
+GrammarTitle.propTypes = {
+  title: propTypes.string.isRequired,
   letter: propTypes.string.isRequired
 };
 
-export default Title;
+export default GrammarTitle;

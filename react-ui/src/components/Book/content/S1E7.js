@@ -80,6 +80,15 @@ export default class S1E7 extends Component {
           <c.PartTitle>会话:你家人都在中国吗?</c.PartTitle>
           // Dialog intro
           {dialog(1, { sentenceType: 'chinese', displayNames: true })}
+          {dialog(1, { sentenceType: 'translation', displayNames: true })}
+          <c.PartTitle>CULTURE AND SOCIETY</c.PartTitle>
+          // Culture box
+          <c.PartTitle>NEW VOCABULARY</c.PartTitle>
+          // Words
+          <c.PartTitle>REVIEW</c.PartTitle>
+          // Review icon
+          <c.P><i>On the ChineseMe website, you will find review exercises to practice pronunciation, grammar and character writing. Download the flashcard decks to review character stroke orders and vocabulary. Then do the Final Exam to progress to the next Lesson.</i></c.P>
+
         </c.Page>
       </div>
     );

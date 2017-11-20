@@ -13,7 +13,7 @@ export default class S1E7 extends Component {
         <c.Page>
           {lessonTitle()}
           <c.PartTitle type="secondary">Introducing where you are from</c.PartTitle>
-          {example(0, { basic: true, audio: true })}
+          {example(1, { basic: true, audio: true })}
           <c.P>This sentence means I am Chinese. It contains three initials that are related to each other. In pīnyīn, they are spelled sh-, zh- and r-.</c.P>
           <c.P>Chinese sh- is pronounced more or less like English sh in show, for example in the character 是 shi. Type the correct pīnyīn, with tone:</c.P>
           // MultipleChoice
@@ -41,6 +41,7 @@ export default class S1E7 extends Component {
           // My country...
           <c.P>Repeat this until you feel confident saying your country name.</c.P>
           <c.P>In order to say I am [USER_NATIONALITY], just add 人:</c.P>
+          // Wrong variable?
           {example(5, { basic: true, big: true, audio: true })}
           <c.PartTitle type="secondary">Role Play: Introduce yourself and where you are from</c.PartTitle>
           <c.P>Introduce yourself to Wang Yi and Wang Yuguo:</c.P>
@@ -141,11 +142,11 @@ export default class S1E7 extends Component {
             <img src={'http://via.placeholder.com/350x150'} alt=""/>
           </c.Bookrow>
           <c.P>Practice: Left and right downward strokes</c.P>
-          <c.Bookrow>{character(1, { mode: 'practice' })}</c.Bookrow>
+          {character(1, { mode: 'practice' })}
           <c.P>人 is also the radical of 你 you, which we learned in the previous lesson. But here, the right downward stroke changes to a vertical stroke:</c.P>
           <c.Bookrow><c.CharacterBox simpChar="亻" /></c.Bookrow>
           <c.P>The phonetic is a rare character from the classical written language which we don’t need to learn. Practice writing:</c.P>
-          <c.Bookrow>{character(2, { mode: 'practice' })}</c.Bookrow>
+          {character(2, { mode: 'practice' })}
           <c.PartTitle type="secondary">Grammar</c.PartTitle>
           <c.PartTitle type="tertiary">A. Using sentence patterns to learn Chinese</c.PartTitle>
           <c.P>Chinese has a reputation for being difficult. Is this really true?</c.P>
@@ -173,6 +174,7 @@ export default class S1E7 extends Component {
           <c.PartTitle type="tertiary">B. Sentence patterns with a few common verbs</c.PartTitle>
           <c.P>The sentences we have learned in previous lessons are made up of Subject, Verb and Object, just as in English:</c.P>
           {example(1, { audio: true })}
+          // Pinyin with tones
           {example(2, { audio: true })}
           {example(3, { audio: true })}
           <c.P>In this chapter, we encountered 是 shì which functions like English be (am, is):</c.P>

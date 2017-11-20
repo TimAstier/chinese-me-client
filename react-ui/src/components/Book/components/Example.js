@@ -64,10 +64,13 @@ class Example extends Component {
     return (
       <Bookrow
         buttonOptions={
-          this.props.audio && this.props.audioUrl ?
+          this.props.audio ?
           {
             type: 'audio',
-            data: { url: this.props.audioUrl }
+            data: {
+              url: this.props.audioUrl,
+              text: this.props.chinese
+            }
           }
           : undefined
         }

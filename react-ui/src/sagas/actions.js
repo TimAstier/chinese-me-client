@@ -79,9 +79,9 @@ const exit = (seasonNumber, episodeNumber) => ({
 });
 const fetchEpisodes = () => ({ type: types.FETCH_EPISODES });
 const endDialog = () => ({ type: types.END_DIALOG });
-const playAudio = url => ({
+const playAudio = (url, text) => ({
   type: types.PLAY_AUDIO,
-  payload: { url }
+  payload: { url, text }
 });
 const checkAnswer = () => ({ type: types.CHECK_ANSWER });
 const createNewUser = payload => ({

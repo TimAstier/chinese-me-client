@@ -12,11 +12,15 @@ class PlayAudioButton extends Component {
   }
 
   componentDidMount() {
-    document.addEventListener('keydown', this.handleEnterKeyPress);
+    if (!this.props.keyPress === false) {
+      document.addEventListener('keydown', this.handleEnterKeyPress);
+    }
   }
 
   componentWillUnmount() {
-    document.removeEventListener('keydown', this.handleEnterKeyPress);
+    if (!this.props.keyPress === false) {
+      document.removeEventListener('keydown', this.handleEnterKeyPress);
+    }
   }
 
   handleEnterKeyPress(event) {
@@ -31,9 +35,9 @@ class PlayAudioButton extends Component {
       <PlayAudioButtonComponent
         onClick={this.props.onClick ?
           this.props.onClick
-          : () => this.props.playAudio(this.props.url)
+          : () => this.props.playAudio(this.props.url, this.props.text)
         }
-        isPlaying={this.props.isPlaying}
+        isPlaying={this.props.animation === false ? false : this.props.isPlaying}
       />
     );
   }
@@ -43,7 +47,10 @@ PlayAudioButton.propTypes = {
   playAudio: propTypes.func.isRequired,
   onClick: propTypes.func,
   isPlaying: propTypes.bool.isRequired,
-  url: propTypes.string
+  url: propTypes.string,
+  text: propTypes.string,
+  keyPress: propTypes.bool,
+  animation: propTypes.bool
 };
 
 const mapStateToProps = state => ({

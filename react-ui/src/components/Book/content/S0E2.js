@@ -103,10 +103,10 @@ export default class S0E2 extends Component {
           </c.Bookrow>
           // Stroke order
           <c.P>The horizontal strokes are shortened to give room for the other half of each character, and other strokes are also shortened and more inclined. Try it:</c.P>
-          {character(1, { mode: 'practice' })}
           {character(2, { mode: 'practice' })}
-          {character(3, { mode: 'practice' })}
+          {character(1, { mode: 'practice' })}
           {character(4, { mode: 'practice' })}
+          {character(3, { mode: 'practice' })}
           {character(5, { mode: 'practice' })}
           <c.PartTitle type="secondary">Pronunciation</c.PartTitle>
           <c.P>A Chinese syllable is composed of three parts: an initial, which comes first; a final, which comes last, and a tone. Which are the initials, finals and tones on these syllables? Practice:</c.P>

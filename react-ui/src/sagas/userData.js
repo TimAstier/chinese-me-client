@@ -2,7 +2,7 @@ import { select, take, call, put, all, takeEvery } from 'redux-saga/effects';
 import selectors from '../rootSelectors';
 import { types as appTypes } from '../redux/app';
 import trim from 'lodash/trim';
-import { shouldAskQuestion, askQuestion } from './questionModal';
+import { askQuestion } from './questionModal';
 import Api from '../utils/api';
 import { actions as settingsActions } from '../redux/settings';
 import { types as sagaTypes } from './actions';
@@ -33,10 +33,10 @@ export function* askUserSettings() {
   if (requiredUserData) {
     requiredUserData = requiredUserData.map(e => trim(e));
     for (const setting of requiredUserData) {
-      const ask = yield call(shouldAskQuestion, setting);
-      if (ask) {
-        yield call(askQuestion, setting);
-      }
+      // const ask = yield call(shouldAskQuestion, setting);
+      // if (ask) {
+      yield call(askQuestion, setting);
+      // }
     }
   }
 }

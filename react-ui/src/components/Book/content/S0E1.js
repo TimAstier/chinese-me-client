@@ -16,12 +16,17 @@ export default class S0E1 extends Component {
           <c.P>Welcome to the language with more native speakers than any other in the world: Chinese.</c.P>
           <c.P>This is Wang Yi. Listen carefully as she introduces herself to you.</c.P>
           {example(1, { basic: true, big: true, audio: true })}
+          // Audio fallback if no Url
+          ／／ audio button
           <c.P>The literal translation of this sentence is I CALLED WANG YI. Translated to more natural English, it means My name is Wang Yi.</c.P>
           <c.P>In China, the family name comes before the given name. There are only a few hundred family names, but any combination of one or two characters can be used as a given name. Different names have been popular during different periods: in revolutionary times, some children were named New Constitution and Strong Country. Names often reflect traditional gender roles: Strong and Thunder for boys; Little Swallow and Beautiful Jade for girls. Wang Yi’s family name is Wang, which means king, and her given name is the gender-neutral One.</c.P>
           <c.P>Now, it’s your turn to introduce yourself. Western names are hard to pronounce for Chinese people, so we will give you a Chinese name based on your actual name, your gender and your nationality. Please input them <C.Link type="askUserData">here</C.Link>.</c.P>
           <c.PartTitle type="secondary">Explore: Your Chinese name</c.PartTitle>
+          // Display Family AND given chinese names.
+          // Ask for genre and given name.
           <c.P>Now, practice your Chinese name. Remember that the family name comes first, followed by the given name:</c.P>
           {example(2, { basic: true, big: true, audio: true })}
+          // audio button
           <c.P>Repeat until you can say the name exactly as the audio voice.
           </c.P>
           <c.PartTitle type="secondary">Role Play: Introduce yourself</c.PartTitle>
@@ -36,16 +41,21 @@ export default class S0E1 extends Component {
           <c.P>When Wang Yi presents herself, you hear four syllables. Here is how they are written in Chinese.</c.P>
           {example(1, { basic: true, big: true, audio: false })}
           <c.P>English, like most other languages, is written using a phonetic alphabet. When you read a word, you decipher the pronunciation and then you know which word it is. Chinese is the other way around: it is written with characters that indicate meaning. Each Chinese character corresponds to a spoken syllable. Listen:</c.P>
-          <c.Bookrow>{character(1, { mode: 'details' })}</c.Bookrow>
+          <c.Bookrow>{character(5, { mode: 'details' })}</c.Bookrow>
           // Audio button
-          <c.Bookrow>{character(2, { mode: 'details' })}</c.Bookrow>
-          // Audio button
-          <c.Bookrow>{character(3, { mode: 'details' })}</c.Bookrow>
-          // Audio button
+          // No cal/bones button
           <c.Bookrow>{character(4, { mode: 'details' })}</c.Bookrow>
           // Audio button
+          // No cal/bones button
+          <c.Bookrow>{character(2, { mode: 'details' })}</c.Bookrow>
+          // Audio button
+          // No cal/bones button
+          <c.Bookrow>{character(1, { mode: 'details' })}</c.Bookrow>
+          // Audio button
+          // No cal/bones button
           <c.P>Let us practice a bit of pronunciation using this sentence. If you listen carefully one more time to this sentence, you will notice that each Chinese syllable has a tone. Practice pronouncing each syllable clearly, with the tone:</c.P>
           {example(1, { basic: true, big: true, audio: true })}
+          // Audio
           <c.P>These tones are important, because there are many characters that sound exactly the same except for the tone. The classical example of this are four words that are all pronounced ma. As you can see, the pīnyīn spelling is the same for each character; the only difference is the tone mark. The diagrams on the left show the pitch contour of each tone.</c.P>
           <c.P>The first means mother, and is pronounced with Tone 1, which is a long, flat tone pronounced at the top of the pitch range:</c.P>
           <c.Bookrow
@@ -95,13 +105,13 @@ export default class S0E1 extends Component {
           <c.P>So the tones are not totally alien. The difference is that in English, these tones only change the mood of a sentence; in Chinese, they change the meaning of words.</c.P>
           <c.PartTitle type="secondary">Pinyin – explaining Chinese pronunciation with English letters</c.PartTitle>
           <c.P>In order to help us remember the pronunciation of each character, the sound can be written using the Latin alphabet. Each syllable is written with its tone mark above:</c.P>
-          <c.Bookrow>{character(1, { mode: 'details' })}</c.Bookrow>
+          <c.Bookrow>{character(5, { mode: 'details' })}</c.Bookrow>
+          // Audio button
+          <c.Bookrow>{character(4, { mode: 'details' })}</c.Bookrow>
           // Audio button
           <c.Bookrow>{character(2, { mode: 'details' })}</c.Bookrow>
           // Audio button
-          <c.Bookrow>{character(3, { mode: 'details' })}</c.Bookrow>
-          // Audio button
-          <c.Bookrow>{character(4, { mode: 'details' })}</c.Bookrow>
+          <c.Bookrow>{character(1, { mode: 'details' })}</c.Bookrow>
           // Audio button
           <c.P>This spelling system is called pīnyīn. It is used in dictionaries and textbooks to teach pronunciation. It is also a way of inputting characters on computers and mobile phones. But Chinese people never actually read or communicate in pīnyīn – they always use characters.</c.P>
           <c.P>Try writing the pīnyīn spelling of the four characters we have learned so far:</c.P>

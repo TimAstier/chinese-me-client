@@ -17,6 +17,7 @@ import howler from 'howler';
 */
 
 export function *voiceText(text, muted = false) {
+  console.log(text)
   // See ResponsiveVoice Api: https://responsivevoice.org/api/
   const voicer = window.responsiveVoice;
   if (voicer.voiceSupport()) {
@@ -87,9 +88,17 @@ export function *playSound(src, muted = false) {
 }
 
 function* playAudio(action) {
-  const audioUrl = action.payload.url ? action.payload.url :
-    yield select(selectors.audio.getAudioUrl);
-  yield call(playSound, [audioUrl]);
+  // Priorities to define which sound to play:
+  // 1. payload.url 2. payload.text 3. getAudioUrl
+  if (action.payload.url) {
+    return yield call(playSound, [action.payload.url]);
+  }
+  if (action.payload.text) {
+    return yield call(voiceText, action.payload.text);
+  }
+  return yield call(playSound, [
+    yield select(selectors.audio.getAudioUrl)
+  ]);
 }
 
 export function* playSuccessSound() {

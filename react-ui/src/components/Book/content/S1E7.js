@@ -79,6 +79,8 @@ export default class S1E7 extends Component {
           // Dialog title
           <c.PartTitle>会话:你家人都在中国吗?</c.PartTitle>
           // Dialog intro
+          // NEED to display sentences together.
+          // New version of the dialog
           {dialog(1, { sentenceType: 'chinese', displayNames: true })}
           {dialog(1, { sentenceType: 'translation', displayNames: true })}
           <c.PartTitle>CULTURE AND SOCIETY</c.PartTitle>

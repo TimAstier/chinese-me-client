@@ -25,7 +25,14 @@ const Body = styled.div`
 class Bookrow extends Component {
 
   _renderAudioButton() {
-    return <PlayAudioButton url={this.props.buttonOptions.data.url}/>;
+    return (
+      <PlayAudioButton
+        url={this.props.buttonOptions.data.url}
+        text={this.props.buttonOptions.data.text}
+        keyPress={false}
+        animation={false}
+      />
+    );
   }
 
   _renderBookButton() {

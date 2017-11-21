@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import { bookContainers as C } from '../../../containers';
 import { Bookrow } from './.';
+import * as models from '../../../models';
 
 class Dialog extends Component {
 

@@ -12,6 +12,7 @@ class Dialog extends Component {
     return (
       <c.Dialog
         statements={dialog ? dialog.statements : undefined }
+        avatars={this.props.avatars}
         displayNames={options.displayNames ? options.displayNames : false}
         sentenceType={options.sentenceType}
         dialogId={this.props.dialogId}

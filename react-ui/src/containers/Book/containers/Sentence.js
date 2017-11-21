@@ -7,16 +7,8 @@ import { default as s } from '../../../rootSelectors';
 
 class Sentence extends Component {
 
-  _name() {
-    const { avatar, sentenceType } = this.props;
-    if (sentenceType === 'chinese') {
-      return avatar ? avatar.get('chineseName') : '';
-    }
-    return avatar ? avatar.get('name') : '';
-  }
-
   render() {
-    const { sentence, sentenceType, displayNames } = this.props;
+    const { sentence, sentenceType } = this.props;
     if (!sentence) {
       return null;
     }
@@ -24,8 +16,6 @@ class Sentence extends Component {
       <c.Sentence
         sentence={sentence}
         sentenceType={sentenceType}
-        displayNames={displayNames}
-        name={this._name()}
       />
     );
   }
@@ -33,16 +23,12 @@ class Sentence extends Component {
 
 Sentence.propTypes = {
   sentenceId: propTypes.number.isRequired,
-  avatarId: propTypes.number.isRequired,
   sentence: propTypes.instanceOf(models.Sentence),
-  avatar: propTypes.instanceOf(models.Avatar),
-  sentenceType: propTypes.string.isRequired,
-  displayNames: propTypes.bool.isRequired
+  sentenceType: propTypes.string.isRequired
 };
 
 const mapStateToProps = (state, ownProps) => ({
-  sentence: s.entities.getSentences(state).get(String(ownProps.sentenceId)),
-  avatar: s.entities.getAvatars(state).get(String(ownProps.avatarId))
+  sentence: s.entities.getSentences(state).get(String(ownProps.sentenceId))
 });
 
 export default connect(

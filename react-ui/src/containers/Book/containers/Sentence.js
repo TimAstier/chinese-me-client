@@ -8,7 +8,7 @@ import { default as s } from '../../../rootSelectors';
 class Sentence extends Component {
 
   render() {
-    const { sentence, sentenceType } = this.props;
+    const { sentence, sentenceType, settings } = this.props;
     if (!sentence) {
       return null;
     }
@@ -16,6 +16,7 @@ class Sentence extends Component {
       <c.Sentence
         sentence={sentence}
         sentenceType={sentenceType}
+        settings={settings}
       />
     );
   }
@@ -24,11 +25,13 @@ class Sentence extends Component {
 Sentence.propTypes = {
   sentenceId: propTypes.number.isRequired,
   sentence: propTypes.instanceOf(models.Sentence),
-  sentenceType: propTypes.string.isRequired
+  sentenceType: propTypes.string.isRequired,
+  settings: propTypes.object.isRequired
 };
 
 const mapStateToProps = (state, ownProps) => ({
-  sentence: s.entities.getSentences(state).get(String(ownProps.sentenceId))
+  sentence: s.entities.getSentences(state).get(String(ownProps.sentenceId)),
+  settings: s.getAugmentedSettings(state)
 });
 
 export default connect(

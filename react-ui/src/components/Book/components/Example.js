@@ -6,22 +6,27 @@ import { Row } from '../../Shared';
 
 const NumberWrapper = styled.div`
   width: 40px;
+  font-size: 21px;
+  margin-top: 4px;
 `;
 
 const SentenceWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  font-size: 21px;
+  line-height: 1.3;
 `;
 
 const Chinese = styled.span`
-  font-size: ${props => props.big ? '34px' : '22px'};
-  line-height: 1;
+  font-size: ${props => props.big ? '34px' : '27px'};
   font-family: ChineseFont;
   margin-bottom: 5px;
+  line-height: 1.1;
 `;
 
 const Pinyin = styled.span`
   font-weight: bold;
+  font-family: 'cambria';
 `;
 
 const Translation = styled.span`

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
 import * as models from '../../../models';
+import insertVariables from '../../../utils/insertVariables';
 
 const Placeholder = styled.span`
   color: red;
@@ -12,7 +13,14 @@ class Sentence extends Component {
   _renderChinese() {
     return (
       this.props.sentence.chinese ?
-        <span>{this.props.sentence.chinese}</span>
+        <span>
+          {
+            insertVariables(
+              this.props.sentence.chinese,
+              this.props.settings
+            )
+          }
+        </span>
         : <Placeholder>{'{MISSING CHINESE}'}</Placeholder>
     );
   }
@@ -20,7 +28,16 @@ class Sentence extends Component {
   _renderPinyin() {
     return (
       this.props.sentence.pinyin ?
-        <span><b>{this.props.sentence.pinyin}</b></span>
+        <span>
+          <b>
+            {
+              insertVariables(
+                this.props.sentence.pinyin,
+                this.props.settings
+              )
+            }
+          </b>
+        </span>
         : <Placeholder>{'{MISSING PINYIN}'}</Placeholder>
     );
   }
@@ -28,7 +45,16 @@ class Sentence extends Component {
   _renderTranslation() {
     return (
       this.props.sentence.translation ?
-        <span><i>{this.props.sentence.translation}</i></span>
+        <span>
+          <i>
+            {
+              insertVariables(
+                this.props.sentence.translation,
+                this.props.settings
+              )
+            }
+          </i>
+        </span>
         : <Placeholder>{'{MISSING TRANSLATION}'}</Placeholder>
     );
   }
@@ -45,7 +71,8 @@ class Sentence extends Component {
 
 Sentence.propTypes = {
   sentence: propTypes.instanceOf(models.Sentence).isRequired,
-  sentenceType: propTypes.string.isRequired
+  sentenceType: propTypes.string.isRequired,
+  settings: propTypes.object.isRequired
 };
 
 export default Sentence;

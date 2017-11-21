@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import * as c from '../components';
 import { content as contentPropTypes } from '../../../helpers/propTypes';
+import pinyinNumberToAudioUrl from '../../../utils/pinyinNumberToAudioUrl';
+import { Row } from '../../Shared';
 
 export default class S1E7 extends Component {
   static propTypes = contentPropTypes
@@ -55,64 +57,107 @@ export default class S1E7 extends Component {
           <c.Bookrow
             buttonOptions={{
               type: 'audio',
-              data: { url: 'test' }
+              data: {
+                url: pinyinNumberToAudioUrl('ni3'),
+                text: '你'
+              }
             }}
           >
             <c.Ul>
-              <li>你 nǐ you</li>
+              <li>
+                <Row>
+                  <c.Char>你</c.Char>
+                  <c.Pinyin>nǐ</c.Pinyin>
+                  <c.Meaning>you</c.Meaning>
+                </Row>
+              </li>
             </c.Ul>
           </c.Bookrow>
           <c.P>This is also the how it is pronounced in finals like -ing and -iao:</c.P>
           <c.Bookrow
             buttonOptions={{
               type: 'audio',
-              data: { url: 'test' }
+              data: {
+                text: '姓，叫'
+              }
             }}
           >
             <c.Ul>
-              <li>姓 xìng to have as family name</li>
-              <li>叫 jiào to be called</li>
+              <li>
+                <Row>
+                  <c.Char>姓</c.Char>
+                  <c.Pinyin>xìng</c.Pinyin>
+                  <c.Meaning>to have as family name</c.Meaning>
+                </Row>
+              </li>
+              <li>
+                <Row>
+                  <c.Char>叫</c.Char>
+                  <c.Pinyin>jiào</c.Pinyin>
+                  <c.Meaning>to be called</c.Meaning>
+                </Row>
+              </li>
             </c.Ul>
           </c.Bookrow>
           <c.P>But after the initials sh-, r- , ch- and zh- it is pronounced like an American r!</c.P>
           <c.Bookrow
             buttonOptions={{
               type: 'audio',
-              data: { url: 'test' }
+              data: {
+                url: pinyinNumberToAudioUrl('shi4'),
+                text: '是'
+              }
             }}
           >
             <c.Ul>
-              <li>是 shì, to be (so this is pronounced like English shr in shrewd)</li>
+              <li>
+                <Row>
+                  <c.Char>是</c.Char>
+                  <c.Pinyin>shì</c.Pinyin>
+                  <c.Meaning>, to be (so this is pronounced like English shr in shrewd)</c.Meaning>
+                </Row>
+              </li>
             </c.Ul>
           </c.Bookrow>
           <c.P>In a previous lesson, we learned the third pronunciation of i. After the initials s-, c- and z-, it is a little bit similar to the sound we make to imitate the buzzing of a bee: bzzzzzzz, but without the initial bz-sound, just the long zzzzzz.</c.P>
           <c.Bookrow
             buttonOptions={{
               type: 'audio',
-              data: { url: 'test' }
+              data: {
+                // url: pinyinNumberToAudioUrl('zi3'),
+                text: '子'
+              }
             }}
           >
             <c.Ul>
-              <li>子 zǐ, son, child</li>
+              <li>
+                <Row>
+                  <c.Char>子</c.Char>
+                  <c.Pinyin>zǐ</c.Pinyin>
+                  <c.Meaning>son, child</c.Meaning>
+                </Row>
+              </li>
             </c.Ul>
           </c.Bookrow>
           <c.P>If we had designed pīnyīn, we would have chosen the following spellings, because that is what these syllables sound like:</c.P>
           <c.Bookrow>
             <c.Ul>
-              <li>nǐ you => něe</li>
-              <li>shì you => sh`r</li>
-              <li>zǐ you => dž</li>
+              <li><b>nǐ</b> => něe</li>
+              <li><b>shì</b> => sh`r</li>
+              <li><b>zǐ</b> => dž</li>
             </c.Ul>
           </c.Bookrow>
           <c.P>Practice the different pronunciations carefully:</c.P>
           <c.Bookrow
             buttonOptions={{
               type: 'audio',
-              data: { url: 'test' }
+              data: {
+                text: '姓，是，子，你，叫'
+              }
             }}
           >
             <c.Ul>
-              <li>xìng, shì, zǐ, nǐ, jiào, shì, xìng, zǐ</li>
+              <li><c.Pinyin>xìng, shì, zǐ, nǐ, jiào</c.Pinyin></li>
             </c.Ul>
           </c.Bookrow>
           <c.P>You can review all the sounds in this lesson more thoroughly in the Introduction to Chinese pronunciation and writing.</c.P>

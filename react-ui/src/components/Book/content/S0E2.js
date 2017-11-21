@@ -14,33 +14,32 @@ export default class S0E2 extends Component {
           {lessonTitle()}
           <c.PartTitle type="secondary">Saying hello</c.PartTitle>
           <c.P>The most common Chinese greeting is a combination of two characters, 你 you and 好 good. Let us first practice saying each of them separately. Listen carefully to see if you can identify the tone on each one:</c.P>
-          <c.Bookrow
-            buttonOptions={{
-              type: 'audio',
-              data: { url: 'test' }
-            }}
-          >
-            你
-          </c.Bookrow>
-          // Format
-          <c.Bookrow
-            buttonOptions={{
-              type: 'audio',
-              data: { url: 'test' }
-            }}
-          >
-            好
-          </c.Bookrow>
-          // Format
+          {character(6, {
+            mode: 'details',
+            hidePinyin: true,
+            hideMeaning: true,
+            hideLinks: true,
+            audio: true
+          })}
+          {character(3, {
+            mode: 'details',
+            hidePinyin: true,
+            hideMeaning: true,
+            hideLinks: true,
+            audio: true
+          })}
           <c.P>Both of them are pronounced with Tone 3. Now, listen to how they sound when we put them together in the greeting 你好 hi:</c.P>
           <c.Bookrow
             buttonOptions={{
               type: 'audio',
-              data: { url: 'test' }
+              data: {
+                text: '你好'
+              }
             }}
           >
             你好！
           </c.Bookrow>
+          // Format
           <c.P>You may have noticed that the first tone changes to Tone 2. This is an example of a tone change rule: sometimes, the tone on a character changes depending on the tone that comes after. This sounds complicated, but actually comes naturally as you get used to speaking; we just mention it so you won’t be surprised when it happens! The linguistic term for this kind of change is tone sandhi, from the sanscrit word sandhi meaning change.</c.P>
           <c.PartTitle type="secondary">Introducing your last name</c.PartTitle>
           <c.P>In the previous lesson, we learned to introduce ourselves using the verb 叫 which means to be called. The verb 姓 is used in a similar pattern to introduce one’s family name:</c.P>
@@ -127,31 +126,21 @@ export default class S0E2 extends Component {
           <c.P>Let us also practice pronouncing a couple of the initials from this lesson.</c.P>
           <c.PartTitle type="tertiary">The initial h-</c.PartTitle>
           <c.P>Chinese h- is much “harder” than English h; it sounds more like its German counterpart. Mimic the audio voice and try to exaggerate the strong aspiration on the initial:</c.P>
-          <c.Bookrow
-            buttonOptions={{
-              type: 'audio',
-              data: { url: 'test' }
-            }}
-          >
-            <c.Ul>
-              <li>好 hǎo</li>
-            </c.Ul>
-          </c.Bookrow>
-          // Format
+          {character(3, {
+            mode: 'details',
+            hideMeaning: true,
+            hideLinks: true,
+            audio: true
+          })}
           <c.PartTitle type="tertiary">The initial x-</c.PartTitle>
           <c.P>Some books and websites claim that the Chinese initial x- is difficult because it doesn’t exist in English. In fact, English has a sound very similar to x-, it’s just that it is well hidden!</c.P>
           <c.P>Here’s how to find it: Slowly and carefully pronounce the ch in English cheap. You will notice that ch contains two sounds: t followed by a soft shush. This shush is exactly the missing x- we are looking for! Pronounce the ch in chin without the t sound, and you have it! Listen to the audio voice and repeat very slowly:</c.P>
-          <c.Bookrow
-            buttonOptions={{
-              type: 'audio',
-              data: { url: 'test' }
-            }}
-          >
-            <c.Ul>
-              <li>姓 xìng</li>
-            </c.Ul>
-          </c.Bookrow>
-          // Format
+          {character(5, {
+            mode: 'details',
+            hideMeaning: true,
+            hideLinks: true,
+            audio: true
+          })}
           <c.PartTitle type="secondary">New characters</c.PartTitle>
           <c.P><i>Here are all the new characters from this lesson. Practice the stroke order animations at ChineseMe.</i></c.P>
           {newCharacters()}

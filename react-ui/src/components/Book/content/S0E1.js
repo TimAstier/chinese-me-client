@@ -38,18 +38,30 @@ export default class S0E1 extends Component {
           <c.P>When Wang Yi presents herself, you hear four syllables. Here is how they are written in Chinese.</c.P>
           {example(1, { basic: true, big: true, audio: false })}
           <c.P>English, like most other languages, is written using a phonetic alphabet. When you read a word, you decipher the pronunciation and then you know which word it is. Chinese is the other way around: it is written with characters that indicate meaning. Each Chinese character corresponds to a spoken syllable. Listen:</c.P>
-          <c.Bookrow>{character(5, { mode: 'details' })}</c.Bookrow>
-          // Audio button
-          // No cal/bones button
-          <c.Bookrow>{character(4, { mode: 'details' })}</c.Bookrow>
-          // Audio button
-          // No cal/bones button
-          <c.Bookrow>{character(2, { mode: 'details' })}</c.Bookrow>
-          // Audio button
-          // No cal/bones button
-          <c.Bookrow>{character(1, { mode: 'details' })}</c.Bookrow>
-          // Audio button
-          // No cal/bones button
+          {character(5, {
+            mode: 'details',
+            hidePinyin: true,
+            hideLinks: true,
+            audio: true
+          })}
+          {character(4, {
+            mode: 'details',
+            hidePinyin: true,
+            hideLinks: true,
+            audio: true
+          })}
+          {character(2, {
+            mode: 'details',
+            hidePinyin: true,
+            hideLinks: true,
+            audio: true
+          })}
+          {character(1, {
+            mode: 'details',
+            hidePinyin: true,
+            hideLinks: true,
+            audio: true
+          })}
           <c.P>Let us practice a bit of pronunciation using this sentence. If you listen carefully one more time to this sentence, you will notice that each Chinese syllable has a tone. Practice pronouncing each syllable clearly, with the tone:</c.P>
           {example(1, { basic: true, big: true, audio: true })}
           <c.P>These tones are important, because there are many characters that sound exactly the same except for the tone. The classical example of this are four words that are all pronounced ma. As you can see, the pīnyīn spelling is the same for each character; the only difference is the tone mark. The diagrams on the left show the pitch contour of each tone.</c.P>
@@ -109,14 +121,30 @@ export default class S0E1 extends Component {
           <c.P>So the tones are not totally alien. The difference is that in English, these tones only change the mood of a sentence; in Chinese, they change the meaning of words.</c.P>
           <c.PartTitle type="secondary">Pinyin – explaining Chinese pronunciation with English letters</c.PartTitle>
           <c.P>In order to help us remember the pronunciation of each character, the sound can be written using the Latin alphabet. Each syllable is written with its tone mark above:</c.P>
-          <c.Bookrow>{character(5, { mode: 'details' })}</c.Bookrow>
-          // Audio button
-          <c.Bookrow>{character(4, { mode: 'details' })}</c.Bookrow>
-          // Audio button
-          <c.Bookrow>{character(2, { mode: 'details' })}</c.Bookrow>
-          // Audio button
-          <c.Bookrow>{character(1, { mode: 'details' })}</c.Bookrow>
-          // Audio button
+          {character(5, {
+            mode: 'details',
+            hideMeaning: true,
+            hideLinks: true,
+            audio: true
+          })}
+          {character(4, {
+            mode: 'details',
+            hideMeaning: true,
+            hideLinks: true,
+            audio: true
+          })}
+          {character(2, {
+            mode: 'details',
+            hideMeaning: true,
+            hideLinks: true,
+            audio: true
+          })}
+          {character(1, {
+            mode: 'details',
+            hideMeaning: true,
+            hideLinks: true,
+            audio: true
+          })}
           <c.P>This spelling system is called pīnyīn. It is used in dictionaries and textbooks to teach pronunciation. It is also a way of inputting characters on computers and mobile phones. But Chinese people never actually read or communicate in pīnyīn – they always use characters.</c.P>
           <c.P>Try writing the pīnyīn spelling of the four characters we have learned so far:</c.P>
           <c.Bookrow

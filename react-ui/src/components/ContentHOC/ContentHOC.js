@@ -4,7 +4,6 @@ import { bookContainers as C } from '../../containers';
 import { getGrammarLetter } from '../../utils/bookContent';
 import * as models from '../../models';
 import styled from 'styled-components';
-import { bookComponents as c} from '../.';
 
 const Placeholder = styled.p`
   color: red;
@@ -104,7 +103,7 @@ class ContentHOC extends Component {
           />
         );
       });
-      return <c.Bookrow flexDirection={'column'}>{array}</c.Bookrow>;
+      return array;
     };
   };
 

@@ -1,45 +1,39 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import * as models from '../../../models';
-import styled from 'styled-components';
-import { Row } from '../../Shared';
 import pinyinize from 'pinyinize';
 import { bookContainers as C } from '../../../containers';
-
-const Char = styled.div`
-  font-size: 30px;
-  font-family: ChineseFont;
-  line-height: 1.1;
-`;
-
-const Pinyin = styled.div`
-  font-family: 'Cambria';
-  font-size: 21px;
-  font-weight: bold;
-  color: #454545;
-  margin-left: 10px;
-  margin-top: 10px;
-`;
-
-const Meaning = styled.div`
-  font-family: 'Cambria';
-  font-size: 21px;
-  font-style: italic;
-  color: #454545;
-  margin-left: 10px;
-  margin-top: 10px;
-`;
+import { Char, Pinyin, Meaning, Bookrow } from './.';
+import pinyinNumberToAudioUrl from '../../../utils/pinyinNumberToAudioUrl';
 
 class CharacterDetails extends Component {
 
   render() {
     return (
-      <Row>
+      <Bookrow
+        buttonOptions={
+          this.props.audio ?
+          {
+            type: 'audio',
+            data: {
+              url: pinyinNumberToAudioUrl(this.props.character.pinyinNumber),
+              text: this.props.character.simpChar
+            }
+          }
+          : undefined
+        }
+      >
         <Char>{this.props.character.simpChar}</Char>
-        <Pinyin>{pinyinize(this.props.character.pinyinNumber)}</Pinyin>
-        <Meaning>{this.props.character.meaning}</Meaning>
         {
-          this.props.character.writingUrl &&
+          !this.props.hidePinyin === true &&
+            <Pinyin>{pinyinize(this.props.character.pinyinNumber)}</Pinyin>
+        }
+        {
+          !this.props.hideMeaning === true &&
+            <Meaning>{this.props.character.meaning}</Meaning>
+        }
+        {
+          this.props.character.writingUrl && !this.props.hideLinks === true &&
             <C.BookButton
               buttonOptions={{
                 type: 'writing',
@@ -50,7 +44,7 @@ class CharacterDetails extends Component {
             />
         }
         {
-          this.props.character.etymologyUrl &&
+          this.props.character.etymologyUrl && !this.props.hideLinks === true &&
             <C.BookButton
               buttonOptions={{
                 type: 'story',
@@ -60,13 +54,17 @@ class CharacterDetails extends Component {
               }}
             />
         }
-      </Row>
+      </Bookrow>
     );
   }
 }
 
 CharacterDetails.propTypes = {
-  character: propTypes.instanceOf(models.Character).isRequired
+  character: propTypes.instanceOf(models.Character).isRequired,
+  hidePinyin: propTypes.bool,
+  hideMeaning: propTypes.bool,
+  hideLinks: propTypes.bool,
+  audio: propTypes.bool
 };
 
 export default CharacterDetails;

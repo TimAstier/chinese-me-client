@@ -23,7 +23,13 @@ class Character extends Component {
 
   _renderDetails() {
     return (
-      <c.CharacterDetails character={this.props.character} />
+      <c.CharacterDetails
+        character={this.props.character}
+        hidePinyin={this.props.options ? this.props.options.hidePinyin : undefined}
+        hideMeaning={this.props.options ? this.props.options.hideMeaning : undefined}
+        hideLinks={this.props.options ? this.props.options.hideLinks : undefined}
+        audio={this.props.options ? this.props.options.audio : undefined}
+      />
     );
   }
 
@@ -46,7 +52,11 @@ Character.propTypes = {
   characterId: propTypes.number.isRequired,
   character: propTypes.instanceOf(models.Character),
   options: propTypes.shape({
-    mode: propTypes.oneOf(['practice', 'details', 'box'])
+    mode: propTypes.oneOf(['practice', 'details', 'box']),
+    hidePinyin: propTypes.bool,
+    hideMeaning: propTypes.bool,
+    hideLinks: propTypes.bool,
+    audio: propTypes.bool
   })
 };
 

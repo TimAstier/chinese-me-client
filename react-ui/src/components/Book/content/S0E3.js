@@ -152,25 +152,19 @@ export default class S1E7 extends Component {
             buttonOptions={{
               type: 'audio',
               data: {
-                text: '姓，是，子，你，叫'
+                text: '姓，是，子，你，叫，是，姓，子'
               }
             }}
           >
             <c.Ul>
-              <li><c.Pinyin>xìng, shì, zǐ, nǐ, jiào</c.Pinyin></li>
+              <li><c.Pinyin>xìng, shì, zǐ, nǐ, jiào, shì, xìng, zǐ</c.Pinyin></li>
             </c.Ul>
           </c.Bookrow>
           <c.P>You can review all the sounds in this lesson more thoroughly in the Introduction to Chinese pronunciation and writing.</c.P>
           <c.PartTitle type="secondary">Oracle bones</c.PartTitle>
-          <c.Bookrow>
-            <img src={'http://via.placeholder.com/350x150'} alt=""/>
-          </c.Bookrow>
-          <c.Bookrow>
-            <img src={'http://via.placeholder.com/350x150'} alt=""/>
-          </c.Bookrow>
-          <c.Bookrow>
-            <img src={'http://via.placeholder.com/350x150'} alt=""/>
-          </c.Bookrow>
+          <c.Bookrow center><img src={'https://s3.eu-west-2.amazonaws.com/chineseme/images/zhong_jiaguwen.png'} alt=""/></c.Bookrow>
+          <c.Bookrow center><img src={'https://s3.eu-west-2.amazonaws.com/chineseme/images/yu_jiaguwen.png'} alt=""/></c.Bookrow>
+          <c.Bookrow center><img src={'https://s3.eu-west-2.amazonaws.com/chineseme/images/guo_jiaguwen.png'} alt=""/></c.Bookrow>
           <c.PartTitle type="secondary">Characters – calligraphy</c.PartTitle>
           <c.P>We have so far learned the horizontal, vertical and hook strokes. The character 人 person contains two new strokes: the left and right downard strokes.</c.P>
           <c.P>The left downward stroke is used as a “left leg” in many characters. It has the shape of an elephant tusk:</c.P>

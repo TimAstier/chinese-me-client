@@ -12,9 +12,7 @@ export default class S1E7 extends Component {
       <div>
         <c.Page>
           {lessonTitle()}
-          <c.Bookrow>
-            <img src={'http://via.placeholder.com/350x150'} alt=""/>
-          </c.Bookrow>
+          <c.Bookrow center><img src={'https://s3.eu-west-2.amazonaws.com/chineseme/images/S1E7_objectives.png'} alt=""/></c.Bookrow>
           <c.PartTitle>NEW CHARACTERS</c.PartTitle>
           <c.P><i>Practice the stroke order animations at ChineseMe. Some characters have material on Stories and Calligraphy.</i></c.P>
           {newCharacters()}
@@ -76,7 +74,6 @@ export default class S1E7 extends Component {
           <c.P>In English, we would answer both the affirmative and the negative question in the same way: No, I don't. But Chinese applies mathematical logic to the answer; if you reply to the negative question using the Chinese equivalent of no, you would be contradicting the negative itself, meaning that you do speak French. If you want to say you don't speak French, you need to answer with the Chinese equivalent of yes:</c.P>
           {example(21, { audio: true })}
           <c.P>Chinese speakers often make the opposite mistake in English: Don't you want to have dinner with us? Yes, I need to go now. To avoid confusion, stick to positively formulated questions!</c.P>
-          // Dialog title
           <c.PartTitle>会话:你家人都在中国吗?</c.PartTitle>
           // Dialog intro
           // NEED to display sentences together.
@@ -84,7 +81,7 @@ export default class S1E7 extends Component {
           {dialog(1, { sentenceType: 'chinese', displayNames: true })}
           {dialog(1, { sentenceType: 'translation', displayNames: true })}
           <c.PartTitle>CULTURE AND SOCIETY</c.PartTitle>
-          // Culture box
+          <c.Bookrow center><img src={'https://s3.eu-west-2.amazonaws.com/chineseme/images/S1E7_culture.png'} alt=""/></c.Bookrow>
           <c.PartTitle>NEW VOCABULARY</c.PartTitle>
           // Words
           <c.PartTitle>REVIEW</c.PartTitle>

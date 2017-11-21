@@ -7,5 +7,6 @@ export const content = {
   dialog: propTypes.func.isRequired,
   grammarTitle: propTypes.func.isRequired,
   pageNumber: propTypes.func.isRequired,
-  character: propTypes.func.isRequired
+  character: propTypes.func.isRequired,
+  settings: propTypes.object.isRequired
 };

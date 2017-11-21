@@ -136,6 +136,7 @@ class ContentHOC extends Component {
         grammarTitle={this._grammarTitle(grammars)}
         pageNumber={this._pageNumberDumper()}
         review={this._reviewDumper}
+        settings={this.props.settings}
       />
     );
   }
@@ -145,6 +146,7 @@ ContentHOC.propTypes = {
   content: propTypes.func.isRequired,
   season: propTypes.instanceOf(models.Season),
   episode: propTypes.instanceOf(models.Episode),
+  settings: propTypes.object.isRequired
 };
 
 export default ContentHOC;

@@ -3,12 +3,13 @@ import * as c from '../components';
 import { content as contentPropTypes } from '../../../helpers/propTypes';
 import pinyinNumberToAudioUrl from '../../../utils/pinyinNumberToAudioUrl';
 import { Row } from '../../Shared';
+import insertVariables from '../../../utils/insertVariables';
 
 export default class S1E7 extends Component {
   static propTypes = contentPropTypes
 
   render() {
-    const { newCharacters, example, lessonTitle, dialog, character }
+    const { newCharacters, example, lessonTitle, dialog, character, settings }
       = this.props;
     return (
       <div>
@@ -39,11 +40,12 @@ export default class S1E7 extends Component {
           {dialog(2, { sentenceType: 'chinese', displayNames: false })}
           // displayTranslation
           <c.PartTitle type="secondary">Your country and nationality</c.PartTitle>
-          <c.P>Now, it’s your turn to tell Wang Yi and Wang Yuguo where you are from. Listen how to say the name of your country on ChineseMe:</c.P>
-          // My country...
+          <c.P>Now, it’s your turn to tell Wang Yi and Wang Yuguo where you are from. Listen how to say the name of your country:</c.P>
+          {example(6, { basic: true, big: true, audio: true })}
           <c.P>Repeat this until you feel confident saying your country name.</c.P>
-          <c.P>In order to say I am [USER_NATIONALITY], just add 人:</c.P>
-          // Wrong variable?
+          <c.P>
+            {`In order to say I am from ${insertVariables('[NATIONALITY_EN]', settings)}, just add 人:`}
+          </c.P>
           {example(5, { basic: true, big: true, audio: true })}
           <c.PartTitle type="secondary">Role Play: Introduce yourself and where you are from</c.PartTitle>
           <c.P>Introduce yourself to Wang Yi and Wang Yuguo:</c.P>

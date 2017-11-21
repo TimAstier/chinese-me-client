@@ -29,11 +29,9 @@ export default class S0E1 extends Component {
           <c.PartTitle type="secondary">Role Play: Introduce yourself</c.PartTitle>
           <c.P>Listen to Wang Yi and then tell her your own name:</c.P>
           {dialog(1, { sentenceType: 'chinese', displayNames: false })}
-          // Variable issue
           <c.P>Repeat this until you feel comfortable.</c.P>
           <c.P>Now, change roles! Pretend you are Wang Yi, and introduce yourself.</c.P>
           {dialog(1, { sentenceType: 'chinese', displayNames: false })}
-          // Variable issue
           <c.P>Good!</c.P>
           <c.P>Learning Chinese is not just useful: it is also an intellectual adventure which allows us to understand the culture of an ancient civilization. So let’s use our first sentence to explore some fascinating aspects of this language.</c.P>
           <c.PartTitle type="secondary">Each Chinese character corresponds to one spoken syllable</c.PartTitle>

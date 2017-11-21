@@ -15,6 +15,7 @@ export { default as getCurrentSentence } from './getCurrentSentence';
 export { default as getCurrentSentenceIndex } from './getCurrentSentenceIndex';
 export { default as getCurrentSentences } from './getCurrentSentences';
 export { default as getCurrentSentenceWithValues } from './getCurrentSentenceWithValues';
+export { default as getCurrentSentencesWithValues } from './getCurrentSentencesWithValues';
 export { default as getCurrentStatement } from './getCurrentStatement';
 export { default as getCurrentStatementIndex } from './getCurrentStatementIndex';
 export { default as getCurrentStatementLength } from './getCurrentStatementLength';

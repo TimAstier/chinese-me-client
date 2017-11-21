@@ -1,8 +1,8 @@
 import { createSelector } from 'reselect';
-import getCurrentSentences from './getCurrentSentences';
+import getCurrentSentencesWithValues from './getCurrentSentencesWithValues';
 
 const getCurrentStatementLength = createSelector(
-  getCurrentSentences,
+  getCurrentSentencesWithValues,
   sentences => {
     return sentences.reduce((sum, value) => {
       return sum + value.get('chinese').length;

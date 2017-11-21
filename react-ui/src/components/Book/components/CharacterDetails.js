@@ -33,6 +33,17 @@ class CharacterDetails extends Component {
             <Meaning>{this.props.character.meaning}</Meaning>
         }
         {
+          !this.props.hideLinks === true &&
+            <C.BookButton
+              buttonOptions={{
+                type: 'stroke',
+                data: {
+                  elementId: this.props.character.id
+                }
+              }}
+            />
+        }
+        {
           this.props.character.writingUrl && !this.props.hideLinks === true &&
             <C.BookButton
               buttonOptions={{

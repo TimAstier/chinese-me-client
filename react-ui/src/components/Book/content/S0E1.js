@@ -7,7 +7,7 @@ export default class S0E1 extends Component {
   static propTypes = contentPropTypes
 
   render() {
-    const { newCharacters, example, lessonTitle, dialog, character }
+    const { newCharacters, example, lessonTitle, dialog, character, characterIds }
       = this.props;
     return (
       <div>
@@ -19,8 +19,8 @@ export default class S0E1 extends Component {
           <c.P>The literal translation of this sentence is I CALLED WANG YI. Translated to more natural English, it means My name is Wang Yi.</c.P>
           <c.P>In China, the family name comes before the given name. There are only a few hundred family names, but any combination of one or two characters can be used as a given name. Different names have been popular during different periods: in revolutionary times, some children were named New Constitution and Strong Country. Names often reflect traditional gender roles: Strong and Thunder for boys; Little Swallow and Beautiful Jade for girls. Wang Yi’s family name is Wang, which means king, and her given name is the gender-neutral One.</c.P>
           <c.P>Now, it’s your turn to introduce yourself. Western names are hard to pronounce for Chinese people, so we will give you a Chinese name based on your actual name, your gender and your nationality. Please input them <C.Link type="askUserData">here</C.Link>.</c.P>
+          // Triger input with practice button instead of link.
           <c.PartTitle type="secondary">Explore: Your Chinese name</c.PartTitle>
-          // Display Family AND given chinese names.
           // Ask for genre and given name.
           <c.P>Now, practice your Chinese name. Remember that the family name comes first, followed by the given name:</c.P>
           {example(2, { basic: true, big: true, audio: true })}
@@ -175,40 +175,85 @@ export default class S0E1 extends Component {
           <c.PartTitle type="secondary">Calligraphy – the ancient art of writing</c.PartTitle>
           <c.P>Another aid in memorizing characters is to understand their aesthetics. Chinese calligraphy, the art of writing, is an ancient art form that embodies many concepts of Chinese philosophy. Historically, good handwriting was seen as the hallmark of the educated person. Today, there is a revival of interest, and most Chinese children practice calligraphy at school.</c.P>
           <c.P>Practicing the traditional art of writing is not something you have to do to learn Chinese. But many people find it enjoyable. The artistic principles help us develop a feel for the logic of how the Chinese characters have been put together; the rhythm of writing each stroke makes the whole character come alive. After just a short while of practice, this will help you to see the characters in a new way. Have a try; in later lessons you can decide whether you want to continue writing calligraphy.</c.P>
-          <c.PartTitle type="secondary">一 yī one</c.PartTitle>
-          // Stroke order
+          <c.PartTitle
+            type="secondary"
+            buttonOptions={{
+              type: 'stroke',
+              data: {
+                elementId: characterIds[0]
+              }
+            }}
+          >
+            一 yī one
+          </c.PartTitle>
           <c.P>This is the simplest character in the Chinese language: just a single horizontal stroke. But in all its simplicity, it illustrates important principles of writing. For example, looking at the printed character, the “horizontal” stroke seems absolutely flat:</c.P>
           <c.P>一</c.P>
           <c.P>But if you look carefully at the hand-written character, you will see that the horizontal stroke is not just a flat line. It has a clearly defined beginning and end and the whole stroke curves gently, giving it the organic look of a bone or a tree branch:</c.P>
           {character(1, { mode: 'box' })}
           <c.P>Click on the brush to see the video. Use a black ballpoint pen to practice:</c.P>
           {character(1, { mode: 'practice' })}
-          <c.PartTitle type="secondary">王 wáng king</c.PartTitle>
-          // Stroke order
+          <c.PartTitle
+            type="secondary"
+            buttonOptions={{
+              type: 'stroke',
+              data: {
+                elementId: characterIds[1]
+              }
+            }}
+          >
+            王 wáng king
+          </c.PartTitle>
           <c.P>This character is made up of three horizontal strokes which are connected by a vertical stroke. The four strokes must always be written in a special order. Click on the stroke order animation to see the order.</c.P>
           <c.P>Stroke order is important for all characters: without it, memorizing the characters becomes almost impossible. It also makes writing faster, and it is the basis for one of the methods used to look up characters in printed dictionaries.</c.P>
           <c.P>Fortunately, most students find stroke order easy to remember. We need to memorize each character individually, but there are some general guidelines that make this easier: for example, characters are written top to bottom. The stroke order of wáng is an illustration of this rule.</c.P>
           <c.P>Now, practice writing it yourself, as beautifully as you can:</c.P>
           {character(2, { mode: 'practice' })}
-          <c.PartTitle type="secondary">口 kǒu mouth, opening</c.PartTitle>
-          // Stroke order
+          <c.PartTitle
+            type="secondary"
+            buttonOptions={{
+              type: 'stroke',
+              data: {
+                elementId: characterIds[2]
+              }
+            }}
+          >
+            口 kǒu mouth, opening
+          </c.PartTitle>
           <c.P>This character consists of three strokes; the second stroke is a combination of a horizontal and a vertical as you can see from the stroke order animation.</c.P>
           <c.P>Practice writing:</c.P>
           {character(3, { mode: 'practice' })}
-          <c.PartTitle type="secondary">叫 jiào to be called</c.PartTitle>
-          // Stroke order
+          <c.PartTitle
+            type="secondary"
+            buttonOptions={{
+              type: 'stroke',
+              data: {
+                elementId: characterIds[3]
+              }
+            }}
+          >
+            叫 jiào to be called
+          </c.PartTitle>
           <c.P>This character illustrates another stroke order rule, which says characters should be written from left to right.</c.P>
           <c.P>Even when a character doesn’t have regular sides, it should fit into a roughly square shape; this is why we practice writing in grids of little boxes. In order to fit into their square shape, the two elements in 叫 are written closely together so that they snuggle into and organic whole:</c.P>
           {character(4, { mode: 'practice' })}
-          <c.PartTitle type="secondary">我 wǒ I, me</c.PartTitle>
-          // Stroke order
+          <c.PartTitle
+            type="secondary"
+            buttonOptions={{
+              type: 'stroke',
+              data: {
+                elementId: characterIds[4]
+              }
+            }}
+          >
+            我 wǒ I, me
+          </c.PartTitle>
           <c.P>Let us practice a really beautiful character which is a bit more complex. The stroke order follows the general rules top to bottom and left to right, but as you can see, the dot on the upper right hand side is written last.</c.P>
           <c.P>It has a long hook on the right hand side that needs to be given ample space to stretch out. The barb at the end of the hook gathers in the energy of the stroke and prevents it from flowing out of the character:</c.P>
           {character(5, { mode: 'box' })}
           <c.P>If this hook is too short, the whole character looks lopsided:</c.P>
           <c.Bookrow><img src={'http://via.placeholder.com/350x150'} alt=""/></c.Bookrow>
           <c.P>Since it is one of the most common characters in the Chinese language, writing it quickly will save you lots of time. If you practice writing it elegantly, you will develop a rhythm which will eventually make you faster:</c.P>
-          {character(6, { mode: 'practice' })}
+          {character(5, { mode: 'practice' })}
           <c.PartTitle type="secondary">New characters</c.PartTitle>
           <c.P>Here are all the new characters in this lesson. Click on each character to review stroke order, on the brush icon to see calligraphy video, and on history icon to see the character etymology.</c.P>
           {newCharacters()}

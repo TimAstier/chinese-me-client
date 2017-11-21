@@ -41,7 +41,10 @@ class PartTitle extends Component {
 
   render() {
     return (
-      <Bookrow center={!this.props.type}>
+      <Bookrow
+        center={!this.props.type}
+        buttonOptions={this.props.buttonOptions}
+      >
         <H2 fontSize={this._fontSize()} color={this._color()}>
           { this.props.children }
         </H2>
@@ -52,7 +55,8 @@ class PartTitle extends Component {
 
 PartTitle.propTypes = {
   children: propTypes.oneOfType([propTypes.string, propTypes.object]).isRequired,
-  type: propTypes.oneOf(['secondary', 'tertiary'])
+  type: propTypes.oneOf(['secondary', 'tertiary']),
+  buttonOptions: propTypes.object
   // linkUrl: propTypes.string
 };
 

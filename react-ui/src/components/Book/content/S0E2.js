@@ -6,7 +6,7 @@ export default class S0E2 extends Component {
   static propTypes = contentPropTypes
 
   render() {
-    const { newCharacters, example, lessonTitle, dialog, character }
+    const { newCharacters, example, lessonTitle, dialog, character, characterIds }
       = this.props;
     return (
       <div>
@@ -89,27 +89,56 @@ export default class S0E2 extends Component {
           <c.PartTitle type="secondary">Characters – calligraphy</c.PartTitle>
           <c.P>The characters we have learned in this lesson are a good illustration of how different character components are fitted together in complex characters.</c.P>
           <c.P>When 女, 子 and 生 appear on their own as characters, they are given lots of room to spread out and fill their imagined squares:</c.P>
-          <c.Bookrow>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'stroke',
+              data: {
+                elementId: characterIds[1]
+              }
+            }}
+          >
             <c.CharacterBox simpChar="女"/>
           </c.Bookrow>
-          // Stroke Order
-          <c.Bookrow>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'stroke',
+              data: {
+                elementId: characterIds[0]
+              }
+            }}
+          >
             <c.CharacterBox simpChar="子"/>
           </c.Bookrow>
-          // Stroke Order
-          <c.Bookrow>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'stroke',
+              data: {
+                elementId: characterIds[3]
+              }
+            }}>
             <c.CharacterBox simpChar="生"/>
           </c.Bookrow>
-          // Stroke Order
           <c.P>The long horizontal stroks re given plenty of space to spread out to the sides in a long, soft organic curve. But when these characters appears as elements in more complex characters, they need to cede some space to the other components:</c.P>
-          <c.Bookrow>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'stroke',
+              data: {
+                elementId: characterIds[2]
+              }
+            }}
+          >
             <c.CharacterBox simpChar="好"/>
           </c.Bookrow>
-          // Stroke order
-          <c.Bookrow>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'stroke',
+              data: {
+                elementId: characterIds[4]
+              }
+            }}
+          >
             <c.CharacterBox simpChar="姓"/>
           </c.Bookrow>
-          // Stroke Order
           <c.P>The horizontal strokes are shortened to give room for the other half of each character, and other strokes are also shortened and more inclined. Try it:</c.P>
           {character(2, { mode: 'practice' })}
           {character(1, { mode: 'practice' })}

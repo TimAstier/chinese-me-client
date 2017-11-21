@@ -10,7 +10,6 @@ const Wrapper = styled.div`
   font-size: 20px;
   width: 35px;
 	height: 35px;
-	border-radius: 24px;
   :hover {
     background-color: #F2F7FA;
   }

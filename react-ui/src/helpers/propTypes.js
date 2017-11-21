@@ -8,5 +8,6 @@ export const content = {
   grammarTitle: propTypes.func.isRequired,
   pageNumber: propTypes.func.isRequired,
   character: propTypes.func.isRequired,
-  settings: propTypes.object.isRequired
+  settings: propTypes.object.isRequired,
+  characterIds: propTypes.array.isRequired
 };

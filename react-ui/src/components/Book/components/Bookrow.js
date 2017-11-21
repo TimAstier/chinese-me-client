@@ -52,6 +52,7 @@ class Bookrow extends Component {
         return this._renderAudioButton();
       case 'writing':
       case 'dialog':
+      case 'stroke':
         return this._renderBookButton(this.props.buttonOptions);
       default: return null;
     }
@@ -81,7 +82,7 @@ Bookrow.propTypes = {
   children: propTypes.node.isRequired,
   marginBottom: propTypes.number,
   buttonOptions: propTypes.shape({
-    type: propTypes.oneOf(['audio', 'writing', 'dialog']).isRequired,
+    type: propTypes.oneOf(['audio', 'writing', 'dialog', 'stroke']).isRequired,
     data: propTypes.object.isRequired,
     top: propTypes.bool
   }),

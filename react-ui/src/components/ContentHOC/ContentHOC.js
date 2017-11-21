@@ -137,6 +137,7 @@ class ContentHOC extends Component {
         pageNumber={this._pageNumberDumper()}
         review={this._reviewDumper}
         settings={this.props.settings}
+        characterIds={characters}
       />
     );
   }

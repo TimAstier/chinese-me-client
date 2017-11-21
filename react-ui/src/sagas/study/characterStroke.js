@@ -20,8 +20,10 @@ export function* fetchData(episodeId) {
 }
 
 export function* checkData() {
-  const currentElement = yield select(selectors.getCurrentCharacter);
-  return currentElement.hanziData ? true : false;
+  // NOTE: we currently fetch hanziData from an online api
+  // const currentElement = yield select(selectors.getCurrentCharacter);
+  // return currentElement.hanziData ? true : false;
+  return true;
 }
 
 export function* initStudyData() {}

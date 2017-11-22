@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import * as models from '../../models';
 import { ChapterHeader, CharacterBox, MapDialogItem, MapGrammarItem }
   from '../.';
+import { ScreenButton } from '../.';
+
 
 const Wrapper = styled.div`
   flex-grow: 1;
@@ -14,10 +16,15 @@ const Wrapper = styled.div`
   flex-direction: column;
 `;
 
-const TitleWrapper = styled.div`
+const TopWrapper = styled.div`
+  display: flex;
   height: 85px;
+`;
+
+const TitleWrapper = styled.div`
   padding-top: 15px;
   display: flex;
+  flex-grow: 1;
 `;
 
 const EpisodeNumber = styled.div`
@@ -112,23 +119,34 @@ class MapContent extends Component {
 
   render() {
     const { episode, mapCharactersCompletedCount,
-      mapGrammarsCompletedCount, mapDialogsCompletedCount } = this.props;
+      mapGrammarsCompletedCount, mapDialogsCompletedCount,
+      focusedSeasonNumber } = this.props;
     if (!episode) {
       // TODO: return a message for empty screen
       return null;
     }
     return (
       <Wrapper>
-        <TitleWrapper>
-          <EpisodeNumber>
-            {
-              (this.props.focusedSeasonNumber !== 0 ? 'Episode ' : 'Lesson ')
-            + episode.number + ':'}
-          </EpisodeNumber>
-          <EpisodeTitle>
-            {episode.title}
-          </EpisodeTitle>
-        </TitleWrapper>
+        <TopWrapper>
+          <TitleWrapper>
+            <EpisodeNumber>
+              {
+                (focusedSeasonNumber !== 0 ? 'Episode ' : 'Lesson ')
+                + episode.number + ':'
+              }
+            </EpisodeNumber>
+            <EpisodeTitle>
+              {episode.title}
+            </EpisodeTitle>
+          </TitleWrapper>
+          <ScreenButton
+            text="Study"
+            primary
+            onClick={() => this.props.mapLinkClick(
+              `/study/season/${focusedSeasonNumber}/episode/${episode.number}`
+            )}
+          />
+        </TopWrapper>
         <ContentWrapper>
           {episode.characters.length !== 0 &&
             <ChapterHeader
@@ -158,7 +176,7 @@ class MapContent extends Component {
             name="Review"
             completed={this.props.episode.get('review')}
             onClick={() => this.props.mapLinkClick(
-              '/study/' + this.props.episode.id + '/title/4'
+              '/study/' + this.props.episode.id + '/review'
             )}
           />
           <Space />
@@ -166,7 +184,7 @@ class MapContent extends Component {
             name="Exam"
             completed={false}
             onClick={() => this.props.mapLinkClick(
-              '/study/' + this.props.episode.id + '/title/5'
+              '/study/' + this.props.episode.id + '/exam'
             )}
           />
         </ContentWrapper>

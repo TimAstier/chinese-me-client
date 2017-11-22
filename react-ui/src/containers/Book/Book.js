@@ -5,6 +5,7 @@ import { Book as BookComponent } from '../../components';
 import * as content from '../../components/Book/content';
 import s from '../../rootSelectors';
 import { actions as sagaActions } from '../../sagas/actions';
+import { actions as bookActions } from '../../redux/book';
 import * as models from '../../models';
 
 class Book extends Component {
@@ -17,6 +18,10 @@ class Book extends Component {
     if (this.props.location.pathname !== prevProps.location.pathname) {
       this._init();
     }
+  }
+
+  componentWillUnmount() {
+    this.props.setInitialized(false);
   }
 
   _init() {
@@ -45,7 +50,8 @@ Book.propTypes = {
   season: propTypes.instanceOf(models.Season),
   episode: propTypes.instanceOf(models.Episode),
   location: propTypes.object.isRequired,
-  settings: propTypes.object.isRequired
+  settings: propTypes.object.isRequired,
+  setInitialized: propTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -58,6 +64,7 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   {
-    initBook: sagaActions.initBook
+    initBook: sagaActions.initBook,
+    setInitialized: bookActions.setInitialized
   }
 )(Book);

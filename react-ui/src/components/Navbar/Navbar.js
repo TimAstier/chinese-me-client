@@ -69,7 +69,9 @@ class Navbar extends Component {
     return (
       <Wrapper>
         <LogoWrapper>
-          <img src={logo} alt="chineseMe logo"/>
+          <Link to={'/study'}>
+            <img src={logo} alt="chineseMe logo"/>
+          </Link>
         </LogoWrapper>
         <LeftMenuWrapper>
           <LeftMenuItem>

@@ -6,11 +6,18 @@ import { SelectEpisode as SelectEpisodeComponent } from '../../components';
 import s from '../../rootSelectors';
 import Immutable from 'immutable';
 import { Season } from '../../models';
+import { actions as studyActions } from '../../redux/study';
+import { actions as mapActions } from '../../redux/map';
 
 class SelectEpisodeScreen extends Component {
 
+  componentDidMount() {
+    this.props.setCurrentEpisodeId(null);
+    this.props.setFocusedEpisodeId(null);
+  }
+
   // TODO: Add a title field in DB (in a translation table)
-  title() {
+  _title() {
     const season = this.props.currentSeason;
     if (!season) {
       return null;
@@ -25,7 +32,7 @@ class SelectEpisodeScreen extends Component {
     return (
       <SelectEpisodeComponent
         episodes={this.props.episodes}
-        title={this.title()}
+        title={this._title()}
         currentSeasonNumber={
           this.props.currentSeason ?
           this.props.currentSeason.get('number')
@@ -38,7 +45,9 @@ class SelectEpisodeScreen extends Component {
 
 SelectEpisodeScreen.propTypes = {
   episodes: propTypes.instanceOf(Immutable.OrderedMap).isRequired,
-  currentSeason: propTypes.instanceOf(Season)
+  currentSeason: propTypes.instanceOf(Season),
+  setCurrentEpisodeId: propTypes.func.isRequired,
+  setFocusedEpisodeId: propTypes.func.isRequired
 };
 
 const mapStateToProps = state => {
@@ -49,5 +58,9 @@ const mapStateToProps = state => {
 };
 
 export default connect(
-  mapStateToProps
+  mapStateToProps,
+  {
+    setCurrentEpisodeId: studyActions.setCurrentEpisodeId,
+    setFocusedEpisodeId: mapActions.setFocusedEpisodeId
+  }
 )(SelectEpisodeScreen);

@@ -20,7 +20,11 @@ class QuestionModal extends Component {
 
   render() {
     return (
-      <Modal open={this.props.open} size="small">
+      <Modal
+        open={this.props.open}
+        size="small"
+        handleClose={this.props.handleClose}
+      >
         {this.props.setting && this.props.questionType && this.renderContent()}
       </Modal>
     );
@@ -30,7 +34,8 @@ class QuestionModal extends Component {
 QuestionModal.propTypes = {
   open: propTypes.bool.isRequired,
   questionType: propTypes.string.isRequired,
-  setting: propTypes.string.isRequired
+  setting: propTypes.string.isRequired,
+  handleClose: propTypes.func.isRequired
 };
 
 export default QuestionModal;

@@ -1,6 +1,7 @@
 import { take, call, select, put } from 'redux-saga/effects';
 import { types as sagaTypes } from './actions';
 import { actions as studyActions } from '../redux/study';
+import { actions as mapActions } from '../redux/map';
 import { fetchEntities } from './entities';
 import selectors from '../rootSelectors';
 import { actions as appActions } from '../redux/app';
@@ -17,8 +18,9 @@ export function* initApp() {
     yield put(studyActions.setCurrentSeasonId(firstSeasonId));
     const url = yield select(selectors.routing.getCurrentUrl);
     const { episodeId } = getParamsFromUrl(url);
-    if (episodeId) {
+    if (episodeId && episodeId !== 'season') { // Workaround for book urls
       yield put(studyActions.setCurrentEpisodeId(episodeId));
+      yield put(mapActions.setFocusedEpisodeId(episodeId));
     }
     yield put(appActions.setInitialized(true));
     if (isAuthenticated) {

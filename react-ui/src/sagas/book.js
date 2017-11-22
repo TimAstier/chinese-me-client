@@ -3,6 +3,7 @@ import { types as sagaTypes } from './actions';
 import { fetchEntities } from './entities';
 import { actions as bookActions } from  '../redux/book';
 import { actions as studyActions } from '../redux/study';
+import { actions as mapActions } from '../redux/map';
 
 function* fetchData(action) {
   const { seasonNumber, episodeNumber } = action.payload;
@@ -13,6 +14,7 @@ function* fetchData(action) {
       function* (response) { // eslint-disable-line func-names
         yield put(studyActions.setCurrentEpisodeId(response.data.data.id));
         yield put(studyActions.setCurrentSeasonId(response.data.data.attributes.seasonId));
+        yield put(mapActions.setFocusedEpisodeId(response.data.data.id)); // Triger fetchMapData
       }
     ]);
 }

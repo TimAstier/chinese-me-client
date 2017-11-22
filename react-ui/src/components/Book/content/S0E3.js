@@ -48,7 +48,7 @@ export default class S1E7 extends Component {
           </c.P>
           {example(5, { basic: true, big: true, audio: true })}
           <c.PartTitle type="secondary">Role Play: Introduce yourself and where you are from</c.PartTitle>
-          <c.P>Introduce yourself to Wang Yi and Wang Yuguo:</c.P>
+          <c.P>Introduce yourself to Wang Yuguo:</c.P>
           {dialog(3, { sentenceType: 'chinese', displayNames: false })}
           <c.P>Repeat this until you feel comfortable.</c.P>
           <c.P>Now, change roles! Pretend you are Wang Yuguo, and introduce yourself.</c.P>

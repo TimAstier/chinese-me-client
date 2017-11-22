@@ -7,6 +7,7 @@ import { actions as sagaActions, types as sagaTypes } from '../actions';
 import { actions as audioActions } from '../../redux/audio';
 import { fetchEntities } from '../entities';
 import pinyinNumberToAudioUrl from '../../utils/pinyinNumberToAudioUrl';
+import { replace } from 'react-router-redux';
 
 export function* isDataLoaded(id) {
   yield put(studyActions.setCurrentCharacterId(id));
@@ -37,6 +38,9 @@ export function* run() {
   yield take(sagaTypes.STROKE_ANIMATION_FINISHED);
   yield put(sagaActions.playAudio());
   yield delay(1500);
+  const episodeId = yield select(selectors.study.getCurrentEpisodeId);
+  const currentElement = yield select(selectors.getCurrentCharacter);
+  yield put(replace(`/study/${episodeId}/character/${currentElement.id}/strokeQuiz`));
 }
 
 // export function* clean() {}

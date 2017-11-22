@@ -8,8 +8,8 @@ class Link extends Component {
 
   _handleClick() {
     switch (this.props.type) {
-      case 'askUserData':
-        return this.props.askUserData;
+      case 'askUserSettings':
+        return this.props.askUserSettings;
       default:
         return () => console.log('Unknown link type');
     }
@@ -26,14 +26,14 @@ class Link extends Component {
 }
 
 Link.propTypes = {
-  type: propTypes.oneOf(['askUserData']).isRequired,
-  askUserData: propTypes.func.isRequired,
+  type: propTypes.oneOf(['askUserSettings']).isRequired,
+  askUserSettings: propTypes.func.isRequired,
   children: propTypes.node.isRequired
 };
 
 export default connect(
   null,
   {
-    askUserData: sagaActions.askUserData
+    askUserSettings: sagaActions.askUserSettings
   }
 )(Link);

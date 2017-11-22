@@ -7,7 +7,7 @@ import { elementTypesToTrack } from '../constants/study';
 import getStudyFunctions from '../helpers/getStudyFunctions';
 import getParamsFromUrl from '../utils/getParamsFromUrl';
 import Api from '../utils/api';
-import { loadSettings } from './userData';
+import { loadSettings } from './userSettings';
 
 // Every screenType has those five "studyFunctions" (generators):
 // 1. isDataLoaded

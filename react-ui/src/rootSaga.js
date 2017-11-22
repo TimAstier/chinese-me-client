@@ -13,7 +13,7 @@ import watchMapSagas from './sagas/map';
 import watchVideoSagas from './sagas/video';
 import runTimer from './sagas/timer';
 import watchBookSagas from './sagas/book';
-import watchUserDataSagas from './sagas/userData';
+import watchUserSettingsSagas from './sagas/userSettings';
 
 export default function* rootSaga() {
   yield all([
@@ -30,6 +30,6 @@ export default function* rootSaga() {
     watchVideoSagas(),
     runTimer(),
     watchBookSagas(),
-    watchUserDataSagas()
+    watchUserSettingsSagas()
   ]);
 }

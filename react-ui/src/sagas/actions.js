@@ -238,7 +238,7 @@ const initBook = (seasonNumber, episodeNumber) => ({
   payload: { seasonNumber, episodeNumber }
 });
 
-const askUserData = () => ({
+const askUserSettings = () => ({
   type: types.ASK_USER_SETTINGS
 });
 
@@ -290,5 +290,5 @@ export const actions = {
   newWordLinkClicked,
   setEpisodeData,
   initBook,
-  askUserData
+  askUserSettings
 };

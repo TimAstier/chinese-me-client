@@ -18,7 +18,7 @@ export default class S0E1 extends Component {
           {example(1, { basic: true, big: true, audio: true })}
           <c.P>The literal translation of this sentence is I CALLED WANG YI. Translated to more natural English, it means My name is Wang Yi.</c.P>
           <c.P>In China, the family name comes before the given name. There are only a few hundred family names, but any combination of one or two characters can be used as a given name. Different names have been popular during different periods: in revolutionary times, some children were named New Constitution and Strong Country. Names often reflect traditional gender roles: Strong and Thunder for boys; Little Swallow and Beautiful Jade for girls. Wang Yi’s family name is Wang, which means king, and her given name is the gender-neutral One.</c.P>
-          <c.P>Now, it’s your turn to introduce yourself. Western names are hard to pronounce for Chinese people, so we will give you a Chinese name based on your actual name, your gender and your nationality. Please input them <C.Link type="askUserData">here</C.Link>.</c.P>
+          <c.P>Now, it’s your turn to introduce yourself. Western names are hard to pronounce for Chinese people, so we will give you a Chinese name based on your actual name, your gender and your nationality. Please input them <C.Link type="askUserSettings">here</C.Link>.</c.P>
           // Triger input with practice button instead of link.
           <c.PartTitle type="secondary">Explore: Your Chinese name</c.PartTitle>
           // Ask for genre and given name.

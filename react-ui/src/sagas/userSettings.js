@@ -6,6 +6,7 @@ import { askQuestion } from './questionModal';
 import Api from '../utils/api';
 import { actions as settingsActions } from '../redux/settings';
 import { types as sagaTypes } from './actions';
+import { push } from 'react-router-redux';
 
 function* ensureAppInitialized() {
   const appInitialized = yield select(selectors.app.getInitialized);
@@ -29,14 +30,20 @@ export function* loadSettings() {
 
 export function* askUserSettings() {
   yield call(ensureAppInitialized);
-  let requiredUserData = yield select(selectors.getRequiredUserData);
-  if (requiredUserData) {
-    requiredUserData = requiredUserData.map(e => trim(e));
-    for (const setting of requiredUserData) {
-      // const ask = yield call(shouldAskQuestion, setting);
-      // if (ask) {
-      yield call(askQuestion, setting);
-      // }
+  // TODO: Move isAuthenticated check into its own saga
+  const isAuthenticated = yield select(selectors.auth.getIsAuthenticated);
+  if (!isAuthenticated) {
+    yield put(push('login'));
+  } else {
+    let requiredUserData = yield select(selectors.getRequiredUserData);
+    if (requiredUserData) {
+      requiredUserData = requiredUserData.map(e => trim(e));
+      for (const setting of requiredUserData) {
+        // const ask = yield call(shouldAskQuestion, setting);
+        // if (ask) {
+        yield call(askQuestion, setting);
+        // }
+      }
     }
   }
 }

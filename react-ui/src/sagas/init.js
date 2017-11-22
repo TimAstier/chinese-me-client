@@ -5,7 +5,7 @@ import { actions as mapActions } from '../redux/map';
 import { fetchEntities } from './entities';
 import selectors from '../rootSelectors';
 import { actions as appActions } from '../redux/app';
-import { loadSettings } from './userData';
+import { loadSettings } from './userSettings';
 import getParamsFromUrl from '../utils/getParamsFromUrl';
 
 // This is called only one time, when Study containers mounts

@@ -40,7 +40,7 @@ function* sendQuestionAnswer(params) {
   let reject;
   if (typeof params[1] === 'string') {
     // Raw data
-    value = params[1] === 'A' ? true : false; // closedQuestion answer
+    value = params[1]; // closedQuestion answer
   } else {
     // Data from registered redux-form
     value = params[1].values.get('value');

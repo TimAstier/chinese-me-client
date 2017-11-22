@@ -1,9 +1,9 @@
 const constants = {
-  // CALLIGRAPHY_VIDEO: {
-  //   label: 'Was this video useful to you?',
-  //   choiceA: 'Yes, I love it!',
-  //   choiceB: 'No, this is boring.'
-  // }
+  GENDER: {
+    label: 'What is you gender?',
+    choiceA: 'Female',
+    choiceB: 'Male'
+  }
 };
 
 export default constants;

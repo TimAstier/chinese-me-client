@@ -38,6 +38,7 @@ export function* askUserSettings() {
     let requiredUserData = yield select(selectors.getRequiredUserData);
     if (requiredUserData) {
       requiredUserData = requiredUserData.map(e => trim(e));
+      console.log(requiredUserData)
       for (const setting of requiredUserData) {
         // const ask = yield call(shouldAskQuestion, setting);
         // if (ask) {

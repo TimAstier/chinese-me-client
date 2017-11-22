@@ -43,13 +43,13 @@ class ClosedQuestion extends Component {
             width={300}
             text={this.props.choiceA}
             onClick={this.props.onClick}
-            data={'A'}
+            data={this.props.choiceA}
           />
           <ScreenButton
             width={300}
             text={this.props.choiceB}
             onClick={this.props.onClick}
-            data={'B'}
+            data={this.props.choiceB}
           />
         </ButtonsWrapper>
       </Wrapper>

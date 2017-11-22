@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Form from './Form';
 
 const Wrapper = styled.div`
-  height: 600px;
+  height: 700px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -35,7 +35,10 @@ class FeedbackWriting extends Component {
           <p>Tell us about your question or comment</p>
         </TitleWrapper>
         <FormWrapper>
-          <Form onSubmit={this.props.onSubmit}/>
+          <Form
+            onSubmit={this.props.onSubmit}
+            initialValues={ { email: this.props.email } }
+          />
         </FormWrapper>
       </Wrapper>
     );
@@ -43,7 +46,8 @@ class FeedbackWriting extends Component {
 }
 
 FeedbackWriting.propTypes = {
-  onSubmit: propTypes.func.isRequired
+  onSubmit: propTypes.func.isRequired,
+  email: propTypes.string
 };
 
 export default FeedbackWriting;

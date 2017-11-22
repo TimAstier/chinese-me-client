@@ -51,6 +51,20 @@ const Select = styled.select`
 	color: #454545;
 `;
 
+const Input = styled.input`
+  width: 600px;
+  height: 50px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  border: solid 2px #cdd6db;
+  font-family: 'Open Sans';
+  font-size: 17px;
+  line-height: 1.0;
+  color: #454545;
+  padding-left: 10px;
+  padding-right: 10px;
+`;
+
 const TextArea = styled.textarea`
   width: 600px;
   height: 227px;
@@ -71,6 +85,15 @@ class Form extends Component {
   // This render method allows the inner input element to get the props
   // that are otherwise on the styled.input element
   // https://github.com/erikras/redux-form/issues/1094
+  renderInput(props) {
+    return (
+      <Input
+        {...props.input}
+        required={props.required}
+      />
+    );
+  }
+
   renderSelect(props) {
     return <Select {...props.input} children={props.children} />;
   }
@@ -90,7 +113,14 @@ class Form extends Component {
         autoComplete="off"
       >
         <FieldsWrapper>
-          <Label>Subject</Label>
+          <Label>Your email:</Label>
+          <Field
+            name="email"
+            defaultValue={'test'}
+            component={this.renderInput}
+            required
+          />
+          <Label>Subject:</Label>
           <Field name="subject" component={this.renderSelect}>
             <option />
             <option value="question">I have a question about Chinese language</option>
@@ -99,7 +129,7 @@ class Form extends Component {
             <option value="bug">I found a bug</option>
             <option value="other">Other...</option>
           </Field>
-          <Label>Message</Label>
+          <Label>Message:</Label>
           <Field name="message" component={this.renderTextArea} required/>
         </FieldsWrapper>
         <ButtonWrapper>
@@ -116,7 +146,7 @@ Form.propTypes = {
 };
 
 Form = reduxForm({
-  form: 'feedback' // a unique name for the form
+  form: 'feedback', // a unique name for the form
 })(Form);
 
 export default Form;

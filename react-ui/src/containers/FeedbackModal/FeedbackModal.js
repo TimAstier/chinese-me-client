@@ -28,11 +28,13 @@ FeedbackModal.propTypes = {
   handleClose: propTypes.func.isRequired,
   status: propTypes.oneOf(['writing', 'sending', 'sent']).isRequired,
   sendFeedback: propTypes.func.isRequired,
+  email: propTypes.string
 };
 
 const mapStateToProps = state => ({
   open: s.ui.getOpenFeedbackModal(state),
-  status: s.ui.getFeedbackStatus(state)
+  status: s.ui.getFeedbackStatus(state),
+  email: s.auth.getCurrentUserEmail(state)
 });
 
 export default connect(

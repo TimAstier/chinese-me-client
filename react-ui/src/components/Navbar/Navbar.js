@@ -5,6 +5,7 @@ import logo from '../../images/logo.svg';
 import iconSendFeedback from '../../images/iconSendFeedback.svg';
 import userIcon from '../../images/defaultMaleUserIcon.svg';
 import Clickable from '../Shared/Clickable';
+import { Link } from 'react-router';
 
 const Wrapper = styled.div`
   align-self: stretch;
@@ -36,7 +37,7 @@ const LeftMenuItem = styled.div`
 `;
 
 const RightMenuWrapper = styled.div`
-  width: 130px;
+  width: 140px;
   margin-left: auto;
   display: flex;
 `;
@@ -82,9 +83,19 @@ class Navbar extends Component {
         <RightMenuWrapper>
           <UserMenuWrapper>
             <UserIconWrapper>
-              {this.props.isAuthenticated &&
-                <img src={userIcon} alt="user icon"/>}
+              {
+                this.props.isAuthenticated &&
+                  <img src={userIcon} alt="user icon"/>
+              }
             </UserIconWrapper>
+            {
+              !this.props.isAuthenticated &&
+                <Link
+                  to={'/login'}
+                >
+                  LOG IN
+                </Link>
+            }
           </UserMenuWrapper>
           <SendFeedbackWrapper>
             <Clickable>

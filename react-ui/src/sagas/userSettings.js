@@ -1,4 +1,4 @@
-import { select, take, call, put, all, takeEvery } from 'redux-saga/effects';
+import { select, take, call, put, all, takeLatest } from 'redux-saga/effects';
 import selectors from '../rootSelectors';
 import { types as appTypes } from '../redux/app';
 import trim from 'lodash/trim';
@@ -50,6 +50,6 @@ export function* askUserSettings() {
 
 export default function* watchUserDataSagas() {
   yield all([
-    takeEvery(sagaTypes.ASK_USER_SETTINGS, askUserSettings)
+    takeLatest(sagaTypes.ASK_USER_SETTINGS, askUserSettings)
   ]);
 }

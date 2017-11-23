@@ -45,7 +45,7 @@ class Page extends Component {
           <FooterText>
             <p>
               Don't have an account yet?
-              <LinkComponent><Link to="/signup"> Sign in.</Link></LinkComponent>
+              <LinkComponent><Link to="/signup"> Sign up.</Link></LinkComponent>
             </p>
           </FooterText>
           <FooterText><LinkComponent>Forgot your password?</LinkComponent></FooterText>

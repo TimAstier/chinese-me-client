@@ -120,7 +120,7 @@ class MapContent extends Component {
   render() {
     const { episode, mapCharactersCompletedCount,
       mapGrammarsCompletedCount, mapDialogsCompletedCount,
-      focusedSeasonNumber } = this.props;
+      focusedSeasonNumber, characters, grammars, dialogs } = this.props;
     if (!episode) {
       // TODO: return a message for empty screen
       return null;
@@ -148,30 +148,33 @@ class MapContent extends Component {
           />
         </TopWrapper>
         <ContentWrapper>
-          {episode.characters.length !== 0 &&
-            <ChapterHeader
-              name="Characters"
-              completedElements={mapCharactersCompletedCount}
-              totalElements={episode.characters.length}
-            />
+          {
+            characters !== 0 &&
+              <ChapterHeader
+                name="Characters"
+                completedElements={mapCharactersCompletedCount}
+                totalElements={characters.length}
+              />
           }
-          {this.renderCharacterBoxes()}
-          {episode.grammars.length !== 0 &&
-            <ChapterHeader
-              name="Grammar"
-              completedElements={mapGrammarsCompletedCount}
-              totalElements={episode.grammars.length}
-            />
+          { this.renderCharacterBoxes() }
+          {
+            grammars.length !== 0 &&
+              <ChapterHeader
+                name="Grammar"
+                completedElements={mapGrammarsCompletedCount}
+                totalElements={grammars.length}
+              />
           }
-          {this.renderGrammarItems()}
-          {episode.dialogs.length !== 0 &&
-            <ChapterHeader
-              name="Dialog"
-              completedElements={mapDialogsCompletedCount}
-              totalElements={episode.dialogs.length}
-            />
+          { this.renderGrammarItems() }
+          {
+            dialogs.length !== 0 &&
+              <ChapterHeader
+                name="Dialog"
+                completedElements={mapDialogsCompletedCount}
+                totalElements={dialogs.length}
+              />
           }
-          {this.renderDialogItems()}
+          { this.renderDialogItems() }
           <ChapterHeader
             name="Review"
             completed={this.props.episode.get('review')}

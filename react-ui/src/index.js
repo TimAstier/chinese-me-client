@@ -4,7 +4,8 @@ import { render } from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import { Provider } from 'react-redux';
-import { Router, browserHistory, Redirect } from 'react-router';
+import { Router, browserHistory, applyRouterMiddleware } from 'react-router';
+import { useScroll } from 'react-router-scroll';
 import { syncHistoryWithStore, routerMiddleware } from 'react-router-redux';
 import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 import { Map } from 'immutable';
@@ -59,10 +60,10 @@ if (localStorage.jwtToken) {
 
 render(
   <Provider store={store}>
-    { /* Tell the Router to use our enhanced history */ }
-    <Router history={history}>
-      <Redirect from="/" to="/study" />
-      {routes}
-    </Router>
-  </Provider>, document.getElementById('app')
+    <Router
+      history={history}
+      routes={routes}
+      render={applyRouterMiddleware(useScroll())}
+      />
+    </Provider>, document.getElementById('app')
 );

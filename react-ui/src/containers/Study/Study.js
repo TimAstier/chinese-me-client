@@ -27,7 +27,7 @@ class Study extends Component {
         <FeedbackModal />
         <MapModal />
         <QuestionModal />
-        <Navbar />
+        <Navbar id="navbar"/>
         {this.props.initialized && this.props.children}
       </Wrapper>
     );

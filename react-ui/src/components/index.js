@@ -55,6 +55,7 @@ export { default as Question } from './QuestionModal/Question';
 export { default as Review } from './Review/Review';
 export { default as ScreenButton } from './ScreenButton/ScreenButton';
 export { default as ScreenWrapper } from './ScreenWrapper/ScreenWrapper';
+export { default as ScrollableWrapper } from './ScrollableWrapper/ScrollableWrapper';
 export { default as SelectEpisode } from './SelectEpisode/SelectEpisode';
 export { default as SignupForm } from './Signup/Form';
 export { default as SignupPage } from './Signup/Page';

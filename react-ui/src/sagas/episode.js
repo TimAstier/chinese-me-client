@@ -18,6 +18,7 @@ function* askQuestion() {
 function* startEpisode(action) {
   const { seasonNumber, episodeNumber } = action.payload;
   const url = `/study/season/${seasonNumber}/episode/${episodeNumber}`;
+  yield put(uiActions.setScrollPosition(0));
   return yield put(push(url));
 }
 

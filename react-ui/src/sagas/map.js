@@ -31,6 +31,7 @@ function* fetchMapData(action) {
 function* navigateToStudyScreen(action) {
   yield put(uiActions.closeMapModal());
   yield put(studyActions.setInitialized(false)); // Hide screen content
+  yield put(uiActions.setScrollPosition(0));
   yield put(push(action.payload.link));
 }
 

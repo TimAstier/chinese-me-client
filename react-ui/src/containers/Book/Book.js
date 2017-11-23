@@ -6,6 +6,7 @@ import * as content from '../../components/Book/content';
 import s from '../../rootSelectors';
 import { actions as sagaActions } from '../../sagas/actions';
 import { actions as bookActions } from '../../redux/book';
+import { actions as uiActions } from '../../redux/ui';
 import * as models from '../../models';
 
 class Book extends Component {
@@ -21,12 +22,17 @@ class Book extends Component {
   }
 
   componentWillUnmount() {
+    this.props.setScrollPosition(this._getBookScrollPosition());
     this.props.setInitialized(false);
   }
 
   _init() {
     const { seasonNumber, episodeNumber } = this.props.params;
     this.props.initBook(seasonNumber, episodeNumber);
+  }
+
+  _getBookScrollPosition = () => {
+    return document.getElementById('scrollableWrapper').scrollTop;
   }
 
   render() {
@@ -51,7 +57,8 @@ Book.propTypes = {
   episode: propTypes.instanceOf(models.Episode),
   location: propTypes.object.isRequired,
   settings: propTypes.object.isRequired,
-  setInitialized: propTypes.func.isRequired
+  setInitialized: propTypes.func.isRequired,
+  setScrollPosition: propTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -65,6 +72,7 @@ export default connect(
   mapStateToProps,
   {
     initBook: sagaActions.initBook,
-    setInitialized: bookActions.setInitialized
+    setInitialized: bookActions.setInitialized,
+    setScrollPosition: uiActions.setScrollPosition
   }
 )(Book);

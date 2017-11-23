@@ -3,7 +3,7 @@ import propTypes from 'prop-types';
 import styled from 'styled-components';
 
 import { EpisodeCard } from '../../containers';
-import { ScrollableAppWrapper } from '../Shared';
+import { ScrollableWrapper } from '../../containers';
 import Immutable from 'immutable';
 
 const ScreenWrapper = styled.div`
@@ -51,12 +51,12 @@ class SelectEpisode extends Component {
 
   render() {
     return (
-      <ScrollableAppWrapper>
+      <ScrollableWrapper>
         <ScreenWrapper>
           <TitleWrapper>{this.props.title}</TitleWrapper>
           <EpisodeCardsWrapper>{this.renderEpisodeCards()}</EpisodeCardsWrapper>
         </ScreenWrapper>
-      </ScrollableAppWrapper>
+      </ScrollableWrapper>
     );
   }
 }

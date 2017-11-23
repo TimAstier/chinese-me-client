@@ -16,7 +16,8 @@ export const types = {
   CLOSE_QUESTION_MODAL: 'ui/CLOSE_QUESTION_MODAL',
   CLOSE_WORD_MODAL: 'ui/CLOSE_WORD_MODAL',
   SET_DEFAULT_EPISODE_SCREEN_UI: 'ui/SET_DEFAULT_EPISODE_SCREEN_UI',
-  SET_CONTEXTUAL_TEXT: 'ui/SET_CONTEXTUAL_TEXT'
+  SET_CONTEXTUAL_TEXT: 'ui/SET_CONTEXTUAL_TEXT',
+  SET_SCROLL_POSITION: 'ui/SET_SCROLL_POSITION'
 };
 
 // Reducer
@@ -31,7 +32,8 @@ export const INITIAL_STATE = Map({
   feedbackStatus: 'writing',
   openMapModal: false,
   openQuestionModal: false,
-  openWordModal: false
+  openWordModal: false,
+  scrollPosition: 0
 });
 
 export default function reducer(state = INITIAL_STATE, action = {}) {
@@ -72,6 +74,8 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
         openHintModal: false,
         openQuestionModal: false
       });
+    case types.SET_SCROLL_POSITION:
+      return state.set('scrollPosition', action.payload.position);
     default: return state;
   }
 }
@@ -99,6 +103,10 @@ const closeWordModal = () => ({ type: types.CLOSE_WORD_MODAL });
 const setDefaultEpisodeScreenUi = () => ({
   type: types.SET_DEFAULT_EPISODE_SCREEN_UI
 });
+const setScrollPosition = position => ({
+  type: types.SET_SCROLL_POSITION,
+  payload: { position }
+});
 
 export const actions = {
   set,
@@ -113,7 +121,8 @@ export const actions = {
   closeQuestionModal,
   openWordModal,
   closeWordModal,
-  setDefaultEpisodeScreenUi
+  setDefaultEpisodeScreenUi,
+  setScrollPosition
 };
 
 // Selectors
@@ -128,6 +137,7 @@ const getOpenMapModal = state => state.get('openMapModal');
 const getOpenQuestionModal = state => state.get('openQuestionModal');
 const getOpenWordModal = state => state.get('openWordModal');
 const getHanziAgainButton = state => state.get('hanziAgainButton');
+const getScrollPosition = state => state.get('scrollPosition');
 
 export const selectors = {
   getNextButton,
@@ -139,5 +149,6 @@ export const selectors = {
   getOpenMapModal,
   getOpenQuestionModal,
   getOpenWordModal,
-  getHanziAgainButton
+  getHanziAgainButton,
+  getScrollPosition
 };

@@ -1,5 +1,4 @@
 import { fromJS } from 'immutable';
-import { types as studyTypes } from './study';
 
 // Types
 

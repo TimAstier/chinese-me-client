@@ -20,7 +20,7 @@ export function* fetchData(episodeId) {
   // TODO: handle fetch error
 }
 
-export function* checkData() {
+export function checkData() {
   // NOTE: we currently fetch hanziData from an online api
   // const currentElement = yield select(selectors.getCurrentCharacter);
   // return currentElement.hanziData ? true : false;

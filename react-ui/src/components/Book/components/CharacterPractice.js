@@ -22,10 +22,14 @@ class CharacterPractice extends Component {
   render() {
     return (
       <Bookrow
-        buttonOptions={{
-          type: 'writing',
-          data: { elementId: this.props.characterId }
-        }}
+        buttonOptions={
+          this.props.writingUrl ?
+          {
+            type: 'writing',
+            data: { elementId: this.props.characterId }
+          }
+          : null
+        }
       >
         {this._renderCharacterBoxes()}
       </Bookrow>
@@ -35,7 +39,8 @@ class CharacterPractice extends Component {
 
 CharacterPractice.propTypes = {
   simpChar: propTypes.string.isRequired,
-  characterId: propTypes.number.isRequired
+  characterId: propTypes.number.isRequired,
+  writingUrl: propTypes.string
 };
 
 export default CharacterPractice;

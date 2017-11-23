@@ -17,11 +17,11 @@ const Wrapper = styled.div`
 	font-weight: 900;
 	color: #454545;
   margin: 7px;
-  cursor: pointer;
-  :hover {
-    color: #55b6ff;
-  }
 `;
+// cursor: pointer;
+// :hover {
+//   color: #55b6ff;
+// }
 
 const CheckmarkWrapper = styled.div`
   position: absolute;

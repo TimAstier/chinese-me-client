@@ -160,7 +160,7 @@ class MapContent extends Component {
           {
             grammars.length !== 0 &&
               <ChapterHeader
-                name="Grammar"
+                name="Patterns"
                 completedElements={mapGrammarsCompletedCount}
                 totalElements={grammars.length}
               />

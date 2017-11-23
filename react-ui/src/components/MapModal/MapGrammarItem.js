@@ -8,11 +8,11 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   color: #454545;
-  :hover {
-    color: #55b6ff;
-  }
-  cursor: pointer;
 `;
+// :hover {
+//   color: #55b6ff;
+// }
+// cursor: pointer;
 
 const CheckmarkWrapper = styled.div`
   flex-basis: 30px;

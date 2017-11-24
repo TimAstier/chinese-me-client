@@ -4,13 +4,14 @@ import { bookContainers as C } from '../../../containers';
 import styled from 'styled-components';
 
 const ChineseWrapper = styled.div`
-  font-size: 20px;
-  font-family: 'STKaitiSC';
+  font-size: 25px;
+  font-family: Kai;
   line-height: 35px;
   display: flex;
 `;
 
 const TranslationWrapper = styled.div`
+  font-size: 18px;
   line-height: 25px;
   display: flex;
 `;

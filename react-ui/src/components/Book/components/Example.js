@@ -5,7 +5,7 @@ import { Bookrow } from './.';
 import { Row } from '../../Shared';
 
 const NumberWrapper = styled.div`
-  width: 40px;
+  width: 55px;
   font-size: 21px;
   margin-top: 4px;
 `;
@@ -68,6 +68,7 @@ class Example extends Component {
   render() {
     return (
       <Bookrow
+        marginBottom={25}
         buttonOptions={
           this.props.audio ?
           {

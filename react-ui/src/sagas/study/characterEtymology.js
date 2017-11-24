@@ -5,6 +5,7 @@ import { actions as videoActions } from '../../redux/video';
 import { actions as uiActions } from '../../redux/ui';
 import { fetchEntities } from '../entities';
 import { types as sagaTypes } from '../actions';
+import { push } from 'react-router-redux';
 
 export function* isDataLoaded(id) {
   yield put(studyActions.setCurrentCharacterId(id));
@@ -33,6 +34,9 @@ export function* run() {
   return yield take(sagaTypes.NEXT);
 }
 
-// export function* nextScreen() {}
+export function* nextScreen() {
+  const url = yield select(selectors.getCurrentBookUrl);
+  yield put(push(url));
+}
 
 // export function* clean() {}

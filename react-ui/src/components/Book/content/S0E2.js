@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import * as c from '../components';
 import { content as contentPropTypes } from '../../../helpers/propTypes';
+import { Row } from '../../Shared';
 
 export default class S0E2 extends Component {
   static propTypes = contentPropTypes
@@ -13,7 +14,7 @@ export default class S0E2 extends Component {
         <c.Page>
           {lessonTitle()}
           <c.PartTitle type="secondary">Saying hello</c.PartTitle>
-          <c.P>The most common Chinese greeting is a combination of two characters, 你 you and 好 good. Let us first practice saying each of them separately. Listen carefully to see if you can identify the tone on each one:</c.P>
+          <c.P>The most common Chinese greeting is a combination of two characters, 你 <i>you</i> and 好 <i>good</i>. Let us first practice saying each of them separately. Listen carefully to see if you can identify the tone on each one:</c.P>
           {character(6, {
             mode: 'details',
             hidePinyin: true,
@@ -28,7 +29,7 @@ export default class S0E2 extends Component {
             hideLinks: true,
             audio: true
           })}
-          <c.P>Both of them are pronounced with Tone 3. Now, listen to how they sound when we put them together in the greeting 你好 hi:</c.P>
+          <c.P>Both of them are pronounced with Tone 3. Now, listen to how they sound when we put them together in the greeting 你好 <i>hi</i>:</c.P>
           <c.Bookrow
             buttonOptions={{
               type: 'audio',
@@ -37,18 +38,17 @@ export default class S0E2 extends Component {
               }
             }}
           >
-            你好！
+            <c.Char>你好！</c.Char>
           </c.Bookrow>
-          // Format
-          <c.P>You may have noticed that the first tone changes to Tone 2. This is an example of a tone change rule: sometimes, the tone on a character changes depending on the tone that comes after. This sounds complicated, but actually comes naturally as you get used to speaking; we just mention it so you won’t be surprised when it happens! The linguistic term for this kind of change is tone sandhi, from the sanscrit word sandhi meaning change.</c.P>
+          <c.P>You may have noticed that the first tone changes to Tone 2. This is an example of a <i>tone change rule</i>: sometimes, the tone on a character changes depending on the tone that comes after. This sounds complicated, but actually comes naturally as you get used to speaking; we just mention it so you won’t be surprised when it happens! The linguistic term for this kind of change is <i>tone sandhi</i>, from the sanscrit word <i>sandhi</i> meaning <i>change</i>.</c.P>
           <c.PartTitle type="secondary">Introducing your last name</c.PartTitle>
-          <c.P>In the previous lesson, we learned to introduce ourselves using the verb 叫 which means to be called. The verb 姓 is used in a similar pattern to introduce one’s family name:</c.P>
+          <c.P>In the previous lesson, we learned to introduce ourselves using the verb 叫 which means <i>to be called</i>. The verb 姓 is used in a similar pattern to introduce one’s family name:</c.P>
           {example(1, { basic: true, big: true, audio: true })}
           // Format
-          <c.P>So while 叫 means to be called, 姓 literally means to have as family name. The two words are often used together in presentations, a bit like when agent double-oh- seven introduces himself saying The name is Bond; James Bond:</c.P>
+          <c.P>So while 叫 means <i>to be called</i>, 姓 literally means <i>to have as family name</i>. The two words are often used together in presentations, a bit like when agent double-oh- seven introduces himself saying <i>My name is Bond; James Bond:</i></c.P>
           {dialog(1, { sentenceType: 'chinese', displayNames: false })}
           // displayTranslation
-          <c.P>叫 to be called can also be used with only the given name instead of the full name:</c.P>
+          <c.P>叫 <i>to be called</i> can also be used with only the given name instead of the full name:</c.P>
           {dialog(2, { sentenceType: 'chinese', displayNames: false })}
           // displayTranslation
           <c.PartTitle type="secondary">Role Play: Introduce yourself</c.PartTitle>
@@ -57,21 +57,19 @@ export default class S0E2 extends Component {
           <c.P>Repeat this until you feel comfortable.</c.P>
           <c.P>Now, change roles by pretending you are Wang Yi.</c.P>
           <c.PartTitle type="secondary">How to greet someone you already know</c.PartTitle>
-          <c.P>When Chinese people meet each other they often say the other person's name as a form of greeting. This is called to 叫 call someone.</c.P>
+          <c.P>When Chinese people meet each other they often say the other person's name as a form of greeting. This is called to 叫 <i>call</i> someone.</c.P>
           {dialog(4, { sentenceType: 'chinese', displayNames: false })}
           // displayTranslation
           <c.P>You can also add 你好 hi after the name.</c.P>
           {dialog(5, { sentenceType: 'chinese', displayNames: false })}
           // displayTranslation
-          <c.P>Note that the name and greeting have the opposite order in Chinese and English: we say hi John! but the Chinese say John, hi! It is also common to add a title or a kinship term to the name when you call someone; we will see many examples of this later.</c.P>
+          <c.P>Note that the name and greeting have the opposite order in Chinese and English: we say <i>hi John!</i> but the Chinese say <i>John, hi!</i> It is also common to add a title or a kinship term to the name when you call someone; we will see many examples of this later.</c.P>
           <c.PartTitle type="secondary">Role Play: Greeting people you know</c.PartTitle>
           {dialog(6, { sentenceType: 'chinese', displayNames: false })}
           {dialog(7, { sentenceType: 'chinese', displayNames: false })}
-          <c.PartTitle type="secondary">Using Chinese in the ChineseMe interface</c.PartTitle>
-          <c.P>We have seen that 好 means good. It can also mean OK – so now that you know this character, the “ok” button will say 好 going forward.</c.P>
           <c.PartTitle type="secondary">Oracle bones</c.PartTitle>
           <c.P>We have seen that the most ancient Chinese characters were pictures which, as the written language developed, were gradually combined into more complex characters. Most of these were combinations of a radical indicating meaning, and a phonetic hinting at the sound. But some characters were based on different logic.</c.P>
-          <c.P>Take 好 for example. The element on the left is the radical 女 which means woman, and the element on the right is the character 子 son, child. This is how it looked on the oracle bones:</c.P>
+          <c.P>Take 好 for example. The element on the left is the radical 女 which means <i>woman</i>, and the element on the right is the character 子 <i>son, child</i>. This is how it looked on the oracle bones:</c.P>
           <c.Bookrow>
             <img src={'https://s3.eu-west-2.amazonaws.com/chineseme/images/hao_jiaguwen.png'} alt=""/>
           </c.Bookrow>
@@ -80,12 +78,12 @@ export default class S0E2 extends Component {
             <img src={'https://s3.eu-west-2.amazonaws.com/chineseme/images/nv_jiaguwen.png'} alt=""/>
           </c.Bookrow>
           <c.P>As you can see, the modern character for woman looks different from the original pictogram. As the writing system developed over the centuries, the characters were standardized and stylized. But it still possible to identify the strokes of the ancient oracle bone character.</c.P>
-          <c.P>The character 子 son, child on the right hand side is also a pictogram. The oracle bone specimens show a swaddled baby, sometimes with its little arms straight out, sometimes flailing wildly in a way any parent would recognize:</c.P>
+          <c.P>The character 子 <i>son, child</i> on the right hand side is also a pictogram. The oracle bone specimens show a swaddled baby, sometimes with its little arms straight out, sometimes flailing wildly in a way any parent would recognize:</c.P>
           <c.Bookrow>
             <img src={'https://s3.eu-west-2.amazonaws.com/chineseme/images/zi_jiaguwen.png'} alt=""/>
           </c.Bookrow>
-          <c.P>Together, woman and child form the character 好, which means good, nice, fine. To the ancients, the idea of a woman caring for a small baby was the very embodiment of something “good”. This is an example of an ideogram, a character where each element contributes to the meaning.</c.P>
-          <c.P>Even in characters with a radical and a phonetic, the phonetic was often chosen with an eye for meaning in addition to sound. One example is 姓, where the phonetic 生 shēng means give birth to or be born. ”Born of woman”: to have as family name.</c.P>
+          <c.P>Together, <i>woman</i> and <i>child</i> form the character 好, which means <i>good</i>, <i>nice</i>, <i>fine</i>. To the ancients, the idea of a woman caring for a small baby was the very embodiment of something “good”. This is an example of an <i>ideogram</i>, a character where each element contributes to the meaning.</c.P>
+          <c.P>Even in characters with a radical and a phonetic, the phonetic was often chosen with an eye for meaning in addition to sound. One example is 姓, where the phonetic 生 <b>shēng</b> means <i>give birth to</i> or <i>be born</i>. ”Born of woman”: <i>to have as family name</i>.</c.P>
           <c.PartTitle type="secondary">Characters – calligraphy</c.PartTitle>
           <c.P>The characters we have learned in this lesson are a good illustration of how different character components are fitted together in complex characters.</c.P>
           <c.P>When 女, 子 and 生 appear on their own as characters, they are given lots of room to spread out and fill their imagined squares:</c.P>
@@ -146,24 +144,23 @@ export default class S0E2 extends Component {
           {character(3, { mode: 'practice' })}
           {character(5, { mode: 'practice' })}
           <c.PartTitle type="secondary">Pronunciation</c.PartTitle>
-          <c.P>A Chinese syllable is composed of three parts: an initial, which comes first; a final, which comes last, and a tone. Which are the initials, finals and tones on these syllables? Practice:</c.P>
+          <c.P>A Chinese syllable is composed of three parts: an <i>initial</i>, which comes first; a <i>final</i>, which comes last, and a <i>tone</i>. Which are the initials, finals and tones on these syllables? Practice:</c.P>
           <c.Bookrow
             buttonOptions={{
               type: 'review'
             }}
           >
             <c.Ul>
-              <li>好 hǎo</li>
-              <li>你 nǐ</li>
-              <li>姓 xìng</li>
-              <li>生 shēng</li>
+              <li><Row><c.Char>好</c.Char> <c.Pinyin>hǎo</c.Pinyin></Row></li>
+              <li><Row><c.Char>你</c.Char> <c.Pinyin>nǐ</c.Pinyin></Row></li>
+              <li><Row><c.Char>姓</c.Char> <c.Pinyin>xìng</c.Pinyin></Row></li>
+              <li><Row><c.Char>生</c.Char> <c.Pinyin>shēng</c.Pinyin></Row></li>
             </c.Ul>
           </c.Bookrow>
           // Practice
-          // Format
           <c.P>Let us also practice pronouncing a couple of the initials from this lesson.</c.P>
           <c.PartTitle type="tertiary">The initial h-</c.PartTitle>
-          <c.P>Chinese h- is much “harder” than English h; it sounds more like its German counterpart. Mimic the audio voice and try to exaggerate the strong aspiration on the initial:</c.P>
+          <c.P>Chinese <b>h-</b> is much “harder” than English <i>h</i>; it sounds more like its German counterpart. Mimic the audio voice and try to exaggerate the strong aspiration on the initial:</c.P>
           {character(3, {
             mode: 'details',
             hideMeaning: true,
@@ -171,8 +168,8 @@ export default class S0E2 extends Component {
             audio: true
           })}
           <c.PartTitle type="tertiary">The initial x-</c.PartTitle>
-          <c.P>Some books and websites claim that the Chinese initial x- is difficult because it doesn’t exist in English. In fact, English has a sound very similar to x-, it’s just that it is well hidden!</c.P>
-          <c.P>Here’s how to find it: Slowly and carefully pronounce the ch in English cheap. You will notice that ch contains two sounds: t followed by a soft shush. This shush is exactly the missing x- we are looking for! Pronounce the ch in chin without the t sound, and you have it! Listen to the audio voice and repeat very slowly:</c.P>
+          <c.P>Some books and websites claim that the Chinese initial <b>x-</b> is difficult because it doesn’t exist in English. In fact, English has a sound very similar to <b>x-</b>, it’s just that it is well hidden!</c.P>
+          <c.P>Here’s how to find it: Slowly and carefully pronounce the <i>ch</i> in English <i>cheap</i>. You will notice that <i>ch</i> contains two sounds: <i>t</i> followed by a soft <i>shush</i>. This <i>shush</i> is exactly the missing <b>x-</b> we are looking for! Pronounce the <i>ch</i> in <i>chin</i> without the <i>t</i> sound, and you have it! Listen to the audio voice and repeat very slowly:</c.P>
           {character(5, {
             mode: 'details',
             hideMeaning: true,

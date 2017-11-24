@@ -4,6 +4,7 @@ import propTypes from 'prop-types';
 import { EpisodeScreen } from '../.';
 import getParamsFromUrl from '../../utils/getParamsFromUrl';
 import { actions as studyActions } from '../../redux/study';
+import s from '../../rootSelectors';
 
 class EpisodeHOC extends Component {
 
@@ -20,6 +21,7 @@ class EpisodeHOC extends Component {
   _setStudyData() {
     const { episodeId } = getParamsFromUrl(this.props.location.pathname);
     this.props.setCurrentEpisodeId(episodeId);
+    this.props.setCurrentSeasonId(this.props.episodes.get(episodeId).seasonId);
   }
 
   render() {
@@ -33,14 +35,19 @@ class EpisodeHOC extends Component {
 }
 
 EpisodeHOC.propTypes = {
+  episodes: propTypes.object.isRequired,
   location: propTypes.object.isRequired,
   children: propTypes.node.isRequired,
   setCurrentEpisodeId: propTypes.func.isRequired,
   setCurrentSeasonId: propTypes.func.isRequired
 };
 
+const mapStateToProps = state => ({
+  episodes: s.entities.getEpisodes(state)
+});
+
 export default connect(
-  null,
+  mapStateToProps,
   {
     setCurrentEpisodeId: studyActions.setCurrentEpisodeId,
     setCurrentSeasonId: studyActions.setCurrentSeasonId

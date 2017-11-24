@@ -5,12 +5,13 @@ import { actions as uiActions } from '../../redux/ui';
 import { actions as examActions } from '../../redux/exam';
 import selectors from '../../rootSelectors';
 import Api from '../../utils/api';
+import { push } from 'react-router-redux';
 
 export function isDataLoaded() {
   return true;
 }
 
-// export function* fetchData() {}
+export function fetchData() {}
 
 export function* checkData() {
   const completed = yield select(selectors.exam.getCompleted);
@@ -53,6 +54,10 @@ export function* run() {
   );
   yield put(sagaActions.reloadApp());
   yield take(sagaTypes.NEXT);
+}
+
+export function* nextScreen() {
+  yield put(push('/study'));
 }
 
 export function* clean(isCancelled) {

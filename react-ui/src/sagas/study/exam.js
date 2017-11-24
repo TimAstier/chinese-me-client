@@ -18,6 +18,7 @@ import getStudyFunctions from '../../helpers/getStudyFunctions';
 import { actions as timerActions, types as timerTypes } from '../../redux/timer';
 import mapExerciseTypeToSetCurrentAction
   from '../../helpers/mapExerciseTypeToSetCurrentAction';
+import { push } from 'react-router-redux';
 
 export function* isDataLoaded() {
   // id is not defined since there is no elementId
@@ -97,7 +98,6 @@ function* runExam() {
       }
     }
   }
-  yield put(examActions.setCompleted(true));
 }
 
 export function* run() {
@@ -106,6 +106,12 @@ export function* run() {
     runExam: call(runExam),
     outOfTime: take(timerTypes.OUT_OF_TIME)
   });
+  yield put(examActions.setCompleted(true));
+}
+
+export function* nextScreen() {
+  const url = yield select(selectors.routing.getCurrentUrl);
+  yield put(push(url.replace('exam', 'result')));
 }
 
 export function* clean(isCancelled) {

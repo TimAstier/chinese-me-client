@@ -13,15 +13,16 @@ class ModeButton extends Component {
       font-family: 'Open Sans';
     	font-size: 14px;
     	font-weight: 600;
+      border: ${this.props.active ? 'solid 2px #55b6ff' : 'none'};
     	color: ${this.props.active ? '#454545' : '#b2babf'};
       display: flex;
       justify-content: center;
       align-items: center;
       margin: 0 5px;
-      cursor: ${this.props.active ? 'normal' : 'pointer'}
+      cursor: pointer;
     `;
     return (
-      <Wrapper onClick={!this.props.active ? this.props.onClick : undefined}>
+      <Wrapper onClick={this.props.onClick}>
         {this.props.label}
       </Wrapper>
     );

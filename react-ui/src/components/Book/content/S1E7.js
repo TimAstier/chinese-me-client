@@ -18,7 +18,7 @@ export default class S1E7 extends Component {
           {newCharacters()}
           <c.PartTitle>GRAMMAR</c.PartTitle>
           {grammarTitle()}
-          <c.P>Chinese does not make any difference between both and all; after all, the concept is the same. Pay attention to the sentence intonation in this pattern; the stress is on 都 dōu, so Tone 1 has a higher pitch on都dōu than on 他tā:</c.P>
+          <c.P>Chinese does not make any difference between both and all; after all, the concept is the same. Pay attention to the sentence intonation in this pattern; the stress is on 都 dōu, so Tone 1 has a higher pitch on 都 dōu than on 他 tā:</c.P>
           {example(1, { audio: true })}
           <c.P>If you want to clarify, you can add the exact number, together with the appropriate measure word, before 都 dōu:</c.P>
           {example(2, { audio: true })}

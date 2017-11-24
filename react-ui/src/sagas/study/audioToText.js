@@ -101,4 +101,6 @@ export function* run(mode = 'free') {
   return yield take(sagaTypes.NEXT);
 }
 
+// export function* nextScreen() {}
+
 // export function* clean() {}

@@ -48,8 +48,8 @@ export function* run(mode = 'listen') {
     }
   }
   yield put(uiActions.set('pauseButton', false));
-  yield put(uiActions.set('nextButton', true));
-  yield take(sagaTypes.NEXT);
 }
+
+// export function* nextScreen() {}
 
 // export function* clean() {}

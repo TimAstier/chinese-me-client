@@ -7,6 +7,7 @@ import { types as sagaTypes } from '../actions';
 import getStudyFunctions from '../../helpers/getStudyFunctions';
 import mapExerciseTypeToSetCurrentAction
   from '../../helpers/mapExerciseTypeToSetCurrentAction';
+import { push } from 'react-router-redux';
 
 export function* isDataLoaded() {
   // id is not defined since there is no elementId
@@ -65,6 +66,11 @@ export function* run() {
       completed = true;
     }
   }
+}
+
+export function* nextScreen() {
+  const url = yield select(selectors.getCurrentBookUrl);
+  yield put(push(url));
 }
 
 export function* clean(isCancelled) {

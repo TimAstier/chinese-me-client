@@ -8,6 +8,7 @@ import { fetchEntities } from '../entities';
 import { actions as sagaActions } from '../actions';
 import { actions as reviewActions } from '../../redux/review';
 import { actions as uiActions } from '../../redux/ui';
+import { push } from 'react-router-redux';
 
 export function* isDataLoaded(id) {
   yield put(studyActions.setCurrentCharacterId(id));
@@ -45,6 +46,11 @@ export function* run(mode = 'free') {
     return yield put(reviewActions.correctAnswer());
   }
   return yield delay(1000);
+}
+
+export function* nextScreen() {
+  const url = yield select(selectors.getCurrentBookUrl);
+  yield put(push(url));
 }
 
 // export function* clean() {}

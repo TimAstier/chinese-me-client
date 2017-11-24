@@ -9,6 +9,7 @@ export default function getStudyFunctions(screenType) {
     initStudyData: module.initStudyData,
     initUi: module.initUi,
     run: module.run,
+    nextScreen: module.nextScreen,
     clean: module.clean
   };
 }

@@ -33,4 +33,6 @@ export function* run() {
   return yield take(sagaTypes.NEXT);
 }
 
+// export function* nextScreen() {}
+
 // export function* clean() {}

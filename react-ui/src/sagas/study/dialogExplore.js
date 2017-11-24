@@ -17,9 +17,7 @@ export function checkData() {
   return true;
 }
 
-export function* initUi() {
-  yield put(uiActions.set('nextButton', true));
-}
+export function* initUi() {}
 
 export function* initStudyData() {
   yield put(studyActions.setDialogMode('explore'));
@@ -32,7 +30,8 @@ export function* initStudyData() {
 
 export function* run() {
   yield put(sagaActions.playSentence());
-  yield take(sagaTypes.NEXT);
 }
+
+// export function* nextScreen() {}
 
 // export function* clean() {}

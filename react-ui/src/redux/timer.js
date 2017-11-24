@@ -15,7 +15,7 @@ export const types = {
 
 const INITIAL_STATE = Immutable.Map({
   status: 'stopped',
-  time: 180
+  time: 10
 });
 
 export default function reducer(state = INITIAL_STATE, action = {}) {

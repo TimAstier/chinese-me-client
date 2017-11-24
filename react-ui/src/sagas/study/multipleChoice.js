@@ -68,4 +68,6 @@ export function* run(mode = 'free') {
   return yield put(reviewActions.wrongAnswer());
 }
 
+// export function* nextScreen() {}
+
 // export function* clean() {}

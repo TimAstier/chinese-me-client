@@ -9,14 +9,15 @@ import getParamsFromUrl from '../utils/getParamsFromUrl';
 import Api from '../utils/api';
 import { loadSettings } from './userSettings';
 
-// Every screenType has those five "studyFunctions" (generators):
+// Every screenType has those "studyFunctions" (generators):
 // 1. isDataLoaded
 // 2. fetchData
 // 3. checkData
 // 4. initStudyData
 // 5. initUi
 // 6. run
-// 7. clean
+// 7. nextScreen
+// 8. clean
 
 export function* runStudySaga(url) {
   // IMPORTANT: start by hiding screen content
@@ -56,6 +57,9 @@ export function* runStudySaga(url) {
         const completedCode = 1;
         yield call(Api.post, `/${elementType}/${elementId}/completed`, { completedCode, mode });
       }
+    }
+    if (funcs.nextScreen) {
+      yield call(funcs.nextScreen);
     }
   }
   // TODO Send an END signal

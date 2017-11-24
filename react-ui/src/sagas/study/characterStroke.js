@@ -38,6 +38,9 @@ export function* run() {
   yield take(sagaTypes.STROKE_ANIMATION_FINISHED);
   yield put(sagaActions.playAudio());
   yield delay(1500);
+}
+
+export function* nextScreen() {
   const episodeId = yield select(selectors.study.getCurrentEpisodeId);
   const currentElement = yield select(selectors.getCurrentCharacter);
   yield put(replace(`/study/${episodeId}/character/${currentElement.id}/strokeQuiz`));

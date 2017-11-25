@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, IndexRoute, Redirect } from 'react-router';
+import { Route, IndexRoute } from 'react-router';
 // import { IndexRoute } from 'react-router';
 import requireAuth from './utils/requireAuth';
 import * as containers from './containers';
@@ -25,7 +25,6 @@ import * as components from './components';
 
 export default (
   <Route path="/" component={containers.App}>
-    <Redirect from="/" to="/study" />
     <Route path="signup" component={containers.SignupPage} />
     <Route path="signup/activated" component={components.ActivatedPage} />
     <Route path="signup/activate/:activationToken" component={containers.SignupActivate} />

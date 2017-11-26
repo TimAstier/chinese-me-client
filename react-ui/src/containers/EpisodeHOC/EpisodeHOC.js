@@ -18,6 +18,10 @@ class EpisodeHOC extends Component {
     }
   }
 
+  componentWillUnmount() {
+    this.props.setInitialized(false);
+  }
+
   _setStudyData() {
     const { episodeId } = getParamsFromUrl(this.props.location.pathname);
     this.props.setCurrentEpisodeId(episodeId);
@@ -39,7 +43,8 @@ EpisodeHOC.propTypes = {
   location: propTypes.object.isRequired,
   children: propTypes.node.isRequired,
   setCurrentEpisodeId: propTypes.func.isRequired,
-  setCurrentSeasonId: propTypes.func.isRequired
+  setCurrentSeasonId: propTypes.func.isRequired,
+  setInitialized: propTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -50,6 +55,7 @@ export default connect(
   mapStateToProps,
   {
     setCurrentEpisodeId: studyActions.setCurrentEpisodeId,
-    setCurrentSeasonId: studyActions.setCurrentSeasonId
+    setCurrentSeasonId: studyActions.setCurrentSeasonId,
+    setInitialized: studyActions.setInitialized
   }
 )(EpisodeHOC);

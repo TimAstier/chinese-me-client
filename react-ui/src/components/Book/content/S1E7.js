@@ -22,6 +22,7 @@ export default class S1E7 extends Component {
           {example(1, { audio: true })}
           <c.P>If you want to clarify, you can add the exact number, together with the appropriate measure word, before 都 <b>dōu</b>:</c.P>
           {example(2, { audio: true })}
+          {example(3, { audio: true })}
           <c.P
             buttonOptions={{
               type: 'practice',
@@ -30,8 +31,9 @@ export default class S1E7 extends Component {
               }
             }}
           >
-            In order to say <i>both... and</i>, the speaker will list two things followed by 都 <b>dōu</b>.
+            PRACTICE
           </c.P>
+          <c.P>In order to say <i>both... and</i>, the speaker will list two things followed by 都 <b>dōu</b>.</c.P>
           {example(4, { audio: true })}
           <c.P>In the pattern above, you may have noticed that Chinese uses a special comma as a break between items in a list which is different from the comma used to create a pause in sentences. Here is a sentence using both kinds of commas:</c.P>
           {example(5, { audio: true })}

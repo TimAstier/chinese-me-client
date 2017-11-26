@@ -125,7 +125,7 @@ class MultipleChoice extends Component {
             alt={this.props.status === 'correct' ? 'icon-correct' : 'icon-wrong'}
           />
         </AnswerIconWrapper>
-        { this.props.status === 'wrong' &&
+        { this.props.status === 'wrong' && this.props.explanation &&
           <CorrectAnswerWrapper>
             <AnswerLabel>Explanation:</AnswerLabel>
             <Explanation>{this.props.explanation}</Explanation>

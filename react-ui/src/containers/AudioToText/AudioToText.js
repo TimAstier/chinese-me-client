@@ -31,7 +31,7 @@ const mapStateToProps = state => ({
   status: s.audioToText.getStatus(state),
   userAnswer: s.audioToText.getUserAnswer(state),
   audioToText: s.getCurrentAudioToText(state),
-  words: s.getWords(state)
+  words: s.entities.getWords(state)
 });
 
 export default connect(

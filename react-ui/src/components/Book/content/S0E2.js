@@ -7,8 +7,8 @@ export default class S0E2 extends Component {
   static propTypes = contentPropTypes
 
   render() {
-    const { newCharacters, example, lessonTitle, dialog, character, characterIds }
-      = this.props;
+    const { newCharacters, example, lessonTitle, dialog, character,
+      characterIds, practiceIds } = this.props;
     return (
       <div>
         <c.Page>
@@ -147,7 +147,10 @@ export default class S0E2 extends Component {
           <c.P>A Chinese syllable is composed of three parts: an <i>initial</i>, which comes first; a <i>final</i>, which comes last, and a <i>tone</i>. Which are the initials, finals and tones on these syllables? Practice:</c.P>
           <c.Bookrow
             buttonOptions={{
-              type: 'review'
+              type: 'practice',
+              data: {
+                elementId: practiceIds[1]
+              }
             }}
           >
             <c.Ul>
@@ -157,7 +160,6 @@ export default class S0E2 extends Component {
               <li><Row><c.Char>生</c.Char> <c.Pinyin>shēng</c.Pinyin></Row></li>
             </c.Ul>
           </c.Bookrow>
-          // Practice
           <c.P>Let us also practice pronouncing a couple of the initials from this lesson.</c.P>
           <c.PartTitle type="tertiary">The initial h-</c.PartTitle>
           <c.P>Chinese <b>h-</b> is much “harder” than English <i>h</i>; it sounds more like its German counterpart. Mimic the audio voice and try to exaggerate the strong aspiration on the initial:</c.P>
@@ -180,8 +182,16 @@ export default class S0E2 extends Component {
           <c.P><i>Here are all the new characters from this lesson. Practice the stroke order animations at ChineseMe.</i></c.P>
           {newCharacters()}
           <c.PartTitle type="secondary">Review</c.PartTitle>
-          // Review
-          <c.P><i>Practice pronunciation, grammar and character writing on the ChineseMe website.</i></c.P>
+          <c.P
+            buttonOptions={{
+              type: 'practice',
+              data: {
+                elementId: practiceIds[0]
+              }
+            }}
+          >
+            <i>Practice pronunciation, grammar and character writing on the ChineseMe website.</i>
+          </c.P>
         </c.Page>
       </div>
     );

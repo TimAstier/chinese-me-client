@@ -107,14 +107,6 @@ class ContentHOC extends Component {
     };
   };
 
-  _reviewDumper = () => {
-    return (
-      <C.PartTitle linkUrl={`/study/${this.props.episode.id}/title/4`}>
-        Review
-      </C.PartTitle>
-    );
-  }
-
   _pageNumberDumper = () => {
     let count = 0;
     return () => {
@@ -124,7 +116,8 @@ class ContentHOC extends Component {
   };
 
   render() {
-    const { examples, dialogs, characters, grammars } = this.props.episode;
+    const { examples, dialogs, characters, grammars, practices }
+      = this.props.episode;
     const Content = this.props.content;
     return (
       <Content
@@ -135,9 +128,9 @@ class ContentHOC extends Component {
         newCharacters={this._newCharactersDumper(characters)}
         grammarTitle={this._grammarTitle(grammars)}
         pageNumber={this._pageNumberDumper()}
-        review={this._reviewDumper}
         settings={this.props.settings}
         characterIds={characters}
+        practiceIds={practices.map(p => p.id)}
       />
     );
   }

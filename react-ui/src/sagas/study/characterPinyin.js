@@ -9,7 +9,7 @@ import { actions as audioActions } from '../../redux/audio';
 import selectors from '../../rootSelectors';
 import { actions as studyActions } from '../../redux/study';
 import { fetchEntities } from '../entities';
-import { actions as reviewActions } from '../../redux/review';
+import { actions as practiceActions } from '../../redux/practice';
 import pinyinNumberToAudioUrl from '../../utils/pinyinNumberToAudioUrl';
 
 export function* isDataLoaded(id) {
@@ -65,10 +65,10 @@ export function* run(mode = 'free') {
         }
         yield put(characterPinyinActions.setStatus('correct'));
         yield put(uiActions.set('playAudioButton', false));
-        if (mode === 'review') {
+        if (mode === 'practice') {
           yield delay(1000);
-          yield put(reviewActions.setInitialized(false));
-          return yield put(reviewActions.correctAnswer());
+          yield put(practiceActions.setInitialized(false));
+          return yield put(practiceActions.correctAnswer());
         }
         return yield delay(1000);
       } else {
@@ -97,10 +97,10 @@ export function* run(mode = 'free') {
         } else {
           yield put(characterPinyinActions.setStatus('wrong'));
           yield put(uiActions.set('nextButton', true));
-          if (mode === 'review') {
+          if (mode === 'practice') {
             yield take(sagaTypes.NEXT_QUESTION);
-            yield put(reviewActions.setInitialized(false));
-            return yield put(reviewActions.wrongAnswer());
+            yield put(practiceActions.setInitialized(false));
+            return yield put(practiceActions.wrongAnswer());
           }
           yield take(sagaTypes.NEXT);
         }

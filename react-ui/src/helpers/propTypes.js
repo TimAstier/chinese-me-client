@@ -9,5 +9,6 @@ export const content = {
   pageNumber: propTypes.func.isRequired,
   character: propTypes.func.isRequired,
   settings: propTypes.object.isRequired,
-  characterIds: propTypes.array.isRequired
+  characterIds: propTypes.array.isRequired,
+  practiceIds: propTypes.array.isRequired
 };

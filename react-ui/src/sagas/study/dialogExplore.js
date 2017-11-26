@@ -1,8 +1,7 @@
-import { put, select, call, take } from 'redux-saga/effects';
-import { actions as uiActions } from '../../redux/ui';
+import { put, select, call } from 'redux-saga/effects';
 import { actions as studyActions } from '../../redux/study';
 import selectors from '../../rootSelectors';
-import { actions as sagaActions, types as sagaTypes } from '../actions';
+import { actions as sagaActions } from '../actions';
 import { checkDialogData, fetchDialogData } from './dialog';
 
 export function* isDataLoaded(id) {

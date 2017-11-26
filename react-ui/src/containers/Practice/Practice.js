@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
-import { Review as ReviewComponent } from '../../components';
+import { Practice as PracticeComponent } from '../../components';
 import s from '../../rootSelectors';
 
-class Review extends Component {
+class Practice extends Component {
   render() {
     if (this.props.currentExercise) {
       return (
-        <ReviewComponent
+        <PracticeComponent
           currentExercise={this.props.currentExercise}
           initialized={this.props.initialized}
         />
@@ -18,16 +18,16 @@ class Review extends Component {
   }
 }
 
-Review.propTypes = {
+Practice.propTypes = {
   currentExercise: propTypes.object,
   initialized: propTypes.bool.isRequired
 };
 
 const mapStateToProps = state => ({
-  currentExercise: s.review.getCurrentExercise(state),
-  initialized: s.review.getInitialized(state)
+  currentExercise: s.practice.getCurrentExercise(state),
+  initialized: s.practice.getInitialized(state)
 });
 
 export default connect(
   mapStateToProps
-)(Review);
+)(Practice);

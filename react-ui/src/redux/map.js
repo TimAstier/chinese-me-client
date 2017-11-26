@@ -19,6 +19,7 @@ export const INITIAL_STATE = fromJS({
   characters: [],
   grammars: [],
   dialogs: [],
+  practices: [],
   isLoading: false,
   isDataLoaded: false
 });
@@ -32,7 +33,8 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
         loadedEpisodeId: String(action.payload.data.id),
         characters: action.payload.data.characters,
         grammars: action.payload.data.grammars,
-        dialogs: action.payload.data.dialogs
+        dialogs: action.payload.data.dialogs,
+        practices: action.payload.data.practices
       });
     case types.FETCH_SUCCESS:
       return state.merge({
@@ -98,6 +100,7 @@ const getFocusedEpisodeId = state => state.get('focusedEpisodeId');
 const getCharacters = state => state.get('characters');
 const getGrammars = state => state.get('grammars');
 const getDialogs = state => state.get('dialogs');
+const getPractices = state => state.get('practices');
 const getIsDataLoaded = state => state.get('isDataLoaded');
 const getLoadedEpisodeId = state => state.get('loadedEpisodeId');
 
@@ -106,6 +109,7 @@ export const selectors = {
   getCharacters,
   getGrammars,
   getDialogs,
+  getPractices,
   getIsDataLoaded,
   getLoadedEpisodeId
 };

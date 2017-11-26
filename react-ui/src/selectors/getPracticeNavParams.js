@@ -1,15 +1,15 @@
 import { createSelector } from 'reselect';
 import s from './globalizedSelectors';
 
-const getReviewNavParams = createSelector(
+const getPracticeNavParams = createSelector(
   s.study.getCurrentEpisodeId,
-  s.review.getExercises,
-  (episodeId, reviewExercises) => {
+  s.practice.getExercises,
+  (episodeId, exercises) => {
     try {
       return {
         type: 'exercise',
         currentElement: null,
-        totalElements: reviewExercises.size,
+        totalElements: exercises.size,
       };
     } catch (e) {
       return undefined;
@@ -17,4 +17,4 @@ const getReviewNavParams = createSelector(
   }
 );
 
-export default getReviewNavParams;
+export default getPracticeNavParams;

@@ -9,7 +9,7 @@ import * as fromDialogRoleplay from '../sagas/study/dialogRoleplay';
 import * as fromMultipleChoice from '../sagas/study/multipleChoice';
 import * as fromAudioToText from '../sagas/study/audioToText';
 import * as fromExam from '../sagas/study/exam';
-import * as fromReview from '../sagas/study/review';
+import * as fromPractice from '../sagas/study/practice';
 import * as fromExamResult from '../sagas/study/examResult';
 import * as fromVideo from '../sagas/study/video';
 
@@ -31,7 +31,7 @@ export default function mapScreenTypeToModule(screenType) {
     case 'multipleChoice/': return fromMultipleChoice;
     case 'audioToText/': return fromAudioToText;
     case 'video/': return fromVideo;
-    case 'review/': return fromReview;
+    case 'practice/': return fromPractice;
     case 'exam/': return fromExam;
     case 'result/': return fromExamResult;
     default: return console.log('unknown screenType', screenType);

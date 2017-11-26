@@ -5,11 +5,11 @@ import { actions as studyActions } from '../../redux/study';
 import { actions as multipleChoiceActions } from '../../redux/multipleChoice';
 import { actions as sagaActions, types as sagaTypes } from '../actions';
 import { actions as uiActions } from '../../redux/ui';
-import { actions as reviewActions } from '../../redux/review';
+import { actions as practiceActions } from '../../redux/practice';
 
 export function* isDataLoaded(id) {
   yield put(studyActions.setCurrentMultipleChoiceId(id));
-  const initialized = yield select(selectors.review.getInitialized);
+  const initialized = yield select(selectors.practice.getInitialized);
   if (!initialized) {
     return false;
   }
@@ -54,8 +54,8 @@ export function* run(mode = 'free') {
       return true;
     }
     yield delay(1000);
-    yield put(reviewActions.setInitialized(false));
-    return yield put(reviewActions.correctAnswer());
+    yield put(practiceActions.setInitialized(false));
+    return yield put(practiceActions.correctAnswer());
   }
   yield put(sagaActions.playWrongSound());
   yield put(multipleChoiceActions.setStatus('wrong'));
@@ -64,8 +64,8 @@ export function* run(mode = 'free') {
   }
   yield put(uiActions.set('nextButton', true));
   yield take(sagaTypes.NEXT_QUESTION);
-  yield put(reviewActions.setInitialized(false));
-  return yield put(reviewActions.wrongAnswer());
+  yield put(practiceActions.setInitialized(false));
+  return yield put(practiceActions.wrongAnswer());
 }
 
 // export function* nextScreen() {}

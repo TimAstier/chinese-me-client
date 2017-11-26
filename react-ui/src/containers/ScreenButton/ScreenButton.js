@@ -39,7 +39,7 @@ class ScreenButton extends Component {
     }
     switch (submitAction) {
       case 'next':
-        // This prevents calling nextScreen while doing review
+        // This prevents calling nextScreen while doing practice
         return this.props.isReviewInitialized ? this.props.nextQuestion : this.props.next;
       case 'closeHintModal': return this.props.handleCloseHintModal;
       case 'checkAnswer': return this.props.checkAnswer;
@@ -80,7 +80,7 @@ ScreenButton.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  isReviewInitialized: s.review.getInitialized(state)
+  isReviewInitialized: s.practice.getInitialized(state)
 });
 
 export default connect(

@@ -34,20 +34,12 @@ class TopMiddleWrapper extends Component {
   render() {
     switch (this.props.elementType) {
       case 'dialog':
+      case 'practice':
         return (
           <Wrapper>
             <TopMiddleUpWrapper>
               <Progressbar />
             </TopMiddleUpWrapper>
-            <TopMiddleDownWrapper>
-              <ElementsNav />
-            </TopMiddleDownWrapper>
-          </Wrapper>
-        );
-      case 'review':
-        return (
-          <Wrapper>
-            <TopMiddleUpWrapper/>
             <TopMiddleDownWrapper>
               <ElementsNav />
             </TopMiddleDownWrapper>

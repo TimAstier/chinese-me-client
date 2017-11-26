@@ -34,7 +34,7 @@ export function* runStudySaga(url) {
   //   isDataLoaded = true;
   // }
   // if (!isDataLoaded) { // Fetch data
-  yield call(funcs.fetchData, episodeId);
+  yield call(funcs.fetchData, episodeId, elementId);
     // TODO: handle fetch error
   // }
   const checkData = yield call(funcs.checkData); // Check if data is sufficient to run the screen

@@ -6,7 +6,7 @@ export const elementTypes = [
   'audioToText',
   'video',
   'title',
-  'review',
+  'practice',
   'exam'
 ];
 
@@ -20,6 +20,6 @@ export const elementTypesWithMenu = [
   'character',
   'dialog',
   'grammar',
-  'review',
+  'practice',
   'exam'
 ];

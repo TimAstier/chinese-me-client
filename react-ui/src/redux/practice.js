@@ -4,18 +4,20 @@ import { createSelector } from 'reselect';
 // Types
 
 export const types = {
-  SET_INITIALIZED: 'review/SET_INITIALIZED',
-  SET_EXERCISES: 'review/SET_EXERCISES',
-  CORRECT_ANSWER: 'review/CORRECT_ANSWER',
-  WRONG_ANSWER: 'review/WRONG_ANSWER',
-  CLEAN: 'review/CLEAN'
+  SET_INITIALIZED: 'practice/SET_INITIALIZED',
+  SET_EXERCISES: 'practice/SET_EXERCISES',
+  CORRECT_ANSWER: 'practice/CORRECT_ANSWER',
+  WRONG_ANSWER: 'practice/WRONG_ANSWER',
+  CLEAN: 'practice/CLEAN',
+  SET_TOTAL: 'practice/SET_TOTAL'
 };
 
 // Reducer
 
 export const INITIAL_STATE = fromJS({
   initialized: false,
-  exercises: [] // [ { type, id } ]
+  exercises: [], // [ { type, id } ],
+  total: null
 });
 
 export default function reducer(state = INITIAL_STATE, action = {}) {
@@ -30,6 +32,8 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
       return state.set('exercises',
         state.get('exercises').delete(0).push(state.get('exercises').get(0))
       );
+    case types.SET_TOTAL:
+      return state.set('total', action.payload.total);
     case types.CLEAN:
       return INITIAL_STATE;
     default:
@@ -50,28 +54,46 @@ const setExercises = exercises => ({
 const correctAnswer = () => ({ type: types.CORRECT_ANSWER });
 const wrongAnswer = () => ({ type: types.WRONG_ANSWER });
 const clean = () => ({ type: types.CLEAN });
+const setTotal = total => ({
+  type: types.SET_TOTAL,
+  payload: { total }
+});
 
 export const actions = {
   setInitialized,
   setExercises,
   correctAnswer,
   wrongAnswer,
-  clean
+  clean,
+  setTotal
 };
 
 // Selectors
 
 const getInitialized = state => state.get('initialized');
 const getExercises = state => state.get('exercises');
+const getExercisesSize = createSelector(
+  getExercises,
+  exercises => exercises.size
+);
+const getTotal = state => state.get('total');
 const getCurrentExercise = createSelector(
   getExercises,
   exercises => {
     return exercises.get(0) ? exercises.get(0) : null;
   }
 );
+const getPracticeCompletion = createSelector(
+  getExercisesSize,
+  getTotal,
+  (size, total) => (size && total) ? (total - size) / (total - 1) * 100 : 0
+);
 
 export const selectors = {
   getInitialized,
   getExercises,
-  getCurrentExercise
+  getExercisesSize,
+  getTotal,
+  getCurrentExercise,
+  getPracticeCompletion
 };

@@ -9,8 +9,8 @@ export default class S1E7 extends Component {
   static propTypes = contentPropTypes
 
   render() {
-    const { newCharacters, example, lessonTitle, dialog, character, settings }
-      = this.props;
+    const { newCharacters, example, lessonTitle, dialog, character, settings,
+      practiceIds } = this.props;
     return (
       <div>
         <c.Page>
@@ -19,38 +19,74 @@ export default class S1E7 extends Component {
           {example(4, { basic: true, audio: true })}
           <c.P>This sentence means I am Chinese. It contains three initials that are related to each other. In <b>pīnyīn</b>, they are spelled <b>sh-</b>, <b>zh-</b> and <b>r-</b>.</c.P>
           <c.P>Chinese <b>sh-</b> is pronounced more or less like English <i>sh</i> in <i>show</i>, for example in the character 是 <b>shi</b>. Type the correct <b>pīnyīn</b>, with tone:</c.P>
-          <c.Bookrow>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'practice',
+              data: {
+                elementId: practiceIds[1]
+              }
+            }}
+          >
             <c.Char>是</c.Char>
           </c.Bookrow>
-          // MultipleChoice
           <c.P>Chinese <b>r-</b> is pronounced a bit like British English <i>r</i> (not a thick American <i>r</i>). The position of your tongue and mouth should be exactly the same as when you pronounce <b>sh-</b>. The difference is that <b>r-</b> is voiced and less aspirated. <i>Voiced</i> means that the vocal cords vibrate when you pronounce the sound; hold your fingers against your Adam’s apple and you can feel the vibration. <i>Aspirated</i> means there is a strong airflow; if you hold your palm in front of your mouth, you will feel strong stream of air as you pronounce <b>sh-</b>, but only a weak flow when you pronounce <b>r-</b>.</c.P>
           <c.P>Type the correct tone on 人 <b>ren</b>. Repeat again after the recording:</c.P>
-          <c.Bookrow>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'practice',
+              data: {
+                elementId: practiceIds[2]
+              }
+            }}
+          >
             <c.Char>人</c.Char>
           </c.Bookrow>
-          // MultipleChoice
           <c.P><b>Zh-</b> is a <i>d-</i>sound followed by a Chinese <i>r</i>.</c.P>
           <c.P>中 means <i>middle</i>. Type the correct tone on 中 <b>zhong</b>. Repeat again after the
           recording:</c.P>
-          <c.Bookrow>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'practice',
+              data: {
+                elementId: practiceIds[3]
+              }
+            }}
+          >
             <c.Char>中</c.Char>
           </c.Bookrow>
-          // MultipleChoice
           <c.P>In Chinese, China is called 中国 which means <i>Middle Kingdom</i>. Type the correct tones on 中国 <b>zhongguo</b>. Practice pronunciation again:</c.P>
-          <c.Bookrow>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'practice',
+              data: {
+                elementId: practiceIds[4]
+              }
+            }}
+          >
             <c.Char>中国</c.Char>
           </c.Bookrow>
-          // Exo
           <c.P>In order to say <i>Chinese (person, someone whose nationality is Chinese)</i>, we add the character 人 <b>rén</b> <i>person</i>. Type the correct tones on 中国人 <b>zhongguoren</b>:</c.P>
-          <c.Bookrow>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'practice',
+              data: {
+                elementId: practiceIds[5]
+              }
+            }}
+          >
             <c.Char>中国人</c.Char>
           </c.Bookrow>
-          // Exo
           <c.P>To say <i>I am Chinese</i>, you use the verb 是 <i>be</i>. Type the correct tones on this sentence:</c.P>
-          <c.Bookrow>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'practice',
+              data: {
+                elementId: practiceIds[6]
+              }
+            }}
+          >
             <c.Char>我是中国人。</c.Char>
           </c.Bookrow>
-          // Exo
           <c.PartTitle type="secondary">Explore: Meet Yi and Yuguo</c.PartTitle>
           <c.P>Yi and her friend Yuguo both come from China. Here’s how they present themselves:</c.P>
           {dialog(1, { sentenceType: 'chinese', displayNames: false })}
@@ -243,7 +279,16 @@ export default class S1E7 extends Component {
           <c.PartTitle type="secondary">New words</c.PartTitle>
           // newWords
           <c.PartTitle type="secondary">Review</c.PartTitle>
-          <c.P><i>On the ChineseMe website, you will find review exercises to practice pronunciation, grammar and character writing. Download the flashcard decks to review character stroke orders and vocabulary. Then do the Final Exam to progress to the next Lesson.</i></c.P>
+          <c.P
+            buttonOptions={{
+              type: 'practice',
+              data: {
+                elementId: practiceIds[0]
+              }
+            }}
+          >
+            <i>On the ChineseMe website, you will find review exercises to practice pronunciation, grammar and character writing. Download the flashcard decks to review character stroke orders and vocabulary. Then do the Final Exam to progress to the next Lesson.</i>
+          </c.P>
         </c.Page>
       </div>
     );

@@ -34,7 +34,7 @@ export const types = {
   DIALOG_LINK_CLICK: 'signal/DIALOG_LINK_CLICK',
   VIDEO_ENDED: 'signal/VIDEO_ENDED',
   NEXT_SCREEN: 'signal/NEXT_SCREEN',
-  REVIEW_COMPLETED: 'signal/REVIEW_COMPLETED',
+  PRACTICE_COMPLETED: 'signal/PRACTICE_COMPLETED',
   START_EPISODE: 'signal/START_EPISODE',
   RUN_EPISODE_SCREEN: 'signal/RUN_EPISODE_SCREEN',
   UNMOUNT_EPISODE_SCREEN: 'signal/UNMOUNT_EPISODE_SCREEN',
@@ -154,8 +154,8 @@ const nextScreen = shouldUrlBeSkipped => ({
   type: types.NEXT_SCREEN,
   payload: { shouldUrlBeSkipped }
 });
-const reviewCompleted = () => ({
-  type: types.REVIEW_COMPLETED
+const practiceCompleted = () => ({
+  type: types.PRACTICE_COMPLETED
 });
 const startEpisode = (seasonNumber, episodeNumber) => ({
   type: types.START_EPISODE,
@@ -271,7 +271,7 @@ export const actions = {
   dialogLinkClick,
   videoEnded,
   nextScreen,
-  reviewCompleted,
+  practiceCompleted,
   startEpisode,
   runEpisodeScreen,
   unmountEpisodeScreen,

@@ -2,7 +2,7 @@ import { put, select, call, take, race } from 'redux-saga/effects';
 import { actions as uiActions } from '../../redux/ui';
 import selectors from '../../rootSelectors';
 import { fetchEntities } from '../entities';
-import { actions as reviewActions } from '../../redux/review';
+import { actions as practiceActions } from '../../redux/practice';
 import { types as sagaTypes } from '../actions';
 import getStudyFunctions from '../../helpers/getStudyFunctions';
 import mapExerciseTypeToSetCurrentAction
@@ -11,17 +11,17 @@ import { push } from 'react-router-redux';
 
 export function* isDataLoaded() {
   // id is not defined since there is no elementId
-  const currentExercise = yield select(selectors.review.getCurrentExercise);
+  const currentExercise = yield select(selectors.practice.getCurrentExercise);
   return currentExercise ? true : false;
 }
 
-export function* fetchData(episodeId) {
+export function* fetchData(episodeId, elementId) {
   // Fetch exercise entities, then store exercises array in Exam state slice
   yield call(fetchEntities, [
-    '/episode/' + episodeId + '/review',
+    '/episode/' + episodeId + '/practice/' + elementId,
     function* cb(response) {
       yield put(
-        reviewActions.setExercises(response.data.data.attributes.exercises)
+        practiceActions.setExercises(response.data.data.attributes.exercises)
       );
     }
   ]);
@@ -35,7 +35,7 @@ export function checkData() {
 export function* initUi() {}
 
 export function* initStudyData() {
-  yield put(reviewActions.setInitialized(false));
+  yield put(practiceActions.setInitialized(false));
 }
 
 function* defaultExamUi() {
@@ -47,8 +47,10 @@ function* defaultExamUi() {
 
 export function* run() {
   let completed = false;
+  const total = yield select(selectors.practice.getExercisesSize);
+  yield put(practiceActions.setTotal(total));
   while (completed === false) {
-    const exercise = yield select(selectors.review.getCurrentExercise);
+    const exercise = yield select(selectors.practice.getCurrentExercise);
     const type = exercise.get('type');
     const funcs = getStudyFunctions(type + '/');
     const setCurrent = mapExerciseTypeToSetCurrentAction(type);
@@ -56,12 +58,12 @@ export function* run() {
     yield call(defaultExamUi);
     yield call(funcs.initStudyData);
     yield call(funcs.initUi);
-    yield put(reviewActions.setInitialized(true));
+    yield put(practiceActions.setInitialized(true));
     yield race({
-      run: call(funcs.run, 'review'),
+      run: call(funcs.run, 'practice'),
       exit: take(sagaTypes.EXIT)
     });
-    const nextExercise = yield select(selectors.review.getCurrentExercise);
+    const nextExercise = yield select(selectors.practice.getCurrentExercise);
     if (!nextExercise) {
       completed = true;
     }
@@ -75,6 +77,6 @@ export function* nextScreen() {
 
 export function* clean(isCancelled) {
   if (isCancelled) {
-    yield put(reviewActions.clean());
+    yield put(practiceActions.clean());
   }
 }

@@ -28,7 +28,7 @@ export function* run() {
   const score = yield select(selectors.exam.getScore);
   yield delay(500);
   yield put(score >= 7 ? sagaActions.playLevelWinSound() : sagaActions.playLevelFailSound());
-  // Tracking and save
+  // Tracking
   const exercises = yield select(selectors.exam.getExercises);
   const results = yield select(selectors.exam.getResults);
   const timeLeft = yield select(selectors.timer.getTime);
@@ -44,7 +44,7 @@ export function* run() {
     exercises,
     results
   }));
-  // End Tracking and save
+  // End Tracking
   // Save score in DB
   yield call(Api.post, '/episode/exam/completed',
     {

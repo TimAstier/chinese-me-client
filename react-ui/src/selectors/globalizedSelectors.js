@@ -15,8 +15,8 @@ import * as fromExam from '../redux/exam';
 import * as fromHanzi from '../redux/hanzi';
 import * as fromMap from '../redux/map';
 import * as fromMultipleChoice from '../redux/multipleChoice';
+import * as fromPractice from '../redux/practice';
 import * as fromQuestion from '../redux/question';
-import * as fromReview from '../redux/review';
 import * as fromRouting from '../redux/routing';
 import * as fromSettings from '../redux/settings';
 import * as fromStudy from '../redux/study';
@@ -81,9 +81,9 @@ const multipleChoiceSelectors = bindSelectors(
   fromMultipleChoice.selectors
 );
 
-const reviewSelectors = bindSelectors(
-  state => state.get('review'),
-  fromReview.selectors
+const practiceSelectors = bindSelectors(
+  state => state.get('practice'),
+  fromPractice.selectors
 );
 
 const routingSelectors = bindSelectors(
@@ -131,7 +131,7 @@ const globalizedSelectors = {
   audioToText: audioToTextSelectors,
   characterPinyin: characterPinyinSelectors,
   auth: authSelectors,
-  review: reviewSelectors,
+  practice: practiceSelectors,
   routing: routingSelectors,
   map: mapSelectors,
   multipleChoice: multipleChoiceSelectors,

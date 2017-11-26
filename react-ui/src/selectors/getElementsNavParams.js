@@ -1,15 +1,15 @@
 import { createSelector } from 'reselect';
 import s from './globalizedSelectors';
-import getReviewNavParams from './getReviewNavParams';
+import getPracticeNavParams from './getPracticeNavParams';
 import getExamNavParams from './getExamNavParams';
 
 const getElementsNavParams = createSelector(
   s.routing.getElementType,
-  getReviewNavParams,
+  getPracticeNavParams,
   getExamNavParams,
-  (elementType, rParams, eParams) => {
+  (elementType, pParams, eParams) => {
     switch (elementType) {
-      case 'review': return rParams;
+      case 'practice': return pParams;
       case 'exam': return eParams;
       default: return undefined;
     }

@@ -44,7 +44,7 @@ export default (
         <Route path="dialog/:dialogId/roleplay" component={containers.Dialog} />
         <Route path="audioToText/:audioToTextId" component={containers.AudioToText} />
         <Route path="video/:videoId" component={containers.Video} />
-        <Route path="review" component={containers.Review}/>
+        <Route path="practice/:practiceId" component={containers.Practice}/>
         <Route path="exam" component={containers.Exam} />
         <Route path="result" component={containers.ExamResult} />
       </Route>

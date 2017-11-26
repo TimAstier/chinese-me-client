@@ -5,6 +5,7 @@ import { bookComponents as c } from '../../../components';
 import { push } from 'react-router-redux';
 import dialogIcon from '../../../images/dialogIcon.png';
 import brushIcon from '../../../images/brushIcon.png';
+import handWithPen from '../../../images/handWithPen.png';
 import storyIcon from '../../../images/storyIcon.png';
 import strokeIcon from '../../../images/strokeIcon.png';
 import s from '../../../rootSelectors';
@@ -33,6 +34,11 @@ class BookButton extends Component {
           url: `/study/${this.props.episodeId}/character/${this.props.buttonOptions.data.elementId}/stroke`,
           image: strokeIcon
         };
+      case 'practice':
+        return {
+          url: `/study/${this.props.episodeId}/practice/${this.props.buttonOptions.data.elementId}`,
+          image: handWithPen
+        };
       default:
         return console.log('Unknown bookButton type');
     }
@@ -54,7 +60,13 @@ class BookButton extends Component {
 BookButton.propTypes = {
   push: propTypes.func.isRequired,
   buttonOptions: propTypes.shape({
-    type: propTypes.oneOf(['writing', 'dialog', 'story', 'stroke']).isRequired,
+    type: propTypes.oneOf([
+      'writing',
+      'dialog',
+      'story',
+      'stroke',
+      'practice'
+    ]).isRequired,
     data: propTypes.object.isRequired
   }).isRequired,
   episodeId: propTypes.string.isRequired

@@ -5,9 +5,11 @@ import getDialogCompletion from './getDialogCompletion';
 const getProgressbarCompletion = createSelector(
   s.routing.getElementType,
   getDialogCompletion,
-  (elementType, dComp) => {
+  s.practice.getPracticeCompletion,
+  (elementType, dComp, pComp) => {
     switch (elementType) {
       case 'dialog': return dComp;
+      case 'practice': return pComp;
       default: return undefined;
     }
   }

@@ -7,8 +7,8 @@ export default class S0E1 extends Component {
   static propTypes = contentPropTypes
 
   render() {
-    const { newCharacters, example, lessonTitle, dialog, character, characterIds }
-      = this.props;
+    const { newCharacters, example, lessonTitle, dialog, character,
+      characterIds, practiceIds } = this.props;
     return (
       <div>
         <c.Page>
@@ -103,15 +103,16 @@ export default class S0E1 extends Component {
             }}>
             <img src={'https://s3.eu-west-2.amazonaws.com/chineseme/images/tone4_diagram.png'} alt=""/>
           </c.Bookrow>
-          <c.P>See if you can hear the right tones on the syllables:</c.P>
-          <c.Bookrow
+          <c.P
             buttonOptions={{
-              type: 'review'
+              type: 'practice',
+              data: {
+                elementId: practiceIds[1]
+              }
             }}
           >
-            DICTATION
-          </c.Bookrow>
-          // Practice
+            See if you can hear the right tones on the syllables.
+          </c.P>
           <c.P>If you find the tones challenging, it can be a comfort to know we actually have the exact same tones in English! The equivalent of Tone 1 would be the tone on the second syllable on tadaa! A magician pulling a rabbit out of a hat might say, with a flourish, <i>tadaa!</i></c.P>
           <c.P>Tone 2 is like the tone of a surprised question in English: <i>what?</i></c.P>
           <c.P>Tone 3 starts at middle pitch, goes down so low that it is sometimes broken off in the middle, and then rises again. In English, we use a similar tone when we are skeptical or irritated, for example on the word so in this conversation: <i>You haven’t given me any reason to do it. So? Do it anyway!</i></c.P>
@@ -144,15 +145,17 @@ export default class S0E1 extends Component {
             audio: true
           })}
           <c.P>This spelling system is called <b>pīnyīn</b>. It is used in dictionaries and textbooks to teach pronunciation. It is also a way of inputting characters on computers and mobile phones. But Chinese people never actually read or communicate in <b>pīnyīn</b> – they always use characters.</c.P>
-          <c.P>Try writing the <b>pīnyīn</b> spelling of the four characters we have learned so far:</c.P>
-          <c.Bookrow
+          <c.P
             buttonOptions={{
-              type: 'review'
+              type: 'practice',
+              data: {
+                elementId: practiceIds[2]
+              }
+
             }}
           >
-            PRACTICE
-          </c.Bookrow>
-          // Practice
+            Try writing the <b>pīnyīn</b> spelling of the four characters we have learned so far.
+          </c.P>
           <c.PartTitle type="secondary">Oracle bones</c.PartTitle>
           <c.P>So where do the Chinese characters come from? We know from archaeological finds that they were originally pictures. During the <b>Shāng</b> dynasty, more than 3,000 years ago, the oracles at the royal court used the shells of turtles and shoulder blades of oxen to tell the future.</c.P>
           <c.Bookrow center><img src={'https://s3.eu-west-2.amazonaws.com/chineseme/images/shell.png'} alt=""/></c.Bookrow>
@@ -256,8 +259,17 @@ export default class S0E1 extends Component {
           <c.P>Here are all the new characters in this lesson. Click on each character to review stroke order, on the brush icon to see calligraphy video, and on history icon to see the character etymology.</c.P>
           {newCharacters()}
           <c.PartTitle type="secondary">Review</c.PartTitle>
-          // Practice
-          <c.P><i>On the ChineseMe website, you will find review exercises to practice pronunciation, grammar and character writing. Download the flashcard decks to review character stroke orders and vocabulary. Then do the Final Exam to progress to the next Lesson.</i></c.P>
+          <c.P
+            buttonOptions={{
+              type: 'practice',
+              data: {
+                elementId: practiceIds[0]
+              }
+
+            }}
+          >
+            <i>On the ChineseMe website, you will find review exercises to practice pronunciation, grammar and character writing. Download the flashcard decks to review character stroke orders and vocabulary. Then do the Final Exam to progress to the next Lesson.</i>
+          </c.P>
         </c.Page>
       </div>
     );

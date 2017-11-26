@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import mapTypeToContainers from '../../helpers/mapTypeToContainers';
 
-class Review extends Component {
+class Practice extends Component {
 
   render() {
     const Container =
@@ -11,9 +11,9 @@ class Review extends Component {
   }
 }
 
-Review.propTypes = {
+Practice.propTypes = {
   currentExercise: propTypes.node.isRequired,
   initialized: propTypes.bool.isRequired
 };
 
-export default Review;
+export default Practice;

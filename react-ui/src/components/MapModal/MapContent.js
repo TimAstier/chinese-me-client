@@ -91,7 +91,9 @@ class MapContent extends Component {
             key={i}
             title={d.chineseTitle}
             completed={d.userDialogs.length !== 0 ? true : undefined}
-            onClick={() => console.log('click on dialog!')}
+            onClick={() => this.props.mapLinkClick(
+              '/study/' + this.props.episode.id + '/dialog/' + d.id + '/explore'
+            )}
           />
         );
       });
@@ -117,10 +119,32 @@ class MapContent extends Component {
     return null;
   }
 
+  renderPracticeItems() {
+    if (this.props.practices.length !== 0) {
+      const practiceItems = this.props.practices.map((p, i) => {
+        if (i !== 0) { // Skip the review practice
+          return (
+            <MapGrammarItem
+              key={i}
+              title={'Practice #' + i}
+              completed={undefined}
+              onClick={() => this.props.mapLinkClick(
+                '/study/' + this.props.episode.id + '/practice/' + p.id
+              )}
+            />
+          );
+        }
+        return null;
+      });
+      return <ContentItemsWrapper>{practiceItems}</ContentItemsWrapper>;
+    }
+    return null;
+  }
+
   render() {
     const { episode, mapCharactersCompletedCount,
       mapGrammarsCompletedCount, mapDialogsCompletedCount,
-      focusedSeasonNumber, characters, grammars, dialogs } = this.props;
+      focusedSeasonNumber, characters, grammars, dialogs, practices } = this.props;
     if (!episode) {
       // TODO: return a message for empty screen
       return null;
@@ -175,13 +199,23 @@ class MapContent extends Component {
               />
           }
           { this.renderDialogItems() }
-          <ChapterHeader
-            name="Review"
-            completed={this.props.episode.get('review')}
-            onClick={() => this.props.mapLinkClick(
-              '/study/' + this.props.episode.id + '/review'
-            )}
-          />
+          {
+            practices[1] &&
+              <ChapterHeader
+                name="Practice"
+              />
+          }
+          { this.renderPracticeItems() }
+          {
+            practices[0] &&
+              <ChapterHeader
+                name="Review"
+                // completed={this.props.episode.get('review')}
+                onClick={() => this.props.mapLinkClick(
+                  '/study/' + this.props.episode.id + '/practice/' + practices[0].id
+                )}
+              />
+          }
           <Space />
           <ChapterHeader
             name="Exam"
@@ -200,6 +234,7 @@ MapContent.propTypes = {
   characters: propTypes.array.isRequired,
   grammars: propTypes.array.isRequired,
   dialogs: propTypes.array.isRequired,
+  practices: propTypes.array.isRequired,
   focusedSeasonNumber: propTypes.number,
   episode: propTypes.instanceOf(models.Episode),
   mapLinkClick: propTypes.func.isRequired,

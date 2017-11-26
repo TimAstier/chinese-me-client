@@ -15,7 +15,7 @@ class Paragraph extends Component {
 
   render() {
     return (
-      <Bookrow>
+      <Bookrow buttonOptions={this.props.buttonOptions} >
         <Text>
           {this.props.children}
         </Text>
@@ -25,7 +25,8 @@ class Paragraph extends Component {
 }
 
 Paragraph.propTypes = {
-  children: propTypes.node.isRequired
+  children: propTypes.node.isRequired,
+  buttonOptions: propTypes.object
 };
 
 export default Paragraph;

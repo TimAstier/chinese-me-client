@@ -6,7 +6,7 @@ const getCurrentBookUrl = createSelector(
   getCurrentSeason,
   getCurrentEpisode,
   (season, episode) => {
-    return `study/season/${season.number}/episode/${episode.number}`;
+    return `/study/season/${season.number}/episode/${episode.number}`;
   }
 );
 

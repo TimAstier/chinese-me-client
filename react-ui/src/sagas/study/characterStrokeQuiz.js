@@ -6,7 +6,7 @@ import { actions as studyActions } from '../../redux/study';
 import { types as sagaTypes } from '../actions';
 import { fetchEntities } from '../entities';
 import { actions as sagaActions } from '../actions';
-import { actions as reviewActions } from '../../redux/review';
+import { actions as practiceActions } from '../../redux/practice';
 import { actions as uiActions } from '../../redux/ui';
 import { push } from 'react-router-redux';
 
@@ -21,9 +21,11 @@ export function* fetchData(episodeId) {
   // TODO: handle fetch error
 }
 
-export function* checkData() {
-  const currentElement = yield select(selectors.getCurrentCharacter);
-  return currentElement.hanziData ? true : false;
+export function checkData() {
+  // NOTE: we currently fetch hanziData from an online api
+  // const currentElement = yield select(selectors.getCurrentCharacter);
+  // return currentElement.hanziData ? true : false;
+  return true;
 }
 
 export function* initStudyData() {}
@@ -40,10 +42,10 @@ export function* run(mode = 'free') {
     return true;
   }
   yield put(uiActions.set('hanziAgainButton', false));
-  if (mode === 'review') {
+  if (mode === 'practice') {
     yield delay(1000);
-    yield put(reviewActions.setInitialized(false));
-    return yield put(reviewActions.correctAnswer());
+    yield put(practiceActions.setInitialized(false));
+    return yield put(practiceActions.correctAnswer());
   }
   return yield delay(1000);
 }

@@ -34,9 +34,9 @@ export { default as getMapDialogsCompletedCount } from './getMapDialogsCompleted
 export { default as getMapGrammarsCompletedCount } from './getMapGrammarsCompletedCount';
 export { default as getNextSentenceId } from './getNextSentenceId';
 export { default as getNextStatementId } from './getNextStatementId';
+export { default as getPracticeNavParams } from './getPracticeNavParams';
 export { default as getPreviousStatementId } from './getPreviousStatementId';
 export { default as getProgressbarCompletion } from './getProgressbarCompletion';
 export { default as getRequiredUserData } from './getRequiredUserData';
-export { default as getReviewNavParams } from './getReviewNavParams';
 export { default as getSentencesCountInCurrentDialog } from './getSentencesCountInCurrentDialog';
 export { default as getSentencesWithValues } from './getSentencesWithValues';

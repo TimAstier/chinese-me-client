@@ -7,7 +7,7 @@ export default class S1E7 extends Component {
 
   render() {
     const { newCharacters, example, lessonTitle, dialog, grammarTitle,
-      practiceIds } = this.props;
+      practiceIds, newWords } = this.props;
     return (
       <div>
         <c.Page>
@@ -144,7 +144,7 @@ export default class S1E7 extends Component {
           <c.PartTitle>CULTURE AND SOCIETY</c.PartTitle>
           <c.Bookrow center><img src={'https://s3.eu-west-2.amazonaws.com/chineseme/images/S1E7_culture.png'} alt=""/></c.Bookrow>
           <c.PartTitle>NEW VOCABULARY</c.PartTitle>
-          // Words
+          {newWords()}
           <c.PartTitle>REVIEW</c.PartTitle>
           <c.P
             buttonOptions={{

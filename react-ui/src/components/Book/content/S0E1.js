@@ -252,7 +252,7 @@ export default class S0E1 extends Component {
           <c.P>It has a long hook on the right hand side that needs to be given ample space to stretch out. The barb at the end of the hook gathers in the energy of the stroke and prevents it from flowing out of the character:</c.P>
           {character(5, { mode: 'box' })}
           <c.P>If this hook is too short, the whole character looks lopsided:</c.P>
-          <c.Bookrow><img src={'http://via.placeholder.com/350x150'} alt=""/></c.Bookrow>
+          <c.Bookrow><img src={'https://s3.eu-west-2.amazonaws.com/chineseme/images/lopsided_wo.png'} alt=""/></c.Bookrow>
           <c.P>Since it is one of the most common characters in the Chinese language, writing it quickly will save you lots of time. If you practice writing it elegantly, you will develop a rhythm which will eventually make you faster:</c.P>
           {character(5, { mode: 'practice' })}
           <c.PartTitle type="secondary">New characters</c.PartTitle>

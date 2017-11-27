@@ -20,7 +20,7 @@ class Statement extends Component {
   }
 
   render() {
-    const { statement, sentenceType, displayNames, displayTranslation } = this.props;
+    const { statement, sentenceType, displayNames } = this.props;
     return (
       <c.Statement
         sentences={statement ? statement.sentences : undefined }

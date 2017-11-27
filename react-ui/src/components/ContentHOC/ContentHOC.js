@@ -107,6 +107,24 @@ class ContentHOC extends Component {
     };
   };
 
+  _newWordsDumper = words => {
+    return () => {
+      if (words.length === 0) {
+        return <Placeholder>{'{NEW_WORDS PLACEHOLDER}'}</Placeholder>;
+      }
+      const array = [];
+      words.forEach((word, i) => {
+        array.push(
+          <C.Word
+            key={words[i]}
+            wordId={words[i]}
+          />
+        );
+      });
+      return array;
+    };
+  };
+
   _pageNumberDumper = () => {
     let count = 0;
     return () => {
@@ -116,7 +134,7 @@ class ContentHOC extends Component {
   };
 
   render() {
-    const { examples, dialogs, characters, grammars, practices }
+    const { examples, dialogs, characters, grammars, practices, words }
       = this.props.episode;
     const Content = this.props.content;
     return (
@@ -126,6 +144,7 @@ class ContentHOC extends Component {
         example={this._example(examples)}
         dialog={this._dialog(dialogs)}
         newCharacters={this._newCharactersDumper(characters)}
+        newWords={this._newWordsDumper(words)}
         grammarTitle={this._grammarTitle(grammars)}
         pageNumber={this._pageNumberDumper()}
         settings={this.props.settings}

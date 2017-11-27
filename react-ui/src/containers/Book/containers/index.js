@@ -13,4 +13,5 @@ export { default as Link } from './Link';
 // export { default as PartTitle } from './PartTitle';
 export { default as Sentence } from './Sentence';
 export { default as Statement } from './Statement';
+export { default as Word } from './Word';
 // export { default as Ul } from './Ul';

@@ -33,7 +33,7 @@ const mapStateToProps = state => ({
   isAudioPlaying: s.audio.getIsPlaying(state),
   displayControls: s.study.getDialogMode(state) === 'explore',
   read: s.getIsChosenAvatarTalking(state),
-  words: s.getCurrentWords(state),
+  words: s.entities.getWords(state),
   currentStatementLength: s.getCurrentStatementLength(state)
 });
 

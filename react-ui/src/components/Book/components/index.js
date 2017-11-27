@@ -19,3 +19,4 @@ export { default as Pinyin } from './Pinyin';
 export { default as Sentence } from './Sentence';
 export { default as Statement } from './Statement';
 export { default as Ul } from './Ul';
+export { default as Word } from './Word';

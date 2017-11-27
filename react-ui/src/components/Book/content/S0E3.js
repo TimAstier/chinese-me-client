@@ -10,7 +10,7 @@ export default class S1E7 extends Component {
 
   render() {
     const { newCharacters, example, lessonTitle, dialog, character, settings,
-      practiceIds } = this.props;
+      practiceIds, newWords } = this.props;
     return (
       <div>
         <c.Page>
@@ -275,7 +275,7 @@ export default class S1E7 extends Component {
           <c.P>Here are the new characters in this lesson. Click on each character to review the stroke order, or on the brush or history icons to see calligraphy and history videos.</c.P>
           {newCharacters()}
           <c.PartTitle type="secondary">New words</c.PartTitle>
-          // newWords
+          {newWords()}
           <c.PartTitle type="secondary">Review</c.PartTitle>
           <c.P
             buttonOptions={{

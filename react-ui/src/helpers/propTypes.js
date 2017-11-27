@@ -2,6 +2,7 @@ import propTypes from 'prop-types';
 
 export const content = {
   newCharacters: propTypes.func.isRequired,
+  newWords: propTypes.func.isRequired,
   example: propTypes.func.isRequired,
   lessonTitle: propTypes.func.isRequired,
   dialog: propTypes.func.isRequired,

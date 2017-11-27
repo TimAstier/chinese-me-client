@@ -10,6 +10,9 @@ const LinkWrapper = styled.span`
   :hover {
     color: #55b6ff;
   }
+  text-decoration: underline;
+  text-decoration-color: #55b6ff;
+  text-underline-position: under;
 `;
 
 const ListLink = styled.div`

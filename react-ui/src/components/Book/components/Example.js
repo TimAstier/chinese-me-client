@@ -31,6 +31,8 @@ const Pinyin = styled.span`
 
 const Translation = styled.span`
   font-style: italic;
+  font-size: 21px;
+  margin-top: ${props => props.basic ? '10px' : '0px'};
 `;
 
 const Placeholder = styled.span`
@@ -40,6 +42,18 @@ const Placeholder = styled.span`
 class Example extends Component {
 
   _renderBasic() {
+    if (this.props.displayTranslation) {
+      return (
+        <Row>
+          <Chinese big={ this.props.big }>
+            { this.props.chinese }
+          </Chinese>
+          <Translation basic={this.props.basic}>
+            { this.props.translation }
+          </Translation>
+        </Row>
+      );
+    }
     return (
       <Chinese big={ this.props.big }>
         { this.props.chinese }
@@ -96,7 +110,8 @@ Example.propTypes = {
   translation: propTypes.string,
   literalTranslation: propTypes.string,
   audioUrl: propTypes.string,
-  audio: propTypes.bool.isRequired
+  audio: propTypes.bool.isRequired,
+  displayTranslation: propTypes.bool
 };
 
 export default Example;

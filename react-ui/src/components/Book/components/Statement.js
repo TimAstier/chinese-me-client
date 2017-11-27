@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import { bookContainers as C } from '../../../containers';
 import styled from 'styled-components';
+import { Row } from '../../Shared';
 
 const ChineseWrapper = styled.div`
   font-size: 25px;
   font-family: Kai;
   line-height: 35px;
   display: flex;
+  min-width: ${props => props.width}
 `;
 
 const TranslationWrapper = styled.div`
@@ -55,6 +57,26 @@ class Statement extends Component {
     );
   }
 
+  _renderChineseWithTranslation() {
+    return (
+      <Row>
+        <ChineseWrapper width={'200px'}>
+          {
+            this.props.displayNames &&
+              <ChineseMeta>
+                {this.props.name ? this.props.name : ''}
+                <Punct>{this.props.name ? ' : ' : '- '}</Punct>
+              </ChineseMeta>
+          }
+          { this._renderSentences('chinese') }
+        </ChineseWrapper>
+        <TranslationWrapper>
+          { this._renderSentences('translation') }
+        </TranslationWrapper>
+      </Row>
+    );
+  }
+
   _renderPinyin() {
     return (
       <div>
@@ -83,7 +105,7 @@ class Statement extends Component {
     );
   }
 
-  _renderSentences() {
+  _renderSentences(sentenceType = this.props.sentenceType) {
     if (!this.props.sentences) {
       return null;
     }
@@ -92,7 +114,7 @@ class Statement extends Component {
         <C.Sentence
           key={id}
           sentenceId={id}
-          sentenceType={this.props.sentenceType}
+          sentenceType={sentenceType}
         />
       );
     });
@@ -108,13 +130,19 @@ class Statement extends Component {
       case 'chinese': return this._renderChinese();
       case 'pinyin': return this._renderPinyin();
       case 'translation': return this._renderTranslation();
+      case 'chineseWithTranslation': return this._renderChineseWithTranslation();
       default: return null;
     }
   }
 }
 
 Statement.propTypes = {
-  sentenceType: propTypes.oneOf(['chinese', 'pinyin', 'translation']).isRequired,
+  sentenceType: propTypes.oneOf([
+    'chinese',
+    'pinyin',
+    'translation',
+    'chineseWithTranslation'
+  ]).isRequired,
   sentences: propTypes.arrayOf(propTypes.number),
   displayNames: propTypes.bool.isRequired,
   avatarId: propTypes.number,

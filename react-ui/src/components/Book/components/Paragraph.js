@@ -9,14 +9,15 @@ const Text = styled.div`
   text-align: justify;
   text-justify: inter-word;
   line-height: normal;
+  color: ${props => props.color ? props.color : 'black'}
 `;
 
 class Paragraph extends Component {
 
   render() {
     return (
-      <Bookrow buttonOptions={this.props.buttonOptions} >
-        <Text>
+      <Bookrow buttonOptions={this.props.buttonOptions}>
+        <Text color={this.props.color}>
           {this.props.children}
         </Text>
       </Bookrow>
@@ -26,7 +27,8 @@ class Paragraph extends Component {
 
 Paragraph.propTypes = {
   children: propTypes.node.isRequired,
-  buttonOptions: propTypes.object
+  buttonOptions: propTypes.object,
+  color: propTypes.string
 };
 
 export default Paragraph;

@@ -138,8 +138,7 @@ export default class S1E7 extends Component {
           {example(21, { audio: true })}
           <c.P>Chinese speakers often make the opposite mistake in English: <i>Don't you want to have dinner with us? Yes, I need to go now.</i> To avoid confusion, stick to positively formulated questions!</c.P>
           <c.PartTitle>会话:你家人都在中国吗?</c.PartTitle>
-          // Dialog intro
-          // New version of the dialog
+          <c.P color={'#C0504D'}><i>The acquaintances learn a bit about each other's families and Marvin picks up a few new words as well as misunderstanding a common grammar pattern.</i></c.P>
           {dialog(1, { sentenceType: 'chinese', displayNames: true })}
           {dialog(1, { sentenceType: 'translation', displayNames: true })}
           <c.PartTitle>CULTURE AND SOCIETY</c.PartTitle>

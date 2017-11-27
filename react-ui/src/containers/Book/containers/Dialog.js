@@ -12,7 +12,6 @@ class Dialog extends Component {
     return (
       <c.Dialog
         statements={dialog ? dialog.statements : undefined }
-        avatars={this.props.avatars}
         displayNames={options.displayNames ? options.displayNames : false}
         sentenceType={options.sentenceType}
         dialogId={this.props.dialogId}
@@ -25,7 +24,11 @@ Dialog.propTypes = {
   dialogId: propTypes.number.isRequired,
   dialog: propTypes.instanceOf(models.Dialog),
   options: propTypes.shape({
-    sentenceType: propTypes.oneOf(['chinese', 'translation']),
+    sentenceType: propTypes.oneOf([
+      'chinese',
+      'translation',
+      'chineseWithTranslation'
+    ]),
     displayNames: propTypes.bool
   }).isRequired
 };

@@ -21,6 +21,7 @@ class Example extends Component {
         translation={this.props.example.translation}
         literalTranslation={this.props.example.literalTranslation}
         audioUrl={this.props.example.audioUrl}
+        displayTranslation={this.props.options.displayTranslation}
       />
     );
   }
@@ -33,7 +34,8 @@ Example.propTypes = {
   options: propTypes.shape({
     basic: propTypes.bool,
     big: propTypes.bool,
-    audio: propTypes.bool
+    audio: propTypes.bool,
+    displayTranslation: propTypes.bool
   }),
   episodeNumber: propTypes.number.isRequired
 };

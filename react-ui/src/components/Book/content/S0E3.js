@@ -89,10 +89,8 @@ export default class S1E7 extends Component {
           </c.Bookrow>
           <c.PartTitle type="secondary">Explore: Meet Yi and Yuguo</c.PartTitle>
           <c.P>Yi and her friend Yuguo both come from China. Here’s how they present themselves:</c.P>
-          {dialog(1, { sentenceType: 'chinese', displayNames: false })}
-          // displayTranslation
-          {dialog(2, { sentenceType: 'chinese', displayNames: false })}
-          // displayTranslation
+          {dialog(1, { sentenceType: 'chineseWithTranslation', displayNames: false })}
+          {dialog(2, { sentenceType: 'chineseWithTranslation', displayNames: false })}
           <c.PartTitle type="secondary">Your country and nationality</c.PartTitle>
           <c.P>Now, it’s your turn to tell Wang Yi and Wang Yuguo where you are from. Listen how to say the name of your country:</c.P>
           {example(6, { basic: true, big: true, audio: true })}

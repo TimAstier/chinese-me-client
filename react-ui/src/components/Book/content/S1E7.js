@@ -16,7 +16,7 @@ export default class S1E7 extends Component {
           <c.PartTitle>NEW CHARACTERS</c.PartTitle>
           <c.P><i>Practice the stroke order animations at ChineseMe. Some characters have material on Stories and Calligraphy.</i></c.P>
           {newCharacters()}
-          <c.PartTitle>GRAMMAR</c.PartTitle>
+          <c.PartTitle>PATTERNS</c.PartTitle>
           {grammarTitle()}
           <c.P>Chinese does not make any difference between <i>both</i> and <i>all</i>; after all, the concept is the same. Pay attention to the sentence intonation in this pattern; the stress is on 都 <b>dōu</b>, so Tone 1 has a higher pitch on 都 <b>dōu</b> than on 他 <b>tā</b>:</c.P>
           {example(1, { audio: true })}

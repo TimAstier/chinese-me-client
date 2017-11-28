@@ -34,7 +34,7 @@ const ContentWrapper = styled.div`
 
 class MapSidebar extends Component {
 
-  renderEpisodesList(seasonId) {
+  _renderEpisodesList(seasonId, seasonNumber) {
     // convert to array to avoid calling .map() on an ordered List
     // (not officially supported)
     const episodesArray = [];
@@ -48,6 +48,7 @@ class MapSidebar extends Component {
           return (
             <SidebarItem
               episode={e}
+              label={seasonNumber !== 0 ? 'Episode ' : 'Lesson '}
               focused={e.id === this.props.focusedEpisodeId}
               key={e.id}
               playing={this.props.currentEpisodeId === e.id}
@@ -59,7 +60,7 @@ class MapSidebar extends Component {
     );
   }
 
-  generatePanels() {
+  _generatePanels() {
     const seasons = this.props.seasons.sortBy(e => e.number);
     const panels = [];
     seasons.valueSeq().forEach(season => {
@@ -68,7 +69,7 @@ class MapSidebar extends Component {
         + season.number;
       return panels.push({
         title,
-        content: this.renderEpisodesList(season.id)
+        content: this._renderEpisodesList(season.id, season.number)
       });
     });
     return panels;
@@ -81,7 +82,7 @@ class MapSidebar extends Component {
       <Wrapper>
         <ContentWrapper>
           <Accordion
-            panels={this.generatePanels()}
+            panels={this._generatePanels()}
             fluid
             defaultActiveIndex={defaultActiveIndex}
             exclusive

@@ -51,17 +51,11 @@ class SidebarItem extends Component {
       margin-left: -5px;
     `;
 
-    const ItemNumber = styled.div`
-      font-family: 'Open Sans';
-      font-size: 16px;
-      margin-left: 5px;
-    `;
-
     const ItemTitle = styled.div`
-      margin-left: 5px;
+      margin-left: 25px;
       font-size: 16px;
       font-weight: 900;
-      font-family: 'STKaitiSC';
+      font-family: 'Open Sans';
       width: 160px;
     `;
 
@@ -80,10 +74,9 @@ class SidebarItem extends Component {
             <CheckWrapper>
               {episode.completed && <img src={iconCheck} alt="icon-check" />}
             </CheckWrapper>
-            <ItemNumber>{episode.number + '.'}</ItemNumber>
-            <ItemTitle>
-              {episode.title}
-            </ItemTitle>
+						<ItemTitle>
+							{this.props.label + ' ' + episode.number}
+						</ItemTitle>
             {playing &&
               <PlayingIconWrapper>
                 <img src={focused ? iconPlayingWhite : iconPlayingColor} alt="playing-icon"/>
@@ -100,7 +93,8 @@ SidebarItem.propTypes = {
   episode: propTypes.instanceOf(Episode).isRequired,
   focused: propTypes.bool.isRequired,
   playing: propTypes.bool,
-  setFocusedEpisodeId: propTypes.func.isRequired
+  setFocusedEpisodeId: propTypes.func.isRequired,
+  label: propTypes.string.isRequired
 };
 
 export default SidebarItem;

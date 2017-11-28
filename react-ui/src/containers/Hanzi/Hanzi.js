@@ -21,7 +21,8 @@ Hanzi.propTypes = {
   strokeAnimationFinished: propTypes.func.isRequired,
   onQuizComplete: propTypes.func,
   watchAgain: propTypes.bool.isRequired,
-  setWatchAgain: propTypes.func.isRequired
+  setWatchAgain: propTypes.func.isRequired,
+  animationId: propTypes.string
 };
 
 const mapStateToProps = state => ({

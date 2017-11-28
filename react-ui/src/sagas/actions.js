@@ -168,8 +168,9 @@ const runEpisodeScreen = url => ({
 const unmountEpisodeScreen = () => ({
   type: types.UNMOUNT_EPISODE_SCREEN
 });
-const strokeAnimationFinished = () => ({
-  type: types.STROKE_ANIMATION_FINISHED
+const strokeAnimationFinished = animationId => ({
+  type: types.STROKE_ANIMATION_FINISHED,
+  payload: { animationId }
 });
 const strokeQuizCompleted = () => ({
   type: types.STROKE_QUIZ_COMPLETED

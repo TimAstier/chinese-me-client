@@ -5,9 +5,11 @@ import selectors from '../../rootSelectors';
 import { actions as studyActions } from '../../redux/study';
 import { actions as sagaActions, types as sagaTypes } from '../actions';
 import { actions as audioActions } from '../../redux/audio';
+import { actions as hanziActions } from '../../redux/hanzi';
 import { fetchEntities } from '../entities';
 import pinyinNumberToAudioUrl from '../../utils/pinyinNumberToAudioUrl';
 import { replace } from 'react-router-redux';
+import randomID from '../../utils/randomID';
 
 export function* isDataLoaded(id) {
   yield put(studyActions.setCurrentCharacterId(id));
@@ -32,10 +34,22 @@ export function* initStudyData() {}
 export function* initUi() {}
 
 export function* run() {
+  // We set an animationId to ensure that the STROKE_ANIMATION_FINISHED
+  // signal do not come from a previously instantiated hanziWriter
+  const animationId = randomID();
+  yield put(hanziActions.setAnimationId(animationId));
   const currentChar = yield select(selectors.getCurrentCharacter);
   const audioUrl = pinyinNumberToAudioUrl(currentChar.pinyinNumber);
   yield put(audioActions.set('audioUrl', audioUrl));
-  yield take(sagaTypes.STROKE_ANIMATION_FINISHED);
+  // Wait for an animation with the correct animationId to finish
+  yield take(action => {
+    if (action.type === sagaTypes.STROKE_ANIMATION_FINISHED) {
+      if (action.payload.animationId === animationId) {
+        return true;
+      }
+    }
+    return false;
+  });
   yield put(sagaActions.playAudio());
   yield delay(1500);
 }

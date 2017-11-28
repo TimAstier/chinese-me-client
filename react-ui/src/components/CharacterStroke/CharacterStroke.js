@@ -34,6 +34,7 @@ class CharacterStroke extends Component {
         <Hanzi
           char={this.props.character.simpChar}
           mode="animation"
+          animationId={this.props.animationId}
         />
         <Pinyin text={pinyinize(this.props.character.pinyinNumber)} />
         <Meaning text={this.props.character.meaning} />
@@ -43,7 +44,8 @@ class CharacterStroke extends Component {
 }
 
 CharacterStroke.propTypes = {
-  character: propTypes.instanceOf(Character).isRequired
+  character: propTypes.instanceOf(Character).isRequired,
+  animationId: propTypes.string.isRequired
 };
 
 export default CharacterStroke;

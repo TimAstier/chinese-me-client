@@ -70,7 +70,9 @@ class Hanzi extends Component {
 
   animateCharacter() {
     this.writer.animateCharacter({
-      onComplete: () => this.props.strokeAnimationFinished()
+      onComplete: () => {
+        this.props.strokeAnimationFinished(this.props.animationId);
+      }
     });
   }
 
@@ -95,7 +97,8 @@ Hanzi.propTypes = {
   strokeAnimationFinished: propTypes.func.isRequired,
   onQuizComplete: propTypes.func,
   watchAgain: propTypes.bool.isRequired,
-  setWatchAgain: propTypes.func.isRequired
+  setWatchAgain: propTypes.func.isRequired,
+  animationId: propTypes.string
 };
 
 export default Hanzi;

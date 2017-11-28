@@ -8,7 +8,7 @@ export default class S0E2 extends Component {
 
   render() {
     const { newCharacters, example, lessonTitle, dialog, character,
-      characterIds, practiceIds } = this.props;
+      characterIds, practiceIds, image } = this.props;
     return (
       <div>
         <c.Page>
@@ -65,18 +65,12 @@ export default class S0E2 extends Component {
           <c.PartTitle type="secondary">Oracle bones</c.PartTitle>
           <c.P>We have seen that the most ancient Chinese characters were pictures which, as the written language developed, were gradually combined into more complex characters. Most of these were combinations of a radical indicating meaning, and a phonetic hinting at the sound. But some characters were based on different logic.</c.P>
           <c.P>Take 好 for example. The element on the left is the radical 女 which means <i>woman</i>, and the element on the right is the character 子 <i>son, child</i>. This is how it looked on the oracle bones:</c.P>
-          <c.Bookrow>
-            <img src={'https://s3.eu-west-2.amazonaws.com/chineseme/images/hao_jiaguwen.png'} alt=""/>
-          </c.Bookrow>
+          <c.Bookrow>{image()}</c.Bookrow>
           <c.P>女 on the left hand side is a pictogram. On the oracle bones, it shows a woman seated on her folded legs, in a pose we still recognize from tea ceremonies today. The arms are crossed in front of the body – or perhaps busy with daily chores.</c.P>
-          <c.Bookrow>
-            <img src={'https://s3.eu-west-2.amazonaws.com/chineseme/images/nv_jiaguwen.png'} alt=""/>
-          </c.Bookrow>
+          <c.Bookrow>{image()}</c.Bookrow>
           <c.P>As you can see, the modern character for woman looks different from the original pictogram. As the writing system developed over the centuries, the characters were standardized and stylized. But it still possible to identify the strokes of the ancient oracle bone character.</c.P>
           <c.P>The character 子 <i>son, child</i> on the right hand side is also a pictogram. The oracle bone specimens show a swaddled baby, sometimes with its little arms straight out, sometimes flailing wildly in a way any parent would recognize:</c.P>
-          <c.Bookrow>
-            <img src={'https://s3.eu-west-2.amazonaws.com/chineseme/images/zi_jiaguwen.png'} alt=""/>
-          </c.Bookrow>
+          <c.Bookrow>{image()}</c.Bookrow>
           <c.P>Together, <i>woman</i> and <i>child</i> form the character 好, which means <i>good</i>, <i>nice</i>, <i>fine</i>. To the ancients, the idea of a woman caring for a small baby was the very embodiment of something “good”. This is an example of an <i>ideogram</i>, a character where each element contributes to the meaning.</c.P>
           <c.P>Even in characters with a radical and a phonetic, the phonetic was often chosen with an eye for meaning in addition to sound. One example is 姓, where the phonetic 生 <b>shēng</b> means <i>give birth to</i> or <i>be born</i>. ”Born of woman”: <i>to have as family name</i>.</c.P>
           <c.PartTitle type="secondary">Characters – calligraphy</c.PartTitle>

@@ -36,6 +36,17 @@ class ContentHOC extends Component {
     };
   }
 
+  _image = images => {
+    let count = - 1;
+    return () => {
+      count ++;
+      if (!images[count]) {
+        return <Placeholder>{'IMAGE PLACEHOLDER'}</Placeholder>;
+      }
+      return <img src={images[count]} alt=""/>;
+    };
+  }
+
   _character = characters => {
     return (number, options) => {
       if (number > characters.length) {
@@ -150,6 +161,7 @@ class ContentHOC extends Component {
         settings={this.props.settings}
         characterIds={characters}
         practiceIds={practices.map(p => p.id)}
+        image={this._image(this.props.images)}
       />
     );
   }
@@ -159,7 +171,8 @@ ContentHOC.propTypes = {
   content: propTypes.func.isRequired,
   season: propTypes.instanceOf(models.Season),
   episode: propTypes.instanceOf(models.Episode),
-  settings: propTypes.object.isRequired
+  settings: propTypes.object.isRequired,
+  images: propTypes.array.isRequired
 };
 
 export default ContentHOC;

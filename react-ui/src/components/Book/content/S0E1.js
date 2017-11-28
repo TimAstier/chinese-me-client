@@ -8,7 +8,7 @@ export default class S0E1 extends Component {
 
   render() {
     const { newCharacters, example, lessonTitle, dialog, character,
-      characterIds, practiceIds } = this.props;
+      characterIds, practiceIds, image } = this.props;
     return (
       <div>
         <c.Page>
@@ -71,7 +71,7 @@ export default class S0E1 extends Component {
                 text: '妈'
               }
             }}>
-            <img src={'https://s3.eu-west-2.amazonaws.com/chineseme/images/tone1_diagram.png'} alt=""/>
+            {image()}
           </c.Bookrow>
           <c.P>The second means <i>hemp</i>, and is pronounced with Tone 2, a short tone which starts at middle pitch and goes upward:</c.P>
           <c.Bookrow
@@ -81,7 +81,7 @@ export default class S0E1 extends Component {
                 text: '麻'
               }
             }}>
-            <img src={'https://s3.eu-west-2.amazonaws.com/chineseme/images/tone2_diagram.png'} alt=""/>
+            {image()}
           </c.Bookrow>
           <c.P>The third means <i>horse</i>, and is pronounced with Tone 3. This starts at a mid-high pitch, and then goes down so low that it almost breaks off at the bottom, before going slightly up again:</c.P>
           <c.Bookrow
@@ -91,7 +91,7 @@ export default class S0E1 extends Component {
                 text: '马'
               }
             }}>
-            <img src={'https://s3.eu-west-2.amazonaws.com/chineseme/images/tone3_diagram.png'} alt=""/>
+            {image()}
           </c.Bookrow>
           <c.P>The fourth means <i>scold</i>, and is pronounced with Tone 4, which is a rapidly falling tone starting at the top of the speaker’s pitch range and going all the way down:</c.P>
           <c.Bookrow
@@ -101,7 +101,7 @@ export default class S0E1 extends Component {
                 text: '骂'
               }
             }}>
-            <img src={'https://s3.eu-west-2.amazonaws.com/chineseme/images/tone4_diagram.png'} alt=""/>
+            {image()}
           </c.Bookrow>
           <c.P
             buttonOptions={{
@@ -158,18 +158,18 @@ export default class S0E1 extends Component {
           </c.P>
           <c.PartTitle type="secondary">Oracle bones</c.PartTitle>
           <c.P>So where do the Chinese characters come from? We know from archaeological finds that they were originally pictures. During the <b>Shāng</b> dynasty, more than 3,000 years ago, the oracles at the royal court used the shells of turtles and shoulder blades of oxen to tell the future.</c.P>
-          <c.Bookrow center><img src={'https://s3.eu-west-2.amazonaws.com/chineseme/images/shell.png'} alt=""/></c.Bookrow>
+          <c.Bookrow center>{image()}</c.Bookrow>
           <c.P>To do this, they placed glowing hot bronze rods against the bone until it cracked from the heat. The soothsayers interpreted these cracks as answers to their questions about the future.</c.P>
           <c.P>To record the questions and answers, they inscribed each bone with a pictorial script which archeologists have shown to be primitive forms of modern Chinese characters. We call them <i>oracle bone</i> characters.</c.P>
           <c.PartTitle type="secondary">Pictograms</c.PartTitle>
           <c.P>The simplest and most ancient characters are pictures. Some of these are so clear, and so similar to the modern character, that they are still easy to understand – even when they are symbols of abstract concepts. On the oracle bone above, we immediately recognize the symbols for <i>one</i>, <i>two</i> and <i>three</i>.</c.P>
-          <c.Bookrow center><img src={'https://s3.eu-west-2.amazonaws.com/chineseme/images/yi_er_san.png'} alt=""/></c.Bookrow>
+          <c.Bookrow center>{image()}</c.Bookrow>
           <c.P>Some characters are a bit trickier to understand. The character for <i>king</i>, for example, was originally a picture of an ax head. Weapons were the ultimate source of power, so this picture was used to symbolize <i>king</i>.</c.P>
-          <c.Bookrow center><img src={'https://s3.eu-west-2.amazonaws.com/chineseme/images/wang_king.png'} alt=""/></c.Bookrow>
+          <c.Bookrow center>{image()}</c.Bookrow>
           <c.P><i>King</i> is the most common family name in China. Today, it is written like this:</c.P>
           <c.PartTitle type="secondary">Radicals for meaning – phonetics for sound</c.PartTitle>
           <c.P>As the written language developed and more characters were needed, the ancient scribes started combining simple pictorial elements into more complex characters. Some elements were chosen for <i>meaning</i>; others for <i>sound</i>. As an example, let us look at the character 叫 <i>to be called</i>. It is made up of two ancient character elements: 口 <i>mouth</i>, and 丩 <i>two hooks</i>. Why did the scribes choose these two components?</c.P>
-          <c.Bookrow><img src={'https://s3.eu-west-2.amazonaws.com/chineseme/images/kou_plus_jiu.png'} alt=""/></c.Bookrow>
+          <c.Bookrow>{image()}</c.Bookrow>
           <c.P>The <i>mouth</i> element contributes <i>meaning</i>. This element appears in characters such as <i>eat</i>, <i>drink</i>, <i>kiss</i> and <i>ask</i> – all things which, like叫, you do with your mouth. A character component indicating meaning in this way is called a <i>radical</i>.</c.P>
           <c.P>The <i>two hooks</i> element has nothing to do with meaning. It was chosen to give an indication of <i>pronunciation</i> and also appears in several other characters that sound similar to 叫. A character element indicating sound is called a <i>phonetic</i>.</c.P>
           <c.P>The radical of a character only points to a general category; in this case, <i>things done with the mouth</i>. In the same way, the phonetic usually does not give us an exact pronunciation. This is because, over hundreds of years, the Chinese sound system has changed a lot: in our example, the modern pronunciation of 丩 is <b>jīu</b>, but 叫 is pronounced <b>jiào</b>. Even so, these hints of meaning and pronunciation can make it easier for us to memorize characters.</c.P>
@@ -252,7 +252,7 @@ export default class S0E1 extends Component {
           <c.P>It has a long hook on the right hand side that needs to be given ample space to stretch out. The barb at the end of the hook gathers in the energy of the stroke and prevents it from flowing out of the character:</c.P>
           {character(5, { mode: 'box' })}
           <c.P>If this hook is too short, the whole character looks lopsided:</c.P>
-          <c.Bookrow><img src={'https://s3.eu-west-2.amazonaws.com/chineseme/images/lopsided_wo.png'} alt=""/></c.Bookrow>
+          <c.Bookrow>{image()}</c.Bookrow>
           <c.P>Since it is one of the most common characters in the Chinese language, writing it quickly will save you lots of time. If you practice writing it elegantly, you will develop a rhythm which will eventually make you faster:</c.P>
           {character(5, { mode: 'practice' })}
           <c.PartTitle type="secondary">New characters</c.PartTitle>

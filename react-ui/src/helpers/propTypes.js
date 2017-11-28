@@ -11,5 +11,6 @@ export const content = {
   character: propTypes.func.isRequired,
   settings: propTypes.object.isRequired,
   characterIds: propTypes.array.isRequired,
-  practiceIds: propTypes.array.isRequired
+  practiceIds: propTypes.array.isRequired,
+  image: propTypes.func.isRequired
 };

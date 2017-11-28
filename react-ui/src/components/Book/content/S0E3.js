@@ -10,7 +10,7 @@ export default class S1E7 extends Component {
 
   render() {
     const { newCharacters, example, lessonTitle, dialog, character, settings,
-      practiceIds, newWords } = this.props;
+      practiceIds, newWords, image } = this.props;
     return (
       <div>
         <c.Page>
@@ -216,24 +216,18 @@ export default class S1E7 extends Component {
           </c.Bookrow>
           <c.P>You can review all the sounds in this lesson more thoroughly in the <i>Introduction to Chinese pronunciation and writing</i>.</c.P>
           <c.PartTitle type="secondary">Oracle bones</c.PartTitle>
-          <c.Bookrow center><img src={'https://s3.eu-west-2.amazonaws.com/chineseme/images/zhong_jiaguwen.png'} alt=""/></c.Bookrow>
-          <c.Bookrow center><img src={'https://s3.eu-west-2.amazonaws.com/chineseme/images/yu_jiaguwen.png'} alt=""/></c.Bookrow>
-          <c.Bookrow center><img src={'https://s3.eu-west-2.amazonaws.com/chineseme/images/guo_jiaguwen.png'} alt=""/></c.Bookrow>
+          <c.Bookrow center>{image()}</c.Bookrow>
+          <c.Bookrow center>{image()}</c.Bookrow>
+          <c.Bookrow center>{image()}</c.Bookrow>
           <c.PartTitle type="secondary">Characters – calligraphy</c.PartTitle>
           <c.P>We have so far learned the <i>horizontal</i>, <i>vertical</i> and <i>hook</i> strokes. The character 人 <i>person</i> contains two new strokes: the <i>left</i> and <i>right downard</i> strokes.</c.P>
           <c.P>The left downward stroke is used as a “left leg” in many characters. It has the shape of an elephant tusk:</c.P>
-          <c.Bookrow>
-            <img src={'https://s3.eu-west-2.amazonaws.com/chineseme/images/pie_stroke.png'} alt=""/>
-          </c.Bookrow>
+          <c.Bookrow>{image()}</c.Bookrow>
           <c.P>The right downward stroke is often used as the right leg of a character. It should stand firmly on a little “foot” at the end of the leg.</c.P>
           <c.P>To write this stroke, you should feel the pen striving upward to the right, even as it slopes gently downwards. You finish the stroke by pressing a bit harder and changing direction to create the stable little foot.</c.P>
-          <c.Bookrow>
-            <img src={'https://s3.eu-west-2.amazonaws.com/chineseme/images/na_stroke.png'} alt=""/>
-          </c.Bookrow>
+          <c.Bookrow>{image()}</c.Bookrow>
           <c.P>The foot should not be at an angle with the rest of the stroke; this will create an ugly, broken impression:</c.P>
-          <c.Bookrow>
-            <img src={'https://s3.eu-west-2.amazonaws.com/chineseme/images/broken_ren.png'} alt=""/>
-          </c.Bookrow>
+          <c.Bookrow>{image()}</c.Bookrow>
           <c.P>Practice: Left and right downward strokes</c.P>
           {character(5, { mode: 'practice' })}
           <c.P>人 is also the radical of 你 <i>you</i>, which we learned in the previous lesson. But here, the right downward stroke changes to a vertical stroke:</c.P>

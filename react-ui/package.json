@@ -30,6 +30,7 @@
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-motion": "^0.5.2",
+    "react-preload": "^0.5.1",
     "react-progressbar.js": "^0.2.0",
     "react-redux": "^5.0.2",
     "react-router": "^3.0.1",
@@ -51,6 +52,6 @@
     "@storybook/addon-centered": "^3.1.2",
     "@storybook/react": "^3.1.5",
     "eslint-plugin-react": "^7.1.0",
-    "react-scripts": "1.0.0"
+    "react-scripts": "1.0.17"
   }
 }

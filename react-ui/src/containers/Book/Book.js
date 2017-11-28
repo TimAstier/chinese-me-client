@@ -8,6 +8,7 @@ import { actions as sagaActions } from '../../sagas/actions';
 import { actions as bookActions } from '../../redux/book';
 import { actions as uiActions } from '../../redux/ui';
 import * as models from '../../models';
+import { imageUrls } from '../../constants/urls';
 
 class Book extends Component {
 
@@ -41,6 +42,7 @@ class Book extends Component {
         <BookComponent
           initialized={this.props.initialized}
           content={content[`S${seasonNumber}E${episodeNumber}`]}
+          images={imageUrls[`S${seasonNumber}E${episodeNumber}`] || []}
           episode={this.props.episode}
           season={this.props.season}
           settings={this.props.settings}

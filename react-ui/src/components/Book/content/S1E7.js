@@ -7,12 +7,12 @@ export default class S1E7 extends Component {
 
   render() {
     const { newCharacters, example, lessonTitle, dialog, grammarTitle,
-      practiceIds, newWords } = this.props;
+      practiceIds, newWords, image } = this.props;
     return (
       <div>
         <c.Page>
           {lessonTitle()}
-          <c.Bookrow center><img src={'https://s3.eu-west-2.amazonaws.com/chineseme/images/S1E7_objectives.png'} alt=""/></c.Bookrow>
+          <c.Bookrow center>{image()}</c.Bookrow>
           <c.PartTitle>NEW CHARACTERS</c.PartTitle>
           <c.P><i>Practice the stroke order animations at ChineseMe. Some characters have material on Stories and Calligraphy.</i></c.P>
           {newCharacters()}
@@ -142,7 +142,7 @@ export default class S1E7 extends Component {
           {dialog(1, { sentenceType: 'chinese', displayNames: true })}
           {dialog(1, { sentenceType: 'translation', displayNames: true })}
           <c.PartTitle>CULTURE AND SOCIETY</c.PartTitle>
-          <c.Bookrow center><img src={'https://s3.eu-west-2.amazonaws.com/chineseme/images/S1E7_culture.png'} alt=""/></c.Bookrow>
+          <c.Bookrow center>{image()}</c.Bookrow>
           <c.PartTitle>NEW VOCABULARY</c.PartTitle>
           {newWords()}
           <c.PartTitle>REVIEW</c.PartTitle>

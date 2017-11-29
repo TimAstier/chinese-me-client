@@ -10,6 +10,10 @@ import { fetchEntities } from '../entities';
 import { actions as audioActions } from '../../redux/audio';
 import { actions as practiceActions } from '../../redux/practice';
 
+const trim = string => {
+  return string.replace(/\s+/g, '').toLowerCase();
+};
+
 export function* isDataLoaded(id) {
   yield put(studyActions.setCurrentAudioToTextId(id));
   const initialized = yield select(selectors.practice.getInitialized);
@@ -48,7 +52,7 @@ export function* run(mode = 'free') {
     yield put(audioToTextActions.setCurrentBoxIndex(i));
     yield take(sagaTypes.CHECK_ANSWER);
     const userAnswer = yield select(selectors.audioToText.getUserAnswer);
-    const success = word.get('pinyin') === userAnswer.replace(/\s+/g, '');
+    const success = trim(word.get('pinyin')) === trim(userAnswer);
     if (!success) {
       yield put(sagaActions.playWrongSound());
       // In exam, skip the end if the user makes one mistake

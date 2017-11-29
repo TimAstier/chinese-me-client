@@ -64,7 +64,10 @@ class Footer extends Component {
           <a>Jobs</a>
           <a>Contact us</a>
           <a>Terms</a>
-          <a>Policy</a>
+          <a>
+            Policy
+            {/* Good example on https://thetypingcat.com/privacy-policy */}
+          </a>
           <SocialMediaLinks>
             <a
               href="https://www.facebook.com/learnChinese.chinese.me"

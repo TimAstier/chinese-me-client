@@ -18,7 +18,8 @@ export function* initApp() {
     yield put(studyActions.setCurrentSeasonId(firstSeasonId));
     const url = yield select(selectors.routing.getCurrentUrl);
     const { episodeId } = getParamsFromUrl(url);
-    if (episodeId && episodeId !== 'season') { // Workaround for book urls
+    // Workaround for book urls and help page
+    if (episodeId && episodeId !== 'season' && episodeId !== 'help') {
       yield put(studyActions.setCurrentEpisodeId(episodeId));
       yield put(mapActions.setFocusedEpisodeId(episodeId));
     }

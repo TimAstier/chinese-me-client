@@ -7,6 +7,7 @@ export { default as CharacterBox } from './CharacterBox';
 export { default as CharacterDetails } from './CharacterDetails';
 export { default as CharacterPractice } from './CharacterPractice';
 export { default as Dialog } from './Dialog';
+export { default as Exam } from './Exam';
 export { default as Example } from './Example';
 export { default as GrammarTitle } from './GrammarTitle';
 export { default as LessonTitle } from './LessonTitle';

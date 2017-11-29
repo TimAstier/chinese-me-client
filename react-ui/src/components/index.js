@@ -31,6 +31,7 @@ export { default as FeedbackModal } from './FeedbackModal/FeedbackModal';
 export { default as Footer } from './Footer/Footer';
 export { default as Hanzi } from './Hanzi/Hanzi';
 export { default as HanziAgainButton } from './HanziAgainButton/HanziAgainButton';
+export { default as Help } from './StaticPages/Help';
 export { default as HintModal } from './CharacterPinyin/HintModal';
 export { default as LoginForm } from './Login/Form';
 export { default as LoginPage } from './Login/Page';

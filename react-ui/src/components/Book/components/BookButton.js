@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
 import { Clickable } from '../../Shared';
+import dialogIcon from '../../../images/dialogIcon.png';
+import brushIcon from '../../../images/brushIcon.png';
+import handWithPen from '../../../images/handWithPen.png';
+import storyIcon from '../../../images/storyIcon.png';
+import strokeIcon from '../../../images/strokeIcon.png';
+import examIcon from '../../../images/examIcon.png';
 
 const Wrapper = styled.div`
   display: flex;
@@ -22,11 +28,23 @@ const Img = styled.img`
 
 class BookButton extends Component {
 
+  _image = () => {
+    switch (this.props.type) {
+      case 'writing': return brushIcon;
+      case 'dialog': return dialogIcon;
+      case 'story': return storyIcon;
+      case 'stroke': return strokeIcon;
+      case 'practice': return handWithPen;
+      case 'exam': return examIcon;
+      default: return console.log('Unknown bookButton type');
+    }
+  }
+
   render() {
     return (
       <Clickable>
         <Wrapper onClick={this.props.onClick}>
-          <Img src={this.props.image} />
+          <Img src={this._image()} />
         </Wrapper>
       </Clickable>
     );
@@ -35,7 +53,14 @@ class BookButton extends Component {
 
 BookButton.propTypes = {
   onClick: propTypes.func.isRequired,
-  image: propTypes.string.isRequired
+  type: propTypes.oneOf([
+    'writing',
+    'dialog',
+    'story',
+    'stroke',
+    'practice',
+    'exam'
+  ]).isRequired
 };
 
 export default BookButton;

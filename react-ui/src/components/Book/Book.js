@@ -15,7 +15,7 @@ class Book extends Component {
       // scrollableWrapper.
       return (
         <Preload
-          loadingIndicator={<div>Loading images...</div>}
+          loadingIndicator={<div>...</div>}
           images={this.props.images}
         >
           <ScrollableWrapper>

@@ -3,55 +3,39 @@ import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 import { bookComponents as c } from '../../../components';
 import { push } from 'react-router-redux';
-import dialogIcon from '../../../images/dialogIcon.png';
-import brushIcon from '../../../images/brushIcon.png';
-import handWithPen from '../../../images/handWithPen.png';
-import storyIcon from '../../../images/storyIcon.png';
-import strokeIcon from '../../../images/strokeIcon.png';
 import s from '../../../rootSelectors';
 
 class BookButton extends Component {
 
-  _options = () => {
+  _url = () => {
     switch (this.props.buttonOptions.type) {
       case 'writing':
-        return {
-          url: `/study/${this.props.episodeId}/character/${this.props.buttonOptions.data.elementId}/writing`,
-          image: brushIcon
-        };
+        return `/study/${this.props.episodeId}/character/${this.props.buttonOptions.data.elementId}/writing`;
       case 'dialog':
-        return {
-          url: `/study/${this.props.episodeId}/dialog/${this.props.buttonOptions.data.elementId}/listen`,
-          image: dialogIcon
-        };
+        return `/study/${this.props.episodeId}/dialog/${this.props.buttonOptions.data.elementId}/listen`;
       case 'story':
-        return {
-          url: `/study/${this.props.episodeId}/character/${this.props.buttonOptions.data.elementId}/etymology`,
-          image: storyIcon
-        };
+        return `/study/${this.props.episodeId}/character/${this.props.buttonOptions.data.elementId}/etymology`;
       case 'stroke':
-        return {
-          url: `/study/${this.props.episodeId}/character/${this.props.buttonOptions.data.elementId}/stroke`,
-          image: strokeIcon
-        };
+        return `/study/${this.props.episodeId}/character/${this.props.buttonOptions.data.elementId}/stroke`;
       case 'practice':
-        return {
-          url: `/study/${this.props.episodeId}/practice/${this.props.buttonOptions.data.elementId}`,
-          image: handWithPen
-        };
+        return `/study/${this.props.episodeId}/practice/${this.props.buttonOptions.data.elementId}`;
+      case 'exam':
+        return `/study/${this.props.episodeId}/exam`;
       default:
         return console.log('Unknown bookButton type');
     }
   }
 
   render() {
-    const { url, image } = this._options();
     return (
       <c.BookButton
         onClick={() => {
-          return this.props.push(url);
+          if (!this.props.buttonOptions.hasOwnProperty('data')) {
+            return null;
+          }
+          return this.props.push(this._url());
         }}
-        image={image}
+        type={this.props.buttonOptions.type}
       />
     );
   }
@@ -65,11 +49,12 @@ BookButton.propTypes = {
       'dialog',
       'story',
       'stroke',
-      'practice'
+      'practice',
+      'exam'
     ]).isRequired,
-    data: propTypes.object.isRequired
+    data: propTypes.object
   }).isRequired,
-  episodeId: propTypes.string.isRequired
+  episodeId: propTypes.string
 };
 
 const mapStateToProps = state => ({

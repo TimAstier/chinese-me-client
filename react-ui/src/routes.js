@@ -32,6 +32,7 @@ export default (
     <Route path="login" component={containers.LoginPage} />
     <Route path="study" component={containers.Study}>
       <IndexRoute component={containers.SelectEpisode} />
+      <Route path="help" component={components.Help} />
       <Route path="season/:seasonNumber/episode/:episodeNumber" component={containers.Book} />
       <Route path=":episodeId" component={requireAuth(containers.EpisodeHOC)}>
         <Route path="character/:characterId/pinyin" component={containers.CharacterPinyin} />

@@ -181,6 +181,7 @@ export default class S0E2 extends Component {
           >
             <i>Practice pronunciation, grammar and character writing on the ChineseMe website.</i>
           </c.P>
+          <c.Exam />
         </c.Page>
       </div>
     );

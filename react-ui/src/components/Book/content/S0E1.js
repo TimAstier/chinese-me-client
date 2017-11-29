@@ -270,6 +270,7 @@ export default class S0E1 extends Component {
           >
             <i>On the ChineseMe website, you will find review exercises to practice pronunciation, grammar and character writing. Download the flashcard decks to review character stroke orders and vocabulary. Then do the Final Exam to progress to the next Lesson.</i>
           </c.P>
+          <c.Exam />
         </c.Page>
       </div>
     );

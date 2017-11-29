@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import propTypes from 'prop-types';
 import logo from '../../images/logo.svg';
-// import iconSendFeedback from '../../images/iconSendFeedback.svg';
+import helpIcon from '../../images/helpIcon.svg';
 import messageIcon from '../../images/messageIcon.png';
 import userIcon from '../../images/defaultMaleUserIcon.svg';
 import Clickable from '../Shared/Clickable';
@@ -30,7 +30,7 @@ const LogoWrapper = styled.div`
 `;
 
 const LeftMenuWrapper = styled.div`
-  flex-basis: 186px;
+  flex-basis: 250px;
   display: flex;
   justify-content: space-around;
   align-items: center
@@ -51,18 +51,19 @@ const RightMenuWrapper = styled.div`
 const UserMenuWrapper = styled.div`
   flex-grow: 1;
   display: flex;
+  margin-top: -5px;
   align-items: center;
 `;
 
 const UserIconWrapper = styled.div`
   flex-grow: 1;
-  display: flex:
+  display: flex;
   justify-content: center;
   align-items: center;
   padding-top: 5px;
 `;
 
-const SendFeedbackWrapper = styled.div`
+const IconWrapper = styled.div`
   flex-basis: 93px;
   display: flex;
   justify-content: center;
@@ -87,6 +88,15 @@ class Navbar extends Component {
               </div>
             </Clickable>
           </LeftMenuItem>
+          <LeftMenuItem>
+            <IconWrapper>
+              <Clickable>
+                <Link to={'/study/help'}>
+                  <Icon src={helpIcon} />
+                </Link>
+              </Clickable>
+            </IconWrapper>
+          </LeftMenuItem>
         </LeftMenuWrapper>
         <RightMenuWrapper>
           <UserMenuWrapper>
@@ -105,7 +115,7 @@ class Navbar extends Component {
                 </Link>
             }
           </UserMenuWrapper>
-          <SendFeedbackWrapper>
+          <IconWrapper>
             <Clickable>
               <Icon
                 src={messageIcon}
@@ -113,7 +123,8 @@ class Navbar extends Component {
                 onClick={this.props.askQuestion}
               />
             </Clickable>
-          </SendFeedbackWrapper>
+          </IconWrapper>
+
         </RightMenuWrapper>
       </Wrapper>
     );

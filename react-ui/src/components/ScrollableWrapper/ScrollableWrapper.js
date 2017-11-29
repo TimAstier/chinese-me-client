@@ -38,7 +38,7 @@ class ScrollableWrapper extends Component {
 
 ScrollableWrapper.propTypes = {
   children: propTypes.node,
-  scrollPosition: propTypes.number.isRequired
+  scrollPosition: propTypes.number
 };
 
 export default ScrollableWrapper;

@@ -36,12 +36,22 @@ class Screen extends Component {
       :active {
         background-color: ${ activeBackgroundColor() };
       }
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      img {
+        margin-right: 10px;
+      }
     `;
     return (
       <Button
         onClick={this.props.onClick}
         data={this.props.data}
       >
+        {
+          this.props.icon &&
+            <img src={this.props.icon} alt="" width="20px" />
+        }
         {text}
       </Button>
     );
@@ -56,7 +66,8 @@ Screen.propTypes = {
   height: propTypes.number,
   width: propTypes.number,
   fontSize: propTypes.number,
-  data: propTypes.string
+  data: propTypes.string,
+  icon: propTypes.string
 };
 
 export default Screen;

@@ -15,6 +15,10 @@ const Title = styled.span`
   color: #C0504D;
 `;
 
+const ChineseText = styled.span`
+  font-family: Kai;
+`;
+
 class LessonTitle extends Component {
 
   _label() {
@@ -23,7 +27,7 @@ class LessonTitle extends Component {
   }
 
   _title() {
-    return this._label() + this.props.title;
+    return <span>{this._label()}<ChineseText>{this.props.title}</ChineseText></span>;
   }
 
   render() {

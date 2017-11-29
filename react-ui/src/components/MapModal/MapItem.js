@@ -9,9 +9,9 @@ const Wrapper = styled.div`
   align-items: center;
   color: #454545;
   :hover {
-    color: #55b6ff;
+    color: ${props => props.onClick ? '#55b6ff' : 'none'};
   }
-  cursor: pointer;
+  cursor: ${props => props.onClick ? 'pointer' : 'normal'};
 `;
 
 
@@ -32,7 +32,7 @@ const TitleWrapper = styled.div`
 	font-weight: 900;
 `;
 
-class MapGrammarItem extends Component {
+class MapItem extends Component {
 
   render() {
     return (
@@ -46,10 +46,10 @@ class MapGrammarItem extends Component {
   }
 }
 
-MapGrammarItem.propTypes = {
+MapItem.propTypes = {
   title: propTypes.string.isRequired,
   completed: propTypes.bool,
-  onClick: propTypes.func.isRequired
+  onClick: propTypes.func
 };
 
-export default MapGrammarItem;
+export default MapItem;

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
-import iconCheck from '../../images/iconCheck.svg';
+// import iconCheck from '../../images/iconCheck.svg';
 
 const Wrapper = styled.div`
   width: 40px;
@@ -17,29 +17,31 @@ const Wrapper = styled.div`
 	font-weight: 900;
 	color: #454545;
   margin: 7px;
-  cursor: pointer;
+  ${''/* cursor: pointer;
   :hover {
     color: #55b6ff;
-  };
+  }; */}
 `;
 
-const CheckmarkWrapper = styled.div`
-  position: absolute;
-  margin-left: 15px;
-  margin-top: -6px;
-`;
+// const CheckmarkWrapper = styled.div`
+//   position: absolute;
+//   margin-left: 15px;
+//   margin-top: -6px;
+// `;
 
 class CharacterBox extends Component {
 
   render() {
     return (
-      <Wrapper onClick={this.props.onClick}>
+      <Wrapper
+        // onClick={this.props.onClick}
+      >
         {this.props.char}
-        {this.props.completed &&
+        {/* {this.props.completed &&
           <CheckmarkWrapper>
             <img src={iconCheck} alt="icon-check" />
           </CheckmarkWrapper>
-        }
+        } */}
       </Wrapper>
     );
   }
@@ -48,7 +50,7 @@ class CharacterBox extends Component {
 CharacterBox.propTypes = {
   char: propTypes.string.isRequired,
   completed: propTypes.bool,
-  onClick: propTypes.func.isRequired
+  // onClick: propTypes.func.isRequired
 };
 
 export default CharacterBox;

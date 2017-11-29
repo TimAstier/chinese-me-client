@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
 import * as models from '../../models';
-import { ChapterHeader, CharacterBox, MapDialogItem, MapGrammarItem }
+import { ChapterHeader, CharacterBox, MapItem }
   from '../.';
 import { ScreenButton } from '../.';
+import handWithPen from '../../images/handWithPen.png';
+import examIcon from '../../images/examIcon.png';
 
 
 const Wrapper = styled.div`
@@ -21,10 +23,18 @@ const TopWrapper = styled.div`
   height: 85px;
 `;
 
+const BottomWrapper = styled.div`
+  display: flex;
+  height: 85px;
+  align-items: center;
+  justify-content: space-around;
+`;
+
 const TitleWrapper = styled.div`
   padding-top: 15px;
   display: flex;
   flex-grow: 1;
+  justify-content: center;
 `;
 
 const EpisodeNumber = styled.div`
@@ -35,7 +45,7 @@ const EpisodeNumber = styled.div`
 `;
 
 const EpisodeTitle = styled.div`
-  font-family: 'STKaitiSC';
+  font-family: Kai;
   font-size: 30px;
   font-weight: 900;
   color: #454545;
@@ -60,10 +70,6 @@ const ContentItemsWrapper = styled.div`
   margin-bottom: 10px;
 `;
 
-const Space = styled.div`
-  height: 20px;
-`;
-
 class MapContent extends Component {
 
   renderCharacterBoxes() {
@@ -74,7 +80,7 @@ class MapContent extends Component {
             key={i}
             char={c.simpChar}
             completed={c.userCharacters.length !== 0}
-            onClick={() => console.log('click on character!')}
+            // onClick={() => console.log('click on character!')}
           />
         );
       });
@@ -87,10 +93,10 @@ class MapContent extends Component {
     if (this.props.dialogs.length !== 0) {
       const dialogItems = this.props.dialogs.map((d, i) => {
         return (
-          <MapDialogItem
+          <MapItem
             key={i}
             title={d.chineseTitle}
-            completed={d.userDialogs.length !== 0 ? true : undefined}
+            // completed={d.userDialogs.length !== 0 ? true : undefined}
             onClick={() => this.props.mapLinkClick(
               '/study/' + this.props.episode.id + '/dialog/' + d.id + '/explore'
             )}
@@ -106,11 +112,11 @@ class MapContent extends Component {
     if (this.props.grammars.length !== 0) {
       const grammarItems = this.props.grammars.map((g, i) => {
         return (
-          <MapGrammarItem
+          <MapItem
             key={i}
             title={g.translations[0].title}
-            completed={g.userGrammars.length !== 0 ? true : undefined}
-            onClick={() => console.log('click on grammar!')}
+            // completed={g.userGrammars.length !== 0 ? true : undefined}
+            // onClick={() => console.log('click on grammar!')}
           />
         );
       });
@@ -124,7 +130,7 @@ class MapContent extends Component {
       const practiceItems = this.props.practices.map((p, i) => {
         if (i !== 0) { // Skip the review practice
           return (
-            <MapGrammarItem
+            <MapItem
               key={i}
               title={'Practice #' + i}
               completed={undefined}
@@ -142,9 +148,8 @@ class MapContent extends Component {
   }
 
   render() {
-    const { episode, mapCharactersCompletedCount,
-      mapGrammarsCompletedCount, mapDialogsCompletedCount,
-      focusedSeasonNumber, characters, grammars, dialogs, practices } = this.props;
+    const { episode, focusedSeasonNumber, characters, grammars, dialogs,
+      practices } = this.props;
     if (!episode) {
       // TODO: return a message for empty screen
       return null;
@@ -163,6 +168,44 @@ class MapContent extends Component {
               {episode.title}
             </EpisodeTitle>
           </TitleWrapper>
+        </TopWrapper>
+        <ContentWrapper>
+          {
+            characters !== 0 &&
+              <ChapterHeader
+                name="CHARACTERS"
+                // completedElements={mapCharactersCompletedCount}
+                // totalElements={characters.length}
+              />
+          }
+          { this.renderCharacterBoxes() }
+          {
+            grammars.length !== 0 &&
+              <ChapterHeader
+                name="PATTERNS"
+                // completedElements={mapGrammarsCompletedCount}
+                // totalElements={grammars.length}
+              />
+          }
+          { this.renderGrammarItems() }
+          {
+            dialogs.length !== 0 &&
+              <ChapterHeader
+                name="DIALOGS"
+                // completedElements={mapDialogsCompletedCount}
+                // totalElements={dialogs.length}
+              />
+          }
+          { this.renderDialogItems() }
+          {
+            practices[1] &&
+              <ChapterHeader
+                name="PRACTICES"
+              />
+          }
+          { this.renderPracticeItems() }
+        </ContentWrapper>
+        <BottomWrapper>
           <ScreenButton
             text="Study"
             primary
@@ -170,61 +213,26 @@ class MapContent extends Component {
               `/study/season/${focusedSeasonNumber}/episode/${episode.number}`
             )}
           />
-        </TopWrapper>
-        <ContentWrapper>
-          {
-            characters !== 0 &&
-              <ChapterHeader
-                name="Characters"
-                completedElements={mapCharactersCompletedCount}
-                totalElements={characters.length}
-              />
-          }
-          { this.renderCharacterBoxes() }
-          {
-            grammars.length !== 0 &&
-              <ChapterHeader
-                name="Patterns"
-                completedElements={mapGrammarsCompletedCount}
-                totalElements={grammars.length}
-              />
-          }
-          { this.renderGrammarItems() }
-          {
-            dialogs.length !== 0 &&
-              <ChapterHeader
-                name="Dialog"
-                completedElements={mapDialogsCompletedCount}
-                totalElements={dialogs.length}
-              />
-          }
-          { this.renderDialogItems() }
-          {
-            practices[1] &&
-              <ChapterHeader
-                name="Practice"
-              />
-          }
-          { this.renderPracticeItems() }
           {
             practices[0] &&
-              <ChapterHeader
-                name="Review"
-                // completed={this.props.episode.get('review')}
+              <ScreenButton
+                text="Review"
+                secondary
+                icon={handWithPen}
                 onClick={() => this.props.mapLinkClick(
                   '/study/' + this.props.episode.id + '/practice/' + practices[0].id
                 )}
               />
           }
-          <Space />
-          <ChapterHeader
-            name="Exam"
-            completed={false}
+          <ScreenButton
+            text="Exam"
+            secondary
+            icon={examIcon}
             onClick={() => this.props.mapLinkClick(
               '/study/' + this.props.episode.id + '/exam'
             )}
           />
-        </ContentWrapper>
+        </BottomWrapper>
       </Wrapper>
     );
   }
@@ -238,9 +246,9 @@ MapContent.propTypes = {
   focusedSeasonNumber: propTypes.number,
   episode: propTypes.instanceOf(models.Episode),
   mapLinkClick: propTypes.func.isRequired,
-  mapCharactersCompletedCount: propTypes.number.isRequired,
-  mapDialogsCompletedCount: propTypes.number.isRequired,
-  mapGrammarsCompletedCount: propTypes.number.isRequired
+  // mapCharactersCompletedCount: propTypes.number.isRequired,
+  // mapDialogsCompletedCount: propTypes.number.isRequired,
+  // mapGrammarsCompletedCount: propTypes.number.isRequired
 };
 
 export default MapContent;

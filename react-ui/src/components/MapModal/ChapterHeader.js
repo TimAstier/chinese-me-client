@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import propTypes from 'prop-types';
-import iconCheck from '../../images/iconCheck.svg';
+// import iconCheck from '../../images/iconCheck.svg';
 
 const Wrapper = styled.div`
   border-radius: 8px;
@@ -23,6 +23,8 @@ const NameWrapper = styled.div`
   font-size: 16px;
   color: #454545;
   display: flex;
+  flex-grow: 1;
+  justify-content: center;
   align-items: center;
 `;
 
@@ -30,7 +32,7 @@ const StatsWrapper = styled.div`
   font-family: 'Open Sans';
   font-size: 16px;
   color: #7f8c94;
-  flex-grow: 1;
+  flex-basis: 30px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -40,11 +42,11 @@ const StatsWrapper = styled.div`
 class ChapterHeader extends Component {
 
   render() {
-    const { completed, name, completedElements, totalElements } = this.props;
+    const { name, completedElements, totalElements } = this.props;
     return (
       <Wrapper onClick={this.props.onClick}>
         <CheckmarkWrapper>
-          {completed && <img src={iconCheck} alt="icon-check" />}
+          {/* {completed && <img src={iconCheck} alt="icon-check" />} */}
         </CheckmarkWrapper>
         <NameWrapper>
           {name}
@@ -60,7 +62,7 @@ class ChapterHeader extends Component {
 }
 
 ChapterHeader.propTypes = {
-  completed: propTypes.bool,
+  // completed: propTypes.bool,
   name: propTypes.string.isRequired,
   completedElements: propTypes.number,
   totalElements: propTypes.number,

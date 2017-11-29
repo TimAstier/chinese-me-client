@@ -4,7 +4,7 @@ import propTypes from 'prop-types';
 import { Statement as StatementComponent } from '../../components';
 import s from '../../rootSelectors';
 import { actions as sagaActions } from '../../sagas/actions';
-import * as models from '../../models';
+// import * as models from '../../models';
 
 class Statement extends Component {
 
@@ -25,7 +25,7 @@ Statement.propTypes = {
   read: propTypes.bool.isRequired,
   switchSentence: propTypes.func.isRequired,
   dialogMode: propTypes.string.isRequired,
-  words: propTypes.arrayOf(propTypes.instanceOf(models.Word)).isRequired,
+  words: propTypes.object.isRequired,
   currentStatementLength: propTypes.number.isRequired
 };
 

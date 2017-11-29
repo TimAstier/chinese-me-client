@@ -205,7 +205,7 @@ class Statement extends Component {
 
 Statement.propTypes = {
   sentences: propTypes.arrayOf(propTypes.instanceOf(models.Sentence)).isRequired,
-  words: propTypes.arrayOf(propTypes.instanceOf(models.Word)).isRequired,
+  words: propTypes.object.isRequired,
   currentSentenceIndex: propTypes.number.isRequired,
   isAudioPlaying: propTypes.bool.isRequired,
   playSentence: propTypes.func.isRequired,

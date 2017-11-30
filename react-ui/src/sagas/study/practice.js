@@ -21,7 +21,7 @@ export function* fetchData(episodeId, elementId) {
     '/episode/' + episodeId + '/practice/' + elementId,
     function* cb(response) {
       yield put(
-        practiceActions.setExercises(response.data.data.attributes.exercises)
+        practiceActions.setExercises(response.data.data.attributes.exercisesArray)
       );
     }
   ]);
@@ -54,7 +54,7 @@ export function* run() {
     const type = exercise.get('type');
     const funcs = getStudyFunctions(type + '/');
     const setCurrent = mapExerciseTypeToSetCurrentAction(type);
-    yield put(setCurrent(exercise.get('id')));
+    yield put(setCurrent(exercise.get('elementId')));
     yield call(defaultExamUi);
     yield call(funcs.initStudyData);
     yield call(funcs.initUi);

@@ -3,7 +3,7 @@ import { actions as uiActions } from '../../redux/ui';
 import { actions as studyActions, types as studyTypes } from '../../redux/study';
 import selectors from '../../rootSelectors';
 import { types as sagaTypes } from '../actions';
-import { run as dialogListenRun } from './dialogListen';
+import { run as dialogWatchRun } from './dialogWatch';
 import { checkDialogData, fetchDialogData } from './dialog';
 
 export function* isDataLoaded(id) {
@@ -40,7 +40,7 @@ export function* run() {
   yield take(sagaTypes.START_ROLEPLAY);
   yield put(studyActions.setDialogMode('roleplay'));
   yield put(uiActions.set('pauseButton', true));
-  yield call(dialogListenRun, 'roleplay');
+  yield call(dialogWatchRun, 'roleplay');
 }
 
 // export function* nextScreen() {}

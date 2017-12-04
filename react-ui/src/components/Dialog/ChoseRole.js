@@ -54,8 +54,6 @@ class ChoseRole extends Component {
   renderChoiceLabel() {
     return (
       <LabelWrapper>
-        In this part, you will play the role of one of the speakers.
-        <br/>
         Which role would you like to play?
       </LabelWrapper>
     );

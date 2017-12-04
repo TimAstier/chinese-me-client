@@ -3,10 +3,11 @@ import { put, call, race, take, takeLatest, cancelled } from 'redux-saga/effects
 import { actions as studyActions } from '../redux/study';
 import { actions as uiActions } from '../redux/ui';
 import { types as sagaTypes } from './actions';
-import { elementTypes, elementTypesToTrack } from '../constants/study';
+import { elementTypes } from '../constants/study';
+// import { elementTypesToTrack } from '../constants/study';
 import getStudyFunctions from '../helpers/getStudyFunctions';
 import getParamsFromUrl from '../utils/getParamsFromUrl';
-import Api from '../utils/api';
+// import Api from '../utils/api';
 import { loadSettings } from './userSettings';
 
 // Every screenType has those "studyFunctions" (generators):
@@ -41,21 +42,22 @@ export function* runStudySaga(url) {
     yield call(funcs.initStudyData); // Init studyData
     yield call(funcs.initUi); // Init UI
     yield put(studyActions.setInitialized(true)); // Display screen content
-    let result;
+    // let result;
     try {
-      result = yield call(runScreenSaga, funcs.run); // Run Saga(s) for the screen
+      // result = yield call(runScreenSaga, funcs.run); // Run Saga(s) for the screen
+      yield call(runScreenSaga, funcs.run); // Run Saga(s) for the screen
     } finally {
       if (funcs.clean) {
         const isCancelled = yield cancelled();
         yield call(funcs.clean, isCancelled);
       }
     }
-    if (elementTypesToTrack.indexOf(elementType) !== -1) { // Save progression on the server
-      if (result.next) {
-        const completedCode = 1;
-        yield call(Api.post, `/${elementType}/${elementId}/completed`, { completedCode, mode });
-      }
-    }
+    // if (elementTypesToTrack.indexOf(elementType) !== -1) { // Save progression on the server
+    //   if (result.next) {
+    //     const completedCode = 1;
+    //     yield call(Api.post, `/${elementType}/${elementId}/completed`, { completedCode, mode });
+    //   }
+    // }
     if (funcs.nextScreen) {
       yield call(funcs.nextScreen);
     }

@@ -92,7 +92,7 @@ storiesOf('Statement', module)
       currentSentenceIndex={0}
       displayControls
       read={false}
-      dialogMode={'listen'}
+      dialogMode={'watch'}
       { ...mockProps }
     />
   )
@@ -103,7 +103,7 @@ storiesOf('Statement', module)
       currentSentenceIndex={0}
       displayControls
       read={false}
-      dialogMode={'listen'}
+      dialogMode={'watch'}
       { ...mockProps }
     />
   )
@@ -114,7 +114,7 @@ storiesOf('Statement', module)
       currentSentenceIndex={1}
       displayControls
       read={false}
-      dialogMode={'listen'}
+      dialogMode={'watch'}
       { ...mockProps }
     />
   )
@@ -125,7 +125,7 @@ storiesOf('Statement', module)
       currentSentenceIndex={0}
       displayControls
       read={false}
-      dialogMode={'listen'}
+      dialogMode={'watch'}
       { ...mockProps }
     />
   )
@@ -136,7 +136,7 @@ storiesOf('Statement', module)
       currentSentenceIndex={1}
       displayControls
       read={false}
-      dialogMode={'listen'}
+      dialogMode={'watch'}
       { ...mockProps }
     />
   )
@@ -147,7 +147,7 @@ storiesOf('Statement', module)
       currentSentenceIndex={2}
       displayControls
       read={false}
-      dialogMode={'listen'}
+      dialogMode={'watch'}
       { ...mockProps }
     />
   )
@@ -158,7 +158,7 @@ storiesOf('Statement', module)
       currentSentenceIndex={2}
       displayControls={false}
       read={false}
-      dialogMode={'listen'}
+      dialogMode={'watch'}
       { ...mockProps }
     />
   )
@@ -169,7 +169,7 @@ storiesOf('Statement', module)
       currentSentenceIndex={2}
       displayControls={false}
       read
-      dialogMode={'listen'}
+      dialogMode={'watch'}
       { ...mockProps }
     />
   )

@@ -17,7 +17,7 @@ export default class S1E7 extends Component {
           {lessonTitle()}
           <c.PartTitle type="secondary">Introducing where you are from</c.PartTitle>
           {example(4, { basic: true, audio: true })}
-          <c.P>This sentence means I am Chinese. It contains three initials that are related to each other. In <b>pīnyīn</b>, they are spelled <b>sh-</b>, <b>zh-</b> and <b>r-</b>.</c.P>
+          <c.P>This sentence means <i>I am Chinese</i>. It contains three initials that are related to each other. In <b>pīnyīn</b>, they are spelled <b>sh-</b>, <b>zh-</b> and <b>r-</b>.</c.P>
           <c.P>Chinese <b>sh-</b> is pronounced more or less like English <i>sh</i> in <i>show</i>, for example in the character 是 <b>shi</b>. Type the correct <b>pīnyīn</b>, with tone:</c.P>
           <c.Bookrow
             buttonOptions={{
@@ -132,7 +132,7 @@ export default class S1E7 extends Component {
             buttonOptions={{
               type: 'audio',
               data: {
-                text: '姓，叫'
+                text: '姓'
               }
             }}
           >
@@ -144,6 +144,17 @@ export default class S1E7 extends Component {
                   <c.Meaning>to have as family name</c.Meaning>
                 </Row>
               </li>
+            </c.Ul>
+          </c.Bookrow>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                text: '叫'
+              }
+            }}
+          >
+            <c.Ul>
               <li>
                 <Row>
                   <c.Char>叫</c.Char>

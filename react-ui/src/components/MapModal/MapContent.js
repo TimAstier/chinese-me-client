@@ -125,28 +125,6 @@ class MapContent extends Component {
     return null;
   }
 
-  renderPracticeItems() {
-    if (this.props.practices.length !== 0) {
-      const practiceItems = this.props.practices.map((p, i) => {
-        if (i !== 0) { // Skip the review practice
-          return (
-            <MapItem
-              key={i}
-              title={'Practice #' + i}
-              completed={undefined}
-              onClick={() => this.props.mapLinkClick(
-                '/study/' + this.props.episode.id + '/practice/' + p.id
-              )}
-            />
-          );
-        }
-        return null;
-      });
-      return <ContentItemsWrapper>{practiceItems}</ContentItemsWrapper>;
-    }
-    return null;
-  }
-
   render() {
     const { episode, focusedSeasonNumber, characters, grammars, dialogs,
       practices } = this.props;
@@ -173,7 +151,7 @@ class MapContent extends Component {
           {
             characters !== 0 &&
               <ChapterHeader
-                name="CHARACTERS"
+                name="NEW CHARACTERS"
                 // completedElements={mapCharactersCompletedCount}
                 // totalElements={characters.length}
               />
@@ -197,13 +175,6 @@ class MapContent extends Component {
               />
           }
           { this.renderDialogItems() }
-          {
-            practices[1] &&
-              <ChapterHeader
-                name="PRACTICES"
-              />
-          }
-          { this.renderPracticeItems() }
         </ContentWrapper>
         <BottomWrapper>
           <ScreenButton

@@ -51,11 +51,23 @@ class CharacterStrokeQuiz extends Component {
     });
   }
 
+  _label() {
+    if (this.state.finished || this.props.watchAgain) {
+      return '';
+    }
+    if (this.props.screenType === 'character/strokeQuiz') {
+      return 'Your turn!';
+    }
+    return 'Write the character!';
+  }
+
   render() {
     return (
       <Wrapper>
         {this.props.hideLabel !== true &&
-          <LabelWrapper>{!this.state.finished && !this.props.watchAgain ? 'Your turn!' : ''}</LabelWrapper>
+          <LabelWrapper>
+            {this._label()}
+          </LabelWrapper>
         }
         <Hanzi
           char={this.props.character.simpChar}
@@ -77,7 +89,8 @@ CharacterStrokeQuiz.propTypes = {
   strokeQuizCompleted: propTypes.func.isRequired,
   timerStatus: propTypes.string.isRequired,
   hideLabel: propTypes.bool,
-  watchAgain: propTypes.bool.isRequired
+  watchAgain: propTypes.bool.isRequired,
+  screenType: propTypes.string.isRequired
 };
 
 export default CharacterStrokeQuiz;

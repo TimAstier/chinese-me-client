@@ -3,7 +3,7 @@ import * as fromCharacterPinyin from '../sagas/study/characterPinyin';
 import * as fromCharacterStroke from '../sagas/study/characterStroke';
 import * as fromCharacterStrokeQuiz from '../sagas/study/characterStrokeQuiz';
 import * as fromCharacterWriting from '../sagas/study/characterWriting';
-import * as fromDialogListen from '../sagas/study/dialogListen';
+import * as fromDialogWatch from '../sagas/study/dialogWatch';
 import * as fromDialogExplore from '../sagas/study/dialogExplore';
 import * as fromDialogRoleplay from '../sagas/study/dialogRoleplay';
 import * as fromMultipleChoice from '../sagas/study/multipleChoice';
@@ -25,7 +25,7 @@ export default function mapScreenTypeToModule(screenType) {
     case 'characterPinyin/':
     case 'character/pinyin': return fromCharacterPinyin;
     case 'character/writing': return fromCharacterWriting;
-    case 'dialog/listen': return fromDialogListen;
+    case 'dialog/watch': return fromDialogWatch;
     case 'dialog/explore': return fromDialogExplore;
     case 'dialog/roleplay': return fromDialogRoleplay;
     case 'multipleChoice/': return fromMultipleChoice;

@@ -12,7 +12,7 @@ class BookButton extends Component {
       case 'writing':
         return `/study/${this.props.episodeId}/character/${this.props.buttonOptions.data.elementId}/writing`;
       case 'dialog':
-        return `/study/${this.props.episodeId}/dialog/${this.props.buttonOptions.data.elementId}/listen`;
+        return `/study/${this.props.episodeId}/dialog/${this.props.buttonOptions.data.elementId}/explore`;
       case 'story':
         return `/study/${this.props.episodeId}/character/${this.props.buttonOptions.data.elementId}/etymology`;
       case 'stroke':

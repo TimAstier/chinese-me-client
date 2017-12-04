@@ -23,7 +23,7 @@ export function* initUi() {
 }
 
 export function* initStudyData() {
-  yield put(studyActions.setDialogMode('listen'));
+  yield put(studyActions.setDialogMode('watch'));
   const currentDialog = yield select(selectors.getCurrentDialog);
   yield put(studyActions.setCurrentStatementId(currentDialog.statements[0]));
   const currentStatement = yield select(selectors.getCurrentStatement);
@@ -32,7 +32,7 @@ export function* initStudyData() {
   yield put(studyActions.setPaused(false));
 }
 
-export function* run(mode = 'listen') {
+export function* run(mode = 'watch') {
   yield call(playSentence, mode);
   const sentencesCount =
     yield select(selectors.getSentencesCountInCurrentDialog);

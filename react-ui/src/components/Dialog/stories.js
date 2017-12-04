@@ -49,10 +49,10 @@ const mockProps = {
 
 storiesOf('Dialog', module)
   .addDecorator(story => <Provider story={story()} />)
-  .add('mode: listen', () =>
+  .add('mode: watch', () =>
     <EpisodeScreen exit={() => {}}>
       <Dialog
-        dialogMode={'listen'}
+        dialogMode={'watch'}
         chosenAvatarId={0}
         { ...mockProps }
         statementsCount={3}

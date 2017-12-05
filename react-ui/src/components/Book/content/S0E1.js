@@ -70,7 +70,7 @@ export default class S0E1 extends Component {
             buttonOptions={{
               type: 'audio',
               data: {
-                text: '妈'
+                url: 'https://s3.eu-west-2.amazonaws.com/chineseme/pinyin/ma1.m4a'
               }
             }}>
             {image()}
@@ -80,7 +80,7 @@ export default class S0E1 extends Component {
             buttonOptions={{
               type: 'audio',
               data: {
-                text: '麻'
+                url: 'https://s3.eu-west-2.amazonaws.com/chineseme/pinyin/ma2.m4a'
               }
             }}>
             {image()}
@@ -90,7 +90,7 @@ export default class S0E1 extends Component {
             buttonOptions={{
               type: 'audio',
               data: {
-                text: '马'
+                url: 'https://s3.eu-west-2.amazonaws.com/chineseme/pinyin/ma3.m4a'
               }
             }}>
             {image()}
@@ -100,7 +100,7 @@ export default class S0E1 extends Component {
             buttonOptions={{
               type: 'audio',
               data: {
-                text: '骂'
+                url: 'https://s3.eu-west-2.amazonaws.com/chineseme/pinyin/ma4.m4a'
               }
             }}
           >
@@ -120,7 +120,7 @@ export default class S0E1 extends Component {
             buttonOptions={{
               type: 'audio',
               data: {
-                text: 'tada!!!'
+                url: 'https://s3.eu-west-2.amazonaws.com/chineseme/sentences/tada.m4a'
               }
             }}
           >
@@ -130,7 +130,7 @@ export default class S0E1 extends Component {
             buttonOptions={{
               type: 'audio',
               data: {
-                text: 'what?'
+                url: 'https://s3.eu-west-2.amazonaws.com/chineseme/sentences/what.m4a'
               }
             }}
           >
@@ -140,7 +140,7 @@ export default class S0E1 extends Component {
             buttonOptions={{
               type: 'audio',
               data: {
-                text: 'So?!'
+                url: 'https://s3.eu-west-2.amazonaws.com/chineseme/sentences/so.m4a'
               }
             }}
           >
@@ -150,7 +150,7 @@ export default class S0E1 extends Component {
             buttonOptions={{
               type: 'audio',
               data: {
-                text: 'Hey!'
+                url: 'https://s3.eu-west-2.amazonaws.com/chineseme/sentences/hey.m4a'
               }
             }}
           >

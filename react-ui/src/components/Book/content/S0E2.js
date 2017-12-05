@@ -51,7 +51,7 @@ export default class S0E2 extends Component {
             buttonOptions={{
               type: 'audio',
               data: {
-                text: '你好'
+                url: 'https://s3.eu-west-2.amazonaws.com/chineseme/sentences/69.m4a'
               }
             }}
           >
@@ -66,7 +66,7 @@ export default class S0E2 extends Component {
             buttonOptions={{
               type: 'audio',
               data: {
-                text: '你好！ 我姓王。 我叫王一。'
+                url: 'https://s3.eu-west-2.amazonaws.com/chineseme/sentences/71.m4a'
               }
             }}
           >
@@ -81,7 +81,7 @@ export default class S0E2 extends Component {
             buttonOptions={{
               type: 'audio',
               data: {
-                text: '你好！ 我姓王。 我叫一。'
+                url: 'https://s3.eu-west-2.amazonaws.com/chineseme/sentences/72.m4a'
               }
             }}
           >
@@ -102,7 +102,7 @@ export default class S0E2 extends Component {
             buttonOptions={{
               type: 'audio',
               data: {
-                text: '王一！ 你好！'
+                url: 'https://s3.eu-west-2.amazonaws.com/chineseme/sentences/73.m4a'
               }
             }}
           >
@@ -116,7 +116,7 @@ export default class S0E2 extends Component {
             buttonOptions={{
               type: 'audio',
               data: {
-                text: '王一，你好！ 你好！'
+                url: 'https://s3.eu-west-2.amazonaws.com/chineseme/sentences/74.m4a'
               }
             }}
           >

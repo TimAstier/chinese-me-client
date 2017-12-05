@@ -217,7 +217,7 @@ export default class S1E7 extends Component {
             buttonOptions={{
               type: 'audio',
               data: {
-                text: '姓，是，子，你，叫，是，姓，子'
+                url: 'https://s3.eu-west-2.amazonaws.com/chineseme/sentences/78.m4a'
               }
             }}
           >

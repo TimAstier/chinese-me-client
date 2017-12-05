@@ -34,6 +34,7 @@ class BookButton extends Component {
       case 'dialog': return dialogIcon;
       case 'story': return storyIcon;
       case 'stroke': return strokeIcon;
+      case 'askUserSettings':
       case 'practice': return handWithPen;
       case 'exam': return examIcon;
       default: return console.log('Unknown bookButton type');
@@ -59,7 +60,8 @@ BookButton.propTypes = {
     'story',
     'stroke',
     'practice',
-    'exam'
+    'exam',
+    'askUserSettings'
   ]).isRequired
 };
 

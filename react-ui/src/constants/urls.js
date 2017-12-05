@@ -9,6 +9,7 @@ export const imageUrls = {
     'https://s3.eu-west-2.amazonaws.com/chineseme/images/shell.png',
     'https://s3.eu-west-2.amazonaws.com/chineseme/images/yi_er_san.png',
     'https://s3.eu-west-2.amazonaws.com/chineseme/images/wang_king.png',
+    'https://s3.eu-west-2.amazonaws.com/chineseme/images/combinations.png',
     'https://s3.eu-west-2.amazonaws.com/chineseme/images/kou_plus_jiu.png',
     'https://s3.eu-west-2.amazonaws.com/chineseme/images/lopsided_wo.png'
   ],

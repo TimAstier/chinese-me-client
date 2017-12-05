@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { bookComponents as c } from '../../.';
-import { bookContainers as C } from '../../../containers';
 import { content as contentPropTypes } from '../../../helpers/propTypes';
+import { Row } from '../../Shared';
 
 export default class S0E1 extends Component {
   static propTypes = contentPropTypes
@@ -14,18 +14,20 @@ export default class S0E1 extends Component {
         <c.Page>
           {lessonTitle()}
           <c.P>Welcome to the language with more native speakers than any other in the world: Chinese.</c.P>
-          <c.P>This is Wang Yi. Listen carefully as she introduces herself to you.</c.P>
+          <c.P>This is Wang Yi. Click and listen carefully as she introduces herself to you.</c.P>
           {example(1, { basic: true, big: true, audio: true })}
           <c.P>The literal translation of this sentence is I CALLED WANG YI. Translated to more natural English, it means <i>My name is Wang Yi.</i></c.P>
           <c.P>In China, the family name comes before the given name. There are only a few hundred family names, but any combination of one or two characters can be used as a given name. Different names have been popular during different periods: in revolutionary times, some children were named <i>New Constitution</i> and <i>Strong Country</i>. Names often reflect traditional gender roles: <i>Strong</i> and <i>Thunder</i> for boys; <i>Little Swallow</i> and <i>Beautiful Jade</i> for girls. Wang Yi’s family name is Wang, which means <i>king</i>, and her given name is the gender-neutral <i>One</i>.</c.P>
-          <c.P>Now, it’s your turn to introduce yourself. Western names are hard to pronounce for Chinese people, so we will give you a Chinese name based on your actual name, your gender and your nationality. Please input them <C.Link type="askUserSettings">here</C.Link>.</c.P>
-          <c.PartTitle type="secondary">Explore: Your Chinese name</c.PartTitle>
-          <c.P>Now, practice your Chinese name. Remember that the family name comes first, followed by the given name:</c.P>
+          <c.PartTitle type="secondary">Learn your Chinese name</c.PartTitle>
+          <c.P
+            buttonOptions={{
+              type: 'askUserSettings'
+            }}
+          >Now, it’s your turn to introduce yourself. Western names are hard to pronounce for Chinese people. Click on the exercise icon and we will give you a Chinese name based on your real name, gender and nationality.</c.P>
           {example(2, { basic: true, big: true, audio: true })}
-          <c.P>Repeat until you can say the name exactly as the audio voice.
-          </c.P>
-          <c.PartTitle type="secondary">Role Play: Introduce yourself</c.PartTitle>
-          <c.P>Listen to Wang Yi and then tell her your own name:</c.P>
+          <c.P>Repeat this phrase until you can say it exactly like the voice on the recording.</c.P>
+          <c.PartTitle type="secondary">Dialog: Introduce yourself</c.PartTitle>
+          <c.P>Listen as Wang Yi introduces herself to you, and then tell her your own name:</c.P>
           {dialog(1, { sentenceType: 'chinese', displayNames: false })}
           <c.P>Repeat this until you feel comfortable.</c.P>
           <c.P>Now, change roles! Pretend you are Wang Yi, and introduce yourself.</c.P>
@@ -60,10 +62,10 @@ export default class S0E1 extends Component {
             hideLinks: true,
             audio: true
           })}
-          <c.P>Let us practice a bit of pronunciation using this sentence. If you listen carefully one more time to this sentence, you will notice that each Chinese syllable has a tone. Practice pronouncing each syllable clearly, with the tone:</c.P>
+          <c.P>Let us practice a bit of pronunciation using this sentence. If you listen carefully one more time, you will notice that each Chinese word has a tone. Practice pronouncing each syllable clearly, with the tone:</c.P>
           {example(1, { basic: true, big: true, audio: true })}
-          <c.P>These tones are important, because there are many characters that sound exactly the same except for the tone. The classical example of this are four words that are all pronounced <b>ma</b>. As you can see, the <b>pīnyīn</b> spelling is the same for each character; the only difference is the tone mark. The diagrams on the left show the pitch contour of each tone.</c.P>
-          <c.P>The first means <i>mother</i>, and is pronounced with Tone 1, which is a long, flat tone pronounced at the top of the pitch range:</c.P>
+          <c.P>These tones are important, because there are many characters that sound exactly the same except for the tone. The classical example of this are four words that are all pronounced <b>ma</b>; the only difference is the tone. The diagrams on the left show the pitch contour of each tone.</c.P>
+          <c.P>The first of this words means <i>mother</i>, and is pronounced with Tone 1, which is a long, flat tone pronounced at the top of the pitch range:</c.P>
           <c.Bookrow
             buttonOptions={{
               type: 'audio',
@@ -100,7 +102,8 @@ export default class S0E1 extends Component {
               data: {
                 text: '骂'
               }
-            }}>
+            }}
+          >
             {image()}
           </c.Bookrow>
           <c.P
@@ -111,12 +114,48 @@ export default class S0E1 extends Component {
               }
             }}
           >
-            See if you can hear the right tones on the syllables.
+            Practice to see if you can identify the tones.
           </c.P>
-          <c.P>If you find the tones challenging, it can be a comfort to know we actually have the exact same tones in English! The equivalent of Tone 1 would be the tone on the second syllable on tadaa! A magician pulling a rabbit out of a hat might say, with a flourish, <i>tadaa!</i></c.P>
-          <c.P>Tone 2 is like the tone of a surprised question in English: <i>what?</i></c.P>
-          <c.P>Tone 3 starts at middle pitch, goes down so low that it is sometimes broken off in the middle, and then rises again. In English, we use a similar tone when we are skeptical or irritated, for example on the word so in this conversation: <i>You haven’t given me any reason to do it. So? Do it anyway!</i></c.P>
-          <c.P>Tone 4 falls sharply from an initially high pitch to a low one, like the tone on <i>hey</i> in <i>Hey! You there!</i></c.P>
+          <c.P
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                text: 'tada!!!'
+              }
+            }}
+          >
+            If you find tones strange, it can be a comfort to know we actually have the exact same tones in English! The equivalent of Tone 1 would be the tone on the second syllable on tadaa! A magician pulling a rabbit out of a hat might say, with a flourish, <i>tadaa!</i>
+          </c.P>
+          <c.P
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                text: 'what?'
+              }
+            }}
+          >
+            Tone 2 is like the tone of a surprised question in English: <i>what?</i>
+          </c.P>
+          <c.P
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                text: 'So?!'
+              }
+            }}
+          >
+            Tone 3 starts at middle pitch, goes down so low that it is sometimes broken off in the middle, and then rises again. In English, we use a similar tone when we are skeptical or irritated, for example on the word so in this conversation: <i>You haven’t given me any reason to do it. So? Do it anyway!</i>
+          </c.P>
+          <c.P
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                text: 'Hey!'
+              }
+            }}
+          >
+            Tone 4 falls sharply from an initially high pitch to a low one, like the tone on <i>hey</i> in <i>Hey! You there!</i>
+          </c.P>
           <c.P>So the tones are not totally alien. The difference is that in English, these tones only change the mood of a sentence; in Chinese, they change the meaning of words.</c.P>
           <c.PartTitle type="secondary">Pinyin – explaining Chinese pronunciation with English letters</c.PartTitle>
           <c.P>In order to help us remember the pronunciation of each character, the sound can be written using the Latin alphabet. Each syllable is written with its tone mark above:</c.P>
@@ -154,25 +193,44 @@ export default class S0E1 extends Component {
 
             }}
           >
-            Try writing the <b>pīnyīn</b> spelling of the four characters we have learned so far.
+            Try to memorize the <b>pīnyīn</b> spelling of the four characters above, and then click on the exercise icon to see if you can spell them correctly.
           </c.P>
           <c.PartTitle type="secondary">Oracle bones</c.PartTitle>
           <c.P>So where do the Chinese characters come from? We know from archaeological finds that they were originally pictures. During the <b>Shāng</b> dynasty, more than 3,000 years ago, the oracles at the royal court used the shells of turtles and shoulder blades of oxen to tell the future.</c.P>
           <c.Bookrow center>{image()}</c.Bookrow>
           <c.P>To do this, they placed glowing hot bronze rods against the bone until it cracked from the heat. The soothsayers interpreted these cracks as answers to their questions about the future.</c.P>
-          <c.P>To record the questions and answers, they inscribed each bone with a pictorial script which archeologists have shown to be primitive forms of modern Chinese characters. We call them <i>oracle bone</i> characters.</c.P>
+          <c.P>To record the questions and answers, they inscribed each bone with a pictorial script which archeologists have shown to be a primitive forms of modern Chinese characters. We call them <i>oracle bone</i> characters.</c.P>
           <c.PartTitle type="secondary">Pictograms</c.PartTitle>
           <c.P>The simplest and most ancient characters are pictures. Some of these are so clear, and so similar to the modern character, that they are still easy to understand – even when they are symbols of abstract concepts. On the oracle bone above, we immediately recognize the symbols for <i>one</i>, <i>two</i> and <i>three</i>.</c.P>
           <c.Bookrow center>{image()}</c.Bookrow>
           <c.P>Some characters are a bit trickier to understand. The character for <i>king</i>, for example, was originally a picture of an ax head. Weapons were the ultimate source of power, so this picture was used to symbolize <i>king</i>.</c.P>
           <c.Bookrow center>{image()}</c.Bookrow>
-          <c.P><i>King</i> is the most common family name in China. Today, it is written like this:</c.P>
+          <c.P><i>King</i> is the most common family name in China.</c.P>
           <c.PartTitle type="secondary">Radicals for meaning – phonetics for sound</c.PartTitle>
-          <c.P>As the written language developed and more characters were needed, the ancient scribes started combining simple pictorial elements into more complex characters. Some elements were chosen for <i>meaning</i>; others for <i>sound</i>. As an example, let us look at the character 叫 <i>to be called</i>. It is made up of two ancient character elements: 口 <i>mouth</i>, and 丩 <i>two hooks</i>. Why did the scribes choose these two components?</c.P>
+          <c.P>As the written language developed and more characters were needed, the ancient scribes started combining simple pictorial elements into more complex characters. Some elements were chosen for <i>meaning</i>; others for <i>sound</i>.</c.P>
+          <c.P>As an example, let us look again at the character meaning <i>to scold, tell somebody off</i>:</c.P>
+          <c.Bookrow>
+            <Row>
+              <c.Char>骂</c.Char>
+              <c.Pinyin>mà</c.Pinyin>
+              <c.Meaning>scold</c.Meaning>
+            </Row>
+          </c.Bookrow>
+          <c.P>It is made up of two ancient character elements: 口 <i>mouth</i>, and 马 <i>horse</i>. Why did the scribes choose these two components?</c.P>
+          <c.P>The <i>mouth</i> element contributes <i>meaning</i>. It appears in characters such as <i>eat</i>, <i>drink</i>, <i>kiss</i> and <i>ask</i> – things you do with your mouth. A character component indicating meaning in this way is called a <i>radical</i>. In the character for <i>scold</i>, the radical is duplicated for emphasis: there are two <i>mouths</i> that really illustrate somebody getting a good telling-off.</c.P>
+          <c.P>The <i>horse</i> component has nothing to do with meaning. It was chosen to give an indication of <i>pronunciation</i> and also appears in several other characters that sound similar to 骂, for example <i>mother</i>, which has <i>woman</i> as radical:</c.P>
+          <c.Bookrow>
+            <Row>
+              <c.Char>妈</c.Char>
+              <c.Pinyin>mā</c.Pinyin>
+              <c.Meaning>mother</c.Meaning>
+            </Row>
+          </c.Bookrow>
+          <c.P>A character element indicating sound in this way is called a <i>phonetic</i>. To summarize, the ancient scribes would make new characters by combining a radical for meaning with a phonetic for sound to write “something you do with your mouth which sounds similar to horse” or “a female person which sounds similar to horse”:</c.P>
+          <c.P>The radical 口 <i>mouth</i> also appears in the character 叫 <i>to call</i>:</c.P>
           <c.Bookrow>{image()}</c.Bookrow>
-          <c.P>The <i>mouth</i> element contributes <i>meaning</i>. This element appears in characters such as <i>eat</i>, <i>drink</i>, <i>kiss</i> and <i>ask</i> – all things which, like叫, you do with your mouth. A character component indicating meaning in this way is called a <i>radical</i>.</c.P>
-          <c.P>The <i>two hooks</i> element has nothing to do with meaning. It was chosen to give an indication of <i>pronunciation</i> and also appears in several other characters that sound similar to 叫. A character element indicating sound is called a <i>phonetic</i>.</c.P>
-          <c.P>The radical of a character only points to a general category; in this case, <i>things done with the mouth</i>. In the same way, the phonetic usually does not give us an exact pronunciation. This is because, over hundreds of years, the Chinese sound system has changed a lot: in our example, the modern pronunciation of 丩 is <b>jīu</b>, but 叫 is pronounced <b>jiào</b>. Even so, these hints of meaning and pronunciation can make it easier for us to memorize characters.</c.P>
+          <c.P>Clearly, <i>calling</i> is something you do with your mouth. But the pronunciation of the phonetic 丩 is <b>jīu</b>, which may not seem very similar to <b>jiào</b>. Over hundreds of years, the Chinese sound system has changed a lot, so the phonetic usually does not give us the exact modern pronunciation. In the same way, the radical of a character only points to a general category. Even so, these hints of meaning and pronunciation can make it easier for us to memorize characters.</c.P>
+          <c.Bookrow>{image()}</c.Bookrow>
           <c.PartTitle type="secondary">Calligraphy – the ancient art of writing</c.PartTitle>
           <c.P>Another aid in memorizing characters is to understand their aesthetics. Chinese calligraphy, the art of writing, is an ancient art form that embodies many concepts of Chinese philosophy. Historically, good handwriting was seen as the hallmark of the educated person. Today, there is a revival of interest, and most Chinese children practice calligraphy at school.</c.P>
           <c.P>Practicing the traditional art of writing is not something you have to do to learn Chinese. But many people find it enjoyable. The artistic principles help us develop a feel for the logic of how the Chinese characters have been put together; the rhythm of writing each stroke makes the whole character come alive. After just a short while of practice, this will help you to see the characters in a new way. Have a try; in later lessons you can decide whether you want to continue writing calligraphy.</c.P>
@@ -191,7 +249,7 @@ export default class S0E1 extends Component {
           <c.P>一</c.P>
           <c.P>But if you look carefully at the hand-written character, you will see that the horizontal stroke is not just a flat line. It has a clearly defined beginning and end and the whole stroke curves gently, giving it the organic look of a bone or a tree branch:</c.P>
           {character(1, { mode: 'box' })}
-          <c.P>Click on the brush to see the video. Use a black ballpoint pen to practice:</c.P>
+          <c.P>Click on the brush icon to see the video. Print out an <a href="https://s3.eu-west-2.amazonaws.com/chineseme/pdf/Exercise+sheet.pdf">exercise sheet</a> and practice using a black ballpoint pen:</c.P>
           {character(1, { mode: 'practice' })}
           <c.PartTitle
             type="secondary"
@@ -258,7 +316,7 @@ export default class S0E1 extends Component {
           <c.PartTitle type="secondary" anchor="new-characters">New characters</c.PartTitle>
           <c.P>Here are all the new characters in this lesson. Click on each character to review stroke order, on the brush icon to see calligraphy video, and on history icon to see the character etymology.</c.P>
           {newCharacters()}
-          <c.PartTitle type="secondary" anchor="review">Review</c.PartTitle>
+          <c.PartTitle type="secondary" anchor="review">Exercises</c.PartTitle>
           <c.P
             buttonOptions={{
               type: 'practice',
@@ -268,7 +326,7 @@ export default class S0E1 extends Component {
 
             }}
           >
-            <i>On the ChineseMe website, you will find review exercises to practice pronunciation, grammar and character writing. Download the flashcard decks to review character stroke orders and vocabulary. Then do the Final Exam to progress to the next Lesson.</i>
+            <i>Now, go through the review exercises to practice pronunciation, grammar and character writing. Then do the Exam to progress to the next Lesson.</i>
           </c.P>
           <c.Exam />
         </c.Page>

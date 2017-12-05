@@ -194,7 +194,7 @@ class MapContent extends Component {
           {
             practices[0] &&
               <ScreenButton
-                text="Review"
+                text="Exercises"
                 secondary
                 icon={handWithPen}
                 onClick={() => this.props.mapLinkClick(

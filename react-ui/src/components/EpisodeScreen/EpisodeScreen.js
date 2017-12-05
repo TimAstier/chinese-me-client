@@ -115,7 +115,7 @@ class EpisodeScreen extends Component {
           <BottomRightWrapper>
             {next &&
               <ScreenButton
-                text="Next"
+                text="Continue"
                 primary
                 action="next"
               />

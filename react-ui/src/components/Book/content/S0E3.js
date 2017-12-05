@@ -87,7 +87,7 @@ export default class S1E7 extends Component {
           >
             <c.Char>我是中国人。</c.Char>
           </c.Bookrow>
-          <c.PartTitle type="secondary">Explore: Meet Yi and Yuguo</c.PartTitle>
+          <c.PartTitle type="secondary">Dilog: Meet Yi and Yuguo</c.PartTitle>
           <c.P>Yi and her friend Yuguo both come from China. Here’s how they present themselves:</c.P>
           {dialog(1, { sentenceType: 'chineseWithTranslation', displayNames: false })}
           {dialog(2, { sentenceType: 'chineseWithTranslation', displayNames: false })}
@@ -99,7 +99,7 @@ export default class S1E7 extends Component {
             In order to say <i>I am from {insertVariables('[NATIONALITY_EN]', settings)}</i>, just add 人:
           </c.P>
           {example(5, { basic: true, big: true, audio: true })}
-          <c.PartTitle type="secondary">Role Play: Introduce yourself and where you are from</c.PartTitle>
+          <c.PartTitle type="secondary">Dialog: Introduce yourself and where you are from</c.PartTitle>
           <c.P>Introduce yourself to Wang Yuguo:</c.P>
           {dialog(3, { sentenceType: 'chinese', displayNames: false })}
           <c.P>Repeat this until you feel comfortable.</c.P>
@@ -107,7 +107,7 @@ export default class S1E7 extends Component {
           <c.PartTitle type="secondary">Pinyin practice</c.PartTitle>
           <c.P>Let us practice transcribing the characters and words in this lesson to <b>pīnyīn</b>.</c.P>
           <c.P>Three different sounds are spelled <b>i</b>.</c.P>
-          <c.P>After most initials, Chinese <b>i</b> is pronounced like English ee in <i>tree</i>:</c.P>
+          <c.P>After most initials, Chinese <b>i</b> is pronounced like English <i>ee</i> in <i>tree</i>:</c.P>
           <c.Bookrow
             buttonOptions={{
               type: 'audio',
@@ -281,7 +281,7 @@ export default class S1E7 extends Component {
           {newCharacters()}
           <c.PartTitle type="secondary">New words</c.PartTitle>
           {newWords()}
-          <c.PartTitle type="secondary" anchor="review">Review</c.PartTitle>
+          <c.PartTitle type="secondary" anchor="review">Exercises</c.PartTitle>
           <c.P
             buttonOptions={{
               type: 'practice',
@@ -290,7 +290,7 @@ export default class S1E7 extends Component {
               }
             }}
           >
-            <i>On the ChineseMe website, you will find review exercises to practice pronunciation, grammar and character writing. Download the flashcard decks to review character stroke orders and vocabulary. Then do the Final Exam to progress to the next Lesson.</i>
+            <i>Now, go through the review exercises to practice pronunciation, grammar and character writing. Then do the Exam to progress to the next Lesson.</i>
           </c.P>
           <c.Exam />
         </c.Page>

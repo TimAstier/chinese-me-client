@@ -91,7 +91,7 @@ export default class S0E2 extends Component {
               <li><Row><Chinese>我叫一。 </Chinese><Translation>My given name is Yi.</Translation></Row></li>
             </c.Ul>
           </c.Bookrow>
-          <c.PartTitle type="secondary">Role Play: Introduce yourself</c.PartTitle>
+          <c.PartTitle type="secondary">Dialog: Introduce yourself</c.PartTitle>
           <c.P>Now, introduce yourself by giving your last name, and then your full name. Tell Wang Yi what your name is and listen to her response:</c.P>
           {dialog(1, { sentenceType: 'chineseWithTranslation', displayNames: false })}
           <c.P>Repeat this until you feel comfortable.</c.P>
@@ -140,7 +140,7 @@ export default class S0E2 extends Component {
           <c.Bookrow>{image()}</c.Bookrow>
           <c.P>Together, <i>woman</i> and <i>child</i> form the character 好, which means <i>good</i>, <i>nice</i>, <i>fine</i>. To the ancients, the idea of a woman caring for a small baby was the very embodiment of something “good”. This is an example of an <i>ideogram</i>, a character where each element contributes to the meaning.</c.P>
           <c.P>Even in characters with a radical and a phonetic, the phonetic was often chosen with an eye for meaning in addition to sound. One example is 姓, where the phonetic 生 <b>shēng</b> means <i>give birth to</i> or <i>be born</i>. ”Born of woman”: <i>to have as family name</i>.</c.P>
-          <c.PartTitle type="secondary">Characters – calligraphy</c.PartTitle>
+          <c.PartTitle type="secondary">Calligraphy</c.PartTitle>
           <c.P>The characters we have learned in this lesson are a good illustration of how different character components are fitted together in complex characters.</c.P>
           <c.P>When 女, 子 and 生 appear on their own as characters, they are given lots of room to spread out and fill their imagined squares:</c.P>
           <c.Bookrow
@@ -172,7 +172,7 @@ export default class S0E2 extends Component {
             }}>
             <c.CharacterBox simpChar="生"/>
           </c.Bookrow>
-          <c.P>The long horizontal stroks re given plenty of space to spread out to the sides in a long, soft organic curve. But when these characters appears as elements in more complex characters, they need to cede some space to the other components:</c.P>
+          <c.P>The long horizontal strokes are given plenty of space to spread out to the sides in a long, soft organic curve. But when these characters appears as elements in more complex characters, they need to cede some space to the other components:</c.P>
           <c.Bookrow
             buttonOptions={{
               type: 'stroke',
@@ -200,23 +200,10 @@ export default class S0E2 extends Component {
           {character(3, { mode: 'practice' })}
           {character(5, { mode: 'practice' })}
           <c.PartTitle type="secondary">Pronunciation</c.PartTitle>
-          <c.P>A Chinese syllable is composed of three parts: an <i>initial</i>, which comes first; a <i>final</i>, which comes last, and a <i>tone</i>. Which are the initials, finals and tones on these syllables? Practice:</c.P>
-          <c.Bookrow
-            buttonOptions={{
-              type: 'practice',
-              data: {
-                elementId: practiceIds[1]
-              }
-            }}
-          >
-            <c.Ul>
-              <li><Row><c.Char>好</c.Char> <c.Pinyin>hǎo</c.Pinyin></Row></li>
-              <li><Row><c.Char>你</c.Char> <c.Pinyin>nǐ</c.Pinyin></Row></li>
-              <li><Row><c.Char>姓</c.Char> <c.Pinyin>xìng</c.Pinyin></Row></li>
-              <li><Row><c.Char>生</c.Char> <c.Pinyin>shēng</c.Pinyin></Row></li>
-            </c.Ul>
-          </c.Bookrow>
-          <c.P>Let us also practice pronouncing a couple of the initials from this lesson.</c.P>
+          <c.P>A Chinese syllable is composed of three parts: an <i>initial</i>, which comes first; a <i>final</i>, which comes last, and a <i>tone</i>:</c.P>
+          <c.P><b>hǎo</b> = initial <b>h-</b> + final <b>-ao</b> + Tone 3</c.P>
+          <c.P><b>xìng</b> = initial <b>x-</b> + final <b>-ing</b> + Tone 4</c.P>
+          <c.P>Let us practice pronouncing a couple of the initials from this lesson.</c.P>
           <c.PartTitle type="tertiary">The initial h-</c.PartTitle>
           <c.P>Chinese <b>h-</b> is much “harder” than English <i>h</i>; it sounds more like its German counterpart. Mimic the audio voice and try to exaggerate the strong aspiration on the initial:</c.P>
           {character(3, {
@@ -234,10 +221,30 @@ export default class S0E2 extends Component {
             hideLinks: true,
             audio: true
           })}
+          <c.P>Which are the initials, finals and tones on these syllables? Practice:</c.P>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'practice',
+              data: {
+                elementId: practiceIds[1]
+              }
+            }}
+          >
+            <c.Ul>
+              <li><Row><c.Char>好</c.Char> <c.Pinyin>hǎo</c.Pinyin></Row></li>
+              <li><Row><c.Char>你</c.Char> <c.Pinyin>nǐ</c.Pinyin></Row></li>
+              <li><Row><c.Char>姓</c.Char> <c.Pinyin>xìng</c.Pinyin></Row></li>
+              <li><Row><c.Char>生</c.Char> <c.Pinyin>shēng</c.Pinyin></Row></li>
+            </c.Ul>
+          </c.Bookrow>
+          <c.PartTitle type="secondary" anchor="new-characters">Typing characters on your computer</c.PartTitle>
+          <c.P>You can type Chinese characters on your computer by using an input system based on pīnyīn. These systems usually don’t include the tone: you just type “h-a-o”, for example, and then you choose the character you want from a menu of similar-sounding ones.</c.P>
+          <c.P>When you are asked to type pīnyīn in the exercises in this course, write the tone on each syllable after the Latin letters: <i>hao3, xing4, ni3, sheng1</i> and so on.</c.P>
+          <c.P>In most input systems, the letter <i>v</i> is used to input pīnyīn <b>ü</b>. We use the same convention. So to write the character 女 <b>nǚ</b>, for example, you type <i>nv3</i>.</c.P>
           <c.PartTitle type="secondary" anchor="new-characters">New characters</c.PartTitle>
-          <c.P><i>Here are all the new characters from this lesson. Practice the stroke order animations at ChineseMe.</i></c.P>
+          <c.P><i>Here are all the new characters from this lesson. Practice the stroke order animations.</i></c.P>
           {newCharacters()}
-          <c.PartTitle type="secondary" anchor="review">Review</c.PartTitle>
+          <c.PartTitle type="secondary" anchor="review">Exercises</c.PartTitle>
           <c.P
             buttonOptions={{
               type: 'practice',
@@ -246,7 +253,7 @@ export default class S0E2 extends Component {
               }
             }}
           >
-            <i>Practice pronunciation, grammar and character writing on the ChineseMe website.</i>
+            <i>Now, go through the exercises to practice pronunciation, grammar and character writing. Then do the Exam to progress to the next Lesson.</i>
           </c.P>
           <c.Exam />
         </c.Page>

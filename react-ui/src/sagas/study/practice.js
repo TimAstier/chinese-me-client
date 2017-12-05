@@ -1,5 +1,4 @@
 import { put, select, call, take, race } from 'redux-saga/effects';
-import { delay } from 'redux-saga';
 import { actions as uiActions } from '../../redux/ui';
 import selectors from '../../rootSelectors';
 import { fetchEntities } from '../entities';

@@ -17,10 +17,10 @@ const Wrapper = styled.div`
 	font-weight: 900;
 	color: #454545;
   margin: 7px;
-  ${''/* cursor: pointer;
+  cursor: pointer;
   :hover {
     color: #55b6ff;
-  }; */}
+  };
 `;
 
 // const CheckmarkWrapper = styled.div`
@@ -34,7 +34,7 @@ class CharacterBox extends Component {
   render() {
     return (
       <Wrapper
-        // onClick={this.props.onClick}
+        onClick={this.props.onClick}
       >
         {this.props.char}
         {/* {this.props.completed &&
@@ -50,7 +50,7 @@ class CharacterBox extends Component {
 CharacterBox.propTypes = {
   char: propTypes.string.isRequired,
   completed: propTypes.bool,
-  // onClick: propTypes.func.isRequired
+  onClick: propTypes.func.isRequired
 };
 
 export default CharacterBox;

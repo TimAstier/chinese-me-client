@@ -18,7 +18,7 @@ class Char extends Component {
 }
 
 Char.propTypes = {
-  children: propTypes.string.isRequired
+  children: propTypes.oneOfType([propTypes.string, propTypes.object]).isRequired
 };
 
 export default Char;

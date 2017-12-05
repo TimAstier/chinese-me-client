@@ -255,10 +255,10 @@ export default class S0E1 extends Component {
           <c.Bookrow>{image()}</c.Bookrow>
           <c.P>Since it is one of the most common characters in the Chinese language, writing it quickly will save you lots of time. If you practice writing it elegantly, you will develop a rhythm which will eventually make you faster:</c.P>
           {character(5, { mode: 'practice' })}
-          <c.PartTitle type="secondary">New characters</c.PartTitle>
+          <c.PartTitle type="secondary" anchor="new-characters">New characters</c.PartTitle>
           <c.P>Here are all the new characters in this lesson. Click on each character to review stroke order, on the brush icon to see calligraphy video, and on history icon to see the character etymology.</c.P>
           {newCharacters()}
-          <c.PartTitle type="secondary">Review</c.PartTitle>
+          <c.PartTitle type="secondary" anchor="review">Review</c.PartTitle>
           <c.P
             buttonOptions={{
               type: 'practice',

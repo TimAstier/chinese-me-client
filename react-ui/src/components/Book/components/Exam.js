@@ -5,13 +5,14 @@ class Exam extends Component {
 
   render() {
     return (
-      <c.PartTitle type="secondary"
+      <c.PartTitle
+        anchor="exam"
         buttonOptions={{
           type: 'exam',
           data: {}
         }}
       >
-        Exam
+        EXAM
       </c.PartTitle>
     );
   }

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import { bookContainers as C } from '../../../containers';
 import { Bookrow } from './.';
+const Scroll = require('react-scroll');
+const Element = Scroll.Element;
 
 class Dialog extends Component {
 
@@ -28,6 +30,10 @@ class Dialog extends Component {
           top: true
         }}
       >
+        {
+          this.props.sentenceType !== 'translation' &&
+            <Element name={`dialog-${this.props.dialogId}`}/>
+        }
         {array}
       </Bookrow>
     );

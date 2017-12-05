@@ -276,12 +276,12 @@ export default class S1E7 extends Component {
           {example(3, { audio: true })}
           <c.P>In this chapter, we encountered 是 shì which functions like English be (am, is):</c.P>
           {example(4, { audio: true })}
-          <c.PartTitle type="secondary">New characters</c.PartTitle>
+          <c.PartTitle type="secondary" anchor="new-characters">New characters</c.PartTitle>
           <c.P>Here are the new characters in this lesson. Click on each character to review the stroke order, or on the brush or history icons to see calligraphy and history videos.</c.P>
           {newCharacters()}
           <c.PartTitle type="secondary">New words</c.PartTitle>
           {newWords()}
-          <c.PartTitle type="secondary">Review</c.PartTitle>
+          <c.PartTitle type="secondary" anchor="review">Review</c.PartTitle>
           <c.P
             buttonOptions={{
               type: 'practice',

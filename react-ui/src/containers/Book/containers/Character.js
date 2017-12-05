@@ -30,6 +30,7 @@ class Character extends Component {
         hideMeaning={this.props.options ? this.props.options.hideMeaning : undefined}
         hideLinks={this.props.options ? this.props.options.hideLinks : undefined}
         audio={this.props.options ? this.props.options.audio : undefined}
+        anchor={this.props.anchor}
       />
     );
   }
@@ -58,7 +59,8 @@ Character.propTypes = {
     hideMeaning: propTypes.bool,
     hideLinks: propTypes.bool,
     audio: propTypes.bool
-  })
+  }),
+  anchor: propTypes.string
 };
 
 const mapStateToProps = (state, ownProps) => ({

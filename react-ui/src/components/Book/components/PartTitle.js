@@ -4,6 +4,8 @@ import styled from 'styled-components';
 // import { Link as LinkComponent } from '../../Shared';
 // import { Link } from 'react-router';
 import { Bookrow } from './.';
+const Scroll = require('react-scroll');
+const Element = Scroll.Element;
 
 const H2 = styled.h2`
   font-size: ${props => props.fontSize};
@@ -45,9 +47,11 @@ class PartTitle extends Component {
         center={!this.props.type}
         buttonOptions={this.props.buttonOptions}
       >
-        <H2 fontSize={this._fontSize()} color={this._color()}>
-          { this.props.children }
-        </H2>
+        <Element name={this.props.anchor}>
+          <H2 fontSize={this._fontSize()} color={this._color()}>
+            { this.props.children }
+          </H2>
+        </Element>
       </Bookrow>
     );
   }
@@ -56,7 +60,8 @@ class PartTitle extends Component {
 PartTitle.propTypes = {
   children: propTypes.oneOfType([propTypes.string, propTypes.object]).isRequired,
   type: propTypes.oneOf(['secondary', 'tertiary']),
-  buttonOptions: propTypes.object
+  buttonOptions: propTypes.object,
+  anchor: propTypes.string
   // linkUrl: propTypes.string
 };
 

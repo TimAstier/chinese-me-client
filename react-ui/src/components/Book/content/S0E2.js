@@ -167,10 +167,10 @@ export default class S0E2 extends Component {
             hideLinks: true,
             audio: true
           })}
-          <c.PartTitle type="secondary">New characters</c.PartTitle>
+          <c.PartTitle type="secondary" anchor="new-characters">New characters</c.PartTitle>
           <c.P><i>Here are all the new characters from this lesson. Practice the stroke order animations at ChineseMe.</i></c.P>
           {newCharacters()}
-          <c.PartTitle type="secondary">Review</c.PartTitle>
+          <c.PartTitle type="secondary" anchor="review">Review</c.PartTitle>
           <c.P
             buttonOptions={{
               type: 'practice',

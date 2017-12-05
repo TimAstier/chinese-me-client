@@ -111,6 +111,7 @@ class ContentHOC extends Component {
             key={characters[i]}
             characterId={characters[i]}
             options={{ mode: 'details' }}
+            anchor={`character-${characters[i]}`}
           />
         );
       });

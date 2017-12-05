@@ -73,6 +73,7 @@ const ContentItemsWrapper = styled.div`
 class MapContent extends Component {
 
   renderCharacterBoxes() {
+    const { episode, focusedSeasonNumber } = this.props;
     if (this.props.characters.length !== 0) {
       const characterBoxes = this.props.characters.map((c, i) => {
         return (
@@ -80,7 +81,9 @@ class MapContent extends Component {
             key={i}
             char={c.simpChar}
             completed={c.userCharacters.length !== 0}
-            // onClick={() => console.log('click on character!')}
+            onClick={() => this.props.mapLinkClick(
+              `/study/season/${focusedSeasonNumber}/episode/${episode.number}#character-${c.id}`
+            )}
           />
         );
       });
@@ -90,6 +93,7 @@ class MapContent extends Component {
   }
 
   renderDialogItems() {
+    const { episode, focusedSeasonNumber } = this.props;
     if (this.props.dialogs.length !== 0) {
       const dialogItems = this.props.dialogs.map((d, i) => {
         return (
@@ -98,7 +102,7 @@ class MapContent extends Component {
             title={d.chineseTitle}
             // completed={d.userDialogs.length !== 0 ? true : undefined}
             onClick={() => this.props.mapLinkClick(
-              '/study/' + this.props.episode.id + '/dialog/' + d.id + '/explore'
+              `/study/season/${focusedSeasonNumber}/episode/${episode.number}#dialog-${d.id}`
             )}
           />
         );
@@ -109,6 +113,7 @@ class MapContent extends Component {
   }
 
   renderGrammarItems() {
+    const { episode, focusedSeasonNumber } = this.props;
     if (this.props.grammars.length !== 0) {
       const grammarItems = this.props.grammars.map((g, i) => {
         return (
@@ -116,7 +121,9 @@ class MapContent extends Component {
             key={i}
             title={g.translations[0].title}
             // completed={g.userGrammars.length !== 0 ? true : undefined}
-            // onClick={() => console.log('click on grammar!')}
+            onClick={() => this.props.mapLinkClick(
+              `/study/season/${focusedSeasonNumber}/episode/${episode.number}#grammar-${g.id}`
+            )}
           />
         );
       });
@@ -191,7 +198,7 @@ class MapContent extends Component {
                 secondary
                 icon={handWithPen}
                 onClick={() => this.props.mapLinkClick(
-                  '/study/' + this.props.episode.id + '/practice/' + practices[0].id
+                  `/study/season/${focusedSeasonNumber}/episode/${episode.number}#review`
                 )}
               />
           }
@@ -200,7 +207,7 @@ class MapContent extends Component {
             secondary
             icon={examIcon}
             onClick={() => this.props.mapLinkClick(
-              '/study/' + this.props.episode.id + '/exam'
+              `/study/season/${focusedSeasonNumber}/episode/${episode.number}#exam`
             )}
           />
         </BottomWrapper>

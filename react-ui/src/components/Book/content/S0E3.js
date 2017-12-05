@@ -189,8 +189,7 @@ export default class S1E7 extends Component {
             buttonOptions={{
               type: 'audio',
               data: {
-                // url: pinyinNumberToAudioUrl('zi3'),
-                text: '子'
+                url: pinyinNumberToAudioUrl('zi3'),
               }
             }}
           >
@@ -217,7 +216,7 @@ export default class S1E7 extends Component {
             buttonOptions={{
               type: 'audio',
               data: {
-                url: 'https://s3.eu-west-2.amazonaws.com/chineseme/sentences/78.m4a'
+                url: 'https://s3.eu-west-2.amazonaws.com/chineseme/sentences/83.m4a'
               }
             }}
           >
@@ -268,7 +267,7 @@ export default class S1E7 extends Component {
           </c.Bookrow>
           <c.P>A language without word forms is called an <i>isolating</i> language. When we study an isolating language like Chinese, we don’t have to worry about singular and plural, tenses and declinations. We just need to learn <i>sentence patterns</i>. Once you know the pattern for how to say something, you can insert new words without having to think about how to modify the words themselves.</c.P>
           <c.P>This course is based on such patterns. You should study these examples carefully; if you want, they are even available as flash cards so you can learn them by heart. You will get a feel for the langauge by internalizing the structures of Chinese as well as directly improving your pronunciation and ability to speak and understand.</c.P>
-          <c.P>All patterns are available as flash cards with translations to idiomatic English so that you will know how to use them in the right way. In those cases where we think it will help you understand the structure of a pattern better, we also provide a literal translation in capital letters to show the function of each Chinese word.</c.P>
+          <c.P>All patterns come with translations to idiomatic English so that you will know how to use them in the right way. In those cases where we think it will help you understand the structure of a pattern better, we also provide a literal translation in capital letters to show the function of each Chinese word.</c.P>
           <c.PartTitle type="tertiary">B. Sentence patterns with a few common verbs</c.PartTitle>
           <c.P>The sentences we have learned in previous lessons are made up of Subject, Verb and Object, just as in English:</c.P>
           {example(1, { audio: true })}

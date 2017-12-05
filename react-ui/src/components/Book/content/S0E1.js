@@ -144,7 +144,7 @@ export default class S0E1 extends Component {
               }
             }}
           >
-            Tone 3 starts at middle pitch, goes down so low that it is sometimes broken off in the middle, and then rises again. In English, we use a similar tone when we are skeptical or irritated, for example on the word so in this conversation: <i>You haven’t given me any reason to do it. So? Do it anyway!</i>
+            Tone 3 starts at middle pitch, goes down so low that it is sometimes broken off in the middle, and then rises again. In English, we use a similar tone when we are skeptical or irritated, for example on the word <i>so</i> in this conversation: <i>You haven’t given me any reason to do it. So? Do it anyway!</i>
           </c.P>
           <c.P
             buttonOptions={{
@@ -227,10 +227,10 @@ export default class S0E1 extends Component {
             </Row>
           </c.Bookrow>
           <c.P>A character element indicating sound in this way is called a <i>phonetic</i>. To summarize, the ancient scribes would make new characters by combining a radical for meaning with a phonetic for sound to write “something you do with your mouth which sounds similar to horse” or “a female person which sounds similar to horse”:</c.P>
+          <c.Bookrow>{image()}</c.Bookrow>
           <c.P>The radical 口 <i>mouth</i> also appears in the character 叫 <i>to call</i>:</c.P>
           <c.Bookrow>{image()}</c.Bookrow>
           <c.P>Clearly, <i>calling</i> is something you do with your mouth. But the pronunciation of the phonetic 丩 is <b>jīu</b>, which may not seem very similar to <b>jiào</b>. Over hundreds of years, the Chinese sound system has changed a lot, so the phonetic usually does not give us the exact modern pronunciation. In the same way, the radical of a character only points to a general category. Even so, these hints of meaning and pronunciation can make it easier for us to memorize characters.</c.P>
-          <c.Bookrow>{image()}</c.Bookrow>
           <c.PartTitle type="secondary">Calligraphy – the ancient art of writing</c.PartTitle>
           <c.P>Another aid in memorizing characters is to understand their aesthetics. Chinese calligraphy, the art of writing, is an ancient art form that embodies many concepts of Chinese philosophy. Historically, good handwriting was seen as the hallmark of the educated person. Today, there is a revival of interest, and most Chinese children practice calligraphy at school.</c.P>
           <c.P>Practicing the traditional art of writing is not something you have to do to learn Chinese. But many people find it enjoyable. The artistic principles help us develop a feel for the logic of how the Chinese characters have been put together; the rhythm of writing each stroke makes the whole character come alive. After just a short while of practice, this will help you to see the characters in a new way. Have a try; in later lessons you can decide whether you want to continue writing calligraphy.</c.P>
@@ -249,7 +249,7 @@ export default class S0E1 extends Component {
           <c.P>一</c.P>
           <c.P>But if you look carefully at the hand-written character, you will see that the horizontal stroke is not just a flat line. It has a clearly defined beginning and end and the whole stroke curves gently, giving it the organic look of a bone or a tree branch:</c.P>
           {character(1, { mode: 'box' })}
-          <c.P>Click on the brush icon to see the video. Print out an <a href="https://s3.eu-west-2.amazonaws.com/chineseme/pdf/Exercise+sheet.pdf">exercise sheet</a> and practice using a black ballpoint pen:</c.P>
+          <c.P>Click on the brush icon to see the video. Print out an <a href="https://s3.eu-west-2.amazonaws.com/chineseme/pdf/Exercise+sheet.pdf" target="_blank" rel="noopener noreferrer">exercise sheet</a> and practice using a black ballpoint pen:</c.P>
           {character(1, { mode: 'practice' })}
           <c.PartTitle
             type="secondary"
@@ -262,7 +262,7 @@ export default class S0E1 extends Component {
           >
             王 wáng king
           </c.PartTitle>
-          <c.P>This character is made up of three horizontal strokes which are connected by a vertical stroke. The four strokes must always be written in a special order. Click on the stroke order animation to see the order.</c.P>
+          <c.P>This character is made up of three horizontal strokes which are connected by a vertical stroke. The four strokes must always be written in a special order. Click on the stroke order icon to see the order.</c.P>
           <c.P>Stroke order is important for all characters: without it, memorizing the characters becomes almost impossible. It also makes writing faster, and it is the basis for one of the methods used to look up characters in printed dictionaries.</c.P>
           <c.P>Fortunately, most students find stroke order easy to remember. We need to memorize each character individually, but there are some general guidelines that make this easier: for example, characters are written top to bottom. The stroke order of <b>wáng</b> is an illustration of this rule.</c.P>
           <c.P>Now, practice writing it yourself, as beautifully as you can:</c.P>

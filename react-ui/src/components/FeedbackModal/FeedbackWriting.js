@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
 import Form from './Form';
+import messageIcon from '../../images/messageIcon.png';
 
 const Wrapper = styled.div`
   height: 700px;
@@ -10,13 +11,8 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 
-const TitleWrapper = styled.div`
-  flex: 2 0 0;
-  font-family: 'Open Sans';
-  font-size: 30px;
-  font-weight: bold;
-  text-align: center;
-  color: #454545;
+const IconWrapper = styled.div`
+  margin-top: 35px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -31,9 +27,9 @@ class FeedbackWriting extends Component {
   render() {
     return (
       <Wrapper>
-        <TitleWrapper>
-          <p>Tell us about your question or comment</p>
-        </TitleWrapper>
+        <IconWrapper>
+          <img src={messageIcon} width="90px" alt=""/>
+        </IconWrapper>
         <FormWrapper>
           <Form
             onSubmit={this.props.onSubmit}

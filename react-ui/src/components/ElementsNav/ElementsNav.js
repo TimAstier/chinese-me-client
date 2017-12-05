@@ -81,7 +81,7 @@ class ElementsNav extends Component {
     if (totalElements === 0) {
       return (
         <LabelWrapper>
-          <LabelA>Completed!</LabelA>
+          <LabelA>Completed</LabelA>
         </LabelWrapper>
       );
     }

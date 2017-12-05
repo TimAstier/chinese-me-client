@@ -17,13 +17,12 @@ import howler from 'howler';
 */
 
 export function *voiceText(text, muted = false) {
-  console.log(text)
   // See ResponsiveVoice Api: https://responsivevoice.org/api/
   const voicer = window.responsiveVoice;
   if (voicer.voiceSupport()) {
     const channel = eventChannel(emitter => {
       voicer.speak(
-        text,
+        text.replace(/_/g, ''), // Remove '_' that appear when a user variable is missing
         'Chinese Female',
         {
           volume: muted ? 0 : 1,

@@ -2,6 +2,23 @@ import React, { Component } from 'react';
 import * as c from '../components';
 import { content as contentPropTypes } from '../../../helpers/propTypes';
 import { Row } from '../../Shared';
+import styled from 'styled-components';
+
+// Custom code to handle "example" dialogs
+const Chinese = styled.div`
+  font-size: 25px;
+  font-family: Kai;
+  margin-left: -20px;
+  line-height: 35px;
+  min-width: 200px;
+`;
+
+const Translation = styled.div`
+  font-size: 18px;
+  line-height: 25px;
+  display: flex;
+  font-style: italic;
+`;
 
 export default class S0E2 extends Component {
   static propTypes = contentPropTypes
@@ -45,23 +62,73 @@ export default class S0E2 extends Component {
           <c.P>In the previous lesson, we learned to introduce ourselves using the verb 叫 which means <i>to be called</i>. The verb 姓 is used in a similar pattern to introduce one’s family name:</c.P>
           {example(1, { basic: true, big: true, audio: true, displayTranslation: true})}
           <c.P>So while 叫 means <i>to be called</i>, 姓 literally means <i>to have as family name</i>. The two words are often used together in presentations, a bit like when agent double-oh- seven introduces himself saying <i>My name is Bond; James Bond:</i></c.P>
-          {dialog(1, { sentenceType: 'chineseWithTranslation', displayNames: false })}
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                text: '你好！ 我姓王。 我叫王一。'
+              }
+            }}
+          >
+            <c.Ul>
+              <li><Row><Chinese>你好！</Chinese><Translation>Hi!</Translation></Row></li>
+              <li><Row><Chinese>我姓王。</Chinese><Translation>My family name is Wang.</Translation></Row></li>
+              <li><Row><Chinese>我叫王一。 </Chinese><Translation>My name is Wang Yi.</Translation></Row></li>
+            </c.Ul>
+          </c.Bookrow>
           <c.P>叫 <i>to be called</i> can also be used with only the given name instead of the full name:</c.P>
-          {dialog(2, { sentenceType: 'chineseWithTranslation', displayNames: false })}
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                text: '你好！ 我姓王。 我叫一。'
+              }
+            }}
+          >
+            <c.Ul>
+              <li><Row><Chinese>你好！</Chinese><Translation>Hi!</Translation></Row></li>
+              <li><Row><Chinese>我姓王。</Chinese><Translation>My family name is Wang.</Translation></Row></li>
+              <li><Row><Chinese>我叫一。 </Chinese><Translation>My given name is Yi.</Translation></Row></li>
+            </c.Ul>
+          </c.Bookrow>
           <c.PartTitle type="secondary">Role Play: Introduce yourself</c.PartTitle>
           <c.P>Now, introduce yourself by giving your last name, and then your full name. Tell Wang Yi what your name is and listen to her response:</c.P>
-          {dialog(3, { sentenceType: 'chineseWithTranslation', displayNames: false })}
+          {dialog(1, { sentenceType: 'chineseWithTranslation', displayNames: false })}
           <c.P>Repeat this until you feel comfortable.</c.P>
           <c.P>Now, change roles by pretending you are Wang Yi.</c.P>
           <c.PartTitle type="secondary">How to greet someone you already know</c.PartTitle>
           <c.P>When Chinese people meet each other they often say the other person's name as a form of greeting. This is called to 叫 <i>call</i> someone.</c.P>
-          {dialog(4, { sentenceType: 'chineseWithTranslation', displayNames: false })}
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                text: '王一！ 你好！'
+              }
+            }}
+          >
+            <c.Ul>
+              <li><Row><Chinese>王一！</Chinese><Translation>Wang Yi!</Translation></Row></li>
+              <li><Row><Chinese>你好！</Chinese><Translation>Hi!</Translation></Row></li>
+            </c.Ul>
+          </c.Bookrow>
           <c.P>You can also add 你好 hi after the name.</c.P>
-          {dialog(5, { sentenceType: 'chineseWithTranslation', displayNames: false })}
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                text: '王一，你好！ 你好！'
+              }
+            }}
+          >
+            <c.Ul>
+              <li><Row><Chinese>王一，你好！</Chinese><Translation>Hi, Wang Yi!</Translation></Row></li>
+              <li><Row><Chinese>你好！</Chinese><Translation>Hi!</Translation></Row></li>
+            </c.Ul>
+          </c.Bookrow>
           <c.P>Note that the name and greeting have the opposite order in Chinese and English: we say <i>hi John!</i> but the Chinese say <i>John, hi!</i> It is also common to add a title or a kinship term to the name when you call someone; we will see many examples of this later.</c.P>
           <c.PartTitle type="secondary">Role Play: Greeting people you know</c.PartTitle>
-          {dialog(6, { sentenceType: 'chineseWithTranslation', displayNames: false })}
-          {dialog(7, { sentenceType: 'chineseWithTranslation', displayNames: false })}
+          {dialog(2, { sentenceType: 'chineseWithTranslation', displayNames: false })}
+          {dialog(3, { sentenceType: 'chineseWithTranslation', displayNames: false })}
           <c.PartTitle type="secondary">Oracle bones</c.PartTitle>
           <c.P>We have seen that the most ancient Chinese characters were pictures which, as the written language developed, were gradually combined into more complex characters. Most of these were combinations of a radical indicating meaning, and a phonetic hinting at the sound. But some characters were based on different logic.</c.P>
           <c.P>Take 好 for example. The element on the left is the radical 女 which means <i>woman</i>, and the element on the right is the character 子 <i>son, child</i>. This is how it looked on the oracle bones:</c.P>

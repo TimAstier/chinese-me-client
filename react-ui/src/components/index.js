@@ -48,6 +48,7 @@ export { default as NewWordPopup } from './NewWordLink/NewWordPopup';
 export { default as OnboardingScreen } from './OnboardingScreen/OnboardingScreen';
 export { default as PauseButton } from './PauseButton/PauseButton';
 export { default as PlayAudioButton } from './PlayAudioButton/PlayAudioButton';
+export { default as PracticeResult } from './PracticeResult/PracticeResult';
 export { default as Progressbar } from './Progressbar/Progressbar';
 export { default as QuestionModal } from './QuestionModal/QuestionModal';
 export { default as ClosedQuestion } from './QuestionModal/ClosedQuestion';

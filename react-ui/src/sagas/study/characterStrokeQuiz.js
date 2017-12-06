@@ -6,7 +6,6 @@ import { actions as studyActions } from '../../redux/study';
 import { types as sagaTypes } from '../actions';
 import { fetchEntities } from '../entities';
 import { actions as sagaActions } from '../actions';
-import { actions as practiceActions } from '../../redux/practice';
 import { actions as uiActions } from '../../redux/ui';
 import { push } from 'react-router-redux';
 
@@ -32,22 +31,20 @@ export function* initStudyData() {}
 
 export function* initUi() {}
 
-export function* run(mode = 'free') {
-  if (mode !== 'exam') {
+export function* run(isExam = false) {
+  // There is currently no way to fail this exercise
+  const result = { isCorrect: true };
+  if (!isExam) {
     yield put(uiActions.set('hanziAgainButton', true));
   }
   yield take(sagaTypes.STROKE_QUIZ_COMPLETED);
   yield put(sagaActions.playSuccessSound());
-  if (mode === 'exam') {
-    return true;
+  if (isExam) {
+    return result;
   }
   yield put(uiActions.set('hanziAgainButton', false));
-  if (mode === 'practice') {
-    yield delay(1000);
-    yield put(practiceActions.setInitialized(false));
-    return yield put(practiceActions.correctAnswer());
-  }
-  return yield delay(1000);
+  yield delay(1000);
+  return result;
 }
 
 export function* nextScreen() {

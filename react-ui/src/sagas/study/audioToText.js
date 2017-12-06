@@ -8,7 +8,6 @@ import { actions as uiActions } from '../../redux/ui';
 import { Map } from 'immutable';
 import { fetchEntities } from '../entities';
 import { actions as audioActions } from '../../redux/audio';
-import { actions as practiceActions } from '../../redux/practice';
 
 const trim = string => {
   return string.replace(/\s+/g, '').toLowerCase();
@@ -41,7 +40,8 @@ export function* initUi() {
   yield put(audioToTextActions.init());
 }
 
-export function* run(mode = 'free') {
+export function* run(isExam = false) {
+  let result;
   const currentAudioToText = yield select(selectors.getCurrentAudioToText);
   yield put(audioActions.set('audioUrl', currentAudioToText.audioUrl));
   yield put(sagaActions.playAudio());
@@ -54,20 +54,15 @@ export function* run(mode = 'free') {
     const userAnswer = yield select(selectors.audioToText.getUserAnswer);
     const success = trim(word.get('pinyin')) === trim(userAnswer);
     if (!success) {
+      const prematureResults = yield select(selectors.audioToText.getResults);
+      result = {
+        isCorrect: false,
+        value: prematureResults.toJS().map(e => e.userAnswer).join(' | ') + ' | ' + userAnswer
+      };
       yield put(sagaActions.playWrongSound());
       // In exam, skip the end if the user makes one mistake
-      // Tracking
-      const prematureResults = yield select(selectors.audioToText.getResults);
-      yield put(sagaActions.exerciseCompleted({
-        id: currentAudioToText.get('id'),
-        type: 'audioToText',
-        mode,
-        success: false,
-        results: prematureResults.toJS()
-      }));
-      // End Tracking
-      if (mode === 'exam') {
-        return false;
+      if (isExam) {
+        return result;
       }
     }
     yield put(audioToTextActions.addResult(Map({ success, userAnswer })));
@@ -75,34 +70,28 @@ export function* run(mode = 'free') {
   }
   const questionSuccess = yield select(selectors.audioToText.getSuccess);
   yield put(uiActions.set('playAudioButton', false));
-  // Tracking
   const results = yield select(selectors.audioToText.getResults);
-  yield put(sagaActions.exerciseCompleted({
-    id: currentAudioToText.get('id'),
-    type: 'audioToText',
-    mode,
-    success: questionSuccess,
-    results: results.toJS()
-  }));
-  // End Tracking
   if (questionSuccess) {
+    result = {
+      isCorrect: true,
+      value: results.toJS().map(e => e.userAnswer).join(' ')
+    };
     yield put(sagaActions.playSuccessSound());
-    if (mode === 'exam') {
-      return true;
+    if (isExam) {
+      return result;
     }
     yield put(audioToTextActions.setStatus('finished'));
     yield delay(1000);
-    yield put(practiceActions.setInitialized(false));
-    return yield put(practiceActions.correctAnswer());
+    return result;
   }
+  result = {
+    isCorrect: false,
+    value: results.toJS().map(e => e.userAnswer).join(' ')
+  };
   yield put(audioToTextActions.setStatus('finished'));
   yield put(uiActions.set('nextButton', true));
-  if (mode === 'practice') {
-    yield take(sagaTypes.NEXT_QUESTION);
-    yield put(practiceActions.setInitialized(false));
-    return yield put(practiceActions.wrongAnswer());
-  }
-  return yield take(sagaTypes.NEXT);
+  yield take(sagaTypes.NEXT_QUESTION);
+  return result;
 }
 
 // export function* nextScreen() {}

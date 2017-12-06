@@ -3,7 +3,7 @@ import { actions as uiActions } from '../../redux/ui';
 import selectors from '../../rootSelectors';
 import { fetchEntities } from '../entities';
 import { actions as practiceActions } from '../../redux/practice';
-import { types as sagaTypes } from '../actions';
+import { actions as sagaActions, types as sagaTypes } from '../actions';
 import getStudyFunctions from '../../helpers/getStudyFunctions';
 import mapExerciseTypeToSetCurrentAction
   from '../../helpers/mapExerciseTypeToSetCurrentAction';
@@ -59,10 +59,30 @@ export function* run() {
     yield call(funcs.initStudyData);
     yield call(funcs.initUi);
     yield put(practiceActions.setInitialized(true));
-    yield race({
-      run: call(funcs.run, 'practice'),
+    // NOTE: Each exercise run Saga needs to return a result object with shape:
+    // {
+    //   isCorrect (boolean)
+    //   value (string)
+    // }
+    const runExercise = yield race({
+      result: call(funcs.run),
       exit: take(sagaTypes.EXIT)
     });
+    if (runExercise.hasOwnProperty('result')) {
+      // Important: initialized needs to be set to false to avoid
+      // rendering the next exercise too early, before initializing the data
+      // (the practice reducer push the next exercise on correct/wrong answers)
+      yield put(practiceActions.setInitialized(false));
+      if (runExercise.result.isCorrect) {
+        yield put(practiceActions.correctAnswer());
+      } else {
+        yield put(practiceActions.wrongAnswer());
+      }
+      yield put(sagaActions.saveAnswer({
+        exerciseId: exercise.get('id'),
+        ...runExercise.result
+      }));
+    }
     const nextExercise = yield select(selectors.practice.getCurrentExercise);
     if (!nextExercise) {
       completed = true;

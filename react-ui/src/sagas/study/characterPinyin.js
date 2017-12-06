@@ -9,7 +9,6 @@ import { actions as audioActions } from '../../redux/audio';
 import selectors from '../../rootSelectors';
 import { actions as studyActions } from '../../redux/study';
 import { fetchEntities } from '../entities';
-import { actions as practiceActions } from '../../redux/practice';
 import pinyinNumberToAudioUrl from '../../utils/pinyinNumberToAudioUrl';
 
 export function* isDataLoaded(id) {
@@ -35,7 +34,8 @@ export function* initUi() {
   yield put(uiActions.set('playAudioButton', true));
 }
 
-export function* run(mode = 'free') {
+export function* run(isExam = false) {
+  const result = {};
   const currentChar = yield select(selectors.getCurrentCharacter);
   const audioUrl = pinyinNumberToAudioUrl(currentChar.pinyinNumber);
   yield put(audioActions.set('audioUrl', audioUrl));
@@ -45,65 +45,37 @@ export function* run(mode = 'free') {
       yield put(sagaActions.playAudio());
       yield take(sagaTypes.CHECK_ANSWER);
       const userAnswer = yield select(selectors.characterPinyin.getUserAnswer);
+      result.value = userAnswer;
       const expectedAnswer = currentChar.pinyinNumber;
-      // Compare userAnswer without spaces with the expected answer
+      // Compare userAnswer without spaces with the expected result
       if (userAnswer.replace(/\s+/g, '') === expectedAnswer) {
-        // Tracking
-        yield put(sagaActions.exerciseCompleted({
-          id: currentChar.get('id'),
-          type: 'characterPinyin',
-          mode,
-          success: true,
-          userAnswer,
-          expectedAnswer,
-          attemptsLeft
-        }));
-        // End Tracking
+        result.isCorrect = true;
         yield put(sagaActions.playSuccessSound());
-        if (mode === 'exam') {
-          return true;
+        if (isExam) {
+          return result;
         }
         yield put(characterPinyinActions.setStatus('correct'));
         yield put(uiActions.set('playAudioButton', false));
-        if (mode === 'practice') {
-          yield delay(1000);
-          yield put(practiceActions.setInitialized(false));
-          return yield put(practiceActions.correctAnswer());
-        }
-        return yield delay(1000);
+        yield delay(1000);
+        return result;
+      }
+      result.isCorrect = false;
+      yield put(sagaActions.playWrongSound());
+      if (isExam) {
+        // In exam, skip the end if the user makes one mistake
+        return result;
+      }
+      if (attemptsLeft !== 0) {
+        yield put(uiActions.openHintModal());
+        yield take(uiTypes.CLOSE_HINT_MODAL);
+        yield put(characterPinyinActions.setUserAnswer(''));
+        yield put(characterPinyinActions.setAttemptsLeft(attemptsLeft - 1));
+        attemptsLeft --;
       } else {
-        // Tracking
-        yield put(sagaActions.exerciseCompleted({
-          id: currentChar.get('id'),
-          type: 'characterPinyin',
-          mode,
-          success: false,
-          userAnswer,
-          expectedAnswer,
-          attemptsLeft
-        }));
-        // End Tracking
-        yield put(sagaActions.playWrongSound());
-        if (mode === 'exam') {
-          // In exam, skip the end if the user makes one mistake
-          return false;
-        }
-        if (attemptsLeft !== 0) {
-          yield put(uiActions.openHintModal());
-          yield take(uiTypes.CLOSE_HINT_MODAL);
-          yield put(characterPinyinActions.setUserAnswer(''));
-          yield put(characterPinyinActions.setAttemptsLeft(attemptsLeft - 1));
-          attemptsLeft --;
-        } else {
-          yield put(characterPinyinActions.setStatus('wrong'));
-          yield put(uiActions.set('nextButton', true));
-          if (mode === 'practice') {
-            yield take(sagaTypes.NEXT_QUESTION);
-            yield put(practiceActions.setInitialized(false));
-            return yield put(practiceActions.wrongAnswer());
-          }
-          yield take(sagaTypes.NEXT);
-        }
+        yield put(characterPinyinActions.setStatus('wrong'));
+        yield put(uiActions.set('nextButton', true));
+        yield take(sagaTypes.NEXT_QUESTION);
+        return result;
       }
     }
   }

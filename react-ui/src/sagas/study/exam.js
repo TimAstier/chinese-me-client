@@ -13,7 +13,7 @@ import { actions as uiActions } from '../../redux/ui';
 import selectors from '../../rootSelectors';
 import { fetchEntities } from '../entities';
 import { actions as examActions } from '../../redux/exam';
-import { types as sagaTypes } from '../actions';
+import { actions as sagaActions, types as sagaTypes } from '../actions';
 import getStudyFunctions from '../../helpers/getStudyFunctions';
 import { actions as timerActions, types as timerTypes } from '../../redux/timer';
 import mapExerciseTypeToSetCurrentAction
@@ -76,26 +76,33 @@ function* runExam() {
     yield call(funcs.initStudyData);
     yield call(funcs.initUi);
     yield put(examActions.setInitialized(true));
-    // NOTE: Each exercise run Saga needs to return a boolean (success or fail)
+    // NOTE: Each exercise run Saga needs to return a result object with shape:
+    // {
+    //   isCorrect (boolean)
+    //   value (string)
+    // }
     const runExercise = yield race({
-      success: call(funcs.run, 'exam'),
+      result: call(funcs.run, true),
       exit: take(sagaTypes.EXIT)
     });
     // Stop timer at end of last exercise
     if (i === exercises.size - 1) {
       yield put(timerActions.stop());
     }
-    if (runExercise.hasOwnProperty('success')) {
+    if (runExercise.hasOwnProperty('result')) {
       // Important: initialized needs to be set to false to avoid
       // rendering the next exercise too early, before initializing the data
       // (the exam reducer push the next exercise on correct/wrong answers)
-      if (runExercise.success) {
-        yield put(examActions.setInitialized(false));
+      yield put(examActions.setInitialized(false));
+      if (runExercise.result.isCorrect) {
         yield put(examActions.correctAnswer());
       } else {
-        yield put(examActions.setInitialized(false));
         yield put(examActions.wrongAnswer());
       }
+      yield put(sagaActions.saveAnswer({
+        exerciseId: exercise.get('id'),
+        ...runExercise.result
+      }));
     }
   }
 }

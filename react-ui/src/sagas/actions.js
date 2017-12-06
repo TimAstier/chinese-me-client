@@ -48,12 +48,12 @@ export const types = {
   PLAY_LEVEL_WIN_SOUND: 'signal/PLAY_LEVEL_WIN_SOUND',
   PLAY_LEVEL_FAIL_SOUND: 'signal/PLAY_LEVEL_FAIL_SOUND',
   NEXT_QUESTION: 'signal/NEXT_QUESTION',
-  EXERCISE_COMPLETED: 'signal/EXERCISE_COMPLETED',
   QUESTION_ANSWERED: 'signal/QUESTION_ANSWERED',
   NEW_WORD_LINK_CLICKED: 'signal/NEW_WORD_LINK_CLICKED',
   SET_EPISODE_DATA: 'signal/SET_EPISODE_DATA',
   INIT_BOOK: 'signal/INIT_BOOK',
-  ASK_USER_SETTINGS: 'signal/ASK_USER_SETTINGS'
+  ASK_USER_SETTINGS: 'signal/ASK_USER_SETTINGS',
+  SAVE_ANSWER: 'signal/SAVE_ANSWER'
 };
 
 // Action Creators
@@ -207,18 +207,6 @@ const playWrongSound = () => ({ type: types.PLAY_WRONG_SOUND });
 const playLevelWinSound = () => ({ type: types.PLAY_LEVEL_WIN_SOUND });
 const playLevelFailSound = () => ({ type: types.PLAY_LEVEL_FAIL_SOUND });
 const nextQuestion = () => ({ type: types.NEXT_QUESTION });
-const exerciseCompleted = data => ({
-  type: types.EXERCISE_COMPLETED,
-  meta: {
-    analytics: {
-      eventType: EventTypes.track,
-      eventPayload: {
-        event: 'Exercise Completed',
-        properties: { ...data }
-      }
-    }
-  }
-});
 const questionAnswered = answer => ({
   type: types.QUESTION_ANSWERED,
   payload: { answer }
@@ -243,6 +231,10 @@ const askUserSettings = () => ({
   type: types.ASK_USER_SETTINGS
 });
 
+const saveAnswer = answer => ({
+  type: types.SAVE_ANSWER,
+  payload: { answer }
+});
 
 export const actions = {
   next,
@@ -286,10 +278,10 @@ export const actions = {
   playLevelWinSound,
   playLevelFailSound,
   nextQuestion,
-  exerciseCompleted,
   questionAnswered,
   newWordLinkClicked,
   setEpisodeData,
   initBook,
-  askUserSettings
+  askUserSettings,
+  saveAnswer
 };

@@ -10,6 +10,7 @@ class GrammarTitle extends Component {
   render() {
     return (
       <c.GrammarTitle
+        grammarId={this.props.grammar ? this.props.grammar.id : ''}
         title={this.props.grammar ? this.props.grammar.title : ''}
         letter={this.props.letter}
       />

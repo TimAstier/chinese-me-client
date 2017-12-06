@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
 import { Bookrow } from './.';
+const Scroll = require('react-scroll');
+const Element = Scroll.Element;
 
 const H3 = styled.h3`
   font-size: 24px;
@@ -17,10 +19,12 @@ class GrammarTitle extends Component {
       <Bookrow
         backgroundColor={'#F3F3F3'}
       >
-        <H3>
-          {this.props.letter + '. '}
-          {<span>{this.props.title}</span>}
-        </H3>
+        <Element name={`grammar-${this.props.grammarId}`}>
+          <H3>
+            {this.props.letter + '. '}
+            {<span>{this.props.title}</span>}
+          </H3>
+        </Element>
       </Bookrow>
     );
   }
@@ -28,7 +32,8 @@ class GrammarTitle extends Component {
 
 GrammarTitle.propTypes = {
   title: propTypes.string.isRequired,
-  letter: propTypes.string.isRequired
+  letter: propTypes.string.isRequired,
+  grammarId: propTypes.number
 };
 
 export default GrammarTitle;

@@ -20,13 +20,15 @@ CharacterStrokeQuiz.propTypes = {
   timerStatus: propTypes.string.isRequired,
   hideLabel: propTypes.bool,
   strokeQuizCompleted: propTypes.func.isRequired,
-  watchAgain: propTypes.bool.isRequired
+  watchAgain: propTypes.bool.isRequired,
+  screenType: propTypes.string.isRequired
 };
 
 const mapStateToProps = state => ({
   character: s.getCurrentCharacter(state),
   timerStatus: s.timer.getStatus(state),
-  watchAgain: s.hanzi.getWatchAgain(state)
+  watchAgain: s.hanzi.getWatchAgain(state),
+  screenType: s.routing.getCurrentScreenType(state)
 });
 
 export default connect(

@@ -3,7 +3,7 @@ import { actions as uiActions } from '../../redux/ui';
 import selectors from '../../rootSelectors';
 import { fetchEntities } from '../entities';
 import { actions as practiceActions } from '../../redux/practice';
-import { actions as sagaActions, types as sagaTypes } from '../actions';
+import { types as sagaTypes, actions as sagaActions } from '../actions';
 import getStudyFunctions from '../../helpers/getStudyFunctions';
 import mapExerciseTypeToSetCurrentAction
   from '../../helpers/mapExerciseTypeToSetCurrentAction';
@@ -88,6 +88,10 @@ export function* run() {
       completed = true;
     }
   }
+  // yield delay(1000);
+  yield put(sagaActions.playLevelWinSound());
+  yield put(uiActions.set('nextButton', true));
+  yield take(sagaTypes.NEXT);
 }
 
 export function* nextScreen() {

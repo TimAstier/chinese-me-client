@@ -146,7 +146,7 @@ const setCurrentVideoId = id => {
 };
 
 const setDialogMode = mode => {
-  const modes = ['listen', 'explore', 'roleplay', 'choserole'];
+  const modes = ['watch', 'explore', 'roleplay', 'choserole'];
   if (modes.findIndex(e => e === mode) === -1) {
     throw new Error('Unknown dialog mode');
   }

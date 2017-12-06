@@ -17,7 +17,7 @@ export default class S1E7 extends Component {
           {lessonTitle()}
           <c.PartTitle type="secondary">Introducing where you are from</c.PartTitle>
           {example(4, { basic: true, audio: true })}
-          <c.P>This sentence means I am Chinese. It contains three initials that are related to each other. In <b>pīnyīn</b>, they are spelled <b>sh-</b>, <b>zh-</b> and <b>r-</b>.</c.P>
+          <c.P>This sentence means <i>I am Chinese</i>. It contains three initials that are related to each other. In <b>pīnyīn</b>, they are spelled <b>sh-</b>, <b>zh-</b> and <b>r-</b>.</c.P>
           <c.P>Chinese <b>sh-</b> is pronounced more or less like English <i>sh</i> in <i>show</i>, for example in the character 是 <b>shi</b>. Type the correct <b>pīnyīn</b>, with tone:</c.P>
           <c.Bookrow
             buttonOptions={{
@@ -87,7 +87,7 @@ export default class S1E7 extends Component {
           >
             <c.Char>我是中国人。</c.Char>
           </c.Bookrow>
-          <c.PartTitle type="secondary">Explore: Meet Yi and Yuguo</c.PartTitle>
+          <c.PartTitle type="secondary">Dilog: Meet Yi and Yuguo</c.PartTitle>
           <c.P>Yi and her friend Yuguo both come from China. Here’s how they present themselves:</c.P>
           {dialog(1, { sentenceType: 'chineseWithTranslation', displayNames: false })}
           {dialog(2, { sentenceType: 'chineseWithTranslation', displayNames: false })}
@@ -99,7 +99,7 @@ export default class S1E7 extends Component {
             In order to say <i>I am from {insertVariables('[NATIONALITY_EN]', settings)}</i>, just add 人:
           </c.P>
           {example(5, { basic: true, big: true, audio: true })}
-          <c.PartTitle type="secondary">Role Play: Introduce yourself and where you are from</c.PartTitle>
+          <c.PartTitle type="secondary">Dialog: Introduce yourself and where you are from</c.PartTitle>
           <c.P>Introduce yourself to Wang Yuguo:</c.P>
           {dialog(3, { sentenceType: 'chinese', displayNames: false })}
           <c.P>Repeat this until you feel comfortable.</c.P>
@@ -107,7 +107,7 @@ export default class S1E7 extends Component {
           <c.PartTitle type="secondary">Pinyin practice</c.PartTitle>
           <c.P>Let us practice transcribing the characters and words in this lesson to <b>pīnyīn</b>.</c.P>
           <c.P>Three different sounds are spelled <b>i</b>.</c.P>
-          <c.P>After most initials, Chinese <b>i</b> is pronounced like English ee in <i>tree</i>:</c.P>
+          <c.P>After most initials, Chinese <b>i</b> is pronounced like English <i>ee</i> in <i>tree</i>:</c.P>
           <c.Bookrow
             buttonOptions={{
               type: 'audio',
@@ -132,7 +132,7 @@ export default class S1E7 extends Component {
             buttonOptions={{
               type: 'audio',
               data: {
-                text: '姓，叫'
+                text: '姓'
               }
             }}
           >
@@ -144,6 +144,17 @@ export default class S1E7 extends Component {
                   <c.Meaning>to have as family name</c.Meaning>
                 </Row>
               </li>
+            </c.Ul>
+          </c.Bookrow>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                text: '叫'
+              }
+            }}
+          >
+            <c.Ul>
               <li>
                 <Row>
                   <c.Char>叫</c.Char>
@@ -178,8 +189,7 @@ export default class S1E7 extends Component {
             buttonOptions={{
               type: 'audio',
               data: {
-                // url: pinyinNumberToAudioUrl('zi3'),
-                text: '子'
+                url: pinyinNumberToAudioUrl('zi3'),
               }
             }}
           >
@@ -206,7 +216,7 @@ export default class S1E7 extends Component {
             buttonOptions={{
               type: 'audio',
               data: {
-                text: '姓，是，子，你，叫，是，姓，子'
+                url: 'https://s3.eu-west-2.amazonaws.com/chineseme/sentences/83.m4a'
               }
             }}
           >
@@ -257,7 +267,7 @@ export default class S1E7 extends Component {
           </c.Bookrow>
           <c.P>A language without word forms is called an <i>isolating</i> language. When we study an isolating language like Chinese, we don’t have to worry about singular and plural, tenses and declinations. We just need to learn <i>sentence patterns</i>. Once you know the pattern for how to say something, you can insert new words without having to think about how to modify the words themselves.</c.P>
           <c.P>This course is based on such patterns. You should study these examples carefully; if you want, they are even available as flash cards so you can learn them by heart. You will get a feel for the langauge by internalizing the structures of Chinese as well as directly improving your pronunciation and ability to speak and understand.</c.P>
-          <c.P>All patterns are available as flash cards with translations to idiomatic English so that you will know how to use them in the right way. In those cases where we think it will help you understand the structure of a pattern better, we also provide a literal translation in capital letters to show the function of each Chinese word.</c.P>
+          <c.P>All patterns come with translations to idiomatic English so that you will know how to use them in the right way. In those cases where we think it will help you understand the structure of a pattern better, we also provide a literal translation in capital letters to show the function of each Chinese word.</c.P>
           <c.PartTitle type="tertiary">B. Sentence patterns with a few common verbs</c.PartTitle>
           <c.P>The sentences we have learned in previous lessons are made up of Subject, Verb and Object, just as in English:</c.P>
           {example(1, { audio: true })}
@@ -265,12 +275,12 @@ export default class S1E7 extends Component {
           {example(3, { audio: true })}
           <c.P>In this chapter, we encountered 是 shì which functions like English be (am, is):</c.P>
           {example(4, { audio: true })}
-          <c.PartTitle type="secondary">New characters</c.PartTitle>
+          <c.PartTitle type="secondary" anchor="new-characters">New characters</c.PartTitle>
           <c.P>Here are the new characters in this lesson. Click on each character to review the stroke order, or on the brush or history icons to see calligraphy and history videos.</c.P>
           {newCharacters()}
           <c.PartTitle type="secondary">New words</c.PartTitle>
           {newWords()}
-          <c.PartTitle type="secondary">Review</c.PartTitle>
+          <c.PartTitle type="secondary" anchor="review">Exercises</c.PartTitle>
           <c.P
             buttonOptions={{
               type: 'practice',
@@ -279,7 +289,7 @@ export default class S1E7 extends Component {
               }
             }}
           >
-            <i>On the ChineseMe website, you will find review exercises to practice pronunciation, grammar and character writing. Download the flashcard decks to review character stroke orders and vocabulary. Then do the Final Exam to progress to the next Lesson.</i>
+            <i>Now, go through the review exercises to practice pronunciation, grammar and character writing. Then do the Exam to progress to the next Lesson.</i>
           </c.P>
           <c.Exam />
         </c.Page>

@@ -40,7 +40,7 @@ export default (
         <Route path="character/:characterId/strokeQuiz" component={containers.CharacterStrokeQuiz} />
         <Route path="character/:characterId/etymology" component={containers.CharacterEtymology} />
         <Route path="character/:characterId/writing" component={containers.CharacterWriting} />
-        <Route path="dialog/:dialogId/listen" component={containers.Dialog} />
+        <Route path="dialog/:dialogId/watch" component={containers.Dialog} />
         <Route path="dialog/:dialogId/explore" component={containers.Dialog} />
         <Route path="dialog/:dialogId/roleplay" component={containers.Dialog} />
         <Route path="audioToText/:audioToTextId" component={containers.AudioToText} />

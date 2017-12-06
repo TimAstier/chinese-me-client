@@ -73,7 +73,7 @@ class Help extends Component {
             >
               Work with <b><i>Dialogs</i></b> in one of three ways:
               <ul>
-                <li><b>Listen</b> to the whole dialog in natural speed</li>
+                <li><b>Watch</b> to the whole dialog in natural speed</li>
                 <li><b>Explore</b> individual sentences and vocabulary</li>
                 <li><b>Roleplay</b> one of the actor to practice</li>
               </ul>

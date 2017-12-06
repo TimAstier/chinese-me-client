@@ -13,8 +13,8 @@ export default class S1E7 extends Component {
         <c.Page>
           {lessonTitle()}
           <c.Bookrow center>{image()}</c.Bookrow>
-          <c.PartTitle>NEW CHARACTERS</c.PartTitle>
-          <c.P><i>Practice the stroke order animations at ChineseMe. Some characters have material on Stories and Calligraphy.</i></c.P>
+          <c.PartTitle anchor="new-characters">NEW CHARACTERS</c.PartTitle>
+          <c.P><i>Practice the stroke order animations. Some characters have material on Stories and Calligraphy.</i></c.P>
           {newCharacters()}
           <c.PartTitle>PATTERNS</c.PartTitle>
           {grammarTitle()}
@@ -145,7 +145,7 @@ export default class S1E7 extends Component {
           <c.Bookrow center>{image()}</c.Bookrow>
           <c.PartTitle>NEW VOCABULARY</c.PartTitle>
           {newWords()}
-          <c.PartTitle>REVIEW</c.PartTitle>
+          <c.PartTitle anchor="review">Exercises</c.PartTitle>
           <c.P
             buttonOptions={{
               type: 'practice',
@@ -154,7 +154,7 @@ export default class S1E7 extends Component {
               }
             }}
           >
-            <i>On the ChineseMe website, you will find review exercises to practice pronunciation, grammar and character writing. Download the flashcard decks to review character stroke orders and vocabulary. Then do the Final Exam to progress to the next Lesson.</i>
+            <i>Now, go through the review exercises to practice pronunciation, grammar and character writing. Then do the Exam to progress to the next Lesson.</i>
           </c.P>
           <c.Exam />
         </c.Page>

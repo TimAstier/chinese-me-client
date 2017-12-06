@@ -4,6 +4,7 @@ import propTypes from 'prop-types';
 import { bookComponents as c } from '../../../components';
 import { push } from 'react-router-redux';
 import s from '../../../rootSelectors';
+import { actions as sagaActions } from '../../../sagas/actions';
 
 class BookButton extends Component {
 
@@ -12,7 +13,7 @@ class BookButton extends Component {
       case 'writing':
         return `/study/${this.props.episodeId}/character/${this.props.buttonOptions.data.elementId}/writing`;
       case 'dialog':
-        return `/study/${this.props.episodeId}/dialog/${this.props.buttonOptions.data.elementId}/listen`;
+        return `/study/${this.props.episodeId}/dialog/${this.props.buttonOptions.data.elementId}/explore`;
       case 'story':
         return `/study/${this.props.episodeId}/character/${this.props.buttonOptions.data.elementId}/etymology`;
       case 'stroke':
@@ -30,6 +31,9 @@ class BookButton extends Component {
     return (
       <c.BookButton
         onClick={() => {
+          if (this.props.buttonOptions.type === 'askUserSettings') {
+            return this.props.askUserSettings();
+          }
           if (!this.props.buttonOptions.hasOwnProperty('data')) {
             return null;
           }
@@ -50,11 +54,13 @@ BookButton.propTypes = {
       'story',
       'stroke',
       'practice',
-      'exam'
+      'exam',
+      'askUserSettings'
     ]).isRequired,
     data: propTypes.object
   }).isRequired,
-  episodeId: propTypes.string
+  episodeId: propTypes.string,
+  askUserSettings: propTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -64,6 +70,7 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   {
-    push
+    push,
+    askUserSettings: sagaActions.askUserSettings
   }
 )(BookButton);

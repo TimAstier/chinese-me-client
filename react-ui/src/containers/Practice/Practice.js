@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 import { Practice as PracticeComponent } from '../../components';
+import { PracticeResult } from '../../components';
 import s from '../../rootSelectors';
 
 class Practice extends Component {
@@ -14,7 +15,7 @@ class Practice extends Component {
         />
       );
     }
-    return null;
+    return <PracticeResult />;
   }
 }
 

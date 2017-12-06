@@ -56,6 +56,7 @@ class Bookrow extends Component {
       case 'story':
       case 'exam':
       case 'practice':
+      case 'askUserSettings':
         return this._renderBookButton(this.props.buttonOptions);
       default: return null;
     }
@@ -92,7 +93,8 @@ Bookrow.propTypes = {
       'stroke',
       'story',
       'practice',
-      'exam'
+      'exam',
+      'askUserSettings'
     ]).isRequired,
     data: propTypes.object,
     top: propTypes.bool

@@ -64,7 +64,7 @@ const TopRightWrapper = styled.div`
   align-items: center;
 `;
 
-const ExitIcon = styled.div`
+const BackIcon = styled.div`
   font-family: Open Sans;
   
   color: #959595;
@@ -96,9 +96,9 @@ class EpisodeScreen extends Component {
         <TopWrapper>
           <TopLeftWrapper>
             <Clickable>
-              <ExitIcon onClick={this.props.exit}>
-                Exit
-              </ExitIcon>
+              <BackIcon onClick={this.props.exit}>
+                Back
+              </BackIcon>
             </Clickable>
           </TopLeftWrapper>
           <TopMiddleWrapper elementType={this.props.elementType} />
@@ -115,7 +115,7 @@ class EpisodeScreen extends Component {
           <BottomRightWrapper>
             {next &&
               <ScreenButton
-                text="Next"
+                text="Continue"
                 primary
                 action="next"
               />

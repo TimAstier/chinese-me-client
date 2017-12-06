@@ -86,7 +86,7 @@ const getCurrentExercise = createSelector(
 const getPracticeCompletion = createSelector(
   getExercisesSize,
   getTotal,
-  (size, total) => (size && total) ? (total - size) / (total - 1) * 100 : 0
+  (size, total) => (size && total) ? (total - size) / total * 100 : 100
 );
 
 export const selectors = {

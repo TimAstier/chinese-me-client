@@ -15,7 +15,8 @@ class Navbar extends Component {
 Navbar.propTypes = {
   askQuestion: propTypes.func.isRequired,
   openMapModal: propTypes.func.isRequired,
-  isAuthenticated: propTypes.bool.isRequired
+  isAuthenticated: propTypes.bool.isRequired,
+  logout: propTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -26,6 +27,7 @@ export default connect(
   mapStateToProps,
   {
     askQuestion: sagaActions.askQuestion,
-    openMapModal: uiActions.openMapModal
+    openMapModal: uiActions.openMapModal,
+    logout: sagaActions.logout
   }
 )(Navbar);

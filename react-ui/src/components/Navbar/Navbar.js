@@ -4,9 +4,9 @@ import propTypes from 'prop-types';
 import logo from '../../images/logo.svg';
 import helpIcon from '../../images/helpIcon.svg';
 import messageIcon from '../../images/messageIcon.png';
-import userIcon from '../../images/defaultMaleUserIcon.svg';
 import Clickable from '../Shared/Clickable';
 import { Link } from 'react-router';
+import { UserPopup } from '../.';
 
 const Wrapper = styled.div`
   align-self: stretch;
@@ -53,6 +53,7 @@ const UserMenuWrapper = styled.div`
   display: flex;
   margin-top: -5px;
   align-items: center;
+  cursor: pointer;
 `;
 
 const UserIconWrapper = styled.div`
@@ -71,7 +72,6 @@ const IconWrapper = styled.div`
 `;
 
 class Navbar extends Component {
-
   render() {
     return (
       <Wrapper>
@@ -103,7 +103,7 @@ class Navbar extends Component {
             <UserIconWrapper>
               {
                 this.props.isAuthenticated &&
-                  <img src={userIcon} alt=""/>
+                  <UserPopup logout={this.props.logout} />
               }
             </UserIconWrapper>
             {
@@ -134,7 +134,8 @@ class Navbar extends Component {
 Navbar.propTypes = {
   askQuestion: propTypes.func.isRequired,
   openMapModal: propTypes.func.isRequired,
-  isAuthenticated: propTypes.bool.isRequired
+  isAuthenticated: propTypes.bool.isRequired,
+  logout: propTypes.func.isRequired
 };
 
 export default Navbar;

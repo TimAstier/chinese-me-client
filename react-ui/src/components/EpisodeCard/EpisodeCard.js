@@ -92,7 +92,7 @@ class EpisodeCard extends Component {
         </ImageWrapper>
         <NumberWrapper>
           {
-            (this.props.currentSeasonNumber !== 0 ? 'Episode ' : 'Lesson ')
+            (this.props.seasonNumber !== 0 ? 'Episode ' : 'Lesson ')
               + this.props.number
           }
         </NumberWrapper>
@@ -124,7 +124,7 @@ EpisodeCard.propTypes = {
   title: propTypes.string.isRequired,
   score: propTypes.number,
   imageUrl: propTypes.string,
-  currentSeasonNumber: propTypes.number
+  seasonNumber: propTypes.number
 };
 
 export default EpisodeCard;

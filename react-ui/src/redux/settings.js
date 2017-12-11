@@ -3,7 +3,8 @@ import { fromJS } from 'immutable';
 // Types
 
 export const types = {
-  SET: 'settings/SET'
+  SET: 'settings/SET',
+  CLEAR: 'settings/CLEAR'
 };
 
 // Reducer
@@ -19,6 +20,8 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
         initialized: true,
         ...action.payload.settings
       });
+    case types.CLEAR:
+      return INITIAL_STATE;
     default: return state;
   }
 }
@@ -30,8 +33,13 @@ const set = settings => ({
   payload: { settings }
 });
 
+const clear = () => ({
+  type: types.CLEAR
+});
+
 export const actions = {
-  set
+  set,
+  clear
 };
 
 // Selectors

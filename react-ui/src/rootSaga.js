@@ -5,7 +5,7 @@ import { initApp, reloadApp } from './sagas/init';
 import watchEpisodeSagas from './sagas/episode';
 import watchAudioSagas from './sagas/audio';
 import watchSignupSagas from './sagas/signup';
-import { loginFlow } from './sagas/loginFlow';
+import { watchLogin, watchLogout } from './sagas/loginFlow';
 import watchSendFeedback from './sagas/feedback';
 import watchStudySagas from './sagas/study';
 import watchDialogSagas from './sagas/study/dialog';
@@ -23,7 +23,8 @@ export default function* rootSaga() {
     watchEpisodeSagas(),
     watchAudioSagas(),
     watchSignupSagas(),
-    loginFlow(),
+    watchLogin(),
+    watchLogout(),
     watchSendFeedback(),
     watchStudySagas(),
     watchDialogSagas(),

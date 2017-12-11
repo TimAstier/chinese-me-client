@@ -1,4 +1,4 @@
-import { take, fork, cancel, call, put, cancelled } from 'redux-saga/effects';
+import { take, call, put, cancelled } from 'redux-saga/effects';
 import { types, actions } from './actions';
 import Api from '../utils/api';
 import setAuthorizationToken from '../utils/setAuthorizationToken';
@@ -7,6 +7,7 @@ import { actions as authActions } from '../redux/auth';
 import { push } from 'react-router-redux';
 import { SubmissionError } from 'redux-form/immutable';
 import serverErrors from '../constants/serverErrors';
+import { actions as settingsActions } from '../redux/settings';
 
 function* login(token) {
   localStorage.setItem('jwtToken', token);
@@ -18,6 +19,8 @@ function* logout() {
   localStorage.removeItem('jwtToken');
   setAuthorizationToken(false);
   yield put(authActions.setCurrentUser({}));
+  yield put(settingsActions.clear());
+  yield put(push('/'));
 }
 
 function* authorize(params) {
@@ -31,6 +34,7 @@ function* authorize(params) {
     yield call(resolve);
     yield put(push('/study'));
   } catch (error) {
+    console.log('error')
     yield put(actions.loginError());
     const errorMessage = serverErrors[error.response.data.errors[0].message];
     yield call(reject, new SubmissionError({ _error: errorMessage }));
@@ -42,14 +46,16 @@ function* authorize(params) {
   }
 }
 
-export function* loginFlow() {
+export function* watchLogin() {
   while (true) { // eslint-disable-line no-constant-condition
     const { payload: { values, resolve, reject } } = yield take(types.LOGIN_REQUEST);
-    const task = yield fork(authorize, { values, resolve, reject });
-    const action = yield take([types.LOGOUT, types.LOGIN_ERROR]);
-    if (action.type === types.LOGOUT) {
-      yield cancel(task);
-    }
+    yield call(authorize, { values, resolve, reject });
+  }
+}
+
+export function* watchLogout() {
+  while (true) { // eslint-disable-line no-constant-condition
+    yield take(types.LOGOUT);
     yield call(logout);
   }
 }

@@ -4,6 +4,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [X.X] YYYY-MM-DD
+
+### Added
+### Content
+### Changed
+### Fixed
+
+## [0.1.1] 2017-12-11
+
+### Added
+- Logout
+
+### Fixed
+- EpisodeCards should mention "Lesson" instead of "Episode" in season 0.
+
+
 ## [0.1] 2017-12-05
 
 ### Added

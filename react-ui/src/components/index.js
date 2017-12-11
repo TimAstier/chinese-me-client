@@ -43,6 +43,7 @@ export { default as Modal } from './Modal/Modal';
 export { default as ModeButton } from './Dialog/ModeButton';
 export { default as MultipleChoice } from './MultipleChoice/MultipleChoice';
 export { default as Navbar } from './Navbar/Navbar';
+export { default as UserPopup } from './Navbar/UserPopup';
 export { default as NewWordLink } from './NewWordLink/NewWordLink';
 export { default as NewWordPopup } from './NewWordLink/NewWordPopup';
 export { default as OnboardingScreen } from './OnboardingScreen/OnboardingScreen';

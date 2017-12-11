@@ -34,7 +34,6 @@ function* authorize(params) {
     yield call(resolve);
     yield put(push('/study'));
   } catch (error) {
-    console.log('error')
     yield put(actions.loginError());
     const errorMessage = serverErrors[error.response.data.errors[0].message];
     yield call(reject, new SubmissionError({ _error: errorMessage }));

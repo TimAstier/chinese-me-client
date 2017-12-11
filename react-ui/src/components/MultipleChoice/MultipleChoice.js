@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
 import { ChoiceBox } from '../.';
-import { ScreenButton } from '../../containers';
 import iconWrong from '../../images/iconWrong.svg';
 import iconCorrect from '../../images/iconCorrect.svg';
 import createArrayOfRandomIntegers from '../../utils/createArrayOfRandomIntegers';
@@ -32,13 +31,6 @@ const ChoicesWrapper = styled.div`
   margin-top: 22px;
   display: flex;
   flex-direction: column;
-`;
-
-const CheckWrapper = styled.div`
-  flex-basis: 112px;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
 `;
 
 const AnswerWrapper = styled.div`
@@ -103,20 +95,10 @@ class MultipleChoice extends Component {
     return status === 'wrong' || status === 'correct';
   }
 
-  renderCheckWrapper() {
-    return (
-      <CheckWrapper>
-        <ScreenButton
-          text="Check"
-          primary
-          action={'checkAnswer'}
-          disabled = {this.props.userAnswer === null}
-        />
-      </CheckWrapper>
-    );
-  }
-
   renderAnswerWrapper() {
+    if (!this.isFinished()) {
+      return <AnswerWrapper />;
+    }
     return (
       <AnswerWrapper>
         <AnswerIconWrapper>
@@ -138,13 +120,15 @@ class MultipleChoice extends Component {
   renderChoices() {
     // Note: The correct answer is always the first one in the choices array
     const choices = this.props.choices.map((choice, i) => {
-      const onClick = () => this.props.setUserAnswer(i);
+      const onClick = () => {
+        this.props.setUserAnswer(i);
+        this.props.checkAnswer();
+      };
       return (
         <ChoiceBox
           key={i}
           onClick={onClick}
           label={choice}
-          setUserAnswer={this.props.setUserAnswer}
           focused={i === this.props.userAnswer}
           disabled={this.props.status !== 'question' && i !== this.props.userAnswer}
           wrong={this.props.status !== 'question' && i === this.props.userAnswer && i !== 0}
@@ -161,10 +145,7 @@ class MultipleChoice extends Component {
       <Wrapper>
         <QuestionWrapper>{this.props.question}</QuestionWrapper>
         <ChoicesWrapper>{this.renderChoices()}</ChoicesWrapper>
-        {this.isFinished() ?
-          this.renderAnswerWrapper()
-          : this.renderCheckWrapper()
-        }
+        {this.renderAnswerWrapper()}
       </Wrapper>
     );
   }
@@ -176,7 +157,8 @@ MultipleChoice.propTypes = {
   status: propTypes.oneOf([ 'question', 'wrong', 'correct' ]).isRequired,
   userAnswer: propTypes.number,
   setUserAnswer: propTypes.func.isRequired,
-  explanation: propTypes.string.isRequired
+  explanation: propTypes.string.isRequired,
+  checkAnswer: propTypes.func.isRequired
 };
 
 export default MultipleChoice;

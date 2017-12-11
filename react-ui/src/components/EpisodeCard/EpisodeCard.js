@@ -67,7 +67,6 @@ const StarsWrapper = styled.div`
 `;
 
 class EpisodeCard extends Component {
-
   _renderStars() {
     if (this.props.score) {
       return (
@@ -105,7 +104,7 @@ class EpisodeCard extends Component {
         <ButtonWrapper>
           <ScreenButton
             text="Study"
-            primary={!this.props.score}
+            primary
             onClick={this.props.onClick}
             height={40}
             width={140}

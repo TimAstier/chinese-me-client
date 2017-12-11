@@ -5,9 +5,9 @@ import { MultipleChoice as MultipleChoiceComponent } from '../../components';
 import s from '../../rootSelectors';
 import { actions as multipleChoiceActions } from '../../redux/multipleChoice';
 import * as models from '../../models';
+import { actions as sagaActions } from '../../sagas/actions';
 
 class MultipleChoice extends Component {
-
   render() {
     return (
       <MultipleChoiceComponent
@@ -17,6 +17,7 @@ class MultipleChoice extends Component {
         userAnswer={this.props.userAnswer}
         setUserAnswer={this.props.setUserAnswer}
         explanation={this.props.multipleChoice.explanation}
+        checkAnswer={this.props.checkAnswer}
       />
     );
   }
@@ -26,7 +27,8 @@ MultipleChoice.propTypes = {
   multipleChoice: propTypes.instanceOf(models.MultipleChoice).isRequired,
   status: propTypes.oneOf([ 'question', 'wrong', 'correct' ]).isRequired,
   userAnswer: propTypes.number,
-  setUserAnswer: propTypes.func.isRequired
+  setUserAnswer: propTypes.func.isRequired,
+  checkAnswer: propTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -38,6 +40,7 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   {
-    setUserAnswer: multipleChoiceActions.setUserAnswer
+    setUserAnswer: multipleChoiceActions.setUserAnswer,
+    checkAnswer: sagaActions.checkAnswer
   }
 )(MultipleChoice);

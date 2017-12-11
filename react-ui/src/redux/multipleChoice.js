@@ -20,6 +20,12 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
     case types.SET_STATUS:
       return state.set('status', action.payload.status);
     case types.SET_USER_ANSWER:
+      if (state.get('userAnswer') !== null) {
+        // Avoids setting another another when already set
+        // This is done here because we can't easily update multipleChoices
+        // as they are rendered only once after randomizing choice orders
+        return state;
+      }
       return state.set('userAnswer', action.payload.userAnswer);
     case types.INIT:
       return INITIAL_STATE;

@@ -3,7 +3,7 @@ import { bookComponents as c } from '../../.';
 import { content as contentPropTypes } from '../../../helpers/propTypes';
 import { Row } from '../../Shared';
 
-export default class S0E1 extends Component {
+export default class Content extends Component {
   static propTypes = contentPropTypes
 
   render() {

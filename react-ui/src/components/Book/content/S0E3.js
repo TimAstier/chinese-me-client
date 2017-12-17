@@ -5,7 +5,7 @@ import pinyinNumberToAudioUrl from '../../../utils/pinyinNumberToAudioUrl';
 import { Row } from '../../Shared';
 import insertVariables from '../../../utils/insertVariables';
 
-export default class S1E7 extends Component {
+export default class Content extends Component {
   static propTypes = contentPropTypes
 
   render() {

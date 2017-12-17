@@ -20,7 +20,7 @@ const Translation = styled.div`
   font-style: italic;
 `;
 
-export default class S0E2 extends Component {
+export default class Content extends Component {
   static propTypes = contentPropTypes
 
   render() {

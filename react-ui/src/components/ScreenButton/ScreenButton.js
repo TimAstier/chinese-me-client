@@ -39,6 +39,10 @@ class Screen extends Component {
       display: flex;
       justify-content: center;
       align-items: center;
+      ${''/* For safari:  */}
+      display: -webkit-box;
+      -webkit-box-pack: center; /* justify-content */
+      -webkit-box-align: center; /* align-items */
       img {
         margin-right: 10px;
       }

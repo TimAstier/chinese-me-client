@@ -8,7 +8,7 @@ export default class Content extends Component {
 
   render() {
     const { newCharacters, example, lessonTitle, dialog, grammarTitle,
-      practiceIds, newWords, image } = this.props;
+      practiceIds, newWords } = this.props;
     return (
       <div>
         <c.Page>

@@ -7,6 +7,8 @@ import styled from 'styled-components';
 import hanziWriterConfig from '../../constants/hanziWriterConfig';
 import HanziWriter from 'hanzi-writer';
 
+// Note: div and svg styles are here to fix svg tag height bug on Safari.
+// See: https://benfrain.com/attempting-to-fix-responsive-svgs-in-desktop-safari/
 const Wrapper = styled.div`
   margin-top: 20px;
   width: ${`${hanziWriterConfig.width}px`};
@@ -19,10 +21,23 @@ const Wrapper = styled.div`
   font-family: 'STKaitiSC';
 	color: #454545;
   display: flex;
+  div {
+    width: 100%;
+  	display: block;
+  	height: auto;
+  	position: relative;
+  	padding-top: 100%;
+  }
+  div > svg {
+    width: 100%;
+  	height: 100%;
+  	position: absolute;
+  	top: 0;
+  	left: 0;
+  }
 `;
 
 class Hanzi extends Component {
-
   /* componentDidMount is the proper lifecycle method for initializing
   ** the writer. That’s because we get it called when React mounts the
   ** target-div in the render method.
@@ -30,8 +45,8 @@ class Hanzi extends Component {
   componentDidMount() {
     this.targetDiv = this.refs.targetDiv;
     this.writer = new HanziWriter(this.targetDiv, this.props.char, { // eslint-disable-line
-      width: 230,
-      height: 230,
+      width: hanziWriterConfig.width,
+      height: hanziWriterConfig.height,
       strokeAnimationDuration: 800,
       strokeHighlightDuration: 200,
       delayBetweenStrokes: 300,

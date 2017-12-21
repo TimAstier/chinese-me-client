@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
-import { Clickable } from '../../Shared';
 import dialogIcon from '../../../images/dialogIcon.png';
 import brushIcon from '../../../images/brushIcon.png';
 import handWithPen from '../../../images/handWithPen.png';
@@ -19,6 +18,7 @@ const Wrapper = styled.div`
   :hover {
     background-color: #F2F7FA;
   }
+  cursor: pointer;
 `;
 
 const Img = styled.img`
@@ -27,7 +27,6 @@ const Img = styled.img`
 `;
 
 class BookButton extends Component {
-
   _image = () => {
     switch (this.props.type) {
       case 'writing': return brushIcon;
@@ -43,11 +42,9 @@ class BookButton extends Component {
 
   render() {
     return (
-      <Clickable>
-        <Wrapper onClick={this.props.onClick}>
-          <Img src={this._image()} />
-        </Wrapper>
-      </Clickable>
+      <Wrapper onClick={this.props.onClick}>
+        <Img src={this._image()} />
+      </Wrapper>
     );
   }
 }

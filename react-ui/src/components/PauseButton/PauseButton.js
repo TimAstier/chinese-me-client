@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
-import { Clickable } from '../Shared';
 
 const Wrapper = styled.div`
   display: flex;
@@ -16,6 +15,7 @@ const Wrapper = styled.div`
   :hover {
     opacity: 0.92;
   }
+  cursor: pointer;
 `;
 
 const Pause = styled.div`
@@ -28,14 +28,11 @@ const Play = styled.div`
 `;
 
 class PauseButton extends Component {
-
   render() {
     return (
-      <Clickable>
-        <Wrapper onClick={this.props.onClick} paused={this.props.paused}>
-          {this.props.paused ? <Play>&#9658;</Play> : <Pause>&#9616;&#9616;</Pause> }
-        </Wrapper>
-      </Clickable>
+      <Wrapper onClick={this.props.onClick} paused={this.props.paused}>
+        {this.props.paused ? <Play>&#9658;</Play> : <Pause>&#9616;&#9616;</Pause> }
+      </Wrapper>
     );
   }
 }

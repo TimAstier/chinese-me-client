@@ -35,7 +35,9 @@ class PlayAudioButton extends Component {
       <PlayAudioButtonComponent
         onClick={this.props.onClick ?
           this.props.onClick
-          : () => this.props.playAudio(this.props.url, this.props.text)
+          : () => {
+            this.props.playAudio(this.props.url, this.props.text);
+          }
         }
         isPlaying={this.props.animation === false ? false : this.props.isPlaying}
       />

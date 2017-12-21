@@ -4,12 +4,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [X.X] YYYY-MM-DD
+## [X.X.X] YYYY-MM-DD
 
 ### Added
 ### Content
 ### Changed
 ### Fixed
+
+## [0.1.2] 2017-12-21
+
+### Changed
+- Reduced the volume of success / fail sounds
+
+### Fixed
+- Clicking on sound buttons now works every time
+- [cross-browser]: Fixed display of screen buttons on Safari
+- [cross-browser]: Fixed stroke order animation on Safari
 
 ## [0.1.1] 2017-12-11
 

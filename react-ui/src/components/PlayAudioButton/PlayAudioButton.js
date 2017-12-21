@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
-import { Clickable } from '../Shared';
 import iconPlayAudio from '../../images/iconPlayAudio.svg';
 import iconAudioPlayingA from '../../images/iconAudioPlayingA.svg';
 import iconAudioPlayingB from '../../images/iconAudioPlayingB.svg';
@@ -13,11 +12,12 @@ const Wrapper = styled.div`
   :hover {
     opacity: 0.92;
   }
+  cursor: pointer;
 `;
 
 class PlayAudioButton extends Component {
+  // BUG: twinkling button (probably need to preload icons)
 
-  // TODO: preload icons
   // Timer from react docs:
   // https://facebook.github.io/react/docs/state-and-lifecycle.html
   constructor(props) {
@@ -57,7 +57,6 @@ class PlayAudioButton extends Component {
         <img
           src={iconPlayAudio}
           alt="play audio"
-          onClick={this.props.onClick}
         />
       );
     }
@@ -66,18 +65,15 @@ class PlayAudioButton extends Component {
       <img
         src={this.loopPlayingIcons()}
         alt="audio playing"
-        onClick={this.props.onClick}
       />
     );
   }
 
   render() {
     return (
-      <Clickable>
-        <Wrapper>
-          {this.renderImage()}
-        </Wrapper>
-      </Clickable>
+      <Wrapper onClick={this.props.onClick}>
+        {this.renderImage()}
+      </Wrapper>
     );
   }
 }

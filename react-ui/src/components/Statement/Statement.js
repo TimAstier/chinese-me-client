@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled, { keyframes } from 'styled-components';
 import * as models from '../../models';
-import { Clickable } from '../Shared';
 import { PlayAudioButton, WordModal, NewWordLink } from '../../containers';
 import iconYourTurn from '../../images/iconYourTurn.svg';
 import findWordsPosition from '../../utils/findWordsPosition';
@@ -98,7 +97,6 @@ const FormatedSentences = styled.div`
 `;
 
 class Statement extends Component {
-
   renderSentenceWithWords(chineseText) {
     const wordsPosition = findWordsPosition(chineseText, this.props.words);
     if (!isEmpty(wordsPosition)) {
@@ -131,8 +129,7 @@ class Statement extends Component {
           active={active}
           dialogMode={dialogMode}
           onClick={
-            dialogMode !== 'explore' || active ?
-            undefined
+            dialogMode !== 'explore' || active ? undefined
             : () => switchSentence(s.id)
           }
         >
@@ -150,14 +147,12 @@ class Statement extends Component {
     return (
       <ControlWrapper>
         <PlayAudioWrapper>
-          <Clickable>
-            <PlayAudioButton
-              onClick={this.props.isAudioPlaying ?
-                () => this.props.stopSentence()
-                : () => this.props.playSentence()
-              }
-            />
-          </Clickable>
+          <PlayAudioButton
+            onClick={this.props.isAudioPlaying ?
+              () => this.props.stopSentence()
+              : () => this.props.playSentence()
+            }
+          />
         </PlayAudioWrapper>
       </ControlWrapper>
     );

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
-import { Clickable } from '../Shared';
 
 const Wrapper = styled.div`
   display: flex;
@@ -15,6 +14,7 @@ const Wrapper = styled.div`
   :hover {
     background-color: #F2F7FA;
   }
+  cursor: pointer;
 `;
 
 class HanziAgainButton extends Component {
@@ -24,9 +24,7 @@ class HanziAgainButton extends Component {
       return null;
     }
     return (
-      <Clickable>
-        <Wrapper onClick={this.props.onClick}>&#10226;</Wrapper>
-      </Clickable>
+      <Wrapper onClick={this.props.onClick}>&#10226;</Wrapper>
     );
   }
 }

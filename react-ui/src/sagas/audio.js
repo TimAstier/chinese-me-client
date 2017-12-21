@@ -52,10 +52,11 @@ export function *voiceText(text, muted = false) {
   }
 }
 
-export function *playSound(src, muted = false) {
+export function *playSound(src, muted = false, volume = 1) {
   const sound = new howler.Howl({
     src,
-    html5: true // Fix CORS errors. See https://github.com/goldfire/howler.js/issues/64
+    html5: true, // Fix CORS errors. See https://github.com/goldfire/howler.js/issues/64
+    volume
   });
   sound.mute(muted);
 
@@ -101,19 +102,19 @@ function* playAudio(action) {
 }
 
 export function* playSuccessSound() {
-  yield call(playSound, [sounds.success]);
+  yield call(playSound, sounds.success, false, 0.5);
 }
 
 export function* playWrongSound() {
-  yield call(playSound, [sounds.wrong]);
+  yield call(playSound, sounds.wrong, false, 0.5);
 }
 
 export function* playLevelWinSound() {
-  yield call(playSound, [sounds.levelWin]);
+  yield call(playSound, sounds.levelWin, false, 0.1);
 }
 
 export function* playLevelFailSound() {
-  yield call(playSound, [sounds.levelFail]);
+  yield call(playSound, sounds.levelFail, false, 0.1);
 }
 
 // Watchers

@@ -1,13 +1,3 @@
-// HOW TO add a new exercise type:
-// 1. Retrieve data and exercise element from server (update service, serializer)
-// 2. Update Exam container to render appropriate container (mapTypeToContainer)
-// 3. Be sure the exerciseType is supported
-//   - in mapExerciseTypeToSetCurrentAction helper
-//   - in mapScreenTypeToModule helper
-// 4. Update exercise saga to
-//   - return success bool
-//   - avoid non-exam effects (like nextButton). use 'exam' mode.
-
 import { put, select, call, take, race } from 'redux-saga/effects';
 import { actions as uiActions } from '../../redux/ui';
 import selectors from '../../rootSelectors';

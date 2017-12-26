@@ -12,7 +12,7 @@ export { default as S1E7 } from './S1E7';
 export { default as S1E8 } from './S1E8';
 export { default as S1E9 } from './S1E9';
 export { default as S1E10 } from './S1E10';
-export { default as S1E11 } from './S1E711';
+export { default as S1E11 } from './S1E11';
 export { default as S1E12 } from './S1E12';
 export { default as S1E13 } from './S1E13';
 export { default as S1E14 } from './S1E14';

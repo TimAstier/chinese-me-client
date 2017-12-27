@@ -13,7 +13,7 @@ export default class Content extends Component {
         <c.Page>
           {lessonTitle()}
           <c.Bookrow center>{image()}</c.Bookrow>
-          <c.PartTitle anchor="new-characters">NEW CHARACTERS</c.PartTitle>
+          <c.PartTitle>NEW CHARACTERS</c.PartTitle>
           <c.P><i>Practice the stroke order animations. Some characters have material on Stories and Calligraphy.</i></c.P>
           {newCharacters()}
           <c.PartTitle>PATTERNS</c.PartTitle>

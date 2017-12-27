@@ -164,7 +164,7 @@ export default class Content extends Component {
           </c.Bookrow>
           <c.PartTitle>Dialog: Presenting your age</c.PartTitle>
           {dialog(1, { sentenceType: 'chinese', displayNames: false })}
-          {dialog(1, { sentenceType: 'pinyin', displayNames: false })}
+          {/* {dialog(1, { sentenceType: 'pinyin', displayNames: false })} */}
           {dialog(1, { sentenceType: 'translation', displayNames: false })}
           <c.P
             buttonOptions={{

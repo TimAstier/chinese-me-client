@@ -46,7 +46,7 @@ export default class Content extends Component {
           </c.P>
           <c.PartTitle type="secondary">Dialog: 我属马。</c.PartTitle>
           {dialog(2, { sentenceType: 'chinese', displayNames: false })}
-          {dialog(2, { sentenceType: 'pinyin', displayNames: false })}
+          {/* {dialog(2, { sentenceType: 'pinyin', displayNames: false })} */}
           {dialog(2, { sentenceType: 'translation', displayNames: false })}
           {dialog(3, { sentenceType: 'chinese', displayNames: false })}
           <c.P
@@ -59,7 +59,7 @@ export default class Content extends Component {
           >
             <i>Help Wang Xiaoyue say how old she is: 我___岁。</i>
           </c.P>
-          {dialog(3, { sentenceType: 'pinyin', displayNames: false })}
+          {/* {dialog(3, { sentenceType: 'pinyin', displayNames: false })} */}
           {dialog(3, { sentenceType: 'translation', displayNames: false })}
           <c.P
             buttonOptions={{

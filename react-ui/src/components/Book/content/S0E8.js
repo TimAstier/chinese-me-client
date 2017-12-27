@@ -66,13 +66,13 @@ export default class Content extends Component {
           <c.P>As usual, words do not change form so there is no difference between <i>he</i> and <i>him</i>, <i>she</i> and <i>her</i>.</c.P>
           <c.PartTitle>Dialog: 你会说中文吗？</c.PartTitle>
           {dialog(1, { sentenceType: 'chinese', displayNames: false })}
-          {dialog(1, { sentenceType: 'pinyin', displayNames: false })}
+          {/* {dialog(1, { sentenceType: 'pinyin', displayNames: false })} */}
           {dialog(1, { sentenceType: 'translation', displayNames: false })}
           {dialog(2, { sentenceType: 'chinese', displayNames: false })}
-          {dialog(2, { sentenceType: 'pinyin', displayNames: false })}
+          {/* {dialog(2, { sentenceType: 'pinyin', displayNames: false })} */}
           {dialog(2, { sentenceType: 'translation', displayNames: false })}
           {dialog(3, { sentenceType: 'chinese', displayNames: false })}
-          {dialog(3, { sentenceType: 'pinyin', displayNames: false })}
+          {/* {dialog(3, { sentenceType: 'pinyin', displayNames: false })} */}
           {dialog(3, { sentenceType: 'translation', displayNames: false })}
           <c.P
             buttonOptions={{

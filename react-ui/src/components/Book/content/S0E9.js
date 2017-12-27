@@ -95,7 +95,7 @@ export default class Content extends Component {
           <c.P><b>Pǔtōnghuà</b>, <i>common speech</i>, is the official PRC name for Mandarin Chinese. It has a slightly political overtone and is not used in normal conversation unless you really want to emphasize that you are talking about Mandarin as opposed to local dialects. In Táiwān, the corresponding terms are 国语 <b>guóyǔ</b> or 国文 <b>guówén</b>.</c.P>
           <c.PartTitle>会话：你中文很好！</c.PartTitle>
           {dialog(1, { sentenceType: 'chinese', displayNames: true })}
-          {dialog(1, { sentenceType: 'pinyin', displayNames: true })}
+          {/* {dialog(1, { sentenceType: 'pinyin', displayNames: true })} */}
           {dialog(1, { sentenceType: 'translation', displayNames: true })}
           <c.PartTitle>Practice: Role play</c.PartTitle>
           {dialog(2, { sentenceType: 'chinese', displayNames: true })}

@@ -9,7 +9,7 @@ export default class Content extends Component {
   static propTypes = contentPropTypes
 
   render() {
-    const { newCharacters, example, lessonTitle, dialog,
+    const { newCharacters, example, lessonTitle, dialog, grammarTitle,
       practiceIds, newWords } = this.props;
     return (
       <div>

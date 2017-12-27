@@ -21,12 +21,12 @@ export default class Content extends Component {
           <c.PartTitle>PATTERNS</c.PartTitle>
           {grammarTitle()}
           <c.P>会 <b>huì</b> means <i>know</i> in the sense of <i>know how to</i>. It can be used as a verb:</c.P>
-          {example(1, { basic: true, big: true, audio: true })}
+          {example(1, { audio: true })}
           <c.P>It can also be used as an auxiliary verb, that is, in combination with another verb, meaning <i>know how to do something</i>:</c.P>
-          {example(2, { basic: true, big: true, audio: true })}
+          {example(2, { audio: true })}
           {grammarTitle()}
           <c.P>Function words, also called "particles", are an important feature of Chinese. One of the most common examples is the question particle 吗 <b>må</b> which transforms statements to <i>"yes/no"</i> questions, questions that can be answered with a <i>yes</i> or a <i>no</i>:</c.P>
-          {example(3, { basic: true, big: true, audio: true })}
+          {example(3, { audio: true })}
           <c.P>In English, we usually change the word order to formulate a question:</c.P>
           <c.Bookrow>
             <c.Ul>
@@ -34,11 +34,11 @@ export default class Content extends Component {
             </c.Ul>
           </c.Bookrow>
           <c.P>But as you can see in pattern 5:3, the word order in Chinese doesn't change; you just add the question particle 吗 <b>må</b> to the end of the sentence. Some more examples:</c.P>
-          {example(4, { basic: true, big: true, audio: true })}
-          {example(5, { basic: true, big: true, audio: true })}
-          {example(6, { basic: true, big: true, audio: true })}
+          {example(4, { audio: true })}
+          {example(5, { audio: true })}
+          {example(6, { audio: true })}
           <c.P>好吗 <b>hǎo må</b> can also be used to ask for agreement with something you have just said:</c.P>
-          {example(7, { basic: true, big: true, audio: true })}
+          {example(7, { audio: true })}
           {grammarTitle()}
           <c.P>Just like in English, you have to raise your tone at the end of a sentence when you ask a question:</c.P>
           <c.Bookrow>

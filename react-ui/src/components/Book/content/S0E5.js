@@ -21,8 +21,8 @@ export default class Content extends Component {
           <c.PartTitle type="secondary">Grammar</c.PartTitle>
           {grammarTitle()}
           <c.P>很 <b>hěn</b> literally means <i>very</i>, <i>to a high degree</i>. Because of this, some textbooks call it an “intensifier”. But in modern Chinese, 很 <b>hěn</b> is used as a sort of "filler" between a noun and an adjective, and doesn't make any real difference to the meaning:</c.P>
-          {example(1, { basic: true, big: true, audio: true })}
-          {example(2, { basic: true, big: true, audio: true })}
+          {example(1, { audio: true })}
+          {example(2, { audio: true })}
           <c.P>If you really want to express the sense of <i>very</i> or <i>extremely</i> good, you have to emphasize the pronunciation of hěn:</c.P>
           <c.Bookrow>
             <c.Ul>
@@ -32,20 +32,20 @@ export default class Content extends Component {
           </c.Bookrow>
           {grammarTitle()}
           <c.P>也 <b>yě</b> <i>also</i>, <i>too</i> can be added to any of the sentences we have learned so far.  也 <b>yě</b> is placed after the subject and before the verb of the sentence:</c.P>
-          {example(3, { basic: true, big: true, audio: true })}
+          {example(3, { audio: true })}
           <c.P>In a Topic-Comment construction, 也 <b>yě</b> comes after the Topic and before the Comment:</c.P>
-          {example(4, { basic: true, big: true, audio: true })}
-          {example(5, { basic: true, big: true, audio: true })}
+          {example(4, { audio: true })}
+          {example(5, { audio: true })}
           <c.PartTitle>Dialog: Saying hello</c.PartTitle>
           {dialog(1, { sentenceType: 'chinese', displayNames: false })}
           <c.PartTitle>Practice: Role play</c.PartTitle>
           {dialog(2, { sentenceType: 'chinese', displayNames: false })}
           <c.PartTitle>Culture and society: Polite greetings</c.PartTitle>
           <c.P>To inquire politely about somebody’s family name, you would say:</c.P>
-          {example(6, { basic: true, big: true, audio: true })}
+          {example(6, { audio: true })}
           <c.P>您 <b>nín</b> is a more formal form of 你 <b>nǐ</b> <i>you</i>. It is used when addressing someone older or in a higher social position. 贵 <b>guì</b>, means <i>precious</i> or <i>expensive</i>.</c.P>
           <c.P>When you meet somebody for the first time, it is common to say:</c.P>
-          {example(7, { basic: true, big: true, audio: true })}
+          {example(7, { audio: true })}
           <c.PartTitle>NEW VOCABULARY</c.PartTitle>
           {newWords()}
           <c.PartTitle anchor="review">Exercises</c.PartTitle>

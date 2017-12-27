@@ -137,13 +137,13 @@ export default class Content extends Component {
           </c.Bookrow>
           {grammarTitle()}
           <c.P>We have seen that some Chinese sentences are made up of a Subject, a Verb and an Object, just as in English:</c.P>
-          {example(1, { basic: true, big: true, audio: true })}
+          {example(1, { audio: true })}
           <c.P>But unlike in English, not every Chinese sentence needs to contain a verb. For example, we can have a sentence made up of a personal pronoun and a number of years:</c.P>
-          {example(2, { basic: true, big: true, audio: true })}
+          {example(2, { audio: true })}
           <c.P>So to tell somebody your age, you literally say “I x years”. This would of course sound odd in English. And you can even shorten this to:</c.P>
-          {example(3, { basic: true, big: true, audio: true })}
+          {example(3, { audio: true })}
           <c.P>In fact, in relaxed colloquial language you can shorten some sentences with 是 <b>shì</b> in the same way:</c.P>
-          {example(4, { basic: true, big: true, audio: true })}
+          {example(4, { audio: true })}
           <c.P>Sentences like this may be easier to understand by using a different grammatical concept: Topic and Comment. The Topic indicates what the sentence "is about" and the Comment makes some remark regarding this Topic.</c.P>
           <c.P>Linguists have measured the pauses between words in Chinese and found that the pause in the break between Topic and Comment is often a tiny bit longer than the pauses between the other words in a sentence. We can mark this break with a colon in the literal translation to make it even clearer which part is the Topic and which is the Comment:</c.P>
           <c.Bookrow>
@@ -154,7 +154,7 @@ export default class Content extends Component {
           <c.P>This is a very simple example - but the Topic-Comment construction is also used for more complex patterns. In fact, Topic-Comment sentences are so common that linguists call Chinese a <i>topic-prominent</i> language.</c.P>
           {grammarTitle()}
           <c.P>In Chinese, it is often possible to omit words when they are clear from the context:</c.P>
-          {example(5, { basic: true, big: true, audio: true })}
+          {example(5, { audio: true })}
           <c.P>In this example, it is already clear who you are talking about – yourself – so it is not necessary to repeat the subject <i>I</i>.</c.P>
           <c.P>Again, we could analyze this as a Topic-Comment construction:</c.P>
           <c.Bookrow>

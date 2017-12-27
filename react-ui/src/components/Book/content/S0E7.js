@@ -21,14 +21,14 @@ export default class Content extends Component {
           <c.PartTitle>PATTERNS</c.PartTitle>
           {grammarTitle()}
           <c.P>In Western languages, comparing two things means learning different forms of words ("good, better, best"). Chinese uses a simple Topic-Comment pattern with the "comparison" word 比 <b>bǐ</b> inserted between the things you want to compare:</c.P>
-          {example(1, { basic: true, big: true, audio: true })}
-          {example(2, { basic: true, big: true, audio: true })}
+          {example(1, { audio: true })}
+          {example(2, { audio: true })}
           <c.P>If you want to specify the degree of comparison, you add this at the end according to the following pattern:</c.P>
-          {example(3, { basic: true, big: true, audio: true })}
+          {example(3, { audio: true })}
           <c.P>Note that 大 <b>dà</b> <i>big</i> is more common than 老 <b>lǎo</b> <i>old</i> when you simply want to state the objective fact that you are older than someone. If you say 我比你老三岁, you are emphasizing the fact that you are older (as in more tired, more experienced or more wrinkled) than the person you are talking to.</c.P>
           {grammarTitle()}
           <c.P>In China, time is divided into twelve-year cycles; each year in the cycle is the year of a zodiac animal: rat, ox, tiger, rabbit, dragon, snake, horse, sheep, monkey, rooster, dog and pig. Being born in a particular animal is called 属 <b>shǔ</b> <i>to belong to</i> that animal:</c.P>
-          {example(4, { basic: true, big: true, audio: true })}
+          {example(4, { audio: true })}
           <c.PartTitle>Dialog: 我生日</c.PartTitle>
           {dialog(1, { sentenceType: 'chinese', displayNames: false })}
           <c.PartTitle>Culture and society: "Empty" years</c.PartTitle>

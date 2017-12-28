@@ -4,11 +4,11 @@ import { createSelector } from 'reselect';
 // Types
 
 export const types = {
-  SET_USER_ANSWER: 'audioToText/SET_USER_ANSWER',
-  SET_CURRENT_BOX_INDEX: 'audioToText/SET_CURRENT_BOX_INDEX',
-  ADD_RESULT: 'audioToText/ADD_RESULT',
-  SET_STATUS: 'audioToText/SET_STATUS',
-  INIT: 'audioToText/INIT'
+  SET_USER_ANSWER: 'audioToWords/SET_USER_ANSWER',
+  SET_CURRENT_BOX_INDEX: 'audioToWords/SET_CURRENT_BOX_INDEX',
+  ADD_RESULT: 'audioToWords/ADD_RESULT',
+  SET_STATUS: 'audioToWords/SET_STATUS',
+  INIT: 'audioToWords/INIT'
 };
 
 // Reducer

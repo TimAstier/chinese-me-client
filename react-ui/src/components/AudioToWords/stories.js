@@ -2,12 +2,12 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { fromJS, List, OrderedMap } from 'immutable';
-import { EpisodeScreen, AudioToText } from '../.';
+import { EpisodeScreen, AudioToWords } from '../.';
 import * as models from '../../models';
 import { Provider } from '../../utils/testComponents';
 
-// AudioToText.propTypes = {
-//   audioToText: propTypes.instanceOf(models.AudioToText).isRequired,
+// AudioToWords.propTypes = {
+//   audioToText: propTypes.instanceOf(models.AudioToWords).isRequired,
 //   words: propTypes.instanceOf(Immutable.OrderedMap).isRequired,
 //   currentBoxIndex: propTypes.number.isRequired,
 //   results: propTypes.instanceOf(List).isRequired,
@@ -52,10 +52,9 @@ const entities = {
 // Mock conversion from setEntities
 let wordsMap = new OrderedMap();
 wordsMap = wordsMap
-  .merge(fromJS(entities)
-  .map(word => new models.Word(word)));
+  .merge(fromJS(entities).map(word => new models.Word(word)));
 
-const audioToText = new models.AudioToText({
+const audioToText = new models.AudioToWords({
   id: 1,
   words: [1, 2, 3, 4, 5],
   episodeId: 1,
@@ -112,11 +111,11 @@ const resultsE = List(fromJS([{
   userAnswer: 'zhong1wen2'
 }]));
 
-storiesOf('AudioToText', module)
+storiesOf('AudioToWords', module)
   .addDecorator(story => <Provider story={story()} />)
   .add('question: init', () =>
     <EpisodeScreen exit={() => {}}>
-      <AudioToText
+      <AudioToWords
         audioToText={audioToText}
         words={wordsMap}
         currentBoxIndex={0}
@@ -128,7 +127,7 @@ storiesOf('AudioToText', module)
   )
   .add('question: userAnswer', () =>
     <EpisodeScreen exit={() => {}}>
-      <AudioToText
+      <AudioToWords
         audioToText={audioToText}
         words={wordsMap}
         currentBoxIndex={0}
@@ -140,7 +139,7 @@ storiesOf('AudioToText', module)
   )
   .add('question: success', () =>
     <EpisodeScreen exit={() => {}}>
-      <AudioToText
+      <AudioToWords
         audioToText={audioToText}
         words={wordsMap}
         currentBoxIndex={1}
@@ -152,7 +151,7 @@ storiesOf('AudioToText', module)
   )
   .add('question: fail', () =>
     <EpisodeScreen exit={() => {}}>
-      <AudioToText
+      <AudioToWords
         audioToText={audioToText}
         words={wordsMap}
         currentBoxIndex={2}
@@ -164,7 +163,7 @@ storiesOf('AudioToText', module)
   )
   .add('finished: all_success', () =>
     <EpisodeScreen exit={() => {}}>
-      <AudioToText
+      <AudioToWords
         audioToText={audioToText}
         words={wordsMap}
         currentBoxIndex={4}
@@ -176,7 +175,7 @@ storiesOf('AudioToText', module)
   )
   .add('finished: fail', () =>
     <EpisodeScreen exit={() => {}}>
-      <AudioToText
+      <AudioToWords
         audioToText={audioToText}
         words={wordsMap}
         currentBoxIndex={4}

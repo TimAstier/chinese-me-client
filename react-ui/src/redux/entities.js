@@ -82,6 +82,7 @@ const getCharacters = state => state.get('characters');
 const getDialogs = state => state.get('dialogs');
 const getGrammars = state => state.get('grammars');
 const getEpisodes = state => state.get('episodes');
+const getExercises = state => state.get('exercises');
 const getStatements = state => state.get('statements');
 const getSentences = state => state.get('sentences');
 const getSeasons = state => state.get('seasons');
@@ -98,6 +99,7 @@ export const selectors = {
   getDialogs,
   getGrammars,
   getEpisodes,
+  getExercises,
   getStatements,
   getSentences,
   getSeasons,

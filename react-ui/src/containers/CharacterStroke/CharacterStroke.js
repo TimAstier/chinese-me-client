@@ -9,33 +9,31 @@ import { actions as sagaActions } from '../../sagas/actions';
 class CharacterStroke extends Component {
 
   render() {
-    if (this.props.animationId === '') {
-      return null;
-    }
     return (
-      <CharacterStrokeComponent
-        character={this.props.character}
-        strokeAnimationFinished={this.props.strokeAnimationFinished}
-        animationId={this.props.animationId}
-      />
+      <CharacterStrokeComponent { ...this.props }/>
     );
   }
 }
 
 CharacterStroke.propTypes = {
   character: propTypes.instanceOf(Character).isRequired,
-  strokeAnimationFinished: propTypes.func.isRequired,
-  animationId: propTypes.string
+  timerStatus: propTypes.string.isRequired,
+  hideLabel: propTypes.bool,
+  strokeQuizCompleted: propTypes.func.isRequired,
+  watchAgain: propTypes.bool.isRequired,
+  screenType: propTypes.string.isRequired
 };
 
 const mapStateToProps = state => ({
   character: s.getCurrentCharacter(state),
-  animationId: s.hanzi.getAnimationId(state)
+  timerStatus: s.timer.getStatus(state),
+  watchAgain: s.hanzi.getWatchAgain(state),
+  screenType: s.routing.getCurrentScreenType(state)
 });
 
 export default connect(
   mapStateToProps,
   {
-    strokeAnimationFinished: sagaActions.strokeAnimationFinished
+    strokeQuizCompleted: sagaActions.strokeQuizCompleted
   }
 )(CharacterStroke);

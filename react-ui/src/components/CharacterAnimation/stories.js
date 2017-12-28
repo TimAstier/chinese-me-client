@@ -2,17 +2,17 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 // import { Character } from '../../models';
-import { EpisodeScreen, CharacterStroke } from '../.';
+import { EpisodeScreen, CharacterAnimation } from '../.';
 import { Provider } from '../../utils/testComponents';
 
-// CharacterStroke.propTypes = {
+// CharacterAnimation.propTypes = {
 // };
 
-storiesOf('CharacterStroke', module)
+storiesOf('CharacterAnimation', module)
   .addDecorator(story => <Provider story={story()} />)
   .add('test', () =>
     <EpisodeScreen exit={() => {}}>
-      <CharacterStroke
+      <CharacterAnimation
         simpChar="馘"
       />
     </EpisodeScreen>

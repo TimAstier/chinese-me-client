@@ -1,12 +1,12 @@
-import { MultipleChoice, AudioToText, CharacterPinyin, CharacterStrokeQuiz }
+import { MultipleChoice, AudioToWords, CharacterPinyin, CharacterStroke }
   from '../containers';
 
 export default function mapTypeToContainers(type) {
   switch (type) {
-    case 'multipleChoice': return MultipleChoice;
-    case 'audioToText': return AudioToText;
+    case 'textToChoice': return MultipleChoice;
+    case 'audioToWords': return AudioToWords;
     case 'characterPinyin': return CharacterPinyin;
-    case 'characterStrokeQuiz': return CharacterStrokeQuiz;
+    case 'characterStroke': return CharacterStroke;
     default:
       console.log('Unkown exercise type', type); // eslint-disable-line no-console
       return null;

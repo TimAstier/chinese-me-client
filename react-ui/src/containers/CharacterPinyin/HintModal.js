@@ -5,7 +5,6 @@ import s from '../../rootSelectors';
 import { HintModal as HintModalComponent } from '../../components';
 
 class HintModal extends Component {
-
   render() {
     return (
       <HintModalComponent

@@ -1,9 +1,9 @@
 import { createSelector } from 'reselect';
 import s from './globalizedSelectors';
-import getCurrentCharacter from './getCurrentCharacter';
+import getExerciseCharacter from './getExerciseCharacter';
 
 const getCharacterPinyinHints = createSelector(
-  getCurrentCharacter,
+  getExerciseCharacter,
   s.characterPinyin.getAttemptsLeft,
   s.characterPinyin.getUserAnswer,
   (character, attemptsLeft, userAnswer) => {

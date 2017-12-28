@@ -4,12 +4,12 @@ export { bookContainers };
 
 // Keep in alphabetical order
 export { default as App } from './App/App';
-export { default as AudioToText } from './AudioToText/AudioToText';
+export { default as AudioToWords } from './AudioToWords/AudioToWords';
 export { default as Book } from './Book/Book';
+export { default as CharacterAnimation } from './CharacterAnimation/CharacterAnimation';
 export { default as CharacterEtymology } from './CharacterEtymology/CharacterEtymology';
 export { default as CharacterPinyin } from './CharacterPinyin/CharacterPinyin';
 export { default as CharacterStroke } from './CharacterStroke/CharacterStroke';
-export { default as CharacterStrokeQuiz } from './CharacterStrokeQuiz/CharacterStrokeQuiz';
 export { default as CharacterWriting } from './CharacterWriting/CharacterWriting';
 export { default as ChoseRole } from './Dialog/ChoseRole';
 export { default as CircleTimer } from './Exam/CircleTimer';

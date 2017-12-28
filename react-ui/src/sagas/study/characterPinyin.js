@@ -7,14 +7,11 @@ import { actions as characterPinyinActions } from '../../redux/characterPinyin';
 import { actions as sagaActions } from '../actions';
 import { actions as audioActions } from '../../redux/audio';
 import selectors from '../../rootSelectors';
-import { actions as studyActions } from '../../redux/study';
 import { fetchEntities } from '../entities';
 import pinyinNumberToAudioUrl from '../../utils/pinyinNumberToAudioUrl';
 
-export function* isDataLoaded(id) {
-  yield put(studyActions.setCurrentCharacterId(id));
-  const currentElement = yield select(selectors.getCurrentCharacter);
-  return (currentElement === undefined) ? false : true;
+export function isDataLoaded() {
+  return true;
 }
 
 export function* fetchData(episodeId) {
@@ -36,7 +33,7 @@ export function* initUi() {
 
 export function* run(isExam = false) {
   const result = {};
-  const currentChar = yield select(selectors.getCurrentCharacter);
+  const currentChar = yield select(selectors.getExerciseCharacter);
   const audioUrl = pinyinNumberToAudioUrl(currentChar.pinyinNumber);
   yield put(audioActions.set('audioUrl', audioUrl));
   while (true) { // eslint-disable-line no-constant-condition

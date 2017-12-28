@@ -8,10 +8,9 @@ export const types = {
   SET_CURRENT_SEASON_ID: 'study/SET_CURRENT_SEASON_ID',
   SET_CURRENT_EPISODE_ID: 'study/SET_CURRENT_EPISODE_ID',
   SET_CURRENT_DIALOG_ID: 'study/SET_CURRENT_DIALOG_ID',
+  SET_CURRENT_EXERCISE_ID: 'study/SET_CURRENT_EXERCISE_ID',
   SET_CURRENT_STATEMENT_ID: 'study/SET_CURRENT_STATEMENT_ID',
   SET_CURRENT_SENTENCE_ID: 'study/SET_CURRENT_SENTENCE_ID',
-  SET_CURRENT_MULTIPLE_CHOICE_ID: 'study/SET_CURRENT_MULTIPLE_CHOICE_ID',
-  SET_CURRENT_AUDIO_TO_TEXT_ID: 'study/SET_CURRENT_AUDIO_TO_TEXT_ID',
   SET_CURRENT_VIDEO_ID: 'study/SET_CURRENT_VIDEO_ID',
   SET_DIALOG_MODE: 'study/SET_DIALOG_MODE',
   SET_CHOSEN_AVATAR_ID: 'study/CHOSEN_AVATAR_ID',
@@ -27,11 +26,10 @@ export const INITIAL_STATE = Immutable.Map({
   currentSeasonId: null,
   currentEpisodeId: null,
   currentCharacterId: null,
+  currentExerciseId: null,
   currentDialogId: null,
   currentStatementId: null,
   currentSentenceId: null,
-  currentMultipleChoiceId: null,
-  currentAudioToTextId: null,
   currentWordId: null,
   currentVideoId: null,
   dialogMode: '',
@@ -51,14 +49,12 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
       return state.set('currentEpisodeId', action.payload.id);
     case types.SET_CURRENT_DIALOG_ID:
       return state.set('currentDialogId', action.payload.id);
+    case types.SET_CURRENT_EXERCISE_ID:
+      return state.set('currentExerciseId', action.payload.id);
     case types.SET_CURRENT_STATEMENT_ID:
       return state.set('currentStatementId', action.payload.id);
     case types.SET_CURRENT_SENTENCE_ID:
       return state.set('currentSentenceId', action.payload.id);
-    case types.SET_CURRENT_MULTIPLE_CHOICE_ID:
-      return state.set('currentMultipleChoiceId', action.payload.id);
-    case types.SET_CURRENT_AUDIO_TO_TEXT_ID:
-      return state.set('currentAudioToTextId', action.payload.id);
     case sagaTypes.NEW_WORD_LINK_CLICKED:
       return state.set('currentWordId', action.payload.id);
     case types.SET_DIALOG_MODE:
@@ -103,6 +99,13 @@ const setCurrentDialogId = id => {
   };
 };
 
+const setCurrentExerciseId = id => {
+  return {
+    type: types.SET_CURRENT_EXERCISE_ID,
+    payload: { id }
+  };
+};
+
 const setCurrentStatementId = id => {
   return {
     type: types.SET_CURRENT_STATEMENT_ID,
@@ -113,20 +116,6 @@ const setCurrentStatementId = id => {
 const setCurrentSentenceId = id => {
   return {
     type: types.SET_CURRENT_SENTENCE_ID,
-    payload: { id }
-  };
-};
-
-const setCurrentMultipleChoiceId = id => {
-  return {
-    type: types.SET_CURRENT_MULTIPLE_CHOICE_ID,
-    payload: { id }
-  };
-};
-
-const setCurrentAudioToTextId = id => {
-  return {
-    type: types.SET_CURRENT_AUDIO_TO_TEXT_ID,
     payload: { id }
   };
 };
@@ -180,10 +169,9 @@ export const actions = {
   setCurrentSeasonId,
   setCurrentEpisodeId,
   setCurrentDialogId,
+  setCurrentExerciseId,
   setCurrentStatementId,
   setCurrentSentenceId,
-  setCurrentMultipleChoiceId,
-  setCurrentAudioToTextId,
   setCurrentWordId,
   setDialogMode,
   setChosenAvatarId,
@@ -198,10 +186,9 @@ export const actions = {
 const getCurrentSeasonId = state => state.get('currentSeasonId');
 const getCurrentEpisodeId = state => state.get('currentEpisodeId');
 const getCurrentDialogId = state => state.get('currentDialogId');
+const getCurrentExerciseId = state => state.get('currentExerciseId');
 const getCurrentStatementId = state => state.get('currentStatementId');
 const getCurrentSentenceId = state => state.get('currentSentenceId');
-const getCurrentMultipleChoiceId = state => state.get('currentMultipleChoiceId');
-const getCurrentAudioToTextId = state => state.get('currentAudioToTextId');
 const getCurrentWordId = state => state.get('currentWordId');
 const getDialogMode = state => state.get('dialogMode');
 const getChosenAvatarId = state => state.get('chosenAvatarId');
@@ -214,10 +201,9 @@ export const selectors = {
   getCurrentSeasonId,
   getCurrentEpisodeId,
   getCurrentDialogId,
+  getCurrentExerciseId,
   getCurrentStatementId,
   getCurrentSentenceId,
-  getCurrentMultipleChoiceId,
-  getCurrentAudioToTextId,
   getCurrentWordId,
   getDialogMode,
   getChosenAvatarId,

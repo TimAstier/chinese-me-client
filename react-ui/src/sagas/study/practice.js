@@ -4,9 +4,8 @@ import selectors from '../../rootSelectors';
 import { fetchEntities } from '../entities';
 import { actions as practiceActions } from '../../redux/practice';
 import { types as sagaTypes, actions as sagaActions } from '../actions';
+import { actions as studyActions } from '../../redux/study';
 import getStudyFunctions from '../../helpers/getStudyFunctions';
-import mapExerciseTypeToSetCurrentAction
-  from '../../helpers/mapExerciseTypeToSetCurrentAction';
 import { push } from 'react-router-redux';
 
 export function* isDataLoaded() {
@@ -53,8 +52,7 @@ export function* run() {
     const exercise = yield select(selectors.practice.getCurrentExercise);
     const type = exercise.get('type');
     const funcs = getStudyFunctions(type + '/');
-    const setCurrent = mapExerciseTypeToSetCurrentAction(type);
-    yield put(setCurrent(exercise.get('elementId')));
+    yield put(studyActions.setCurrentExerciseId(exercise.get('id')));
     yield call(defaultExamUi);
     yield call(funcs.initStudyData);
     yield call(funcs.initUi);

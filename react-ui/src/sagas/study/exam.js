@@ -4,10 +4,9 @@ import selectors from '../../rootSelectors';
 import { fetchEntities } from '../entities';
 import { actions as examActions } from '../../redux/exam';
 import { actions as sagaActions, types as sagaTypes } from '../actions';
+import { actions as studyActions } from '../../redux/study';
 import getStudyFunctions from '../../helpers/getStudyFunctions';
 import { actions as timerActions, types as timerTypes } from '../../redux/timer';
-import mapExerciseTypeToSetCurrentAction
-  from '../../helpers/mapExerciseTypeToSetCurrentAction';
 import { push } from 'react-router-redux';
 
 export function* isDataLoaded() {
@@ -60,8 +59,7 @@ function* runExam() {
     const exercise = exercises.get(i);
     const type = exercise.get('type');
     const funcs = getStudyFunctions(type + '/');
-    const setCurrent = mapExerciseTypeToSetCurrentAction(type);
-    yield put(setCurrent(exercise.get('elementId')));
+    yield put(studyActions.setCurrentExerciseId(exercise.get('id')));
     yield call(defaultExamUi);
     yield call(funcs.initStudyData);
     yield call(funcs.initUi);

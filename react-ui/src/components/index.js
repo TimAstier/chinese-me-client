@@ -4,13 +4,13 @@ export { bookComponents };
 
 // Keep in alphabetical order
 export { default as ActivatedPage } from './Signup/ActivatedPage';
-export { default as AudioToText } from './AudioToText/AudioToText';
+export { default as AudioToWords } from './AudioToWords/AudioToWords';
 export { default as Avatar } from './Avatar/Avatar';
 export { default as Book } from './Book/Book';
+export { default as CharacterAnimation } from './CharacterAnimation/CharacterAnimation';
 export { default as CharacterBox } from './MapModal/CharacterBox';
 export { default as CharacterPinyin } from './CharacterPinyin/CharacterPinyin';
 export { default as CharacterStroke } from './CharacterStroke/CharacterStroke';
-export { default as CharacterStrokeQuiz } from './CharacterStrokeQuiz/CharacterStrokeQuiz';
 export { default as ChapterHeader } from './MapModal/ChapterHeader';
 export { default as ChoiceBox } from './ChoiceBox/ChoiceBox';
 export { default as ChoseRole } from './Dialog/ChoseRole';

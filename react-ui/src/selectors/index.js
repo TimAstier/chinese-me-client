@@ -1,14 +1,13 @@
 // Keep in alphabetical order
 export { default as getAugmentedSettings } from './getAugmentedSettings';
 export { default as getCharacterPinyinHints } from './getCharacterPinyinHints';
-export { default as getCurrentAudioToText } from './getCurrentAudioToText';
 export { default as getCurrentAvatars } from './getCurrentAvatars';
 export { default as getCurrentBookUrl } from './getCurrentBookUrl';
 export { default as getCurrentCharacter } from './getCurrentCharacter';
 export { default as getCurrentDialog } from './getCurrentDialog';
 export { default as getCurrentDialogStatementsCount } from './getCurrentDialogStatementsCount';
 export { default as getCurrentEpisode } from './getCurrentEpisode';
-export { default as getCurrentMultipleChoice } from './getCurrentMultipleChoice';
+export { default as getCurrentExercise } from './getCurrentExercise';
 export { default as getCurrentSeason } from './getCurrentSeason';
 export { default as getCurrentSeasonEpisodes } from './getCurrentSeasonEpisodes';
 export { default as getCurrentSentence } from './getCurrentSentence';
@@ -25,6 +24,8 @@ export { default as getCurrentWords } from './getCurrentWords';
 export { default as getDialogCompletion } from './getDialogCompletion';
 export { default as getElementsNavParams } from './getElementsNavParams';
 export { default as getExamNavParams } from './getExamNavParams';
+export { default as getExerciseCharacter } from './getExerciseCharacter';
+export { default as getExerciseWords } from './getExerciseWords';
 export { default as getFirstSeasonId } from './getFirstSeasonId';
 export { default as getFocusedEpisode } from './getFocusedEpisode';
 export { default as getFocusedSeasonNumber } from './getFocusedSeasonNumber';

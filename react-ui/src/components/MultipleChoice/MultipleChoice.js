@@ -44,29 +44,28 @@ const AnswerIconWrapper = styled.div`
   align-self: flex-end;
 `;
 
-const CorrectAnswerWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-left: 5px;
-`;
-
-const AnswerLabel = styled.div`
-  font-family: 'Open Sans';
-  font-size: 16px;
-  font-weight: 600;
-  color: #b2babf;
-`;
-
-const Explanation = styled.div`
-  max-width: 330px;
-  margin-top: 10px;
-	font-family: 'Open Sans';
-	font-size: 16px;
-	line-height: 1.5;
-	color: #454545;
-
-`;
+// const CorrectAnswerWrapper = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   margin-left: 5px;
+// `;
+//
+// const AnswerLabel = styled.div`
+//   font-family: 'Open Sans';
+//   font-size: 16px;
+//   font-weight: 600;
+//   color: #b2babf;
+// `;
+//
+// const Explanation = styled.div`
+//   max-width: 330px;
+//   margin-top: 10px;
+// 	font-family: 'Open Sans';
+// 	font-size: 16px;
+// 	line-height: 1.5;
+// 	color: #454545;
+// `;
 
 class MultipleChoice extends Component {
   constructor(props) {
@@ -107,12 +106,12 @@ class MultipleChoice extends Component {
             alt={this.props.status === 'correct' ? 'icon-correct' : 'icon-wrong'}
           />
         </AnswerIconWrapper>
-        { this.props.status === 'wrong' && this.props.explanation &&
+        {/* { this.props.status === 'wrong' && this.props.explanation &&
           <CorrectAnswerWrapper>
             <AnswerLabel>Explanation:</AnswerLabel>
             <Explanation>{this.props.explanation}</Explanation>
           </CorrectAnswerWrapper>
-        }
+        } */}
       </AnswerWrapper>
     );
   }
@@ -157,7 +156,7 @@ MultipleChoice.propTypes = {
   status: propTypes.oneOf([ 'question', 'wrong', 'correct' ]).isRequired,
   userAnswer: propTypes.number,
   setUserAnswer: propTypes.func.isRequired,
-  explanation: propTypes.string.isRequired,
+  // explanation: propTypes.string.isRequired,
   checkAnswer: propTypes.func.isRequired
 };
 

@@ -36,7 +36,7 @@ CharacterPinyin.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  character: s.getCurrentCharacter(state),
+  character: s.getExerciseCharacter(state),
   status: s.characterPinyin.getStatus(state),
   userAnswer: s.characterPinyin.getUserAnswer(state),
   openFeedbackModal: s.ui.getOpenFeedbackModal(state)

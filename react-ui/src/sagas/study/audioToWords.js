@@ -1,8 +1,8 @@
 import { put, select, take, call } from 'redux-saga/effects';
 import { delay } from 'redux-saga';
 import selectors from '../../rootSelectors';
-import { actions as studyActions } from '../../redux/study';
-import { actions as audioToTextActions } from '../../redux/audioToText';
+// import { actions as studyActions } from '../../redux/study';
+import { actions as audioToWordsActions } from '../../redux/audioToWords';
 import { types as sagaTypes, actions as sagaActions } from '../actions';
 import { actions as uiActions } from '../../redux/ui';
 import { Map } from 'immutable';
@@ -13,14 +13,8 @@ const trim = string => {
   return string.replace(/\s+/g, '').toLowerCase();
 };
 
-export function* isDataLoaded(id) {
-  yield put(studyActions.setCurrentAudioToTextId(id));
-  const initialized = yield select(selectors.practice.getInitialized);
-  if (!initialized) {
-    return false;
-  }
-  const currentElement = yield select(selectors.getCurrentAudioToText);
-  return (currentElement === undefined) ? false : true;
+export function isDataLoaded() {
+  return true;
 }
 
 export function* fetchData(episodeId) {
@@ -37,24 +31,23 @@ export function* initStudyData() {
 }
 
 export function* initUi() {
-  yield put(audioToTextActions.init());
+  yield put(audioToWordsActions.init());
 }
 
 export function* run(isExam = false) {
   let result;
-  const currentAudioToText = yield select(selectors.getCurrentAudioToText);
-  yield put(audioActions.set('audioUrl', currentAudioToText.audioUrl));
+  const exercise = yield select(selectors.getCurrentExercise);
+  yield put(audioActions.set('audioUrl', exercise.audioUrl));
   yield put(sagaActions.playAudio());
-  const wordIds = currentAudioToText.words;
-  const words = yield select(selectors.entities.getWords);
-  for (let i = 0; i < wordIds.length; i++) {
-    const word = words.get(String(wordIds[i]));
-    yield put(audioToTextActions.setCurrentBoxIndex(i));
+  const words = yield select(selectors.getExerciseWords);
+  for (let i = 0; i < words.length; i++) {
+    const word = words[i];
+    yield put(audioToWordsActions.setCurrentBoxIndex(i));
     yield take(sagaTypes.CHECK_ANSWER);
-    const userAnswer = yield select(selectors.audioToText.getUserAnswer);
+    const userAnswer = yield select(selectors.audioToWords.getUserAnswer);
     const success = trim(word.get('pinyin')) === trim(userAnswer);
     if (!success) {
-      const prematureResults = yield select(selectors.audioToText.getResults);
+      const prematureResults = yield select(selectors.audioToWords.getResults);
       result = {
         isCorrect: false,
         value: prematureResults.toJS().map(e => e.userAnswer).join(' | ') + ' | ' + userAnswer
@@ -65,12 +58,12 @@ export function* run(isExam = false) {
         return result;
       }
     }
-    yield put(audioToTextActions.addResult(Map({ success, userAnswer })));
-    yield put(audioToTextActions.setUserAnswer(''));
+    yield put(audioToWordsActions.addResult(Map({ success, userAnswer })));
+    yield put(audioToWordsActions.setUserAnswer(''));
   }
-  const questionSuccess = yield select(selectors.audioToText.getSuccess);
+  const questionSuccess = yield select(selectors.audioToWords.getSuccess);
   yield put(uiActions.set('playAudioButton', false));
-  const results = yield select(selectors.audioToText.getResults);
+  const results = yield select(selectors.audioToWords.getResults);
   if (questionSuccess) {
     result = {
       isCorrect: true,
@@ -80,7 +73,7 @@ export function* run(isExam = false) {
     if (isExam) {
       return result;
     }
-    yield put(audioToTextActions.setStatus('finished'));
+    yield put(audioToWordsActions.setStatus('finished'));
     yield delay(1000);
     return result;
   }
@@ -88,7 +81,7 @@ export function* run(isExam = false) {
     isCorrect: false,
     value: results.toJS().map(e => e.userAnswer).join(' ')
   };
-  yield put(audioToTextActions.setStatus('finished'));
+  yield put(audioToWordsActions.setStatus('finished'));
   yield put(uiActions.set('nextButton', true));
   yield take(sagaTypes.NEXT_QUESTION);
   return result;

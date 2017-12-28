@@ -3,7 +3,7 @@
 // high-order reducer. Entity reducers are dynamically created in rootReducer.
 export { default as app } from './app';
 export { default as audio } from './audio';
-export { default as audioToText } from './audioToText';
+export { default as audioToWords } from './audioToWords';
 export { default as auth } from './auth';
 export { default as book } from './book';
 export { default as characterPinyin } from './characterPinyin';

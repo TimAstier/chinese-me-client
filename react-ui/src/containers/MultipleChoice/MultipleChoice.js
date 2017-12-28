@@ -9,14 +9,15 @@ import { actions as sagaActions } from '../../sagas/actions';
 
 class MultipleChoice extends Component {
   render() {
+    // TODO: explanation (teacher comment)
     return (
       <MultipleChoiceComponent
-        question={this.props.multipleChoice.question}
-        choices={this.props.multipleChoice.choices}
+        question={this.props.exercise.text}
+        choices={this.props.exercise.choices}
         status={this.props.status}
         userAnswer={this.props.userAnswer}
         setUserAnswer={this.props.setUserAnswer}
-        explanation={this.props.multipleChoice.explanation}
+        explanation={null}
         checkAnswer={this.props.checkAnswer}
       />
     );
@@ -24,7 +25,7 @@ class MultipleChoice extends Component {
 }
 
 MultipleChoice.propTypes = {
-  multipleChoice: propTypes.instanceOf(models.MultipleChoice).isRequired,
+  exercise: propTypes.instanceOf(models.Exercise).isRequired,
   status: propTypes.oneOf([ 'question', 'wrong', 'correct' ]).isRequired,
   userAnswer: propTypes.number,
   setUserAnswer: propTypes.func.isRequired,
@@ -32,7 +33,7 @@ MultipleChoice.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  multipleChoice: s.getCurrentMultipleChoice(state),
+  exercise: s.getCurrentExercise(state),
   status: s.multipleChoice.getStatus(state),
   userAnswer: s.multipleChoice.getUserAnswer(state)
 });

@@ -3,9 +3,9 @@ import propTypes from 'prop-types';
 import styled from 'styled-components';
 import { WordBoxResult } from './..';
 import { WordBox } from '../../containers';
-import Immutable, { List } from 'immutable';
-import { ScreenButton } from '../../containers';
+import { List } from 'immutable';
 import * as models from '../../models';
+import { ScreenButton } from '../../containers';
 
 const Wrapper = styled.div`
   flex-grow: 1;
@@ -49,14 +49,14 @@ const CheckWrapper = styled.div`
   align-items: flex-end;
 `;
 
-class AudioToText extends Component {
+class AudioToWords extends Component {
   renderWordBoxes() {
-    return this.props.audioToText.words.map((w, i) => {
+    return this.props.words.map((w, i) => {
       if (this.props.results.get(i) !== undefined) {
         return (
           <WordBoxResult
             key={i}
-            word={this.props.words.get(String(w))}
+            word={w}
             success={this.props.results.getIn([i, 'success'])}
             userAnswer={this.props.results.getIn([i, 'userAnswer'])}
           />
@@ -66,7 +66,7 @@ class AudioToText extends Component {
         <WordBox
           key={i}
           index={i}
-          word={this.props.words.get(String(w))}
+          word={w}
           userAnswer={this.props.userAnswer}
           currentBoxIndex={this.props.currentBoxIndex}
         />
@@ -105,13 +105,12 @@ class AudioToText extends Component {
   }
 }
 
-AudioToText.propTypes = {
-  audioToText: propTypes.instanceOf(models.AudioToText).isRequired,
-  words: propTypes.instanceOf(Immutable.OrderedMap).isRequired,
+AudioToWords.propTypes = {
+  words: propTypes.arrayOf(propTypes.instanceOf(models.Word)).isRequired,
   currentBoxIndex: propTypes.number.isRequired,
   results: propTypes.instanceOf(List).isRequired,
   status: propTypes.oneOf(['question', 'finished']).isRequired,
   userAnswer: propTypes.string.isRequired
 };
 
-export default AudioToText;
+export default AudioToWords;

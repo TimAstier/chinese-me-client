@@ -1,15 +1,13 @@
 import { put, take, select, call } from 'redux-saga/effects';
-// import { types as uiTypes } from '../../redux/ui';
 import { delay } from 'redux-saga';
+// import { types as uiTypes } from '../../redux/ui';
 import selectors from '../../rootSelectors';
 import { actions as studyActions } from '../../redux/study';
-import { actions as sagaActions, types as sagaTypes } from '../actions';
-import { actions as audioActions } from '../../redux/audio';
-import { actions as hanziActions } from '../../redux/hanzi';
+import { types as sagaTypes } from '../actions';
 import { fetchEntities } from '../entities';
-import pinyinNumberToAudioUrl from '../../utils/pinyinNumberToAudioUrl';
-import { replace } from 'react-router-redux';
-import randomID from '../../utils/randomID';
+import { actions as sagaActions } from '../actions';
+import { actions as uiActions } from '../../redux/ui';
+import { push } from 'react-router-redux';
 
 export function* isDataLoaded(id) {
   yield put(studyActions.setCurrentCharacterId(id));
@@ -33,31 +31,25 @@ export function* initStudyData() {}
 
 export function* initUi() {}
 
-export function* run() {
-  // We set an animationId to ensure that the STROKE_ANIMATION_FINISHED
-  // signal do not come from a previously instantiated hanziWriter
-  const animationId = randomID();
-  yield put(hanziActions.setAnimationId(animationId));
-  const currentChar = yield select(selectors.getCurrentCharacter);
-  const audioUrl = pinyinNumberToAudioUrl(currentChar.pinyinNumber);
-  yield put(audioActions.set('audioUrl', audioUrl));
-  // Wait for an animation with the correct animationId to finish
-  yield take(action => {
-    if (action.type === sagaTypes.STROKE_ANIMATION_FINISHED) {
-      if (action.payload.animationId === animationId) {
-        return true;
-      }
-    }
-    return false;
-  });
-  yield put(sagaActions.playAudio());
-  yield delay(1500);
+export function* run(isExam = false) {
+  // There is currently no way to fail this exercise
+  const result = { isCorrect: true };
+  if (!isExam) {
+    yield put(uiActions.set('hanziAgainButton', true));
+  }
+  yield take(sagaTypes.STROKE_QUIZ_COMPLETED);
+  yield put(sagaActions.playSuccessSound());
+  if (isExam) {
+    return result;
+  }
+  yield put(uiActions.set('hanziAgainButton', false));
+  yield delay(1000);
+  return result;
 }
 
 export function* nextScreen() {
-  const episodeId = yield select(selectors.study.getCurrentEpisodeId);
-  const currentElement = yield select(selectors.getCurrentCharacter);
-  yield put(replace(`/study/${episodeId}/character/${currentElement.id}/strokeQuiz`));
+  const url = yield select(selectors.getCurrentBookUrl);
+  yield put(push(url));
 }
 
 // export function* clean() {}

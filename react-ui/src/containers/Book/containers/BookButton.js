@@ -17,7 +17,7 @@ class BookButton extends Component {
       case 'story':
         return `/study/${this.props.episodeId}/character/${this.props.buttonOptions.data.elementId}/etymology`;
       case 'stroke':
-        return `/study/${this.props.episodeId}/character/${this.props.buttonOptions.data.elementId}/stroke`;
+        return `/study/${this.props.episodeId}/character/${this.props.buttonOptions.data.elementId}/animation`;
       case 'practice':
         return `/study/${this.props.episodeId}/practice/${this.props.buttonOptions.data.elementId}`;
       case 'exam':

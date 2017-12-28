@@ -36,14 +36,13 @@ export default (
       <Route path="season/:seasonNumber/episode/:episodeNumber" component={containers.Book} />
       <Route path=":episodeId" component={requireAuth(containers.EpisodeHOC)}>
         <Route path="character/:characterId/pinyin" component={containers.CharacterPinyin} />
+        <Route path="character/:characterId/animation" component={containers.CharacterAnimation} />
         <Route path="character/:characterId/stroke" component={containers.CharacterStroke} />
-        <Route path="character/:characterId/strokeQuiz" component={containers.CharacterStrokeQuiz} />
         <Route path="character/:characterId/etymology" component={containers.CharacterEtymology} />
         <Route path="character/:characterId/writing" component={containers.CharacterWriting} />
         <Route path="dialog/:dialogId/watch" component={containers.Dialog} />
         <Route path="dialog/:dialogId/explore" component={containers.Dialog} />
         <Route path="dialog/:dialogId/roleplay" component={containers.Dialog} />
-        <Route path="audioToText/:audioToTextId" component={containers.AudioToText} />
         <Route path="video/:videoId" component={containers.Video} />
         <Route path="practice/:practiceId" component={containers.Practice}/>
         <Route path="exam" component={containers.Exam} />

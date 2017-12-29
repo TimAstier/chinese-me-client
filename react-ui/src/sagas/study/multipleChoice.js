@@ -4,6 +4,7 @@ import selectors from '../../rootSelectors';
 import { actions as multipleChoiceActions } from '../../redux/multipleChoice';
 import { actions as sagaActions, types as sagaTypes } from '../actions';
 import { actions as uiActions } from '../../redux/ui';
+import { actions as audioActions } from '../../redux/audio';
 
 export function isDataLoaded() {
   return true;
@@ -19,11 +20,19 @@ export function* initStudyData() {
   yield put(multipleChoiceActions.init());
 }
 
-export function* initUi() {}
+export function* initUi(type) {
+  if (type === 'audioToChoice') {
+    yield put(uiActions.set('playAudioButton', true));
+  }
+}
 
-export function* run(isExam = false) {
+export function* run(isExam = false, type) {
   const result = {};
   const exercise = yield select(selectors.getCurrentExercise);
+  if (type === 'audioToChoice') {
+    yield put(audioActions.set('audioUrl', exercise.audioUrl));
+    yield put(sagaActions.playAudio());
+  }
   yield take(sagaTypes.CHECK_ANSWER);
   const userAnswer = yield select(selectors.multipleChoice.getUserAnswer);
   result.value = exercise.get('choices')[userAnswer];
@@ -33,6 +42,7 @@ export function* run(isExam = false) {
   const success = expectedAnswer === userAnswer;
   if (success) {
     result.isCorrect = true;
+    yield put(uiActions.set('playAudioButton', false));
     yield put(sagaActions.playSuccessSound());
     yield put(multipleChoiceActions.setStatus('correct'));
     if (isExam) {

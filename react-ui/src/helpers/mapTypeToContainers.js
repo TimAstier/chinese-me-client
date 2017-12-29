@@ -3,6 +3,7 @@ import { MultipleChoice, AudioToWords, CharacterPinyin, CharacterStroke }
 
 export default function mapTypeToContainers(type) {
   switch (type) {
+    case 'audioToChoice':
     case 'textToChoice': return MultipleChoice;
     case 'audioToWords': return AudioToWords;
     case 'characterPinyin': return CharacterPinyin;

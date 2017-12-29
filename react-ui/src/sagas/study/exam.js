@@ -62,7 +62,7 @@ function* runExam() {
     yield put(studyActions.setCurrentExerciseId(exercise.get('id')));
     yield call(defaultExamUi);
     yield call(funcs.initStudyData);
-    yield call(funcs.initUi);
+    yield call(funcs.initUi, type);
     yield put(examActions.setInitialized(true));
     // NOTE: Each exercise run Saga needs to return a result object with shape:
     // {
@@ -70,7 +70,7 @@ function* runExam() {
     //   value (string)
     // }
     const runExercise = yield race({
-      result: call(funcs.run, true),
+      result: call(funcs.run, true, type),
       exit: take(sagaTypes.EXIT)
     });
     // Stop timer at end of last exercise

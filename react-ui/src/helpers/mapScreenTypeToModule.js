@@ -28,6 +28,7 @@ export default function mapScreenTypeToModule(screenType) {
     case 'dialog/watch': return fromDialogWatch;
     case 'dialog/explore': return fromDialogExplore;
     case 'dialog/roleplay': return fromDialogRoleplay;
+    case 'audioToChoice/':
     case 'textToChoice/': return fromMultipleChoice;
     case 'audioToWords/': return fromAudioToWords;
     case 'video/': return fromVideo;

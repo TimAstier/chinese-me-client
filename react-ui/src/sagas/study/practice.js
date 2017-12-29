@@ -55,7 +55,7 @@ export function* run() {
     yield put(studyActions.setCurrentExerciseId(exercise.get('id')));
     yield call(defaultExamUi);
     yield call(funcs.initStudyData);
-    yield call(funcs.initUi);
+    yield call(funcs.initUi, type);
     yield put(practiceActions.setInitialized(true));
     // NOTE: Each exercise run Saga needs to return a result object with shape:
     // {
@@ -63,7 +63,7 @@ export function* run() {
     //   value (string)
     // }
     const runExercise = yield race({
-      result: call(funcs.run),
+      result: call(funcs.run, false, type),
       exit: take(sagaTypes.EXIT)
     });
     if (runExercise.hasOwnProperty('result')) {

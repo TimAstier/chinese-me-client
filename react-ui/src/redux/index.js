@@ -8,6 +8,7 @@ export { default as auth } from './auth';
 export { default as book } from './book';
 export { default as characterPinyin } from './characterPinyin';
 export { default as exam } from './exam';
+export { default as freeInput } from './freeInput';
 export { default as hanzi } from './hanzi';
 export { default as map } from './map';
 export { default as multipleChoice } from './multipleChoice';

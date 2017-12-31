@@ -12,6 +12,7 @@ import * as fromExam from '../sagas/study/exam';
 import * as fromPractice from '../sagas/study/practice';
 import * as fromExamResult from '../sagas/study/examResult';
 import * as fromVideo from '../sagas/study/video';
+import * as fromFreeInput from '../sagas/study/freeInput';
 
 // TODO: Issue: Study screenTypes and Exam screenTypes are not always consistent
 // Maybe harmonize them or spleet between two files?
@@ -30,6 +31,8 @@ export default function mapScreenTypeToModule(screenType) {
     case 'dialog/roleplay': return fromDialogRoleplay;
     case 'audioToChoice/':
     case 'textToChoice/': return fromMultipleChoice;
+    case 'textToText/':
+    case 'audioToText/': return fromFreeInput;
     case 'audioToWords/': return fromAudioToWords;
     case 'video/': return fromVideo;
     case 'practice/': return fromPractice;

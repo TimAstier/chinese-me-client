@@ -28,6 +28,7 @@ export { default as ExamResult } from './ExamResult/ExamResult';
 export { default as ExamResultScoreLabel } from './ExamResult/ExamResultScoreLabel';
 export { default as ExamScoreLabel } from './Exam/ExamScoreLabel';
 export { default as FeedbackModal } from './FeedbackModal/FeedbackModal';
+export { default as FreeInput } from './FreeInput/FreeInput';
 export { default as Footer } from './Footer/Footer';
 export { default as Hanzi } from './Hanzi/Hanzi';
 export { default as HanziAgainButton } from './HanziAgainButton/HanziAgainButton';

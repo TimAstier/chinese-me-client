@@ -12,6 +12,7 @@ import * as fromBook from '../redux/book';
 import * as fromCharacterPinyin from '../redux/characterPinyin';
 import * as fromEntities from '../redux/entities';
 import * as fromExam from '../redux/exam';
+import * as fromFreeInput from '../redux/freeInput';
 import * as fromHanzi from '../redux/hanzi';
 import * as fromMap from '../redux/map';
 import * as fromMultipleChoice from '../redux/multipleChoice';
@@ -64,6 +65,11 @@ const entitiesSelectors = bindSelectors(
 const examSelectors = bindSelectors(
   state => state.get('exam'),
   fromExam.selectors
+);
+
+const freeInputSelectors = bindSelectors(
+  state => state.get('freeInput'),
+  fromFreeInput.selectors
 );
 
 const hanziSelectors = bindSelectors(
@@ -137,6 +143,7 @@ const globalizedSelectors = {
   multipleChoice: multipleChoiceSelectors,
   video: videoSelectors,
   exam: examSelectors,
+  freeInput: freeInputSelectors,
   timer: timerSelectors,
   settings: settingsSelectors,
   hanzi: hanziSelectors,

@@ -17,6 +17,8 @@ import howler from 'howler';
 */
 
 export function *voiceText(text, muted = false) {
+  // BUG: ResponsiveVoice Chinese voice currently doesn't work on Safari, IOS
+  // An alternative could be: http://www.voicerss.org/api/demo.aspx
   // See ResponsiveVoice Api: https://responsivevoice.org/api/
   const voicer = window.responsiveVoice;
   if (voicer.voiceSupport()) {

@@ -7,6 +7,7 @@ export { default as audioToWords } from './audioToWords';
 export { default as auth } from './auth';
 export { default as book } from './book';
 export { default as characterPinyin } from './characterPinyin';
+export { default as choicesToOrder } from './choicesToOrder';
 export { default as exam } from './exam';
 export { default as freeInput } from './freeInput';
 export { default as hanzi } from './hanzi';

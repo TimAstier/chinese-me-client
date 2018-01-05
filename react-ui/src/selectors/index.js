@@ -1,6 +1,7 @@
 // Keep in alphabetical order
 export { default as getAugmentedSettings } from './getAugmentedSettings';
 export { default as getCharacterPinyinHints } from './getCharacterPinyinHints';
+export { default as getChoicesToOrderUserAnswer } from './getChoicesToOrderUserAnswer';
 export { default as getCurrentAvatars } from './getCurrentAvatars';
 export { default as getCurrentBookUrl } from './getCurrentBookUrl';
 export { default as getCurrentCharacter } from './getCurrentCharacter';
@@ -41,3 +42,4 @@ export { default as getProgressbarCompletion } from './getProgressbarCompletion'
 export { default as getRequiredUserData } from './getRequiredUserData';
 export { default as getSentencesCountInCurrentDialog } from './getSentencesCountInCurrentDialog';
 export { default as getSentencesWithValues } from './getSentencesWithValues';
+export { default as getUsedChoices } from './getUsedChoices';

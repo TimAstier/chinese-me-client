@@ -10,6 +10,7 @@ import * as fromAudioToWords from '../redux/audioToWords';
 import * as fromAuth from '../redux/auth';
 import * as fromBook from '../redux/book';
 import * as fromCharacterPinyin from '../redux/characterPinyin';
+import * as fromChoicesToOrder from '../redux/choicesToOrder';
 import * as fromEntities from '../redux/entities';
 import * as fromExam from '../redux/exam';
 import * as fromFreeInput from '../redux/freeInput';
@@ -55,6 +56,11 @@ const bookSelectors = bindSelectors(
 const characterPinyinSelectors = bindSelectors(
   state => state.get('characterPinyin'),
   fromCharacterPinyin.selectors
+);
+
+const choicesToOrderSelectors = bindSelectors(
+  state => state.get('choicesToOrder'),
+  fromChoicesToOrder.selectors
 );
 
 const entitiesSelectors = bindSelectors(
@@ -130,6 +136,7 @@ const questionSelectors = bindSelectors(
 const globalizedSelectors = {
   app: appSelectors,
   entities: entitiesSelectors,
+  choicesToOrder: choicesToOrderSelectors,
   study: studySelectors,
   ui: uiSelectors,
   book: bookSelectors,

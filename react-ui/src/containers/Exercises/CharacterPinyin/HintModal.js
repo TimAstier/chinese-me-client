@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
-import s from '../../rootSelectors';
-import { HintModal as HintModalComponent } from '../../components';
+import s from '../../../rootSelectors';
+import { HintModal as HintModalComponent } from '../../../components';
 
 class HintModal extends Component {
   render() {

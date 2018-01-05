@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
-import { Modal, ScreenButton } from '../../containers';
+import { Modal, ScreenButton } from '../../../containers';
 import styled from 'styled-components';
 
 const ModalContent = styled.div`

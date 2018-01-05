@@ -25,7 +25,7 @@ export { default as FeedbackModal } from './FeedbackModal/FeedbackModal';
 export { default as FreeInput } from './Exercises/FreeInput/FreeInput';
 export { default as Hanzi } from './Hanzi/Hanzi';
 export { default as HanziAgainButton } from './HanziAgainButton/HanziAgainButton';
-export { default as HintModal } from './CharacterPinyin/HintModal';
+export { default as HintModal } from './Exercises/CharacterPinyin/HintModal';
 export { default as LoginPage } from './Login/Page';
 export { default as MapContent } from './MapModal/MapContent';
 export { default as MapModal } from './MapModal/MapModal';

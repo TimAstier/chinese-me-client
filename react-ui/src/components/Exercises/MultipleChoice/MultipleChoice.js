@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
-import { ChoiceBox } from './.';
+import ChoiceBox from './ChoiceBox/ChoiceBox';
 import iconWrong from '../../../images/iconWrong.svg';
 import iconCorrect from '../../../images/iconCorrect.svg';
 import createArrayOfRandomIntegers from '../../../utils/createArrayOfRandomIntegers';

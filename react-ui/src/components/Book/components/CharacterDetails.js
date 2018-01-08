@@ -17,7 +17,7 @@ class CharacterDetails extends Component {
           {
             type: 'audio',
             data: {
-              url: pinyinNumberToAudioUrl(this.propspinyinNumber),
+              url: pinyinNumberToAudioUrl(this.props.pinyinNumber),
               text: this.props.simpChar
             }
           }

@@ -156,13 +156,23 @@ class CharacterPinyin extends Component {
     );
   }
 
+  _renderQuestion() {
+    if (this.props.status === 'question') {
+      if (this.props.text) {
+        return this.props.text;
+      }
+      return 'Type the pinyin!';
+    }
+    return '';
+  }
+
   render() {
     return (
       <Wrapper>
         <HintModal/>
         {this.props.hideLabel !== true &&
           <LabelWrapper>
-            {this.props.status === 'question' ? 'Type the pinyin!' : ''}
+            {this._renderQuestion()}
           </LabelWrapper>
         }
         <Hanzi
@@ -186,7 +196,8 @@ CharacterPinyin.propTypes = {
   userAnswer: propTypes.string.isRequired,
   handleChange: propTypes.func.isRequired,
   openFeedbackModal: propTypes.bool.isRequired,
-  hideLabel: propTypes.bool
+  hideLabel: propTypes.bool,
+  text: propTypes.string
 };
 
 export default CharacterPinyin;

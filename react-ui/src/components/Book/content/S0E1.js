@@ -31,7 +31,7 @@ export default class Content extends Component {
           <c.P>Now, practice your full Chinese name. Remember that the family name comes first, followed by the given name:</c.P>
           {example(4, { basic: true, big: true, audio: true })}
           <c.P>Repeat until you can say the name exactly as the audio voice.</c.P>
-          <c.P>Practice saying “my name is” by adding 我叫before your name:</c.P>
+          <c.P>Practice saying “my name is” by adding 我叫 before your name:</c.P>
           {example(5, { basic: true, big: true, audio: true })}
           <c.P>Repeat this phrase until you can say it exactly like the voice on the recording.</c.P>
           <c.PartTitle>DIALOG</c.PartTitle>

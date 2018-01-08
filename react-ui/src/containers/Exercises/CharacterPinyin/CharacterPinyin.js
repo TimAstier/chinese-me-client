@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { CharacterPinyin as CharacterPinyinComponent } from '../../../components';
-import { Character } from '../../../models';
+import { Character, Exercise } from '../../../models';
 import s from '../../../rootSelectors';
 import { actions as characterPinyinActions } from '../../../redux/characterPinyin';
 
@@ -15,6 +15,7 @@ class CharacterPinyin extends Component {
     return (
       <CharacterPinyinComponent
         handleChange={this.handleChange.bind(this)}
+        text={this.props.exercise.text}
         { ...this.props }
       />
     );
@@ -23,6 +24,7 @@ class CharacterPinyin extends Component {
 
 CharacterPinyin.propTypes = {
   character: propTypes.instanceOf(Character).isRequired,
+  exercise: propTypes.instanceOf(Exercise).isRequired,
   status: propTypes.oneOf([
     'question',
     'wrong',
@@ -35,6 +37,7 @@ CharacterPinyin.propTypes = {
 };
 
 const mapStateToProps = state => ({
+  exercise: s.getCurrentExercise(state),
   character: s.getExerciseCharacter(state),
   status: s.characterPinyin.getStatus(state),
   userAnswer: s.characterPinyin.getUserAnswer(state),

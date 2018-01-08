@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import propTypes from 'prop-types';
 import logo from '../../images/logo.svg';
 import helpIcon from '../../images/helpIcon.svg';
-import messageIcon from '../../images/messageIcon.png';
+import messageIcon from '../../images/messageIcon.svg';
 import Clickable from '../Shared/Clickable';
 import { Link } from 'react-router';
 import { UserPopup } from '../.';

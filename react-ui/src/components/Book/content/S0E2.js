@@ -34,7 +34,6 @@ export default class Content extends Component {
           <c.PartTitle>CHARACTERS</c.PartTitle>
           {newCharacters()}
           <c.PartTitle>PRONUNCIATION</c.PartTitle>
-          <c.P>A Chinese syllable is composed of three parts: an <i>initial</i>, which comes first; a <i>final</i>, which comes last, and a <i>tone</i>. Which are the initials, finals and tones on these syllables?</c.P>
           <c.P
             buttonOptions={{
               type: 'practice',
@@ -42,7 +41,27 @@ export default class Content extends Component {
                 elementId: practiceIds[1]
               }
             }}
-          >Practice.</c.P>
+          >
+            A Chinese syllable is composed of three parts: an <i>initial</i>, which comes first; a <i>final</i>, which comes last, and a <i>tone</i>. Which are the initials, finals and tones on these syllables? Practice:
+          </c.P>
+          {character(3, {
+            mode: 'details',
+            hideMeaning: true,
+            hideLinks: true,
+            audio: true
+          })}
+          {character(5, {
+            mode: 'details',
+            hideMeaning: true,
+            hideLinks: true,
+            audio: true
+          })}
+          {character(6, {
+            mode: 'details',
+            hideMeaning: true,
+            hideLinks: true,
+            audio: true
+          })}
           <c.P>Let us practice pronouncing a couple of the initials from this lesson.</c.P>
           <c.PartTitle type="tertiary">The initial h-</c.PartTitle>
           <c.P>Chinese <b>h-</b> is much “harder” than English <i>h</i>; it sounds more like its German counterpart. Mimic the audio voice and try to exaggerate the strong aspiration on the initial:</c.P>

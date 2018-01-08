@@ -5,8 +5,8 @@ import * as models from '../../models';
 import { ChapterHeader, CharacterBox, MapItem }
   from '../.';
 import { ScreenButton } from '../.';
-import handWithPen from '../../images/handWithPen.png';
-import examIcon from '../../images/examIcon.png';
+import exerciseIcon from '../../images/exerciseIcon.svg';
+import examIcon from '../../images/examIcon.svg';
 
 
 const Wrapper = styled.div`
@@ -196,7 +196,7 @@ class MapContent extends Component {
               <ScreenButton
                 text="Exercises"
                 secondary
-                icon={handWithPen}
+                icon={exerciseIcon}
                 onClick={() => this.props.mapLinkClick(
                   `/study/season/${focusedSeasonNumber}/episode/${episode.number}#review`
                 )}

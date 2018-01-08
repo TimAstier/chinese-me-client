@@ -74,7 +74,7 @@ export default class Content extends Component {
             buttonOptions={{
               type: 'audio',
               data: {
-                url: 'https://s3.eu-west-2.amazonaws.com/chineseme/pinyin/zhong1.m4a'
+                url: 'https://s3.eu-west-2.amazonaws.com/chineseme/pinyin/zhongguo.m4a'
               }
             }}>
             <c.Char>中国</c.Char>
@@ -94,7 +94,7 @@ export default class Content extends Component {
             buttonOptions={{
               type: 'audio',
               data: {
-                url: 'https://s3.eu-west-2.amazonaws.com/chineseme/pinyin/zhong1.m4a'
+                url: 'https://s3.eu-west-2.amazonaws.com/chineseme/sentences/chinese.m4a'
               }
             }}>
             <c.Char>中国人</c.Char>
@@ -114,7 +114,7 @@ export default class Content extends Component {
             buttonOptions={{
               type: 'audio',
               data: {
-                url: 'https://s3.eu-west-2.amazonaws.com/chineseme/pinyin/zhong1.m4a'
+                url: 'https://s3.eu-west-2.amazonaws.com/chineseme/sentences/87.m4a'
               }
             }}>
             <c.Char>我是中国人。</c.Char>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
+import replayIcon from '../../images/replayIcon.svg';
 
 const Wrapper = styled.div`
   display: flex;
@@ -18,13 +19,14 @@ const Wrapper = styled.div`
 `;
 
 class HanziAgainButton extends Component {
-
   render() {
     if (this.props.hidden) {
       return null;
     }
     return (
-      <Wrapper onClick={this.props.onClick}>&#10226;</Wrapper>
+      <Wrapper onClick={this.props.onClick}>
+        <img src={replayIcon} alt=""/>
+      </Wrapper>
     );
   }
 }

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
 import Form from './Form';
-import messageIcon from '../../images/messageIcon.png';
+import messageIcon from '../../images/messageIcon.svg';
 
 const Wrapper = styled.div`
   height: 700px;

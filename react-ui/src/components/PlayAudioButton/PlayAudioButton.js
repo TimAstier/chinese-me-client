@@ -12,6 +12,9 @@ const Wrapper = styled.div`
   :hover {
     opacity: 0.92;
   }
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
 `;
 
@@ -57,6 +60,8 @@ class PlayAudioButton extends Component {
         <img
           src={iconPlayAudio}
           alt="play audio"
+          height={this.props.small ? '30px' : undefined}
+          width={this.props.small ? '30px' : undefined}
         />
       );
     }
@@ -65,13 +70,17 @@ class PlayAudioButton extends Component {
       <img
         src={this.loopPlayingIcons()}
         alt="audio playing"
+        height={this.props.small ? '30px' : undefined}
+        width={this.props.small ? '30px' : undefined}
       />
     );
   }
 
   render() {
     return (
-      <Wrapper onClick={this.props.onClick}>
+      <Wrapper
+        onClick={this.props.onClick}
+      >
         {this.renderImage()}
       </Wrapper>
     );
@@ -80,7 +89,8 @@ class PlayAudioButton extends Component {
 
 PlayAudioButton.propTypes = {
   onClick: propTypes.func.isRequired,
-  isPlaying: propTypes.bool
+  isPlaying: propTypes.bool,
+  small: propTypes.bool
 };
 
 export default PlayAudioButton;

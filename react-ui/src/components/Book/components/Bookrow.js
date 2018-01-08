@@ -31,6 +31,7 @@ class Bookrow extends Component {
         text={this.props.buttonOptions.data.text}
         keyPress={false}
         animation={false}
+        small
       />
     );
   }

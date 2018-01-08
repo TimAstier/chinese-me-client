@@ -4,7 +4,7 @@ import { ScrollableWrapper } from '../.';
 import styled from 'styled-components';
 import { Link } from 'react-router';
 import { Row } from '../Shared';
-import messageIcon from '../../images/messageIcon.png';
+import messageIcon from '../../images/messageIcon.svg';
 const Preload = require('react-preload').Preload;
 
 const Title = styled.span`

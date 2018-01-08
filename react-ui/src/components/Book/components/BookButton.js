@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
-import dialogIcon from '../../../images/dialogIcon.png';
-import brushIcon from '../../../images/brushIcon.png';
-import handWithPen from '../../../images/handWithPen.png';
-import storyIcon from '../../../images/storyIcon.png';
-import strokeIcon from '../../../images/strokeIcon.png';
-import examIcon from '../../../images/examIcon.png';
+import dialogIcon from '../../../images/dialogIcon.svg';
+import brushIcon from '../../../images/brushIcon.svg';
+import exerciseIcon from '../../../images/exerciseIcon.svg';
+import storyIcon from '../../../images/storyIcon.svg';
+import strokeIcon from '../../../images/strokeIcon.svg';
+import examIcon from '../../../images/examIcon.svg';
 
 const Wrapper = styled.div`
   display: flex;
@@ -34,7 +34,7 @@ class BookButton extends Component {
       case 'story': return storyIcon;
       case 'stroke': return strokeIcon;
       case 'askUserSettings':
-      case 'practice': return handWithPen;
+      case 'practice': return exerciseIcon;
       case 'exam': return examIcon;
       default: return console.log('Unknown bookButton type');
     }

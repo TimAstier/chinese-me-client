@@ -39,6 +39,7 @@ class PlayAudioButton extends Component {
             this.props.playAudio(this.props.url, this.props.text);
           }
         }
+        small={this.props.small}
         isPlaying={this.props.animation === false ? false : this.props.isPlaying}
       />
     );
@@ -52,7 +53,8 @@ PlayAudioButton.propTypes = {
   url: propTypes.string,
   text: propTypes.string,
   keyPress: propTypes.bool,
-  animation: propTypes.bool
+  animation: propTypes.bool,
+  small: propTypes.bool
 };
 
 const mapStateToProps = state => ({

@@ -76,10 +76,14 @@ export function* run() {
       } else {
         yield put(practiceActions.wrongAnswer());
       }
-      yield put(sagaActions.saveAnswer({
-        exerciseId: exercise.get('id'),
-        ...runExercise.result
-      }));
+      // Save answer in the DB:
+      // TODO: save number of errors for characterStroke
+      if (type !== 'characterStroke') {
+        yield put(sagaActions.saveAnswer({
+          exerciseId: exercise.get('id'),
+          ...runExercise.result
+        }));
+      }
     }
     const nextExercise = yield select(selectors.practice.getCurrentExercise);
     if (!nextExercise) {

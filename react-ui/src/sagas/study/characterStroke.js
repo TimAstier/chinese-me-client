@@ -27,7 +27,12 @@ export function checkData() {
   return true;
 }
 
-export function* initStudyData() {}
+export function* initStudyData() {
+  const currentChar = yield select(selectors.getExerciseCharacter);
+  if (currentChar) {
+    yield put(studyActions.setCurrentCharacterId(currentChar.get('id')));
+  }
+}
 
 export function* initUi() {}
 

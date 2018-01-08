@@ -25,7 +25,12 @@ class Character extends Component {
   _renderDetails() {
     return (
       <c.CharacterDetails
-        character={this.props.character}
+        pinyinNumber={this.props.character.pinyinNumber}
+        simpChar={this.props.character.simpChar}
+        meaning={this.props.character.meaning}
+        id={this.props.character.id}
+        writingUrl={this.props.character.writingUrl}
+        etymologyUrl={this.props.character.etymologyUrl}
         hidePinyin={this.props.options ? this.props.options.hidePinyin : undefined}
         hideMeaning={this.props.options ? this.props.options.hideMeaning : undefined}
         hideLinks={this.props.options ? this.props.options.hideLinks : undefined}

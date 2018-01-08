@@ -14,7 +14,6 @@ const H2 = styled.h2`
 `;
 
 class PartTitle extends Component {
-
   // _renderWithLink() {
   //   return (
   //     <LinkComponent>
@@ -46,6 +45,7 @@ class PartTitle extends Component {
       <Bookrow
         center={!this.props.type}
         buttonOptions={this.props.buttonOptions}
+        marginTop={this.props.type === 'secondary' ? 10 : 60}
       >
         <Element name={this.props.anchor}>
           <H2 fontSize={this._fontSize()} color={this._color()}>

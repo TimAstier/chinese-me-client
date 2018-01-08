@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
-import * as models from '../../../models';
 import pinyinize from 'pinyinize';
 import { bookContainers as C } from '../../../containers';
 import { Char, Pinyin, Meaning, Bookrow } from './.';
@@ -18,54 +17,54 @@ class CharacterDetails extends Component {
           {
             type: 'audio',
             data: {
-              url: pinyinNumberToAudioUrl(this.props.character.pinyinNumber),
-              text: this.props.character.simpChar
+              url: pinyinNumberToAudioUrl(this.propspinyinNumber),
+              text: this.props.simpChar
             }
           }
           : undefined
         }
       >
-        <Char><Element name={this.props.anchor}>{this.props.character.simpChar}</Element></Char>
+        <Char><Element name={this.props.anchor}>{this.props.simpChar}</Element></Char>
         {
-            !this.props.hidePinyin === true &&
-              <Pinyin>{pinyinize(this.props.character.pinyinNumber)}</Pinyin>
+          !this.props.hidePinyin === true &&
+            <Pinyin>{pinyinize(this.props.pinyinNumber)}</Pinyin>
         }
         {
-            !this.props.hideMeaning === true &&
-              <Meaning>{this.props.character.meaning}</Meaning>
+          !this.props.hideMeaning === true &&
+            <Meaning>{this.props.meaning}</Meaning>
         }
         {
-            !this.props.hideLinks === true &&
-              <C.BookButton
-                buttonOptions={{
-                  type: 'stroke',
-                  data: {
-                    elementId: this.props.character.id
-                  }
-                }}
-              />
+          !this.props.hideLinks === true &&
+            <C.BookButton
+              buttonOptions={{
+                type: 'stroke',
+                data: {
+                  elementId: this.props.id
+                }
+              }}
+            />
         }
         {
-            this.props.character.writingUrl && !this.props.hideLinks === true &&
-              <C.BookButton
-                buttonOptions={{
-                  type: 'writing',
-                  data: {
-                    elementId: this.props.character.id
-                  }
-                }}
-              />
+          this.props.writingUrl && !this.props.hideLinks === true &&
+            <C.BookButton
+              buttonOptions={{
+                type: 'writing',
+                data: {
+                  elementId: this.props.id
+                }
+              }}
+            />
         }
         {
-            this.props.character.etymologyUrl && !this.props.hideLinks === true &&
-              <C.BookButton
-                buttonOptions={{
-                  type: 'story',
-                  data: {
-                    elementId: this.props.character.id
-                  }
-                }}
-              />
+          this.props.etymologyUrl && !this.props.hideLinks === true &&
+            <C.BookButton
+              buttonOptions={{
+                type: 'story',
+                data: {
+                  elementId: this.props.id
+                }
+              }}
+            />
         }
       </Bookrow>
     );
@@ -73,7 +72,12 @@ class CharacterDetails extends Component {
 }
 
 CharacterDetails.propTypes = {
-  character: propTypes.instanceOf(models.Character).isRequired,
+  pinyinNumber: propTypes.string,
+  simpChar: propTypes.string,
+  meaning: propTypes.string,
+  id: propTypes.number,
+  writingUrl: propTypes.string,
+  etymologyUrl: propTypes.string,
   hidePinyin: propTypes.bool,
   hideMeaning: propTypes.bool,
   hideLinks: propTypes.bool,

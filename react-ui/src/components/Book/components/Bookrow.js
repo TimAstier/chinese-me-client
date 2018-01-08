@@ -63,9 +63,9 @@ class Bookrow extends Component {
   }
 
   render() {
-    const { marginBottom } = this.props;
+    const { marginBottom, marginTop } = this.props;
     return (
-      <Row marginBottom={marginBottom || 15}>
+      <Row marginBottom={marginBottom || 15} marginTop={marginTop || 0}>
         <Margin top={this.props.buttonOptions ? this.props.buttonOptions.top : false}>
           {this._renderButton()}
         </Margin>
@@ -85,6 +85,7 @@ class Bookrow extends Component {
 Bookrow.propTypes = {
   children: propTypes.node.isRequired,
   marginBottom: propTypes.number,
+  marginTop: propTypes.number,
   buttonOptions: propTypes.shape({
     type: propTypes.oneOf([
       'audio',

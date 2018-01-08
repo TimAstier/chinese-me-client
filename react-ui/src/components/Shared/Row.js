@@ -5,14 +5,18 @@ import styled from 'styled-components';
 const Wrapper = styled.div`
   display: flex;
   margin-bottom: ${ props => props.marginBottom ?
-    `${props.marginBottom}px` : undefined }
+    `${props.marginBottom}px` : undefined };
+  margin-top: ${ props => props.marginTop ?
+    `${props.marginTop}px` : undefined };
 `;
 
 class Row extends Component {
-
   render() {
     return (
-      <Wrapper marginBottom={this.props.marginBottom}>
+      <Wrapper
+        marginBottom={this.props.marginBottom}
+        marginTop={this.props.marginTop}
+      >
         {this.props.children}
       </Wrapper>
     );
@@ -21,7 +25,8 @@ class Row extends Component {
 
 Row.propTypes = {
   children: propTypes.node.isRequired,
-  marginBottom: propTypes.number
+  marginBottom: propTypes.number,
+  marginTop: propTypes.number
 };
 
 export default Row;

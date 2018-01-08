@@ -8,17 +8,19 @@ export const imageUrls = {
     'https://s3.eu-west-2.amazonaws.com/chineseme/images/tone4_diagram.png',
     'https://s3.eu-west-2.amazonaws.com/chineseme/images/shell.png',
     'https://s3.eu-west-2.amazonaws.com/chineseme/images/yi_er_san.png',
-    'https://s3.eu-west-2.amazonaws.com/chineseme/images/wang_king.png',
+    'https://s3.eu-west-2.amazonaws.com/chineseme/images/wang_king2.png',
     'https://s3.eu-west-2.amazonaws.com/chineseme/images/combinations.png',
     'https://s3.eu-west-2.amazonaws.com/chineseme/images/kou_plus_jiu.png',
     'https://s3.eu-west-2.amazonaws.com/chineseme/images/lopsided_wo.png'
   ],
   S0E2: [
+    'https://s3.eu-west-2.amazonaws.com/chineseme/images/S0E2_objectives.png',
     'https://s3.eu-west-2.amazonaws.com/chineseme/images/hao_jiaguwen.png',
     'https://s3.eu-west-2.amazonaws.com/chineseme/images/nv_jiaguwen.png',
     'https://s3.eu-west-2.amazonaws.com/chineseme/images/zi_jiaguwen.png'
   ],
   S0E3: [
+    'https://s3.eu-west-2.amazonaws.com/chineseme/images/S0E2_objectives.png',
     'https://s3.eu-west-2.amazonaws.com/chineseme/images/zhong_jiaguwen.png',
     'https://s3.eu-west-2.amazonaws.com/chineseme/images/yu_jiaguwen.png',
     'https://s3.eu-west-2.amazonaws.com/chineseme/images/guo_jiaguwen.png',

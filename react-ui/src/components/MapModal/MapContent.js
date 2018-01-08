@@ -158,7 +158,7 @@ class MapContent extends Component {
           {
             characters !== 0 &&
               <ChapterHeader
-                name="NEW CHARACTERS"
+                name="CHARACTERS"
                 // completedElements={mapCharactersCompletedCount}
                 // totalElements={characters.length}
               />

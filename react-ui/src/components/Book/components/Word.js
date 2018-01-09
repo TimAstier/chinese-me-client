@@ -6,7 +6,6 @@ import { Char, Pinyin, Meaning, Bookrow } from './.';
 import isEmpty from 'lodash/isEmpty';
 
 class Word extends Component {
-
   render() {
     return (
       <Bookrow>

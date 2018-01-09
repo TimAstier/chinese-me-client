@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import * as c from '../components';
 import { content as contentPropTypes } from '../../../helpers/propTypes';
+import pinyinNumberToAudioUrl from '../../../utils/pinyinNumberToAudioUrl';
 import { Row } from '../../Shared';
 import styled from 'styled-components';
+import pinyinize from 'pinyinize';
 
 // Custom code to handle "example" dialogs
 const Chinese = styled.div`
@@ -44,59 +46,104 @@ export default class Content extends Component {
           >
             A Chinese syllable is composed of three parts: an <i>initial</i>, which comes first; a <i>final</i>, which comes last, and a <i>tone</i>. Which are the initials, finals and tones on these syllables? Practice:
           </c.P>
-          {character(3, {
-            mode: 'details',
-            hideMeaning: true,
-            hideLinks: true,
-            audio: true
-          })}
-          {character(5, {
-            mode: 'details',
-            hideMeaning: true,
-            hideLinks: true,
-            audio: true
-          })}
-          {character(6, {
-            mode: 'details',
-            hideMeaning: true,
-            hideLinks: true,
-            audio: true
-          })}
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: pinyinNumberToAudioUrl('hao3')
+              }
+            }}
+          >
+            <Row>
+              <c.Char>好</c.Char>
+              <c.Pinyin>{pinyinize('hao3')}</c.Pinyin>
+            </Row>
+          </c.Bookrow>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: pinyinNumberToAudioUrl('xing4')
+              }
+            }}
+          >
+            <Row>
+              <c.Char>姓</c.Char>
+              <c.Pinyin>{pinyinize('xing4')}</c.Pinyin>
+            </Row>
+          </c.Bookrow>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: pinyinNumberToAudioUrl('ni3')
+              }
+            }}
+          >
+            <Row>
+              <c.Char>你</c.Char>
+              <c.Pinyin>{pinyinize('ni3')}</c.Pinyin>
+            </Row>
+          </c.Bookrow>
           <c.P>Let us practice pronouncing a couple of the initials from this lesson.</c.P>
           <c.PartTitle type="tertiary">The initial h-</c.PartTitle>
           <c.P>Chinese <b>h-</b> is much “harder” than English <i>h</i>; it sounds more like its German counterpart. Mimic the audio voice and try to exaggerate the strong aspiration on the initial:</c.P>
-          {character(3, {
-            mode: 'details',
-            hideMeaning: true,
-            hideLinks: true,
-            audio: true
-          })}
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: pinyinNumberToAudioUrl('hao3')
+              }
+            }}
+          >
+            <Row>
+              <c.Char>好</c.Char>
+              <c.Pinyin>{pinyinize('hao3')}</c.Pinyin>
+            </Row>
+          </c.Bookrow>
           <c.PartTitle type="tertiary">The initial x-</c.PartTitle>
           <c.P>Some books and websites claim that the Chinese initial <b>x-</b> is difficult because it doesn’t exist in English. In fact, English has a sound very similar to <b>x-</b>, it’s just that it is well hidden!</c.P>
           <c.P>Here’s how to find it: Slowly and carefully pronounce the <i>ch</i> in English <i>cheap</i>. You will notice that <i>ch</i> contains two sounds: <i>t</i> followed by a soft <i>shush</i>. This <i>shush</i> is exactly the missing <b>x-</b> we are looking for! Pronounce the <i>ch</i> in <i>chin</i> without the <i>t</i> sound, and you have it! Listen to the audio voice and repeat very slowly:</c.P>
-          {character(5, {
-            mode: 'details',
-            hideMeaning: true,
-            hideLinks: true,
-            audio: true
-          })}
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: pinyinNumberToAudioUrl('xing4')
+              }
+            }}
+          >
+            <Row>
+              <c.Char>姓</c.Char>
+              <c.Pinyin>{pinyinize('xing4')}</c.Pinyin>
+            </Row>
+          </c.Bookrow>
           <c.PartTitle>PATTERNS</c.PartTitle>
           {grammarTitle()}
           <c.P>The most common Chinese greeting is a combination of two characters, 你 <i>you</i> and 好 <i>good</i>. Let us first practice saying each of them separately. Listen carefully to see if you can identify the tone on each one:</c.P>
-          {character(6, {
-            mode: 'details',
-            hidePinyin: true,
-            hideMeaning: true,
-            hideLinks: true,
-            audio: true
-          })}
-          {character(3, {
-            mode: 'details',
-            hidePinyin: true,
-            hideMeaning: true,
-            hideLinks: true,
-            audio: true
-          })}
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: pinyinNumberToAudioUrl('ni3')
+              }
+            }}
+          >
+            <Row>
+              <c.Char>你</c.Char>
+            </Row>
+          </c.Bookrow>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: pinyinNumberToAudioUrl('hao3')
+              }
+            }}
+          >
+            <Row>
+              <c.Char>好</c.Char>
+            </Row>
+          </c.Bookrow>
           <c.P>Both of them are pronounced with Tone 3. Now, listen to how they sound when we put them together in the greeting 你好 <i>hi</i>:</c.P>
           <c.Bookrow
             buttonOptions={{

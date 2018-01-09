@@ -25,7 +25,7 @@ class HanziAgainButton extends Component {
     }
     return (
       <Wrapper onClick={this.props.onClick}>
-        <img src={replayIcon} alt=""/>
+        <img src={replayIcon} alt="" width={25} height={25}/>
       </Wrapper>
     );
   }

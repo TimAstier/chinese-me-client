@@ -23,12 +23,18 @@ export default class Content extends Component {
           {example(4, { basic: true, audio: true })}
           <c.P>This sentence means <i>I am Chinese</i>. It contains three initials that are related to each other. In <b>pīnyīn</b>, they are spelled <b>sh-</b>, <b>zh-</b> and <b>r-</b>.</c.P>
           <c.P>Chinese <b>sh-</b> is pronounced more or less like English <i>sh</i> in <i>show</i>:</c.P>
-          {character(3, {
-            mode: 'details',
-            hideMeaning: true,
-            hideLinks: true,
-            audio: true
-          })}
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: pinyinNumberToAudioUrl('shi4')
+              }
+            }}
+          >
+            <Row>
+              <c.Char>是</c.Char>
+            </Row>
+          </c.Bookrow>
           <c.P
             buttonOptions={{
               type: 'practice',
@@ -38,12 +44,18 @@ export default class Content extends Component {
             }}
           >Type the correct tone on 是 <b>shi</b>. Repeat again after the recording.</c.P>
           <c.P>Chinese <b>r-</b> is pronounced a bit like British English <i>r</i> (not a thick American <i>r</i>). The position of your tongue and mouth should be exactly the same as when you pronounce <b>sh-</b>. The difference is that <b>r-</b> is voiced and less aspirated. <i>Voiced</i> means that the vocal cords vibrate when you pronounce the sound; hold your fingers against your Adam’s apple and you can feel the vibration. <i>Aspirated</i> means there is a strong airflow; if you hold your palm in front of your mouth, you will feel strong stream of air as you pronounce <b>sh-</b>, but only a weak flow when you pronounce <b>r-</b>.</c.P>
-          {character(5, {
-            mode: 'details',
-            hideMeaning: true,
-            hideLinks: true,
-            audio: true
-          })}
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: pinyinNumberToAudioUrl('ren2')
+              }
+            }}
+          >
+            <Row>
+              <c.Char>人</c.Char>
+            </Row>
+          </c.Bookrow>
           <c.P
             buttonOptions={{
               type: 'practice',
@@ -53,12 +65,18 @@ export default class Content extends Component {
             }}
           >Type the correct tone on 人 <b>ren</b>. Repeat again after the recording:</c.P>
           <c.P><b>Zh-</b> is a <i>d-</i>sound followed by a Chinese <i>r</i>.</c.P>
-          {character(4, {
-            mode: 'details',
-            hideMeaning: true,
-            hideLinks: true,
-            audio: true
-          })}
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: pinyinNumberToAudioUrl('zhong1')
+              }
+            }}
+          >
+            <Row>
+              <c.Char>中</c.Char>
+            </Row>
+          </c.Bookrow>
           <c.P
             buttonOptions={{
               type: 'practice',
@@ -110,15 +128,7 @@ export default class Content extends Component {
             Type the correct tones on 中国人 <b>zhongguoren</b>. Practice pronunciation again.
           </c.P>
           <c.P>To say <i>I am Chinese</i>, you use the verb 是 <i>be</i>:</c.P>
-          <c.Bookrow
-            buttonOptions={{
-              type: 'audio',
-              data: {
-                url: 'https://s3.eu-west-2.amazonaws.com/chineseme/sentences/87.m4a'
-              }
-            }}>
-            <c.Char>我是中国人。</c.Char>
-          </c.Bookrow>
+          {example(4, { basic: true, audio: true })}
           <c.P
             buttonOptions={{
               type: 'practice',
@@ -131,37 +141,42 @@ export default class Content extends Component {
           </c.P>
           {grammarTitle()}
           <c.P>So far, the words we have encountered have all been monosyllabic. This means one meaning is represented by a single syllable, for example:</c.P>
-          <c.CharacterDetails
-            pinyinNumber={'wo3'}
-            simpChar={'我'}
-            meaning={'I, me'}
-            hideLinks
-          />
-          <c.CharacterDetails
-            pinyinNumber={'jiao4'}
-            simpChar={'叫'}
-            meaning={'to be called'}
-            hideLinks
-          />
-          <c.CharacterDetails
-            pinyinNumber={'xing4'}
-            simpChar={'姓'}
-            meaning={'have as surname'}
-            hideLinks
-          />
+          <c.Bookrow>
+            <Row>
+              <c.Char>我</c.Char>
+              <c.Pinyin>wǒ</c.Pinyin>
+              <c.Meaning>I, me</c.Meaning>
+            </Row>
+          </c.Bookrow>
+          <c.Bookrow>
+            <Row>
+              <c.Char>叫</c.Char>
+              <c.Pinyin>jiào</c.Pinyin>
+              <c.Meaning>to be called</c.Meaning>
+            </Row>
+          </c.Bookrow>
+          <c.Bookrow>
+            <Row>
+              <c.Char>姓</c.Char>
+              <c.Pinyin>xìng</c.Pinyin>
+              <c.Meaning>have as surname</c.Meaning>
+            </Row>
+          </c.Bookrow>
           <c.P>Each of these syllables are written with a single character. But words can also be <i>polysyllabic</i>; two examples from this episode are:</c.P>
-          <c.CharacterDetails
-            pinyinNumber={'zhong1guo2'}
-            simpChar={'中国'}
-            meaning={'China'}
-            hideLinks
-          />
-          <c.CharacterDetails
-            pinyinNumber={'zhong1guo2ren2'}
-            simpChar={'中国人'}
-            meaning={'Chinese (person)'}
-            hideLinks
-          />
+          <c.Bookrow>
+            <Row>
+              <c.Char>中国</c.Char>
+              <c.Pinyin>Zhōngguó</c.Pinyin>
+              <c.Meaning>China</c.Meaning>
+            </Row>
+          </c.Bookrow>
+          <c.Bookrow>
+            <Row>
+              <c.Char>中国人</c.Char>
+              <c.Pinyin>Zhōngguó rén</c.Pinyin>
+              <c.Meaning>Chinese (person)</c.Meaning>
+            </Row>
+          </c.Bookrow>
           <c.P>
             In fact, most words in modern Chinese are polysyllabic. But this was not always so: in classical Chinese, the ancient language spoken in China thousands of years ago, one word almost always corresponded to a single character. As the language developed, however, simple ideas were combined to more and more complex concepts by making words composed of more than one character. Each character still contributes meaning:
           </c.P>
@@ -225,12 +240,13 @@ export default class Content extends Component {
           <c.P>Now, change roles! Pretend you are Wang Yuguo, and introduce yourself.</c.P>
           <c.PartTitle>PINYIN PRACTICE</c.PartTitle>
           <c.P>Here is how to write the name of your nationality in <b>pīnyīn</b>:</c.P>
-          <c.CharacterDetails
-            pinyinNumber={'que1shao3'}
-            simpChar={insertVariables('[NATIONALITY_ZH]', settings)}
-            meaning={insertVariables('[NATIONALITY_EN]', settings)}
-            hideLinks
-          />
+          <c.Bookrow>
+            <Row>
+              <c.Char>{insertVariables('[NATIONALITY_ZH]', settings)}</c.Char>
+              <c.Pinyin>{'que1shao3'}</c.Pinyin>
+              <c.Meaning>{insertVariables('[NATIONALITY_EN]', settings)}</c.Meaning>
+            </Row>
+          </c.Bookrow>
           <c.P>Let us practice transcribing some other characters and words in this lesson to <b>pīnyīn</b>.</c.P>
           <c.PartTitle type="secondary"><span>Three different sounds are spelled <i>i</i></span></c.PartTitle>
           <c.P>After most initials, Chinese <b>i</b> is pronounced like English <i>ee</i> in <i>tree</i>:</c.P>

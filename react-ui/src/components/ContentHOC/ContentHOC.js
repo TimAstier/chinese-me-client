@@ -10,7 +10,6 @@ const Placeholder = styled.p`
 `;
 
 class ContentHOC extends Component {
-
   _lessonTitle = () => {
     return (
       <C.LessonTitle

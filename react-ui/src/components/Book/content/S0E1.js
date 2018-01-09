@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { bookComponents as c } from '../../.';
 import { content as contentPropTypes } from '../../../helpers/propTypes';
+import pinyinNumberToAudioUrl from '../../../utils/pinyinNumberToAudioUrl';
 import { Row } from '../../Shared';
+import pinyinize from 'pinyinize';
 
 export default class Content extends Component {
   static propTypes = contentPropTypes
@@ -47,30 +49,58 @@ export default class Content extends Component {
           <c.P>When Wang Yi presents herself, you hear four syllables. Let’s look again at how they are written in Chinese.</c.P>
           {example(1, { basic: true, big: true, audio: false })}
           <c.P>English, like most other languages, is written using a phonetic alphabet. When you read a word, you decipher the pronunciation and then you know which word it is. Chinese is the other way around: it is written with characters that indicate <i>meaning</i>. Each Chinese character corresponds to a spoken syllable. Listen:</c.P>
-          {character(5, {
-            mode: 'details',
-            hidePinyin: true,
-            hideLinks: true,
-            audio: true
-          })}
-          {character(4, {
-            mode: 'details',
-            hidePinyin: true,
-            hideLinks: true,
-            audio: true
-          })}
-          {character(2, {
-            mode: 'details',
-            hidePinyin: true,
-            hideLinks: true,
-            audio: true
-          })}
-          {character(1, {
-            mode: 'details',
-            hidePinyin: true,
-            hideLinks: true,
-            audio: true
-          })}
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: pinyinNumberToAudioUrl('wo3')
+              }
+            }}
+          >
+            <Row>
+              <c.Char>我</c.Char>
+              <c.Meaning>I, me</c.Meaning>
+            </Row>
+          </c.Bookrow>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: pinyinNumberToAudioUrl('jiao4')
+              }
+            }}
+          >
+            <Row>
+              <c.Char>叫</c.Char>
+              <c.Meaning>to be called</c.Meaning>
+            </Row>
+          </c.Bookrow>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: pinyinNumberToAudioUrl('wang2')
+              }
+            }}
+          >
+            <Row>
+              <c.Char>王</c.Char>
+              <c.Meaning>king</c.Meaning>
+            </Row>
+          </c.Bookrow>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: pinyinNumberToAudioUrl('yi1')
+              }
+            }}
+          >
+            <Row>
+              <c.Char>一</c.Char>
+              <c.Meaning>one</c.Meaning>
+            </Row>
+          </c.Bookrow>
           <c.P>Let us practice a bit of pronunciation using this sentence. If you listen carefully one more time, you will notice that each Chinese word has a tone. Practice pronouncing each syllable clearly, with the tone:</c.P>
           {example(1, { basic: true, big: true, audio: true })}
           <c.P>These tones are important, because there are many characters that sound exactly the same except for the tone. The classical example of this are four words that are all pronounced <b>ma</b>; the only difference is the tone. The diagrams on the left show the pitch contour of each tone.</c.P>
@@ -168,30 +198,58 @@ export default class Content extends Component {
           <c.P>So the tones are not totally alien. The difference is that in English, these tones only change the mood of a sentence; in Chinese, they change the meaning of words.</c.P>
           <c.PartTitle type="secondary">Pinyin – explaining Chinese pronunciation with English letters</c.PartTitle>
           <c.P>In order to help us remember the pronunciation of each character, the sound can be written using the Latin alphabet. Each syllable is written with its tone mark above:</c.P>
-          {character(5, {
-            mode: 'details',
-            hideMeaning: true,
-            hideLinks: true,
-            audio: true
-          })}
-          {character(4, {
-            mode: 'details',
-            hideMeaning: true,
-            hideLinks: true,
-            audio: true
-          })}
-          {character(2, {
-            mode: 'details',
-            hideMeaning: true,
-            hideLinks: true,
-            audio: true
-          })}
-          {character(1, {
-            mode: 'details',
-            hideMeaning: true,
-            hideLinks: true,
-            audio: true
-          })}
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: pinyinNumberToAudioUrl('wo3')
+              }
+            }}
+          >
+            <Row>
+              <c.Char>我</c.Char>
+              <c.Pinyin>{pinyinize('wo3')}</c.Pinyin>
+            </Row>
+          </c.Bookrow>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: pinyinNumberToAudioUrl('jiao4')
+              }
+            }}
+          >
+            <Row>
+              <c.Char>叫</c.Char>
+              <c.Pinyin>{pinyinize('jiao4')}</c.Pinyin>
+            </Row>
+          </c.Bookrow>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: pinyinNumberToAudioUrl('wang2')
+              }
+            }}
+          >
+            <Row>
+              <c.Char>王</c.Char>
+              <c.Pinyin>{pinyinize('wang2')}</c.Pinyin>
+            </Row>
+          </c.Bookrow>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: pinyinNumberToAudioUrl('yi1')
+              }
+            }}
+          >
+            <Row>
+              <c.Char>一</c.Char>
+              <c.Pinyin>{pinyinize('yi1')}</c.Pinyin>
+            </Row>
+          </c.Bookrow>
           <c.P>This spelling system is called <b>pīnyīn</b>. It is used in dictionaries and textbooks to teach pronunciation. It is also a way of inputting characters on computers and mobile phones. But Chinese people never actually read or communicate in <b>pīnyīn</b> – they always use characters.</c.P>
           <c.P
             buttonOptions={{

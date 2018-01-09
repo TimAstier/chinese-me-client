@@ -7,7 +7,6 @@ import { default as s } from '../../../rootSelectors';
 import { CharacterModeException } from '../../../exceptions';
 
 class Character extends Component {
-
   _renderBox() {
     return <c.Character simpChar={this.props.character.simpChar} />;
   }

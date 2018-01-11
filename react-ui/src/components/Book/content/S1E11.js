@@ -13,10 +13,10 @@ export default class Content extends Component {
       <div>
         <c.Page>
           {lessonTitle()}
-          <c.PartTitle anchor="new-characters">NEW CHARACTERS</c.PartTitle>
+          <c.PartTitle name="characters" />
           <c.P><i>Practice the stroke order animations. Some characters have material on Stories and Calligraphy.</i></c.P>
           {newCharacters()}
-          <c.PartTitle>PATTERNS</c.PartTitle>
+          <c.PartTitle name="patterns" />
           {grammarTitle()}
           <c.P>The most basic sense of the character 要 <b>yào</b> is <i>to want</i>:</c.P>
           {example(1, { audio: true })}
@@ -57,15 +57,16 @@ export default class Content extends Component {
           {example(11, { audio: true })}
           <c.P>Like other question words, 哪儿 <b>nǎr</b> can be combined with 都 <b>dōu</b> meaning <i>anywhere</i>:</c.P>
           {example(12, { audio: true })}
-          <c.PartTitle>会话：你的电话号码是多少？</c.PartTitle>
+          <c.PartTitle name="dialog" />
+          <c.PartTitle type="secondary">你的电话号码是多少？</c.PartTitle>
           {/* <c.P color={'#C0504D'}><i></i></c.P> */}
           {dialog(1, { sentenceType: 'chinese', displayNames: true })}
           {dialog(1, { sentenceType: 'translation', displayNames: true })}
-          <c.PartTitle>CULTURE AND SOCIETY</c.PartTitle>
+          <c.PartTitle name="culture" />
           <c.Bookrow center>{image()}</c.Bookrow>
-          <c.PartTitle>NEW VOCABULARY</c.PartTitle>
+          <c.PartTitle name="words" />
           {newWords()}
-          <c.PartTitle anchor="review">Exercises</c.PartTitle>
+          <c.PartTitle anchor="review" name="review" />
           <c.P
             buttonOptions={{
               type: 'practice',

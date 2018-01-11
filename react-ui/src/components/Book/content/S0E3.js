@@ -16,9 +16,9 @@ export default class Content extends Component {
         <c.Page>
           {lessonTitle()}
           <c.Bookrow center>{image()}</c.Bookrow>
-          <c.PartTitle anchor="new-characters">CHARACTERS</c.PartTitle>
+          <c.PartTitle name="characters" />
           {newCharacters()}
-          <c.PartTitle>PATTERNS</c.PartTitle>
+          <c.PartTitle name="patterns" />
           {grammarTitle()}
           {example(4, { basic: true, audio: true })}
           <c.P>This sentence means <i>I am Chinese</i>. It contains three initials that are related to each other. In <b>pīnyīn</b>, they are spelled <b>sh-</b>, <b>zh-</b> and <b>r-</b>.</c.P>
@@ -221,7 +221,7 @@ export default class Content extends Component {
           {example(3, { audio: true })}
           <c.P>We have already encountered 是 <b>shì</b> which functions like English <i>be</i> (am, is):</c.P>
           {example(4, { audio: true })}
-          <c.PartTitle>DIALOGS</c.PartTitle>
+          <c.PartTitle name="dialogs" />
           <c.PartTitle type="secondary">Meet Yi and Yuguo</c.PartTitle>
           <c.P>Yi and her friend Yuguo both come from China. Here’s how they present themselves:</c.P>
           {dialog(1, { sentenceType: 'chineseWithTranslation', displayNames: false })}
@@ -386,9 +386,9 @@ export default class Content extends Component {
           <c.Bookrow><c.CharacterBox simpChar="亻" /></c.Bookrow>
           <c.P>The phonetic is a rare character from the classical language which we don’t need to learn. Practice writing:</c.P>
           <c.CharacterPractice characterId={9876} simpChar={'你'}/>
-          <c.PartTitle>WORDS</c.PartTitle>
+          <c.PartTitle name="words" />
           {newWords()}
-          <c.PartTitle anchor="review">EXERCISES</c.PartTitle>
+          <c.PartTitle anchor="review" name="review"/>
           <c.P
             buttonOptions={{
               type: 'practice',

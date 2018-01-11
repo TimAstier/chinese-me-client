@@ -13,10 +13,10 @@ export default class Content extends Component {
       <div>
         <c.Page>
           {lessonTitle()}
-          <c.PartTitle anchor="new-characters">NEW CHARACTERS</c.PartTitle>
+          <c.PartTitle name="characters" />
           <c.P><i>Practice the stroke order animations. Some characters have material on Stories and Calligraphy.</i></c.P>
           {newCharacters()}
-          <c.PartTitle>PATTERNS</c.PartTitle>
+          <c.PartTitle name="patterns" />
           {grammarTitle()}
           <c.P>Chinese has three so-called <i>structural</i> particles, all pronounced <b>de̊</b>. The first of these particles is the most common character in the entire language; it makes up about 5% of a typical text. Since the pronunciation is the same as the other structural particles, we will write this one with the number 1 - <b>de̊.1</b> - in pīnyīn.</c.P>
           <c.P>Using 的 <b>de̊.1</b> is not always mandatory; you will recognize some of the examples below from earlier texts, where they appeared without the 的 <b>de̊.1</b>. In grammar point (B), we will explain this in more detail.</c.P>
@@ -64,13 +64,14 @@ export default class Content extends Component {
           {example(12, { audio: true })}
           <c.P>Or you can give both alternatives:</c.P>
           {example(13, { audio: true })}
-          <c.PartTitle>会话:你的中文很好</c.PartTitle>
+          <c.PartTitle name="dialog" />
+          <c.PartTitle type="secondary">你的中文很好</c.PartTitle>
           <c.P color={'#C0504D'}><i>Marvin's new friend Wang Yuguo introduces Marvin to his Japanese teacher, Meizi. They are all impressed by Colleen's language skills.</i></c.P>
           {dialog(1, { sentenceType: 'chinese', displayNames: true })}
           {dialog(1, { sentenceType: 'translation', displayNames: true })}
-          <c.PartTitle>NEW VOCABULARY</c.PartTitle>
+          <c.PartTitle name="words" />
           {newWords()}
-          <c.PartTitle anchor="review">Exercises</c.PartTitle>
+          <c.PartTitle anchor="review" name="review" />
           <c.P
             buttonOptions={{
               type: 'practice',

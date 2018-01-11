@@ -13,10 +13,10 @@ export default class Content extends Component {
       <div>
         <c.Page>
           {lessonTitle()}
-          <c.PartTitle anchor="new-characters">NEW CHARACTERS</c.PartTitle>
+          <c.PartTitle name="characters" />
           <c.P><i>Practice the stroke order animations. Some characters have material on Stories and Calligraphy.</i></c.P>
           {newCharacters()}
-          <c.PartTitle>PATTERNS</c.PartTitle>
+          <c.PartTitle name="patterns" />
           {grammarTitle()}
           <c.P>In this episode, we meet another of the three structural particles, 得. Since all three are pronounced the same, but written with different characters, we will call this one <b>de̊.3</b>.</c.P>
           <c.P>A common function of 得 <b>de̊.3</b> is to link a verb with an adverb specifying <i>how</i> something is done:</c.P>
@@ -100,13 +100,14 @@ export default class Content extends Component {
           <c.P>The Chinese numbers for one, two, three are 一 <b>yī</b>，二 <b>èr</b>, 三 <b>sān</b>. But in front of measure words, Chinese uses 两 <b>liǎng</b> instead of 二 <b>èr</b>. This is just something we have to remember:</c.P>
           {example(18, { audio: true })}
           {example(19, { audio: true })}
-          <c.PartTitle>会话：我姓李，木子李</c.PartTitle>
+          <c.PartTitle name="dialog" />
+          <c.PartTitle type="secondary">我姓李，木子李</c.PartTitle>
           <c.P color={'#C0504D'}><i>At the party, another acquaintance of Colleen joins the group. She tries to explain her name to Marvin, who is a bit confused.</i></c.P>
           {dialog(1, { sentenceType: 'chinese', displayNames: true })}
           {dialog(1, { sentenceType: 'translation', displayNames: true })}
-          <c.PartTitle>NEW VOCABULARY</c.PartTitle>
+          <c.PartTitle name="words" />
           {newWords()}
-          <c.PartTitle anchor="review">Exercises</c.PartTitle>
+          <c.PartTitle anchor="review" name="review" />
           <c.P
             buttonOptions={{
               type: 'practice',

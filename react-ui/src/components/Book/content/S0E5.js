@@ -15,10 +15,10 @@ export default class Content extends Component {
       <div>
         <c.Page>
           {lessonTitle()}
-          <c.PartTitle>NEW CHARACTERS</c.PartTitle>
+          <c.PartTitle name="characters" />
           <c.P>Here are the new characters in this lesson. Click on each character to review the stroke order, or on the brush or history icons to see calligraphy and history videos.</c.P>
           {newCharacters()}
-          <c.PartTitle type="secondary">Grammar</c.PartTitle>
+          <c.PartTitle name="patterns" />
           {grammarTitle()}
           <c.P>很 <b>hěn</b> literally means <i>very</i>, <i>to a high degree</i>. Because of this, some textbooks call it an “intensifier”. But in modern Chinese, 很 <b>hěn</b> is used as a sort of "filler" between a noun and an adjective, and doesn't make any real difference to the meaning:</c.P>
           {example(1, { audio: true })}
@@ -36,19 +36,21 @@ export default class Content extends Component {
           <c.P>In a Topic-Comment construction, 也 <b>yě</b> comes after the Topic and before the Comment:</c.P>
           {example(4, { audio: true })}
           {example(5, { audio: true })}
-          <c.PartTitle>Dialog: Saying hello</c.PartTitle>
+          <c.PartTitle name="dialogs" />
+          <c.PartTitle type= "secondary">Saying hello</c.PartTitle>
           {dialog(1, { sentenceType: 'chinese', displayNames: false })}
-          <c.PartTitle>Practice: Role play</c.PartTitle>
+          <c.PartTitle type="secondary">Role play</c.PartTitle>
           {dialog(2, { sentenceType: 'chinese', displayNames: false })}
-          <c.PartTitle>Culture and society: Polite greetings</c.PartTitle>
+          <c.PartTitle name="culture" />
+          <c.PartTitle type="secondary">Polite greetings</c.PartTitle>
           <c.P>To inquire politely about somebody’s family name, you would say:</c.P>
           {example(6, { audio: true })}
           <c.P>您 <b>nín</b> is a more formal form of 你 <b>nǐ</b> <i>you</i>. It is used when addressing someone older or in a higher social position. 贵 <b>guì</b>, means <i>precious</i> or <i>expensive</i>.</c.P>
           <c.P>When you meet somebody for the first time, it is common to say:</c.P>
           {example(7, { audio: true })}
-          <c.PartTitle>NEW VOCABULARY</c.PartTitle>
+          <c.PartTitle name="words" />
           {newWords()}
-          <c.PartTitle anchor="review">Exercises</c.PartTitle>
+          <c.PartTitle anchor="review" name="review" />
           <c.P
             buttonOptions={{
               type: 'practice',

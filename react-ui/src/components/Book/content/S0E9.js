@@ -13,10 +13,10 @@ export default class Content extends Component {
       <div>
         <c.Page>
           {lessonTitle()}
-          <c.PartTitle anchor="new-characters">NEW CHARACTERS</c.PartTitle>
+          <c.PartTitle name="characters" />
           <c.P><i>Practice the stroke order animations. Some characters have material on Stories and Calligraphy.</i></c.P>
           {newCharacters()}
-          <c.PartTitle>PATTERNS</c.PartTitle>
+          <c.PartTitle name="patterns" />
           {grammarTitle()}
           <c.P>不 <b>bù</b> can be used independently to answer a question, just like English <i>no</i>. It can also be used like English <i>not</i> to negate any of the sentences we have learned so far. 不 <b>bù</b> is always placed in front of the word or phrase it should negate. Let’s start by negating simple Topic-Comment sentences:</c.P>
           {example(1, { audio: true })}
@@ -93,15 +93,16 @@ export default class Content extends Component {
             In everyday conversation, it is called 汉语 <b>hànyǔ</b> or 中文 <b>zhōngwén</b>. They are synonyms, with 汉语 being slightly more formal. Strictly speaking, however, both of them mean “Chinese” in the sense of all Chinese dialects, not just Mandarin. Somewhat less common, and least formal, is 中国话 <b>zhōngguóhuà</b>, which literally means <i>China speech</i>.
           </c.P>
           <c.P><b>Pǔtōnghuà</b>, <i>common speech</i>, is the official PRC name for Mandarin Chinese. It has a slightly political overtone and is not used in normal conversation unless you really want to emphasize that you are talking about Mandarin as opposed to local dialects. In Táiwān, the corresponding terms are 国语 <b>guóyǔ</b> or 国文 <b>guówén</b>.</c.P>
-          <c.PartTitle>会话：你中文很好！</c.PartTitle>
+          <c.PartTitle name="dialogs" />
+          <c.PartTitle type="secondary">你中文很好！</c.PartTitle>
           {dialog(1, { sentenceType: 'chinese', displayNames: true })}
           {/* {dialog(1, { sentenceType: 'pinyin', displayNames: true })} */}
           {dialog(1, { sentenceType: 'translation', displayNames: true })}
-          <c.PartTitle>Practice: Role play</c.PartTitle>
+          <c.PartTitle type="secondary">Role play</c.PartTitle>
           {dialog(2, { sentenceType: 'chinese', displayNames: true })}
-          <c.PartTitle>NEW VOCABULARY</c.PartTitle>
+          <c.PartTitle name="words" />
           {newWords()}
-          <c.PartTitle anchor="review">Exercises</c.PartTitle>
+          <c.PartTitle anchor="review" name="review" />
           <c.P
             buttonOptions={{
               type: 'practice',

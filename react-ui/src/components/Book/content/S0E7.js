@@ -15,10 +15,10 @@ export default class Content extends Component {
       <div>
         <c.Page>
           {lessonTitle()}
-          <c.PartTitle>NEW CHARACTERS</c.PartTitle>
+          <c.PartTitle name="characters" />
           <c.P>Here are the new characters in this lesson. Click on each character to review the stroke order, or on the brush or history icons to see calligraphy and history videos.</c.P>
           {newCharacters()}
-          <c.PartTitle>PATTERNS</c.PartTitle>
+          <c.PartTitle name="patterns" />
           {grammarTitle()}
           <c.P>In Western languages, comparing two things means learning different forms of words ("good, better, best"). Chinese uses a simple Topic-Comment pattern with the "comparison" word 比 <b>bǐ</b> inserted between the things you want to compare:</c.P>
           {example(1, { audio: true })}
@@ -29,11 +29,13 @@ export default class Content extends Component {
           {grammarTitle()}
           <c.P>In China, time is divided into twelve-year cycles; each year in the cycle is the year of a zodiac animal: rat, ox, tiger, rabbit, dragon, snake, horse, sheep, monkey, rooster, dog and pig. Being born in a particular animal is called 属 <b>shǔ</b> <i>to belong to</i> that animal:</c.P>
           {example(4, { audio: true })}
-          <c.PartTitle>Dialog: 我生日</c.PartTitle>
+          <c.PartTitle name="dialog" />
+          <c.PartTitle type="secondary">我生日</c.PartTitle>
           {dialog(1, { sentenceType: 'chinese', displayNames: false })}
-          <c.PartTitle>Culture and society: "Empty" years</c.PartTitle>
+          <c.PartTitle name="culture" />
+          <c.PartTitle type="secondary">"Empty" years</c.PartTitle>
           <c.P>In China, age is stated as [Xu sui!]</c.P>
-          <c.PartTitle anchor="review">Exercises</c.PartTitle>
+          <c.PartTitle anchor="review" name="review" />
           <c.P
             buttonOptions={{
               type: 'practice',
@@ -44,7 +46,8 @@ export default class Content extends Component {
           >
             <i>Help Wang Yuguo say how old he is: 我___岁。</i>
           </c.P>
-          <c.PartTitle type="secondary">Dialog: 我属马。</c.PartTitle>
+          <c.PartTitle name="dialogs" />
+          <c.PartTitle type="secondary">我属马。</c.PartTitle>
           {dialog(2, { sentenceType: 'chinese', displayNames: false })}
           {/* {dialog(2, { sentenceType: 'pinyin', displayNames: false })} */}
           {dialog(2, { sentenceType: 'translation', displayNames: false })}
@@ -67,13 +70,14 @@ export default class Content extends Component {
             }}
           >Now, go to the web and input your own birthdate to practice presenting yourself.
           </c.P>
-          <c.PartTitle>Practice: Presentation</c.PartTitle>
+          <c.PartTitle type="secondary">Presentation</c.PartTitle>
           {dialog(4, { sentenceType: 'chinese', displayNames: false })}
           {dialog(5, { sentenceType: 'chinese', displayNames: false })}
-          <c.PartTitle>Practice: Role play</c.PartTitle>
+          <c.PartTitle type="secondary">Role play</c.PartTitle>
           {dialog(6, { sentenceType: 'chinese', displayNames: false })}
           {dialog(7, { sentenceType: 'chinese', displayNames: false })}
-          <c.PartTitle>Culture and society: The personalities of Chinese zodiac animals</c.PartTitle>
+          <c.PartTitle name="culture" />
+          <c.PartTitle type="secondary">The personalities of Chinese zodiac animals</c.PartTitle>
           <c.P>Each animal of the Chinese zodiac is said to have certain characteristics:</c.P>
           <c.P>•	Rat: quick-witted, clever, charming</c.P>
           <c.P>•	Ox: solid, detail-oriented, hardworking</c.P>
@@ -88,9 +92,9 @@ export default class Content extends Component {
           <c.P>•	Dog: loyal, faithful, honest, distrustful, sensitive</c.P>
           <c.P>•	Pig: nice, good-mannered, tasteful, helpful</c.P>
           <c.P>Some animals are more popular than others; a lot more babies are born in such years because many Chinese parents try to time having children then.</c.P>
-          <c.PartTitle>NEW VOCABULARY</c.PartTitle>
+          <c.PartTitle name="words" />
           {newWords()}
-          <c.PartTitle anchor="review">Exercises</c.PartTitle>
+          <c.PartTitle name="review" />
           <c.P
             buttonOptions={{
               type: 'practice',

@@ -13,18 +13,18 @@ export default class Content extends Component {
       <div>
         <c.Page>
           {lessonTitle()}
-          <c.PartTitle anchor="new-characters">NEW CHARACTERS</c.PartTitle>
+          <c.PartTitle name="characters" />
           <c.P><i>Practice the stroke order animations. Some characters have material on Stories and Calligraphy.</i></c.P>
           {newCharacters()}
-          <c.PartTitle>PATTERNS</c.PartTitle>
+          <c.PartTitle name="patterns" />
           {grammarTitle()}
           <c.P>We have seen that the word 不<b>bù</b><i> no, not,</i>has different tones depending on the tone of the character coming after it. The same is true for the number 一 <i>one</i>:</c.P>
           <c.P>When it is regarded as the digit in a number, for example in a phone number or when we count, it is pronounced <b>yī</b>, with tone 1:</c.P>
           <c.Bookrow>
             <c.Ul>
-              <li><Row><c.Char>一，二，三，</c.Char> <c.Pinyin><b>yī, èr, sān</b></c.Pinyin></Row></li>
-              <li><Row><c.Char>他一岁。</c.Char><c.Pinyin><b>Tā yī suì.</b></c.Pinyin>  <c.Meaning><i>He is one year old.</i></c.Meaning></Row></li>
-              <li><Row><c.Char>我三十一岁。</c.Char><c.Pinyin><b>Wǒ sānshíyī suì.</b></c.Pinyin>  <c.Meaning><i>I am 31 years old.</i></c.Meaning></Row></li>
+              <li><Row><c.Char>一，二，三，</c.Char> <c.Pinyin>yī, èr, sān</c.Pinyin></Row></li>
+              <li><Row><c.Char>他一岁。</c.Char><c.Pinyin>Tā yī suì.</c.Pinyin>  <c.Meaning>He is one year old.</c.Meaning></Row></li>
+              <li><Row><c.Char>我三十一岁。</c.Char><c.Pinyin>Wǒ sānshíyī suì.</c.Pinyin>  <c.Meaning>I am 31 years old.</c.Meaning></Row></li>
             </c.Ul>
           </c.Bookrow>
           <c.P>Before tone 4 and neutral tone it otherwise has tone 2:</c.P>
@@ -32,9 +32,9 @@ export default class Content extends Component {
           <c.P>And before tones 1, 2 and 3, it has tone 4:</c.P>
           <c.Bookrow>
             <c.Ul>
-              <li><Row><c.Char>一本书</c.Char> <c.Pinyin><b>yì běn shū</b></c.Pinyin> <c.Meaning><i>a book; one book</i></c.Meaning></Row></li>
-              <li><Row><c.Char>一点</c.Char> <c.Pinyin><b>yì diǎn</b></c.Pinyin> <c.Meaning><i>a bit; a little bit</i></c.Meaning></Row></li>
-              <li><Row><c.Char>一点</c.Char> <c.Pinyin><b>yì diǎndiǎn</b></c.Pinyin> <c.Meaning><i>a tiny bit; a tiny little bit</i></c.Meaning></Row></li>
+              <li><Row><c.Char>一本书</c.Char> <c.Pinyin>yì běn shū</c.Pinyin> <c.Meaning>a book; one book</c.Meaning></Row></li>
+              <li><Row><c.Char>一点</c.Char> <c.Pinyin>yì diǎn</c.Pinyin> <c.Meaning>a bit; a little bit</c.Meaning></Row></li>
+              <li><Row><c.Char>一点</c.Char> <c.Pinyin>yì diǎndiǎn</c.Pinyin> <c.Meaning>a tiny bit; a tiny little bit</c.Meaning></Row></li>
             </c.Ul>
           </c.Bookrow>
           {grammarTitle()}
@@ -48,9 +48,9 @@ export default class Content extends Component {
           </c.P>
           <c.Bookrow>
             <c.Ul>
-              <li><Row><c.Char>本</c.Char> <c.Pinyin><b>běn</b></c.Pinyin> <c.Meaning><i>root</i>: classifier for books</c.Meaning></Row></li>
-              <li><Row><c.Char>门</c.Char> <c.Pinyin><b>mén</b></c.Pinyin> <c.Meaning><i>door</i>: classifier for languages, academic subjects - and artillery pieces!</c.Meaning></Row></li>
-              <li><Row><c.Char>个</c.Char> <c.Pinyin><b>ge̊</b></c.Pinyin> <c.Meaning><i>item</i>: the most common classifier, used as a "general" measure for many different nouns</c.Meaning></Row></li>
+              <li><Row><c.Char>本</c.Char> <c.Pinyin>běn</c.Pinyin> <c.Meaning>root: classifier for books</c.Meaning></Row></li>
+              <li><Row><c.Char>门</c.Char> <c.Pinyin>mén</c.Pinyin> <c.Meaning>door: classifier for languages, academic subjects - and artillery pieces!</c.Meaning></Row></li>
+              <li><Row><c.Char>个</c.Char> <c.Pinyin>ge̊</c.Pinyin> <c.Meaning>item: the most common classifier, used as a "general" measure for many different nouns</c.Meaning></Row></li>
             </c.Ul>
           </c.Bookrow>
           <c.P>The meaning of each classifier is historically related to the noun it classifies, but this connection is not always obvious today. The character 门 <b>mén</b> <i>door</i>, <i>portal</i> is probably used for academic disciplines because students would go to the <i>door</i> of the teacher; to start studying a subject is still called <i>going inside the door</i> in modern Chinese. The use of <i>root</i> as the classifier for books may refer to printing blocks, each block being the "root" of many books. At best, such interpretations are memory aids that can help us memorize the correct classifier for each noun.</c.P>
@@ -58,16 +58,16 @@ export default class Content extends Component {
           <c.P>When 这 and 那 are followed immediately by a classifier, they are usually pronounced <b>zhèi</b> and <b>nèi</b>:</c.P>
           <c.Bookrow>
             <c.Ul>
-              <li><Row><c.Char>一本书</c.Char> <c.Pinyin><b>yì běn shū</b></c.Pinyin> <c.Meaning><i>a book</i> OR <i>one book</i> (ONE ROOT-OF BOOK)</c.Meaning></Row></li>
-              <li><Row><c.Char>这本书</c.Char> <c.Pinyin><b>zhèi běn shū</b></c.Pinyin> <c.Meaning><i>this book</i> (THIS ROOT-OF BOOK)</c.Meaning></Row></li>
-              <li><Row><c.Char>那本书</c.Char> <c.Pinyin><b>nèi běn shū</b></c.Pinyin> <c.Meaning><i>that book</i> (THAT ROOT-OF BOOK)</c.Meaning></Row></li>
-              <li><Row><c.Char>三门语言</c.Char> <c.Pinyin><b>sān mén yǔyán</b></c.Pinyin> <c.Meaning><i>three languages</i>(THREE PORTAL-OF LANGUAGE)</c.Meaning></Row></li>
-              <li><Row><c.Char>一个人</c.Char> <c.Pinyin><b>yí ge̊ rén</b></c.Pinyin> <c.Meaning><i>a person</i> (ONE ITEM-OF PERSON)</c.Meaning></Row></li>
-              <li><Row><c.Char>这个人</c.Char> <c.Pinyin><b>zhèi ge̊ rén</b></c.Pinyin> <c.Meaning><i>this person</i> (THIS ITEM-OF PERSON)</c.Meaning></Row></li>
-              <li><Row><c.Char>那个人</c.Char> <c.Pinyin><b>nèi ge̊ rén</b></c.Pinyin> <c.Meaning><i>that person</i> (THAT ITEM-OF PERSON)</c.Meaning></Row></li>
-              <li><Row><c.Char>一个姓</c.Char> <c.Pinyin><b>yí ge̊ xìng</b></c.Pinyin> <c.Meaning><i>a family name</i> (ONE ITEM-OF FAMILY-NAME)</c.Meaning></Row></li>
-              <li><Row><c.Char>这个姓名</c.Char> <c.Pinyin><b>zhèi ge̊ xìngmíng</b></c.Pinyin> <c.Meaning><i>this name</i> (THIS ITEM-OF NAME)</c.Meaning></Row></li>
-              <li><Row><c.Char>那个名字</c.Char> <c.Pinyin><b>nèi ge̊ míngzi̊</b></c.Pinyin> <c.Meaning><i>that given name</i> (THAT ITEM-OF GIVEN-NAME)</c.Meaning></Row></li>
+              <li><Row><c.Char>一本书</c.Char> <c.Pinyin>yì běn shū</c.Pinyin> <c.Meaning><i>a book</i> OR <i>one book</i> (ONE ROOT-OF BOOK)</c.Meaning></Row></li>
+              <li><Row><c.Char>这本书</c.Char> <c.Pinyin>zhèi běn shū</c.Pinyin> <c.Meaning><i>this book</i> (THIS ROOT-OF BOOK)</c.Meaning></Row></li>
+              <li><Row><c.Char>那本书</c.Char> <c.Pinyin>nèi běn shū</c.Pinyin> <c.Meaning><i>that book</i> (THAT ROOT-OF BOOK)</c.Meaning></Row></li>
+              <li><Row><c.Char>三门语言</c.Char> <c.Pinyin>sān mén yǔyán</c.Pinyin> <c.Meaning><i>three languages</i>(THREE PORTAL-OF LANGUAGE)</c.Meaning></Row></li>
+              <li><Row><c.Char>一个人</c.Char> <c.Pinyin>yí ge̊ rén</c.Pinyin> <c.Meaning><i>a person</i> (ONE ITEM-OF PERSON)</c.Meaning></Row></li>
+              <li><Row><c.Char>这个人</c.Char> <c.Pinyin>zhèi ge̊ rén</c.Pinyin> <c.Meaning><i>this person</i> (THIS ITEM-OF PERSON)</c.Meaning></Row></li>
+              <li><Row><c.Char>那个人</c.Char> <c.Pinyin>nèi ge̊ rén</c.Pinyin> <c.Meaning><i>that person</i> (THAT ITEM-OF PERSON)</c.Meaning></Row></li>
+              <li><Row><c.Char>一个姓</c.Char> <c.Pinyin>yí ge̊ xìng</c.Pinyin> <c.Meaning><i>a family name</i> (ONE ITEM-OF FAMILY-NAME)</c.Meaning></Row></li>
+              <li><Row><c.Char>这个姓名</c.Char> <c.Pinyin>zhèi ge̊ xìngmíng</c.Pinyin> <c.Meaning><i>this name</i> (THIS ITEM-OF NAME)</c.Meaning></Row></li>
+              <li><Row><c.Char>那个名字</c.Char> <c.Pinyin>nèi ge̊ míngzi̊</c.Pinyin> <c.Meaning><i>that given name</i> (THAT ITEM-OF GIVEN-NAME)</c.Meaning></Row></li>
             </c.Ul>
           </c.Bookrow>
           <c.P>Just as in English, there is a difference between talking about <i>a thing in general</i> and <i>a specific item</i>. If we are looking at a box and someone asks what is inside, we can say:</c.P>
@@ -94,13 +94,14 @@ export default class Content extends Component {
           {grammarTitle()}
           <c.P>The character 个 is not only a measure word; it can also appear in other words. In this lesson, for example, we have the expression 我个人 <b>wǒ gèrén</b> <i>I personally</i> (I PARTICULAR-PERSON):</c.P>
           {example(15, { audio: true })}
-          <c.PartTitle>会话:我叫你马文，好吗?</c.PartTitle>
+          <c.PartTitle name="dialog" />
+          <c.PartTitle type="secondary">我叫你马文，好吗?</c.PartTitle>
           <c.P color={'#C0504D'}><i>American student Colleen invites her friend Marvin to a calligraphy exhibition. Marvin has just started studying Chinese which he uses on a new acquaintance. Even though Marvin only replies with a single Chinese word, his new friend is impressed!</i></c.P>
           {dialog(1, { sentenceType: 'chinese', displayNames: true })}
           {dialog(1, { sentenceType: 'translation', displayNames: true })}
-          <c.PartTitle>NEW VOCABULARY</c.PartTitle>
+          <c.PartTitle name="words" />
           {newWords()}
-          <c.PartTitle anchor="review">Exercises</c.PartTitle>
+          <c.PartTitle anchor="review" name="review" />
           <c.P
             buttonOptions={{
               type: 'practice',

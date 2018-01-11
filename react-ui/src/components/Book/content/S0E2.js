@@ -33,9 +33,9 @@ export default class Content extends Component {
         <c.Page>
           {lessonTitle()}
           <c.Bookrow center>{image()}</c.Bookrow>
-          <c.PartTitle>CHARACTERS</c.PartTitle>
+          <c.PartTitle name="characters" />
           {newCharacters()}
-          <c.PartTitle>PRONUNCIATION</c.PartTitle>
+          <c.PartTitle name="pronunciation" />
           <c.P
             buttonOptions={{
               type: 'practice',
@@ -117,7 +117,7 @@ export default class Content extends Component {
               <c.Pinyin>{pinyinize('xing4')}</c.Pinyin>
             </Row>
           </c.Bookrow>
-          <c.PartTitle>PATTERNS</c.PartTitle>
+          <c.PartTitle name="patterns" />
           {grammarTitle()}
           <c.P>The most common Chinese greeting is a combination of two characters, 你 <i>you</i> and 好 <i>good</i>. Let us first practice saying each of them separately. Listen carefully to see if you can identify the tone on each one:</c.P>
           <c.Bookrow
@@ -189,7 +189,7 @@ export default class Content extends Component {
               <li><Row><Chinese>我叫一。 </Chinese><Translation>My given name is Yi.</Translation></Row></li>
             </c.Ul>
           </c.Bookrow>
-          <c.PartTitle>DIALOG</c.PartTitle>
+          <c.PartTitle name="dialog" />
           <c.PartTitle type="secondary">Introduce yourself</c.PartTitle>
           <c.P>Now, introduce yourself by giving your last name, and then your full name. Tell Wang Yi what your name is and listen to her response:</c.P>
           {dialog(1, { sentenceType: 'chineseWithTranslation', displayNames: false })}
@@ -205,7 +205,7 @@ export default class Content extends Component {
           >
             Exercise: type the <b>pīnyīn</b>, with tones, of the dialog. Type the actual tones that you hear, taking into account the tone sandhi.
           </c.P>
-          <c.PartTitle>PATTERNS</c.PartTitle>
+          <c.PartTitle name="patterns" />
           {grammarTitle()}
           <c.P>When Chinese people meet each other they often say the other person's name as a form of greeting. This is called to 叫 <i>call</i> someone.</c.P>
           <c.Bookrow
@@ -236,7 +236,7 @@ export default class Content extends Component {
             </c.Ul>
           </c.Bookrow>
           <c.P>It is also common to add a title or a kinship term to the name when you call someone; we will see many examples of this later.</c.P>
-          <c.PartTitle>DIALOG</c.PartTitle>
+          <c.PartTitle name="dialog" />
           <c.PartTitle type="secondary">Greeting people you know</c.PartTitle>
           {dialog(2, { sentenceType: 'chineseWithTranslation', displayNames: false })}
           {dialog(3, { sentenceType: 'chineseWithTranslation', displayNames: false })}
@@ -289,7 +289,7 @@ export default class Content extends Component {
           {character(2, { mode: 'practice' })}
           {character(3, { mode: 'practice' })}
           {character(5, { mode: 'practice' })}
-          <c.PartTitle anchor="review">EXERCISES</c.PartTitle>
+          <c.PartTitle anchor="review" name="review" />
           <c.P
             buttonOptions={{
               type: 'practice',

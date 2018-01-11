@@ -15,10 +15,10 @@ export default class Content extends Component {
       <div>
         <c.Page>
           {lessonTitle()}
-          <c.PartTitle>NEW CHARACTERS</c.PartTitle>
+          <c.PartTitle name="characters" />
           <c.P>Here are the new characters in this lesson. Click on each character to review the stroke order, or on the brush or history icons to see calligraphy and history videos.</c.P>
           {newCharacters()}
-          <c.PartTitle>PRONUNCIATION</c.PartTitle>
+          <c.PartTitle name="pronunciation" />
           <c.P>In this lesson, pay special attention to the following sounds which can be tricky for the beginner. You can review these in the <i>Introduction to Chinese pronunciation and writing</i> by clicking the respective links.</c.P>
           <c.PartTitle type="tertiary">A. The difference between the three different sounds of the pīnyīn letter i </c.PartTitle>
           <c.P>We have already encountered two of the pronunciations of pīnyīn <i>i</i>. In this lesson, we meet the third one, which is a bit like the <i>zzz</i> in the buzzing of a bee:</c.P>
@@ -99,7 +99,7 @@ export default class Content extends Component {
               </li>
             </c.Ul>
           </c.Bookrow>
-          <c.PartTitle>PATTERNS</c.PartTitle>
+          <c.PartTitle name="patterns" />
           {grammarTitle()}
           <c.P>In Chinese, numbers are usually written with the same Arabic numerals that we use in the West. But the handwriting may be different from what you are used to:</c.P>
           <c.Bookrow>{image()}</c.Bookrow>
@@ -162,7 +162,8 @@ export default class Content extends Component {
               <li><Row>(I : FAMILY-NAMED WANG, CALLED WANG YUGUO.)</Row></li>
             </c.Ul>
           </c.Bookrow>
-          <c.PartTitle>Dialog: Presenting your age</c.PartTitle>
+          <c.PartTitle name="dialogs" />
+          <c.PartTitle type="secondary">Presenting your age</c.PartTitle>
           {dialog(1, { sentenceType: 'chinese', displayNames: false })}
           {/* {dialog(1, { sentenceType: 'pinyin', displayNames: false })} */}
           {dialog(1, { sentenceType: 'translation', displayNames: false })}
@@ -172,16 +173,17 @@ export default class Content extends Component {
             }}
           >Now, input your own age to practice presenting yourself.
           </c.P>
-          <c.PartTitle>Practice: Presentation</c.PartTitle>
+          <c.PartTitle type="secondary">Practice: Presentation</c.PartTitle>
           {dialog(2, { sentenceType: 'chinese', displayNames: false })}
           {dialog(3, { sentenceType: 'chinese', displayNames: false })}
           {dialog(4, { sentenceType: 'chinese', displayNames: false })}
-          <c.PartTitle>Practice: Role play</c.PartTitle>
+          <c.PartTitle type="secondary">Practice: Role play</c.PartTitle>
           {dialog(5, { sentenceType: 'chinese', displayNames: false })}
           {dialog(6, { sentenceType: 'chinese', displayNames: false })}
-          <c.PartTitle>Culture and society: How Chinese people count age</c.PartTitle>
+          <c.PartTitle name="culture" />
+          <c.PartTitle type="secondary">How Chinese people count age</c.PartTitle>
           <c.P>In Western countries, age changes on the birthday: you suddenly become one year older than the day before. In China, people instead state their age by saying <i>how old they will be this calendar year</i>; it doesn't matter whether they have actually passed this year's birthday or not. As of January 1 each year, you are one year older than the year before.</c.P>
-          <c.PartTitle>Culture and society: Number symbolism</c.PartTitle>
+          <c.PartTitle type="secondary">Number symbolism</c.PartTitle>
           <c.P>
             Number symbolism is so important in China that many people will pay extra for a “lucky” phone number or license plate.
             There are also “unlucky” numbers that people tend to avoid. The most famous example is 四 <b>sì</b> <i>four</i>, which sounds similar to another character, <b>sǐ</b> <i>to die</i>. As a consequence, many Chinese buildings lack all floors ending in a 4: 4, 14, 24 and so on.
@@ -190,7 +192,7 @@ export default class Content extends Component {
             Numbers can also be used in puns which come to symbolize more complex ideas: May 21 is recognized as "Chinese Valentine's Day" because May is the fifth month and <b>wǔ</b> <i>five</i> sounds similar to <b>wǒ</b> <i>I</i>; <b>èryī</b> is interpreted as <b>ài nǐ</b> <i>love you</i>. Such puns are even used to create brand names: the job-hunting internet site 51job chose its name because <i>one</i> can be pronounced to sound like <i>want</i> and <i>five</i> like <i>I</i>.
             An educated Chinese reader who understands the English word <i>job</i> will immediately get the pun: “I want job”. This kind of punning is especially common in text messages and internet chats.
           </c.P>
-          <c.PartTitle>NEW VOCABULARY</c.PartTitle>
+          <c.PartTitle name="words" />
           <c.Bookrow>
             <c.Ul>
               <li><Row><c.Char>岁</c.Char><c.Pinyin>suì</c.Pinyin><c.Meaning>year (of age)</c.Meaning></Row></li>
@@ -292,9 +294,9 @@ export default class Content extends Component {
           >
             PRACTICE
           </c.Bookrow>
-          <c.PartTitle>NEW VOCABULARY</c.PartTitle>
+          <c.PartTitle name="words" />
           {newWords()}
-          <c.PartTitle anchor="review">Exercises</c.PartTitle>
+          <c.PartTitle anchor="review" name="review" />
           <c.P
             buttonOptions={{
               type: 'practice',

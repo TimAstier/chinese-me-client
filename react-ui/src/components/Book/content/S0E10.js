@@ -13,10 +13,10 @@ export default class Content extends Component {
       <div>
         <c.Page>
           {lessonTitle()}
-          <c.PartTitle anchor="new-characters">NEW CHARACTERS</c.PartTitle>
+          <c.PartTitle name="characters" />
           <c.P><i>Practice the stroke order animations. Some characters have material on Stories and Calligraphy.</i></c.P>
           {newCharacters()}
-          <c.PartTitle>PATTERNS</c.PartTitle>
+          <c.PartTitle name="patterns" />
           {grammarTitle()}
           <c.P>The most basic meaning of 想 <b>xiǎng</b> is <i>think</i>. Just as English <i>think</i>, it can often have the sense <i>believe, consider</i>:</c.P>
           {example(1, { audio: true })}
@@ -54,13 +54,13 @@ export default class Content extends Component {
             </c.Ul>
           </c.Bookrow>
           <c.P>So when we read the characters 好学, we have to decide from context whether <b>hao</b> should be pronounced with tone three or tone four: <b>hǎoxué</b> <i>easy (to learn)</i> or <b>hàoxué</b> <i>diligent</i>.</c.P>
-          <c.PartTitle>会话</c.PartTitle>
+          <c.PartTitle name="dialogs" />
           {dialog(1, { sentenceType: 'chinese', displayNames: true })}
-          <c.PartTitle>Practice: Role play</c.PartTitle>
+          <c.PartTitle type="secondary">Practice: Role play</c.PartTitle>
           {dialog(2, { sentenceType: 'chinese', displayNames: false })}
-          <c.PartTitle>NEW VOCABULARY</c.PartTitle>
+          <c.PartTitle name="words" />
           {newWords()}
-          <c.PartTitle anchor="review">Exercises</c.PartTitle>
+          <c.PartTitle anchor="review" name="review" />
           <c.P
             buttonOptions={{
               type: 'practice',

@@ -15,10 +15,10 @@ export default class Content extends Component {
       <div>
         <c.Page>
           {lessonTitle()}
-          <c.PartTitle>NEW CHARACTERS</c.PartTitle>
+          <c.PartTitle name="characters" />
           <c.P>Here are the new characters in this lesson. Click on each character to review the stroke order, or on the brush or history icons to see calligraphy and history videos.</c.P>
           {newCharacters()}
-          <c.PartTitle>PATTERNS</c.PartTitle>
+          <c.PartTitle name="patterns" />
           {grammarTitle()}
           <c.P>会 <b>huì</b> means <i>know</i> in the sense of <i>know how to</i>. It can be used as a verb:</c.P>
           {example(1, { audio: true })}
@@ -64,7 +64,8 @@ export default class Content extends Component {
             </c.Ul>
           </c.Bookrow>
           <c.P>As usual, words do not change form so there is no difference between <i>he</i> and <i>him</i>, <i>she</i> and <i>her</i>.</c.P>
-          <c.PartTitle>Dialog: 你会说中文吗？</c.PartTitle>
+          <c.PartTitle name="dialogs" />
+          <c.PartTitle type="secondary">你会说中文吗？</c.PartTitle>
           {dialog(1, { sentenceType: 'chinese', displayNames: false })}
           {/* {dialog(1, { sentenceType: 'pinyin', displayNames: false })} */}
           {dialog(1, { sentenceType: 'translation', displayNames: false })}
@@ -80,12 +81,13 @@ export default class Content extends Component {
             }}
           >Now, go to the web and input the languages you speak, to continue practicing how to present yourself.
           </c.P>
-          <c.PartTitle>Practice: Presentation</c.PartTitle>
+          <c.PartTitle type="secondary">Presentation</c.PartTitle>
           {dialog(4, { sentenceType: 'chinese', displayNames: false })}
-          <c.PartTitle>Practice: Role play</c.PartTitle>
+          <c.PartTitle type="secondary">Role play</c.PartTitle>
           {dialog(5, { sentenceType: 'chinese', displayNames: false })}
           {dialog(6, { sentenceType: 'chinese', displayNames: false })}
-          <c.PartTitle>Culture and society: Greetings using 老 and 小</c.PartTitle>
+          <c.PartTitle name="culture" />
+          <c.PartTitle type="secondary">Greetings using 老 and 小</c.PartTitle>
           <c.P>A polite way to 叫 <b>jiào</b> <i>call</i> someone is to use their family name preceded by the terms 老 <b>lǎo</b> <i>old</i> or 小 <b>xiǎo</b> <i>little</i>. Age is important in China, so a younger person addresses someone older with 老 <b>lǎo</b> <i>old</i> as a term of respect, while an older person  uses 小 <b>xiǎo</b> <i>little</i> as a term of endearment:</c.P>
           <c.Bookrow>
             <c.Ul>
@@ -96,9 +98,9 @@ export default class Content extends Component {
           <c.P>
             This way of <i>calling</i> is common both in private and official or business life; it is polite, but less formal than using titles like 先生 <b>xiānshe̊ng</b> <i>mister</i> and 女士 <b>nǚshì</b> <i>madam</i>.
           </c.P>
-          <c.PartTitle>NEW VOCABULARY</c.PartTitle>
+          <c.PartTitle name="words" />
           {newWords()}
-          <c.PartTitle anchor="review">Exercises</c.PartTitle>
+          <c.PartTitle anchor="review" name="review" />
           <c.P
             buttonOptions={{
               type: 'practice',

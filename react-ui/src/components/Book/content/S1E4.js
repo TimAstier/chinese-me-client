@@ -13,10 +13,10 @@ export default class Content extends Component {
       <div>
         <c.Page>
           {lessonTitle()}
-          <c.PartTitle anchor="new-characters">NEW CHARACTERS</c.PartTitle>
+          <c.PartTitle name="characters" />
           <c.P><i>Practice the stroke order animations. Some characters have material on Stories and Calligraphy.</i></c.P>
           {newCharacters()}
-          <c.PartTitle>PATTERNS</c.PartTitle>
+          <c.PartTitle name="patterns" />
           {grammarTitle()}
           <c.P>Up to now, we have formulated yes/no-questions using the question particle <b>må</b>. Another common way of asking this type of question is by listing both the alternative answers one after another.</c.P>
           {example(1, { audio: true })}
@@ -72,13 +72,14 @@ export default class Content extends Component {
               <li><Row><c.Char>她们</c.Char>  <c.Pinyin><b>tāme̊n</b></c.Pinyin>  <c.Meaning><i>they, them (female)</i></c.Meaning></Row></li>
             </c.Ul>
           </c.Bookrow>
-          <c.PartTitle>会话：你可以帮我学中文吗？</c.PartTitle>
+          <c.PartTitle name="dialog" />
+          <c.PartTitle type="secondary">你可以帮我学中文吗？</c.PartTitle>
           <c.P color={'#C0504D'}><i>Colleen suggests that Marvin and Wang Yuguo could do a language exchange. Marvin comes up with an English name for Yuguo.</i></c.P>
           {dialog(1, { sentenceType: 'chinese', displayNames: true })}
           {dialog(1, { sentenceType: 'translation', displayNames: true })}
-          <c.PartTitle>NEW VOCABULARY</c.PartTitle>
+          <c.PartTitle name="words" />
           {newWords()}
-          <c.PartTitle anchor="review">Exercises</c.PartTitle>
+          <c.PartTitle anchor="review" name="review"/>
           <c.P
             buttonOptions={{
               type: 'practice',

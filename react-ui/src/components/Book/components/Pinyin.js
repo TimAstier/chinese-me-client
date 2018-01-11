@@ -12,7 +12,6 @@ const Wrapper = styled.div`
 `;
 
 class Pinyin extends Component {
-
   render() {
     return (
       <Wrapper>{this.props.children}</Wrapper>
@@ -21,7 +20,11 @@ class Pinyin extends Component {
 }
 
 Pinyin.propTypes = {
-  children: propTypes.string.isRequired
+  children: propTypes.oneOfType([
+    propTypes.string,
+    propTypes.array,
+    propTypes.object
+  ]).isRequired
 };
 
 export default Pinyin;

@@ -13,10 +13,10 @@ export default class Content extends Component {
       <div>
         <c.Page>
           {lessonTitle()}
-          <c.PartTitle anchor="new-characters">NEW CHARACTERS</c.PartTitle>
+          <c.PartTitle name="characters" />
           <c.P><i>Practice the stroke order animations. Some characters have material on Stories and Calligraphy.</i></c.P>
           {newCharacters()}
-          <c.PartTitle>PATTERNS</c.PartTitle>
+          <c.PartTitle name="patterns" />
           {grammarTitle()}
           <c.P>谁 <b>shéi</b>, means <i>who</i>. (Some dictionaries transcribe 谁 as <b>shuí</b> in pīnyīn, but <b>shéi</b> is the actual pronunciation.) As usual, the word order is the same in a question as in a statement:</c.P>
           {example(1, { audio: true })}
@@ -64,13 +64,14 @@ export default class Content extends Component {
           {example(15, { audio: true })}
           <c.P>It can also mean <i>to</i>; in this case it is synonymous with 对 <b>duì</b>:</c.P>
           {example(16, { audio: true })}
-          <c.PartTitle>会话：他是谁？</c.PartTitle>
+          <c.PartTitle name="dialog" />
+          <c.PartTitle type="secondary">他是谁？</c.PartTitle>
           <c.P color={'#C0504D'}><i>Li Yu's friend Wang Meixin is interested in getting to know Marvin - "just to learn English". Li Yu is unimpressed.</i></c.P>
           {dialog(1, { sentenceType: 'chinese', displayNames: true })}
           {dialog(1, { sentenceType: 'translation', displayNames: true })}
-          <c.PartTitle>NEW VOCABULARY</c.PartTitle>
+          <c.PartTitle name="words" />
           {newWords()}
-          <c.PartTitle anchor="review">Exercises</c.PartTitle>
+          <c.PartTitle anchor="review" name="review"/>
           <c.P
             buttonOptions={{
               type: 'practice',

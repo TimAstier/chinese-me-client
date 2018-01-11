@@ -13,10 +13,10 @@ export default class Content extends Component {
       <div>
         <c.Page>
           {lessonTitle()}
-          <c.PartTitle anchor="new-characters">NEW CHARACTERS</c.PartTitle>
+          <c.PartTitle name="characters" />
           <c.P><i>Practice the stroke order animations. Some characters have material on Stories and Calligraphy.</i></c.P>
           {newCharacters()}
-          <c.PartTitle>PATTERNS</c.PartTitle>
+          <c.PartTitle name="patterns" />
           {grammarTitle()}
           <c.P>This is a very common character which has many different uses. Its basic meaning is <i>to come</i>, <i>to arrive</i>. Note that in Chinese, you do not need any preposition after 来; you simply say COME CHINA rather than COME TO CHINA:</c.P>
           {example(1, { audio: true })}
@@ -94,15 +94,16 @@ export default class Content extends Component {
               <li><Row><c.Char>还好</c.Char><c.Pinyin>hái hǎo</c.Pinyin><c.Meaning>pretty good, not bad</c.Meaning></Row></li>
             </c.Ul>
           </c.Bookrow>
-          <c.PartTitle>会话：来一杯茶吧！</c.PartTitle>
+          <c.PartTitle name="dialog" />
+          <c.PartTitle type="secondary">来一杯茶吧！</c.PartTitle>
           <c.P color={'#C0504D'}><i>五个人去喝茶 The five go out to have tea. Marvin is confused by the different varieties and decides to try "white tea", which in his opinion tastes remarkably similar to water.</i></c.P>
           {dialog(1, { sentenceType: 'chinese', displayNames: true })}
           {dialog(1, { sentenceType: 'translation', displayNames: true })}
-          <c.PartTitle>CULTURE AND SOCIETY</c.PartTitle>
+          <c.PartTitle name="culture" />
           <c.Bookrow center>{image()}</c.Bookrow>
-          <c.PartTitle>NEW VOCABULARY</c.PartTitle>
+          <c.PartTitle name="words" />
           {newWords()}
-          <c.PartTitle anchor="review">Exercises</c.PartTitle>
+          <c.PartTitle anchor="review" name="review" />
           <c.P
             buttonOptions={{
               type: 'practice',

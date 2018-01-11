@@ -13,10 +13,10 @@ export default class Content extends Component {
       <div>
         <c.Page>
           {lessonTitle()}
-          <c.PartTitle anchor="new-characters">NEW CHARACTERS</c.PartTitle>
+          <c.PartTitle name="characters" />
           <c.P><i>Practice the stroke order animations. Some characters have material on Stories and Calligraphy.</i></c.P>
           {newCharacters()}
-          <c.PartTitle>PATTERNS</c.PartTitle>
+          <c.PartTitle name="patterns" />
           {grammarTitle()}
           <c.P>The Chinese equivalent of English <i>it</i> is pronounced <b>tā</b>, just like Chinese <i>he</i> and <i>she</i>:</c.P>
           {example(1, { audio: true })}
@@ -128,15 +128,16 @@ export default class Content extends Component {
               <li><Row><c.Char>说一说</c.Char><c.Pinyin>shuōyi̊shuo̊</c.Pinyin><c.Meaning>say something, speak a little</c.Meaning></Row></li>
             </c.Ul>
           </c.Bookrow>
-          <c.PartTitle>会话：你在中国做什么？</c.PartTitle>
+          <c.PartTitle name="dialog" />
+          <c.PartTitle type="secondary">你在中国做什么？</c.PartTitle>
           <c.P color={'#C0504D'}><i>Wang Meixin wants to know what Marvin is doing in China. When she understands that he has no clear plan, she suggests that he might become a language tutor. Marvin is not so sure.</i></c.P>
           {dialog(1, { sentenceType: 'chinese', displayNames: true })}
           {dialog(1, { sentenceType: 'translation', displayNames: true })}
-          <c.PartTitle>CULTURE AND SOCIETY</c.PartTitle>
+          <c.PartTitle name="culture" />
           <c.Bookrow center>{image()}</c.Bookrow>
-          <c.PartTitle>NEW VOCABULARY</c.PartTitle>
+          <c.PartTitle name="words" />
           {newWords()}
-          <c.PartTitle anchor="review">Exercises</c.PartTitle>
+          <c.PartTitle anchor="review" name="review" />
           <c.P
             buttonOptions={{
               type: 'practice',

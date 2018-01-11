@@ -13,10 +13,10 @@ export default class Content extends Component {
       <div>
         <c.Page>
           {lessonTitle()}
-          <c.PartTitle anchor="new-characters">NEW CHARACTERS</c.PartTitle>
+          <c.PartTitle name="characters" />
           <c.P><i>Practice the stroke order animations. Some characters have material on Stories and Calligraphy.</i></c.P>
           {newCharacters()}
-          <c.PartTitle>PATTERNS</c.PartTitle>
+          <c.PartTitle name="patterns" />
           {grammarTitle()}
           <c.P>是 <b>shì</b> can be used to reinforce the strength of a statement:</c.P>
           {example(1, { audio: true })}
@@ -79,7 +79,10 @@ export default class Content extends Component {
               <li><Row><c.Char>姓 </c.Char><c.Pinyin>xìng</c.Pinyin><c.Meaning>be named (as family name)</c.Meaning></Row></li>
             </c.Ul>
           </c.Bookrow>
-          <c.P>These counterexamples also illustrate the difference between <i>aspect</i> and <i>tense</i>. You will have noticed that all the sentence patterns above were translated to past tense in English. This is not a coincidence: bounded actions will of course usually have occurred in the past. It is therefore easy to confuse Chinese <i>perfective aspect</i> with English <i>past tense</i>. But perfective aspect only works with verbs  describing actions that <i>can be completed</i>. In English, we can use present and past tense to express the difference between <i>she is named Li</i> and <i>she was named Li</i>, or <i>he knows</i> and <i>he knew</i>. There is no way to make this distinction in Chinese without using words like <i>yesterday</i> or <i>last year</i> to make the timing explicit.</c.P>
+          <c.P>
+            These counterexamples also illustrate the difference between <i>aspect</i> and <i>tense</i>. You will have noticed that all the sentence patterns above were translated to past tense in English. This is not a coincidence: bounded actions will of course usually have occurred in the past. It is therefore easy to confuse Chinese <i>perfective aspect</i> with English <i>past tense</i>. But perfective aspect only works with verbs  describing actions that <i>can be completed</i>.
+            In English, we can use present and past tense to express the difference between <i>she is named Li</i> and <i>she was named Li</i>, or <i>he knows</i> and <i>he knew</i>. There is no way to make this distinction in Chinese without using words like <i>yesterday</i> or <i>last year</i> to make the timing explicit.
+          </c.P>
           <c.P>Here is another example showing that perfective aspect is different from past tense:</c.P>
           {example(16, { audio: true })}
           <c.P>This sentence talks about something that will happen in the future, and is translated to future tense in English, so it cannot be said to be in past tense. The perfective <b>le̊.1</b> in Chinese just says that something <i>will</i> be completed: she will <i>have seen</i> something and <i>will be happy</i> as a result. In later episodes, we will encounter other examples illustrating that perfective aspect really has nothing to do with whether an event occurs in the future or in the past.</c.P>
@@ -102,15 +105,16 @@ export default class Content extends Component {
           {grammarTitle()}
           <c.P>If you pronounce several 一 <b>yī</b> in a row, it can be hard for the listener to tell how many there are (try it over the phone!) To make it easier for the listener, 一 is often pronounced <b>yāo</b> in numbers:</c.P>
           {example(26, { audio: true })}
-          <c.PartTitle>会话：你的电话号码是多少？</c.PartTitle>
+          <c.PartTitle name="dialog" />
+          <c.PartTitle type="secondary">你的电话号码是多少？</c.PartTitle>
           <c.P color={'#C0504D'}><i>Wang Meixin promises to help Marvin find a place to stay, giving her a good reason to note down his phone number.</i></c.P>
           {dialog(1, { sentenceType: 'chinese', displayNames: true })}
           {dialog(1, { sentenceType: 'translation', displayNames: true })}
-          <c.PartTitle>CULTURE AND SOCIETY</c.PartTitle>
+          <c.PartTitle name="culture" />
           <c.Bookrow center>{image()}</c.Bookrow>
-          <c.PartTitle>NEW VOCABULARY</c.PartTitle>
+          <c.PartTitle name="words" />
           {newWords()}
-          <c.PartTitle anchor="review">Exercises</c.PartTitle>
+          <c.PartTitle anchor="review" name="review" />
           <c.P
             buttonOptions={{
               type: 'practice',

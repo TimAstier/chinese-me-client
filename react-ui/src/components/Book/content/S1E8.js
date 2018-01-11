@@ -13,10 +13,10 @@ export default class Content extends Component {
       <div>
         <c.Page>
           {lessonTitle()}
-          <c.PartTitle anchor="new-characters">NEW CHARACTERS</c.PartTitle>
+          <c.PartTitle name="characters" />
           <c.P><i>Practice the stroke order animations. Some characters have material on Stories and Calligraphy.</i></c.P>
           {newCharacters()}
-          <c.PartTitle>PATTERNS</c.PartTitle>
+          <c.PartTitle name="patterns" />
           {grammarTitle()}
           <c.P>If there is no subject doing the "having", 有 <b>yǒu</b> simply means <i>there is</i>, <i>there exists</i>. Perhaps the simplest example is the one often heard in Chinese restrooms:</c.P>
           {example(1, { audio: true })}
@@ -63,15 +63,15 @@ export default class Content extends Component {
           <c.P>哪, <b>nǎ/něi</b> can be combined with just a measure word to say <i>which (one)?</i></c.P>
           {example(13, { audio: true })}
           {example(14, { audio: true })}
-          <c.PartTitle>会话：</c.PartTitle>
+          <c.PartTitle name="dialog" />
           <c.P color={'#C0504D'}><i>Meizi is showing a photograph of her family to Wang Yuguo and Li Yu. Marvin and Wang Meixin admire the cute kids.</i></c.P>
           {dialog(1, { sentenceType: 'chinese', displayNames: true })}
           {dialog(1, { sentenceType: 'translation', displayNames: true })}
-          <c.PartTitle>CULTURE AND SOCIETY</c.PartTitle>
+          <c.PartTitle name="culture" />
           <c.Bookrow center>{image()}</c.Bookrow>
-          <c.PartTitle>NEW VOCABULARY</c.PartTitle>
+          <c.PartTitle name="words" />
           {newWords()}
-          <c.PartTitle anchor="review">Exercises</c.PartTitle>
+          <c.PartTitle anchor="review" name="review" />
           <c.P
             buttonOptions={{
               type: 'practice',

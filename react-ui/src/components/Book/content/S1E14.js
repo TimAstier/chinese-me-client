@@ -12,10 +12,10 @@ export default class Content extends Component {
       <div>
         <c.Page>
           {lessonTitle()}
-          <c.PartTitle anchor="new-characters">NEW CHARACTERS</c.PartTitle>
+          <c.PartTitle name="characters" />
           <c.P><i>Practice the stroke order animations. Some characters have material on Stories and Calligraphy.</i></c.P>
           {newCharacters()}
-          <c.PartTitle>PATTERNS</c.PartTitle>
+          <c.PartTitle name="patterns" />
           {grammarTitle()}
           <c.P>The basic meaning of 用 <b>yòng</b> is <i>to use</i>:</c.P>
           {example(1, { audio: true })}
@@ -35,15 +35,16 @@ export default class Content extends Component {
           <c.P>每 <b>měi</b> can be used with a noun or a measure word to mean <i>each</i></c.P>
           {example(9, { audio: true })}
           {example(10, { audio: true })}
-          <c.PartTitle>会话：你中文怎么学？</c.PartTitle>
+          <c.PartTitle name="dialog" />
+          <c.PartTitle type="secondary">你中文怎么学？</c.PartTitle>
           <c.P color={'#C0504D'}><i>The five friends discuss language learning. Colleen and Li Yu then help Marvin go to a bookstore to get some Chinese language books.</i></c.P>
           {dialog(1, { sentenceType: 'chinese', displayNames: true })}
           {dialog(1, { sentenceType: 'translation', displayNames: true })}
-          <c.PartTitle>CULTURE AND SOCIETY</c.PartTitle>
+          <c.PartTitle name="culture" />
           <c.Bookrow center>{image()}</c.Bookrow>
-          <c.PartTitle>NEW VOCABULARY</c.PartTitle>
+          <c.PartTitle name="words" />
           {newWords()}
-          <c.PartTitle anchor="review">Exercises</c.PartTitle>
+          <c.PartTitle anchor="review" name="review" />
           <c.P
             buttonOptions={{
               type: 'practice',

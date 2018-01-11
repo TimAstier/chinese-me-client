@@ -21,7 +21,11 @@ class Meaning extends Component {
 }
 
 Meaning.propTypes = {
-  children: propTypes.string.isRequired
+  children: propTypes.oneOfType([
+    propTypes.string,
+    propTypes.array,
+    propTypes.object
+  ]).isRequired
 };
 
 export default Meaning;

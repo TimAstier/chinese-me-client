@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { bookComponents as c } from '../../.';
 
 class Exam extends Component {
-
   render() {
     return (
       <c.PartTitle
@@ -11,9 +10,8 @@ class Exam extends Component {
           type: 'exam',
           data: {}
         }}
-      >
-        EXAM
-      </c.PartTitle>
+        name="exam"
+      />
     );
   }
 }

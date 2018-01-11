@@ -13,10 +13,10 @@ export default class Content extends Component {
       <div>
         <c.Page>
           {lessonTitle()}
-          <c.PartTitle anchor="new-characters">NEW CHARACTERS</c.PartTitle>
+          <c.PartTitle name="characters" />
           <c.P><i>Practice the stroke order animations. Some characters have material on Stories and Calligraphy.</i></c.P>
           {newCharacters()}
-          <c.PartTitle>PATTERNS</c.PartTitle>
+          <c.PartTitle name="patterns" />
           {grammarTitle()}
           <c.P>We have already encountered 就 <b>jiù</b> as a synonym for 只 <b>zhǐ</b> <i>only</i>. But this is just one of a much wider range of uses.</c.P>
           <c.P>The basic meaning of 就 <b>jiù</b> is <i>as a result</i> or <i>as soon as... then</i>.</c.P>
@@ -70,15 +70,16 @@ export default class Content extends Component {
               <li><Row><c.Char>一刻钟</c.Char><c.Pinyin>yí kè zhōng</c.Pinyin></Row></li>            </c.Ul>
           </c.Bookrow>
           {example(21, { audio: true })}
-          <c.PartTitle>会话：我们喝茶就不吃晚饭了。</c.PartTitle>
+          <c.PartTitle name="dialog" />
+          <c.PartTitle type="secondary">我们喝茶就不吃晚饭了。</c.PartTitle>
           {/* <c.P color={'#C0504D'}><i></i></c.P> */}
           {dialog(1, { sentenceType: 'chinese', displayNames: true })}
           {dialog(1, { sentenceType: 'translation', displayNames: true })}
-          <c.PartTitle>CULTURE AND SOCIETY</c.PartTitle>
+          <c.PartTitle name="culture" />
           <c.Bookrow center>{image()}</c.Bookrow>
-          <c.PartTitle>NEW VOCABULARY</c.PartTitle>
+          <c.PartTitle name="words" />
           {newWords()}
-          <c.PartTitle anchor="review">Exercises</c.PartTitle>
+          <c.PartTitle anchor="review" name="review" />
           <c.P
             buttonOptions={{
               type: 'practice',

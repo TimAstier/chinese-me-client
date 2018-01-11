@@ -13,10 +13,10 @@ export default class Content extends Component {
       <div>
         <c.Page>
           {lessonTitle()}
-          <c.PartTitle anchor="new-characters">NEW CHARACTERS</c.PartTitle>
+          <c.PartTitle name="characters" />
           <c.P><i>Practice the stroke order animations. Some characters have material on Stories and Calligraphy.</i></c.P>
           {newCharacters()}
-          <c.PartTitle>PATTERNS</c.PartTitle>
+          <c.PartTitle name="patterns" />
           {grammarTitle()}
           <c.P>To say that something is located somewhere <i>relative to</i> something else, for example that A is inside B, you use the pattern A 在 B 里:</c.P>
           {example(1, { audio: true })}
@@ -110,15 +110,16 @@ export default class Content extends Component {
           {grammarTitle()}
           <c.P>The character 还 can also be pronounced <b>huán</b>, meaning <i>to give something back</i>, <i>to return something</i>:</c.P>
           {example(20, { audio: true })}
-          <c.PartTitle>会话：我们照相吧！</c.PartTitle>
+          <c.PartTitle name="dialog" />
+          <c.PartTitle type="secondary">我们照相吧！</c.PartTitle>
           {/* <c.P color={'#C0504D'}><i></i></c.P> */}
           {dialog(1, { sentenceType: 'chinese', displayNames: true })}
           {dialog(1, { sentenceType: 'translation', displayNames: true })}
-          <c.PartTitle>CULTURE AND SOCIETY</c.PartTitle>
+          <c.PartTitle name="culture" />
           <c.Bookrow center>{image()}</c.Bookrow>
-          <c.PartTitle>NEW VOCABULARY</c.PartTitle>
+          <c.PartTitle name="words" />
           {newWords()}
-          <c.PartTitle anchor="review">Exercises</c.PartTitle>
+          <c.PartTitle anchor="review" name="review" />
           <c.P
             buttonOptions={{
               type: 'practice',

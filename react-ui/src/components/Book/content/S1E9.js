@@ -13,10 +13,10 @@ export default class Content extends Component {
       <div>
         <c.Page>
           {lessonTitle()}
-          <c.PartTitle anchor="new-characters">NEW CHARACTERS</c.PartTitle>
+          <c.PartTitle name="characters" />
           <c.P><i>Practice the stroke order animations. Some characters have material on Stories and Calligraphy.</i></c.P>
           {newCharacters()}
-          <c.PartTitle>PATTERNS</c.PartTitle>
+          <c.PartTitle name="patterns" />
           {grammarTitle()}
           <c.P>In the previous episode, we learned that 在 <b>zài</b> means <i>to be in</i> or <i>to be at</i>: </c.P>
           <c.Bookrow>
@@ -79,7 +79,10 @@ export default class Content extends Component {
           </c.Bookrow>
           <c.P>But if you want to ask if a child <i>knows how to write</i>, for example, you cannot just use 写 <b>xiě</b>. Instead, you would say:</c.P>
           {example(12, { audio: true })}
-          <c.P>In other words, both 写 <b>xiě</b>  and 写字 <b>xiězì</b> are translated into  English <i>write</i>. So how do we know when to use the one or the other? There is a straightforward rule: verbs like 写 <b>xiě</b> must always have an object. When we have a specific object, like 书 <b>shū</b> in 写书 <b>xiě shū</b> <i>write a book</i>, or 信 <b>xìn</b> in 写信 <b>xiě xìn</b> <i>write a letter</i>, all is well. But if there is no specific object, we have to insert the verb's standard "default" object. In the case of 写 <b>xiě</b>, this default object is 字 <b>zì</b>.</c.P>
+          <c.P>
+            In other words, both 写 <b>xiě</b> and 写字 <b>xiězì</b> are translated into English <i>write</i>. So how do we know when to use the one or the other? There is a straightforward rule: verbs like 写 <b>xiě</b> must always have an object. When we have a specific object, like 书 <b>shū</b> in 写书 <b>xiě shū</b> <i>write a book</i>, or 信 <b>xìn</b> in 写信 <b>xiě xìn</b> <i>write a letter</i>, all is well.
+            But if there is no specific object, we have to insert the verb's standard "default" object. In the case of 写 <b>xiě</b>, this default object is 字 <b>zì</b>.
+          </c.P>
           <c.P>The object can be implied. So if you had already been talking about a child's name, you could simply ask 他会写吗？ <b>Tā huì xiě må?</b>, and your listener would understand that you meant 他会写自己的名字吗？ <b>Tā huì xiě zìjǐ de̊.1 míngzi̊ må?</b>  <i>Can he write his name?</i> But if you just wanted to know if the child knows how to write in general, you would have to use the pattern in example 9:12. In this case, if you asked just 他会写吗？ <b>Tā huì xiě må?</b>, the listener would reply: <i>write what?</i></c.P>
           <c.P>There are many other verbs like this. Some that we have already learned are:</c.P>
           <c.Bookrow>
@@ -98,15 +101,16 @@ export default class Content extends Component {
           {example(16, { audio: true })}
           {example(17, { audio: true })}
           {example(18, { audio: true })}
-          <c.PartTitle>会话：我可以帮你找房子</c.PartTitle>
+          <c.PartTitle name="dialog" />
+          <c.PartTitle type="secondary">我可以帮你找房子</c.PartTitle>
           <c.P color={'#C0504D'}><i>Marvin is starting to worry about his expensive housing situation, and takes the opportunity to ask his new Chinese friends for advice.</i></c.P>
           {dialog(1, { sentenceType: 'chinese', displayNames: true })}
           {dialog(1, { sentenceType: 'translation', displayNames: true })}
-          <c.PartTitle>CULTURE AND SOCIETY</c.PartTitle>
+          <c.PartTitle name="culture" />
           <c.Bookrow center>{image()}</c.Bookrow>
-          <c.PartTitle>NEW VOCABULARY</c.PartTitle>
+          <c.PartTitle name="words" />
           {newWords()}
-          <c.PartTitle anchor="review">Exercises</c.PartTitle>
+          <c.PartTitle anchor="review" name="review" />
           <c.P
             buttonOptions={{
               type: 'practice',

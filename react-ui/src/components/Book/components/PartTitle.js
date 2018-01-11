@@ -7,6 +7,18 @@ import { Bookrow } from './.';
 const Scroll = require('react-scroll');
 const Element = Scroll.Element;
 
+const titles = {
+  characters: 'CHARACTERS',
+  patterns: 'PATTERNS',
+  dialog: 'DIALOG',
+  dialogs: 'DIALOGS',
+  pronunciation: 'PRONUNCIATION',
+  culture: 'CULTURE & SOCIETY',
+  words: 'WORDS & EXPRESSIONS',
+  review: 'EXERCISES',
+  exam: 'EXAM'
+};
+
 const H2 = styled.h2`
   font-size: ${props => props.fontSize};
   font-family: 'Calibri';
@@ -49,7 +61,7 @@ class PartTitle extends Component {
       >
         <Element name={this.props.anchor}>
           <H2 fontSize={this._fontSize()} color={this._color()}>
-            { this.props.children }
+            { this.props.name ? titles[this.props.name] : this.props.children }
           </H2>
         </Element>
       </Bookrow>
@@ -58,7 +70,18 @@ class PartTitle extends Component {
 }
 
 PartTitle.propTypes = {
-  children: propTypes.oneOfType([propTypes.string, propTypes.object]).isRequired,
+  name: propTypes.oneOf([
+    'characters',
+    'patterns',
+    'dialog',
+    'dialogs',
+    'pronunciation',
+    'culture',
+    'words',
+    'review',
+    'exam'
+  ]),
+  children: propTypes.oneOfType([propTypes.string, propTypes.object]),
   type: propTypes.oneOf(['secondary', 'tertiary']),
   buttonOptions: propTypes.object,
   anchor: propTypes.string

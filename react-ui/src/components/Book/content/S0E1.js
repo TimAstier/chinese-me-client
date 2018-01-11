@@ -36,7 +36,7 @@ export default class Content extends Component {
           <c.P>Practice saying “my name is” by adding 我叫 before your name:</c.P>
           {example(5, { basic: true, big: true, audio: true })}
           <c.P>Repeat this phrase until you can say it exactly like the voice on the recording.</c.P>
-          <c.PartTitle>DIALOG</c.PartTitle>
+          <c.PartTitle name="dialog" />
           <c.PartTitle type="secondary">Introduce yourself</c.PartTitle>
           <c.P>Listen as Wang Yi introduces herself to you, and then tell her your own name:</c.P>
           {dialog(1, { sentenceType: 'chinese', displayNames: false })}
@@ -385,10 +385,10 @@ export default class Content extends Component {
           <c.Bookrow>{image()}</c.Bookrow>
           <c.P>Since it is one of the most common characters in the Chinese language, writing it quickly will save you lots of time. If you practice writing it elegantly, you will develop a rhythm which will eventually make you faster. Look at the calligraphy video and try to mimic not just each stroke, but the flow of writing:</c.P>
           {character(5, { mode: 'practice' })}
-          <c.PartTitle anchor="new-characters">CHARACTERS</c.PartTitle>
+          <c.PartTitle anchor="new-characters" name="characters"/>
           <c.P>Here are all the new characters in this lesson. Click on each character to review stroke order, on the brush icon to see calligraphy video, and on history icon to see the character etymology.</c.P>
           {newCharacters()}
-          <c.PartTitle anchor="review">EXERCISES</c.PartTitle>
+          <c.PartTitle anchor="review" name="review" />
           <c.P
             buttonOptions={{
               type: 'practice',

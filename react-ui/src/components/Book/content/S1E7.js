@@ -13,10 +13,10 @@ export default class Content extends Component {
         <c.Page>
           {lessonTitle()}
           <c.Bookrow center>{image()}</c.Bookrow>
-          <c.PartTitle>NEW CHARACTERS</c.PartTitle>
+          <c.PartTitle name="characters" />
           <c.P><i>Practice the stroke order animations. Some characters have material on Stories and Calligraphy.</i></c.P>
           {newCharacters()}
-          <c.PartTitle>PATTERNS</c.PartTitle>
+          <c.PartTitle name="patterns" />
           {grammarTitle()}
           <c.P>Chinese does not make any difference between <i>both</i> and <i>all</i>; after all, the concept is the same. Pay attention to the sentence intonation in this pattern; the stress is on 都 <b>dōu</b>, so Tone 1 has a higher pitch on 都 <b>dōu</b> than on 他 <b>tā</b>:</c.P>
           {example(1, { audio: true })}
@@ -137,15 +137,16 @@ export default class Content extends Component {
           <c.P>In English, we would answer both the affirmative and the negative question in the same way: <i>No, I don't</i>. But Chinese applies mathematical logic to the answer; if you reply to the negative question using the Chinese equivalent of <i>no</i>, you would be contradicting the negative itself, meaning that you <i>do</i> speak French. If you want to say you <i>don't</i> speak French, you need to answer with the Chinese equivalent of <i>yes</i>:</c.P>
           {example(21, { audio: true })}
           <c.P>Chinese speakers often make the opposite mistake in English: <i>Don't you want to have dinner with us? Yes, I need to go now.</i> To avoid confusion, stick to positively formulated questions!</c.P>
-          <c.PartTitle>会话:你家人都在中国吗?</c.PartTitle>
+          <c.PartTitle name="dialog" />
+          <c.PartTitle type="secondary">你家人都在中国吗?</c.PartTitle>
           <c.P color={'#C0504D'}><i>The acquaintances learn a bit about each other's families and Marvin picks up a few new words as well as misunderstanding a common grammar pattern.</i></c.P>
           {dialog(1, { sentenceType: 'chinese', displayNames: true })}
           {dialog(1, { sentenceType: 'translation', displayNames: true })}
-          <c.PartTitle>CULTURE AND SOCIETY</c.PartTitle>
+          <c.PartTitle name="culture" />
           <c.Bookrow center>{image()}</c.Bookrow>
-          <c.PartTitle>NEW VOCABULARY</c.PartTitle>
+          <c.PartTitle name="words" />
           {newWords()}
-          <c.PartTitle anchor="review">Exercises</c.PartTitle>
+          <c.PartTitle anchor="review" name="review" />
           <c.P
             buttonOptions={{
               type: 'practice',

@@ -40,7 +40,6 @@ const Placeholder = styled.span`
 `;
 
 class Example extends Component {
-
   _renderBasic() {
     if (this.props.displayTranslation) {
       return (
@@ -84,15 +83,15 @@ class Example extends Component {
       <Bookrow
         marginBottom={25}
         buttonOptions={
-          this.props.audio ?
-          {
+          this.props.audio ? {
             type: 'audio',
             data: {
               url: this.props.audioUrl,
               text: this.props.chinese
-            }
+            },
+            top: true
           }
-          : undefined
+            : undefined
         }
       >
         { this.props.basic ? this._renderBasic() : this._renderFull() }

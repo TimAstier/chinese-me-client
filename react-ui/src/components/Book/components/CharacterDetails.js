@@ -20,13 +20,8 @@ const PinyinWrapper = styled.div`
   width: 110px;
 `;
 
-const MeaningWrapper = styled.div`
-  width: 160px;
-  padding-right: 20px;
-`;
-
 const LinksWrapper = styled.div`
-  width: 100px;
+  width: 150px;
   display: flex;
 `;
 
@@ -34,7 +29,6 @@ class CharacterDetails extends Component {
   render() {
     return (
       <Bookrow
-        center
         buttonOptions={
           this.props.audio ? {
             type: 'audio',
@@ -50,18 +44,6 @@ class CharacterDetails extends Component {
           <CharWrapper>
             <Char><Element name={this.props.anchor}>{this.props.simpChar}</Element></Char>
           </CharWrapper>
-          {
-            !this.props.hidePinyin === true &&
-              <PinyinWrapper>
-                <Pinyin>{pinyinize(this.props.pinyinNumber)}</Pinyin>
-              </PinyinWrapper>
-          }
-          {
-            !this.props.hideMeaning === true &&
-              <MeaningWrapper>
-                <Meaning>{this.props.meaning}</Meaning>
-              </MeaningWrapper>
-          }
           <LinksWrapper>
             {
               !this.props.hideLinks === true &&
@@ -97,6 +79,18 @@ class CharacterDetails extends Component {
                 />
             }
           </LinksWrapper>
+          {
+            !this.props.hidePinyin === true &&
+              <PinyinWrapper>
+                <Pinyin>{pinyinize(this.props.pinyinNumber)}</Pinyin>
+              </PinyinWrapper>
+          }
+          {
+            !this.props.hideMeaning === true &&
+              <div>
+                <Meaning>{this.props.meaning}</Meaning>
+              </div>
+          }
         </Wrapper>
       </Bookrow>
     );

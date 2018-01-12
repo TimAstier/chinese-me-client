@@ -4,6 +4,7 @@ export { default as S0E2 } from './S0E2';
 export { default as S0E3 } from './S0E3';
 export { default as S0E4 } from './S0E4';
 export { default as S0E5 } from './S0E5';
+export { default as S0E6 } from './S0E6';
 export { default as S0E7 } from './S0E7';
 export { default as S0E8 } from './S0E8';
 export { default as S0E9 } from './S0E9';

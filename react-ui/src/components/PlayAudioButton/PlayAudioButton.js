@@ -60,8 +60,8 @@ class PlayAudioButton extends Component {
         <img
           src={iconPlayAudio}
           alt="play audio"
-          height={this.props.small ? '30px' : undefined}
-          width={this.props.small ? '30px' : undefined}
+          height={this.props.small ? '30px' : '40px'}
+          width={this.props.small ? '30px' : '40px'}
         />
       );
     }
@@ -70,8 +70,8 @@ class PlayAudioButton extends Component {
       <img
         src={this.loopPlayingIcons()}
         alt="audio playing"
-        height={this.props.small ? '30px' : undefined}
-        width={this.props.small ? '30px' : undefined}
+        height={this.props.small ? '30px' : '40px'}
+        width={this.props.small ? '30px' : '40px'}
       />
     );
   }

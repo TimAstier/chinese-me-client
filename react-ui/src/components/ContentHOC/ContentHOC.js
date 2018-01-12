@@ -24,7 +24,7 @@ class ContentHOC extends Component {
     return () => {
       count++;
       if (!grammars[count - 1]) {
-        return <Placeholder>{'{GRAMMAR TITLE PLACEHOLDER}'}</Placeholder>;
+        return <Placeholder>{`{GRAMMAR TITLE #${count} PLACEHOLDER}`}</Placeholder>;
       }
       return (
         <C.GrammarTitle
@@ -40,7 +40,7 @@ class ContentHOC extends Component {
     return () => {
       count ++;
       if (!images[count]) {
-        return <Placeholder>{'IMAGE PLACEHOLDER'}</Placeholder>;
+        return <Placeholder>{`IMAGE #${count + 1} PLACEHOLDER`}</Placeholder>;
       }
       return <img src={images[count]} alt=""/>;
     };
@@ -66,7 +66,7 @@ class ContentHOC extends Component {
   _example = examples => {
     return (number, options) => {
       if (number > examples.length) {
-        return <Placeholder>{'{EXAMPLE PLACEHOLDER}'}</Placeholder>;
+        return <Placeholder>{`{EXAMPLE #${number} PLACEHOLDER}`}</Placeholder>;
       }
       if (!examples[number - 1]) {
         return <Placeholder>{`{EXAMPLE #${number} NOT FOUND}`}</Placeholder>;
@@ -84,7 +84,7 @@ class ContentHOC extends Component {
   _dialog = dialogs => {
     return (number, options) => {
       if (number > dialogs.length) {
-        return <Placeholder>{'{DIALOG PLACEHOLDER}'}</Placeholder>;
+        return <Placeholder>{`{DIALOG #${number} PLACEHOLDER}`}</Placeholder>;
       }
       if (!dialogs[number - 1]) {
         return <Placeholder>{`{DIALOG #${number} NOT FOUND}`}</Placeholder>;

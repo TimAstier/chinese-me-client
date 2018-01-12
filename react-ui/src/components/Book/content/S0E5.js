@@ -18,24 +18,61 @@ export default class Content extends Component {
           <c.PartTitle name="characters" />
           <c.P>Here are the new characters in this lesson. Click on each character to review the stroke order, or on the brush or history icons to see calligraphy and history videos.</c.P>
           {newCharacters()}
+          <c.PartTitle name="pronunciation" />
+          <c.PartTitle type="secondary"><span>A. The final <b>-ie</b> is spelled <b>ye</b> when there is no initial</span></c.PartTitle>
+          <c.P>
+            We have already learned that the Chinese final <b>-i</b> is written <b>yi</b> when there is no initial before it (when it comes first in a syllable). In the same way, when there is no initial, the final <b>-ie</b> is spelled <b>ye</b> in pīnyīn.
+          </c.P>
+          <c.PartTitle type="secondary"><span>B. The <b>e</b> sound in final <b>-en</b> is pronounced like <i>ea</i> in <i>learn</i></span></c.PartTitle>
+          <c.P
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                // url: pinyinNumberToAudioUrl('hen3'),
+                text: '很'
+              }
+            }}
+          >
+            Listen to the audio voice and practice the pronunciation of <b>hěn</b> a few times
+          </c.P>
           <c.PartTitle name="patterns" />
           {grammarTitle()}
           <c.P>很 <b>hěn</b> literally means <i>very</i>, <i>to a high degree</i>. Because of this, some textbooks call it an “intensifier”. But in modern Chinese, 很 <b>hěn</b> is used as a sort of "filler" between a noun and an adjective, and doesn't make any real difference to the meaning:</c.P>
           {example(1, { audio: true })}
           {example(2, { audio: true })}
-          <c.P>If you really want to express the sense of <i>very</i> or <i>extremely</i> good, you have to emphasize the pronunciation of hěn:</c.P>
+          <c.P>If you really want to express the sense of <i>very</i> or <i>extremely</i> good, you have to emphasize the pronunciation of <b>hěn</b>:</c.P>
           <c.Bookrow>
             <c.Ul>
               <li><Row><c.Char>我很高兴！</c.Char><c.Pinyin>Wǒ hěn gāoxìng.</c.Pinyin><c.Meaning>I am really happy!</c.Meaning></Row></li>
               <li><Row><c.Char>你很好！</c.Char><c.Pinyin>Nǐ hěn hǎo!</c.Pinyin><c.Meaning>You’re great! You’re very nice!</c.Meaning></Row></li>
             </c.Ul>
           </c.Bookrow>
+          <c.P
+            buttonOptions={{
+              type: 'practice',
+              data: {
+                elementId: practiceIds[1]
+              }
+            }}
+          >
+            <i>Practice translating sentences using 很 <b>hěn</b>.</i>
+          </c.P>
           {grammarTitle()}
           <c.P>也 <b>yě</b> <i>also</i>, <i>too</i> can be added to any of the sentences we have learned so far.  也 <b>yě</b> is placed after the subject and before the verb of the sentence:</c.P>
           {example(3, { audio: true })}
           <c.P>In a Topic-Comment construction, 也 <b>yě</b> comes after the Topic and before the Comment:</c.P>
           {example(4, { audio: true })}
           {example(5, { audio: true })}
+          <c.P
+            buttonOptions={{
+              type: 'practice',
+              data: {
+                elementId: practiceIds[2]
+              }
+            }}
+          >
+            <i>Practice translating sentences using 也 <b>yě</b>.</i>
+          </c.P>
           <c.PartTitle name="dialogs" />
           <c.PartTitle type= "secondary">Saying hello</c.PartTitle>
           {dialog(1, { sentenceType: 'chinese', displayNames: false })}

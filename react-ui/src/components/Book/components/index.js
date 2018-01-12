@@ -18,6 +18,7 @@ export { default as P } from './Paragraph';
 export { default as PartTitle } from './PartTitle';
 export { default as Pinyin } from './Pinyin';
 export { default as Sentence } from './Sentence';
+export { default as Space } from './Space';
 export { default as Statement } from './Statement';
 export { default as Ul } from './Ul';
 export { default as Word } from './Word';

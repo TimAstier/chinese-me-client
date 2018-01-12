@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import * as c from '../components';
 import { content as contentPropTypes } from '../../../helpers/propTypes';
-// import pinyinNumberToAudioUrl from '../../../utils/pinyinNumberToAudioUrl';
+import pinyinNumberToAudioUrl from '../../../utils/pinyinNumberToAudioUrl';
 import { Row } from '../../Shared';
 // import insertVariables from '../../../utils/insertVariables';
 
@@ -19,91 +19,78 @@ export default class Content extends Component {
           <c.P>Here are the new characters in this lesson. Click on each character to review the stroke order, or on the brush or history icons to see calligraphy and history videos.</c.P>
           {newCharacters()}
           <c.PartTitle name="pronunciation" />
-          <c.P>In this lesson, pay special attention to the following sounds which can be tricky for the beginner. You can review these in the <i>Introduction to Chinese pronunciation and writing</i> by clicking the respective links.</c.P>
-          <c.PartTitle type="tertiary">A. The difference between the three different sounds of the pīnyīn letter i </c.PartTitle>
-          <c.P>We have already encountered two of the pronunciations of pīnyīn <i>i</i>. In this lesson, we meet the third one, which is a bit like the <i>zzz</i> in the buzzing of a bee:</c.P>
-          <c.Bookrow
+          <c.PartTitle type="tertiary"><span>A. Spelling of <b>-i</b> when it comes first in a syllable</span></c.PartTitle>
+          <c.P
             buttonOptions={{
               type: 'audio',
               data: {
-                text: '四'
+                url: pinyinNumberToAudioUrl('yi1')
               }
             }}
           >
-            <c.Ul>
-              <li>
-                <Row>
-                  <c.Char>四</c.Char>
-                  <c.Pinyin>sì</c.Pinyin>
-                  <c.Meaning>four</c.Meaning>
-                </Row>
-              </li>
-            </c.Ul>
-          </c.Bookrow>
-          <c.P>Compare this to the  <i>i</i> sounds we have learned earlier: <i>ee</i> in 七 <b>qī</b> <i>seven</i> and <i>r</i> in 十 <b>shí</b> <i>ten</i>.</c.P>
-          <c.PartTitle type="tertiary">B. Spelling of -i when it comes first in a syllable</c.PartTitle>
-          <c.P>When <b>i</b> comes first in a syllable, it is written <b>yi</b> in <b>pīnyīn</b>; the pronunciation is still <i>ee</i>, as if it had been written just <b>i</b>.</c.P>
-          <c.PartTitle type="tertiary">C. Pronunciation of -ui and -iu</c.PartTitle>
+            When <b>-i</b> comes first in a syllable (when there is no initial), it is written <b>yi</b> in <b>pīnyīn</b>; the pronunciation is still <i>ee</i>, as if it had been written just <b>i</b>.
+          </c.P>
+          <c.PartTitle type="tertiary">B. Pronunciation of the finals -ui and -iu</c.PartTitle>
           <c.P>Compare the sounds on the following syllables:</c.P>
           <c.Bookrow
             buttonOptions={{
               type: 'audio',
               data: {
-                text: '岁'
+                url: pinyinNumberToAudioUrl('sui4')
               }
             }}
           >
-            <c.Ul>
-              <li>
-                <Row>
-                  <c.Char>岁</c.Char>
-                  <c.Pinyin>suì</c.Pinyin>
-                  <c.Meaning>year (of age)</c.Meaning>
-                </Row>
-              </li>
-            </c.Ul>
+            <Row>
+              <c.Char>岁</c.Char>
+              <c.Pinyin>suì</c.Pinyin>
+              <c.Meaning>year (of age)</c.Meaning>
+            </Row>
           </c.Bookrow>
           <c.Bookrow
             buttonOptions={{
               type: 'audio',
               data: {
-                text: '六'
+                url: pinyinNumberToAudioUrl('liu4')
               }
             }}
           >
-            <c.Ul>
-              <li>
-                <Row>
-                  <c.Char>六</c.Char>
-                  <c.Pinyin>lìu</c.Pinyin>
-                  <c.Meaning>six</c.Meaning>
-                </Row>
-              </li>
-            </c.Ul>
+            <Row>
+              <c.Char>六</c.Char>
+              <c.Pinyin>lìu</c.Pinyin>
+              <c.Meaning>six</c.Meaning>
+            </Row>
           </c.Bookrow>
           <c.Bookrow
             buttonOptions={{
               type: 'audio',
               data: {
-                text: '九'
+                url: pinyinNumberToAudioUrl('jiu3')
               }
             }}
           >
-            <c.Ul>
-              <li>
-                <Row>
-                  <c.Char>九</c.Char>
-                  <c.Pinyin>jiǔ</c.Pinyin>
-                  <c.Meaning>nine</c.Meaning>
-                </Row>
-              </li>
-            </c.Ul>
+            <Row>
+              <c.Char>九</c.Char>
+              <c.Pinyin>jiǔ</c.Pinyin>
+              <c.Meaning>nine</c.Meaning>
+            </Row>
           </c.Bookrow>
+          <c.P
+            buttonOptions={{
+              type: 'practice',
+              data: {
+                elementId: practiceIds[1]
+              }
+            }}
+          >
+            <i>Listen and repeat to the sounds.</i>
+          </c.P>
+          <c.PartTitle>Typing Chinese characters</c.PartTitle>
+          <c.P>Starting in this Episode, you will need to type Chinese characters in some of the exercises. To do this, you will need to download a Chinese character input method for your computer.</c.P>
           <c.PartTitle name="patterns" />
           {grammarTitle()}
           <c.P>In Chinese, numbers are usually written with the same Arabic numerals that we use in the West. But the handwriting may be different from what you are used to:</c.P>
-          <c.Bookrow>{image()}</c.Bookrow>
-          <c.P>Numbers can also be written with Chinese characters. In English, we use letters for smaller numbers: <i>five</i> and <i>25</i> are more common than <i>5</i> and <i>twenty-five</i>. In running text, the same is true for Chinese.</c.P>
+          <c.Bookrow center>{image()}</c.Bookrow>
+          <c.P>Numbers can also be written with Chinese characters. In English, we use letters to write smaller numbers: <i>five</i> and <i>25</i> are more common than <i>5</i> and <i>twenty-five</i>. In running text, the same is true for Chinese.</c.P>
           <c.P>Strings of digits like phone numbers or prices, on the other hand, are almost always written with Arabic digits; birthdays usually so. But sometimes, there is no clear preference: for house numbers, both systems are common.</c.P>
           <c.P>Chinese numbers are totally regular. There are nine numerals which can in turn be combined with ten to form the numbers 20, 30 and so on:</c.P>
           <c.Bookrow>
@@ -135,6 +122,16 @@ export default class Content extends Component {
               <li><Row><c.Char>99 九十九</c.Char><c.Pinyin>jiǔshíjiǔ</c.Pinyin><c.Meaning>ninenty-nine</c.Meaning></Row></li>
             </c.Ul>
           </c.Bookrow>
+          <c.P
+            buttonOptions={{
+              type: 'practice',
+              data: {
+                elementId: practiceIds[2]
+              }
+            }}
+          >
+            <i>Practice saying numbers in Chinese.</i>
+          </c.P>
           {grammarTitle()}
           <c.P>We have seen that some Chinese sentences are made up of a Subject, a Verb and an Object, just as in English:</c.P>
           {example(1, { audio: true })}
@@ -144,24 +141,28 @@ export default class Content extends Component {
           {example(3, { audio: true })}
           <c.P>In fact, in relaxed colloquial language you can shorten some sentences with 是 <b>shì</b> in the same way:</c.P>
           {example(4, { audio: true })}
-          <c.P>Sentences like this may be easier to understand by using a different grammatical concept: Topic and Comment. The Topic indicates what the sentence "is about" and the Comment makes some remark regarding this Topic.</c.P>
+          <c.P>Sentences like this may be easier to understand by using a different grammatical concept: Topic and Comment. The Topic indicates what the sentence "is about" and the Comment makes some remark regarding this Topic. The Topic always comes first in a sentence:</c.P>
+          <c.P><Row><c.Char>我</c.Char><c.Space width={100}/><c.Char>二十七。</c.Char></Row></c.P>
+          <c.P><Row>TOPIC<c.Space width={75}/>COMMENT</Row></c.P>
           <c.P>Linguists have measured the pauses between words in Chinese and found that the pause in the break between Topic and Comment is often a tiny bit longer than the pauses between the other words in a sentence. We can mark this break with a colon in the literal translation to make it even clearer which part is the Topic and which is the Comment:</c.P>
-          <c.Bookrow>
-            <c.Ul>
-              <li><Row>(I : TWENTY-SEVEN YEAR.)</Row></li>
-            </c.Ul>
-          </c.Bookrow>
-          <c.P>This is a very simple example - but the Topic-Comment construction is also used for more complex patterns. In fact, Topic-Comment sentences are so common that linguists call Chinese a <i>topic-prominent</i> language.</c.P>
+          <c.P>(I : TWENTY-SEVEN YEAR.)</c.P>
+          <c.P>The sentences above are all very simple - but the Topic-Comment construction is also used for more complex patterns. In fact, Topic-Comment sentences are so common that linguists call Chinese a <i>topic-prominent</i> language.</c.P>
+          <c.P
+            buttonOptions={{
+              type: 'practice',
+              data: {
+                elementId: practiceIds[3]
+              }
+            }}
+          >
+            <i>Practice.</i>
+          </c.P>
           {grammarTitle()}
-          <c.P>In Chinese, it is often possible to omit words when they are clear from the context:</c.P>
+          <c.P>In Chinese, it is often possible to omit words when they are clear from the context. In the second phrase below, the subject 我 <i>I</i> has been omitted:</c.P>
           {example(5, { audio: true })}
-          <c.P>In this example, it is already clear who you are talking about – yourself – so it is not necessary to repeat the subject <i>I</i>.</c.P>
+          <c.P>In this example, it is already clear who you are talking about – yourself – so it is not necessary to repeat this subject <i>I</i>.</c.P>
           <c.P>Again, we could analyze this as a Topic-Comment construction:</c.P>
-          <c.Bookrow>
-            <c.Ul>
-              <li><Row>(I : FAMILY-NAMED WANG, CALLED WANG YUGUO.)</Row></li>
-            </c.Ul>
-          </c.Bookrow>
+          <c.Bookrow>(I : FAMILY-NAMED WANG, CALLED WANG YUGUO.)</c.Bookrow>
           <c.PartTitle name="dialogs" />
           <c.PartTitle type="secondary">Presenting your age</c.PartTitle>
           {dialog(1, { sentenceType: 'chinese', displayNames: false })}
@@ -171,7 +172,7 @@ export default class Content extends Component {
             buttonOptions={{
               type: 'askUserSettings'
             }}
-          >Now, input your own age to practice presenting yourself.
+          >Now, input your own birthdate to practice presenting yourself.
           </c.P>
           <c.PartTitle type="secondary">Practice: Presentation</c.PartTitle>
           {dialog(2, { sentenceType: 'chinese', displayNames: false })}
@@ -182,7 +183,7 @@ export default class Content extends Component {
           {dialog(6, { sentenceType: 'chinese', displayNames: false })}
           <c.PartTitle name="culture" />
           <c.PartTitle type="secondary">How Chinese people count age</c.PartTitle>
-          <c.P>In Western countries, age changes on the birthday: you suddenly become one year older than the day before. In China, people instead state their age by saying <i>how old they will be this calendar year</i>; it doesn't matter whether they have actually passed this year's birthday or not. As of January 1 each year, you are one year older than the year before.</c.P>
+          <c.P>In Western countries, age changes on a person’s birthday. In China, people state their age by saying <i>how old they will be this calendar year</i>; it doesn't matter whether they have actually passed this year's birthday or not. As of January 1 each year, they are one year older than the year before.</c.P>
           <c.PartTitle type="secondary">Number symbolism</c.PartTitle>
           <c.P>
             Number symbolism is so important in China that many people will pay extra for a “lucky” phone number or license plate.
@@ -205,95 +206,6 @@ export default class Content extends Component {
           <c.P>- The short left bottom dot starts firmly at the right and tapers evenly down towards the left.</c.P>
           <c.P>- The elongated right bottom dot curves softly downward from left to right.</c.P>
           <c.P>In the character 八 <i>eight</i>, the short left hand dot starts firmly at the right and tapers evenly down towards the left. If you compare this with the character 人 <i>man</i>, <i>person</i>, you see that the dot in 八 is actually just a shorter version of the left downward stroke人.</c.P>
-          <c.PartTitle>PRACTICE</c.PartTitle>
-          <c.PartTitle type="tertiary">A. The difference between the three different sounds of the pīnyīn letter i</c.PartTitle>
-          <c.Bookrow
-            buttonOptions={{
-              type: 'practice',
-              data: {
-                elementId: practiceIds[1]
-              }
-            }}
-          >
-            PRACTICE
-          </c.Bookrow>
-          <c.PartTitle type="tertiary">B. Pronunciation of -ui and -iu</c.PartTitle>
-          <c.Bookrow
-            buttonOptions={{
-              type: 'practice',
-              data: {
-                elementId: practiceIds[2]
-              }
-            }}
-          >
-            PRACTICE
-          </c.Bookrow>
-          <c.PartTitle type="tertiary">C. The pronunciation of yī</c.PartTitle>
-          <c.Bookrow
-            buttonOptions={{
-              type: 'practice',
-              data: {
-                elementId: practiceIds[3]
-              }
-            }}
-          >
-            PRACTICE
-          </c.Bookrow>
-          <c.PartTitle type="tertiary">D. Say the following numbers in Chinese. Listen to the correct answer and check if you got the tones right:</c.PartTitle>
-          <c.Bookrow
-            buttonOptions={{
-              type: 'practice',
-              data: {
-                elementId: practiceIds[4]
-              }
-            }}
-          >
-            PRACTICE
-          </c.Bookrow>
-          <c.PartTitle type="tertiary">E. Dictation: listen and write the following phrases in pīnyīn, with tones. If there is tone sandhi, write the actual tone that you hear:</c.PartTitle>
-          <c.Bookrow
-            buttonOptions={{
-              type: 'practice',
-              data: {
-                elementId: practiceIds[5]
-              }
-            }}
-          >
-            PRACTICE
-          </c.Bookrow>
-          <c.PartTitle type="tertiary">F. Grammar knowledge</c.PartTitle>
-          <c.Bookrow
-            buttonOptions={{
-              type: 'practice',
-              data: {
-                elementId: practiceIds[6]
-              }
-            }}
-          >
-            PRACTICE
-          </c.Bookrow>
-          <c.PartTitle type="tertiary">G. Translate the following sentences:</c.PartTitle>
-          <c.Bookrow
-            buttonOptions={{
-              type: 'practice',
-              data: {
-                elementId: practiceIds[7]
-              }
-            }}
-          >
-            PRACTICE
-          </c.Bookrow>
-          <c.PartTitle type="tertiary">H. Write the stroke order for the following characters:</c.PartTitle>
-          <c.Bookrow
-            buttonOptions={{
-              type: 'practice',
-              data: {
-                elementId: practiceIds[7]
-              }
-            }}
-          >
-            PRACTICE
-          </c.Bookrow>
           <c.PartTitle name="words" />
           {newWords()}
           <c.PartTitle anchor="review" name="review" />

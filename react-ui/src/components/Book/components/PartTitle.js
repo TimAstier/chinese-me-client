@@ -57,7 +57,7 @@ class PartTitle extends Component {
       <Bookrow
         center={!this.props.type}
         buttonOptions={this.props.buttonOptions}
-        marginTop={this.props.type === 'secondary' ? 10 : 60}
+        marginTop={this.props.type === 'secondary' || this.props.type === 'tertiary' ? 10 : 60}
       >
         <Element name={this.props.anchor}>
           <H2 fontSize={this._fontSize()} color={this._color()}>

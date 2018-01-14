@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import * as c from '../components';
+import { Objective } from '../../../containers/Book/containers';
 import { content as contentPropTypes } from '../../../helpers/propTypes';
 import { Row } from '../../Shared';
 
@@ -13,6 +14,14 @@ export default class Content extends Component {
       <div>
         <c.Page>
           {lessonTitle()}
+          <Objective
+            text="PLACEHOLDER"
+            pronunciations={[
+              'P1',
+              'P2',
+              'P3'
+            ]}
+          />
           <c.PartTitle name="characters" />
           <c.P><i>Practice the stroke order animations. Some characters have material on Stories and Calligraphy.</i></c.P>
           {newCharacters()}

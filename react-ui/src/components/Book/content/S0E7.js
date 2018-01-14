@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import * as c from '../components';
+import { Objective } from '../../../containers/Book/containers';
 import { content as contentPropTypes } from '../../../helpers/propTypes';
 // import pinyinNumberToAudioUrl from '../../../utils/pinyinNumberToAudioUrl';
 // import { Row } from '../../Shared';
@@ -15,6 +16,12 @@ export default class Content extends Component {
       <div>
         <c.Page>
           {lessonTitle()}
+          <Objective
+            text="How to say when you were born and to which Chinese zodiac animal you belong."
+            pronunciations={[
+              'The final -üe is spelled yue when there is no initial'
+            ]}
+          />
           <c.PartTitle name="characters" />
           <c.P>Here are the new characters in this lesson. Click on each character to review the stroke order, or on the brush or history icons to see calligraphy and history videos.</c.P>
           {newCharacters()}

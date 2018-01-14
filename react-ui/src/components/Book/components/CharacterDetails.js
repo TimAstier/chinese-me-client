@@ -25,6 +25,13 @@ const LinksWrapper = styled.div`
   display: flex;
 `;
 
+const MeaningWrapper = styled.div`
+  max-width: 400px;
+  display: flex;
+  flex: wrap;
+  text-align: justify;
+`;
+
 class CharacterDetails extends Component {
   render() {
     return (
@@ -87,9 +94,9 @@ class CharacterDetails extends Component {
           }
           {
             !this.props.hideMeaning === true &&
-              <div>
+              <MeaningWrapper>
                 <Meaning>{this.props.meaning}</Meaning>
-              </div>
+              </MeaningWrapper>
           }
         </Wrapper>
       </Bookrow>

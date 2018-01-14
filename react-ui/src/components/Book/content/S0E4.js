@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import * as c from '../components';
+import { Objective } from '../../../containers/Book/containers';
 import { content as contentPropTypes } from '../../../helpers/propTypes';
 import pinyinNumberToAudioUrl from '../../../utils/pinyinNumberToAudioUrl';
 import { Row } from '../../Shared';
@@ -15,6 +16,13 @@ export default class Content extends Component {
       <div>
         <c.Page>
           {lessonTitle()}
+          <Objective
+            text="How to tell someone your age."
+            pronunciations={[
+              'Spelling of -i when it comes first in a syllable',
+              'Pronunciation of the finals -ui and -iu'
+            ]}
+          />
           <c.PartTitle name="characters" />
           <c.P>Here are the new characters in this lesson. Click on each character to review the stroke order, or on the brush or history icons to see calligraphy and history videos.</c.P>
           {newCharacters()}

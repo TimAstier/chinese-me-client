@@ -2,6 +2,7 @@ import { createSelector } from 'reselect';
 import { Map } from 'immutable';
 import s from './globalizedSelectors';
 import countries from 'i18n-iso-countries';
+import nameMeanings from '../constants/nameMeanings';
 
 // Install i18n-iso-countries locals
 countries.registerLocale(require('i18n-iso-countries/langs/en.json'));
@@ -17,7 +18,8 @@ const getAugmentedSettings = createSelector(
   settings => {
     const augmentedSettings = settings.merge(Map({
       nationalityZh: getCountryName(settings.get('nationality'), 'zh'),
-      nationalityEn: getCountryName(settings.get('nationality'), 'en')
+      nationalityEn: getCountryName(settings.get('nationality'), 'en'),
+      nameMeaning: nameMeanings[settings.get('chineseGivenName')]
     }));
     return augmentedSettings.toJS();
   }

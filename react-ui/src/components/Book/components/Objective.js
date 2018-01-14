@@ -16,16 +16,18 @@ const Wrapper = styled.div`
 
 class Objective extends Component {
   _renderPronunciations() {
+    const { pronunciations } = this.props;
     const array = [];
-    if (isEmpty(this.props.pronunciations)) {
+    if (isEmpty(pronunciations)) {
       return null;
     }
-    this.props.pronunciations.forEach((p, i) => {
+    pronunciations.forEach((p, i) => {
+      const text = pronunciations.length > 1 ? `${getGrammarLetter(i + 1)}. ${p}` : p;
       array.push(
-        <div key={i}>{`${getGrammarLetter(i + 1)}. ${p}`}</div>
+        <div key={i}>{text}</div>
       );
     });
-    return array;
+    return <c.P>{array}</c.P>;
   }
 
   _renderGrammars() {
@@ -38,7 +40,7 @@ class Objective extends Component {
         <div key={id}>{`${getGrammarLetter(i + 1)}. ${this.props.grammars.get(String(id)).title}`}</div>
       );
     });
-    return array;
+    return <c.P>{array}</c.P>;
   }
 
   render() {
@@ -46,10 +48,13 @@ class Objective extends Component {
       <Wrapper>
         <c.PartTitle name="objective" />
         <c.P><i>{this.props.text}</i></c.P>
-        <c.PartTitle type="secondary">Pronunciation</c.PartTitle>
-        <c.P>{this._renderPronunciations()}</c.P>
+        {
+          !isEmpty(this.props.pronunciations) &&
+            <c.PartTitle type="secondary">Pronunciation</c.PartTitle>
+        }
+        {this._renderPronunciations()}
         <c.PartTitle type="secondary">Patterns</c.PartTitle>
-        <c.P>{this._renderGrammars()}</c.P>
+        {this._renderGrammars()}
       </Wrapper>
     );
   }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import * as c from '../components';
+import { Objective } from '../../../containers/Book/containers';
 import { content as contentPropTypes } from '../../../helpers/propTypes';
 import pinyinNumberToAudioUrl from '../../../utils/pinyinNumberToAudioUrl';
 import { Row } from '../../Shared';
@@ -15,10 +16,17 @@ export default class Content extends Component {
       <div>
         <c.Page>
           {lessonTitle()}
+          <Objective
+            text="How to say that you can speak Chinese."
+            pronunciations={[
+              'Spelling of final -ing'
+            ]}
+          />
           <c.PartTitle name="characters" />
           <c.P>Here are the new characters in this lesson. Click on each character to review the stroke order, or on the brush or history icons to see calligraphy and history videos.</c.P>
           {newCharacters()}
           <c.PartTitle name="pronunciation" />
+          <c.PartTitle type="secondary"><span>Spelling of final <b>-ing</b></span></c.PartTitle>
           <c.P>Just as in the other cases we have seen, the final <b>-ing</b> is spelled <b>ying</b> when there is no initial. In other words, the <b>y</b> is silent:</c.P>
           <c.P
             buttonOptions={{

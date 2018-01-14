@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import * as c from '../components';
+import { Objective } from '../../../containers/Book/containers';
 import { content as contentPropTypes } from '../../../helpers/propTypes';
 import pinyinNumberToAudioUrl from '../../../utils/pinyinNumberToAudioUrl';
 import { Row } from '../../Shared';
@@ -15,7 +16,9 @@ export default class Content extends Component {
       <div>
         <c.Page>
           {lessonTitle()}
-          <c.Bookrow center>{image()}</c.Bookrow>
+          <Objective
+            text="In this lesson, you learn how to say where you are from."
+          />
           <c.PartTitle name="characters" />
           {newCharacters()}
           <c.PartTitle name="patterns" />

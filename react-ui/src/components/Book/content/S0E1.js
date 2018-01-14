@@ -4,12 +4,13 @@ import { content as contentPropTypes } from '../../../helpers/propTypes';
 import pinyinNumberToAudioUrl from '../../../utils/pinyinNumberToAudioUrl';
 import { Row } from '../../Shared';
 import pinyinize from 'pinyinize';
+import insertVariables from '../../../utils/insertVariables';
 
 export default class Content extends Component {
   static propTypes = contentPropTypes
 
   render() {
-    const { newCharacters, example, lessonTitle, dialog, character,
+    const { newCharacters, example, lessonTitle, dialog, character, settings,
       characterIds, practiceIds, image } = this.props;
     return (
       <div>
@@ -27,7 +28,7 @@ export default class Content extends Component {
           >Now, it’s your turn to introduce yourself. Western names are hard to pronounce for Chinese people. Click on the exercise icon and we will give you a Chinese name based on your real name, gender and nationality.</c.P>
           <c.P>We chose a Chinese family name for you based on the sound of your real name. Listen and practice imitating the audio voice a few times!</c.P>
           {example(2, { basic: true, big: true, audio: true })}
-          <c.P>Your given name is [ABC] and means [XYZ]. Practice!</c.P>
+          <c.P>Your given name is {insertVariables('[CHINESE_GIVEN_NAME]', settings)} and means <i>{insertVariables('[NAME_MEANING]', settings)}</i>. Practice!</c.P>
           {example(3, { basic: true, big: true, audio: true })}
           <c.PartTitle type="secondary">Practice your full Chinese name</c.PartTitle>
           <c.P>Now, practice your full Chinese name. Remember that the family name comes first, followed by the given name:</c.P>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import * as c from '../components';
+import { Objective } from '../../../containers/Book/containers';
 import { content as contentPropTypes } from '../../../helpers/propTypes';
 // import pinyinNumberToAudioUrl from '../../../utils/pinyinNumberToAudioUrl';
 import { Row } from '../../Shared';
@@ -15,7 +16,14 @@ export default class Content extends Component {
       <div>
         <c.Page>
           {lessonTitle()}
-          <c.PartTitle anchor="new-characters" name="characters" />
+          <Objective
+            text="How to greet people a bit more formally."
+            pronunciations={[
+              'Two different sounds are spelled a in pīnyīn',
+              'Raising your tone at the end of a question'
+            ]}
+          />
+          <c.PartTitle name="characters" />
           {newCharacters()}
           <c.PartTitle name="patterns" />
           {grammarTitle()}

@@ -20,7 +20,7 @@ export default class Content extends Component {
           <c.PartTitle name="patterns" />
           {grammarTitle()}
           <c.P>Function words, also called "particles", are an important feature of Chinese. One of the most common examples is the question particle 吗 <b>må</b> which transforms statements to "yes/no" questions, questions that can be answered with a <i>yes</i> or a <i>no</i>:</c.P>
-          {example(1, { basic: true, big: true, audio: true })}
+          {example(1, { audio: true })}
           <c.P>In English, we usually change the word order to formulate a question:</c.P>
           <c.Bookrow>
             <c.Ul>
@@ -28,7 +28,7 @@ export default class Content extends Component {
             </c.Ul>
           </c.Bookrow>
           <c.P>In Chinese, the word order doesn't change; you just add the question particle 吗 <b>må</b> to the end of the sentence:</c.P>
-          {example(2, { basic: true, big: true, audio: true })}
+          {example(2, { audio: true })}
           <c.P
             buttonOptions={{
               type: 'practice',
@@ -40,7 +40,7 @@ export default class Content extends Component {
             <i>Practice asking questions using 吗 <b>må</b>.</i>
           </c.P>
           <c.P>The question particle 吗 <b>må</b> is used for one of the most common polite phrases in Chinese:</c.P>
-          {example(3, { basic: true, big: true, audio: true })}
+          {example(3, { audio: true })}
           {grammarTitle()}
           <c.P>In a previous lesson, we learned how to 叫 <b>jiào</b> <i>call</i> someone we know well. The simplest way is to say the person's full name followed by a greeting:</c.P>
           <c.Bookrow>
@@ -75,7 +75,7 @@ export default class Content extends Component {
           </c.P>
           {grammarTitle()}
           <c.P>The most common way of saying <i>bye</i> is:</c.P>
-          {example(4, { basic: true, big: true, audio: true })}
+          {example(4, { audio: true })}
           <c.P>These days, many people also use the English term <i>bye, bye, </i> usually pronounced <b>bāibāi</b> (or <b>bābāi</b> with the second syllable much longer than the first).</c.P>
           <c.PartTitle name="pronunciation" />
           <c.PartTitle type="secondary">A. Two different sounds are spelled a in pīnyīn</c.PartTitle>
@@ -112,6 +112,7 @@ export default class Content extends Component {
           <c.PartTitle name="dialogs" />
           <c.PartTitle type="secondary">我找老王。</c.PartTitle>
           {dialog(1, { sentenceType: 'chinese', displayNames: false })}
+          <c.PartTitle type="secondary">我找王先生。</c.PartTitle>
           {dialog(2, { sentenceType: 'chinese', displayNames: false })}
           <c.PartTitle type="secondary">再见！</c.PartTitle>
           {dialog(3, { sentenceType: 'chinese', displayNames: false })}

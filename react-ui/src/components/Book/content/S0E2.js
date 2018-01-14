@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import * as c from '../components';
+import { Objective } from '../../../containers/Book/containers';
 import { content as contentPropTypes } from '../../../helpers/propTypes';
 import pinyinNumberToAudioUrl from '../../../utils/pinyinNumberToAudioUrl';
 import { Row } from '../../Shared';
@@ -32,10 +33,18 @@ export default class Content extends Component {
       <div>
         <c.Page>
           {lessonTitle()}
-          <c.Bookrow center>{image()}</c.Bookrow>
+          <Objective
+            text="In this lesson, you will learn the most common Chinese greeting."
+            pronunciations={[
+              'Initial, final and tone',
+              'The initial h-',
+              'The initial x-'
+            ]}
+          />
           <c.PartTitle name="characters" />
           {newCharacters()}
           <c.PartTitle name="pronunciation" />
+          <c.PartTitle type="secondary">Initial, final and tone</c.PartTitle>
           <c.P
             buttonOptions={{
               type: 'practice',
@@ -86,7 +95,7 @@ export default class Content extends Component {
             </Row>
           </c.Bookrow>
           <c.P>Let us practice pronouncing a couple of the initials from this lesson.</c.P>
-          <c.PartTitle type="tertiary">The initial h-</c.PartTitle>
+          <c.PartTitle type="secondary">The initial h-</c.PartTitle>
           <c.P>Chinese <b>h-</b> is much “harder” than English <i>h</i>; it sounds more like its German counterpart. Mimic the audio voice and try to exaggerate the strong aspiration on the initial:</c.P>
           <c.Bookrow
             buttonOptions={{
@@ -101,7 +110,7 @@ export default class Content extends Component {
               <c.Pinyin>{pinyinize('hao3')}</c.Pinyin>
             </Row>
           </c.Bookrow>
-          <c.PartTitle type="tertiary">The initial x-</c.PartTitle>
+          <c.PartTitle type="secondary">The initial x-</c.PartTitle>
           <c.P>Some books and websites claim that the Chinese initial <b>x-</b> is difficult because it doesn’t exist in English. In fact, English has a sound very similar to <b>x-</b>, it’s just that it is well hidden!</c.P>
           <c.P>Here’s how to find it: Slowly and carefully pronounce the <i>ch</i> in English <i>cheap</i>. You will notice that <i>ch</i> contains two sounds: <i>t</i> followed by a soft <i>shush</i>. This <i>shush</i> is exactly the missing <b>x-</b> we are looking for! Pronounce the <i>ch</i> in <i>chin</i> without the <i>t</i> sound, and you have it! Listen to the audio voice and repeat very slowly:</c.P>
           <c.Bookrow

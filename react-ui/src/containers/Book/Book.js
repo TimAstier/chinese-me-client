@@ -11,7 +11,6 @@ import * as models from '../../models';
 import { imageUrls } from '../../constants/urls';
 
 class Book extends Component {
-
   componentWillMount() {
     this._init();
   }
@@ -39,14 +38,14 @@ class Book extends Component {
   render() {
     const { seasonNumber, episodeNumber } = this.props.params;
     return (
-        <BookComponent
-          initialized={this.props.initialized}
-          content={content[`S${seasonNumber}E${episodeNumber}`]}
-          images={imageUrls[`S${seasonNumber}E${episodeNumber}`] || []}
-          episode={this.props.episode}
-          season={this.props.season}
-          settings={this.props.settings}
-        />
+      <BookComponent
+        initialized={this.props.initialized}
+        content={content[`S${seasonNumber}E${episodeNumber}`]}
+        images={imageUrls[`S${seasonNumber}E${episodeNumber}`] || []}
+        episode={this.props.episode}
+        season={this.props.season}
+        settings={this.props.settings}
+      />
     );
   }
 }

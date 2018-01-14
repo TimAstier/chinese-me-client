@@ -5,7 +5,7 @@ import { Bookrow } from './.';
 import { Row } from '../../Shared';
 
 const NumberWrapper = styled.div`
-  width: 55px;
+  width: 70px;
   font-size: 21px;
   margin-top: 4px;
 `;

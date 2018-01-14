@@ -6,7 +6,6 @@ import * as models from '../../../models';
 import s from '../../../rootSelectors';
 
 class GrammarTitle extends Component {
-
   render() {
     return (
       <c.GrammarTitle

@@ -8,6 +8,7 @@ const Scroll = require('react-scroll');
 const Element = Scroll.Element;
 
 const titles = {
+  objective: 'WHAT YOU WILL LEARN',
   characters: 'CHARACTERS',
   patterns: 'PATTERNS',
   dialog: 'DIALOG',
@@ -71,6 +72,7 @@ class PartTitle extends Component {
 
 PartTitle.propTypes = {
   name: propTypes.oneOf([
+    'objective',
     'characters',
     'patterns',
     'dialog',

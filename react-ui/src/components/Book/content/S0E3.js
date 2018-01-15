@@ -246,7 +246,7 @@ export default class Content extends Component {
           <c.Bookrow>
             <Row>
               <c.Char>{insertVariables('[NATIONALITY_ZH]', settings)}</c.Char>
-              <c.Pinyin>{'que1shao3'}</c.Pinyin>
+              <c.Pinyin>{insertVariables('[COUNTRY_PINYIN]', settings)}</c.Pinyin>
               <c.Meaning>{insertVariables('[NATIONALITY_EN]', settings)}</c.Meaning>
             </Row>
           </c.Bookrow>

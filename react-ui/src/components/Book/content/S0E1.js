@@ -264,7 +264,7 @@ export default class Content extends Component {
             Try to memorize the <b>pīnyīn</b> spelling of the four characters above, and then click on the exercise icon to see if you can spell them correctly.
           </c.P>
           <c.P>Here is how your Chinese name is written in <b>pīnyīn</b>:</c.P>
-          <c.P>[USER NAME IN PINYIN, PROPERLY CAPITALIZED]</c.P>
+          <c.P><b>{insertVariables('[FAMILY_NAME_PINYIN]', settings)} {insertVariables('[GIVEN_NAME_PINYIN]', settings)}</b></c.P>
           <c.P>Listen to the audio voice and practice reading the pīnyīn a few times:</c.P>
           {example(4, { basic: true, big: true, audio: true })}
           <c.PartTitle>ORACLE BONES</c.PartTitle>

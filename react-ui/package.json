@@ -25,6 +25,7 @@
     "jwt-decode": "^2.1.0",
     "lodash": "^4.17.4",
     "normalize.css": "^7.0.0",
+    "pinyin": "^2.8.3",
     "pinyinize": "github:timastier/pinyinize.js#7d641b7d1a5a9d7f42f0aef0d574ca3efef33f1f",
     "prop-types": "^15.5.10",
     "react": "^15.4.2",

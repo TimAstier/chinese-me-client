@@ -14,6 +14,10 @@ const settings = {
   GENDER: {
     name: 'gender',
     questionType: 'closedQuestion'
+  },
+  BIRTHDATE: {
+    name: 'birthdate',
+    questionType: 'date'
   }
 };
 

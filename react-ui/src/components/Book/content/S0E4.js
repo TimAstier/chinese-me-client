@@ -23,9 +23,6 @@ export default class Content extends Component {
               'Pronunciation of the finals -ui and -iu'
             ]}
           />
-          <c.PartTitle name="characters" />
-          <c.P>Here are the new characters in this lesson. Click on each character to review the stroke order, or on the brush or history icons to see calligraphy and history videos.</c.P>
-          {newCharacters()}
           <c.PartTitle name="pronunciation" />
           <c.PartTitle type="secondary"><span>A. Spelling of <b>-i</b> when it comes first in a syllable</span></c.PartTitle>
           <c.P
@@ -92,6 +89,9 @@ export default class Content extends Component {
           >
             <i>Listen and repeat to the sounds.</i>
           </c.P>
+          <c.PartTitle name="characters" />
+          <c.P>Here are the new characters in this lesson. Click on each character to review the stroke order, or on the brush or history icons to see calligraphy and history videos.</c.P>
+          {newCharacters()}
           <c.PartTitle>Typing Chinese characters</c.PartTitle>
           <c.P>Starting in this Episode, you will need to type Chinese characters in some of the exercises. To do this, you will need to download a Chinese character input method for your computer.</c.P>
           <c.PartTitle name="patterns" />

@@ -15,13 +15,14 @@ export default class Content extends Component {
         <c.Page>
           {lessonTitle()}
           <Objective
-            text="PLACEHOLDER"
+            text="The importance of being humble in Chinese."
             pronunciations={[
-              'P1',
-              'P2',
-              'P3'
+              'Characters with more than one pronunciation'
             ]}
           />
+          <c.PartTitle name="pronunciation" />
+          <c.PartTitle type="secondary">Characters with more than one pronunciation</c.PartTitle>
+          <c.P>A few characters can be pronounced in more than one way. For example, we have learned that 好 is pronounced <b>hǎo</b> and means <i>good</i>. But 好 can also be a verb meaning <i>to like</i>; in this case it has tone four: <b>hào</b>. This meaning - and pronunciation - of 好 only appears as part of words, such as 好客 <b>hàokè</b> <i>hospitable</i> which literally means <i>to like guests</i>.</c.P>
           <c.PartTitle name="characters" />
           <c.P><i>Practice the stroke order animations. Some characters have material on Stories and Calligraphy.</i></c.P>
           {newCharacters()}
@@ -30,6 +31,16 @@ export default class Content extends Component {
           <c.P>不 <b>bù</b> can be used independently to answer a question, just like English <i>no</i>. It can also be used like English <i>not</i> to negate any of the sentences we have learned so far. 不 <b>bù</b> is always placed in front of the word or phrase it should negate. Let’s start by negating simple Topic-Comment sentences:</c.P>
           {example(1, { audio: true })}
           {example(2, { audio: true })}
+          <c.P
+            buttonOptions={{
+              type: 'practice',
+              data: {
+                elementId: practiceIds[1]
+              }
+            }}
+          >
+            <i>Practice.</i>
+          </c.P>
           <c.P>The filler word 很 <b>hěn</b> comes before the negation:</c.P>
           {example(3, { audio: true })}
           <c.P>In the same way, 不 can be placed before verbs:</c.P>
@@ -50,6 +61,16 @@ export default class Content extends Component {
             </c.Ul>
           </c.Bookrow>
           <c.P>This is another example of <i>tone sandhi</i>, where the tone on a character changes depending on what comes after it - we have seen other examples of this, for example when a tone three comes before another tone three. Tone sandhi is usually not marked in dictionaries and textbooks: 不 is written <b>bù</b>, with tone 4, regardless of what comes after. You will just have to remember that the actual pronunciation is different than what the dictionary indicates.</c.P>
+          <c.P
+            buttonOptions={{
+              type: 'practice',
+              data: {
+                elementId: practiceIds[2]
+              }
+            }}
+          >
+            <i>Practice.</i>
+          </c.P>
           <c.P>Remember that 不 <b>bù</b> negates whatever comes immediately after it. When we negate a statement with 也 <b>yě</b> <i>also</i> the resulting phrase can be translated using <i>not… either</i> in English:</c.P>
           {example(6, { audio: true })}
           {example(7, { audio: true })}
@@ -58,6 +79,16 @@ export default class Content extends Component {
           <c.P>The other possibility is to use 不 <b>bù</b> to negate 也 :</c.P>
           {example(9, { audio: true })}
           <c.P>Pattern 6:9 expresses surprise; it can be translated as a rhetorical question: <i>(but) isn’t it the case that you are also American?</i> Again, the literal translation should make the difference clear.</c.P>
+          <c.P
+            buttonOptions={{
+              type: 'practice',
+              data: {
+                elementId: practiceIds[3]
+              }
+            }}
+          >
+            <i>Practice.</i>
+          </c.P>
           {grammarTitle()}
           <c.P>In Lesson 4, we learned how to use the question particle 吗 <b>må</b> to formulate questions that can be answered <i>yes</i> or <i>no</i>, such as <i>can you write Chinese characters?</i> The most common way of answering <i>yes</i> is by repeating only the thing being asked about:</c.P>
           {example(10, { audio: true })}
@@ -86,6 +117,16 @@ export default class Content extends Component {
           <c.P>In some contexts, it is also possible to use 不 <b>bù</b> directly like English <i>no</i> to answer a question or contradict a statement:</c.P>
           {example(12, { audio: true })}
           <c.P>Using 不 <b>bù</b> as an answer is very forceful: <i>no!</i> Usually this would sound brusque and impolite, but when you are being humble, this forcefulness actually makes the statement even more polite.</c.P>
+          <c.P
+            buttonOptions={{
+              type: 'practice',
+              data: {
+                elementId: practiceIds[4]
+              }
+            }}
+          >
+            <i>Practice.</i>
+          </c.P>
           {grammarTitle()}
           <c.P>The word 对 <b>duì</b>, which literally means <i>correct</i>, is used to agree with something someone has just said:</c.P>
           {example(13, { audio: true })}
@@ -94,14 +135,16 @@ export default class Content extends Component {
           <c.P>In the same way, 不对 <b>bú duì</b> <i>not correct</i> can be used like English <i>no</i>:</c.P>
           {example(15, { audio: true })}
           <c.P>But as we saw above, a more common way of answering this kind of question is by repeating or negating the thing that is being asked about.</c.P>
-          {grammarTitle()}
-          <c.P>A few characters can be pronounced in more than one way. For example, we have learned that 好 is pronounced <b>hǎo</b> and means <i>good</i>. But 好 can also be a verb meaning <i>to like</i>; in this case it has tone four: <b>hào</b>. This meaning - and pronunciation - of 好 only appears as part of words, such as 好客 <b>hàokè</b> <i>hospitable</i> which literally means <i>to like guests</i>.</c.P>
-          {grammarTitle()}
-          <c.P>
-            There are several different Chinese terms for the Chinese language.
-            In everyday conversation, it is called 汉语 <b>hànyǔ</b> or 中文 <b>zhōngwén</b>. They are synonyms, with 汉语 being slightly more formal. Strictly speaking, however, both of them mean “Chinese” in the sense of all Chinese dialects, not just Mandarin. Somewhat less common, and least formal, is 中国话 <b>zhōngguóhuà</b>, which literally means <i>China speech</i>.
+          <c.P
+            buttonOptions={{
+              type: 'practice',
+              data: {
+                elementId: practiceIds[5]
+              }
+            }}
+          >
+            <i>Practice.</i>
           </c.P>
-          <c.P><b>Pǔtōnghuà</b>, <i>common speech</i>, is the official PRC name for Mandarin Chinese. It has a slightly political overtone and is not used in normal conversation unless you really want to emphasize that you are talking about Mandarin as opposed to local dialects. In Táiwān, the corresponding terms are 国语 <b>guóyǔ</b> or 国文 <b>guówén</b>.</c.P>
           <c.PartTitle name="dialogs" />
           <c.PartTitle type="secondary">你中文很好！</c.PartTitle>
           {dialog(1, { sentenceType: 'chinese', displayNames: true })}
@@ -111,6 +154,24 @@ export default class Content extends Component {
           {dialog(2, { sentenceType: 'chinese', displayNames: true })}
           <c.PartTitle name="words" />
           {newWords()}
+          <c.PartTitle name="culture" />
+          <c.PartTitle type="secondary">Different names for languages</c.PartTitle>
+          <c.P>
+            There are several different Chinese terms for the Chinese language.
+            In everyday conversation, it is called 汉语 <b>hànyǔ</b> or 中文 <b>zhōngwén</b>. They are synonyms, with 汉语 being slightly more formal. Strictly speaking, however, both of them mean “Chinese” in the sense of all Chinese dialects, not just Mandarin. Somewhat less common, and least formal, is 中国话 <b>zhōngguóhuà</b>, which literally means <i>China speech</i>.
+          </c.P>
+          <c.P><b>Pǔtōnghuà</b>, <i>common speech</i>, is the official PRC name for Mandarin Chinese. It has a slightly political overtone and is not used in normal conversation unless you really want to emphasize that you are talking about Mandarin as opposed to local dialects. In Táiwān, the corresponding terms are 国语 <b>guóyǔ</b> or 国文 <b>guówén</b>.</c.P>
+          <c.P><i>Chinese characters</i> are called 汉字 <b>hànzì</b> or 中国字 <b>zhōngguózì</b>.</c.P>
+          <c.PartTitle type="secondary">Receiving compliments</c.PartTitle>
+          <c.P>The cultural codes for giving and receiving compliments differ between China and the West. In western societies, we are taught to accept a compliment with a <i>thank you</i>. But when a Chinese person receives praise, the appropriate response is denial. If some says that you speak excellent Chinese, for example, the appropriate response would be <i>not at all</i>:</c.P>
+          <c.Bookrow><Row><c.Char>- 你中文很好。</c.Char><c.Meaning>You speak good Chinese.</c.Meaning></Row></c.Bookrow>
+          <c.Bookrow><Row><c.Char>- 不好，不好。</c.Char><c.Meaning>No, not at all.</c.Meaning></Row></c.Bookrow>
+          <c.P>Chinese etiquette, based on Confucian ideals, revolves around praising the other party while expressing humility. Depending on how formal and polite the two speakers are, the dialog above could therefore continue with the first speaker reaffirming the original statement, perhaps emphasizing 很 <b>hěn</b> to say your Chinese is <i>very</i> good, prompting an even more humble response:</c.P>
+          <c.Bookrow><Row><c.Char>- 你中文很好! </c.Char><c.Meaning>You speak very good Chinese.</c.Meaning></Row></c.Bookrow>
+          <c.Bookrow><Row><c.Char>- 不好，不好。我中文很不好。</c.Char><c.Meaning>No, no, my Chinese is not good at all.</c.Meaning></Row></c.Bookrow>
+          <c.P>Politeness established, the conversation may now move on to other topics. At this point, it can be appropriate to use <i>thank you</i> as a closer, showing that you accept the overdone praise by the other party.</c.P>
+          <c.PartTitle>ORACLE BONES</c.PartTitle>
+          <c.PartTitle>CALLIGRAPHY</c.PartTitle>
           <c.PartTitle anchor="review" name="review" />
           <c.P
             buttonOptions={{

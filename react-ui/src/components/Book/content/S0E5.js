@@ -23,9 +23,6 @@ export default class Content extends Component {
               'The e sound in final -en is pronounced like ea in learn'
             ]}
           />
-          <c.PartTitle name="characters" />
-          <c.P>Here are the new characters in this lesson. Click on each character to review the stroke order, or on the brush or history icons to see calligraphy and history videos.</c.P>
-          {newCharacters()}
           <c.PartTitle name="pronunciation" />
           <c.PartTitle type="secondary"><span>A. The final <b>-ie</b> is spelled <b>ye</b> when there is no initial</span></c.PartTitle>
           <c.P>
@@ -43,6 +40,9 @@ export default class Content extends Component {
           >
             Listen to the audio voice and practice the pronunciation of <b>hěn</b> a few times
           </c.P>
+          <c.PartTitle name="characters" />
+          <c.P>Here are the new characters in this lesson. Click on each character to review the stroke order, or on the brush or history icons to see calligraphy and history videos.</c.P>
+          {newCharacters()}
           <c.PartTitle name="patterns" />
           {grammarTitle()}
           <c.P>很 <b>hěn</b> literally means <i>very</i>, <i>to a high degree</i>. Because of this, some textbooks call it an “intensifier”. But in modern Chinese, 很 <b>hěn</b> is used as a sort of "filler" between a noun and an adjective, and doesn't make any real difference to the meaning:</c.P>

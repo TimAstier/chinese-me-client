@@ -23,6 +23,38 @@ export default class Content extends Component {
               'Raising your tone at the end of a question'
             ]}
           />
+          <c.PartTitle name="pronunciation" />
+          <c.PartTitle type="secondary">A. Two different sounds are spelled a in pīnyīn</c.PartTitle>
+          <c.P>If you listen to the pronunciation of the characters in this lesson, you will notice that two different sounds are both spelled with the pīnyīn letter <b>a</b>. In the finals -<b>ao</b> and <b>-iao</b>, for example, the <b>a</b> is pronounced like English <i>o</i> in <i>how</i>:</c.P>
+          <c.Bookrow>
+            <c.Ul>
+              <li><Row><c.Char>好</c.Char><c.Pinyin>hǎo</c.Pinyin><c.Meaning>good</c.Meaning></Row></li>
+              <li><Row><c.Char>小</c.Char><c.Pinyin>xiǎo</c.Pinyin><c.Meaning>small</c.Meaning></Row></li>
+            </c.Ul>
+          </c.Bookrow>
+          <c.P>But the final <b>-ian</b>, on the other hand, is pronounced <i>ien</i>, so here, the pīnyīn <b>a</b> sounds like the <i>e</i> in English <i>pen</i>:</c.P>
+          <c.Bookrow>
+            <c.Ul>
+              <li><Row><c.Char>见</c.Char><c.Pinyin>jiàn</c.Pinyin><c.Meaning>see</c.Meaning></Row></li>
+              <li><Row><c.Char>先</c.Char><c.Pinyin>xiān</c.Pinyin><c.Meaning>first</c.Meaning></Row></li>
+            </c.Ul>
+          </c.Bookrow>
+          <c.PartTitle type="secondary">B. Raising your tone at the end of a question</c.PartTitle>
+          <c.P>Just like in English, you have to raise your tone at the end of a sentence when you ask a question:</c.P>
+          <c.Bookrow>
+            <c.Ul>
+              <li><Row><c.Char>她很好。 => 她很好吗? ↗</c.Char></Row></li>
+              <li><Row><c.Pinyin>Tā hěn hǎo. => Tā hěn hǎo må?↗</c.Pinyin></Row></li>
+              <li><Row><c.Meaning>She is nice. => Is she nice? ↗</c.Meaning></Row></li>
+            </c.Ul>
+          </c.Bookrow>
+          <c.Bookrow>
+            <c.Ul>
+              <li><Row><c.Char>我是中国人。你也是中国人吗？ ↗</c.Char></Row></li>
+              <li><Row><c.Pinyin>Wǒ shì zhōngguó rén. Nǐ yě shì zhōngguó rén ma??↗</c.Pinyin></Row></li>
+              <li><Row><c.Meaning>I am Chinese. Are you Chinese, too? ↗</c.Meaning></Row></li>
+            </c.Ul>
+          </c.Bookrow>
           <c.PartTitle name="characters" />
           {newCharacters()}
           <c.PartTitle name="patterns" />
@@ -85,38 +117,6 @@ export default class Content extends Component {
           <c.P>The most common way of saying <i>bye</i> is:</c.P>
           {example(4, { audio: true })}
           <c.P>These days, many people also use the English term <i>bye, bye, </i> usually pronounced <b>bāibāi</b> (or <b>bābāi</b> with the second syllable much longer than the first).</c.P>
-          <c.PartTitle name="pronunciation" />
-          <c.PartTitle type="secondary">A. Two different sounds are spelled a in pīnyīn</c.PartTitle>
-          <c.P>If you listen to the pronunciation of the characters in this lesson, you will notice that two different sounds are both spelled with the pīnyīn letter <b>a</b>. In the finals -<b>ao</b> and <b>-iao</b>, for example, the <b>a</b> is pronounced like English <i>o</i> in <i>how</i>:</c.P>
-          <c.Bookrow>
-            <c.Ul>
-              <li><Row><c.Char>好</c.Char><c.Pinyin>hǎo</c.Pinyin><c.Meaning>good</c.Meaning></Row></li>
-              <li><Row><c.Char>小</c.Char><c.Pinyin>xiǎo</c.Pinyin><c.Meaning>small</c.Meaning></Row></li>
-            </c.Ul>
-          </c.Bookrow>
-          <c.P>But the final <b>-ian</b>, on the other hand, is pronounced <i>ien</i>, so here, the pīnyīn <b>a</b> sounds like the <i>e</i> in English <i>pen</i>:</c.P>
-          <c.Bookrow>
-            <c.Ul>
-              <li><Row><c.Char>见</c.Char><c.Pinyin>jiàn</c.Pinyin><c.Meaning>see</c.Meaning></Row></li>
-              <li><Row><c.Char>先</c.Char><c.Pinyin>xiān</c.Pinyin><c.Meaning>first</c.Meaning></Row></li>
-            </c.Ul>
-          </c.Bookrow>
-          <c.PartTitle type="secondary">B. Raising your tone at the end of a question</c.PartTitle>
-          <c.P>Just like in English, you have to raise your tone at the end of a sentence when you ask a question:</c.P>
-          <c.Bookrow>
-            <c.Ul>
-              <li><Row><c.Char>她很好。 => 她很好吗? ↗</c.Char></Row></li>
-              <li><Row><c.Pinyin>Tā hěn hǎo. => Tā hěn hǎo må?↗</c.Pinyin></Row></li>
-              <li><Row><c.Meaning>She is nice. => Is she nice? ↗</c.Meaning></Row></li>
-            </c.Ul>
-          </c.Bookrow>
-          <c.Bookrow>
-            <c.Ul>
-              <li><Row><c.Char>我是中国人。你也是中国人吗？ ↗</c.Char></Row></li>
-              <li><Row><c.Pinyin>Wǒ shì zhōngguó rén. Nǐ yě shì zhōngguó rén ma??↗</c.Pinyin></Row></li>
-              <li><Row><c.Meaning>I am Chinese. Are you Chinese, too? ↗</c.Meaning></Row></li>
-            </c.Ul>
-          </c.Bookrow>
           <c.PartTitle name="dialogs" />
           <c.PartTitle type="secondary">我找老王。</c.PartTitle>
           {dialog(1, { sentenceType: 'chinese', displayNames: false })}

@@ -3,6 +3,7 @@ import * as c from '../components';
 import { Objective } from '../../../containers/Book/containers';
 import { content as contentPropTypes } from '../../../helpers/propTypes';
 import { Row } from '../../Shared';
+// import pinyinNumberToAudioUrl from '../../../utils/pinyinNumberToAudioUrl';
 
 export default class Content extends Component {
   static propTypes = contentPropTypes
@@ -15,13 +16,70 @@ export default class Content extends Component {
         <c.Page>
           {lessonTitle()}
           <Objective
-            text="PLACEHOLDER"
+            text="Explaining why you want to study Chinese."
             pronunciations={[
-              'P1',
-              'P2',
-              'P3'
+              'When there is no initial, the final -ui is spelled wei in pīnyīn',
+              'The final -üe is spelled -ue, without umlaut dots, after x-, j-, q- and when there is no initial (y-)'
             ]}
           />
+          <c.PartTitle name="pronunciation" />
+          <c.PartTitle type="secondary">A. When there is no initial, the final -ui is spelled wei in pīnyīn</c.PartTitle>
+          <c.P>Compare the sounds:</c.P>
+          <c.P
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                // url: pinyinNumberToAudioUrl('wei4'),
+                text: '魏'
+              }
+            }}
+          ><b>wèi</b></c.P>
+          <c.P
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                // url: pinyinNumberToAudioUrl('hui4'),
+                text: '会'
+              }
+            }}
+          ><b>huì</b></c.P>
+          <c.P
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                // url: pinyinNumberToAudioUrl('gui4'),
+                text: '贵'
+              }
+            }}
+          ><b>guì</b></c.P>
+          <c.PartTitle type="secondary">B. The final -üe is spelled -ue, without umlaut dots, after x-, j-, q- and when there is no initial (y-)</c.PartTitle>
+          <c.P
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                // url: pinyinNumberToAudioUrl('gui4'),
+                text: '觉'
+              }
+            }}
+          ><b>jué</b></c.P>
+          <c.P
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                // url: pinyinNumberToAudioUrl('gui4'),
+                text: '学'
+              }
+            }}
+          ><b>xué</b></c.P>
+          <c.P
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                // url: pinyinNumberToAudioUrl('gui4'),
+                text: '月'
+              }
+            }}
+          ><b>yuè</b></c.P>
           <c.PartTitle name="characters" />
           <c.P><i>Practice the stroke order animations. Some characters have material on Stories and Calligraphy.</i></c.P>
           {newCharacters()}
@@ -69,6 +127,8 @@ export default class Content extends Component {
           {dialog(2, { sentenceType: 'chinese', displayNames: false })}
           <c.PartTitle name="words" />
           {newWords()}
+          <c.PartTitle>ORACLE BONES</c.PartTitle>
+          <c.PartTitle>CALLIGRAPHY</c.PartTitle>
           <c.PartTitle anchor="review" name="review" />
           <c.P
             buttonOptions={{

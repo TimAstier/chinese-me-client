@@ -22,7 +22,6 @@ const QuestionWrapper = styled.div`
 `;
 
 class Question extends Component {
-
   render() {
     return (
       <Wrapper>
@@ -32,7 +31,11 @@ class Question extends Component {
             onSubmit={ this.props.onSubmit }
             choices={ this.props.choices }
           />
-          : <OpenQuestionForm onSubmit={ this.props.onSubmit } />
+          :
+          <OpenQuestionForm
+            onSubmit={ this.props.onSubmit }
+            date={this.props.date}
+          />
         }
       </Wrapper>
     );
@@ -47,6 +50,7 @@ Question.propTypes = {
       label: propTypes.string
     })
   ),
+  date: propTypes.bool,
   onSubmit: propTypes.func.isRequired
 };
 

@@ -22,9 +22,6 @@ export default class Content extends Component {
               'Spelling of final -ing'
             ]}
           />
-          <c.PartTitle name="characters" />
-          <c.P>Here are the new characters in this lesson. Click on each character to review the stroke order, or on the brush or history icons to see calligraphy and history videos.</c.P>
-          {newCharacters()}
           <c.PartTitle name="pronunciation" />
           <c.PartTitle type="secondary"><span>Spelling of final <b>-ing</b></span></c.PartTitle>
           <c.P>Just as in the other cases we have seen, the final <b>-ing</b> is spelled <b>ying</b> when there is no initial. In other words, the <b>y</b> is silent:</c.P>
@@ -50,6 +47,9 @@ export default class Content extends Component {
           >
             <Row><c.Char>英</c.Char><c.Pinyin>yīng</c.Pinyin></Row>
           </c.P>
+          <c.PartTitle name="characters" />
+          <c.P>Here are the new characters in this lesson. Click on each character to review the stroke order, or on the brush or history icons to see calligraphy and history videos.</c.P>
+          {newCharacters()}
           <c.PartTitle name="patterns" />
           {grammarTitle()}
           <c.P>会 <b>huì</b> means <i>know</i> in the sense of <i>know how to</i>. It can be used as a verb:</c.P>

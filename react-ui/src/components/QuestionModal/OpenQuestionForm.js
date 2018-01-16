@@ -28,7 +28,6 @@ const Input = styled.input`
 `;
 
 class OpenQuestionForm extends Component {
-
   // This render method allows the inner input element to get the props
   // that are otherwise on the styled.input element
   // https://github.com/erikras/redux-form/issues/1094
@@ -38,13 +37,13 @@ class OpenQuestionForm extends Component {
     meta: { touched, error, active }
   }) {
     return (
-        <Input
-          {...input}
-          type={type}
-          error={touched && error}
-          active={active}
-          onBlur=""
-        />
+      <Input
+        {...input}
+        type={type}
+        error={touched && error}
+        active={active}
+        onBlur=""
+      />
     );
   }
 
@@ -59,7 +58,7 @@ class OpenQuestionForm extends Component {
           <Field
             name="value"
             component={ this.renderField }
-            type="text"
+            type={this.props.date ? 'date' : 'text'}
             autocomplete="off"
             validate={ [required] }
           />
@@ -76,7 +75,8 @@ class OpenQuestionForm extends Component {
 
 OpenQuestionForm.propTypes = {
   handleSubmit: propTypes.func.isRequired,
-  onSubmit: propTypes.func.isRequired
+  onSubmit: propTypes.func.isRequired,
+  date: propTypes.bool
 };
 
 OpenQuestionForm = reduxForm({

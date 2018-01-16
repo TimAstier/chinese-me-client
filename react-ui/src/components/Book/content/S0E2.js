@@ -41,8 +41,6 @@ export default class Content extends Component {
               'The initial x-'
             ]}
           />
-          <c.PartTitle name="characters" />
-          {newCharacters()}
           <c.PartTitle name="pronunciation" />
           <c.PartTitle type="secondary">Initial, final and tone</c.PartTitle>
           <c.P
@@ -126,6 +124,8 @@ export default class Content extends Component {
               <c.Pinyin>{pinyinize('xing4')}</c.Pinyin>
             </Row>
           </c.Bookrow>
+          <c.PartTitle name="characters" />
+          {newCharacters()}
           <c.PartTitle name="patterns" />
           {grammarTitle()}
           <c.P>The most common Chinese greeting is a combination of two characters, 你 <i>you</i> and 好 <i>good</i>. Let us first practice saying each of them separately. Listen carefully to see if you can identify the tone on each one:</c.P>

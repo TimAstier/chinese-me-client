@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import { Modal } from '../.';
-import { ClosedQuestion, OpenQuestion, SelectQuestion } from '../../containers';
+import { ClosedQuestion, OpenQuestion, SelectQuestion, DateQuestion }
+  from '../../containers';
 import { QuestionTypeException } from '../../exceptions';
 
 class QuestionModal extends Component {
@@ -13,6 +14,8 @@ class QuestionModal extends Component {
         return <OpenQuestion setting={this.props.setting} />;
       case 'selectQuestion':
         return <SelectQuestion setting={this.props.setting} />;
+      case 'date':
+        return <DateQuestion setting={this.props.setting} />;
       default:
         throw new QuestionTypeException(this.props.questionType);
     }

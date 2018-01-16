@@ -14,6 +14,7 @@ export { default as CharacterWriting } from './CharacterWriting/CharacterWriting
 export { default as ChoicesToOrder } from './Exercises/ChoicesToOrder/ChoicesToOrder';
 export { default as ChoseRole } from './Dialog/ChoseRole';
 export { default as CircleTimer } from './Exam/CircleTimer';
+export { default as DateQuestion } from './QuestionModal/DateQuestion';
 export { default as Dialog } from './Dialog/Dialog';
 export { default as ElementsNav } from './ElementsNav/ElementsNav';
 export { default as EpisodeCard } from './EpisodeCard/EpisodeCard';

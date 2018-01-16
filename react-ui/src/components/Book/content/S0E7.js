@@ -22,13 +22,13 @@ export default class Content extends Component {
               'The final -üe is spelled yue when there is no initial'
             ]}
           />
-          <c.PartTitle name="characters" />
-          <c.P>Here are the new characters in this lesson. Click on each character to review the stroke order, or on the brush or history icons to see calligraphy and history videos.</c.P>
-          {newCharacters()}
           <c.PartTitle name="pronunciation" />
           <c.PartTitle type="secondary"><span>The final <b>-üe</b> is spelled <b>yue</b> when there is no initial</span></c.PartTitle>
           <c.P>We have previously seen that the finals -i, -ü and -ie are spelled with a y when there is no initial in the syllable: <b>yi</b>, <b>yu</b> and <b>yie</b>.</c.P>
           <c.P>The same is true for <b>-üe</b>, which is written <b>yue</b>. This is a combination of two spelling rules: <b>i</b> and <b>ü</b> are always preceded by y if they come first in a syllable, and <b>ü</b> is in this case spelled <b>u</b>, without the umlaut dots.</c.P>
+          <c.PartTitle name="characters" />
+          <c.P>Here are the new characters in this lesson. Click on each character to review the stroke order, or on the brush or history icons to see calligraphy and history videos.</c.P>
+          {newCharacters()}
           <c.PartTitle name="patterns" />
           {grammarTitle()}
           <c.P>In Western languages, comparing two things means learning different forms of words ("good, better, best"). Chinese uses a simple Topic-Comment pattern with the "comparison" word 比 <b>bǐ</b> inserted between the things you want to compare:</c.P>

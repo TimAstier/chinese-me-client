@@ -4,14 +4,18 @@ import { bookComponents as c } from '../../.';
 class Exam extends Component {
   render() {
     return (
-      <c.PartTitle
-        anchor="exam"
-        buttonOptions={{
+      <div>
+        <c.PartTitle
+          anchor="exam"
+          name="exam"
+        />
+        <c.P buttonOptions={{
           type: 'exam',
           data: {}
-        }}
-        name="exam"
-      />
+        }}>
+          <i>Work against the clock to maximize your final grade!</i>
+        </c.P>
+      </div>
     );
   }
 }

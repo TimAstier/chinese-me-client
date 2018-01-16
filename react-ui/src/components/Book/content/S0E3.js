@@ -11,7 +11,7 @@ export default class Content extends Component {
 
   render() {
     const { newCharacters, example, lessonTitle, dialog, character, settings,
-      practiceIds, newWords, image, grammarTitle } = this.props;
+      practiceIds, newWords, image, grammarTitle, pronunciationTitle } = this.props;
     return (
       <div>
         <c.Page>
@@ -21,10 +21,9 @@ export default class Content extends Component {
           />
           <c.PartTitle name="characters" />
           {newCharacters()}
-          <c.PartTitle name="patterns" />
-          {grammarTitle()}
-          {example(4, { basic: true, audio: true })}
-          <c.P>This sentence means <i>I am Chinese</i>. It contains three initials that are related to each other. In <b>pīnyīn</b>, they are spelled <b>sh-</b>, <b>zh-</b> and <b>r-</b>.</c.P>
+          <c.PartTitle name="pronunciation" />
+          {pronunciationTitle()}
+          <c.P>In this lesson, we encounter three initials that are closely related to each other. In <b>pīnyīn</b>, they are spelled <b>sh-</b>, <b>zh-</b> and <b>r-</b>.</c.P>
           <c.P>Chinese <b>sh-</b> is pronounced more or less like English <i>sh</i> in <i>show</i>:</c.P>
           <c.Bookrow
             buttonOptions={{
@@ -90,59 +89,7 @@ export default class Content extends Component {
           >
             中 means <i>middle</i>. Type the correct tone on 中 <b>zhong</b>. Repeat again after the recording.
           </c.P>
-          <c.P>In Chinese, China is called 中国 which means <i>Middle Kingdom</i>. Practice:</c.P>
-          <c.Bookrow
-            buttonOptions={{
-              type: 'audio',
-              data: {
-                url: 'https://s3.eu-west-2.amazonaws.com/chineseme/pinyin/zhongguo.m4a'
-              }
-            }}>
-            <c.Char>中国</c.Char>
-          </c.Bookrow>
-          <c.P
-            buttonOptions={{
-              type: 'practice',
-              data: {
-                elementId: practiceIds[4]
-              }
-            }}
-          >
-            Type the correct tones on 中国. Practice pronunciation again.
-          </c.P>
-          <c.P>In order to say <i>Chinese (person, someone whose nationality is Chinese)</i>, we add the character 人 <b>rén</b> <i>person</i>. Listen and repeat:</c.P>
-          <c.Bookrow
-            buttonOptions={{
-              type: 'audio',
-              data: {
-                url: 'https://s3.eu-west-2.amazonaws.com/chineseme/sentences/chinese.m4a'
-              }
-            }}>
-            <c.Char>中国人</c.Char>
-          </c.Bookrow>
-          <c.P
-            buttonOptions={{
-              type: 'practice',
-              data: {
-                elementId: practiceIds[5]
-              }
-            }}
-          >
-            Type the correct tones on 中国人 <b>zhongguoren</b>. Practice pronunciation again.
-          </c.P>
-          <c.P>To say <i>I am Chinese</i>, you use the verb 是 <i>be</i>:</c.P>
-          {example(4, { basic: true, audio: true })}
-          <c.P
-            buttonOptions={{
-              type: 'practice',
-              data: {
-                elementId: practiceIds[6]
-              }
-            }}
-          >
-            Type the correct tones on this sentence. Practice pronunciation again.
-          </c.P>
-          {grammarTitle()}
+          {pronunciationTitle()}
           <c.P>So far, the words we have encountered have all been monosyllabic. This means one meaning is represented by a single syllable, for example:</c.P>
           <c.Bookrow>
             <Row>
@@ -180,6 +127,26 @@ export default class Content extends Component {
               <c.Meaning>Chinese (person)</c.Meaning>
             </Row>
           </c.Bookrow>
+          <c.P
+            buttonOptions={{
+              type: 'practice',
+              data: {
+                elementId: practiceIds[4]
+              }
+            }}
+          >
+            Type the correct tones on 中国 <b>zhongguo</b>. Practice pronunciation again.
+          </c.P>
+          <c.P
+            buttonOptions={{
+              type: 'practice',
+              data: {
+                elementId: practiceIds[5]
+              }
+            }}
+          >
+            Type the correct tones on 中国人 <b>zhongguoren</b>. Practice pronunciation again.
+          </c.P>
           <c.P>
             In fact, most words in modern Chinese are polysyllabic. But this was not always so: in classical Chinese, the ancient language spoken in China thousands of years ago, one word almost always corresponded to a single character. As the language developed, however, simple ideas were combined to more and more complex concepts by making words composed of more than one character. Each character still contributes meaning:
           </c.P>
@@ -194,6 +161,7 @@ export default class Content extends Component {
           <c.P>
             Some characters are no longer used independently at all; they can <i>only</i> appear as elements of polysyllabic words. Starting from this episode, new characters and new vocabulary will be presented under separate headings so that it will be clear which characters are real words that you can use, and which characters are simply “elements of meaning”. Single-character words will appear in both character and word lists.
           </c.P>
+          <c.PartTitle name="patterns" />
           {grammarTitle()}
           <c.P>Chinese has a reputation for being difficult. Is this really true?</c.P>
           <c.P>Imagine that you are a Chinese student studying English. Your teacher asks you to describe your holiday:</c.P>

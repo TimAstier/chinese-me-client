@@ -27,10 +27,9 @@ import { Map } from 'immutable';
 import s from './globalizedSelectors';
 import countries from 'i18n-iso-countries';
 import nameMeanings from '../constants/nameMeanings';
-import pinyin from 'pinyin';
+import pinyin from 'chinese-to-pinyin';
 import pinyinize from 'pinyinize';
 import { capitalizeFirstLetter } from '../utils/strings';
-import flattenDeep from 'lodash/flattenDeep';
 import chineseLunar from 'chinese-lunar';
 import moment from 'moment';
 
@@ -48,14 +47,12 @@ const getNamePinyin = character => {
   }
   return capitalizeFirstLetter( // wǒ => Wǒ
     pinyinize( // wo3 => wǒ
-      flattenDeep(
-        pinyin( // 法国 => [['fa3'], ['guo3']]
-          character,
-          { style: pinyin.STYLE_TONE2 }
-        )
-      ).join('')
+      pinyin( // 法国 => 'fa3 guo3'
+        character,
+        {numberTone: true}
+      )
     )
-  );
+  ).replace(/\s/g, '');
 };
 
 const getAge = dateString => {

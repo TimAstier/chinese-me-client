@@ -13,6 +13,7 @@ class Objective extends Component {
         grammarIds={this.props.episode.get('grammars')}
         text={this.props.text}
         pronunciations={this.props.pronunciations}
+        pronunciationIds={this.props.episode.get('pronunciations')}
       />
     );
   }
@@ -22,11 +23,12 @@ Objective.propTypes = {
   grammars: propTypes.object.isRequired,
   episode: propTypes.instanceOf(models.Episode),
   text: propTypes.string,
-  pronunciations: propTypes.arrayOf(propTypes.string)
+  pronunciations: propTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
   grammars: s.entities.getGrammars(state),
+  pronunciations: s.entities.getPronunciations(state),
   episode: s.getCurrentEpisode(state)
 });
 

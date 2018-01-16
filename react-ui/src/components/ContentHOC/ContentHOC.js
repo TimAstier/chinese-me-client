@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import { bookContainers as C } from '../../containers';
-import { getGrammarLetter } from '../../utils/bookContent';
+import { getTitleLetter } from '../../utils/bookContent';
 import * as models from '../../models';
 import styled from 'styled-components';
 
@@ -28,8 +28,24 @@ class ContentHOC extends Component {
       }
       return (
         <C.GrammarTitle
-          letter={getGrammarLetter(count)}
+          letter={getTitleLetter(count)}
           grammarId={grammars[count - 1]}
+        />
+      );
+    };
+  }
+
+  _pronunciationTitle = pronunciations => {
+    let count = 0;
+    return () => {
+      count++;
+      if (!pronunciations[count - 1]) {
+        return <Placeholder>{`{PRONUNCIATION TITLE #${count} PLACEHOLDER}`}</Placeholder>;
+      }
+      return (
+        <C.PronunciationTitle
+          letter={getTitleLetter(count)}
+          pronunciationId={pronunciations[count - 1]}
         />
       );
     };
@@ -145,8 +161,8 @@ class ContentHOC extends Component {
   };
 
   render() {
-    const { examples, dialogs, characters, grammars, practices, words }
-      = this.props.episode;
+    const { examples, dialogs, characters, grammars, practices, words,
+      pronunciations } = this.props.episode;
     const Content = this.props.content;
     return (
       <Content
@@ -157,6 +173,7 @@ class ContentHOC extends Component {
         newCharacters={this._newCharactersDumper(characters)}
         newWords={this._newWordsDumper(words)}
         grammarTitle={this._grammarTitle(grammars)}
+        pronunciationTitle={this._pronunciationTitle(pronunciations)}
         pageNumber={this._pageNumberDumper()}
         settings={this.props.settings}
         characterIds={characters}

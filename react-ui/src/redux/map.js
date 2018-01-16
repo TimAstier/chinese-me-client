@@ -17,6 +17,7 @@ export const INITIAL_STATE = fromJS({
   focusedEpisodeId: null,
   loadedEpisodeId: null,
   characters: [],
+  pronunciations: [],
   grammars: [],
   dialogs: [],
   practices: [],
@@ -33,6 +34,7 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
         loadedEpisodeId: String(action.payload.data.id),
         characters: action.payload.data.characters,
         grammars: action.payload.data.grammars,
+        pronunciations: action.payload.data.pronunciations,
         dialogs: action.payload.data.dialogs,
         practices: action.payload.data.practices
       });
@@ -99,6 +101,7 @@ export const actions = {
 const getFocusedEpisodeId = state => state.get('focusedEpisodeId');
 const getCharacters = state => state.get('characters');
 const getGrammars = state => state.get('grammars');
+const getPronunciations = state => state.get('pronunciations');
 const getDialogs = state => state.get('dialogs');
 const getPractices = state => state.get('practices');
 const getIsDataLoaded = state => state.get('isDataLoaded');
@@ -108,6 +111,7 @@ export const selectors = {
   getFocusedEpisodeId,
   getCharacters,
   getGrammars,
+  getPronunciations,
   getDialogs,
   getPractices,
   getIsDataLoaded,

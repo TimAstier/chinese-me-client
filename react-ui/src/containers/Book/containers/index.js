@@ -9,6 +9,7 @@ export { default as GrammarTitle } from './GrammarTitle';
 export { default as LessonTitle } from './LessonTitle';
 export { default as Link } from './Link';
 export { default as Objective } from './Objective';
+export { default as PronunciationTitle } from './PronunciationTitle';
 // export { default as Page } from './Page';
 // export { default as P } from './Paragraph';
 // export { default as PartTitle } from './PartTitle';

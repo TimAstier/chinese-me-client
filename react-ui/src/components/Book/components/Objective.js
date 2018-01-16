@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import isEmpty from 'lodash/isEmpty';
 import * as c from './.';
-import { getGrammarLetter } from '../../../utils/bookContent';
+import { getTitleLetter } from '../../../utils/bookContent';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
@@ -16,15 +16,13 @@ const Wrapper = styled.div`
 
 class Objective extends Component {
   _renderPronunciations() {
-    const { pronunciations } = this.props;
     const array = [];
-    if (isEmpty(pronunciations)) {
+    if (isEmpty(this.props.pronunciationIds)) {
       return null;
     }
-    pronunciations.forEach((p, i) => {
-      const text = pronunciations.length > 1 ? `${getGrammarLetter(i + 1)}. ${p}` : p;
+    this.props.pronunciationIds.forEach((id, i) => {
       array.push(
-        <div key={i}>{text}</div>
+        <div key={id}>{`${getTitleLetter(i + 1)}. ${this.props.pronunciations.get(String(id)).title}`}</div>
       );
     });
     return <c.P>{array}</c.P>;
@@ -37,7 +35,7 @@ class Objective extends Component {
     }
     this.props.grammarIds.forEach((id, i) => {
       array.push(
-        <div key={id}>{`${getGrammarLetter(i + 1)}. ${this.props.grammars.get(String(id)).title}`}</div>
+        <div key={id}>{`${getTitleLetter(i + 1)}. ${this.props.grammars.get(String(id)).title}`}</div>
       );
     });
     return <c.P>{array}</c.P>;
@@ -49,11 +47,14 @@ class Objective extends Component {
         <c.PartTitle name="objective" />
         <c.P><i>{this.props.text}</i></c.P>
         {
-          !isEmpty(this.props.pronunciations) &&
+          (this.props.pronunciations.size !== 0) &&
             <c.PartTitle type="secondary">Pronunciation</c.PartTitle>
         }
         {this._renderPronunciations()}
-        <c.PartTitle type="secondary">Patterns</c.PartTitle>
+        {
+          (this.props.grammars.size !== 0) &&
+            <c.PartTitle type="secondary">Patterns</c.PartTitle>
+        }
         {this._renderGrammars()}
       </Wrapper>
     );
@@ -64,7 +65,8 @@ Objective.propTypes = {
   grammars: propTypes.object.isRequired,
   grammarIds: propTypes.array.isRequired,
   text: propTypes.string,
-  pronunciations: propTypes.arrayOf(propTypes.string)
+  pronunciations: propTypes.object.isRequired,
+  pronunciationIds: propTypes.array.isRequired,
 };
 
 export default Objective;

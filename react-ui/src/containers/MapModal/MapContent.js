@@ -7,7 +7,6 @@ import s from '../../rootSelectors';
 import { actions as sagaActions } from '../../sagas/actions';
 
 class MapContent extends Component {
-
   render() {
     return (
       <MapContentComponent { ...this.props } />
@@ -20,6 +19,7 @@ MapContent.propTypes = {
   episode: propTypes.instanceOf(models.Episode),
   characters: propTypes.array.isRequired,
   grammars: propTypes.array.isRequired,
+  pronunciations: propTypes.array.isRequired,
   dialogs: propTypes.array.isRequired,
   practices: propTypes.array.isRequired,
   mapLinkClick: propTypes.func.isRequired,
@@ -33,6 +33,7 @@ const mapStateToProps = state => ({
   episode: s.getFocusedEpisode(state),
   characters: s.map.getCharacters(state).toJS(),
   grammars: s.map.getGrammars(state).toJS(),
+  pronunciations: s.map.getPronunciations(state).toJS(),
   dialogs: s.map.getDialogs(state).toJS(),
   practices: s.map.getPractices(state).toJS(),
   mapCharactersCompletedCount: s.getMapCharactersCompletedCount(state),

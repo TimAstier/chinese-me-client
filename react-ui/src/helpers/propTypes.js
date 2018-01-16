@@ -7,6 +7,7 @@ export const content = {
   lessonTitle: propTypes.func.isRequired,
   dialog: propTypes.func.isRequired,
   grammarTitle: propTypes.func.isRequired,
+  pronunciationTitle: propTypes.func.isRequired,
   pageNumber: propTypes.func.isRequired,
   character: propTypes.func.isRequired,
   settings: propTypes.object.isRequired,

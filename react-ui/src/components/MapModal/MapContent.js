@@ -71,7 +71,6 @@ const ContentItemsWrapper = styled.div`
 `;
 
 class MapContent extends Component {
-
   renderCharacterBoxes() {
     const { episode, focusedSeasonNumber } = this.props;
     if (this.props.characters.length !== 0) {
@@ -132,9 +131,29 @@ class MapContent extends Component {
     return null;
   }
 
+  renderPronunciationItems() {
+    const { episode, focusedSeasonNumber } = this.props;
+    if (this.props.pronunciations.length !== 0) {
+      const pronunciationItems = this.props.pronunciations.map((p, i) => {
+        return (
+          <MapItem
+            key={i}
+            title={p.translations[0].title}
+            // completed={p.userGrammars.length !== 0 ? true : undefined}
+            onClick={() => this.props.mapLinkClick(
+              `/study/season/${focusedSeasonNumber}/episode/${episode.number}#pronunciation-${p.id}`
+            )}
+          />
+        );
+      });
+      return <ContentItemsWrapper>{pronunciationItems}</ContentItemsWrapper>;
+    }
+    return null;
+  }
+
   render() {
     const { episode, focusedSeasonNumber, characters, grammars, dialogs,
-      practices } = this.props;
+      practices, pronunciations } = this.props;
     if (!episode) {
       // TODO: return a message for empty screen
       return null;
@@ -155,6 +174,15 @@ class MapContent extends Component {
           </TitleWrapper>
         </TopWrapper>
         <ContentWrapper>
+          {
+            pronunciations.length !== 0 &&
+              <ChapterHeader
+                name="PRONUNCIATION"
+                // completedElements={mapGrammarsCompletedCount}
+                // totalElements={grammars.length}
+              />
+          }
+          { this.renderPronunciationItems() }
           {
             characters !== 0 &&
               <ChapterHeader
@@ -219,6 +247,7 @@ class MapContent extends Component {
 MapContent.propTypes = {
   characters: propTypes.array.isRequired,
   grammars: propTypes.array.isRequired,
+  pronunciations: propTypes.array.isRequired,
   dialogs: propTypes.array.isRequired,
   practices: propTypes.array.isRequired,
   focusedSeasonNumber: propTypes.number,

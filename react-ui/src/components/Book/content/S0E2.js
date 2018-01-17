@@ -80,6 +80,7 @@ export default class Content extends Component {
             </Row>
           </c.Bookrow>
           <c.PartTitle name="characters" />
+          <c.P>Here are all the new characters in this lesson. Click on the stroke icon to review stroke order, on the brush icon to see calligraphy video, and on history icon to see the character etymology.</c.P>
           {newCharacters()}
           <c.PartTitle name="patterns" />
           {grammarTitle()}

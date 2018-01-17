@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import { bookContainers as C } from '../../../containers';
+import { Space } from './.';
 import styled from 'styled-components';
 import { Row } from '../../Shared';
 
@@ -13,12 +14,13 @@ const ChineseWrapper = styled.div`
 `;
 
 const ChineseMeta = styled.div`
-  min-width: 80px;
+  min-width: 120px;
   display: flex;
 `;
 
 const LatinMeta = styled.div`
-  min-width: 60px;
+  min-width: 120px;
+  line-height: 30px;
 `;
 
 const Punct = styled.div`
@@ -50,6 +52,7 @@ class Statement extends Component {
     return (
       <ChineseWrapper>
         {this._renderChineseMeta()}
+        <Space width={25}/>
         {this._renderSentences()}
       </ChineseWrapper>
     );
@@ -74,8 +77,10 @@ class Statement extends Component {
     if (this.props.displayNames) {
       return (
         <LatinMeta>
-          {this.props.name ? this.props.name : ''}
-          <Punct>{this.props.name ? ' : ' : '- '}</Punct>
+          <Row>
+            {this.props.name ? this.props.name : ''}
+            <Punct>{this.props.name ? ' : ' : '- '}</Punct>
+          </Row>
         </LatinMeta>
       );
     }
@@ -86,6 +91,7 @@ class Statement extends Component {
     return (
       <Row>
         {this._renderLatinMeta()}
+        <Space width={25}/>
         {this._renderSentences()}
       </Row>
     );
@@ -95,6 +101,7 @@ class Statement extends Component {
     return (
       <Row>
         {this._renderLatinMeta()}
+        <Space width={25}/>
         {this._renderSentences()}
       </Row>
     );

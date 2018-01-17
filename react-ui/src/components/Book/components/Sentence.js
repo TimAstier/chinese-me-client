@@ -8,8 +8,11 @@ const Placeholder = styled.span`
   color: red;
 `;
 
-class Sentence extends Component {
+const Translation = styled.span`
+  line-height: 30px;
+`;
 
+class Sentence extends Component {
   _renderChinese() {
     return (
       this.props.sentence.chinese ?
@@ -45,7 +48,7 @@ class Sentence extends Component {
   _renderTranslation() {
     return (
       this.props.sentence.translation ?
-        <span>
+        <Translation>
           <i>
             {
               insertVariables(
@@ -54,7 +57,7 @@ class Sentence extends Component {
               )
             }
           </i>
-        </span>
+        </Translation>
         : <Placeholder>{'{MISSING TRANSLATION}'}</Placeholder>
     );
   }

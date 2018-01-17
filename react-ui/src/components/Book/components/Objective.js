@@ -45,7 +45,9 @@ class Objective extends Component {
     return (
       <Wrapper>
         <c.PartTitle name="objective" />
-        <c.P><i>{this.props.text}</i></c.P>
+        <br />
+        <c.PartTitle type="secondary">Conversation skill</c.PartTitle>
+        <c.P>{this.props.text}</c.P>
         {
           (this.props.pronunciations.size !== 0) &&
             <c.PartTitle type="secondary">Pronunciation</c.PartTitle>

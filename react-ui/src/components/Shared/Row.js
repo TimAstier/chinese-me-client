@@ -8,6 +8,8 @@ const Wrapper = styled.div`
     `${props.marginBottom}px` : undefined };
   margin-top: ${ props => props.marginTop ?
     `${props.marginTop}px` : undefined };
+  line-height: ${ props => props.lineHeight ?
+    `${props.lineHeight}px` : undefined };
 `;
 
 class Row extends Component {
@@ -16,6 +18,7 @@ class Row extends Component {
       <Wrapper
         marginBottom={this.props.marginBottom}
         marginTop={this.props.marginTop}
+        lineHeight={this.props.lineHeight}
       >
         {this.props.children}
       </Wrapper>
@@ -26,7 +29,8 @@ class Row extends Component {
 Row.propTypes = {
   children: propTypes.node.isRequired,
   marginBottom: propTypes.number,
-  marginTop: propTypes.number
+  marginTop: propTypes.number,
+  lineHeight: propTypes.number
 };
 
 export default Row;

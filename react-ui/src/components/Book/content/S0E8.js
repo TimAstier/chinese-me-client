@@ -45,11 +45,10 @@ export default class Content extends Component {
             <Row><c.Char>英</c.Char><c.Pinyin>yīng</c.Pinyin></Row>
           </c.P>
           <c.PartTitle name="characters" />
-          <c.P>Here are the new characters in this lesson. Click on each character to review the stroke order, or on the brush or history icons to see calligraphy and history videos.</c.P>
           {newCharacters()}
           <c.PartTitle name="patterns" />
           {grammarTitle()}
-          <c.P>会 <b>huì</b> means <i>know</i> in the sense of <i>know how to</i>. It can be used as a verb:</c.P>
+          <c.P><c.Chinese>会</c.Chinese> <b>huì</b> means <i>know</i> in the sense of <i>know how to</i>. It can be used as a verb:</c.P>
           {example(1, { audio: true })}
           <c.P>It can also be used as an auxiliary verb, that is, in combination with another verb, meaning <i>know how to do something</i>:</c.P>
           {example(2, { audio: true })}
@@ -65,7 +64,7 @@ export default class Content extends Component {
             <i>Practice.</i>
           </c.P>
           {grammarTitle()}
-          <c.P>好吗 <b>hǎo må</b> can also be used to ask for agreement with something you have just said:</c.P>
+          <c.P><c.Chinese>好吗</c.Chinese> <b>hǎo må</b> can also be used to ask for agreement with something you have just said:</c.P>
           {example(4, { audio: true })}
           <c.P
             buttonOptions={{
@@ -79,11 +78,9 @@ export default class Content extends Component {
           </c.P>
           {grammarTitle()}
           <c.P>Spoken Chinese uses a single word, <b>tā</b>, for both <i>he</i> and <i>she</i>: there is no difference between gender in the third person. This is why Chinese people sometimes confuse these pronouns in English: <i>Where is Mary? He is not here.</i> But the modern written language uses different characters for <i>he</i> and <i>she</i>:</c.P>
-          <c.Bookrow>
-            <c.Ul>
-              <li><Row><c.Char>他</c.Char><c.Pinyin>tā</c.Pinyin><c.Meaning>he, him</c.Meaning></Row></li>
-              <li><Row><c.Char>她</c.Char><c.Pinyin>tā</c.Pinyin><c.Meaning>she, her</c.Meaning></Row></li>
-            </c.Ul>
+          <c.Bookrow flexDirection="column">
+            <Row><c.Char>他</c.Char><c.Pinyin>tā</c.Pinyin><c.Meaning>he, him</c.Meaning></Row>
+            <Row><c.Char>她</c.Char><c.Pinyin>tā</c.Pinyin><c.Meaning>she, her</c.Meaning></Row>
           </c.Bookrow>
           <c.P>As usual, words do not change form so there is no difference between <i>he</i> and <i>him</i>, <i>she</i> and <i>her</i>.</c.P>
           <c.P

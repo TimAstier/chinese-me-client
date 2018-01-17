@@ -15,7 +15,7 @@ export default class Content extends Component {
         <c.Page>
           {lessonTitle()}
           <Objective
-            text="The importance of being humble in Chinese."
+            text="The importance of being humble in Chinese"
           />
           <c.PartTitle name="pronunciation" />
           {pronunciationTitle()}
@@ -169,17 +169,7 @@ export default class Content extends Component {
           <c.P>Politeness established, the conversation may now move on to other topics. At this point, it can be appropriate to use <i>thank you</i> as a closer, showing that you accept the overdone praise by the other party.</c.P>
           <c.PartTitle>ORACLE BONES</c.PartTitle>
           <c.PartTitle>CALLIGRAPHY</c.PartTitle>
-          <c.PartTitle anchor="review" name="review" />
-          <c.P
-            buttonOptions={{
-              type: 'practice',
-              data: {
-                elementId: practiceIds[0]
-              }
-            }}
-          >
-            <i>Now, go through the review exercises to practice pronunciation, grammar and character writing. Then do the Exam to progress to the next Lesson.</i>
-          </c.P>
+          <c.Review practiceId={practiceIds[0]} />
           <c.Exam />
         </c.Page>
       </div>

@@ -28,7 +28,7 @@ class ContentHOC extends Component {
       }
       return (
         <C.GrammarTitle
-          letter={getTitleLetter(count)}
+          letter={grammars.length > 1 ? getTitleLetter(count) : undefined}
           grammarId={grammars[count - 1]}
         />
       );
@@ -44,7 +44,7 @@ class ContentHOC extends Component {
       }
       return (
         <C.PronunciationTitle
-          letter={getTitleLetter(count)}
+          letter={pronunciations.length > 1 ? getTitleLetter(count) : undefined}
           pronunciationId={pronunciations[count - 1]}
         />
       );

@@ -20,7 +20,7 @@ class PronunciationTitle extends Component {
 PronunciationTitle.propTypes = {
   pronunciationId: propTypes.number.isRequired,
   pronunciation: propTypes.instanceOf(models.Pronunciation),
-  letter: propTypes.string.isRequired
+  letter: propTypes.string
 };
 
 const mapStateToProps = (state, ownProps) => ({

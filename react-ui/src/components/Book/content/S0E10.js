@@ -16,7 +16,7 @@ export default class Content extends Component {
         <c.Page>
           {lessonTitle()}
           <Objective
-            text="Explaining why you want to study Chinese."
+            text="Explaining why you want to study Chinese"
           />
           <c.PartTitle name="pronunciation" />
           {pronunciationTitle()}
@@ -120,22 +120,12 @@ export default class Content extends Component {
           <c.PartTitle name="dialogs" />
           {dialog(1, { sentenceType: 'chinese', displayNames: true })}
           <c.PartTitle type="secondary">Practice: Role play</c.PartTitle>
-          {dialog(2, { sentenceType: 'chinese', displayNames: false })}
+          {dialog(2, { sentenceType: 'chinese', displayNames: true })}
           <c.PartTitle name="words" />
           {newWords()}
           <c.PartTitle>ORACLE BONES</c.PartTitle>
           <c.PartTitle>CALLIGRAPHY</c.PartTitle>
-          <c.PartTitle anchor="review" name="review" />
-          <c.P
-            buttonOptions={{
-              type: 'practice',
-              data: {
-                elementId: practiceIds[0]
-              }
-            }}
-          >
-            <i>Now, go through the review exercises to practice pronunciation, grammar and character writing. Then do the Exam to progress to the next Lesson.</i>
-          </c.P>
+          <c.Review practiceId={practiceIds[0]} />
           <c.Exam />
         </c.Page>
       </div>

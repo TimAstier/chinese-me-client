@@ -17,7 +17,7 @@ export default class Content extends Component {
         <c.Page>
           {lessonTitle()}
           <Objective
-            text="How to say when you were born and to which Chinese zodiac animal you belong."
+            text="How to say when you were born and to which Chinese zodiac animal you belong"
           />
           <c.PartTitle name="pronunciation" />
           {pronunciationTitle()}
@@ -84,7 +84,7 @@ export default class Content extends Component {
           </c.P>
           <c.PartTitle name="dialogs" />
           <c.PartTitle type="secondary">我生日</c.PartTitle>
-          {dialog(1, { sentenceType: 'chinese', displayNames: false })}
+          {dialog(1, { sentenceType: 'chinese', displayNames: true })}
           <c.P
             buttonOptions={{
               type: 'practice',
@@ -96,10 +96,10 @@ export default class Content extends Component {
             <i>Help Wang Yuguo say how old he is.</i>
           </c.P>
           <c.PartTitle type="secondary">我属马。</c.PartTitle>
-          {dialog(2, { sentenceType: 'chinese', displayNames: false })}
-          {/* {dialog(2, { sentenceType: 'pinyin', displayNames: false })} */}
-          {dialog(2, { sentenceType: 'translation', displayNames: false })}
-          {dialog(3, { sentenceType: 'chinese', displayNames: false })}
+          {dialog(2, { sentenceType: 'chinese', displayNames: true })}
+          {/* {dialog(2, { sentenceType: 'pinyin', displayNames: true })} */}
+          {dialog(2, { sentenceType: 'translation', displayNames: true })}
+          {dialog(3, { sentenceType: 'chinese', displayNames: true })}
           <c.P
             buttonOptions={{
               type: 'practice',
@@ -110,8 +110,8 @@ export default class Content extends Component {
           >
             <i>Help Li Xiaoyue say how old he is.</i>
           </c.P>
-          {/* {dialog(3, { sentenceType: 'pinyin', displayNames: false })} */}
-          {dialog(3, { sentenceType: 'translation', displayNames: false })}
+          {/* {dialog(3, { sentenceType: 'pinyin', displayNames: true })} */}
+          {dialog(3, { sentenceType: 'translation', displayNames: true })}
           <c.P
             buttonOptions={{
               type: 'askUserSettings'
@@ -119,11 +119,11 @@ export default class Content extends Component {
           >Now, go to the web and input your own birthdate to practice presenting yourself.
           </c.P>
           <c.PartTitle type="secondary">Practice: Presentation</c.PartTitle>
-          {dialog(4, { sentenceType: 'chinese', displayNames: false })}
-          {dialog(5, { sentenceType: 'chinese', displayNames: false })}
+          {dialog(4, { sentenceType: 'chinese', displayNames: true })}
+          {dialog(5, { sentenceType: 'chinese', displayNames: true })}
           <c.PartTitle type="secondary">Practice: Role play</c.PartTitle>
-          {dialog(6, { sentenceType: 'chinese', displayNames: false })}
-          {dialog(7, { sentenceType: 'chinese', displayNames: false })}
+          {dialog(6, { sentenceType: 'chinese', displayNames: true })}
+          {dialog(7, { sentenceType: 'chinese', displayNames: true })}
           <c.PartTitle name="culture" />
           <c.PartTitle type="secondary">The personalities of Chinese zodiac animals</c.PartTitle>
           <c.P>Each animal of the Chinese zodiac is said to have certain characteristics:</c.P>
@@ -144,17 +144,7 @@ export default class Content extends Component {
           {newWords()}
           <c.PartTitle>ORACLE BONES</c.PartTitle>
           <c.PartTitle>CALLIGRAPHY</c.PartTitle>
-          <c.PartTitle name="review" />
-          <c.P
-            buttonOptions={{
-              type: 'practice',
-              data: {
-                elementId: practiceIds[0]
-              }
-            }}
-          >
-            <i>Now, go through the review exercises to practice pronunciation, grammar and character writing. Then do the Exam to progress to the next Lesson.</i>
-          </c.P>
+          <c.Review practiceId={practiceIds[0]} />
           <c.Exam />
         </c.Page>
       </div>

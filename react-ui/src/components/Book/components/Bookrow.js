@@ -5,10 +5,10 @@ import { Row } from '../../Shared';
 import { PlayAudioButton, bookContainers as C } from '../../../containers';
 
 const Margin = styled.div`
-    width: 125px;
-    display: flex;
-    justify-content: center;
-    align-items: ${props => props.top ? 'flex-start' : 'center'};
+  width: 125px;
+  display: flex;
+  justify-content: center;
+  align-items: ${props => props.top ? 'flex-start' : 'center'};
 `;
 
 const Body = styled.div`
@@ -23,7 +23,6 @@ const Body = styled.div`
 
 
 class Bookrow extends Component {
-
   _renderAudioButton() {
     return (
       <PlayAudioButton

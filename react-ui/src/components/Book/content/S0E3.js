@@ -17,7 +17,7 @@ export default class Content extends Component {
         <c.Page>
           {lessonTitle()}
           <Objective
-            text="In this lesson, you learn how to say where you are from."
+            text="How to say where you are from"
           />
           <c.PartTitle name="characters" />
           {newCharacters()}
@@ -195,18 +195,18 @@ export default class Content extends Component {
           <c.PartTitle name="dialogs" />
           <c.PartTitle type="secondary">Meet Yi and Yuguo</c.PartTitle>
           <c.P>Yi and her friend Yuguo both come from China. Here’s how they present themselves:</c.P>
-          {dialog(1, { sentenceType: 'chineseWithTranslation', displayNames: false })}
-          {dialog(2, { sentenceType: 'chineseWithTranslation', displayNames: false })}
+          {dialog(1, { sentenceType: 'chineseWithTranslation', displayNames: true })}
+          {dialog(2, { sentenceType: 'chineseWithTranslation', displayNames: true })}
           <c.PartTitle type="secondary">Introduce yourself and where you are from</c.PartTitle>
           <c.P>Now, it’s your turn to tell Wang Yi and Wang Yuguo where you are from. In Chinese, {insertVariables('[NATIONALITY_EN]', settings)} is:</c.P>
-          {example(6, { basic: true, big: true, audio: true })}
+          {example(6, { basic: true, audio: true })}
           <c.P>Listen to the audio voice and repeat until you feel confident saying your country name.</c.P>
           <c.P>
             In order to say <i>I am from {insertVariables('[NATIONALITY_EN]', settings)}</i>, just add 人. Listen and repeat:
           </c.P>
-          {example(5, { basic: true, big: true, audio: true })}
+          {example(5, { basic: true, audio: true })}
           <c.P>Now, introduce yourself to Wang Yi and Wang Yuguo:</c.P>
-          {dialog(3, { sentenceType: 'chinese', displayNames: false })}
+          {dialog(3, { sentenceType: 'chinese', displayNames: true })}
           <c.P>Repeat this until you feel comfortable.</c.P>
           <c.P>Now, change roles! Pretend you are Wang Yuguo, and introduce yourself.</c.P>
           <c.PartTitle>PINYIN PRACTICE</c.PartTitle>
@@ -359,17 +359,7 @@ export default class Content extends Component {
           <c.CharacterPractice characterId={9876} simpChar={'你'}/>
           <c.PartTitle name="words" />
           {newWords()}
-          <c.PartTitle anchor="review" name="review"/>
-          <c.P
-            buttonOptions={{
-              type: 'practice',
-              data: {
-                elementId: practiceIds[0]
-              }
-            }}
-          >
-            <i>Now, go through the review exercises to practice pronunciation, grammar and character writing. Then do the Exam to progress to the next Lesson.</i>
-          </c.P>
+          <c.Review practiceId={practiceIds[0]} />
           <c.Exam />
         </c.Page>
       </div>

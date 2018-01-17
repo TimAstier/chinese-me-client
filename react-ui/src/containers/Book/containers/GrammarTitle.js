@@ -20,7 +20,7 @@ class GrammarTitle extends Component {
 GrammarTitle.propTypes = {
   grammarId: propTypes.number.isRequired,
   grammar: propTypes.instanceOf(models.Grammar),
-  letter: propTypes.string.isRequired
+  letter: propTypes.string
 };
 
 const mapStateToProps = (state, ownProps) => ({

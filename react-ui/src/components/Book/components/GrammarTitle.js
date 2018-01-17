@@ -13,7 +13,6 @@ const H3 = styled.h3`
 `;
 
 class GrammarTitle extends Component {
-
   render() {
     return (
       <Bookrow
@@ -21,8 +20,8 @@ class GrammarTitle extends Component {
       >
         <Element name={`grammar-${this.props.grammarId}`}>
           <H3>
-            {this.props.letter + '. '}
-            {<span>{this.props.title}</span>}
+            {this.props.letter && this.props.letter + '. '}
+            {this.props.title}
           </H3>
         </Element>
       </Bookrow>
@@ -32,7 +31,7 @@ class GrammarTitle extends Component {
 
 GrammarTitle.propTypes = {
   title: propTypes.string.isRequired,
-  letter: propTypes.string.isRequired,
+  letter: propTypes.string,
   grammarId: propTypes.number
 };
 

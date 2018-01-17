@@ -17,7 +17,7 @@ export default class Content extends Component {
         <c.Page>
           {lessonTitle()}
           <Objective
-            text="A more polite way of inquiring about somebody's name."
+            text="A more polite way of inquiring about somebody's name"
           />
           <c.PartTitle name="pronunciation" />
           {pronunciationTitle()}
@@ -79,9 +79,9 @@ export default class Content extends Component {
           </c.P>
           <c.PartTitle name="dialogs" />
           <c.PartTitle type= "secondary">Saying hello</c.PartTitle>
-          {dialog(1, { sentenceType: 'chinese', displayNames: false })}
+          {dialog(1, { sentenceType: 'chinese', displayNames: true })}
           <c.PartTitle type="secondary">Role play</c.PartTitle>
-          {dialog(2, { sentenceType: 'chinese', displayNames: false })}
+          {dialog(2, { sentenceType: 'chinese', displayNames: true })}
           <c.PartTitle name="culture" />
           <c.PartTitle type="secondary">Polite greetings</c.PartTitle>
           <c.P>To inquire politely about somebody’s family name, you would say:</c.P>
@@ -91,17 +91,7 @@ export default class Content extends Component {
           {example(7, { audio: true })}
           <c.PartTitle name="words" />
           {newWords()}
-          <c.PartTitle anchor="review" name="review" />
-          <c.P
-            buttonOptions={{
-              type: 'practice',
-              data: {
-                elementId: practiceIds[0]
-              }
-            }}
-          >
-            <i>Now, go through the review exercises to practice pronunciation, grammar and character writing. Then do the Exam to progress to the next Lesson.</i>
-          </c.P>
+          <c.Review practiceId={practiceIds[0]} />
           <c.Exam />
         </c.Page>
       </div>

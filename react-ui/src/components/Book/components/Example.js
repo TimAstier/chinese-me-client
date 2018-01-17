@@ -8,6 +8,7 @@ const NumberWrapper = styled.div`
   width: 70px;
   font-size: 21px;
   margin-top: 4px;
+  font-weight: bold;
 `;
 
 const SentenceWrapper = styled.div`
@@ -18,7 +19,7 @@ const SentenceWrapper = styled.div`
 `;
 
 const Chinese = styled.span`
-  font-size: ${props => props.big ? '34px' : '27px'};
+  font-size: 30px;
   font-family: ChineseFont;
   margin-bottom: 5px;
   line-height: 1.1;
@@ -44,7 +45,7 @@ class Example extends Component {
     if (this.props.displayTranslation) {
       return (
         <Row>
-          <Chinese big={ this.props.big }>
+          <Chinese>
             { this.props.chinese }
           </Chinese>
           <Translation basic={this.props.basic}>
@@ -54,7 +55,7 @@ class Example extends Component {
       );
     }
     return (
-      <Chinese big={ this.props.big }>
+      <Chinese>
         { this.props.chinese }
       </Chinese>
     );
@@ -102,7 +103,6 @@ class Example extends Component {
 
 Example.propTypes = {
   basic: propTypes.bool,
-  big: propTypes.bool,
   code: propTypes.string.isRequired,
   chinese: propTypes.string.isRequired,
   pinyin: propTypes.string,

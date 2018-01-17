@@ -17,7 +17,7 @@ export default class Content extends Component {
         <c.Page>
           {lessonTitle()}
           <Objective
-            text="How to greet people a bit more formally."
+            text="How to greet people a bit more formally"
           />
           <c.PartTitle name="pronunciation" />
           {pronunciationTitle()}
@@ -115,30 +115,20 @@ export default class Content extends Component {
           <c.P>These days, many people also use the English term <i>bye, bye, </i> usually pronounced <b>bāibāi</b> (or <b>bābāi</b> with the second syllable much longer than the first).</c.P>
           <c.PartTitle name="dialogs" />
           <c.PartTitle type="secondary">我找老王。</c.PartTitle>
-          {dialog(1, { sentenceType: 'chinese', displayNames: false })}
+          {dialog(1, { sentenceType: 'chinese', displayNames: true })}
           <c.PartTitle type="secondary">我找王先生。</c.PartTitle>
-          {dialog(2, { sentenceType: 'chinese', displayNames: false })}
+          {dialog(2, { sentenceType: 'chinese', displayNames: true })}
           <c.PartTitle type="secondary">再见！</c.PartTitle>
-          {dialog(3, { sentenceType: 'chinese', displayNames: false })}
+          {dialog(3, { sentenceType: 'chinese', displayNames: true })}
           <c.PartTitle type="secondary">Bye-bye</c.PartTitle>
-          {dialog(4, { sentenceType: 'chinese', displayNames: false })}
+          {dialog(4, { sentenceType: 'chinese', displayNames: true })}
           <c.P>You are at the reception desk of a company, looking for Ms. Li. Present yourself to the receptionist.</c.P>
-          {dialog(5, { sentenceType: 'chinese', displayNames: false })}
+          {dialog(5, { sentenceType: 'chinese', displayNames: true })}
           <c.PartTitle>ORACLE BONES</c.PartTitle>
           <c.PartTitle>CALLIGRAPHY</c.PartTitle>
           <c.PartTitle name="words" />
           {newWords()}
-          <c.PartTitle name="review" anchor="review" />
-          <c.P
-            buttonOptions={{
-              type: 'practice',
-              data: {
-                elementId: practiceIds[0]
-              }
-            }}
-          >
-            <i>Now, go through the review exercises to practice pronunciation, grammar and character writing. Then do the Exam to progress to the next Lesson.</i>
-          </c.P>
+          <c.Review practiceId={practiceIds[0]} />
           <c.Exam />
         </c.Page>
       </div>

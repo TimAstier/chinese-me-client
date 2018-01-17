@@ -9,8 +9,10 @@ class PronunciationTitle extends Component {
     return (
       <Element name={`pronunciation-${this.props.pronunciationId}`}>
         <PartTitle type="secondary">
-          {this.props.letter + '. '}
-          {<span>{this.props.title}</span>}
+          <span>
+            {this.props.letter && this.props.letter + '. '}
+            {this.props.title}
+          </span>
         </PartTitle>
       </Element>
     );
@@ -19,7 +21,7 @@ class PronunciationTitle extends Component {
 
 PronunciationTitle.propTypes = {
   title: propTypes.string.isRequired,
-  letter: propTypes.string.isRequired,
+  letter: propTypes.string,
   pronunciationId: propTypes.number
 };
 

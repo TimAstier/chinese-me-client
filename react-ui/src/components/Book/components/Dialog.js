@@ -6,7 +6,6 @@ const Scroll = require('react-scroll');
 const Element = Scroll.Element;
 
 class Dialog extends Component {
-
   render() {
     if (!this.props.statements) {
       return null;

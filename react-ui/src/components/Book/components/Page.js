@@ -13,6 +13,11 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   padding-top: 80px;
+  font-size: 21px;
+  font-family: 'Cambria';
+  a {
+    text-decoration:  underline;
+  }
 `;
 
 const Body = styled.div`
@@ -28,7 +33,6 @@ const Footer = styled.div`
 `;
 
 class Page extends Component {
-
   render() {
     return (
       <Wrapper>

@@ -8,12 +8,10 @@ import { getGrammarSentenceCode } from '../../../utils/bookContent';
 import insertVariables from '../../../utils/insertVariables';
 
 class Example extends Component {
-
   render() {
     return (
       <c.Example
         basic={this.props.options.basic}
-        big={this.props.options.big}
         audio={this.props.options.audio}
         code={getGrammarSentenceCode(this.props.episodeNumber, this.props.example.order)}
         chinese={insertVariables(this.props.example.chinese, this.props.settings)}
@@ -33,7 +31,6 @@ Example.propTypes = {
   settings: propTypes.object.isRequired,
   options: propTypes.shape({
     basic: propTypes.bool,
-    big: propTypes.bool,
     audio: propTypes.bool,
     displayTranslation: propTypes.bool
   }),

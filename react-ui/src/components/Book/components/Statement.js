@@ -5,17 +5,11 @@ import styled from 'styled-components';
 import { Row } from '../../Shared';
 
 const ChineseWrapper = styled.div`
-  font-size: 25px;
+  font-size: 30px;
   font-family: Kai;
   line-height: 35px;
   display: flex;
   min-width: ${props => props.width}
-`;
-
-const TranslationWrapper = styled.div`
-  font-size: 18px;
-  line-height: 25px;
-  display: flex;
 `;
 
 const ChineseMeta = styled.div`
@@ -33,7 +27,6 @@ const Punct = styled.div`
 `;
 
 const Text = styled.div`
-  padding-left: 20px;
   flex-grow: 1;
   span {
     margin-right: 10px;
@@ -41,67 +34,69 @@ const Text = styled.div`
 `;
 
 class Statement extends Component {
+  _renderChineseMeta() {
+    if (this.props.displayNames) {
+      return (
+        <ChineseMeta>
+          {this.props.name ? this.props.name : ''}
+          <Punct>{this.props.name ? ' : ' : '- '}</Punct>
+        </ChineseMeta>
+      );
+    }
+    return <div>-&nbsp;</div>;
+  }
 
   _renderChinese() {
     return (
       <ChineseWrapper>
-        {
-          this.props.displayNames &&
-            <ChineseMeta>
-              {this.props.name ? this.props.name : ''}
-              <Punct>{this.props.name ? ' : ' : '- '}</Punct>
-            </ChineseMeta>
-        }
-        { this._renderSentences() }
-        </ChineseWrapper>
+        {this._renderChineseMeta()}
+        {this._renderSentences()}
+      </ChineseWrapper>
     );
   }
 
   _renderChineseWithTranslation() {
     return (
       <Row>
-        <ChineseWrapper width={'200px'}>
-          {
-            this.props.displayNames &&
-              <ChineseMeta>
-                {this.props.name ? this.props.name : ''}
-                <Punct>{this.props.name ? ' : ' : '- '}</Punct>
-              </ChineseMeta>
-          }
-          { this._renderSentences('chinese') }
+        <ChineseWrapper width={'250px'}>
+          {this._renderChineseMeta()}
+          {this._renderSentences('chinese')}
         </ChineseWrapper>
-        <TranslationWrapper>
+        <Row>
+          {this._renderLatinMeta()}
           { this._renderSentences('translation') }
-        </TranslationWrapper>
+        </Row>
       </Row>
     );
   }
 
+  _renderLatinMeta() {
+    if (this.props.displayNames) {
+      return (
+        <LatinMeta>
+          {this.props.name ? this.props.name : ''}
+          <Punct>{this.props.name ? ' : ' : '- '}</Punct>
+        </LatinMeta>
+      );
+    }
+    return <div>-&nbsp;</div>;
+  }
+
   _renderPinyin() {
     return (
-      <div>
-        {
-          this.props.displayNames &&
-            <LatinMeta>
-              {this.props.name ? this.props.name + ' : ' : '- '}
-            </LatinMeta>
-        }
-        { this._renderSentences() }
-        </div>
+      <Row>
+        {this._renderLatinMeta()}
+        {this._renderSentences()}
+      </Row>
     );
   }
 
   _renderTranslation() {
     return (
-      <TranslationWrapper>
-        {
-          this.props.displayNames &&
-            <LatinMeta>
-              {this.props.name ? this.props.name + ' : ' : '- '}
-            </LatinMeta>
-        }
-        { this._renderSentences() }
-      </TranslationWrapper>
+      <Row>
+        {this._renderLatinMeta()}
+        {this._renderSentences()}
+      </Row>
     );
   }
 

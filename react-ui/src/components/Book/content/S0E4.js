@@ -17,7 +17,7 @@ export default class Content extends Component {
         <c.Page>
           {lessonTitle()}
           <Objective
-            text="How to tell someone your age."
+            text="How to tell someone your age"
           />
           <c.PartTitle name="pronunciation" />
           {pronunciationTitle()}
@@ -169,9 +169,9 @@ export default class Content extends Component {
           <c.Bookrow>(I : FAMILY-NAMED WANG, CALLED WANG YUGUO.)</c.Bookrow>
           <c.PartTitle name="dialogs" />
           <c.PartTitle type="secondary">Presenting your age</c.PartTitle>
-          {dialog(1, { sentenceType: 'chinese', displayNames: false })}
-          {/* {dialog(1, { sentenceType: 'pinyin', displayNames: false })} */}
-          {dialog(1, { sentenceType: 'translation', displayNames: false })}
+          {dialog(1, { sentenceType: 'chinese', displayNames: true })}
+          {/* {dialog(1, { sentenceType: 'pinyin', displayNames: true })} */}
+          {dialog(1, { sentenceType: 'translation', displayNames: true })}
           <c.P
             buttonOptions={{
               type: 'askUserSettings'
@@ -179,12 +179,12 @@ export default class Content extends Component {
           >Now, input your own birthdate to practice presenting yourself.
           </c.P>
           <c.PartTitle type="secondary">Practice: Presentation</c.PartTitle>
-          {dialog(2, { sentenceType: 'chinese', displayNames: false })}
-          {dialog(3, { sentenceType: 'chinese', displayNames: false })}
-          {dialog(4, { sentenceType: 'chinese', displayNames: false })}
+          {dialog(2, { sentenceType: 'chinese', displayNames: true })}
+          {dialog(3, { sentenceType: 'chinese', displayNames: true })}
+          {dialog(4, { sentenceType: 'chinese', displayNames: true })}
           <c.PartTitle type="secondary">Practice: Role play</c.PartTitle>
-          {dialog(5, { sentenceType: 'chinese', displayNames: false })}
-          {dialog(6, { sentenceType: 'chinese', displayNames: false })}
+          {dialog(5, { sentenceType: 'chinese', displayNames: true })}
+          {dialog(6, { sentenceType: 'chinese', displayNames: true })}
           <c.PartTitle name="culture" />
           <c.PartTitle type="secondary">How Chinese people count age</c.PartTitle>
           <c.P>In Western countries, age changes on a person’s birthday. In China, people state their age by saying <i>how old they will be this calendar year</i>; it doesn't matter whether they have actually passed this year's birthday or not. As of January 1 each year, they are one year older than the year before.</c.P>
@@ -212,17 +212,7 @@ export default class Content extends Component {
           <c.P>In the character 八 <i>eight</i>, the short left hand dot starts firmly at the right and tapers evenly down towards the left. If you compare this with the character 人 <i>man</i>, <i>person</i>, you see that the dot in 八 is actually just a shorter version of the left downward stroke人.</c.P>
           <c.PartTitle name="words" />
           {newWords()}
-          <c.PartTitle anchor="review" name="review" />
-          <c.P
-            buttonOptions={{
-              type: 'practice',
-              data: {
-                elementId: practiceIds[0]
-              }
-            }}
-          >
-            <i>Now, go through the review exercises to practice pronunciation, grammar and character writing. Then do the Exam to progress to the next Lesson.</i>
-          </c.P>
+          <c.Review practiceId={practiceIds[0]} />
           <c.Exam />
         </c.Page>
       </div>

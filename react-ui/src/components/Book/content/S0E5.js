@@ -11,24 +11,20 @@ export default class Content extends Component {
 
   render() {
     const { newCharacters, example, lessonTitle, dialog, grammarTitle,
-      practiceIds, newWords } = this.props;
+      practiceIds, newWords, pronunciationTitle } = this.props;
     return (
       <div>
         <c.Page>
           {lessonTitle()}
           <Objective
             text="A more polite way of inquiring about somebody's name."
-            pronunciations={[
-              'The final -ie is spelled ye when there is no initial',
-              'The e sound in final -en is pronounced like ea in learn'
-            ]}
           />
           <c.PartTitle name="pronunciation" />
-          <c.PartTitle type="secondary"><span>A. The final <b>-ie</b> is spelled <b>ye</b> when there is no initial</span></c.PartTitle>
+          {pronunciationTitle()}
           <c.P>
             We have already learned that the Chinese final <b>-i</b> is written <b>yi</b> when there is no initial before it (when it comes first in a syllable). In the same way, when there is no initial, the final <b>-ie</b> is spelled <b>ye</b> in pīnyīn.
           </c.P>
-          <c.PartTitle type="secondary"><span>B. The <b>e</b> sound in final <b>-en</b> is pronounced like <i>ea</i> in <i>learn</i></span></c.PartTitle>
+          {pronunciationTitle()}
           <c.P
             buttonOptions={{
               type: 'audio',

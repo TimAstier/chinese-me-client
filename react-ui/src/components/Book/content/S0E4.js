@@ -11,20 +11,16 @@ export default class Content extends Component {
 
   render() {
     const { newCharacters, example, lessonTitle, dialog, grammarTitle,
-      practiceIds, newWords, image } = this.props;
+      practiceIds, newWords, image, pronunciationTitle } = this.props;
     return (
       <div>
         <c.Page>
           {lessonTitle()}
           <Objective
             text="How to tell someone your age."
-            pronunciations={[
-              'Spelling of -i when it comes first in a syllable',
-              'Pronunciation of the finals -ui and -iu'
-            ]}
           />
           <c.PartTitle name="pronunciation" />
-          <c.PartTitle type="secondary"><span>A. Spelling of <b>-i</b> when it comes first in a syllable</span></c.PartTitle>
+          {pronunciationTitle()}
           <c.P
             buttonOptions={{
               type: 'audio',
@@ -35,7 +31,7 @@ export default class Content extends Component {
           >
             When <b>-i</b> comes first in a syllable (when there is no initial), it is written <b>yi</b> in <b>pīnyīn</b>; the pronunciation is still <i>ee</i>, as if it had been written just <b>i</b>.
           </c.P>
-          <c.PartTitle type="secondary">B. Pronunciation of the finals -ui and -iu</c.PartTitle>
+          {pronunciationTitle()}
           <c.P>Compare the sounds on the following syllables:</c.P>
           <c.Bookrow
             buttonOptions={{

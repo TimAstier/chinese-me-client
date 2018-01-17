@@ -7,6 +7,7 @@ import { ChapterHeader, CharacterBox, MapItem }
 import { ScreenButton } from '../.';
 import exerciseIcon from '../../images/exerciseIcon.svg';
 import examIcon from '../../images/examIcon.svg';
+import { getTitleLetter } from '../../utils/bookContent';
 
 
 const Wrapper = styled.div`
@@ -115,10 +116,13 @@ class MapContent extends Component {
     const { episode, focusedSeasonNumber } = this.props;
     if (this.props.grammars.length !== 0) {
       const grammarItems = this.props.grammars.map((g, i) => {
+        const title = this.props.grammars.length > 1 ?
+          getTitleLetter(i + 1) + '. ' + g.translations[0].title
+          : g.translations[0].title;
         return (
           <MapItem
             key={i}
-            title={g.translations[0].title}
+            title={title}
             // completed={g.userGrammars.length !== 0 ? true : undefined}
             onClick={() => this.props.mapLinkClick(
               `/study/season/${focusedSeasonNumber}/episode/${episode.number}#grammar-${g.id}`
@@ -126,7 +130,7 @@ class MapContent extends Component {
           />
         );
       });
-      return <ContentItemsWrapper>{grammarItems}</ContentItemsWrapper>;
+      return (<ContentItemsWrapper>{grammarItems}</ContentItemsWrapper>);
     }
     return null;
   }
@@ -135,10 +139,13 @@ class MapContent extends Component {
     const { episode, focusedSeasonNumber } = this.props;
     if (this.props.pronunciations.length !== 0) {
       const pronunciationItems = this.props.pronunciations.map((p, i) => {
+        const title = this.props.pronunciations.length > 1 ?
+          getTitleLetter(i + 1) + '. ' + p.translations[0].title
+          : p.translations[0].title;
         return (
           <MapItem
             key={i}
-            title={p.translations[0].title}
+            title={title}
             // completed={p.userGrammars.length !== 0 ? true : undefined}
             onClick={() => this.props.mapLinkClick(
               `/study/season/${focusedSeasonNumber}/episode/${episode.number}#pronunciation-${p.id}`

@@ -10,20 +10,16 @@ export default class Content extends Component {
 
   render() {
     const { newCharacters, example, lessonTitle, dialog, grammarTitle,
-      practiceIds, newWords } = this.props;
+      practiceIds, newWords, pronunciationTitle } = this.props;
     return (
       <div>
         <c.Page>
           {lessonTitle()}
           <Objective
             text="Explaining why you want to study Chinese."
-            pronunciations={[
-              'When there is no initial, the final -ui is spelled wei in pīnyīn',
-              'The final -üe is spelled -ue, without umlaut dots, after x-, j-, q- and when there is no initial (y-)'
-            ]}
           />
           <c.PartTitle name="pronunciation" />
-          <c.PartTitle type="secondary">A. When there is no initial, the final -ui is spelled wei in pīnyīn</c.PartTitle>
+          {pronunciationTitle()}
           <c.P>Compare the sounds:</c.P>
           <c.P
             buttonOptions={{
@@ -52,7 +48,7 @@ export default class Content extends Component {
               }
             }}
           ><b>guì</b></c.P>
-          <c.PartTitle type="secondary">B. The final -üe is spelled -ue, without umlaut dots, after x-, j-, q- and when there is no initial (y-)</c.PartTitle>
+          {pronunciationTitle()}
           <c.P
             buttonOptions={{
               type: 'audio',

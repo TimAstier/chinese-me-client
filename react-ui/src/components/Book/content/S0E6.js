@@ -11,20 +11,16 @@ export default class Content extends Component {
 
   render() {
     const { newCharacters, example, lessonTitle, dialog, practiceIds,
-      newWords, grammarTitle } = this.props;
+      newWords, grammarTitle, pronunciationTitle } = this.props;
     return (
       <div>
         <c.Page>
           {lessonTitle()}
           <Objective
             text="How to greet people a bit more formally."
-            pronunciations={[
-              'Two different sounds are spelled a in pīnyīn',
-              'Raising your tone at the end of a question'
-            ]}
           />
           <c.PartTitle name="pronunciation" />
-          <c.PartTitle type="secondary">A. Two different sounds are spelled a in pīnyīn</c.PartTitle>
+          {pronunciationTitle()}
           <c.P>If you listen to the pronunciation of the characters in this lesson, you will notice that two different sounds are both spelled with the pīnyīn letter <b>a</b>. In the finals -<b>ao</b> and <b>-iao</b>, for example, the <b>a</b> is pronounced like English <i>o</i> in <i>how</i>:</c.P>
           <c.Bookrow>
             <c.Ul>
@@ -39,7 +35,7 @@ export default class Content extends Component {
               <li><Row><c.Char>先</c.Char><c.Pinyin>xiān</c.Pinyin><c.Meaning>first</c.Meaning></Row></li>
             </c.Ul>
           </c.Bookrow>
-          <c.PartTitle type="secondary">B. Raising your tone at the end of a question</c.PartTitle>
+          {pronunciationTitle()}
           <c.P>Just like in English, you have to raise your tone at the end of a sentence when you ask a question:</c.P>
           <c.Bookrow>
             <c.Ul>

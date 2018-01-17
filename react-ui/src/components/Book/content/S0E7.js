@@ -11,19 +11,16 @@ export default class Content extends Component {
 
   render() {
     const { newCharacters, example, lessonTitle, dialog, grammarTitle,
-      practiceIds, newWords } = this.props;
+      practiceIds, newWords, pronunciationTitle } = this.props;
     return (
       <div>
         <c.Page>
           {lessonTitle()}
           <Objective
             text="How to say when you were born and to which Chinese zodiac animal you belong."
-            pronunciations={[
-              'The final -üe is spelled yue when there is no initial'
-            ]}
           />
           <c.PartTitle name="pronunciation" />
-          <c.PartTitle type="secondary"><span>The final <b>-üe</b> is spelled <b>yue</b> when there is no initial</span></c.PartTitle>
+          {pronunciationTitle()}
           <c.P>We have previously seen that the finals -i, -ü and -ie are spelled with a y when there is no initial in the syllable: <b>yi</b>, <b>yu</b> and <b>yie</b>.</c.P>
           <c.P>The same is true for <b>-üe</b>, which is written <b>yue</b>. This is a combination of two spelling rules: <b>i</b> and <b>ü</b> are always preceded by y if they come first in a syllable, and <b>ü</b> is in this case spelled <b>u</b>, without the umlaut dots.</c.P>
           <c.PartTitle name="characters" />

@@ -11,19 +11,16 @@ export default class Content extends Component {
 
   render() {
     const { newCharacters, example, lessonTitle, dialog, grammarTitle,
-      practiceIds, newWords } = this.props;
+      practiceIds, newWords, pronunciationTitle } = this.props;
     return (
       <div>
         <c.Page>
           {lessonTitle()}
           <Objective
             text="How to say that you can speak Chinese."
-            pronunciations={[
-              'Spelling of final -ing'
-            ]}
           />
           <c.PartTitle name="pronunciation" />
-          <c.PartTitle type="secondary"><span>Spelling of final <b>-ing</b></span></c.PartTitle>
+          {pronunciationTitle()}
           <c.P>Just as in the other cases we have seen, the final <b>-ing</b> is spelled <b>ying</b> when there is no initial. In other words, the <b>y</b> is silent:</c.P>
           <c.P
             buttonOptions={{

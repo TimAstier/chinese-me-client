@@ -9,19 +9,16 @@ export default class Content extends Component {
 
   render() {
     const { newCharacters, example, lessonTitle, dialog, grammarTitle,
-      practiceIds, newWords } = this.props;
+      practiceIds, newWords, pronunciationTitle } = this.props;
     return (
       <div>
         <c.Page>
           {lessonTitle()}
           <Objective
             text="The importance of being humble in Chinese."
-            pronunciations={[
-              'Characters with more than one pronunciation'
-            ]}
           />
           <c.PartTitle name="pronunciation" />
-          <c.PartTitle type="secondary">Characters with more than one pronunciation</c.PartTitle>
+          {pronunciationTitle()}
           <c.P>A few characters can be pronounced in more than one way. For example, we have learned that 好 is pronounced <b>hǎo</b> and means <i>good</i>. But 好 can also be a verb meaning <i>to like</i>; in this case it has tone four: <b>hào</b>. This meaning - and pronunciation - of 好 only appears as part of words, such as 好客 <b>hàokè</b> <i>hospitable</i> which literally means <i>to like guests</i>.</c.P>
           <c.PartTitle name="characters" />
           <c.P><i>Practice the stroke order animations. Some characters have material on Stories and Calligraphy.</i></c.P>

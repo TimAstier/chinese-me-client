@@ -7,14 +7,13 @@ import s from '../../../rootSelectors';
 import { actions as sagaActions } from '../../../sagas/actions';
 
 class BookButton extends Component {
-
   _url = () => {
     switch (this.props.buttonOptions.type) {
-      case 'writing':
-        return `/study/${this.props.episodeId}/character/${this.props.buttonOptions.data.elementId}/writing`;
+      case 'calligraphy':
+        return `/study/${this.props.episodeId}/character/${this.props.buttonOptions.data.elementId}/calligraphy`;
       case 'dialog':
         return `/study/${this.props.episodeId}/dialog/${this.props.buttonOptions.data.elementId}/explore`;
-      case 'story':
+      case 'etymology':
         return `/study/${this.props.episodeId}/character/${this.props.buttonOptions.data.elementId}/etymology`;
       case 'stroke':
         return `/study/${this.props.episodeId}/character/${this.props.buttonOptions.data.elementId}/animation`;
@@ -49,9 +48,9 @@ BookButton.propTypes = {
   push: propTypes.func.isRequired,
   buttonOptions: propTypes.shape({
     type: propTypes.oneOf([
-      'writing',
+      'calligraphy',
       'dialog',
-      'story',
+      'etymology',
       'stroke',
       'practice',
       'exam',

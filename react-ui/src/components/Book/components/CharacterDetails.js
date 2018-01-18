@@ -64,10 +64,10 @@ class CharacterDetails extends Component {
                 />
             }
             {
-              this.props.writingUrl && !this.props.hideLinks === true &&
+              this.props.calligraphyHash && !this.props.hideLinks === true &&
                 <C.BookButton
                   buttonOptions={{
-                    type: 'writing',
+                    type: 'calligraphy',
                     data: {
                       elementId: this.props.id
                     }
@@ -75,10 +75,10 @@ class CharacterDetails extends Component {
                 />
             }
             {
-              this.props.etymologyUrl && !this.props.hideLinks === true &&
+              this.props.etymologyHash && !this.props.hideLinks === true &&
                 <C.BookButton
                   buttonOptions={{
-                    type: 'story',
+                    type: 'etymology',
                     data: {
                       elementId: this.props.id
                     }
@@ -109,8 +109,8 @@ CharacterDetails.propTypes = {
   simpChar: propTypes.string,
   meaning: propTypes.string,
   id: propTypes.number,
-  writingUrl: propTypes.string,
-  etymologyUrl: propTypes.string,
+  calligraphyHash: propTypes.string,
+  etymologyHash: propTypes.string,
   hidePinyin: propTypes.bool,
   hideMeaning: propTypes.bool,
   hideLinks: propTypes.bool,

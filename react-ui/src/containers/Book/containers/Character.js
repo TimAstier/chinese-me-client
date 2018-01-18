@@ -28,8 +28,8 @@ class Character extends Component {
         simpChar={this.props.character.simpChar}
         meaning={this.props.character.meaning}
         id={this.props.character.id}
-        writingUrl={this.props.character.writingUrl}
-        etymologyUrl={this.props.character.etymologyUrl}
+        calligraphyHash={this.props.character.calligraphyHash}
+        etymologyHash={this.props.character.etymologyHash}
         hidePinyin={this.props.options ? this.props.options.hidePinyin : undefined}
         hideMeaning={this.props.options ? this.props.options.hideMeaning : undefined}
         hideLinks={this.props.options ? this.props.options.hideLinks : undefined}

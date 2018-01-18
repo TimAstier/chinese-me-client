@@ -10,6 +10,7 @@ export { default as Chinese } from './Chinese';
 export { default as Dialog } from './Dialog';
 export { default as Exam } from './Exam';
 export { default as Example } from './Example';
+export { default as Frame } from './Frame';
 export { default as GrammarTitle } from './GrammarTitle';
 export { default as LessonTitle } from './LessonTitle';
 export { default as Link } from './Link';

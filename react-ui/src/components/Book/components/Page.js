@@ -22,6 +22,9 @@ const Wrapper = styled.div`
 
 const Body = styled.div`
   flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const Footer = styled.div`

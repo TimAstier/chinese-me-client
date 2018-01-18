@@ -1,0 +1,16 @@
+import React, { Component } from 'react';
+import { bookComponents as c } from '../../.';
+// import { Row } from '../../Shared';
+
+export default class Content extends Component {
+  render() {
+    return (
+      <div>
+        <c.P>On the oracle bones, <c.Chinese>见</c.Chinese> was a picture of a huge <i>eye</i> on top of a <i>human</i> – a wonderful illustration of the abstract concept <i>look, see</i>:</c.P>
+        <c.Bookrow><img src="https://s3.eu-west-2.amazonaws.com/chineseme/images/see_1.png" alt="" /></c.Bookrow>
+        The traditional character kept all the strokes of the oracle bone eye, but they are gone from the simplified character:
+        <c.Bookrow><img src="https://s3.eu-west-2.amazonaws.com/chineseme/images/see_2.png" alt="" /></c.Bookrow>
+      </div>
+    );
+  }
+}

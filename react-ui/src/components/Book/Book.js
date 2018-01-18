@@ -6,7 +6,6 @@ import { ContentHOC } from '../.';
 const Preload = require('react-preload').Preload;
 
 class Book extends Component {
-
   render() {
     const Content = this.props.content;
     // TODO: display unfound page

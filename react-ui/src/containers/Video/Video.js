@@ -6,7 +6,6 @@ import s from '../../rootSelectors';
 import * as models from '../../models';
 
 class Video extends Component {
-
   render() {
     return <StudyVideo videoUrl={this.props.video.videoUrl} />;
   }

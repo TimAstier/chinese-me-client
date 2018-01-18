@@ -1,0 +1,21 @@
+// Keep in alphabetical order
+export { default as call } from './call';
+export { default as country } from './country';
+export { default as good } from './good';
+export { default as jade } from './jade';
+export { default as king } from './king';
+export { default as middle } from './middle';
+export { default as cowrie } from './cowrie';
+export { default as tall } from './tall';
+export { default as recognize } from './recognize';
+export { default as polite } from './polite';
+export { default as small } from './small';
+export { default as see } from './see';
+export { default as walk } from './walk';
+export { default as be } from './be';
+export { default as sun } from './sun';
+export { default as moon } from './moon';
+export { default as compare } from './compare';
+export { default as large } from './large';
+export { default as horse } from './horse';
+export { default as sheep } from './sheep';

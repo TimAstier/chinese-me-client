@@ -14,7 +14,6 @@ const Wrapper = styled.div`
 `;
 
 class ScrollableWrapper extends Component {
-
   componentDidMount() {
     const id = this._scrollId();
     if (id) {

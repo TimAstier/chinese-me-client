@@ -7,7 +7,6 @@ import { actions as studyActions } from '../../redux/study';
 import s from '../../rootSelectors';
 
 class EpisodeHOC extends Component {
-
   componentWillMount() {
     this._setStudyData();
   }

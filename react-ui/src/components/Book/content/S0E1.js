@@ -5,6 +5,8 @@ import pinyinNumberToAudioUrl from '../../../utils/pinyinNumberToAudioUrl';
 import { Row } from '../../Shared';
 import pinyinize from 'pinyinize';
 import insertVariables from '../../../utils/insertVariables';
+import { king as OracleBone1 } from '../etymology';
+import { call as OracleBone2 } from '../etymology';
 
 export default class Content extends Component {
   static propTypes = contentPropTypes
@@ -268,42 +270,8 @@ export default class Content extends Component {
           <c.P>Listen to the audio voice and practice reading the pīnyīn a few times:</c.P>
           {example(4, { basic: true, audio: true })}
           <c.PartTitle>ORACLE BONES</c.PartTitle>
-          <c.P>So where do Chinese characters come from? We know from archaeological finds that they were originally pictures. During the <b>Shāng</b> dynasty, more than 3,000 years ago, the oracles at the royal court used the shells of turtles and shoulder blades of oxen to tell the future.</c.P>
-          <c.Bookrow center>{image()}</c.Bookrow>
-          <c.P>To do this, they placed glowing hot bronze rods against the bone until it cracked from the heat. The soothsayers interpreted these cracks as answers to their questions about the future.</c.P>
-          <c.P>To record the questions and answers, they inscribed each bone with a pictorial script which archeologists have shown to be a primitive forms of modern Chinese characters. We call them <i>oracle bone</i> characters.</c.P>
-          <c.PartTitle type="secondary">Pictograms</c.PartTitle>
-          <c.P>The simplest and most ancient characters are pictures. Some of these are so clear, and so similar to the modern character, that they are still easy to understand – even when they are symbols of abstract concepts. On the oracle bone above, we immediately recognize the symbols for <i>one</i>, <i>two</i> and <i>three</i>.</c.P>
-          <c.Bookrow center>{image()}</c.Bookrow>
-          <c.P>Some symbols are a bit trickier to understand. The character for <i>king</i>, for example, was originally a picture of an ax head. Weapons were the ultimate source of power, so this picture was used to symbolize <i>king</i>.</c.P>
-          <c.Bookrow>{image()}</c.Bookrow>
-          <c.P><i>King</i> is the most common family name in China. Today, it is written like this:</c.P>
-          <c.Bookrow><c.Space width={50}/><c.Char fontSize={70}>王</c.Char></c.Bookrow>
-          <c.PartTitle type="secondary">Radicals for meaning – phonetics for sound</c.PartTitle>
-          <c.P>As the written language developed and more characters were needed, the ancient scribes started combining simple pictorial elements into more complex characters. Some elements were chosen for <i>meaning</i>; others for <i>sound</i>.</c.P>
-          <c.P>As an example, let us look again at the character meaning <i>to scold, tell somebody off</i>:</c.P>
-          <c.Bookrow>
-            <Row>
-              <c.Char>骂</c.Char>
-              <c.Pinyin>mà</c.Pinyin>
-              <c.Meaning>scold</c.Meaning>
-            </Row>
-          </c.Bookrow>
-          <c.P>It is made up of two ancient character elements: <c.Chinese>口</c.Chinese> <i>mouth</i>, and <c.Chinese>马</c.Chinese> <i>horse</i>. Why did scribes choose these two components?</c.P>
-          <c.P>The <i>mouth</i> element contributes <i>meaning</i>. It appears in characters such as <i>eat</i>, <i>drink</i>, <i>kiss</i> and <i>ask</i> – things you do with your mouth. A character component indicating meaning in this way is called a <i>radical</i>. In the character for <i>scold</i>, the radical is duplicated for emphasis: there are two <i>mouths</i> that really illustrate somebody getting a good telling-off.</c.P>
-          <c.P>The <i>horse</i> component has nothing to do with meaning. It was chosen to give an indication of <i>pronunciation</i> and also appears in several other characters that sound similar to <c.Chinese>骂</c.Chinese>, for example <i>mother</i>, which has <i>woman</i> as radical:</c.P>
-          <c.Bookrow>
-            <Row>
-              <c.Char>妈</c.Char>
-              <c.Pinyin>mā</c.Pinyin>
-              <c.Meaning>mother</c.Meaning>
-            </Row>
-          </c.Bookrow>
-          <c.P>A character element indicating sound in this way is called a <i>phonetic</i>. To summarize, the ancient scribes would make new characters by combining a radical for meaning with a phonetic for sound to write “something you do with your mouth which sounds similar to horse” or “a female person which sounds similar to horse”:</c.P>
-          <c.Bookrow>{image()}</c.Bookrow>
-          <c.P>The radical 口 <i>mouth</i> also appears in the character 叫 <i>to call</i>:</c.P>
-          <c.Bookrow>{image()}</c.Bookrow>
-          <c.P>Clearly, <i>calling</i> is something you do with your mouth. But the pronunciation of the phonetic <c.Chinese>丩</c.Chinese> is <b>jīu</b>, which may not seem very similar to <b>jiào</b>. Over hundreds of years, the Chinese sound system has changed a lot, so the phonetic usually does not give us the exact modern pronunciation. In the same way, the radical of a character only points to a general category. Even so, these hints of meaning and pronunciation can make it easier for us to memorize characters. Some radicals are so common that you will quickly start to recognize them.</c.P>
+          <c.Frame><OracleBone1 /></c.Frame>
+          <c.Frame><OracleBone2 /></c.Frame>
           <c.PartTitle>CALLIGRAPHY</c.PartTitle>
           <c.P>Another aid in memorizing characters is to understand their aesthetics. The art of writing the characters beautifully is called <i>calligraphy</i>. It is an ancient art form that embodies many concepts of Chinese philosophy. Historically, good handwriting was seen as the hallmark of an educated person. Today, there is a revival of interest, and most Chinese children practice calligraphy at school.</c.P>
           <c.P>Practicing calligraphy is not something you <i>have</i> to do to learn Chinese. But many people find it enjoyable. The aesthetic principles help us develop a feel for the logic of how Chinese characters have been put together; the rhythm of writing each stroke makes the whole character come alive. After just a short while of practice, this will help you to see the characters in a new way. Have a try; in later lessons you can decide whether you want to continue writing calligraphy.</c.P>

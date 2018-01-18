@@ -5,6 +5,9 @@ import { content as contentPropTypes } from '../../../helpers/propTypes';
 import pinyinNumberToAudioUrl from '../../../utils/pinyinNumberToAudioUrl';
 import { Row } from '../../Shared';
 import insertVariables from '../../../utils/insertVariables';
+import { middle as OracleBone1 } from '../etymology';
+import { jade as OracleBone2 } from '../etymology';
+import { country as OracleBone3 } from '../etymology';
 
 export default class Content extends Component {
   static propTypes = contentPropTypes
@@ -311,9 +314,9 @@ export default class Content extends Component {
           </c.Bookrow>
           <c.P>You can review all the sounds in this lesson more thoroughly in the <i>Introduction to Chinese pronunciation and writing</i>.</c.P>
           <c.PartTitle>ORACLE BONES</c.PartTitle>
-          <c.Bookrow center>{image()}</c.Bookrow>
-          <c.Bookrow center>{image()}</c.Bookrow>
-          <c.Bookrow center>{image()}</c.Bookrow>
+          <c.Frame><OracleBone1/></c.Frame>
+          <c.Frame><OracleBone2/></c.Frame>
+          <c.Frame><OracleBone3/></c.Frame>
           <c.PartTitle>CALLIGRAPHY</c.PartTitle>
           <c.P>We have so far learned the <i>horizontal</i>, <i>vertical</i> and <i>hook</i> strokes. The character <c.Chinese>人</c.Chinese> <i>person</i> contains two new strokes: the <i>left</i> and <i>right downard</i> strokes.</c.P>
           <c.P>The left downward stroke is used as a “left leg” in many characters. It has the shape of an elephant tusk:</c.P>

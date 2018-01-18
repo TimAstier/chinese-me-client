@@ -24,17 +24,17 @@ import * as components from './components';
 /* ----- */
 
 export default (
-  <Route path="/" component={containers.App}>
+  <Route path="/" component={containers.App} >
     <Route path="signup" component={containers.SignupPage} />
     <Route path="signup/activated" component={components.ActivatedPage} />
     <Route path="signup/activate/:activationToken" component={containers.SignupActivate} />
     <Route path="signup/email_sent" component={components.EmailSentPage} />
     <Route path="login" component={containers.LoginPage} />
-    <Route path="study" component={containers.Study}>
+    <Route path="study" component={containers.Study} >
       <IndexRoute component={containers.SelectEpisode} />
       <Route path="help" component={components.Help} />
       <Route path="season/:seasonNumber/episode/:episodeNumber" component={containers.Book} />
-      <Route path=":episodeId" component={requireAuth(containers.EpisodeHOC)}>
+      <Route path=":episodeId" component={requireAuth(containers.EpisodeHOC)} >
         <Route path="character/:characterId/pinyin" component={containers.CharacterPinyin} />
         <Route path="character/:characterId/animation" component={containers.CharacterAnimation} />
         <Route path="character/:characterId/stroke" component={containers.CharacterStroke} />

@@ -53,12 +53,21 @@ class PartTitle extends Component {
     }
   }
 
+  _marginTop() {
+    if (this.props.noMargin) {
+      return undefined;
+    }
+    return this.props.type === 'secondary' || this.props.type === 'tertiary'
+      ? 10
+      : 60;
+  }
+
   render() {
     return (
       <Bookrow
         center={!this.props.type}
         buttonOptions={this.props.buttonOptions}
-        marginTop={this.props.type === 'secondary' || this.props.type === 'tertiary' ? 10 : 60}
+        marginTop={this._marginTop()}
       >
         <Element name={this.props.anchor}>
           <H2 fontSize={this._fontSize()} color={this._color()}>
@@ -86,7 +95,8 @@ PartTitle.propTypes = {
   children: propTypes.oneOfType([propTypes.string, propTypes.object]),
   type: propTypes.oneOf(['secondary', 'tertiary']),
   buttonOptions: propTypes.object,
-  anchor: propTypes.string
+  anchor: propTypes.string,
+  noMargin: propTypes.bool
   // linkUrl: propTypes.string
 };
 

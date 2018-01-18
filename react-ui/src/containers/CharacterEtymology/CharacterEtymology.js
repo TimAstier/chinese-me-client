@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
-import { StudyVideo } from '../../components';
+import { CharacterEtymology as CharacterEtymologyComponent } from '../../components';
 import s from '../../rootSelectors';
 import { Character } from '../../models';
+import * as content from '../../components/Book/etymology';
 
 class CharacterEtymology extends Component {
-
   render() {
-    return <StudyVideo videoUrl={this.props.character.etymologyUrl} />;
+    return (
+      <CharacterEtymologyComponent
+        content={content[this.props.character.etymologyHash]}
+        character={this.props.character.simpChar}
+      />
+    );
   }
 }
 

@@ -4,7 +4,6 @@ import { Bookrow } from './.';
 import { CharacterBox } from './.';
 
 class Character extends Component {
-
   render() {
     return (
       <Bookrow>

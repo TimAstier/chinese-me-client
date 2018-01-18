@@ -5,8 +5,9 @@ const CharacterRecord = Immutable.Record({
   simpChar: '',
   pinyinNumber: '',
   completed: false,
-  etymologyUrl: '',
-  writingUrl: '',
+  calligraphyVideo: '',
+  calligraphyHash: '',
+  etymologyHash: '',
   hanziData: null,
   meaning: ''
 });

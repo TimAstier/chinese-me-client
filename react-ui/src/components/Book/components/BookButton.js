@@ -29,9 +29,9 @@ const Img = styled.img`
 class BookButton extends Component {
   _image = () => {
     switch (this.props.type) {
-      case 'writing': return brushIcon;
+      case 'calligraphy': return brushIcon;
       case 'dialog': return dialogIcon;
-      case 'story': return storyIcon;
+      case 'etymology': return storyIcon;
       case 'stroke': return strokeIcon;
       case 'askUserSettings':
       case 'practice': return exerciseIcon;
@@ -52,9 +52,9 @@ class BookButton extends Component {
 BookButton.propTypes = {
   onClick: propTypes.func.isRequired,
   type: propTypes.oneOf([
-    'writing',
+    'calligraphy',
     'dialog',
-    'story',
+    'etymology',
     'stroke',
     'practice',
     'exam',

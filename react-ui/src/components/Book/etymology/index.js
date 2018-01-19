@@ -1,5 +1,4 @@
 // Keep in alphabetical order
-export { default as be } from './be';
 export { default as beautiful } from './beautiful';
 export { default as call } from './call';
 export { default as compare } from './compare';

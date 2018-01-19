@@ -39,7 +39,7 @@ export default (
         <Route path="character/:characterId/animation" component={containers.CharacterAnimation} />
         <Route path="character/:characterId/stroke" component={containers.CharacterStroke} />
         <Route path="character/:characterId/etymology" component={containers.CharacterEtymology} />
-        <Route path="character/:characterId/writing" component={containers.CharacterWriting} />
+        <Route path="character/:characterId/calligraphy" component={containers.CharacterCalligraphy} />
         <Route path="dialog/:dialogId/watch" component={containers.Dialog} />
         <Route path="dialog/:dialogId/explore" component={containers.Dialog} />
         <Route path="dialog/:dialogId/roleplay" component={containers.Dialog} />

@@ -298,7 +298,7 @@ export default class Content extends Component {
               }
             }}
           >
-            If you click on the calligraphy icon, you can see a video showing how to write it correctly. Print out an <a href="https://s3.eu-west-2.amazonaws.com/chineseme/pdf/Exercise+sheet.pdf" target="_blank" rel="noopener noreferrer">practice sheet</a> and use an ordinary, black ballpoint pen to practice writing it as beautifully as you can:
+            If you click on the calligraphy icon, you can see a video showing how to write it correctly. Print out a <a href="https://s3.eu-west-2.amazonaws.com/chineseme/pdf/Exercise+sheet.pdf" target="_blank" rel="noopener noreferrer">practice sheet</a> and use an ordinary, black ballpoint pen to practice writing it as beautifully as you can:
           </c.P>
           {character(1, { mode: 'practice' })}
           <c.PartTitle

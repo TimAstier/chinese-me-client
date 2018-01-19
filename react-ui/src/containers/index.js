@@ -7,6 +7,7 @@ export { default as App } from './App/App';
 export { default as AudioToWords } from './Exercises/AudioToWords/AudioToWords';
 export { default as Book } from './Book/Book';
 export { default as CharacterAnimation } from './CharacterAnimation/CharacterAnimation';
+export { default as CharacterCalligraphy } from './CharacterCalligraphy/CharacterCalligraphy';
 export { default as CharacterEtymology } from './CharacterEtymology/CharacterEtymology';
 export { default as CharacterPinyin } from './Exercises/CharacterPinyin/CharacterPinyin';
 export { default as CharacterStroke } from './Exercises/CharacterStroke/CharacterStroke';

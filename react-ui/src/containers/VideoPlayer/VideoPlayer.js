@@ -6,7 +6,6 @@ import s from '../../rootSelectors';
 import { actions as sagaActions } from '../../sagas/actions';
 
 class VideoPlayer extends Component {
-
   render() {
     return (
       <VideoPlayerComponent

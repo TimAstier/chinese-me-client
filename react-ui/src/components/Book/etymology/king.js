@@ -6,6 +6,7 @@ export default class Content extends Component {
   render() {
     return (
       <div>
+        <c.PartTitle type="secondary">Origins of Chinese characters</c.PartTitle>
         <c.P>So where do Chinese characters come from? We know from archaeological finds that they were originally pictures. During the <b>Shāng</b> dynasty, more than 3,000 years ago, the oracles at the royal court used the shells of turtles and shoulder blades of oxen to tell the future.</c.P>
         <c.Bookrow center><img src="https://s3.eu-west-2.amazonaws.com/chineseme/images/shell.png" alt="" width="560" /></c.Bookrow>
         <c.P>To do this, they placed glowing hot bronze rods against the bone until it cracked from the heat. The soothsayers interpreted these cracks as answers to their questions about the future.</c.P>

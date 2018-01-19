@@ -15,6 +15,15 @@ const Wrapper = styled.div`
   margin-right: auto;
 `;
 
+const MiddleWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+`;
+
 const TitleWrapper = styled.div`
   text-align: center;
 `;
@@ -46,9 +55,11 @@ class CharacterEtymology extends Component {
             </Title>
           </c.PartTitle>
         </TitleWrapper>
-        <ContentWrapper>
-          <this.props.content />
-        </ContentWrapper>
+        <MiddleWrapper>
+          <ContentWrapper>
+            <this.props.content />
+          </ContentWrapper>
+        </MiddleWrapper>
       </Wrapper>
     );
   }

@@ -123,8 +123,6 @@ export default class Content extends Component {
           {dialog(2, { sentenceType: 'chinese', displayNames: true })}
           <c.PartTitle name="words" />
           {newWords()}
-          <c.PartTitle>ORACLE BONES</c.PartTitle>
-          <c.PartTitle>CALLIGRAPHY</c.PartTitle>
           <c.Review practiceId={practiceIds[0]} />
           <c.Exam />
         </c.Page>

@@ -162,8 +162,6 @@ export default class Content extends Component {
           <c.Bookrow><Row><c.Char>- 你中文很好! </c.Char><c.Meaning>You speak very good Chinese.</c.Meaning></Row></c.Bookrow>
           <c.Bookrow><Row><c.Char>- 不好，不好。我中文很不好。</c.Char><c.Meaning>No, no, my Chinese is not good at all.</c.Meaning></Row></c.Bookrow>
           <c.P>Politeness established, the conversation may now move on to other topics. At this point, it can be appropriate to use <i>thank you</i> as a closer, showing that you accept the overdone praise by the other party.</c.P>
-          <c.PartTitle>ORACLE BONES</c.PartTitle>
-          <c.PartTitle>CALLIGRAPHY</c.PartTitle>
           <c.Review practiceId={practiceIds[0]} />
           <c.Exam />
         </c.Page>

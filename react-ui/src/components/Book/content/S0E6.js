@@ -121,8 +121,6 @@ export default class Content extends Component {
           {dialog(4, { sentenceType: 'chinese', displayNames: true })}
           <c.P>You are at the reception desk of a company, looking for Ms. Li. Present yourself to the receptionist.</c.P>
           {dialog(5, { sentenceType: 'chinese', displayNames: true })}
-          <c.PartTitle>ORACLE BONES</c.PartTitle>
-          <c.PartTitle>CALLIGRAPHY</c.PartTitle>
           <c.PartTitle name="words" />
           {newWords()}
           <c.Review practiceId={practiceIds[0]} />

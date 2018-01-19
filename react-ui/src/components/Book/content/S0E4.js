@@ -190,13 +190,13 @@ export default class Content extends Component {
             Numbers can also be used in puns which come to symbolize more complex ideas: May 21 is recognized as "Chinese Valentine's Day" because May is the fifth month and <b>wǔ</b> <i>five</i> sounds similar to <b>wǒ</b> <i>I</i>; <b>èryī</b> is interpreted as <b>ài nǐ</b> <i>love you</i>. Such puns are even used to create brand names: the job-hunting internet site 51job chose its name because <i>one</i> can be pronounced to sound like <i>want</i> and <i>five</i> like <i>I</i>.
             An educated Chinese reader who understands the English word <i>job</i> will immediately get the pun: “I want job”. This kind of punning is especially common in text messages and internet chats.
           </c.P>
-          <c.PartTitle>CALLIGRAPHY</c.PartTitle>
-          <c.P>The <i>dot</i> is one of the most common and versatile brush strokes. In this episode, we find two examples: <c.Chinese>六</c.Chinese> <i>six</i> and <c.Chinese>八</c.Chinese> <i>eight</i>. </c.P>
-          <c.P>In the character <c.Chinese>六</c.Chinese> <i>six</i> all strokes except the <i>horizontal</i> are dots. As you can see, these dots are written differently depending on where they appear in a character.</c.P>
-          <c.P>- The short top dot starts at the left and finishes with a slight increase of pressure down and left.</c.P>
-          <c.P>- The short left bottom dot starts firmly at the right and tapers evenly down towards the left.</c.P>
-          <c.P>- The elongated right bottom dot curves softly downward from left to right.</c.P>
-          <c.P>In the character <c.Chinese>八</c.Chinese> <i>eight</i>, the short left hand dot starts firmly at the right and tapers evenly down towards the left. If you compare this with the character <c.Chinese>人</c.Chinese> <i>man</i>, <i>person</i>, you see that the dot in <c.Chinese>八</c.Chinese> is actually just a shorter version of the left downward stroke <c.Chinese>人</c.Chinese>.</c.P>
+          {/* <c.PartTitle>CALLIGRAPHY</c.PartTitle>
+            <c.P>The <i>dot</i> is one of the most common and versatile brush strokes. In this episode, we find two examples: <c.Chinese>六</c.Chinese> <i>six</i> and <c.Chinese>八</c.Chinese> <i>eight</i>. </c.P>
+            <c.P>In the character <c.Chinese>六</c.Chinese> <i>six</i> all strokes except the <i>horizontal</i> are dots. As you can see, these dots are written differently depending on where they appear in a character.</c.P>
+            <c.P>- The short top dot starts at the left and finishes with a slight increase of pressure down and left.</c.P>
+            <c.P>- The short left bottom dot starts firmly at the right and tapers evenly down towards the left.</c.P>
+            <c.P>- The elongated right bottom dot curves softly downward from left to right.</c.P>
+          <c.P>In the character <c.Chinese>八</c.Chinese> <i>eight</i>, the short left hand dot starts firmly at the right and tapers evenly down towards the left. If you compare this with the character <c.Chinese>人</c.Chinese> <i>man</i>, <i>person</i>, you see that the dot in <c.Chinese>八</c.Chinese> is actually just a shorter version of the left downward stroke <c.Chinese>人</c.Chinese>.</c.P> */}
           <c.PartTitle name="words" />
           {newWords()}
           <c.Review practiceId={practiceIds[0]} />

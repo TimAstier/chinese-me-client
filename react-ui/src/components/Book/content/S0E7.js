@@ -141,8 +141,6 @@ export default class Content extends Component {
           <c.P>Some animals are more popular than others; a lot more babies are born in such years because many Chinese parents try to time having children then.</c.P>
           <c.PartTitle name="words" />
           {newWords()}
-          <c.PartTitle>ORACLE BONES</c.PartTitle>
-          <c.PartTitle>CALLIGRAPHY</c.PartTitle>
           <c.Review practiceId={practiceIds[0]} />
           <c.Exam />
         </c.Page>

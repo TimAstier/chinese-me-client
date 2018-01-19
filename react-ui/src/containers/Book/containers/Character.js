@@ -36,6 +36,7 @@ class Character extends Component {
         audio={this.props.options ? this.props.options.audio : undefined}
         anchor={this.props.anchor}
         radical={this.props.character.radical}
+        phonetic={this.props.character.phonetic}
       />
     );
   }

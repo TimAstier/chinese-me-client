@@ -10,6 +10,7 @@ const CharacterRecord = Immutable.Record({
   etymologyHash: '',
   hanziData: null,
   radical: '',
+  phonetic: '',
   meaning: ''
 });
 

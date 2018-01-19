@@ -83,7 +83,7 @@ export default class Content extends Component {
               }
             }}
           >
-            <i>Listen and repeat to the sounds.</i>
+            <i>Practice a few words with these sounds and spellings.</i>
           </c.P>
           <c.PartTitle name="characters" />
           {newCharacters()}
@@ -152,7 +152,7 @@ export default class Content extends Component {
               }
             }}
           >
-            <i>Practice.</i>
+            <i>Check your understanding of Topic-Comment constructions.</i>
           </c.P>
           {grammarTitle()}
           <c.P>In Chinese, it is often possible to omit words when they are clear from the context. In the second phrase below, the subject <c.Chinese>我</c.Chinese> <i>I</i> has been omitted:</c.P>
@@ -163,7 +163,6 @@ export default class Content extends Component {
           <c.PartTitle name="dialogs" />
           <c.PartTitle type="secondary">Presenting your age</c.PartTitle>
           {dialog(1, { sentenceType: 'chinese', displayNames: true })}
-          {/* {dialog(1, { sentenceType: 'pinyin', displayNames: true })} */}
           {dialog(1, { sentenceType: 'translation', displayNames: true })}
           <c.P
             buttonOptions={{
@@ -184,10 +183,10 @@ export default class Content extends Component {
           <c.PartTitle type="secondary">Number symbolism</c.PartTitle>
           <c.P>
             Number symbolism is so important in China that many people will pay extra for a “lucky” phone number or license plate.
-            There are also “unlucky” numbers that people tend to avoid. The most famous example is <c.Chinese>四</c.Chinese> <b>sì</b> <i>four</i>, which sounds similar to another character, <b>sǐ</b> <i>to die</i>. As a consequence, many Chinese buildings lack all floors ending in a 4: 4, 14, 24 and so on.
+            There are also “unlucky” numbers that people tend to avoid. The most famous example is <c.Chinese>四</c.Chinese> <b>sì</b> <i>four</i>, which sounds similar to another character, <b>sǐ</b> <i>to die</i>. As a consequence, many Chinese buildings lack all floors ending in this dreaded number: 4, 14, 24 and so on.
           </c.P>
           <c.P>
-            Numbers can also be used in puns which come to symbolize more complex ideas: May 21 is recognized as "Chinese Valentine's Day" because May is the fifth month and <b>wǔ</b> <i>five</i> sounds similar to <b>wǒ</b> <i>I</i>; <b>èryī</b> is interpreted as <b>ài nǐ</b> <i>love you</i>. Such puns are even used to create brand names: the job-hunting internet site 51job chose its name because <i>one</i> can be pronounced to sound like <i>want</i> and <i>five</i> like <i>I</i>.
+            Numbers can also be used in puns which come to symbolize more complex ideas: May 21 is recognized as "Chinese Valentine's Day" because May is the fifth month and <b>wǔ</b> <i>five</i> sounds similar to <b>wǒ</b> <i>I</i>; <b>èryī</b> is interpreted as <b>ài nǐ</b> <i>love you</i>. Such puns are even used to create brand names: the job-hunting internet site <i>51job</i> chose its name because <i>one</i> can be pronounced to sound like <i>want</i> and <i>five</i> like <i>I</i>.
             An educated Chinese reader who understands the English word <i>job</i> will immediately get the pun: “I want job”. This kind of punning is especially common in text messages and internet chats.
           </c.P>
           {/* <c.PartTitle>CALLIGRAPHY</c.PartTitle>

@@ -46,7 +46,7 @@ export default class Content extends Component {
               }
             }}
           >Type the correct tone on <c.Chinese>是</c.Chinese> <b>shi</b>. Repeat again after the recording.</c.P>
-          <c.P>Chinese <b>r-</b> is pronounced a bit like British English <i>r</i> (not a thick American <i>r</i>). The position of your tongue and mouth should be exactly the same as when you pronounce <b>sh-</b>. The difference is that <b>r-</b> is voiced and less aspirated. <i>Voiced</i> means that the vocal cords vibrate when you pronounce the sound; hold your fingers against your Adam’s apple and you can feel the vibration. <i>Aspirated</i> means there is a strong airflow; if you hold your palm in front of your mouth, you will feel strong stream of air as you pronounce <b>sh-</b>, but only a weak flow when you pronounce <b>r-</b>.</c.P>
+          <c.P>Chinese <b>r-</b> is pronounced a bit like British English <i>r</i> (not a thick American <i>r</i>). The position of your tongue and mouth should be exactly the same as when you pronounce <b>sh-</b>. The difference is that <b>r-</b> is voiced and less aspirated. <i>Voiced</i> means that the vocal cords vibrate when you pronounce the sound; hold your fingers against your Adam’s apple and you can feel the vibration. <i>Aspirated</i> means there is a strong airflow; if you hold your palm in front of your mouth, you will feel a strong stream of air as you pronounce <b>sh-</b>, but only a weak flow when you pronounce <b>r-</b>.</c.P>
           <c.Bookrow
             buttonOptions={{
               type: 'audio',
@@ -113,7 +113,7 @@ export default class Content extends Component {
               <c.Meaning>have as surname</c.Meaning>
             </Row>
           </c.Bookrow>
-          <c.P>Each of these syllables are written with a single character. But words can also be <i>polysyllabic</i>; two examples from this episode are:</c.P>
+          <c.P>Each of these syllables are written with a single character. But words can also be <i>polysyllabic</i>; two examples from this lesson are:</c.P>
           <c.Bookrow>
             <Row>
               <c.Char>中国</c.Char>
@@ -124,7 +124,7 @@ export default class Content extends Component {
           <c.Bookrow>
             <Row>
               <c.Char>中国人</c.Char>
-              <c.Pinyin>Zhōngguó rén</c.Pinyin>
+              <c.Pinyin>Zhōngguórén</c.Pinyin>
               <c.Meaning>Chinese (person)</c.Meaning>
             </Row>
           </c.Bookrow>
@@ -157,7 +157,7 @@ export default class Content extends Component {
             There are no spaces between words in written Chinese, so we have to determine from context which characters go together to form words. This may seem daunting, but it is no more difficult than hearing which syllables go together in any spoken language – after all, we don’t put “spaces” or pauses between words in spoken English either.
           </c.P>
           <c.P>
-            The fact that we can combine characters into polysyllabic words is good news for students of Chinese: you don’t always have to learn a new character for a new word. But the meaning of each character is useful for understanding the words where it appears.
+            The fact that we can combine characters into polysyllabic words is good news for students of Chinese: you don’t always have to learn a new character for a new word. And the meaning of each character is always useful for understanding a word where it appears.
           </c.P>
           <c.P>
             Some characters are no longer used independently at all; they can <i>only</i> appear as elements of polysyllabic words. Starting from this episode, new characters and new vocabulary will be presented under separate headings so that it will be clear which characters are real words that you can use, and which characters are simply “elements of meaning”. Single-character words will appear in both character and word lists.
@@ -169,11 +169,11 @@ export default class Content extends Component {
           <c.P>Chinese has a reputation for being difficult. Is this really true?</c.P>
           <c.P>Imagine that you are a Chinese student studying English. Your teacher asks you to describe your holiday:</c.P>
           <c.Bookrow flexDirection="column">
-            <Row lineHeight={30}><c.Space width={100}>Teacher:</c.Space><span>- Where did you go?</span></Row>
-            <Row lineHeight={30}><c.Space width={100}>You:</c.Space><span>- I go to Hong Kong.</span></Row>
-            <Row lineHeight={30}><c.Space width={100}>Teacher:</c.Space><span>- No, no, no: I <u>went</u> to Hong Kong. Have you visited Singapore?</span></Row>
-            <Row lineHeight={30}><c.Space width={100}>You:</c.Space><span>- No: I have never went to Singapore.</span></Row>
-            <Row lineHeight={30}><c.Space width={100}>Teacher:</c.Space><span>- I have never <u>gone</u> to Singapore.</span></Row>
+            <Row lineHeight={30}><c.Space width={100}>Teacher:</c.Space><span><i>Where did you go?</i></span></Row>
+            <Row lineHeight={30}><c.Space width={100}>You:</c.Space><span><i>I go to Hong Kong.</i></span></Row>
+            <Row lineHeight={30}><c.Space width={100}>Teacher:</c.Space><span><i>No, no, no: I <u>went</u> to Hong Kong. Have you visited Singapore?</i></span></Row>
+            <Row lineHeight={30}><c.Space width={100}>You:</c.Space><span><i>No: I have never went to Singapore.</i></span></Row>
+            <Row lineHeight={30}><c.Space width={100}>Teacher:</c.Space><span><i>I have never <u>gone</u> to Singapore.</i></span></Row>
           </c.Bookrow>
           <c.P>English words often change depending on the grammatical context. This does not happen in Chinese: it has no plurals (such as English <i>pen</i> and <i>pens</i>), no verb tenses (<i>go</i> – <i>went</i> – <i>gone</i>) and no comparatives of adjectives (<i>good</i> – <i>better</i> – <i>best</i>). In Chinese, the word always has the same form:</c.P>
           <c.Bookrow flexDirection="column">
@@ -189,7 +189,7 @@ export default class Content extends Component {
           {example(1, { audio: true })}
           {example(2, { audio: true })}
           {example(3, { audio: true })}
-          <c.P>We have already encountered <c.Chinese>是</c.Chinese> <b>shì</b> which functions like English <i>be</i> (am, is):</c.P>
+          <c.P>We have already encountered <c.Chinese>是</c.Chinese> <b>shì</b> which functions like English <i>be</i> (<i>am, is</i>):</c.P>
           {example(4, { audio: true })}
           <c.PartTitle name="dialogs" />
           <c.PartTitle type="secondary">Meet Yi and Yuguo</c.PartTitle>
@@ -318,8 +318,8 @@ export default class Content extends Component {
           <c.Frame><OracleBone2/></c.Frame>
           <c.Frame><OracleBone3/></c.Frame>
           <c.PartTitle>CALLIGRAPHY</c.PartTitle>
-          <c.P>We have so far learned the <i>horizontal</i>, <i>vertical</i> and <i>hook</i> strokes. The character <c.Chinese>人</c.Chinese> <i>person</i> contains two new strokes: the <i>left</i> and <i>right downard</i> strokes.</c.P>
-          <c.P>The left downward stroke is used as a “left leg” in many characters. It has the shape of an elephant tusk:</c.P>
+          <c.P>We have so far learned the <i>horizontal</i>, <i>vertical</i> and <i>hook</i> strokes. The character <c.Chinese>人</c.Chinese> <i>person</i> contains two new strokes: the <i>left</i> and <i>right downward</i> strokes.</c.P>
+          <c.P>The <i>left downward</i> stroke is used as a “left leg” in many characters. It has the shape of an elephant tusk:</c.P>
           <c.Bookrow>{image()}</c.Bookrow>
           <c.P>The right downward stroke is often used as the right leg of a character. It should stand firmly on a little “foot” at the end of the leg.</c.P>
           <c.P>To write this stroke, you should feel the pen striving upward to the right, even as it slopes gently downwards. You finish the stroke by pressing a bit harder and changing direction to create the stable little foot.</c.P>

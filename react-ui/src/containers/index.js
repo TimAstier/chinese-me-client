@@ -11,7 +11,6 @@ export { default as CharacterCalligraphy } from './CharacterCalligraphy/Characte
 export { default as CharacterEtymology } from './CharacterEtymology/CharacterEtymology';
 export { default as CharacterPinyin } from './Exercises/CharacterPinyin/CharacterPinyin';
 export { default as CharacterStroke } from './Exercises/CharacterStroke/CharacterStroke';
-export { default as CharacterWriting } from './CharacterWriting/CharacterWriting';
 export { default as ChoicesToOrder } from './Exercises/ChoicesToOrder/ChoicesToOrder';
 export { default as ChoseRole } from './Dialog/ChoseRole';
 export { default as CircleTimer } from './Exam/CircleTimer';

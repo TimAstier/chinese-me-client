@@ -312,8 +312,12 @@ export default class Content extends Component {
           >
             王 wáng king
           </c.PartTitle>
-          <c.P>This character is made up of three horizontal strokes which are connected by a vertical stroke.</c.P>
-          <c.P>These strokes are always written in the same order. Chinese people are taught this standard order for each character in school, and they always use it. The pen flows through the character in the same way every time, and this makes the characters easier to memorize, easier to recognize, and ultimately much faster to write. Stroke order is also the basis for one of the methods used to look up characters in dictionaries.</c.P>
+          <c.P>This character is made up of three horizontal strokes which are connected by another stroke: <i>vertical</i>. Unlike the <i>horizontal</i> stroke, the <i>vertical</i> stroke should be absolutely straight. But it still has a clear beginning and end:</c.P>
+          <c.Bookrow>
+            <c.CharacterBox simpChar="丨"/>
+          </c.Bookrow>
+          <c.P>But it is not enough to write each individual stroke correctly. The strokes must always be written in the same <i>order</i>.</c.P>
+          <c.P>Chinese people are taught this standard order for each character in school, and they always use it. The pen flows through the character in the same way every time, and this makes the characters easier to memorize, easier to recognize, and ultimately much faster to write. Stroke order is also the basis for one of the methods used to look up characters in dictionaries.</c.P>
           <c.P>Fortunately, most students find stroke order easy to remember. We need to memorize each character individually, but there are some general guidelines that make this easier: for example, characters are written <i>top</i> to <i>bottom</i>. The stroke order of <b>wáng</b> is an illustration of this rule.</c.P>
           <c.P>Now, practice writing it yourself, as beautifully as you can:</c.P>
           {character(2, { mode: 'practice' })}
@@ -328,7 +332,7 @@ export default class Content extends Component {
           >
             口 kǒu mouth, opening
           </c.PartTitle>
-          <c.P>This character consists of three strokes; the second stroke is a combination of a horizontal and a vertical as you can see from the stroke order animation.</c.P>
+          <c.P>This character consists of three strokes; the second stroke is a combination of a <i>horizontal</i> and a <i>vertical</i> as you can see from the stroke order animation.</c.P>
           <c.P>Practice writing:</c.P>
           {character(3, { mode: 'practice' })}
           <c.PartTitle
@@ -357,11 +361,11 @@ export default class Content extends Component {
             我 wǒ I, me
           </c.PartTitle>
           <c.P>Finally, let us practice a really beautiful character which is a bit more complex. The stroke order follows the general rules <i>top to bottom</i> and <i>left to right</i>, but as you can see, the dot on the upper right hand side is written last.</c.P>
-          <c.P>This character is dominated by the long hook on the right hand side, which needs to be given ample space to stretch out. The barb at the end of the hook gathers in the energy of the stroke and prevents it from flowing out of the character:</c.P>
+          <c.P>This character is dominated by a long, sweeping stroke which is called a <i>hook</i>. <i>Hooks</i> are exactly what the name implies: strokes which end in a sharp angle. The character <c.Chinese>我</c.Chinese> contains two examples: a vertical <i>hook</i> on the left, and the long <i>hook</i> on the right hand side, which needs to be given ample space to stretch out. The barb at the end of a <i>hook</i> gathers in the energy of the stroke and prevents it from flowing out of the character:</c.P>
           {character(5, { mode: 'box' })}
-          <c.P>If this hook is too short, the whole character looks lopsided:</c.P>
+          <c.P>If the dominating <i>hook</i> is too short, the whole character looks lopsided:</c.P>
           <c.Bookrow>{image()}</c.Bookrow>
-          <c.P>Since it is one of the most common characters in the Chinese language, writing it quickly will save you lots of time. If you practice writing it elegantly, you will develop a rhythm which will eventually make you faster. Look at the calligraphy video and try to mimic not just each stroke, but the flow of writing:</c.P>
+          <c.P>Since <c.Chinese>我</c.Chinese> is one of the most common characters in the Chinese language, writing it quickly will save you lots of time. If you practice writing it elegantly, you will develop a rhythm which will eventually make you faster. Look at the calligraphy video and try to mimic not just each stroke, but the flow of writing:</c.P>
           {character(5, { mode: 'practice' })}
           <c.PartTitle anchor="new-characters" name="characters"/>
           <c.P>Here are all the new characters in this lesson. Click on the stroke icon to review stroke order, on the brush icon to see calligraphy video, and on history icon to see the character etymology.</c.P>

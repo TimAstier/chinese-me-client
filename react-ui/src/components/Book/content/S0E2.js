@@ -123,7 +123,7 @@ export default class Content extends Component {
           </c.Bookrow>
           <c.P>You may have noticed that the first tone changes to Tone 2. This is an example of a <i>tone change rule</i>: sometimes, the tone on a character changes depending on the tone that comes after. This sounds complicated, but actually comes naturally as you get used to speaking; we just mention it so you won’t be surprised when it happens! The linguistic term for this kind of change is <i>tone sandhi</i>, from the sanscrit word <i>sandhi</i> meaning <i>change</i>.</c.P>
           {grammarTitle()}
-          <c.P>In the previous lesson, we learned to introduce ourselves using the verb 叫 which means <i>to be called</i>. The verb <c.Chinese>姓</c.Chinese> is used in a similar pattern to introduce one’s family name:</c.P>
+          <c.P>In the previous lesson, we learned to introduce ourselves using the verb <c.Chinese>叫</c.Chinese> which means <i>to be called</i>. The verb <c.Chinese>姓</c.Chinese> is used in a similar pattern to introduce one’s family name:</c.P>
           {example(1, { basic: true, audio: true, displayTranslation: true})}
           <c.P>So while <c.Chinese>叫</c.Chinese> means <i>to be called</i>, <c.Chinese>姓</c.Chinese> literally means <i>to have as family name</i>. The two words are often used together in presentations, a bit like when agent double-oh- seven introduces himself saying <i>My name is Bond; James Bond:</i></c.P>
           <c.Bookrow
@@ -173,7 +173,7 @@ export default class Content extends Component {
           </c.P>
           <c.PartTitle name="patterns" />
           {grammarTitle()}
-          <c.P>When Chinese people meet each other they often say the other person's name as a form of greeting. This is called to <c.Chinese>叫</c.Chinese> <i>call</i> someone.</c.P>
+          <c.P>When Chinese people meet each other they often say the other person's name as a form of greeting. This is called to <c.Chinese>叫</c.Chinese> <i>call</i> someone:</c.P>
           <c.Bookrow
             flexDirection="column"
             buttonOptions={{
@@ -199,7 +199,7 @@ export default class Content extends Component {
             <Row><Chinese>- 王一，你好！</Chinese><Translation>- Hi, Wang Yi!</Translation></Row>
             <Row><Chinese>- 你好！</Chinese><Translation>- Hi!</Translation></Row>
           </c.Bookrow>
-          <c.P>It is also common to add a title or a kinship term to the name when you call someone; we will see many examples of this later.</c.P>
+          <c.P>It is also common to add a title or a kinship term to the name when you <i>call</i> someone; we will see many examples of this later.</c.P>
           <c.PartTitle name="dialog" />
           <c.PartTitle type="secondary">Greeting people you know</c.PartTitle>
           {dialog(2, { sentenceType: 'chineseWithTranslation', displayNames: false })}
@@ -219,7 +219,7 @@ export default class Content extends Component {
           >
             <c.CharacterBox simpChar="女"/>
           </c.Bookrow>
-          <c.P>The long <i>horizontal</i> strokes is given plenty of space to spread out to the sides in a soft organic curve. But when a character like this appears as an element in a more complex character, it needs to cede some space to the other components:</c.P>
+          <c.P>The long <i>horizontal</i> stroke is given plenty of space to spread out to the sides in a soft organic curve. But when a character like this appears as an element in a more complex character, it needs to cede some space to the other components:</c.P>
           <c.Bookrow
             buttonOptions={{
               type: 'stroke',

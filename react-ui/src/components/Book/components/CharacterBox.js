@@ -16,7 +16,6 @@ const Wrapper = styled.div`
 `;
 
 class CharacterBox extends Component {
-
   render() {
     return (
       <Wrapper grey={this.props.grey}>

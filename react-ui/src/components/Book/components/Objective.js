@@ -22,7 +22,11 @@ class Objective extends Component {
     }
     this.props.pronunciationIds.forEach((id, i) => {
       array.push(
-        <div key={id}>{`${getTitleLetter(i + 1)}. ${this.props.pronunciations.get(String(id)).title}`}</div>
+        <div key={id}>
+          <i>
+            {`${getTitleLetter(i + 1)}. ${this.props.pronunciations.get(String(id)).title}`}
+          </i>
+        </div>
       );
     });
     return <c.P>{array}</c.P>;
@@ -35,7 +39,11 @@ class Objective extends Component {
     }
     this.props.grammarIds.forEach((id, i) => {
       array.push(
-        <div key={id}>{`${getTitleLetter(i + 1)}. ${this.props.grammars.get(String(id)).title}`}</div>
+        <div key={id}>
+          <i>
+            {`${getTitleLetter(i + 1)}. ${this.props.grammars.get(String(id)).title}`}
+          </i>
+        </div>
       );
     });
     return <c.P>{array}</c.P>;
@@ -47,7 +55,7 @@ class Objective extends Component {
         <c.PartTitle name="objective" />
         <br />
         <c.PartTitle type="secondary">Conversation skill</c.PartTitle>
-        <c.P>{this.props.text}</c.P>
+        <c.P><i>{this.props.text}</i></c.P>
         {
           (this.props.pronunciations.size !== 0) &&
             <c.PartTitle type="secondary">Pronunciation</c.PartTitle>

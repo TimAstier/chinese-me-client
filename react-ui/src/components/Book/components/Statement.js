@@ -79,7 +79,7 @@ class Statement extends Component {
         <LatinMeta>
           <Row>
             {this.props.name ? this.props.name : ''}
-            <Punct>{this.props.name ? ' : ' : '- '}</Punct>
+            {this.props.name ? ' : ' : '- '}
           </Row>
         </LatinMeta>
       );

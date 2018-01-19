@@ -6,6 +6,18 @@ const Scroll = require('react-scroll');
 const Element = Scroll.Element;
 
 class Dialog extends Component {
+  _buttonOptions() {
+    const { sentenceType } = this.props;
+    if (sentenceType === 'translation' || sentenceType === 'pinyin') {
+      return undefined;
+    }
+    return {
+      type: 'dialog',
+      data: { elementId: this.props.dialogId },
+      top: true
+    };
+  }
+
   render() {
     if (!this.props.statements) {
       return null;
@@ -23,11 +35,7 @@ class Dialog extends Component {
     return (
       <Bookrow
         flexDirection={'column'}
-        buttonOptions={{
-          type: 'dialog',
-          data: { elementId: this.props.dialogId },
-          top: true
-        }}
+        buttonOptions={this._buttonOptions()}
       >
         {
           this.props.sentenceType !== 'translation' &&

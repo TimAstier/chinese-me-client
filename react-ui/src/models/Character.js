@@ -9,6 +9,7 @@ const CharacterRecord = Immutable.Record({
   calligraphyHash: '',
   etymologyHash: '',
   hanziData: null,
+  radical: '',
   meaning: ''
 });
 

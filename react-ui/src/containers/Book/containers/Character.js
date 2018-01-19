@@ -35,6 +35,7 @@ class Character extends Component {
         hideLinks={this.props.options ? this.props.options.hideLinks : undefined}
         audio={this.props.options ? this.props.options.audio : undefined}
         anchor={this.props.anchor}
+        radical={this.props.character.radical}
       />
     );
   }

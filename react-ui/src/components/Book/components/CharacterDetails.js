@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import propTypes from 'prop-types';
 import pinyinize from 'pinyinize';
 import { bookContainers as C } from '../../../containers';
-import { Char, Pinyin, Meaning, Bookrow } from './.';
+import { Char, Pinyin, Bookrow } from './.';
 import pinyinNumberToAudioUrl from '../../../utils/pinyinNumberToAudioUrl';
 const Scroll = require('react-scroll');
 const Element = Scroll.Element;
@@ -30,6 +30,8 @@ const MeaningWrapper = styled.div`
   display: flex;
   flex: wrap;
   text-align: justify;
+  margin-left: 10px;
+  margin-top: 10px;
 `;
 
 class CharacterDetails extends Component {
@@ -95,7 +97,12 @@ class CharacterDetails extends Component {
           {
             !this.props.hideMeaning === true &&
               <MeaningWrapper>
-                <Meaning>{this.props.meaning}</Meaning>
+                <span>
+                  <i>{this.props.meaning}</i>
+                  {
+                    this.props.radical && `  (Radical: ${this.props.radical})`
+                  }
+                </span>
               </MeaningWrapper>
           }
         </Wrapper>
@@ -115,7 +122,8 @@ CharacterDetails.propTypes = {
   hideMeaning: propTypes.bool,
   hideLinks: propTypes.bool,
   audio: propTypes.bool,
-  anchor: propTypes.string
+  anchor: propTypes.string,
+  radical: propTypes.string
 };
 
 export default CharacterDetails;

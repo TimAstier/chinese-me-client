@@ -9,7 +9,7 @@ export { default as he } from './he';
 export { default as heart } from './heart';
 export { default as king } from './king';
 export { default as language } from './language';
-export { default as man } from './mouth';
+export { default as man } from './man';
 export { default as mouth } from './mouth';
 export { default as me } from './me';
 export { default as negation } from './negation';

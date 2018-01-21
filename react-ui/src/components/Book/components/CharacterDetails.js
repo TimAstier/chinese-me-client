@@ -24,6 +24,9 @@ const LinksWrapper = styled.div`
   width: 150px;
   display: flex;
 `;
+const Link = styled.div`
+  width: 40px;
+`;
 
 const MeaningWrapper = styled.div`
   max-width: 400px;
@@ -54,39 +57,45 @@ class CharacterDetails extends Component {
             <Char><Element name={this.props.anchor}>{this.props.simpChar}</Element></Char>
           </CharWrapper>
           <LinksWrapper>
-            {
-              !this.props.hideLinks === true &&
-                <C.BookButton
-                  buttonOptions={{
-                    type: 'stroke',
-                    data: {
-                      elementId: this.props.id
-                    }
-                  }}
-                />
-            }
-            {
-              this.props.calligraphyHash && !this.props.hideLinks === true &&
-                <C.BookButton
-                  buttonOptions={{
-                    type: 'calligraphy',
-                    data: {
-                      elementId: this.props.id
-                    }
-                  }}
-                />
-            }
-            {
-              this.props.etymologyHash && !this.props.hideLinks === true &&
-                <C.BookButton
-                  buttonOptions={{
-                    type: 'etymology',
-                    data: {
-                      elementId: this.props.id
-                    }
-                  }}
-                />
-            }
+            <Link>
+              {
+                !this.props.hideLinks === true &&
+                  <C.BookButton
+                    buttonOptions={{
+                      type: 'stroke',
+                      data: {
+                        elementId: this.props.id
+                      }
+                    }}
+                  />
+              }
+            </Link>
+            <Link>
+              {
+                this.props.etymologyHash && !this.props.hideLinks === true &&
+                  <C.BookButton
+                    buttonOptions={{
+                      type: 'etymology',
+                      data: {
+                        elementId: this.props.id
+                      }
+                    }}
+                  />
+              }
+            </Link>
+            <Link>
+              {
+                this.props.calligraphyHash && !this.props.hideLinks === true &&
+                  <C.BookButton
+                    buttonOptions={{
+                      type: 'calligraphy',
+                      data: {
+                        elementId: this.props.id
+                      }
+                    }}
+                  />
+              }
+            </Link>
           </LinksWrapper>
           {
             !this.props.hidePinyin === true &&

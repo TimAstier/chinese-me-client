@@ -49,7 +49,7 @@ const ContentWrapper = styled.div`
   padding-top: 15px;
   padding-bottom: 15px;
   max-width: 650px;
-  max-height: 490px;
+  max-height: 450px;
 `;
 
 const PrintWrapper = styled.div`
@@ -85,11 +85,12 @@ class CharacterEtymology extends Component {
             <this.props.content />
           </ContentWrapper>
           <VideoWrapper>
-            { this.props.videoUrl
-              ? <VideoPlayer
-                src={this.props.videoUrl}
-                width={500}
-                height={281}
+            {
+              (this.props.videoUrl) ?
+                <VideoPlayer
+                  src={this.props.videoUrl}
+                  width={500}
+                  height={281}
                 />
               : <img src="http://via.placeholder.com/500x281" alt="" />
             }

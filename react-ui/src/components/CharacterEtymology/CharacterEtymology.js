@@ -44,6 +44,9 @@ const ContentWrapper = styled.div`
 
 class CharacterEtymology extends Component {
   render() {
+    if (!this.props.content) {
+      return <div>'Error: Could not find etymology content file.'</div>;
+    }
     return (
       <Wrapper>
         <TitleWrapper>

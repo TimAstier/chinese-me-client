@@ -66,6 +66,9 @@ const PrintWrapper = styled.div`
 
 class CharacterEtymology extends Component {
   render() {
+    if (!this.props.content) {
+      return <div>'Error: Could not find calligrphy content file.'</div>;
+    }
     return (
       <Wrapper>
         <TitleWrapper>

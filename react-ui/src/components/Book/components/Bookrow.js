@@ -50,7 +50,7 @@ class Bookrow extends Component {
     switch (this.props.buttonOptions.type) {
       case 'audio':
         return this._renderAudioButton();
-      case 'writing':
+      case 'calligraphy':
       case 'dialog':
       case 'stroke':
       case 'story':
@@ -89,7 +89,7 @@ Bookrow.propTypes = {
   buttonOptions: propTypes.shape({
     type: propTypes.oneOf([
       'audio',
-      'writing',
+      'calligraphy',
       'dialog',
       'stroke',
       'story',

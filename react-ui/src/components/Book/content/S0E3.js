@@ -328,7 +328,7 @@ export default class Content extends Component {
           <c.Bookrow>{image()}</c.Bookrow>
           <c.P>Practice: Left and right downward strokes</c.P>
           {character(5, { mode: 'practice' })}
-          <c.P>人 is also the radical of 你 <i>you</i>, which we learned in the previous lesson. But here, the right downward stroke changes to a vertical stroke:</c.P>
+          <c.P>人 is also the radical of <c.Chinese>你</c.Chinese> <i>you</i>, which we learned in the previous lesson. But here, the right downward stroke changes to a vertical stroke:</c.P>
           <c.Bookrow><c.CharacterBox simpChar="亻" /></c.Bookrow>
           <c.P>The phonetic is a rare character from the classical language which we don’t need to learn. Practice writing:</c.P>
           <c.CharacterPractice characterId={9876} simpChar={'你'}/>

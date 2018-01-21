@@ -25,6 +25,7 @@ export default class Content extends Component {
             We have already learned that the Chinese final <b>-i</b> is written <b>yi</b> when there is no initial before it (when it comes first in a syllable). In the same way, when there is no initial, the final <b>-ie</b> is spelled <b>ye</b> in pīnyīn.
           </c.P>
           {pronunciationTitle()}
+          <c.P>Pīnyīn <b>e</b> is pronounced like English <i>ea</i> in <i>learn</i>.</c.P>
           <c.P
             buttonOptions={{
               type: 'audio',
@@ -36,6 +37,7 @@ export default class Content extends Component {
           >
             Listen to the audio voice and practice the pronunciation of <b>hěn</b> a few times.
           </c.P>
+          {pronunciationTitle()}
           <c.PartTitle name="characters" />
           {newCharacters()}
           <c.PartTitle name="patterns" />

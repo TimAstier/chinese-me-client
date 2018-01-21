@@ -292,7 +292,7 @@ export default class Content extends Component {
           {character(1, { mode: 'box' })}
           <c.P
             buttonOptions={{
-              type: 'stroke',
+              type: 'calligraphy',
               data: {
                 elementId: characterIds[0]
               }

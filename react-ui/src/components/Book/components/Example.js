@@ -64,7 +64,10 @@ class Example extends Component {
   _renderFull() {
     return (
       <Row>
-        <NumberWrapper>{this.props.code}</NumberWrapper>
+        {
+          this.props.code &&
+            <NumberWrapper>{this.props.code}</NumberWrapper>
+        }
         <SentenceWrapper>
           <Chinese>{this.props.chinese}</Chinese>
           <Pinyin>{this.props.pinyin}</Pinyin>
@@ -103,7 +106,7 @@ class Example extends Component {
 
 Example.propTypes = {
   basic: propTypes.bool,
-  code: propTypes.string.isRequired,
+  code: propTypes.string,
   chinese: propTypes.string.isRequired,
   pinyin: propTypes.string,
   translation: propTypes.string,

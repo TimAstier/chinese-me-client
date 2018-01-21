@@ -20,6 +20,7 @@ export default class Content extends Component {
           />
           <c.PartTitle name="pronunciation" />
           {pronunciationTitle()}
+          <c.P>When there is no initial, the final <b>-ui</b> is spelled <b>wei</b> in pīnyīn. So in spite of the apparent spelling, <b>huì</b>, <b>guì</b> are pronounced exactly as if they had been spelled hwèi and gwèi.</c.P>
           <c.P>Compare the sounds:</c.P>
           <c.P
             buttonOptions={{
@@ -49,6 +50,7 @@ export default class Content extends Component {
             }}
           ><b>guì</b></c.P>
           {pronunciationTitle()}
+          <c.P>We have already learned that the final <b>-üe </b> is spelled <b>-ue</b>, without umlaut dots, when there is no initial: <b>yue</b>. The same is true after after the initials x-, j- and q-.</c.P>
           <c.P
             buttonOptions={{
               type: 'audio',
@@ -93,7 +95,7 @@ export default class Content extends Component {
           {example(6, { audio: true })}
           <c.P>The transcription of <c.Chinese>什么</c.Chinese> can be confusing. Most dictionaries  just combine the pīnyīn for the individual characters, which results in "shénme̊" or "shénmo̊". But in natural speech, <c.Chinese>什么</c.Chinese> is always pronounced <b>shémme̊</b> - without any n-sound.</c.P>
           {grammarTitle()}
-          <c.P>One of the most common question words is <c.Chinese>为什么</c.Chinese> <b>wèishe̊mme̊</b> <i>why?</i> The character 为 <b>wèi</b> means <i>for</i>, <i>to some purpose</i>, so the literal translation of <c.Chinese>为什么</c.Chinese> <b>wèishe̊mme̊</b> is <i>for what</i>:</c.P>
+          <c.P>One of the most common question words is <c.Chinese>为什么</c.Chinese> <b>wèishe̊mme̊</b> <i>why?</i> The character <c.Chinese>为</c.Chinese> <b>wèi</b> means <i>for</i>, <i>to some purpose</i>, so the literal translation of <c.Chinese>为什么</c.Chinese> <b>wèishe̊mme̊</b> is <i>for what</i>:</c.P>
           {example(7, { audio: true })}
           {example(8, { audio: true })}
           <c.P><c.Chinese>为什么</c.Chinese> <b>wèishe̊mme̊</b> can also be placed at the beginning of the whole sentence:</c.P>

@@ -27,7 +27,7 @@ export default class Content extends Component {
           {newCharacters()}
           <c.PartTitle name="patterns" />
           {grammarTitle()}
-          <c.P>In Western languages, comparing two things means learning different forms of words ("good, better, best"). Chinese uses a simple Topic-Comment pattern with the "comparison" word <c.Chinese>比</c.Chinese> <b>bǐ</b> inserted between the things you want to compare:</c.P>
+          <c.P>In Western languages, comparing two things means learning different forms of words ("<i>good, better, best</i>"). Chinese uses a simple Topic-Comment pattern with the "comparison" word <c.Chinese>比</c.Chinese> <b>bǐ</b> inserted between the things you want to compare:</c.P>
           {example(1, { audio: true })}
           {example(2, { audio: true })}
           <c.P

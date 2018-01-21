@@ -70,7 +70,7 @@ export default class Content extends Component {
           <c.P>Remember that <c.Chinese>不</c.Chinese> <b>bù</b> negates whatever comes immediately after it. When we negate a statement with <c.Chinese>也</c.Chinese> <b>yě</b> <i>also</i> the resulting phrase can be translated using <i>not… either</i> in English:</c.P>
           {example(6, { audio: true })}
           {example(7, { audio: true })}
-          <c.P>But in questions with <c.Chinese>也</c.Chinese> <b>yě</b> <i>also</i> we actually have two possibilities. We can negate the meaning of the phrase following 也:</c.P>
+          <c.P>But in questions with <c.Chinese>也</c.Chinese> <b>yě</b> <i>also</i> we actually have two possibilities. We can negate the meaning of the phrase following <c.Chinese>也</c.Chinese>:</c.P>
           {example(8, { audio: true })}
           <c.P>The other possibility is to use <c.Chinese>不</c.Chinese> <b>bù</b> to negate <c.Chinese>也</c.Chinese> :</c.P>
           {example(9, { audio: true })}

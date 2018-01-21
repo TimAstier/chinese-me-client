@@ -8,6 +8,7 @@ import { ScreenButton } from '../.';
 import exerciseIcon from '../../images/exerciseIcon.svg';
 import examIcon from '../../images/examIcon.svg';
 import { getTitleLetter } from '../../utils/bookContent';
+import isEmpty from 'lodash/isEmpty';
 
 
 const Wrapper = styled.div`
@@ -96,10 +97,16 @@ class MapContent extends Component {
     const { episode, focusedSeasonNumber } = this.props;
     if (this.props.dialogs.length !== 0) {
       const dialogItems = this.props.dialogs.map((d, i) => {
+        if (isEmpty(d.translations)) {
+          return null;
+        }
+        if (!d.translations[0].titleTranslation) {
+          return null;
+        }
         return (
           <MapItem
             key={i}
-            title={d.chineseTitle}
+            title={d.translations[0].titleTranslation}
             // completed={d.userDialogs.length !== 0 ? true : undefined}
             onClick={() => this.props.mapLinkClick(
               `/study/season/${focusedSeasonNumber}/episode/${episode.number}#dialog-${d.id}`

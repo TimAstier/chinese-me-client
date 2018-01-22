@@ -15,6 +15,21 @@ export default class Content extends Component {
   render() {
     const { newCharacters, example, lessonTitle, dialog, character, settings,
       practiceIds, newWords, image, grammarTitle, pronunciationTitle } = this.props;
+
+    // This part comes between a dialog 'title' and 'intro'
+    const specialIntro = () => {
+      return (
+        <div>
+          <c.P>Now, it’s your turn to tell Wang Yi and Wang Yuguo where you are from. In Chinese, {insertVariables('[NATIONALITY_EN]', settings)} is:</c.P>
+          {example(6, { basic: true, audio: true })}
+          <c.P>Listen to the audio voice and repeat until you feel confident saying your country name.</c.P>
+          <c.P>
+            In order to say <i>I am from {insertVariables('[NATIONALITY_EN]', settings)}</i>, just add <c.Chinese>人</c.Chinese>. Listen and repeat:
+          </c.P>
+          {example(5, { basic: true, audio: true })}
+        </div>
+      );
+    };
     return (
       <div>
         <c.Page>
@@ -194,16 +209,7 @@ export default class Content extends Component {
           <c.PartTitle name="dialogs" />
           {dialog(1, { sentenceType: 'chineseWithTranslation', displayNames: false })}
           {dialog(2, { sentenceType: 'chineseWithTranslation', displayNames: false })}
-          <c.PartTitle type="secondary">Introduce yourself and where you are from</c.PartTitle>
-          <c.P>Now, it’s your turn to tell Wang Yi and Wang Yuguo where you are from. In Chinese, {insertVariables('[NATIONALITY_EN]', settings)} is:</c.P>
-          {example(6, { basic: true, audio: true })}
-          <c.P>Listen to the audio voice and repeat until you feel confident saying your country name.</c.P>
-          <c.P>
-            In order to say <i>I am from {insertVariables('[NATIONALITY_EN]', settings)}</i>, just add <c.Chinese>人</c.Chinese>. Listen and repeat:
-          </c.P>
-          {example(5, { basic: true, audio: true })}
-          <c.P>Now, introduce yourself to Wang Yi and Wang Yuguo:</c.P>
-          {dialog(3, { sentenceType: 'chinese', displayNames: true })}
+          {dialog(3, { sentenceType: 'chinese', displayNames: true, specialIntro })}
           <c.P>Repeat this until you feel comfortable.</c.P>
           <c.P>Now, change roles! Pretend you are Wang Yuguo, and introduce yourself.</c.P>
           <c.PartTitle>PINYIN PRACTICE</c.PartTitle>

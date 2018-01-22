@@ -17,6 +17,7 @@ class Dialog extends Component {
         title={this.props.dialog.titleTranslation}
         intro={this.props.dialog.intro}
         hideHeader={this.props.options.hideHeader}
+        specialIntro={this.props.options.specialIntro}
       />
     );
   }
@@ -32,7 +33,8 @@ Dialog.propTypes = {
       'chineseWithTranslation'
     ]),
     displayNames: propTypes.bool,
-    hideHeader: propTypes.bool
+    hideHeader: propTypes.bool,
+    specialIntro: propTypes.func
   }).isRequired
 };
 

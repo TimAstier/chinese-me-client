@@ -43,8 +43,13 @@ class Dialog extends Component {
     );
   }
 
+  _renderSpecialIntro() {
+    const { specialIntro } = this.props;
+    return specialIntro ? specialIntro() : null;
+  }
+
   _shouldDisplayHeader() {
-    if (!(this.props.sentenceType === 'chinese' || 'chineseWithTranslation')) {
+    if (!(this.props.sentenceType === 'chinese' || this.props.sentenceType === 'chineseWithTranslation')) {
       return false;
     }
     if (this.props.hideHeader === true) {
@@ -71,6 +76,7 @@ class Dialog extends Component {
       <div>
         <Element name={`dialog-${this.props.dialogId}`}/>
         { this._shouldDisplayHeader() && this._renderTitle() }
+        { this._shouldDisplayHeader() && this._renderSpecialIntro() }
         { this._shouldDisplayHeader() && this._renderIntro() }
         <Bookrow
           flexDirection={'column'}
@@ -90,7 +96,8 @@ Dialog.propTypes = {
   dialogId: propTypes.number.isRequired,
   title: propTypes.string,
   intro: propTypes.string,
-  hideHeader: propTypes.bool
+  hideHeader: propTypes.bool,
+  specialIntro: propTypes.func
 };
 
 export default Dialog;

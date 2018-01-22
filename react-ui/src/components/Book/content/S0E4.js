@@ -88,7 +88,7 @@ export default class Content extends Component {
           <c.PartTitle name="characters" />
           {newCharacters()}
           <c.PartTitle>Typing Chinese characters</c.PartTitle>
-          <c.P>Starting in this Episode, you will need to type Chinese characters in some of the exercises. To do this, you will need to download a Chinese character input method for your computer.</c.P>
+          <c.P>Starting in this lesson, you will need to type Chinese characters in some of the exercises. To do this, you will need to download a Chinese character input method for your computer.</c.P>
           <c.PartTitle name="patterns" />
           {grammarTitle()}
           <c.P>In Chinese, numbers are usually written with the same Arabic numerals that we use in the West. But the handwriting may be different from what you are used to:</c.P>
@@ -163,6 +163,8 @@ export default class Content extends Component {
           <c.PartTitle name="dialogs" />
           {dialog(1, { sentenceType: 'chinese', displayNames: true })}
           {dialog(1, { sentenceType: 'translation', displayNames: true })}
+          {dialog(7, { sentenceType: 'chinese', displayNames: true })}
+          {dialog(7, { sentenceType: 'translation', displayNames: true })}
           <c.P
             buttonOptions={{
               type: 'askUserSettings'

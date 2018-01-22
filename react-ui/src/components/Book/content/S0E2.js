@@ -140,7 +140,7 @@ export default class Content extends Component {
             <Row><Chinese>- 我姓王。</Chinese><Translation>- My family name is Wang.</Translation></Row>
             <Row><Chinese>- 我叫王一。 </Chinese><Translation>- My name is Wang Yi.</Translation></Row>
           </c.Bookrow>
-          <c.P>叫 <i>to be called</i> can also be used with only the given name instead of the full name:</c.P>
+          <c.P><c.Chinese>叫</c.Chinese> <i>to be called</i> can also be used with only the given name instead of the full name:</c.P>
           <c.Bookrow
             flexDirection="column"
             buttonOptions={{

@@ -175,7 +175,7 @@ export default class Content extends Component {
             The fact that we can combine characters into polysyllabic words is good news for students of Chinese: you don’t always have to learn a new character for a new word. And the meaning of each character is always useful for understanding a word where it appears.
           </c.P>
           <c.P>
-            Some characters are no longer used independently at all; they can <i>only</i> appear as elements of polysyllabic words. Starting from this episode, new characters and new vocabulary will be presented under separate headings so that it will be clear which characters are real words that you can use, and which characters are simply “elements of meaning”. Single-character words will appear in both character and word lists.
+            Some characters are no longer used independently at all; they can <i>only</i> appear as elements of polysyllabic words. Starting from this lesson, new characters and new vocabulary will be presented under separate headings so that it will be clear which characters are real words that you can use, and which characters are simply “elements of meaning”. Single-character words will appear in both character and word lists.
           </c.P>
           <c.PartTitle name="characters" />
           {newCharacters()}

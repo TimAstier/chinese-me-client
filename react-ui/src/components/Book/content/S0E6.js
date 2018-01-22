@@ -64,6 +64,7 @@ export default class Content extends Component {
           {grammarTitle()}
           <c.P>Function words, also called "particles", are an important feature of Chinese. One of the most common examples is the question particle <c.Chinese>吗</c.Chinese> <b>må</b> which transforms statements to "yes/no" questions, questions that can be answered with a <i>yes</i> or a <i>no</i>:</c.P>
           {example(1, { audio: true })}
+          <c.P>The question particle always has neutral tone.</c.P>
           <c.P>In English, we usually change the word order to formulate a question:</c.P>
           <c.P>He is busy. ➡ Is he busy?</c.P>
           <c.P>In Chinese, the word order doesn't change; you just add the question particle <c.Chinese>吗</c.Chinese> <b>må</b> to the end of the sentence:</c.P>

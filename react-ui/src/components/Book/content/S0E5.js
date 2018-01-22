@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import * as c from '../components';
 import { Objective } from '../../../containers/Book/containers';
 import { content as contentPropTypes } from '../../../helpers/propTypes';
-import pinyinNumberToAudioUrl from '../../../utils/pinyinNumberToAudioUrl';
+// import pinyinNumberToAudioUrl from '../../../utils/pinyinNumberToAudioUrl';
 import { Row } from '../../Shared';
 // import insertVariables from '../../../utils/insertVariables';
 
@@ -36,6 +36,13 @@ export default class Content extends Component {
           >
             Listen to the audio voice and practice the pronunciation of <b>hěn</b> a few times.
           </c.P>
+          {pronunciationTitle()}
+          <c.P>As we have seen, a Chinese syllable has one of the tones 1-4. But in some cases, this tone disappears. The word <c.Chinese>认识</c.Chinese> in this lesson is an example.</c.P>
+          <c.P>The two characters <c.Chinese>认</c.Chinese> and <c.Chinese>识</c.Chinese> in this word are pronounced <b>rèn</b> with Tone 4 and <b>shí</b> with Tone 2, respectively. But when they are combined into the polysyllabic word <c.Chinese>认识</c.Chinese>, the second syllable loses its original tone. The resulting tone is called <i>neutral</i> or <i>zero</i> tone, and we denote it with a little zero over the vowel:</c.P>
+          <c.Bookrow>
+            <Row><c.Char>认识</c.Char><c.Pinyin>rènshi̊</c.Pinyin></Row>
+          </c.Bookrow>
+          <c.P>We have already seen that this is not a general rule. In fact, most polysyllabic words keep the tone on each syllable: <c.Chinese>中国</c.Chinese> <b>zhōngguó</b> and <c.Chinese>中国人</c.Chinese> <b>zhōngguórén</b>, for example. Neither is there anything strange or difficult about it: we simply need to memorize the neutral tone as part of the “spelling” of certain words.</c.P>
           <c.PartTitle name="characters" />
           {newCharacters()}
           <c.PartTitle name="patterns" />
@@ -48,7 +55,8 @@ export default class Content extends Component {
             buttonOptions={{
               type: 'audio',
               data: {
-                url: pinyinNumberToAudioUrl('wo3hen3gao1xing4')
+                text: '我很高兴。'
+                // url: pinyinNumberToAudioUrl('')
               }
             }}
           >
@@ -62,7 +70,8 @@ export default class Content extends Component {
             buttonOptions={{
               type: 'audio',
               data: {
-                url: pinyinNumberToAudioUrl('wo3hen3gao1xing4')
+                text: '你很好！'
+                // url: pinyinNumberToAudioUrl('')
               }
             }}
           >
@@ -80,7 +89,7 @@ export default class Content extends Component {
               }
             }}
           >
-            <i>Practice translating sentences using <c.Chinese>很</c.Chinese> <b>hěn</b>.</i>
+            <i>Practice.</i>
           </c.P>
           {grammarTitle()}
           <c.P><c.Chinese>也</c.Chinese> <b>yě</b> <i>also</i>, <i>too</i> can be added to any of the sentences we have learned so far.  <c.Chinese>也</c.Chinese> <b>yě</b> is placed after the subject and before the verb of the sentence:</c.P>
@@ -96,10 +105,11 @@ export default class Content extends Component {
               }
             }}
           >
-            <i>Practice translating sentences using <c.Chinese>也</c.Chinese> <b>yě</b>.</i>
+            <i>Practice.</i>
           </c.P>
           <c.PartTitle name="dialogs" />
           {dialog(1, { sentenceType: 'chinese', displayNames: true })}
+          {dialog(1, { sentenceType: 'translation', displayNames: true })}
           {dialog(2, { sentenceType: 'chinese', displayNames: true })}
           <c.PartTitle name="culture" />
           <c.PartTitle type="secondary">Polite greetings</c.PartTitle>

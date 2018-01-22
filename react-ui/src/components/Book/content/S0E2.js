@@ -184,7 +184,7 @@ export default class Content extends Component {
             <Row><Chinese>- 王一！</Chinese><Translation>- Wang Yi!</Translation></Row>
             <Row><Chinese>- 你好！</Chinese><Translation>- Hi!</Translation></Row>
           </c.Bookrow>
-          <c.P>You can also add <c.Chinese>你好</c.Chinese> <i>hi</i> after the name. Note that the name and greeting have the opposite order in Chinese and English: we say <i>hi John!</i> but the Chinese say <i>John, hi!</i></c.P>
+          <c.P>You can also add <c.Chinese>你好</c.Chinese> <i>hi</i> after the name. Note that the name and greeting have the opposite order in Chinese and English: we say <i>hi, John!</i> but the Chinese say <i>John, hi!</i></c.P>
           <c.Bookrow
             flexDirection="column"
             buttonOptions={{

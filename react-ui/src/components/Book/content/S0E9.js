@@ -55,7 +55,7 @@ export default class Content extends Component {
             <Row><b>bú shì</b><c.Space width={30} /><i>is not</i></Row>
           </c.Bookrow>
           <c.P>
-            This is another example of <i>tone sandhi</i>, where the tone on a character changes depending on what comes after it - we have seen other examples of this, for example when a tone three comes before another tone three. Tone sandhi is usually not marked in dictionaries and textbooks: <c.Chinese>不</c.Chinese> is written <b>bù</b>, with tone 4, regardless of what comes after. You will just have to remember that the actual pronunciation is different than what the dictionary indicates.
+            This is another example of <i>tone sandhi</i>, where the tone on a character changes depending on what comes after it - we have seen other examples of this, for example when a tone three comes before another tone three. Tone sandhi is usually not marked in dictionaries and textbooks: <c.Chinese>不</c.Chinese> is written <b>bù</b>, with tone 4, regardless of what comes after. You will just have to remember that the actual pronunciation is different from what the dictionary indicates.
           </c.P>
           <c.P
             buttonOptions={{
@@ -74,7 +74,7 @@ export default class Content extends Component {
           {example(8, { audio: true })}
           <c.P>The other possibility is to use <c.Chinese>不</c.Chinese> <b>bù</b> to negate <c.Chinese>也</c.Chinese> :</c.P>
           {example(9, { audio: true })}
-          <c.P>Pattern 6:9 expresses surprise; it can be translated as a rhetorical question: <i>(but) isn’t it the case that you are also American?</i> Again, the literal translation should make the difference clear.</c.P>
+          <c.P>Pattern 9:9 expresses surprise; it can be translated as a rhetorical question: <i>(but) isn’t it the case that you are also American?</i> Again, the literal translation should make the difference clear.</c.P>
           <c.P
             buttonOptions={{
               type: 'practice',
@@ -86,7 +86,7 @@ export default class Content extends Component {
             <i>Practice.</i>
           </c.P>
           {grammarTitle()}
-          <c.P>In Lesson 4, we learned how to use the question particle <c.Chinese>吗</c.Chinese> <b>må</b> to formulate questions that can be answered <i>yes</i> or <i>no</i>, such as <i>can you write Chinese characters?</i> The most common way of answering <i>yes</i> is by repeating only the thing being asked about:</c.P>
+          <c.P>In Lesson 6, we learned how to use the question particle <c.Chinese>吗</c.Chinese> <b>må</b> to formulate questions that can be answered <i>yes</i> or <i>no</i>, such as <i>can you write Chinese characters?</i> The most common way of answering <i>yes</i> is by repeating only the thing being asked about:</c.P>
           {example(10, { audio: true })}
           <c.P>The answer is "KNOW-HOW-TO", because that is what the question is asking about. You normally can't just say <c.Chinese>是</c.Chinese> <b>shì</b> or  <c.Chinese>不</c.Chinese> <b>bù</b> as we say <i>yes</i> or <i>no</i> in English - in Chinese it would sound harsh, like a military order. But just like in English, you can answer with a shorter or longer phrase (<i>yes</i>; <i>yes I can</i>; or <i>yes I can speak Chinese</i>) depending on how clear you want to be:</c.P>
           <c.Bookrow flexDirection="column">
@@ -122,7 +122,7 @@ export default class Content extends Component {
           {grammarTitle()}
           <c.P>The word <c.Chinese>对</c.Chinese> <b>duì</b>, which literally means <i>correct</i>, is used to agree with something someone has just said:</c.P>
           {example(13, { audio: true })}
-          <c.P>So <c.Chinese>对</c.Chinese> <b>duì</b> <i>correct</i> can be used to answer a yes/no question more or less like <i>yes</i> in English:</c.P>
+          <c.P>Because of this, <c.Chinese>对</c.Chinese> <b>duì</b> <i>correct</i> can be used to answer a yes/no question more or less like <i>yes</i> in English:</c.P>
           {example(14, { audio: true })}
           <c.P>In the same way, <c.Chinese>不对</c.Chinese> <b>bú duì</b> <i>not correct</i> can be used like English <i>no</i>:</c.P>
           {example(15, { audio: true })}
@@ -152,10 +152,10 @@ export default class Content extends Component {
           <c.P><b>Pǔtōnghuà</b>, <i>common speech</i>, is the official PRC name for Mandarin Chinese. It has a slightly political overtone and is not used in normal conversation unless you really want to emphasize that you are talking about Mandarin as opposed to local dialects. In Táiwān, the corresponding terms are <c.Chinese>国语</c.Chinese> <b>guóyǔ</b> or <c.Chinese>国文</c.Chinese> <b>guówén</b>.</c.P>
           <c.P><i>Chinese characters</i> are called <c.Chinese>汉字</c.Chinese> <b>hànzì</b> or <c.Chinese>中国字</c.Chinese> <b>zhōngguózì</b>.</c.P>
           <c.PartTitle type="secondary">Receiving compliments</c.PartTitle>
-          <c.P>The cultural codes for giving and receiving compliments differ between China and the West. In western societies, we are taught to accept a compliment with a <i>thank you</i>. But when a Chinese person receives praise, the appropriate response is denial. If some says that you speak excellent Chinese, for example, the appropriate response would be <i>not at all</i>:</c.P>
+          <c.P>The cultural codes for giving and receiving compliments differ between China and the West. In western societies, we are taught to accept a compliment with a <i>thank you</i>. But when a Chinese person receives praise, the appropriate response is denial. If someone says that you speak excellent Chinese, for example, the appropriate response would be <i>not at all</i>:</c.P>
           <c.Bookrow><Row><c.Char>- 你中文很好。</c.Char><c.Meaning>You speak good Chinese.</c.Meaning></Row></c.Bookrow>
           <c.Bookrow><Row><c.Char>- 不好，不好。</c.Char><c.Meaning>No, not at all.</c.Meaning></Row></c.Bookrow>
-          <c.P>Chinese etiquette, based on Confucian ideals, revolves around praising the other party while expressing humility. Depending on how formal and polite the two speakers are, the dialog above could therefore continue with the first speaker reaffirming the original statement, perhaps emphasizing 很 <b>hěn</b> to say your Chinese is <i>very</i> good, prompting an even more humble response:</c.P>
+          <c.P>Chinese etiquette, based on Confucian ideals, revolves around praising the other party while expressing personal humility. Depending on how formal and polite the two speakers are, the dialog above could therefore continue with the first speaker reaffirming the original statement, perhaps emphasizing 很 <b>hěn</b> to say your Chinese is <i>very</i> good, prompting an even more humble response:</c.P>
           <c.Bookrow><Row><c.Char>- 你中文很好! </c.Char><c.Meaning>You speak very good Chinese.</c.Meaning></Row></c.Bookrow>
           <c.Bookrow><Row><c.Char>- 不好，不好。我中文很不好。</c.Char><c.Meaning>No, no, my Chinese is not good at all.</c.Meaning></Row></c.Bookrow>
           <c.P>Politeness established, the conversation may now move on to other topics. At this point, it can be appropriate to use <i>thank you</i> as a closer, showing that you accept the overdone praise by the other party.</c.P>

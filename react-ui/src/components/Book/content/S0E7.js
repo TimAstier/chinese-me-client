@@ -38,7 +38,7 @@ export default class Content extends Component {
               }
             }}
           >
-            <i>Practice translating sentences using <c.Chinese>比</c.Chinese> <b>bǐ</b>.</i>
+            <i>Practice.</i>
           </c.P>
           <c.P>If you want to specify the degree of comparison, you add this at the end according to the following pattern:</c.P>
           {example(3, { audio: true })}
@@ -50,7 +50,7 @@ export default class Content extends Component {
               }
             }}
           >
-            <i>Practice translating some more sentences using <c.Chinese>比</c.Chinese> <b>bǐ</b>.</i>
+            <i>Practice.</i>
           </c.P>
           <c.P>Note that <c.Chinese>大</c.Chinese> <b>dà</b> <i>big</i> is more common than <c.Chinese>老</c.Chinese> <b>lǎo</b> <i>old</i> when you simply want to state the objective fact that you are older than someone. If you say <c.Chinese>我比你老三岁</c.Chinese>, you are emphasizing the fact that you are older (as in more tired, more experienced or more wrinkled) than the person you are talking to.</c.P>
           {grammarTitle()}
@@ -66,7 +66,7 @@ export default class Content extends Component {
               }
             }}
           >
-            <i>Practice translating dates in Chinese.</i>
+            <i>Practice.</i>
           </c.P>
           {grammarTitle()}
           <c.P>In China, time is divided into twelve-year cycles; each year in the cycle is the year of a zodiac animal: rat, ox, tiger, rabbit, dragon, snake, horse, sheep, monkey, rooster, dog and pig. Being born in a particular animal is called <c.Chinese>属</c.Chinese> <b>shǔ</b> <i>to belong to</i> that animal:</c.P>
@@ -79,7 +79,7 @@ export default class Content extends Component {
               }
             }}
           >
-            <i>Practice saying what your own animal year is.</i>
+            <i>Practice.</i>
           </c.P>
           <c.PartTitle name="dialogs" />
           {dialog(1, { sentenceType: 'chinese', displayNames: true })}

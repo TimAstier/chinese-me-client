@@ -74,7 +74,10 @@ class Dialog extends Component {
     });
     return (
       <div>
-        <Element name={`dialog-${this.props.dialogId}`}/>
+        {
+          this._shouldDisplayHeader() &&
+          <Element name={`dialog-${this.props.dialogId}`}/>
+        }
         { this._shouldDisplayHeader() && this._renderTitle() }
         { this._shouldDisplayHeader() && this._renderSpecialIntro() }
         { this._shouldDisplayHeader() && this._renderIntro() }

@@ -94,15 +94,11 @@ export default class Content extends Component {
             <i>Practice.</i>
           </c.P>
           <c.PartTitle name="dialogs" />
-          <c.PartTitle type="secondary">你会说中文吗？</c.PartTitle>
           {dialog(1, { sentenceType: 'chinese', displayNames: true })}
-          {/* {dialog(1, { sentenceType: 'pinyin', displayNames: true })} */}
           {dialog(1, { sentenceType: 'translation', displayNames: true })}
           {dialog(2, { sentenceType: 'chinese', displayNames: true })}
-          {/* {dialog(2, { sentenceType: 'pinyin', displayNames: true })} */}
           {dialog(2, { sentenceType: 'translation', displayNames: true })}
           {dialog(3, { sentenceType: 'chinese', displayNames: true })}
-          {/* {dialog(3, { sentenceType: 'pinyin', displayNames: true })} */}
           {dialog(3, { sentenceType: 'translation', displayNames: true })}
           <c.P
             buttonOptions={{
@@ -110,9 +106,7 @@ export default class Content extends Component {
             }}
           >Now, go to the web and input the languages you speak, to continue practicing how to present yourself.
           </c.P>
-          <c.PartTitle type="secondary">Presentation</c.PartTitle>
           {dialog(4, { sentenceType: 'chinese', displayNames: true })}
-          <c.PartTitle type="secondary">Role play</c.PartTitle>
           {dialog(5, { sentenceType: 'chinese', displayNames: true })}
           {dialog(6, { sentenceType: 'chinese', displayNames: true })}
           <c.PartTitle name="words" />

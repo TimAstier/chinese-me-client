@@ -161,7 +161,6 @@ export default class Content extends Component {
           <c.P>Again, we could analyze this as a Topic-Comment construction:</c.P>
           <c.Bookrow>(I : FAMILY-NAMED WANG, CALLED WANG YUGUO.)</c.Bookrow>
           <c.PartTitle name="dialogs" />
-          <c.PartTitle type="secondary">Presenting your age</c.PartTitle>
           {dialog(1, { sentenceType: 'chinese', displayNames: true })}
           {dialog(1, { sentenceType: 'translation', displayNames: true })}
           <c.P
@@ -170,11 +169,9 @@ export default class Content extends Component {
             }}
           >Now, input your own birthdate to practice presenting yourself.
           </c.P>
-          <c.PartTitle type="secondary">Practice: Presentation</c.PartTitle>
           {dialog(2, { sentenceType: 'chinese', displayNames: true })}
           {dialog(3, { sentenceType: 'chinese', displayNames: true })}
           {dialog(4, { sentenceType: 'chinese', displayNames: true })}
-          <c.PartTitle type="secondary">Practice: Role play</c.PartTitle>
           {dialog(5, { sentenceType: 'chinese', displayNames: true })}
           {dialog(6, { sentenceType: 'chinese', displayNames: true })}
           <c.PartTitle name="culture" />
@@ -186,16 +183,10 @@ export default class Content extends Component {
             There are also “unlucky” numbers that people tend to avoid. The most famous example is <c.Chinese>四</c.Chinese> <b>sì</b> <i>four</i>, which sounds similar to another character, <b>sǐ</b> <i>to die</i>. As a consequence, many Chinese buildings lack all floors ending in this dreaded number: 4, 14, 24 and so on.
           </c.P>
           <c.P>
-            Numbers can also be used in puns which come to symbolize more complex ideas: May 21 is recognized as "Chinese Valentine's Day" because May is the fifth month and <b>wǔ</b> <i>five</i> sounds similar to <b>wǒ</b> <i>I</i>; <b>èryī</b> is interpreted as <b>ài nǐ</b> <i>love you</i>. Such puns are even used to create brand names: the job-hunting internet site <i>51job</i> chose its name because <i>one</i> can be pronounced to sound like <i>want</i> and <i>five</i> like <i>I</i>.
+            Numbers can also be used in puns which come to symbolize more complex ideas: May 21 is recognized as "Chinese Valentine's Day" because May is the fifth month and <b>wǔ</b> <i>five</i> sounds similar to <b>wǒ</b> <i>I</i>; <b>èryī</b> is interpreted as <b>ài nǐ</b> <i>love you</i>. Such puns are even used to create brand names: the job-hunting internet site <i>51job</i> chose its name because <i>one</i> can
+            be pronounced to sound like <i>want</i> and <i>five</i> like <i>I</i>.
             An educated Chinese reader who understands the English word <i>job</i> will immediately get the pun: “I want job”. This kind of punning is especially common in text messages and internet chats.
           </c.P>
-          {/* <c.PartTitle>CALLIGRAPHY</c.PartTitle>
-            <c.P>The <i>dot</i> is one of the most common and versatile brush strokes. In this episode, we find two examples: <c.Chinese>六</c.Chinese> <i>six</i> and <c.Chinese>八</c.Chinese> <i>eight</i>. </c.P>
-            <c.P>In the character <c.Chinese>六</c.Chinese> <i>six</i> all strokes except the <i>horizontal</i> are dots. As you can see, these dots are written differently depending on where they appear in a character.</c.P>
-            <c.P>- The short top dot starts at the left and finishes with a slight increase of pressure down and left.</c.P>
-            <c.P>- The short left bottom dot starts firmly at the right and tapers evenly down towards the left.</c.P>
-            <c.P>- The elongated right bottom dot curves softly downward from left to right.</c.P>
-          <c.P>In the character <c.Chinese>八</c.Chinese> <i>eight</i>, the short left hand dot starts firmly at the right and tapers evenly down towards the left. If you compare this with the character <c.Chinese>人</c.Chinese> <i>man</i>, <i>person</i>, you see that the dot in <c.Chinese>八</c.Chinese> is actually just a shorter version of the left downward stroke <c.Chinese>人</c.Chinese>.</c.P> */}
           <c.PartTitle name="words" />
           {newWords()}
           <c.Review practiceId={practiceIds[0]} />

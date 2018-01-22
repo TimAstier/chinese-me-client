@@ -40,12 +40,10 @@ export default class Content extends Component {
           {example(5, { basic: true, audio: true })}
           <c.P>Repeat this phrase until you can say it exactly like the voice on the recording.</c.P>
           <c.PartTitle name="dialog" />
-          <c.PartTitle type="secondary">Introduce yourself</c.PartTitle>
-          <c.P>Listen as Wang Yi introduces herself to you, and then tell her your own name:</c.P>
           {dialog(1, { sentenceType: 'chinese', displayNames: false })}
           <c.P>Repeat this until you feel comfortable.</c.P>
           <c.P>Now, change roles! Pretend you are Wang Yi, and introduce yourself.</c.P>
-          {dialog(1, { sentenceType: 'chinese', displayNames: false })}
+          {dialog(1, { sentenceType: 'chinese', displayNames: false, hideHeader: true })}
           <c.P>Good!</c.P>
           <c.P>Chinese is very different from Western languages. Let’s use our first sentence to explore some aspects of the Chinese language.</c.P>
           <c.PartTitle type="secondary">Each Chinese character corresponds to one spoken syllable</c.PartTitle>

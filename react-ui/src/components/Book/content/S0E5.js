@@ -99,9 +99,7 @@ export default class Content extends Component {
             <i>Practice translating sentences using <c.Chinese>也</c.Chinese> <b>yě</b>.</i>
           </c.P>
           <c.PartTitle name="dialogs" />
-          <c.PartTitle type= "secondary">Saying hello</c.PartTitle>
           {dialog(1, { sentenceType: 'chinese', displayNames: true })}
-          <c.PartTitle type="secondary">Role play</c.PartTitle>
           {dialog(2, { sentenceType: 'chinese', displayNames: true })}
           <c.PartTitle name="culture" />
           <c.PartTitle type="secondary">Polite greetings</c.PartTitle>

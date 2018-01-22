@@ -156,8 +156,6 @@ export default class Content extends Component {
             <Row><Chinese>- 我叫一。 </Chinese><Translation>- My given name is Yi.</Translation></Row>
           </c.Bookrow>
           <c.PartTitle name="dialog" />
-          <c.PartTitle type="secondary">Introduce yourself</c.PartTitle>
-          <c.P>Now, introduce yourself by giving your last name, and then your full name. Tell Wang Yi what your name is and listen to her response:</c.P>
           {dialog(1, { sentenceType: 'chineseWithTranslation', displayNames: false })}
           <c.P>Repeat this until you feel comfortable.</c.P>
           <c.P>Now, change roles by pretending you are Wang Yi.</c.P>
@@ -201,7 +199,6 @@ export default class Content extends Component {
           </c.Bookrow>
           <c.P>It is also common to add a title or a kinship term to the name when you <i>call</i> someone; we will see many examples of this later.</c.P>
           <c.PartTitle name="dialog" />
-          <c.PartTitle type="secondary">Greeting people you know</c.PartTitle>
           {dialog(2, { sentenceType: 'chineseWithTranslation', displayNames: false })}
           {dialog(3, { sentenceType: 'chineseWithTranslation', displayNames: false })}
           <c.PartTitle>ORACLE BONES</c.PartTitle>

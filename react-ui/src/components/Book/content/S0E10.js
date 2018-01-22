@@ -121,8 +121,7 @@ export default class Content extends Component {
           <c.P>So when we read the characters <c.Chinese>好学</c.Chinese>, we have to decide from context whether <b>hao</b> should be pronounced with tone three or tone four: <b>hǎoxué</b> <i>easy (to learn)</i> or <b>hàoxué</b> <i>diligent</i>.</c.P>
           <c.PartTitle name="dialogs" />
           {dialog(1, { sentenceType: 'chinese', displayNames: true })}
-          <c.PartTitle type="secondary">Practice: Role play</c.PartTitle>
-          {dialog(2, { sentenceType: 'chinese', displayNames: true })}
+          {/* {dialog(2, { sentenceType: 'chinese', displayNames: true })} */}
           <c.PartTitle name="words" />
           {newWords()}
           <c.Review practiceId={practiceIds[0]} />

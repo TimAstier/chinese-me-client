@@ -6,7 +6,6 @@ import { bookComponents as c } from '../../../components';
 import { default as s } from '../../../rootSelectors';
 
 class Dialog extends Component {
-
   render() {
     const { dialog, options } = this.props;
     return (
@@ -15,6 +14,9 @@ class Dialog extends Component {
         displayNames={options.displayNames ? options.displayNames : false}
         sentenceType={options.sentenceType}
         dialogId={this.props.dialogId}
+        title={this.props.dialog.titleTranslation}
+        intro={this.props.dialog.intro}
+        hideHeader={this.props.options.hideHeader}
       />
     );
   }
@@ -29,7 +31,8 @@ Dialog.propTypes = {
       'translation',
       'chineseWithTranslation'
     ]),
-    displayNames: propTypes.bool
+    displayNames: propTypes.bool,
+    hideHeader: propTypes.bool
   }).isRequired
 };
 

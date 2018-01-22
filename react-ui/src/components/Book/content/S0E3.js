@@ -192,8 +192,6 @@ export default class Content extends Component {
           <c.P>We have already encountered <c.Chinese>是</c.Chinese> <b>shì</b> which functions like English <i>be</i> (<i>am, is</i>):</c.P>
           {example(4, { audio: true })}
           <c.PartTitle name="dialogs" />
-          <c.PartTitle type="secondary">Meet Yi and Yuguo</c.PartTitle>
-          <c.P>Yi and her friend Yuguo both come from China. Here’s how they present themselves:</c.P>
           {dialog(1, { sentenceType: 'chineseWithTranslation', displayNames: false })}
           {dialog(2, { sentenceType: 'chineseWithTranslation', displayNames: false })}
           <c.PartTitle type="secondary">Introduce yourself and where you are from</c.PartTitle>

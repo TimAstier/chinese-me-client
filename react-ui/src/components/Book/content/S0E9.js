@@ -138,11 +138,8 @@ export default class Content extends Component {
             <i>Practice.</i>
           </c.P>
           <c.PartTitle name="dialogs" />
-          <c.PartTitle type="secondary">你中文很好！</c.PartTitle>
           {dialog(1, { sentenceType: 'chinese', displayNames: true })}
-          {/* {dialog(1, { sentenceType: 'pinyin', displayNames: true })} */}
           {dialog(1, { sentenceType: 'translation', displayNames: true })}
-          <c.PartTitle type="secondary">Role play</c.PartTitle>
           {dialog(2, { sentenceType: 'chinese', displayNames: true })}
           <c.PartTitle name="words" />
           {newWords()}

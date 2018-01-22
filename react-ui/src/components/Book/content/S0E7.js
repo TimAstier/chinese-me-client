@@ -82,7 +82,6 @@ export default class Content extends Component {
             <i>Practice saying what your own animal year is.</i>
           </c.P>
           <c.PartTitle name="dialogs" />
-          <c.PartTitle type="secondary">我生日</c.PartTitle>
           {dialog(1, { sentenceType: 'chinese', displayNames: true })}
           <c.P
             buttonOptions={{
@@ -94,9 +93,7 @@ export default class Content extends Component {
           >
             <i>Help Wang Yuguo say how old he is.</i>
           </c.P>
-          <c.PartTitle type="secondary">我属马。</c.PartTitle>
           {dialog(2, { sentenceType: 'chinese', displayNames: true })}
-          {/* {dialog(2, { sentenceType: 'pinyin', displayNames: true })} */}
           {dialog(2, { sentenceType: 'translation', displayNames: true })}
           {dialog(3, { sentenceType: 'chinese', displayNames: true })}
           <c.P
@@ -109,7 +106,6 @@ export default class Content extends Component {
           >
             <i>Help Li Xiaoyue say how old he is.</i>
           </c.P>
-          {/* {dialog(3, { sentenceType: 'pinyin', displayNames: true })} */}
           {dialog(3, { sentenceType: 'translation', displayNames: true })}
           <c.P
             buttonOptions={{
@@ -117,10 +113,8 @@ export default class Content extends Component {
             }}
           >Now, go to the web and input your own birthdate to practice presenting yourself.
           </c.P>
-          <c.PartTitle type="secondary">Practice: Presentation</c.PartTitle>
           {dialog(4, { sentenceType: 'chinese', displayNames: true })}
           {dialog(5, { sentenceType: 'chinese', displayNames: true })}
-          <c.PartTitle type="secondary">Practice: Role play</c.PartTitle>
           {dialog(6, { sentenceType: 'chinese', displayNames: true })}
           {dialog(7, { sentenceType: 'chinese', displayNames: true })}
           <c.PartTitle name="culture" />

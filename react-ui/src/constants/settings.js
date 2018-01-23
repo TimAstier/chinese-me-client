@@ -18,6 +18,10 @@ const settings = {
   BIRTHDATE: {
     name: 'birthdate',
     questionType: 'date'
+  },
+  REASON_LEARN_CHINESE: {
+    name: 'reasonLearnChinese',
+    questionType: 'selectQuestion'
   }
 };
 

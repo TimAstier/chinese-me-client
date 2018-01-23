@@ -39,6 +39,10 @@ const getType = createSelector(
   getSetting,
   setting => {
     if (setting) {
+      if (!settingConstants[setting]) {
+        console.log('Error with setting constant');
+        return '';
+      }
       return settingConstants[setting].questionType;
     }
     return '';

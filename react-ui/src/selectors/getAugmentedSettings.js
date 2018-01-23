@@ -21,6 +21,7 @@
 // [LANGUAGE_1]            => 英语 TODO
 // [LANGUAGE_2]            => 法语 TODO
 // [LANGUAGE_3]            => 中文 TODO
+// [REASON_LEARN_CHINESE]  => 我喜欢中国文化。
 
 import { createSelector } from 'reselect';
 import { Map } from 'immutable';
@@ -140,6 +141,24 @@ const getAgeDifference = (birthDate) => {
   return integerToChinese(years);
 };
 
+const getReasonLearnChinese = reason => {
+  if (!reason) {
+    return null;
+  }
+  switch (reason) {
+    case 'culture': return '我喜欢中国文化。';
+    case 'travel': return '我想去中国旅游。';
+    case 'study': return '我想去中国上学。';
+    case 'work': return '我想去中国工作。';
+    case 'huaqiao': return '我是华侨。';
+    case 'relationship_boyfriend': return '我男朋友是中国人。';
+    case 'relationship_girlfriend': return '我女朋友是中国人。';
+    case 'relationship_husband': return '我老公是中国人。';
+    case 'relationship_wife': return '我老婆是中国人。';
+    default: return null;
+  }
+};
+
 // Add dynamically generated variables to the settings map.
 const getAugmentedSettings = createSelector(
   s.settings.getSettings,
@@ -159,7 +178,8 @@ const getAugmentedSettings = createSelector(
       birthAnimal: getChineseZodiac(settings.get('birthdate')),
       genderTitle: getGenderTitle(settings.get('gender')),
       ageComparison: getAgeComparison(settings.get('birthdate')),
-      ageDifference: getAgeDifference(settings.get('birthdate'))
+      ageDifference: getAgeDifference(settings.get('birthdate')),
+      reasonLearnChinese: getReasonLearnChinese(settings.get('reasonLearnChinese'))
     }));
     return augmentedSettings.toJS();
   }

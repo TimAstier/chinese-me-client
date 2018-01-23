@@ -11,6 +11,18 @@ export default class Content extends Component {
   render() {
     const { newCharacters, example, lessonTitle, dialog, grammarTitle,
       practiceIds, newWords, pronunciationTitle } = this.props;
+      // This part comes between a dialog 'title' and 'intro'
+    const specialIntro = () => {
+      return (
+        <div>
+          <c.P
+            buttonOptions={{
+              type: 'askUserSettings'
+            }}
+          >Input why you are learning Chinese:</c.P>
+        </div>
+      );
+    };
     return (
       <div>
         <c.Page>
@@ -151,7 +163,7 @@ export default class Content extends Component {
           <c.P>So when we read the characters <c.Chinese>好学</c.Chinese>, we have to decide from context whether <b>hao</b> should be pronounced with Tone 3 or Tone 4: <b>hǎoxué</b> <i>easy (to learn)</i> or <b>hàoxué</b> <i>diligent</i>.</c.P>
           <c.PartTitle name="dialogs" />
           {dialog(1, { sentenceType: 'chinese', displayNames: true })}
-          {dialog(2, { sentenceType: 'chinese', displayNames: true })}
+          {dialog(2, { sentenceType: 'chinese', displayNames: true, specialIntro })}
           <c.PartTitle name="words" />
           {newWords()}
           <c.Review practiceId={practiceIds[0]} />

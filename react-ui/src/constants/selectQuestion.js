@@ -24,6 +24,20 @@ const constants = {
   NATIONALITY: {
     label: 'What is your nationality?',
     choices: createArrayOfCountries()
+  },
+  REASON_LEARN_CHINESE: {
+    label: 'I want to learn Chinese because ...',
+    choices: [
+      { value: 'culture', label: 'I like Chinese culture.' },
+      { value: 'travel', label: 'I want to travel in China.' },
+      { value: 'study', label: 'I want to study in China.' },
+      { value: 'work', label: 'I want to work in China.' },
+      { value: 'huaqiao', label: 'I have Chinese heritage.' },
+      { value: 'relationship_boyfriend', label: 'My boyfriend is Chinese.' },
+      { value: 'relationship_girlfriend', label: 'My girlfriend is Chinese.' },
+      { value: 'relationship_husband', label: 'My husband is Chinese.' },
+      { value: 'relationship_wife', label: 'My wife is Chinese.' }
+    ]
   }
 };
 

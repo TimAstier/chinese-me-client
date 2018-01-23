@@ -20,7 +20,7 @@ export default class Content extends Component {
           <c.PartTitle name="pronunciation" />
           {pronunciationTitle()}
           <c.P>
-            A few characters can be pronounced in more than one way. For example, we have learned that <c.Chinese>好</c.Chinese> is pronounced <b>hǎo</b> and means <i>good</i>. But <c.Chinese>好</c.Chinese> can also be a verb meaning <i>to like</i>; in this case it has tone four: <b>hào</b>. This meaning - and pronunciation - of <c.Chinese>好</c.Chinese> only appears as part of words, such as <c.Chinese>好客</c.Chinese> <b>hàokè</b> <i>hospitable</i> which literally means <i>to like guests</i>.
+            A few characters can be pronounced in more than one way. For example, we have learned that <c.Chinese>好</c.Chinese> is pronounced <b>hǎo</b> and means <i>good</i>. But <c.Chinese>好</c.Chinese> can also be a verb meaning <i>to like</i>; in this case it has Tone 4: <b>hào</b>. This meaning - and pronunciation - of <c.Chinese>好</c.Chinese> only appears as part of words, such as <c.Chinese>好客</c.Chinese> <b>hàokè</b> <i>hospitable</i> which literally means <i>to like guests</i>.
           </c.P>
           <c.PartTitle name="characters" />
           {newCharacters()}
@@ -44,18 +44,18 @@ export default class Content extends Component {
           <c.P>In the same way, <c.Chinese>不</c.Chinese> can be placed before verbs:</c.P>
           {example(4, { audio: true })}
           {example(5, { audio: true })}
-          <c.P>Note the pronunciation in the patterns above: <c.Chinese>不</c.Chinese> is pronounced in two different ways, depending on the tone that comes after. If the following tone is 1, 2, or 3, <c.Chinese>不</c.Chinese> is pronounced <b>bù</b>, with tone 4:</c.P>
+          <c.P>Note the pronunciation in the patterns above: <c.Chinese>不</c.Chinese> is pronounced in two different ways, depending on the tone that comes after. If the following tone is 1, 2, or 3, <c.Chinese>不</c.Chinese> is pronounced <b>bù</b>, with Tone 4:</c.P>
           <c.Bookrow flexDirection="column">
             <Row><b>bù hǎo</b><c.Space width={30} /><i>not good</i></Row>
             <Row><b>bù měi</b><c.Space width={30} /><i>not beautiful</i></Row>
           </c.Bookrow>
-          <c.P>But if the following tone is tone 4, <c.Chinese>不</c.Chinese> changes to tone 2, <b>bú</b>:</c.P>
+          <c.P>But if the following tone is Tone 4, <c.Chinese>不</c.Chinese> changes to Tone 2, <b>bú</b>:</c.P>
           <c.Bookrow flexDirection="column">
             <Row><b>bú huì</b><c.Space width={30} /><i>cannot</i></Row>
             <Row><b>bú shì</b><c.Space width={30} /><i>is not</i></Row>
           </c.Bookrow>
           <c.P>
-            This is another example of <i>tone sandhi</i>, where the tone on a character changes depending on what comes after it - we have seen other examples of this, for example when a tone three comes before another tone three. Tone sandhi is usually not marked in dictionaries and textbooks: <c.Chinese>不</c.Chinese> is written <b>bù</b>, with tone 4, regardless of what comes after. You will just have to remember that the actual pronunciation is different from what the dictionary indicates.
+            This is another example of <i>tone sandhi</i>, where the tone on a character changes depending on what comes after it - we have seen other examples of this, for example when a Tone 3 comes before another Tone 3. Tone sandhi is usually not marked in dictionaries and textbooks: <c.Chinese>不</c.Chinese> is written <b>bù</b>, with Tone 4, regardless of what comes after. You will just have to remember that the actual pronunciation is different from what the dictionary indicates.
           </c.P>
           <c.P
             buttonOptions={{

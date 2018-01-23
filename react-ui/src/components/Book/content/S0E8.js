@@ -106,7 +106,7 @@ export default class Content extends Component {
             }}
           >Now, go to the web and input the languages you speak, to continue practicing how to present yourself.
           </c.P>
-          {dialog(4, { sentenceType: 'chinese', displayNames: true })}
+          {dialog(4, { sentenceType: 'chinese', displayNames: false })}
           {dialog(5, { sentenceType: 'chinese', displayNames: true })}
           {dialog(6, { sentenceType: 'chinese', displayNames: true })}
           <c.PartTitle name="words" />

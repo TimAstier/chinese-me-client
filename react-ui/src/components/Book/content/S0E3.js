@@ -209,7 +209,7 @@ export default class Content extends Component {
           <c.PartTitle name="dialogs" />
           {dialog(1, { sentenceType: 'chineseWithTranslation', displayNames: false })}
           {dialog(2, { sentenceType: 'chineseWithTranslation', displayNames: false })}
-          {dialog(3, { sentenceType: 'chinese', displayNames: true, specialIntro })}
+          {dialog(3, { sentenceType: 'chinese', displayNames: false, specialIntro })}
           <c.P>Repeat this until you feel comfortable.</c.P>
           <c.P>Now, change roles! Pretend you are Wang Yuguo, and introduce yourself.</c.P>
           <c.PartTitle>PINYIN PRACTICE</c.PartTitle>

@@ -161,19 +161,19 @@ export default class Content extends Component {
           <c.P>Again, we could analyze this as a Topic-Comment construction:</c.P>
           <c.Bookrow>(I : FAMILY-NAMED WANG, CALLED WANG YUGUO.)</c.Bookrow>
           <c.PartTitle name="dialogs" />
-          {dialog(1, { sentenceType: 'chinese', displayNames: true })}
-          {dialog(1, { sentenceType: 'translation', displayNames: true })}
-          {dialog(7, { sentenceType: 'chinese', displayNames: true })}
-          {dialog(7, { sentenceType: 'translation', displayNames: true })}
+          {dialog(1, { sentenceType: 'chinese', displayNames: false })}
+          {dialog(1, { sentenceType: 'translation', displayNames: false })}
+          {dialog(7, { sentenceType: 'chinese', displayNames: false })}
+          {dialog(7, { sentenceType: 'translation', displayNames: false })}
           <c.P
             buttonOptions={{
               type: 'askUserSettings'
             }}
-          >Now, input your own birthdate to practice presenting yourself.
+          ><i>Now, input your own birthdate to practice presenting yourself.</i>
           </c.P>
-          {dialog(2, { sentenceType: 'chinese', displayNames: true })}
-          {dialog(3, { sentenceType: 'chinese', displayNames: true })}
-          {dialog(4, { sentenceType: 'chinese', displayNames: true })}
+          {dialog(2, { sentenceType: 'chinese', displayNames: false })}
+          {dialog(3, { sentenceType: 'chinese', displayNames: false })}
+          {dialog(4, { sentenceType: 'chinese', displayNames: false })}
           {dialog(5, { sentenceType: 'chinese', displayNames: true })}
           {dialog(6, { sentenceType: 'chinese', displayNames: true })}
           <c.PartTitle name="culture" />

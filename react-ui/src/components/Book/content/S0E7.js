@@ -82,7 +82,7 @@ export default class Content extends Component {
             <i>Practice.</i>
           </c.P>
           <c.PartTitle name="dialogs" />
-          {dialog(1, { sentenceType: 'chinese', displayNames: true })}
+          {dialog(1, { sentenceType: 'chinese', displayNames: false })}
           <c.P
             buttonOptions={{
               type: 'practice',
@@ -91,11 +91,11 @@ export default class Content extends Component {
               }
             }}
           >
-            <i>Help Wang Yuguo say how old he is.</i>
+            <i>Help Wang Yi say how old she is.</i>
           </c.P>
-          {dialog(2, { sentenceType: 'chinese', displayNames: true })}
-          {dialog(2, { sentenceType: 'translation', displayNames: true })}
-          {dialog(3, { sentenceType: 'chinese', displayNames: true })}
+          {dialog(2, { sentenceType: 'chinese', displayNames: false })}
+          {dialog(2, { sentenceType: 'translation', displayNames: false })}
+          {dialog(3, { sentenceType: 'chinese', displayNames: false })}
           <c.P
             buttonOptions={{
               type: 'practice',
@@ -104,17 +104,17 @@ export default class Content extends Component {
               }
             }}
           >
-            <i>Help Li Xiaoyue say how old he is.</i>
+            <i>Help Wang Yuguo say how old he is.</i>
           </c.P>
-          {dialog(3, { sentenceType: 'translation', displayNames: true })}
+          {dialog(3, { sentenceType: 'translation', displayNames: false })}
           <c.P
             buttonOptions={{
               type: 'askUserSettings'
             }}
           >Now, go to the web and input your own birthdate to practice presenting yourself.
           </c.P>
-          {dialog(4, { sentenceType: 'chinese', displayNames: true })}
-          {dialog(5, { sentenceType: 'chinese', displayNames: true })}
+          {dialog(4, { sentenceType: 'chinese', displayNames: false })}
+          {dialog(5, { sentenceType: 'chinese', displayNames: false })}
           {dialog(6, { sentenceType: 'chinese', displayNames: true })}
           {dialog(7, { sentenceType: 'chinese', displayNames: true })}
           <c.PartTitle name="culture" />

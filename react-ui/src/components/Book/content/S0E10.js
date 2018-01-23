@@ -19,7 +19,7 @@ export default class Content extends Component {
             buttonOptions={{
               type: 'askUserSettings'
             }}
-          >Input why you are learning Chinese:</c.P>
+          ><i>Input why you are learning Chinese:</i></c.P>
         </div>
       );
     };

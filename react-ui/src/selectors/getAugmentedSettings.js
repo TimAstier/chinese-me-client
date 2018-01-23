@@ -146,15 +146,15 @@ const getReasonLearnChinese = reason => {
     return null;
   }
   switch (reason) {
-    case 'culture': return '我喜欢中国文化。';
-    case 'travel': return '我想去中国旅游。';
-    case 'study': return '我想去中国上学。';
-    case 'work': return '我想去中国工作。';
-    case 'huaqiao': return '我是华侨。';
-    case 'relationship_boyfriend': return '我男朋友是中国人。';
-    case 'relationship_girlfriend': return '我女朋友是中国人。';
-    case 'relationship_husband': return '我老公是中国人。';
-    case 'relationship_wife': return '我老婆是中国人。';
+    case 'culture': return '我喜欢中国文化';
+    case 'travel': return '我想去中国旅游';
+    case 'study': return '我想去中国上学';
+    case 'work': return '我想去中国工作';
+    case 'huaqiao': return '我是华侨';
+    case 'relationship_boyfriend': return '我男朋友是中国人';
+    case 'relationship_girlfriend': return '我女朋友是中国人';
+    case 'relationship_husband': return '我老公是中国人';
+    case 'relationship_wife': return '我老婆是中国人';
     default: return null;
   }
 };

@@ -182,7 +182,7 @@ const getAugmentedSettings = createSelector(
       genderTitle: getGenderTitle(settings.get('gender')),
       ageComparison: getAgeComparison(settings.get('birthdate'), WANG_YI_BIRTH_DATE),
       ageDifference: getAgeDifference(settings.get('birthdate')),
-      ageComparison2: getAgeDifference(settings.get('birthdate'), WANG_XIN_BIRTH_DATE),
+      ageComparisonTwo: getAgeComparison(settings.get('birthdate'), WANG_XIN_BIRTH_DATE),
       reasonLearnChinese: getReasonLearnChinese(settings.get('reasonLearnChinese'))
     }));
     return augmentedSettings.toJS();

@@ -119,7 +119,7 @@ const getAgeComparison = (birthDate, avatarBirthDate) => {
   }
   const userBirthdate = new Date(birthDate);
   const personalityBirthdate = new Date(avatarBirthDate);
-  return userBirthdate - personalityBirthdate < 0 ? '小' : '大';
+  return userBirthdate - personalityBirthdate > 0 ? '小' : '大';
 };
 
 const integerToChinese = integer => {

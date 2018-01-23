@@ -114,6 +114,9 @@ const getGenderTitle = gender => {
 };
 
 const getAgeComparison = (birthDate, avatarBirthDate) => {
+  if (!birthDate) {
+    return null;
+  }
   const userBirthdate = new Date(birthDate);
   const personalityBirthdate = new Date(avatarBirthDate);
   return userBirthdate - personalityBirthdate < 0 ? '小' : '大';

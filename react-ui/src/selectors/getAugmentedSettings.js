@@ -34,6 +34,9 @@ import { capitalizeFirstLetter } from '../utils/strings';
 import chineseLunar from 'chinese-lunar';
 import moment from 'moment';
 
+const WANG_YI_BIRTH_DATE = '1990-07-06';
+const WANG_XIN_BIRTH_DATE = '2001-02-28';
+
 // Install i18n-iso-countries locals
 countries.registerLocale(require('i18n-iso-countries/langs/en.json'));
 countries.registerLocale(require('i18n-iso-countries/langs/zh.json'));
@@ -110,9 +113,9 @@ const getGenderTitle = gender => {
   return '女士';
 };
 
-const getAgeComparison = birthDate => {
+const getAgeComparison = (birthDate, avatarBirthDate) => {
   const userBirthdate = new Date(birthDate);
-  const personalityBirthdate = new Date('1979-11-23');
+  const personalityBirthdate = new Date(avatarBirthDate);
   return userBirthdate - personalityBirthdate < 0 ? '小' : '大';
 };
 
@@ -136,7 +139,7 @@ const getAgeDifference = (birthDate) => {
     return null;
   }
   const userBirthdate = new Date(birthDate);
-  const personalityBirthdate = new Date('1979-11-23');
+  const personalityBirthdate = new Date(WANG_YI_BIRTH_DATE);
   const years = Math.abs(moment.duration(userBirthdate - personalityBirthdate).years());
   return integerToChinese(years);
 };
@@ -177,8 +180,9 @@ const getAugmentedSettings = createSelector(
       birthDay: getDay(settings.get('birthdate')),
       birthAnimal: getChineseZodiac(settings.get('birthdate')),
       genderTitle: getGenderTitle(settings.get('gender')),
-      ageComparison: getAgeComparison(settings.get('birthdate')),
+      ageComparison: getAgeComparison(settings.get('birthdate'), WANG_YI_BIRTH_DATE),
       ageDifference: getAgeDifference(settings.get('birthdate')),
+      ageComparison2: getAgeDifference(settings.get('birthdate'), WANG_XIN_BIRTH_DATE),
       reasonLearnChinese: getReasonLearnChinese(settings.get('reasonLearnChinese'))
     }));
     return augmentedSettings.toJS();

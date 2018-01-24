@@ -74,7 +74,6 @@ const BackIcon = styled.div`
 `;
 
 class EpisodeScreen extends Component {
-
   renderBottomMiddleWrapper() {
     const { playAudio, pause, hanziAgain } = this.props;
     if (playAudio) {

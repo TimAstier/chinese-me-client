@@ -94,6 +94,9 @@ export default class Content extends Component {
           {grammarTitle()}
           <c.P><c.Chinese>也</c.Chinese> <b>yě</b> <i>also</i>, <i>too</i> can be added to any of the sentences we have learned so far.  <c.Chinese>也</c.Chinese> <b>yě</b> is placed after the subject and before the verb of the sentence:</c.P>
           {example(3, { audio: true })}
+          <c.Bookrow>
+            <img src="http://via.placeholder.com/400x250" alt="" />
+          </c.Bookrow>
           <c.P>In a Topic-Comment construction, <c.Chinese>也</c.Chinese> <b>yě</b> comes after the Topic and before the Comment:</c.P>
           {example(4, { audio: true })}
           {example(5, { audio: true })}
@@ -107,6 +110,9 @@ export default class Content extends Component {
           >
             <i>Practice.</i>
           </c.P>
+          <c.Bookrow center marginTop={50}>
+            <img src="http://via.placeholder.com/550x450" alt="" />
+          </c.Bookrow>
           <c.PartTitle name="dialogs" />
           {dialog(1, { sentenceType: 'chinese', displayNames: true })}
           {dialog(1, { sentenceType: 'translation', displayNames: true })}

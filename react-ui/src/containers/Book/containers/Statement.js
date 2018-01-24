@@ -4,6 +4,7 @@ import propTypes from 'prop-types';
 import * as models from '../../../models';
 import { bookComponents as c } from '../../../components';
 import { default as s } from '../../../rootSelectors';
+import insertVariables from '../../../utils/insertVariables';
 
 class Statement extends Component {
   _name() {
@@ -19,10 +20,9 @@ class Statement extends Component {
     }
     if (avatar.get('name') === 'Me') {
       if (sentenceType === 'chinese') {
-        return this.props.settings.chineseFamilyName +
-          this.props.settings.chineseGivenName;
+        return insertVariables('[CHINESE_FAMILY_NAME][CHINESE_GIVEN_NAME]', this.props.settings);
       }
-      return this.props.settings.givenName;
+      return insertVariables('[GIVEN_NAME]', this.props.settings);
     }
     if (sentenceType === 'chinese') {
       return avatar.get('chineseName');

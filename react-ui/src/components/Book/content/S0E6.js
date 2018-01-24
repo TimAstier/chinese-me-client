@@ -111,6 +111,9 @@ export default class Content extends Component {
           <c.P>The most common way of saying <i>bye</i> is:</c.P>
           {example(4, { audio: true })}
           <c.P>These days, many people also use the English term <i>bye, bye, </i> usually pronounced <b>bāibāi</b> (or <b>bābāi</b> with the second syllable much longer than the first).</c.P>
+          <c.Bookrow center marginTop={50}>
+            <img src="http://via.placeholder.com/550x450" alt="" />
+          </c.Bookrow>
           <c.PartTitle name="dialogs" />
           {dialog(1, { sentenceType: 'chinese', displayNames: true })}
           {dialog(2, { sentenceType: 'chinese', displayNames: true })}

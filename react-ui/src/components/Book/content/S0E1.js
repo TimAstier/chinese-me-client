@@ -20,7 +20,8 @@ export default class Content extends Component {
           {lessonTitle()}
           <c.P>This is Wang Yi. Click on the sound icon and listen carefully as she introduces herself to you. Try to repeat after her a few times.</c.P>
           {example(1, { basic: true, audio: true })}
-          <c.P>The literal translation of this sentence is I CALLED WANG YI. Translated to more natural English, it means <i>My name is Wang Yi.</i></c.P>
+          <c.Bookrow center><img src="http://via.placeholder.com/550x450" alt="" /></c.Bookrow>
+          <c.P>The literal translation of this sentence is I CALLED WANG YI. Translated to more natural English, it means <i>My name is Wang Yi.</i> In the West, you point at your chest when you say <i>I</i>; in China, you point at your nose.</c.P>
           <c.P>In China, the family name comes before the given name. There are only a few hundred family names, but any combination of one or two characters can be used as a given name. Different names have been popular during different periods: in revolutionary times, some children were named <i>New Constitution</i> and <i>Strong Country</i>. Names often reflect traditional gender roles: <i>Strong</i> and <i>Thunder</i> for boys; <i>Little Swallow</i> and <i>Beautiful Jade</i> for girls. Wang Yi’s family name is Wang, which means <i>king</i>, and her given name is the gender-neutral <i>One</i>.</c.P>
           <c.PartTitle type="secondary">Learn your Chinese name</c.PartTitle>
           <c.P

@@ -93,6 +93,9 @@ export default class Content extends Component {
           >
             <i>Practice.</i>
           </c.P>
+          <c.Bookrow>
+            <img src="http://via.placeholder.com/550x450" alt="" />
+          </c.Bookrow>
           <c.PartTitle name="dialogs" />
           {dialog(1, { sentenceType: 'chinese', displayNames: true })}
           {dialog(1, { sentenceType: 'translation', displayNames: true })}

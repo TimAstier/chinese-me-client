@@ -41,7 +41,6 @@ const MiddleWrapper = styled.div`
 
 const VideoWrapper = styled.div`
   margin-left: 20px;
-  
 `;
 
 const ContentWrapper = styled.div`

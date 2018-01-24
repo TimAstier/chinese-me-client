@@ -13,15 +13,15 @@ const Wrapper = styled.div`
 `;
 
 const CharWrapper = styled.div`
-  width: 90px;
+  min-width: 90px;
 `;
 
 const PinyinWrapper = styled.div`
-  width: 110px;
+  min-width: 110px;
 `;
 
 const LinksWrapper = styled.div`
-  width: 150px;
+  min-width: 150px;
   display: flex;
 `;
 const Link = styled.div`
@@ -32,7 +32,6 @@ const MeaningWrapper = styled.div`
   max-width: 400px;
   display: flex;
   flex: wrap;
-  text-align: justify;
   margin-left: 10px;
   margin-top: 10px;
 `;

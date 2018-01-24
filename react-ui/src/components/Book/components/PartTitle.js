@@ -94,6 +94,7 @@ PartTitle.propTypes = {
     'patterns',
     'dialog',
     'dialogs',
+    'dialog_zh',
     'pronunciation',
     'culture',
     'words',

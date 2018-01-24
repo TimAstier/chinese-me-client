@@ -6,13 +6,24 @@ import { bookComponents as c } from '../../../components';
 import { default as s } from '../../../rootSelectors';
 
 class Statement extends Component {
-
   _name() {
     if (!this.props.statement) {
       return null;
     }
     const { avatars, sentenceType } = this.props;
     const avatar = avatars.get(String(this.props.statement.avatarId));
+    if (!avatar) {
+      // The avatar linked to the statement wasn't loaded with the dialog.
+      // Usually means that the avatarDialogs records are wrong.
+      return '{ AVATAR ERROR! }';
+    }
+    if (avatar.get('name') === 'Me') {
+      if (sentenceType === 'chinese') {
+        return this.props.settings.chineseFamilyName +
+          this.props.settings.chineseGivenName;
+      }
+      return this.props.settings.givenName;
+    }
     if (sentenceType === 'chinese') {
       return avatar.get('chineseName');
     }
@@ -37,12 +48,14 @@ Statement.propTypes = {
   statement: propTypes.instanceOf(models.Statement),
   avatars: propTypes.object.isRequired,
   sentenceType: propTypes.string.isRequired,
-  displayNames: propTypes.bool.isRequired
+  displayNames: propTypes.bool.isRequired,
+  settings: propTypes.object.isRequired
 };
 
 const mapStateToProps = (state, ownProps) => ({
   statement: s.entities.getStatements(state).get(String(ownProps.statementId)),
-  avatars: s.entities.getAvatars(state)
+  avatars: s.entities.getAvatars(state),
+  settings: s.getAugmentedSettings(state)
 });
 
 export default connect(

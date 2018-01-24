@@ -149,7 +149,7 @@ export default class Content extends Component {
           {example(1, { audio: true })}
           <c.P>But unlike in English, not every Chinese sentence needs to contain a verb. For example, we can have a sentence made up of a personal pronoun and a number of years:</c.P>
           {example(2, { audio: true })}
-          <c.P>So to tell somebody your age, you literally say “I x years”. This would of course sound odd in English. And you can even shorten this to:</c.P>
+          <c.P>So to tell somebody your age, you literally say I X YEARS. This would of course sound odd in English. And you can even shorten this to:</c.P>
           {example(3, { audio: true })}
           <c.P>In fact, in relaxed colloquial language you can shorten some sentences with <c.Chinese>是</c.Chinese> <b>shì</b> in the same way:</c.P>
           {example(4, { audio: true })}

@@ -62,7 +62,7 @@ export default class Content extends Component {
             }}
           ><b>guì</b></c.P>
           {pronunciationTitle()}
-          <c.P>We have already learned that the final <b>-üe </b> is spelled <b>-ue</b>, without umlaut dots, when there is no initial: <b>yue</b>. The same is true after after the initials x-, j- and q-.</c.P>
+          <c.P>We have already learned that the final <b>-üe </b> is spelled <b>-ue</b>, without umlaut dots, when there is no initial: <b>yue</b>. The same is true after the initials x-, j- and q-.</c.P>
           <c.P
             buttonOptions={{
               type: 'audio',

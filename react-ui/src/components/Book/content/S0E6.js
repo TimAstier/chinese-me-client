@@ -111,6 +111,7 @@ export default class Content extends Component {
           <c.P>The most common way of saying <i>bye</i> is:</c.P>
           {example(4, { audio: true })}
           <c.P>These days, many people also use the English term <i>bye, bye, </i> usually pronounced <b>bāibāi</b> (or <b>bābāi</b> with the second syllable much longer than the first).</c.P>
+          <c.P>Before saying goodbye, it is also common to add the phrase <c.Chinese>我先走</c.Chinese> <b>wǒ xiān zǒu</b>, literally I FIRST LEAVE, meaning <i>I’ll leave now</i> or <i>OK, I’ll be off</i>.</c.P>
           <c.Bookrow center marginTop={50}>
             <img src="http://via.placeholder.com/550x450" alt="" />
           </c.Bookrow>

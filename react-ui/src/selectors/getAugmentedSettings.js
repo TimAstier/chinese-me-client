@@ -35,7 +35,7 @@ import chineseLunar from 'chinese-lunar';
 import moment from 'moment';
 
 const WANG_YI_BIRTH_DATE = '1990-07-06';
-const WANG_XIN_BIRTH_DATE = '2001-02-28';
+const WANG_XIN_BIRTH_DATE = '2003-02-28';
 
 // Install i18n-iso-countries locals
 countries.registerLocale(require('i18n-iso-countries/langs/en.json'));

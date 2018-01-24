@@ -13,6 +13,7 @@ const Wrapper = styled.div`
   margin-bottom: -70px;
   margin-left: auto;
   margin-right: auto;
+  background-color: blue;
 `;
 
 const TitleWrapper = styled.div`

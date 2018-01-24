@@ -12,6 +12,18 @@ export default class Content extends Component {
   render() {
     const { newCharacters, example, lessonTitle, dialog, grammarTitle,
       practiceIds, newWords, image, pronunciationTitle } = this.props;
+
+    // This part comes between a dialog 'title' and 'intro'
+    const specialIntro = () => {
+      return (
+        <c.P
+          buttonOptions={{
+            type: 'askUserSettings'
+          }}
+        ><i>Now, input your own birthdate to practice presenting yourself.</i>
+        </c.P>
+      );
+    };
     return (
       <div>
         <c.Page>
@@ -168,13 +180,7 @@ export default class Content extends Component {
           {dialog(1, { sentenceType: 'translation', displayNames: false })}
           {dialog(7, { sentenceType: 'chinese', displayNames: false })}
           {dialog(7, { sentenceType: 'translation', displayNames: false })}
-          <c.P
-            buttonOptions={{
-              type: 'askUserSettings'
-            }}
-          ><i>Now, input your own birthdate to practice presenting yourself.</i>
-          </c.P>
-          {dialog(2, { sentenceType: 'chinese', displayNames: false })}
+          {dialog(2, { sentenceType: 'chinese', displayNames: false, specialIntro })}
           {dialog(3, { sentenceType: 'chinese', displayNames: false })}
           {dialog(4, { sentenceType: 'chinese', displayNames: false })}
           {dialog(5, { sentenceType: 'chinese', displayNames: true })}

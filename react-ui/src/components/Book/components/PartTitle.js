@@ -13,6 +13,7 @@ const titles = {
   patterns: 'PATTERNS',
   dialog: 'DIALOG',
   dialogs: 'DIALOGS',
+  dialog_zh: '会话',
   pronunciation: 'PRONUNCIATION',
   culture: 'CULTURE & SOCIETY',
   words: 'WORDS & EXPRESSIONS',
@@ -22,7 +23,7 @@ const titles = {
 
 const H2 = styled.h2`
   font-size: ${props => props.fontSize};
-  font-family: 'Calibri';
+  font-family: ${props => props.fontFamily};
   color: ${props => props.color};
 `;
 
@@ -62,6 +63,13 @@ class PartTitle extends Component {
       : 60;
   }
 
+  _fontFamily() {
+    if (this.props.name === 'dialog_zh') {
+      return 'Kai';
+    }
+    return 'Calibri';
+  }
+
   render() {
     return (
       <Bookrow
@@ -70,7 +78,7 @@ class PartTitle extends Component {
         marginTop={this._marginTop()}
       >
         <Element name={this.props.anchor}>
-          <H2 fontSize={this._fontSize()} color={this._color()}>
+          <H2 fontSize={this._fontSize()} color={this._color()} fontFamily={this._fontFamily()}>
             { this.props.name ? titles[this.props.name] : this.props.children }
           </H2>
         </Element>

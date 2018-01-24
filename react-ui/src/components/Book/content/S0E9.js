@@ -137,7 +137,7 @@ export default class Content extends Component {
           >
             <i>Practice.</i>
           </c.P>
-          <c.PartTitle name="dialogs" />
+          <c.PartTitle name="dialog_zh" />
           {dialog(1, { sentenceType: 'chinese', displayNames: true })}
           {dialog(1, { sentenceType: 'translation', displayNames: true })}
           {dialog(2, { sentenceType: 'chinese', displayNames: true })}

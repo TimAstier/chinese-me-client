@@ -116,9 +116,13 @@ export default class Content extends Component {
           </c.Bookrow>
           <c.PartTitle name="dialogs" />
           {dialog(1, { sentenceType: 'chinese', displayNames: true })}
+          {dialog(1, { sentenceType: 'translation', displayNames: true })}
           {dialog(2, { sentenceType: 'chinese', displayNames: true })}
+          {dialog(2, { sentenceType: 'translation', displayNames: true })}
           {dialog(3, { sentenceType: 'chinese', displayNames: true })}
+          {dialog(3, { sentenceType: 'translation', displayNames: true })}
           {dialog(4, { sentenceType: 'chinese', displayNames: true })}
+          {dialog(4, { sentenceType: 'translation', displayNames: true })}
           {dialog(5, { sentenceType: 'chinese', displayNames: true })}
           <c.PartTitle name="words" />
           {newWords()}

@@ -28,7 +28,7 @@ export default class Content extends Component {
             buttonOptions={{
               type: 'askUserSettings'
             }}
-          >Now, it’s your turn to introduce yourself. Western names are hard to pronounce for Chinese people. Click on the exercise icon and we will give you a Chinese name based on your real name, gender and nationality.</c.P>
+          >Now, it’s your turn to introduce yourself. Western names are hard to pronounce for Chinese people. Click on the <i>Me</i> icon and we will give you a Chinese name based on your real name, gender and nationality.</c.P>
           <c.P>We chose a Chinese family name for you based on the sound of your real name. Listen and practice imitating the audio voice a few times!</c.P>
           {example(2, { basic: true, audio: true })}
           <c.P>Your given name is <c.Chinese>{insertVariables('[CHINESE_GIVEN_NAME]', settings)}</c.Chinese> and means <i>{insertVariables('[NAME_MEANING]', settings)}</i>. Practice!</c.P>

@@ -53,7 +53,7 @@ class Bookrow extends Component {
       case 'calligraphy':
       case 'dialog':
       case 'stroke':
-      case 'story':
+      case 'etymology':
       case 'exam':
       case 'practice':
       case 'askUserSettings':
@@ -92,7 +92,7 @@ Bookrow.propTypes = {
       'calligraphy',
       'dialog',
       'stroke',
-      'story',
+      'etymology',
       'practice',
       'exam',
       'askUserSettings'

@@ -7,6 +7,7 @@ import exerciseIcon from '../../../images/exerciseIcon.svg';
 import storyIcon from '../../../images/storyIcon.svg';
 import strokeIcon from '../../../images/strokeIcon.svg';
 import examIcon from '../../../images/examIcon.svg';
+import squareLogo from '../../../images/squareLogo.png';
 
 const Wrapper = styled.div`
   display: flex;
@@ -33,7 +34,7 @@ class BookButton extends Component {
       case 'dialog': return dialogIcon;
       case 'etymology': return storyIcon;
       case 'stroke': return strokeIcon;
-      case 'askUserSettings':
+      case 'askUserSettings': return squareLogo;
       case 'practice': return exerciseIcon;
       case 'exam': return examIcon;
       default: return console.log('Unknown bookButton type');

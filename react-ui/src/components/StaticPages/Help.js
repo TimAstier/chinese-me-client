@@ -25,13 +25,12 @@ const TextBlock = styled.div`
 `;
 
 class Help extends Component {
-
   render() {
     return (
       <Preload
         loadingIndicator={<div>...</div>}
         images={[
-          'https://s3.eu-west-2.amazonaws.com/chineseme/images/black_logo.png" alt="chineseMe logo',
+          'https://s3.eu-west-2.amazonaws.com/chineseme/images/black_logo.png',
           'https://s3.eu-west-2.amazonaws.com/chineseme/images/toc.png'
         ]}
       >
@@ -88,17 +87,24 @@ class Help extends Component {
             <c.P>Some Chinese characters have extra resources:</c.P>
             <c.P
               buttonOptions={{
-                type: 'writing'
+                type: 'calligraphy'
               }}
             >
               <b><i>Calligraphy</i></b> videos, to learn how to write characters beautifully
             </c.P>
             <c.P
               buttonOptions={{
-                type: 'story'
+                type: 'etymology'
               }}
             >
               <b><i>Oracle bone</i></b> explanations, to learn the origin and stories behind the characters
+            </c.P>
+            <c.P
+              buttonOptions={{
+                type: 'askUserSettings'
+              }}
+            >
+              With the <b><i>Me icons</i></b>, you ave the possibility to input your personal information. Some parts of the course will then be adapted based on the information you provided, in order to make the learning experience more meaningful for you. One example is to learn how to say <i>I am X years old</i> in Chinese.
             </c.P>
             <c.P
               buttonOptions={{

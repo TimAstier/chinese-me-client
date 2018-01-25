@@ -23,9 +23,9 @@ class CharacterPractice extends Component {
     return (
       <Bookrow
         buttonOptions={
-          this.props.writingUrl ?
+          this.props.calligraphyHash ?
           {
-            type: 'writing',
+            type: 'calligraphy',
             data: { elementId: this.props.characterId }
           }
           : null
@@ -40,7 +40,7 @@ class CharacterPractice extends Component {
 CharacterPractice.propTypes = {
   simpChar: propTypes.string.isRequired,
   characterId: propTypes.number.isRequired,
-  writingUrl: propTypes.string
+  calligraphyHash: propTypes.string
 };
 
 export default CharacterPractice;

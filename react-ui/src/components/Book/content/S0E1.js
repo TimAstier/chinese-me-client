@@ -289,16 +289,7 @@ export default class Content extends Component {
           <c.P><c.Chinese>一</c.Chinese></c.P>
           <c.P>But if you look carefully at the hand-written character, you will see that the horizontal stroke is not just a flat line. It is always written from left to right, with a clearly defined beginning and end and. The whole stroke curves gently, giving it the organic look of a bone or a tree branch:</c.P>
           {character(1, { mode: 'box' })}
-          <c.P
-            buttonOptions={{
-              type: 'calligraphy',
-              data: {
-                elementId: characterIds[0]
-              }
-            }}
-          >
-            If you click on the calligraphy icon, you can see a video showing how to write it correctly. Print out a <a href="https://s3.eu-west-2.amazonaws.com/chineseme/pdf/Exercise+sheet.pdf" target="_blank" rel="noopener noreferrer">practice sheet</a> and use an ordinary, black ballpoint pen to practice writing it as beautifully as you can:
-          </c.P>
+          <c.P>If you click on the calligraphy icon, you can see a video showing how to write it correctly. Print out a <a href="https://s3.eu-west-2.amazonaws.com/chineseme/pdf/Exercise+sheet.pdf" target="_blank" rel="noopener noreferrer">practice sheet</a> and use an ordinary, black ballpoint pen to practice writing it as beautifully as you can:</c.P>
           {character(1, { mode: 'practice' })}
           <c.PartTitle
             type="secondary"

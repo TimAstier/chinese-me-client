@@ -16,7 +16,7 @@ class Character extends Component {
       <c.CharacterPractice
         simpChar={this.props.character.simpChar}
         characterId={this.props.characterId}
-        writingUrl={this.props.character.writingUrl}
+        calligraphyHash={this.props.character.calligraphyHash}
       />
     );
   }

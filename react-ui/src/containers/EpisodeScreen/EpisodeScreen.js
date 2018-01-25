@@ -9,7 +9,6 @@ import s from '../../rootSelectors';
 import * as models from '../../models';
 
 class EpisodeScreen extends Component {
-
   componentDidMount() {
     this.props.runEpisodeScreen(this.props.url);
   }

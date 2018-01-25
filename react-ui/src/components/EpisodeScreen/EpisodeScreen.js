@@ -65,8 +65,7 @@ const TopRightWrapper = styled.div`
 `;
 
 const BackIcon = styled.div`
-  font-family: Open Sans;
-  
+  font-family: Open Sans;  
   color: #959595;
   div:nth-child(2) {
     font-size: 14px;

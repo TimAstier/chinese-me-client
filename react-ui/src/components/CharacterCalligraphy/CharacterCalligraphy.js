@@ -9,14 +9,17 @@ const Wrapper = styled.div`
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  margin-top: -50px;
-  margin-bottom: -70px;
   margin-left: auto;
   margin-right: auto;
 `;
 
 const TitleWrapper = styled.div`
+  margin-top: -50px;
   text-align: center;
+  ${''/* This is a sort of workaround. We should probably use a different
+  parent component than EpisodeScreen. See https://robertnyman.com/2010/03/22/
+  css-pointer-events-to-allow-clicks-on-underlying-elements/ */}
+  pointer-events: none;
 `;
 
 const Img = styled.img`
@@ -48,7 +51,7 @@ const ContentWrapper = styled.div`
   padding-top: 15px;
   padding-bottom: 15px;
   max-width: 650px;
-  max-height: 450px;
+  max-height: 480px;
 `;
 
 const PrintWrapper = styled.div`

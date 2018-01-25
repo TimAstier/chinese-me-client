@@ -26,7 +26,6 @@ const TopMiddleDownWrapper = styled.div`
 `;
 
 class TopMiddleWrapper extends Component {
-
   shouldComponentUpdate(nextProps) {
     return nextProps.elementType !== undefined;
   }

@@ -40,6 +40,7 @@ const ContentWrapper = styled.div`
   border: 3px solid red;
   padding-top: 15px;
   padding-bottom: 15px;
+  max-height: 530px;
 `;
 
 class CharacterEtymology extends Component {

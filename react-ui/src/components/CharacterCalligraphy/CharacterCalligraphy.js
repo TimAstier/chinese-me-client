@@ -11,6 +11,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   margin-left: auto;
   margin-right: auto;
+  min-height: 550px;
 `;
 
 const TitleWrapper = styled.div`
@@ -51,7 +52,7 @@ const ContentWrapper = styled.div`
   padding-top: 15px;
   padding-bottom: 15px;
   max-width: 650px;
-  max-height: 480px;
+  height: 480px;
 `;
 
 const PrintWrapper = styled.div`

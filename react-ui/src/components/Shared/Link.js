@@ -10,7 +10,6 @@ const Wrapper = styled.span`
 `;
 
 class Link extends Component {
-
   render() {
     return (
       <Wrapper>{this.props.children}</Wrapper>

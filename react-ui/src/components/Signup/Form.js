@@ -80,7 +80,7 @@ class Form extends Component {
           <FormErrorWrapper>
             {error}
           </FormErrorWrapper>}
-        <Button type="submit">Create your ChineseMe account</Button>
+        <Button type="submit">Sign Up</Button>
       </form>
     );
   }

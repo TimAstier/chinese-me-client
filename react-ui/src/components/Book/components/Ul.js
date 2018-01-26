@@ -7,11 +7,11 @@ const StyledUl = styled.ul`
   font-size: 21px;
   li {
     line-height: 25px;
+    margin-bottom: 10px;
   }
 `;
 
 class Ul extends Component {
-
   render() {
     return (
       <StyledUl>{this.props.children}</StyledUl>

@@ -18,10 +18,12 @@ export function* initApp() {
     yield put(studyActions.setCurrentSeasonId(firstSeasonId));
     const url = yield select(selectors.routing.getCurrentUrl);
     const { episodeId } = getParamsFromUrl(url);
-    // Workaround for book urls and help page
-    if (episodeId && episodeId !== 'season' && episodeId !== 'help') {
-      yield put(studyActions.setCurrentEpisodeId(episodeId));
-      yield put(mapActions.setFocusedEpisodeId(episodeId));
+    // Workaround for book urls and static pages
+    if (episodeId && episodeId !== 'season') {
+      if (['help', 'privacy-policy', 'terms-of-service', 'about', 'philosophy'].indexOf(episodeId ) === -1) {
+        yield put(studyActions.setCurrentEpisodeId(episodeId));
+        yield put(mapActions.setFocusedEpisodeId(episodeId));
+      }
     }
     yield put(appActions.setInitialized(true));
     if (isAuthenticated) {

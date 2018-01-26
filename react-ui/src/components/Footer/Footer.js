@@ -25,7 +25,8 @@ const CopyrightWrapper = styled.div`
 
 const LinksWrapper = styled.div`
   height: 50px;
-  width: 700px;
+  ${''/* width: 700px; */}
+  width: 500px;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -51,7 +52,6 @@ const SocialMediaLinks = styled.div`
 `;
 
 class Footer extends Component {
-
   render() {
     return (
       <Wrapper>
@@ -59,14 +59,20 @@ class Footer extends Component {
           © 2017 ChineseMe AB All Rights Reserved.
         </CopyrightWrapper>
         <LinksWrapper>
-          <a>About</a>
-          <a>FAQ</a>
-          <a>Jobs</a>
-          <a>Contact us</a>
-          <a>Terms</a>
-          <a>
-            Policy
-            {/* Good example on https://thetypingcat.com/privacy-policy */}
+          <a href="/study/about">
+            About
+          </a>
+          {/* <a>FAQ</a>
+          <a>Jobs</a> */}
+          {/* <a>Contact us</a> */}
+          <a href="/study/philosophy">
+            Our Philosophy
+          </a>
+          <a href="/study/terms-of-service">
+            Terms
+          </a>
+          <a href="/study/privacy-policy">
+            Privacy
           </a>
           <SocialMediaLinks>
             <a

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import propTypes from 'prop-types';
 import { SignupForm, OnboardingScreen } from '../.';
-import { Bold, Link as LinkComponent } from '../Shared';
+import { Link as LinkComponent } from '../Shared';
 import { Link } from 'react-router';
 
 // TODO: DRY this with login form
@@ -27,33 +27,31 @@ const Footer = styled.div`
 
 const FooterText = styled.div`
   font-family: 'Open Sans';
-  font-size: 16px;
+  font-size: ${props => props.fontSize};
   line-height: 1.5;
   color: #bfbfbf;
+  max-width: 400px;
 `;
 
 class Page extends Component {
-
   render() {
     return (
       <OnboardingScreen>
         <TitleWrapper>
-          <p><Bold>Sign up </Bold>for ChineseMe</p>
+          <p>Create a new account</p>
         </TitleWrapper>
         <SignupForm onSubmit={this.props.onSubmit} />
         <Footer>
-          <FooterText>
+          <FooterText fontSize={'16px'}>
             <p>
               Already have an account?
               <LinkComponent><Link to="/login"> Log in.</Link></LinkComponent>
             </p>
           </FooterText>
-          <FooterText>
+          <br />
+          <FooterText fontSize={'13px'}>
             <p>
-              <br/>
-              By Clicking "Create your ChineseMe account",
-              <br/>
-              I agree to ChineseMe's <LinkComponent>Terms of Service.</LinkComponent>
+              By clicking on the Sign Up button above you are agreeing to the <LinkComponent><a href="/study/terms-of-service">Terms of Service</a></LinkComponent> and the <LinkComponent><a href="/study/privacy-policy">Privacy Policy</a></LinkComponent>.
             </p>
           </FooterText>
         </Footer>

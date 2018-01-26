@@ -4,6 +4,7 @@ export { bookComponents };
 
 // Keep in alphabetical order
 export { default as ActivatedPage } from './Signup/ActivatedPage';
+export { default as About } from './StaticPages/About';
 export { default as AudioToWords } from './Exercises/AudioToWords/AudioToWords';
 export { default as Avatar } from './Avatar/Avatar';
 export { default as Book } from './Book/Book';
@@ -52,8 +53,10 @@ export { default as NewWordLink } from './NewWordLink/NewWordLink';
 export { default as NewWordPopup } from './NewWordLink/NewWordPopup';
 export { default as OnboardingScreen } from './OnboardingScreen/OnboardingScreen';
 export { default as PauseButton } from './PauseButton/PauseButton';
+export { default as Philosophy } from './StaticPages/Philosophy';
 export { default as PlayAudioButton } from './PlayAudioButton/PlayAudioButton';
 export { default as PracticeResult } from './PracticeResult/PracticeResult';
+export { default as Privacy } from './StaticPages/Privacy';
 export { default as Progressbar } from './Progressbar/Progressbar';
 export { default as QuestionModal } from './QuestionModal/QuestionModal';
 export { default as ClosedQuestion } from './QuestionModal/ClosedQuestion';
@@ -69,6 +72,7 @@ export { default as Star } from './Star/Star';
 export { default as Statement } from './Statement/Statement';
 export { default as StatementWrapper } from './Dialog/StatementWrapper';
 export { default as StudyVideo } from './StudyVideo/StudyVideo';
+export { default as Terms } from './StaticPages/Terms';
 export { default as TransparentInput } from './TransparentInput/TransparentInput';
 export { default as VideoPlayer } from './VideoPlayer/VideoPlayer';
 export { default as WordBox } from './Exercises/AudioToWords/WordBox/WordBox';

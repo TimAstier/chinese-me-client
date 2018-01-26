@@ -6,6 +6,9 @@
 // [CHINESE_GIVEN_NAME]    => 杰
 // [NATIONALITY_ZH]        => 法国
 // [NATIONALITY_EN]        => France
+// [GIVEN_NAME_PINYIN]     => Jié
+// [FAMILY_NAME_PINYIN]    => Ān
+// [COUNTRY_PINYIN]        => Fǎguó
 // [AGE]                   => 二十六
 // [BIRTH_YEAR]            => 1992
 // [BIRTH_MONTH]           => 1
@@ -22,17 +25,23 @@
 // [LANGUAGE_2]            => 法语 TODO
 // [LANGUAGE_3]            => 中文 TODO
 // [REASON_LEARN_CHINESE]  => 我喜欢中国文化。
+// [MOTHER_TONGUE]         => English
+// [MOTHER_TONGUE_ZH]      => 英语
+// [MOTHER_TONGUE_PINYIN]      => 英语
+// [OTHER_LANGUAGE]        => TODO
+// [OTHER_LANGUAGE_ZH]     => 瑞典语
+// [OTHER_LANGUAGE_PINYIN] => TODO
 
 import { createSelector } from 'reselect';
 import { Map } from 'immutable';
 import s from './globalizedSelectors';
 import countries from 'i18n-iso-countries';
 import nameMeanings from '../constants/nameMeanings';
-import pinyin from 'chinese-to-pinyin';
-import pinyinize from 'pinyinize';
 import { capitalizeFirstLetter } from '../utils/strings';
+import chineseToPinyin from '../utils/chineseToPinyin';
 import chineseLunar from 'chinese-lunar';
 import moment from 'moment';
+import { languageTranslations } from '../constants/languages';
 
 const WANG_YI_BIRTH_DATE = '1990-07-06';
 const WANG_XIN_BIRTH_DATE = '2003-02-28';
@@ -45,17 +54,12 @@ const getCountryName = (alpha3, language) => {
   return alpha3 ? countries.getName(alpha3, language) : undefined;
 };
 
-const getNamePinyin = character => {
-  if (!character) {
+const toPinyinWithCap = chinese => {
+  if (!chinese) {
     return null;
   }
   return capitalizeFirstLetter( // wǒ => Wǒ
-    pinyinize( // wo3 => wǒ
-      pinyin( // 法国 => 'fa3 guo3'
-        character,
-        {numberTone: true}
-      )
-    )
+    chineseToPinyin(chinese)
   ).replace(/\s/g, '');
 };
 
@@ -165,6 +169,38 @@ const getReasonLearnChinese = reason => {
   }
 };
 
+const languageToChinese = language => {
+  if (!language) {
+    return null;
+  }
+  if (!languageTranslations[language]) {
+    if (language === 'N/A') {
+      return '';
+    }
+  }
+  return languageTranslations[language].ZH;
+};
+
+const getOtherLanguageComma = language => {
+  const otherLanguage = languageToChinese(language);
+  if (!otherLanguage) {
+    return otherLanguage;
+  }
+  // Add a comma to add the language into a sentence dialog's enumeration
+  return '，' + otherLanguage;
+};
+
+const languageToPinyin = language => {
+  if (!language) {
+    return null;
+  }
+  if (!languageTranslations[language]) {
+    return null;
+  }
+  return languageTranslations[language].PINYIN;
+};
+
+
 // Add dynamically generated variables to the settings map.
 const getAugmentedSettings = createSelector(
   s.settings.getSettings,
@@ -174,9 +210,9 @@ const getAugmentedSettings = createSelector(
       nationalityZh: chineseCountryName,
       nationalityEn: getCountryName(settings.get('nationality'), 'en'),
       nameMeaning: nameMeanings[settings.get('chineseGivenName')],
-      givenNamePinyin: getNamePinyin(settings.get('chineseGivenName')),
-      familyNamePinyin: getNamePinyin(settings.get('chineseFamilyName')),
-      countryPinyin: getNamePinyin(chineseCountryName),
+      givenNamePinyin: toPinyinWithCap(settings.get('chineseGivenName')),
+      familyNamePinyin: toPinyinWithCap(settings.get('chineseFamilyName')),
+      countryPinyin: toPinyinWithCap(chineseCountryName),
       age: getAge(settings.get('birthdate')),
       birthYear: getYear(settings.get('birthdate')),
       birthMonth: getMonth(settings.get('birthdate')),
@@ -186,7 +222,12 @@ const getAugmentedSettings = createSelector(
       ageComparison: getAgeComparison(settings.get('birthdate'), WANG_YI_BIRTH_DATE),
       ageDifference: getAgeDifference(settings.get('birthdate')),
       ageComparisonTwo: getAgeComparison(settings.get('birthdate'), WANG_XIN_BIRTH_DATE),
-      reasonLearnChinese: getReasonLearnChinese(settings.get('reasonLearnChinese'))
+      reasonLearnChinese: getReasonLearnChinese(settings.get('reasonLearnChinese')),
+      motherTongueZh: languageToChinese(settings.get('motherTongue')),
+      otherLanguageZh: languageToChinese(settings.get('otherLanguage')),
+      otherLanguageZhComma: getOtherLanguageComma(settings.get('otherLanguage')),
+      motherTonguePinyin: languageToPinyin(settings.get('motherTongue')),
+      otherLanguagePinyin: languageToPinyin(settings.get('otherLanguage'))
     }));
     return augmentedSettings.toJS();
   }

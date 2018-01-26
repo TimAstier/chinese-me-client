@@ -4,24 +4,71 @@ import { Objective } from '../../../containers/Book/containers';
 import { content as contentPropTypes } from '../../../helpers/propTypes';
 import pinyinNumberToAudioUrl from '../../../utils/pinyinNumberToAudioUrl';
 import { Row } from '../../Shared';
-// import insertVariables from '../../../utils/insertVariables';
+import insertVariables from '../../../utils/insertVariables';
+// import chineseToPinyin from '../../../utils/chineseToPinyin';
 
 export default class Content extends Component {
   static propTypes = contentPropTypes
 
   render() {
     const { newCharacters, example, lessonTitle, dialog, grammarTitle,
-      practiceIds, newWords, pronunciationTitle } = this.props;
+      practiceIds, newWords, pronunciationTitle, settings } = this.props;
 
     // This part comes between a dialog 'title' and 'intro'
     const specialIntro = () => {
       return (
-        <c.P
-          buttonOptions={{
-            type: 'askUserSettings'
-          }}
-        >Now, go to the web and input the languages you speak, to continue practicing how to present yourself.
-        </c.P>
+        <div>
+          <c.P
+            buttonOptions={{
+              type: 'askUserSettings'
+            }}
+          >Now, click on the <i>Me</i> icon and input the languages you speak to learn their names in Chinese.
+          </c.P>
+          <c.P>Here are the names of your languages in Chinese. Listen to their pronunciation and repeat until you feel confident.</c.P>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                text: insertVariables('[MOTHER_TONGUE_ZH]', settings)
+              }
+            }}
+          >
+            <Row>
+              <c.Char>{insertVariables('[MOTHER_TONGUE_ZH]', settings)}</c.Char>
+              <c.Pinyin>{insertVariables('[MOTHER_TONGUE_PINYIN]', settings)}</c.Pinyin>
+            </Row>
+          </c.Bookrow>
+          {
+            insertVariables('[OTHER_LANGUAGE]', settings) !== '__' &&
+            insertVariables('[OTHER_LANGUAGE]', settings) !== 'N/A' &&
+              <c.Bookrow
+                buttonOptions={{
+                  type: 'audio',
+                  data: {
+                    text: insertVariables('[OTHER_LANGUAGE_ZH]', settings)
+                  }
+                }}
+              >
+                <Row>
+                  <c.Char>{insertVariables('[OTHER_LANGUAGE_ZH]', settings)}</c.Char>
+                  <c.Pinyin>{insertVariables('[OTHER_LANGUAGE_PINYIN]', settings)}</c.Pinyin>
+                </Row>
+              </c.Bookrow>
+          }
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                text: '中文'
+              }
+            }}
+          >
+            <Row>
+              <c.Char>中文</c.Char>
+              <c.Pinyin>zhōngwén</c.Pinyin>
+            </Row>
+          </c.Bookrow>
+        </div>
       );
     };
 
@@ -106,7 +153,7 @@ export default class Content extends Component {
           >
             <i>Practice.</i>
           </c.P>
-          <c.Bookrow>
+          <c.Bookrow center>
             <img src="http://via.placeholder.com/550x450" alt="" />
           </c.Bookrow>
           <c.PartTitle name="dialogs" />

@@ -1,3 +1,7 @@
+// 'name' corresponds to both:
+//   - the name of the field from the settings table
+//   - the values (in underscore_case) in the array 'requiredUserData' field from the episodes table
+
 const settings = {
   FAMILY_NAME: {
     name: 'familyName',
@@ -21,6 +25,14 @@ const settings = {
   },
   REASON_LEARN_CHINESE: {
     name: 'reasonLearnChinese',
+    questionType: 'selectQuestion'
+  },
+  MOTHER_TONGUE: {
+    name: 'motherTongue',
+    questionType: 'selectQuestion'
+  },
+  OTHER_LANGUAGE: {
+    name: 'otherLanguage',
     questionType: 'selectQuestion'
   }
 };

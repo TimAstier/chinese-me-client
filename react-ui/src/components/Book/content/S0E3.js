@@ -20,8 +20,20 @@ export default class Content extends Component {
     const specialIntro = () => {
       return (
         <div>
-          <c.P>Now, it’s your turn to tell Wang Yi and Wang Yuguo where you are from. In Chinese, {insertVariables('[NATIONALITY_EN]', settings)} is:</c.P>
-          {example(6, { basic: true, audio: true })}
+          <c.P>Now, it’s your turn to tell Wang Yi and Wang Yuguo where you are from. In Chinese, <i>{insertVariables('[NATIONALITY_EN]', settings)}</i> is:</c.P>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                text: insertVariables('[NATIONALITY_ZH]', settings)
+              }
+            }}
+          >
+            <Row>
+              <c.Char>{insertVariables('[NATIONALITY_ZH]', settings)}</c.Char>
+              <c.Pinyin>{insertVariables('[COUNTRY_PINYIN]', settings)}</c.Pinyin>
+            </Row>
+          </c.Bookrow>
           <c.P>Listen to the audio voice and repeat until you feel confident saying your country name.</c.P>
           <c.P>
             In order to say <i>I am from {insertVariables('[NATIONALITY_EN]', settings)}</i>, just add <c.Chinese>人</c.Chinese>. Listen and repeat:
@@ -219,14 +231,6 @@ export default class Content extends Component {
           <c.P>Repeat this until you feel comfortable.</c.P>
           <c.P>Now, change roles! Pretend you are Wang Yuguo, and introduce yourself.</c.P>
           <c.PartTitle>PINYIN PRACTICE</c.PartTitle>
-          <c.P>Here is how to write the name of your nationality in <b>pīnyīn</b>:</c.P>
-          <c.Bookrow>
-            <Row>
-              <c.Char>{insertVariables('[NATIONALITY_ZH]', settings)}</c.Char>
-              <c.Pinyin>{insertVariables('[COUNTRY_PINYIN]', settings)}</c.Pinyin>
-              <c.Meaning>{insertVariables('[NATIONALITY_EN]', settings)}</c.Meaning>
-            </Row>
-          </c.Bookrow>
           <c.P>Let us practice transcribing some other characters and words in this lesson to <b>pīnyīn</b>.</c.P>
           <c.PartTitle type="secondary"><span>Three different sounds are spelled <i>i</i></span></c.PartTitle>
           <c.P>After most initials, Chinese <b>i</b> is pronounced like English <i>ee</i> in <i>tree</i>:</c.P>

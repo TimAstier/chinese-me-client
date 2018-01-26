@@ -161,7 +161,7 @@ export default class Content extends Component {
             <c.Meaning>(LIKE-TO-STUDY)</c.Meaning>
           </c.Bookrow>
           <c.P>So when we read the characters <c.Chinese>好学</c.Chinese>, we have to decide from context whether <b>hao</b> should be pronounced with Tone 3 or Tone 4: <b>hǎoxué</b> <i>easy (to learn)</i> or <b>hàoxué</b> <i>diligent</i>.</c.P>
-          <c.Bookrow>
+          <c.Bookrow center>
             <img src="http://via.placeholder.com/550x450" alt=""/>
           </c.Bookrow>
           <c.PartTitle name="dialog_zh" />

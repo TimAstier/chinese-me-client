@@ -16,8 +16,13 @@ const insertVariables = (sentence, settings) => {
   let result = sentence;
   const matches = sentence.match(/\[(.*?)\]/g);
   matches.forEach(m => {
-    // Replace the placeholder by the setting value, or '__' if not set
-    result = result.replace(m, settings[camelCase(m.slice(1, -1))] || '__');
+    // Replace the placeholder by the setting value, or '__' if null
+    let settingValue = settings[camelCase(m.slice(1, -1))];
+    // Keep settingValue as empty string if defined as empty string
+    if (!settingValue && settingValue !== '') {
+      settingValue = '__';
+    }
+    result = result.replace(m, settingValue);
   });
   return result;
 };

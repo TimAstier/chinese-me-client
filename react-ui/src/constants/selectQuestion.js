@@ -1,4 +1,5 @@
 import countries from 'i18n-iso-countries';
+import { languages } from './languages';
 
 function createArrayOfCountries() {
   const results = [];
@@ -20,6 +21,8 @@ function createArrayOfCountries() {
   return sortedResults;
 }
 
+const languagesChoices = languages.map(e => ({ value: e, label: e }));
+
 const constants = {
   NATIONALITY: {
     label: 'What is your nationality?',
@@ -38,6 +41,14 @@ const constants = {
       { value: 'relationship_husband', label: 'My husband is Chinese.' },
       { value: 'relationship_wife', label: 'My wife is Chinese.' }
     ]
+  },
+  MOTHER_TONGUE: {
+    label: 'What is your main native language?',
+    choices: languagesChoices
+  },
+  OTHER_LANGUAGE: {
+    label: 'What other language can you speak?',
+    choices: [ { value: 'N/A', label: 'None (except Chinese!)' }, ...languagesChoices ]
   }
 };
 

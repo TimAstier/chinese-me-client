@@ -20,7 +20,7 @@ export default class Content extends Component {
           buttonOptions={{
             type: 'askUserSettings'
           }}
-        >Now, go to the web and input your own birthdate to practice presenting yourself.
+        >Now, click on the <i>Me</i> icon and input your own birthdate to practice presenting yourself.
         </c.P>
       );
     };

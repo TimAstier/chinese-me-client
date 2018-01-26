@@ -137,7 +137,7 @@ export default class Content extends Component {
           >
             <i>Practice.</i>
           </c.P>
-          <c.Bookrow>
+          <c.Bookrow center>
             <img src="http://via.placeholder.com/550x450" alt="" />
           </c.Bookrow>
           <c.PartTitle name="dialog_zh" />

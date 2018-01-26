@@ -32,6 +32,27 @@
       }
     </script>
     <script src="https://code.responsivevoice.org/responsivevoice.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
+    <!-- Cookie consent notice -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+      <script>
+      window.addEventListener("load", function(){
+      window.cookieconsent.initialise({
+        "palette": {
+          "popup": {
+            "background": "#000"
+          },
+          "button": {
+            "background": "#55b6ff",
+            "text": "#ffffff"
+          }
+        },
+        "content": {
+          "href": "/policy"
+        }
+      })});
+    </script>
+    <!-- END Cookie consent notice -->
   </head>
   <body>
     <div id="app" style="height:100%;width:100%;"></div>

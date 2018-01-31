@@ -178,13 +178,13 @@ export default class Content extends Component {
           <c.PartTitle name="dialogs" />
           {dialog(1, { sentenceType: 'chinese', displayNames: false })}
           {dialog(1, { sentenceType: 'translation', displayNames: false })}
-          {dialog(7, { sentenceType: 'chinese', displayNames: false })}
-          {dialog(7, { sentenceType: 'translation', displayNames: false })}
-          {dialog(2, { sentenceType: 'chinese', displayNames: false, specialIntro })}
-          {dialog(3, { sentenceType: 'chinese', displayNames: false })}
+          {dialog(2, { sentenceType: 'chinese', displayNames: false })}
+          {dialog(2, { sentenceType: 'translation', displayNames: false })}
+          {dialog(3, { sentenceType: 'chinese', displayNames: false, specialIntro })}
           {dialog(4, { sentenceType: 'chinese', displayNames: false })}
-          {dialog(5, { sentenceType: 'chinese', displayNames: true })}
+          {dialog(5, { sentenceType: 'chinese', displayNames: false })}
           {dialog(6, { sentenceType: 'chinese', displayNames: true })}
+          {dialog(7, { sentenceType: 'chinese', displayNames: true })}
           <c.PartTitle name="culture" />
           <c.PartTitle type="secondary">How Chinese people count age</c.PartTitle>
           <c.P>In Western countries, age changes on a person’s birthday. In China, people state their age by saying <i>how old they will be this calendar year</i>; it doesn't matter whether they have actually passed this year's birthday or not. As of January 1 each year, they are one year older than the year before.</c.P>

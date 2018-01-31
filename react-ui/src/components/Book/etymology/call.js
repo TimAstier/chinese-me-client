@@ -16,7 +16,7 @@ export default class Content extends Component {
             <c.Meaning>scold</c.Meaning>
           </Row>
         </c.Bookrow>
-        <c.P>It is made up of two ancient character elements: <c.Chinese>口</c.Chinese> <i>mouth</i>, and <c.Chinese>马</c.Chinese> <i>horse</i>. Why did scribes choose these two components?</c.P>
+        <c.P>It is made up of two ancient character elements: <c.Chinese>口</c.Chinese> <i>mouth</i>, and <c.Chinese>马</c.Chinese> <i>horse</i>. Why did the scribes choose these two components?</c.P>
         <c.P>The <i>mouth</i> element contributes <i>meaning</i>. It appears in characters such as <i>eat</i>, <i>drink</i>, <i>kiss</i> and <i>ask</i> – things you do with your mouth. A character component indicating meaning in this way is called a <i>radical</i>. In the character for <i>scold</i>, the radical is duplicated for emphasis: there are two <i>mouths</i> that really illustrate somebody getting a good telling-off.</c.P>
         <c.P>The <i>horse</i> component has nothing to do with meaning. It was chosen to give an indication of <i>pronunciation</i> and also appears in several other characters that sound similar to <c.Chinese>骂</c.Chinese>, for example <i>mother</i>, which has <i>woman</i> as radical:</c.P>
         <c.Bookrow>

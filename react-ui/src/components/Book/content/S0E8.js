@@ -168,7 +168,7 @@ export default class Content extends Component {
           {dialog(6, { sentenceType: 'chinese', displayNames: true })}
           <c.PartTitle name="words" />
           {newWords()}
-          <c.Review practiceId={practiceIds[0]} />
+          <c.Review />
           <c.Exam />
         </c.Page>
       </div>

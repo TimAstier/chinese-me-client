@@ -82,7 +82,7 @@ export default class Content extends Component {
             <i>Practice.</i>
           </c.P>
           {grammarTitle()}
-          <c.P>In China, time is divided into twelve-year cycles; each year in the cycle is the year of a zodiac animal: rat, ox, tiger, rabbit, dragon, snake, horse, sheep, monkey, rooster, dog and pig. Being born in a particular animal is called <c.Chinese>属</c.Chinese> <b>shǔ</b> <i>to belong to</i> that animal:</c.P>
+          <c.P>The Chinese year starts at the Lunar New Year, which, depending on the year, falls on a date between January 21 and February 20. Time was traditionally divided into twelve-year cycles, and each year in a cycle is the year of a zodiac animal: rat, ox, tiger, rabbit, dragon, snake, horse, sheep, monkey, rooster, dog and pig. Being born in a particular animal is called <c.Chinese>属</c.Chinese> <b>shǔ</b> <i>to belong to</i> that animal.</c.P>
           {example(6, { audio: true })}
           <c.P
             buttonOptions={{
@@ -148,7 +148,7 @@ export default class Content extends Component {
           <c.P>Some animals are more popular than others; a lot more babies are born in such years because many Chinese parents try to time having children then.</c.P>
           <c.PartTitle name="words" />
           {newWords()}
-          <c.Review practiceId={practiceIds[0]} />
+          <c.Review />
           <c.Exam />
         </c.Page>
       </div>

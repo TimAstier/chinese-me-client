@@ -31,10 +31,7 @@ class EpisodeScreen extends Component {
   }
 
   _handleExit() {
-    return this.props.exit(
-      this.props.season.number,
-      this.props.episode.number
-    );
+    return this.props.exit(this.props.backUrl);
   }
 
   render() {
@@ -63,7 +60,8 @@ EpisodeScreen.propTypes = {
   elementType: propTypes.string.isRequired,
   pause: propTypes.bool,
   hanziAgain: propTypes.bool,
-  appInitialized: propTypes.bool.isRequired
+  appInitialized: propTypes.bool.isRequired,
+  backUrl: propTypes.string.isRequired
 };
 
 const mapStateToProps = state => {
@@ -76,7 +74,8 @@ const mapStateToProps = state => {
     episode: s.getCurrentEpisode(state),
     season: s.getCurrentSeason(state),
     elementType: s.routing.getElementType(state),
-    appInitialized: s.app.getInitialized(state)
+    appInitialized: s.app.getInitialized(state),
+    backUrl: s.getBackUrl(state)
   };
 };
 

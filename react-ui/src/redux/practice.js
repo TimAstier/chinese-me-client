@@ -11,7 +11,9 @@ export const types = {
   CLEAN: 'practice/CLEAN',
   SET_TOTAL: 'practice/SET_TOTAL',
   SET_CORRECT_ANSWER: 'practice/SET_CORRECT_ANSWER',
-  SET_EXPLANATION: 'practice/SET_EXPLANATION'
+  SET_EXPLANATION: 'practice/SET_EXPLANATION',
+  SET_ERROR: 'practice/SET_ERROR',
+  SET_TYPE: 'practice/SET_TYPE'
 };
 
 // Reducer
@@ -21,7 +23,9 @@ export const INITIAL_STATE = fromJS({
   exercises: [], // [ { type, id } ],
   total: null,
   correctAnswer: null,
-  explanation: null
+  explanation: null,
+  type: null,
+  error: false,
 });
 
 export default function reducer(state = INITIAL_STATE, action = {}) {
@@ -44,6 +48,10 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
       return state.set('total', action.payload.total);
     case types.CLEAN:
       return INITIAL_STATE;
+    case types.SET_ERROR:
+      return state.set('error', action.payload);
+    case types.SET_TYPE:
+      return state.set('type', action.payload);
     default:
       return state;
   }
@@ -74,6 +82,8 @@ const setTotal = total => ({
   type: types.SET_TOTAL,
   payload: { total }
 });
+const setError = payload => ({ type: types.SET_ERROR, payload });
+const setType = payload => ({ type: types.SET_TYPE, payload });
 
 export const actions = {
   setInitialized,
@@ -83,7 +93,9 @@ export const actions = {
   clean,
   setTotal,
   setCorrectAnswer,
-  setExplanation
+  setExplanation,
+  setError,
+  setType
 };
 
 // Selectors
@@ -108,6 +120,8 @@ const getPracticeCompletion = createSelector(
   getTotal,
   (size, total) => (size && total) ? (total - size) / total * 100 : 100
 );
+const getError = state => state.get('error');
+const getType = state => state.get('type');
 
 export const selectors = {
   getInitialized,
@@ -117,5 +131,7 @@ export const selectors = {
   getExplanation,
   getTotal,
   getCurrentExercise,
-  getPracticeCompletion
+  getPracticeCompletion,
+  getError,
+  getType
 };

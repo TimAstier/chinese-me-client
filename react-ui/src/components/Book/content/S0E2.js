@@ -247,7 +247,7 @@ export default class Content extends Component {
           {character(2, { mode: 'practice' })}
           {character(3, { mode: 'practice' })}
           {character(5, { mode: 'practice' })}
-          <c.Review practiceId={practiceIds[0]} />
+          <c.Review />
           <c.Exam />
         </c.Page>
       </div>

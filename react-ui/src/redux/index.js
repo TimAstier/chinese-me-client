@@ -15,6 +15,7 @@ export { default as map } from './map';
 export { default as multipleChoice } from './multipleChoice';
 export { default as practice } from './practice';
 export { default as question } from './question';
+export { default as review } from './review';
 export { default as routing } from './routing';
 export { default as settings } from './settings';
 export { default as study } from './study';

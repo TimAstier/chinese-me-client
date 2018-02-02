@@ -3,7 +3,6 @@ import propTypes from 'prop-types';
 import mapTypeToContainers from '../../helpers/mapTypeToContainers';
 
 class Practice extends Component {
-
   render() {
     const Container =
       mapTypeToContainers(this.props.currentExercise.get('type'));

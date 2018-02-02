@@ -42,6 +42,8 @@ export { default as QuestionModal } from './QuestionModal/QuestionModal';
 export { default as ClosedQuestion } from './QuestionModal/ClosedQuestion';
 export { default as OpenQuestion } from './QuestionModal/OpenQuestion';
 export { default as Practice } from './Practice/Practice';
+export { default as Review } from './Review/Review';
+export { default as ReviewFilterControl } from './Review/ReviewFilterControl';
 export { default as SelectQuestion } from './QuestionModal/SelectQuestion';
 export { default as ScreenButton } from './ScreenButton/ScreenButton';
 export { default as ScrollableWrapper } from './ScrollableWrapper/ScrollableWrapper';

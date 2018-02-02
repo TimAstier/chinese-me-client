@@ -22,6 +22,9 @@ export function* fetchData(episodeId, elementId) {
       yield put(
         practiceActions.setExercises(response.data.data.attributes.exercisesArray)
       );
+      yield put(
+        practiceActions.setType(response.data.data.attributes.type)
+      );
     }
   ]);
   // TODO: handle fetch error
@@ -35,6 +38,7 @@ export function* initUi() {}
 
 export function* initStudyData() {
   yield put(practiceActions.setInitialized(false));
+  yield put(practiceActions.setError(false));
 }
 
 function* defaultExamUi() {
@@ -50,6 +54,12 @@ export function* run() {
   yield put(practiceActions.setTotal(total));
   while (completed === false) {
     const exercise = yield select(selectors.practice.getCurrentExercise);
+    if (!exercise) {
+      // This practice has no exercises
+      yield put(practiceActions.setError(true));
+      yield put(uiActions.set('nextButton', true));
+      return yield take(sagaTypes.NEXT);
+    }
     const type = exercise.get('type');
     const funcs = getStudyFunctions(type + '/');
     yield put(studyActions.setCurrentExerciseId(exercise.get('id')));
@@ -93,12 +103,12 @@ export function* run() {
   // yield delay(1000);
   yield put(sagaActions.playLevelWinSound());
   yield put(uiActions.set('nextButton', true));
-  yield take(sagaTypes.NEXT);
+  return yield take(sagaTypes.NEXT);
 }
 
 export function* nextScreen() {
-  const url = yield select(selectors.getCurrentBookUrl);
-  yield put(push(url));
+  const url = yield select(selectors.getBackUrl);
+  return yield put(push(url));
 }
 
 export function* clean(isCancelled) {

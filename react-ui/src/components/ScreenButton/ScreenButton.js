@@ -3,7 +3,6 @@ import propTypes from 'prop-types';
 import styled from 'styled-components';
 
 class Screen extends Component {
-
   render() {
     const { text, primary, disabled, height, width, fontSize } = this.props;
 

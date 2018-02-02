@@ -7,7 +7,8 @@ export const elementTypes = [
   'video',
   'title',
   'practice',
-  'exam'
+  'exam',
+  'review'
 ];
 
 export const elementTypesToTrack = [

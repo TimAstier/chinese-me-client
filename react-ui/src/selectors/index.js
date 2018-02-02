@@ -1,5 +1,6 @@
 // Keep in alphabetical order
 export { default as getAugmentedSettings } from './getAugmentedSettings';
+export { default as getBackUrl } from './getBackUrl';
 export { default as getCharacterPinyinHints } from './getCharacterPinyinHints';
 export { default as getChoicesToOrderUserAnswer } from './getChoicesToOrderUserAnswer';
 export { default as getCurrentAvatars } from './getCurrentAvatars';

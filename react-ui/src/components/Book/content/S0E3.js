@@ -348,7 +348,7 @@ export default class Content extends Component {
           <c.CharacterPractice characterId={9876} simpChar={'你'}/>
           <c.PartTitle name="words" />
           {newWords()}
-          <c.Review practiceId={practiceIds[0]} />
+          <c.Review />
           <c.Exam />
         </c.Page>
       </div>

@@ -70,12 +70,9 @@ const previousStatement = () => ({ type: types.PREVIOUS_STATEMENT });
 const stopSentence = () => ({ type: types.STOP_SENTENCE });
 const askQuestion = () => ({ type: types.ASK_QUESTION });
 const displayEpisodeOverview = () => ({ type: types.DISPLAY_EPISODE_OVERVIEW });
-const exit = (seasonNumber, episodeNumber) => ({
+const exit = url => ({
   type: types.EXIT,
-  payload: {
-    seasonNumber,
-    episodeNumber
-  }
+  payload: { url }
 });
 const fetchEpisodes = () => ({ type: types.FETCH_EPISODES });
 const endDialog = () => ({ type: types.END_DIALOG });

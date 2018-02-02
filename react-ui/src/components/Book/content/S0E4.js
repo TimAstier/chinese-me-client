@@ -200,7 +200,7 @@ export default class Content extends Component {
           </c.P>
           <c.PartTitle name="words" />
           {newWords()}
-          <c.Review practiceId={practiceIds[0]} />
+          <c.Review />
           <c.Exam />
         </c.Page>
       </div>

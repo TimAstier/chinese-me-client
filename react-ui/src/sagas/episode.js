@@ -6,8 +6,11 @@ import { actions as uiActions } from '../redux/ui';
 import { push } from 'react-router-redux';
 
 function* exit(action) {
-  const { seasonNumber, episodeNumber } = action.payload;
-  const url = `/study/season/${seasonNumber}/episode/${episodeNumber}`;
+  // NOTE: url 'varies' depending on the context.
+  // For example, when doing a practice belonging to a review, back redirects
+  // to the /review screen. Otherwise it redirects to the book.
+  // see the 'getBackUrl' selector
+  const { url } = action.payload;
   return yield put(push(url));
 }
 

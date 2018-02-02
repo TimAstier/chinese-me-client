@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import propTypes from 'prop-types';
+// import propTypes from 'prop-types';
 import { bookComponents as c } from '../../.';
 
 class Review extends Component {
@@ -9,10 +9,8 @@ class Review extends Component {
         <c.PartTitle anchor="review" name="review" />
         <c.P
           buttonOptions={{
-            type: 'practice',
-            data: {
-              elementId: this.props.practiceId
-            }
+            type: 'review',
+            data: null
           }}
         >
           <i>Now, go through the review exercises to practice pronunciation, characters, grammar patterns and vocabulary. Then do the Exam before continuing to the next Lesson.</i>
@@ -22,8 +20,6 @@ class Review extends Component {
   }
 }
 
-Review.propTypes = {
-  practiceId: propTypes.number.isRequired
-};
+// Review.propTypes = {};
 
 export default Review;

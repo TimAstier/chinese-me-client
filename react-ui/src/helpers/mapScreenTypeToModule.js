@@ -14,6 +14,7 @@ import * as fromExamResult from '../sagas/study/examResult';
 import * as fromVideo from '../sagas/study/video';
 import * as fromFreeInput from '../sagas/study/freeInput';
 import * as fromChoicesToOrder from '../sagas/study/choicesToOrder';
+import * as fromReview from '../sagas/study/review';
 
 // TODO: Issue: Study screenTypes and Exam screenTypes are not always consistent
 // Maybe harmonize them or spleet between two files?
@@ -40,6 +41,7 @@ export default function mapScreenTypeToModule(screenType) {
     case 'practice/': return fromPractice;
     case 'exam/': return fromExam;
     case 'result/': return fromExamResult;
+    case 'review/': return fromReview;
     default: return console.log('unknown screenType', screenType);
   }
 }

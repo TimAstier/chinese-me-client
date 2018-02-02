@@ -19,6 +19,7 @@ import * as fromMap from '../redux/map';
 import * as fromMultipleChoice from '../redux/multipleChoice';
 import * as fromPractice from '../redux/practice';
 import * as fromQuestion from '../redux/question';
+import * as fromReview from '../redux/review';
 import * as fromRouting from '../redux/routing';
 import * as fromSettings from '../redux/settings';
 import * as fromStudy from '../redux/study';
@@ -98,6 +99,11 @@ const practiceSelectors = bindSelectors(
   fromPractice.selectors
 );
 
+const reviewSelectors = bindSelectors(
+  state => state.get('review'),
+  fromReview.selectors
+);
+
 const routingSelectors = bindSelectors(
   state => state.get('routing'),
   fromRouting.selectors
@@ -145,6 +151,7 @@ const globalizedSelectors = {
   characterPinyin: characterPinyinSelectors,
   auth: authSelectors,
   practice: practiceSelectors,
+  review: reviewSelectors,
   routing: routingSelectors,
   map: mapSelectors,
   multipleChoice: multipleChoiceSelectors,

@@ -19,6 +19,8 @@ class BookButton extends Component {
         return `/study/${this.props.episodeId}/character/${this.props.buttonOptions.data.elementId}/animation`;
       case 'practice':
         return `/study/${this.props.episodeId}/practice/${this.props.buttonOptions.data.elementId}`;
+      case 'review':
+        return `/study/${this.props.episodeId}/review`;
       case 'exam':
         return `/study/${this.props.episodeId}/exam`;
       default:
@@ -53,6 +55,7 @@ BookButton.propTypes = {
       'etymology',
       'stroke',
       'practice',
+      'review',
       'exam',
       'askUserSettings'
     ]).isRequired,

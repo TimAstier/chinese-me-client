@@ -2,7 +2,7 @@ import { put, select, take, call } from 'redux-saga/effects';
 import { delay } from 'redux-saga';
 import selectors from '../../rootSelectors';
 // import { actions as studyActions } from '../../redux/study';
-import { actions as audioToWordsActions } from '../../redux/audioToWords';
+import { actions as exerciseActions } from '../../redux/exercise';
 import { types as sagaTypes, actions as sagaActions } from '../actions';
 import { actions as uiActions } from '../../redux/ui';
 import { Map } from 'immutable';
@@ -31,7 +31,7 @@ export function* initStudyData() {
 }
 
 export function* initUi() {
-  yield put(audioToWordsActions.init());
+  yield put(exerciseActions.init());
 }
 
 export function* run(isExam = false) {
@@ -42,12 +42,12 @@ export function* run(isExam = false) {
   const words = yield select(selectors.getExerciseWords);
   for (let i = 0; i < words.length; i++) {
     const word = words[i];
-    yield put(audioToWordsActions.setCurrentBoxIndex(i));
+    yield put(exerciseActions.setCurrentBoxIndex(i));
     yield take(sagaTypes.CHECK_ANSWER);
-    const userAnswer = yield select(selectors.audioToWords.getUserAnswer);
+    const userAnswer = yield select(selectors.exercise.getUserAnswer);
     const success = trim(word.get('pinyin')) === trim(userAnswer);
     if (!success) {
-      const prematureResults = yield select(selectors.audioToWords.getResults);
+      const prematureResults = yield select(selectors.exercise.getResults);
       result = {
         isCorrect: false,
         value: prematureResults.toJS().map(e => e.userAnswer).join(' | ') + ' | ' + userAnswer
@@ -58,12 +58,12 @@ export function* run(isExam = false) {
         return result;
       }
     }
-    yield put(audioToWordsActions.addResult(Map({ success, userAnswer })));
-    yield put(audioToWordsActions.setUserAnswer(''));
+    yield put(exerciseActions.addResult(Map({ success, userAnswer })));
+    yield put(exerciseActions.setUserAnswer(''));
   }
-  const questionSuccess = yield select(selectors.audioToWords.getSuccess);
+  const questionSuccess = yield select(selectors.exercise.getSuccess);
   yield put(uiActions.set('playAudioButton', false));
-  const results = yield select(selectors.audioToWords.getResults);
+  const results = yield select(selectors.exercise.getResults);
   if (questionSuccess) {
     result = {
       isCorrect: true,
@@ -73,7 +73,7 @@ export function* run(isExam = false) {
     if (isExam) {
       return result;
     }
-    yield put(audioToWordsActions.setStatus('finished'));
+    yield put(exerciseActions.setStatus('finished'));
     yield delay(1000);
     return result;
   }
@@ -81,7 +81,7 @@ export function* run(isExam = false) {
     isCorrect: false,
     value: results.toJS().map(e => e.userAnswer).join(' ')
   };
-  yield put(audioToWordsActions.setStatus('finished'));
+  yield put(exerciseActions.setStatus('finished'));
   yield put(uiActions.set('nextButton', true));
   yield take(sagaTypes.NEXT_QUESTION);
   return result;

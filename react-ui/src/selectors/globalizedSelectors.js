@@ -6,17 +6,13 @@ import bindSelectors from '../utils/bindSelectors';
 
 import * as fromApp from '../redux/app';
 import * as fromAudio from '../redux/audio';
-import * as fromAudioToWords from '../redux/audioToWords';
 import * as fromAuth from '../redux/auth';
 import * as fromBook from '../redux/book';
-import * as fromCharacterPinyin from '../redux/characterPinyin';
-import * as fromChoicesToOrder from '../redux/choicesToOrder';
 import * as fromEntities from '../redux/entities';
 import * as fromExam from '../redux/exam';
-import * as fromFreeInput from '../redux/freeInput';
+import * as fromExercise from '../redux/exercise';
 import * as fromHanzi from '../redux/hanzi';
 import * as fromMap from '../redux/map';
-import * as fromMultipleChoice from '../redux/multipleChoice';
 import * as fromPractice from '../redux/practice';
 import * as fromQuestion from '../redux/question';
 import * as fromReview from '../redux/review';
@@ -39,11 +35,6 @@ const audioSelectors = bindSelectors(
   fromAudio.selectors
 );
 
-const audioToWordsSelectors = bindSelectors(
-  state => state.get('audioToWords'),
-  fromAudioToWords.selectors
-);
-
 const authSelectors = bindSelectors(
   state => state.get('auth'),
   fromAuth.selectors
@@ -52,16 +43,6 @@ const authSelectors = bindSelectors(
 const bookSelectors = bindSelectors(
   state => state.get('book'),
   fromBook.selectors
-);
-
-const characterPinyinSelectors = bindSelectors(
-  state => state.get('characterPinyin'),
-  fromCharacterPinyin.selectors
-);
-
-const choicesToOrderSelectors = bindSelectors(
-  state => state.get('choicesToOrder'),
-  fromChoicesToOrder.selectors
 );
 
 const entitiesSelectors = bindSelectors(
@@ -74,9 +55,9 @@ const examSelectors = bindSelectors(
   fromExam.selectors
 );
 
-const freeInputSelectors = bindSelectors(
-  state => state.get('freeInput'),
-  fromFreeInput.selectors
+const exerciseSelectors = bindSelectors(
+  state => state.get('exercise'),
+  fromExercise.selectors
 );
 
 const hanziSelectors = bindSelectors(
@@ -87,11 +68,6 @@ const hanziSelectors = bindSelectors(
 const mapSelectors = bindSelectors(
   state => state.get('map'),
   fromMap.selectors
-);
-
-const multipleChoiceSelectors = bindSelectors(
-  state => state.get('multipleChoice'),
-  fromMultipleChoice.selectors
 );
 
 const practiceSelectors = bindSelectors(
@@ -142,22 +118,18 @@ const questionSelectors = bindSelectors(
 const globalizedSelectors = {
   app: appSelectors,
   entities: entitiesSelectors,
-  choicesToOrder: choicesToOrderSelectors,
   study: studySelectors,
   ui: uiSelectors,
   book: bookSelectors,
   audio: audioSelectors,
-  audioToWords: audioToWordsSelectors,
-  characterPinyin: characterPinyinSelectors,
   auth: authSelectors,
   practice: practiceSelectors,
   review: reviewSelectors,
   routing: routingSelectors,
   map: mapSelectors,
-  multipleChoice: multipleChoiceSelectors,
   video: videoSelectors,
   exam: examSelectors,
-  freeInput: freeInputSelectors,
+  exercise: exerciseSelectors,
   timer: timerSelectors,
   settings: settingsSelectors,
   hanzi: hanziSelectors,

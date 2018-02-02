@@ -3,7 +3,7 @@ import propTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { WordBox as WordBoxComponent } from '../../../../components';
 import s from '../../../../rootSelectors';
-import { actions as audioToWordsActions } from '../../../../redux/audioToWords';
+import { actions as exerciseActions } from '../../../../redux/exercise';
 import { Word } from '../../../../models';
 
 class WordBox extends Component {
@@ -38,6 +38,6 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   {
-    setUserAnswer: audioToWordsActions.setUserAnswer
+    setUserAnswer: exerciseActions.setUserAnswer
   }
 )(WordBox);

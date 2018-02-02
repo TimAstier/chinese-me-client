@@ -101,7 +101,7 @@ class MultipleChoice extends Component {
     // Note: The correct answer is always the first one in the choices array
     const choices = this.props.choices.map((choice, i) => {
       const onClick = () => {
-        this.props.setUserAnswer(i);
+        this.props.setUserChoice(i, false);
         this.props.checkAnswer();
       };
       return (
@@ -109,9 +109,9 @@ class MultipleChoice extends Component {
           key={i}
           onClick={onClick}
           label={choice}
-          focused={i === this.props.userAnswer}
-          disabled={this.props.status !== 'question' && i !== this.props.userAnswer}
-          wrong={this.props.status !== 'question' && i === this.props.userAnswer && i !== 0}
+          focused={i === this.props.userChoice}
+          disabled={this.props.status !== 'question' && i !== this.props.userChoice}
+          wrong={this.props.status !== 'question' && i === this.props.userChoice && i !== 0}
           correct={this.props.status !== 'question' && i === 0}
         />
       );
@@ -135,8 +135,8 @@ MultipleChoice.propTypes = {
   question: propTypes.string.isRequired,
   choices: propTypes.array.isRequired,
   status: propTypes.oneOf([ 'question', 'wrong', 'correct' ]).isRequired,
-  userAnswer: propTypes.number,
-  setUserAnswer: propTypes.func.isRequired,
+  userChoice: propTypes.number,
+  setUserChoice: propTypes.func.isRequired,
   // explanation: propTypes.string.isRequired,
   checkAnswer: propTypes.func.isRequired
 };

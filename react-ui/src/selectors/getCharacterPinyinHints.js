@@ -4,8 +4,8 @@ import getExerciseCharacter from './getExerciseCharacter';
 
 const getCharacterPinyinHints = createSelector(
   getExerciseCharacter,
-  s.characterPinyin.getAttemptsLeft,
-  s.characterPinyin.getUserAnswer,
+  s.exercise.getAttemptsLeft,
+  s.exercise.getUserAnswer,
   (character, attemptsLeft, userAnswer) => {
     const finalSentence = attemptsLeft => {
       return attemptsLeft === 2 ?

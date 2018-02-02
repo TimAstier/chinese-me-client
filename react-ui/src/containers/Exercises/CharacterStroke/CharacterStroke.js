@@ -7,7 +7,6 @@ import s from '../../../rootSelectors';
 import { actions as sagaActions } from '../../../sagas/actions';
 
 class CharacterStroke extends Component {
-
   render() {
     return (
       <CharacterStrokeComponent { ...this.props }/>

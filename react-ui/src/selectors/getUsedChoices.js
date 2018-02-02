@@ -5,7 +5,7 @@ import isEmpty from 'lodash/isEmpty';
 
 const getUsedChoices = createSelector(
   getCurrentExercise,
-  s.choicesToOrder.getIndexes,
+  s.exercise.getIndexes,
   (exercise, indexes) => {
     const choices = exercise.get('choices');
     if (!choices || isEmpty(choices)) {

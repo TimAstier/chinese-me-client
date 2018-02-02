@@ -3,7 +3,7 @@ import { delay } from 'redux-saga';
 import { types as sagaTypes } from '../actions';
 import { types as uiTypes } from '../../redux/ui';
 import { actions as uiActions } from '../../redux/ui';
-import { actions as characterPinyinActions } from '../../redux/characterPinyin';
+import { actions as exerciseActions } from '../../redux/exercise';
 import { actions as sagaActions } from '../actions';
 import { actions as audioActions } from '../../redux/audio';
 import selectors from '../../rootSelectors';
@@ -24,7 +24,7 @@ export function checkData() {
 }
 
 export function* initStudyData() {
-  yield put(characterPinyinActions.init());
+  yield put(exerciseActions.init());
 }
 
 export function* initUi() {
@@ -37,11 +37,11 @@ export function* run(isExam = false) {
   const audioUrl = pinyinNumberToAudioUrl(currentChar.pinyinNumber);
   yield put(audioActions.set('audioUrl', audioUrl));
   while (true) { // eslint-disable-line no-constant-condition
-    let attemptsLeft = yield select(selectors.characterPinyin.getAttemptsLeft);
+    let attemptsLeft = yield select(selectors.exercise.getAttemptsLeft);
     while (attemptsLeft >= 0) {
       yield put(sagaActions.playAudio());
       yield take(sagaTypes.CHECK_ANSWER);
-      const userAnswer = yield select(selectors.characterPinyin.getUserAnswer);
+      const userAnswer = yield select(selectors.exercise.getUserAnswer);
       result.value = userAnswer;
       const expectedAnswer = currentChar.pinyinNumber;
       // Compare userAnswer without spaces with the expected result
@@ -51,7 +51,7 @@ export function* run(isExam = false) {
         if (isExam) {
           return result;
         }
-        yield put(characterPinyinActions.setStatus('correct'));
+        yield put(exerciseActions.setStatus('correct'));
         yield put(uiActions.set('playAudioButton', false));
         yield delay(1000);
         return result;
@@ -65,11 +65,11 @@ export function* run(isExam = false) {
       if (attemptsLeft !== 0) {
         yield put(uiActions.openHintModal());
         yield take(uiTypes.CLOSE_HINT_MODAL);
-        yield put(characterPinyinActions.setUserAnswer(''));
-        yield put(characterPinyinActions.setAttemptsLeft(attemptsLeft - 1));
+        yield put(exerciseActions.setUserAnswer(''));
+        yield put(exerciseActions.setAttemptsLeft(attemptsLeft - 1));
         attemptsLeft --;
       } else {
-        yield put(characterPinyinActions.setStatus('wrong'));
+        yield put(exerciseActions.setStatus('wrong'));
         yield put(uiActions.set('nextButton', true));
         yield take(sagaTypes.NEXT_QUESTION);
         return result;

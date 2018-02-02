@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { CharacterPinyin as CharacterPinyinComponent } from '../../../components';
 import { Character, Exercise } from '../../../models';
 import s from '../../../rootSelectors';
-import { actions as characterPinyinActions } from '../../../redux/characterPinyin';
+import { actions as exerciseActions } from '../../../redux/exercise';
 
 class CharacterPinyin extends Component {
   handleChange(event) {
@@ -39,13 +39,13 @@ CharacterPinyin.propTypes = {
 const mapStateToProps = state => ({
   exercise: s.getCurrentExercise(state),
   character: s.getExerciseCharacter(state),
-  status: s.characterPinyin.getStatus(state),
-  userAnswer: s.characterPinyin.getUserAnswer(state),
+  status: s.exercise.getStatus(state),
+  userAnswer: s.exercise.getUserAnswer(state),
   openFeedbackModal: s.ui.getOpenFeedbackModal(state)
 });
 
 const mapDispatchToProps = () => ({
-  setUserAnswer: characterPinyinActions.setUserAnswer
+  setUserAnswer: exerciseActions.setUserAnswer
 });
 
 export default connect(

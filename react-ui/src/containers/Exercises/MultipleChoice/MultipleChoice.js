@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 import { MultipleChoice as MultipleChoiceComponent } from '../../../components';
 import s from '../../../rootSelectors';
-import { actions as multipleChoiceActions } from '../../../redux/multipleChoice';
+import { actions as exerciseActions } from '../../../redux/exercise';
 import * as models from '../../../models';
 import { actions as sagaActions } from '../../../sagas/actions';
 
@@ -25,8 +25,8 @@ class MultipleChoice extends Component {
         question={this._question()}
         choices={this.props.exercise.choices}
         status={this.props.status}
-        userAnswer={this.props.userAnswer}
-        setUserAnswer={this.props.setUserAnswer}
+        userChoice={this.props.userChoice}
+        setUserChoice={this.props.setUserChoice}
         explanation={null}
         checkAnswer={this.props.checkAnswer}
       />
@@ -37,21 +37,21 @@ class MultipleChoice extends Component {
 MultipleChoice.propTypes = {
   exercise: propTypes.instanceOf(models.Exercise).isRequired,
   status: propTypes.oneOf([ 'question', 'wrong', 'correct' ]).isRequired,
-  userAnswer: propTypes.number,
-  setUserAnswer: propTypes.func.isRequired,
+  userChoice: propTypes.number,
+  setUserChoice: propTypes.func.isRequired,
   checkAnswer: propTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
   exercise: s.getCurrentExercise(state),
-  status: s.multipleChoice.getStatus(state),
-  userAnswer: s.multipleChoice.getUserAnswer(state)
+  status: s.exercise.getStatus(state),
+  userChoice: s.exercise.getUserChoice(state)
 });
 
 export default connect(
   mapStateToProps,
   {
-    setUserAnswer: multipleChoiceActions.setUserAnswer,
+    setUserChoice: exerciseActions.setUserChoice,
     checkAnswer: sagaActions.checkAnswer
   }
 )(MultipleChoice);

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 import { FreeInput as FreeInputComponent } from '../../../components';
 import s from '../../../rootSelectors';
-import { actions as freeInputActions } from '../../../redux/freeInput';
+import { actions as exerciseActions } from '../../../redux/exercise';
 import * as models from '../../../models';
 import { actions as sagaActions } from '../../../sagas/actions';
 
@@ -52,8 +52,8 @@ FreeInput.propTypes = {
 
 const mapStateToProps = state => ({
   exercise: s.getCurrentExercise(state),
-  status: s.freeInput.getStatus(state),
-  userAnswer: s.freeInput.getUserAnswer(state),
+  status: s.exercise.getStatus(state),
+  userAnswer: s.exercise.getUserAnswer(state),
   openFeedbackModal: s.ui.getOpenFeedbackModal(state),
   correctAnswer: s.practice.getCorrectAnswer(state),
   explanation: s.practice.getExplanation(state)
@@ -62,7 +62,7 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   {
-    setUserAnswer: freeInputActions.setUserAnswer,
+    setUserAnswer: exerciseActions.setUserAnswer,
     checkAnswer: sagaActions.checkAnswer
   }
 )(FreeInput);

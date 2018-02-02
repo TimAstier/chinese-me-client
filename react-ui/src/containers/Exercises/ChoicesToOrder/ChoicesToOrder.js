@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 import { ChoicesToOrder as ChoicesToOrderComponent } from '../../../components';
 import * as models from '../../../models';
-import { actions } from '../../../redux/choicesToOrder';
+import { actions as exerciseActions } from '../../../redux/exercise';
 import s from '../../../rootSelectors';
 
 class ChoicesToOrder extends Component {
@@ -34,12 +34,12 @@ class ChoicesToOrder extends Component {
 
 const mapStateToProps = state => ({
   exercise: s.getCurrentExercise(state),
-  indexes: s.choicesToOrder.getIndexes(state),
+  indexes: s.exercise.getIndexes(state),
   usedChoices: s.getUsedChoices(state),
   userAnswer: s.getChoicesToOrderUserAnswer(state),
   correctAnswer: s.practice.getCorrectAnswer(state),
   explanation: s.practice.getExplanation(state),
-  status: s.choicesToOrder.getStatus(state)
+  status: s.exercise.getStatus(state)
 });
 
 ChoicesToOrder.propTypes = {
@@ -57,7 +57,7 @@ ChoicesToOrder.propTypes = {
 export default connect(
   mapStateToProps,
   {
-    pushIndex: actions.pushIndex,
-    removeIndex: actions.removeIndex
+    pushIndex: exerciseActions.pushIndex,
+    removeIndex: exerciseActions.removeIndex
   }
 )(ChoicesToOrder);

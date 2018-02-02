@@ -4,7 +4,7 @@ import { types as sagaTypes } from '../actions';
 import { actions as uiActions } from '../../redux/ui';
 import { actions as sagaActions } from '../actions';
 import selectors from '../../rootSelectors';
-import { actions as choicesToOrderActions } from '../../redux/choicesToOrder';
+import { actions as exerciseActions } from '../../redux/exercise';
 import { fetch as fetchTeacherComment } from '../teacherComment';
 import { actions as practiceActions } from '../../redux/practice';
 
@@ -19,7 +19,7 @@ export function checkData() {
 }
 
 export function* initStudyData() {
-  yield put(choicesToOrderActions.init());
+  yield put(exerciseActions.init());
 }
 
 export function* initUi() {}
@@ -35,7 +35,7 @@ export function* run(isExam = false) {
   if (success) {
     result.isCorrect = true;
     yield put(sagaActions.playSuccessSound());
-    yield put(choicesToOrderActions.setStatus('correct'));
+    yield put(exerciseActions.setStatus('correct'));
     if (isExam) {
       return result;
     }
@@ -46,7 +46,7 @@ export function* run(isExam = false) {
   yield put(sagaActions.playWrongSound());
   yield put(practiceActions.setCorrectAnswer(teacherComment.correctAnswer));
   yield put(practiceActions.setExplanation(teacherComment.explanation));
-  yield put(choicesToOrderActions.setStatus('wrong'));
+  yield put(exerciseActions.setStatus('wrong'));
   if (isExam) {
     return result;
   }

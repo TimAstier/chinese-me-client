@@ -1,7 +1,7 @@
 import { put, select, take, call } from 'redux-saga/effects';
 import { delay } from 'redux-saga';
 import selectors from '../../rootSelectors';
-import { actions as freeInputActions } from '../../redux/freeInput';
+import { actions as exerciseActions } from '../../redux/exercise';
 import { actions as sagaActions, types as sagaTypes } from '../actions';
 import { actions as uiActions } from '../../redux/ui';
 import { actions as audioActions } from '../../redux/audio';
@@ -19,7 +19,7 @@ export function checkData() {
 }
 
 export function* initStudyData() {
-  yield put(freeInputActions.init());
+  yield put(exerciseActions.init());
 }
 
 export function* initUi(type) {
@@ -36,7 +36,7 @@ export function* run(isExam = false, type) {
     yield put(sagaActions.playAudio());
   }
   yield take(sagaTypes.CHECK_ANSWER);
-  const userAnswer = yield select(selectors.freeInput.getUserAnswer);
+  const userAnswer = yield select(selectors.exercise.getUserAnswer);
   result.value = userAnswer;
   // Compare to correct answers in DB
   const teacherComment = yield call(fetchTeacherComment, exercise.get('id'), userAnswer);
@@ -45,7 +45,7 @@ export function* run(isExam = false, type) {
     result.isCorrect = true;
     yield put(uiActions.set('playAudioButton', false));
     yield put(sagaActions.playSuccessSound());
-    yield put(freeInputActions.setStatus('correct'));
+    yield put(exerciseActions.setStatus('correct'));
     if (isExam) {
       return result;
     }
@@ -56,7 +56,7 @@ export function* run(isExam = false, type) {
   yield put(sagaActions.playWrongSound());
   yield put(practiceActions.setCorrectAnswer(teacherComment.correctAnswer));
   yield put(practiceActions.setExplanation(teacherComment.explanation));
-  yield put(freeInputActions.setStatus('wrong'));
+  yield put(exerciseActions.setStatus('wrong'));
   if (isExam) {
     return result;
   }

@@ -23,10 +23,10 @@ AudioToWords.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  currentBoxIndex: s.audioToWords.getCurrentBoxIndex(state),
-  results: s.audioToWords.getResults(state),
-  status: s.audioToWords.getStatus(state),
-  userAnswer: s.audioToWords.getUserAnswer(state),
+  currentBoxIndex: s.exercise.getCurrentBoxIndex(state),
+  results: s.exercise.getResults(state),
+  status: s.exercise.getStatus(state),
+  userAnswer: s.exercise.getUserAnswer(state),
   words: s.getExerciseWords(state)
 });
 

@@ -121,6 +121,101 @@ export default class Content extends Component {
             <c.Chinese>中</c.Chinese> means <i>middle</i>. Type the correct tone on <c.Chinese>中</c.Chinese> <b>zhong</b>. Repeat again after the recording.
           </c.P>
           {pronunciationTitle()}
+          <c.P>After most initials, Chinese <b>i</b> is pronounced like English <i>ee</i> in <i>tree</i>:</c.P>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: pinyinNumberToAudioUrl('ni3'),
+                text: '你'
+              }
+            }}
+          >
+            <Row>
+              <c.Char>你</c.Char>
+              <c.Pinyin>nǐ</c.Pinyin>
+              <c.Meaning>you</c.Meaning>
+            </Row>
+          </c.Bookrow>
+          <c.P>This is also the how it is pronounced in finals like <b>-ing</b> and <b>-iao</b>:</c.P>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                text: '姓'
+              }
+            }}
+          >
+            <Row>
+              <c.Char>姓</c.Char>
+              <c.Pinyin>xìng</c.Pinyin>
+              <c.Meaning>to have as family name</c.Meaning>
+            </Row>
+          </c.Bookrow>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                text: '叫'
+              }
+            }}
+          >
+            <Row>
+              <c.Char>叫</c.Char>
+              <c.Pinyin>jiào</c.Pinyin>
+              <c.Meaning>to be called</c.Meaning>
+            </Row>
+          </c.Bookrow>
+          <c.P>But after the initials <b>sh-</b>, <b>r-</b> , <b>ch-</b> and <b>zh-</b> it is pronounced like an American <i>r</i>!</c.P>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: pinyinNumberToAudioUrl('shi4'),
+                text: '是'
+              }
+            }}
+          >
+            <Row>
+              <c.Char>是</c.Char>
+              <c.Pinyin>shì</c.Pinyin>
+              <c.Meaning>, to be (so this is pronounced like English shr in shrewd)</c.Meaning>
+            </Row>
+          </c.Bookrow>
+          <c.P>In a previous lesson, we learned the third pronunciation of <b>i</b>. After the initials <b>s-</b>, <b>c-</b> and <b>z-</b>, it is a little bit similar to the sound we make to imitate the buzzing of a bee: <i>bzzzzzzz</i>, but without the initial <i>bz-</i>sound, just the long <i>zzzzzz</i>.</c.P>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: pinyinNumberToAudioUrl('zi3'),
+              }
+            }}
+          >
+            <Row>
+              <c.Char>子</c.Char>
+              <c.Pinyin>zǐ</c.Pinyin>
+              <c.Meaning>son, child</c.Meaning>
+            </Row>
+          </c.Bookrow>
+          <c.P>If we had designed <b>pīnyīn</b>, we would have chosen the following spellings, because that is what these syllables sound like:</c.P>
+          <c.Bookrow flexDirection="column">
+            <Row lineHeight={30}><span><b>nǐ</b> => něe</span></Row>
+            <Row lineHeight={30}><span><b>shì</b> => sh`r</span></Row>
+            <Row lineHeight={30}><span><b>zǐ</b> => dž</span></Row>
+          </c.Bookrow>
+          <c.P>Practice the different pronunciations carefully:</c.P>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: 'https://s3.eu-west-2.amazonaws.com/chineseme/sentences/83.m4a'
+              }
+            }}
+          >
+            <b>xìng, shì, zǐ, nǐ, jiào, shì, xìng, zǐ</b>
+          </c.Bookrow>
+          <c.P>You can review all the sounds in this lesson more thoroughly in the <i>Introduction to Chinese pronunciation and writing</i>.</c.P>
+          {pronunciationTitle()}
           <c.P>So far, the words we have encountered have all been monosyllabic. This means one meaning is represented by a single syllable, for example:</c.P>
           <c.Bookrow>
             <Row>
@@ -230,103 +325,6 @@ export default class Content extends Component {
           {dialog(3, { sentenceType: 'chinese', displayNames: false, specialIntro })}
           <c.P>Repeat this until you feel comfortable.</c.P>
           <c.P>Now, change roles! Pretend you are Wang Yuguo, and introduce yourself.</c.P>
-          <c.PartTitle>PINYIN PRACTICE</c.PartTitle>
-          <c.P>Let us practice transcribing some other characters and words in this lesson to <b>pīnyīn</b>.</c.P>
-          <c.PartTitle type="secondary"><span>Three different sounds are spelled <i>i</i></span></c.PartTitle>
-          <c.P>After most initials, Chinese <b>i</b> is pronounced like English <i>ee</i> in <i>tree</i>:</c.P>
-          <c.Bookrow
-            buttonOptions={{
-              type: 'audio',
-              data: {
-                url: pinyinNumberToAudioUrl('ni3'),
-                text: '你'
-              }
-            }}
-          >
-            <Row>
-              <c.Char>你</c.Char>
-              <c.Pinyin>nǐ</c.Pinyin>
-              <c.Meaning>you</c.Meaning>
-            </Row>
-          </c.Bookrow>
-          <c.P>This is also the how it is pronounced in finals like <b>-ing</b> and <b>-iao</b>:</c.P>
-          <c.Bookrow
-            buttonOptions={{
-              type: 'audio',
-              data: {
-                text: '姓'
-              }
-            }}
-          >
-            <Row>
-              <c.Char>姓</c.Char>
-              <c.Pinyin>xìng</c.Pinyin>
-              <c.Meaning>to have as family name</c.Meaning>
-            </Row>
-          </c.Bookrow>
-          <c.Bookrow
-            buttonOptions={{
-              type: 'audio',
-              data: {
-                text: '叫'
-              }
-            }}
-          >
-            <Row>
-              <c.Char>叫</c.Char>
-              <c.Pinyin>jiào</c.Pinyin>
-              <c.Meaning>to be called</c.Meaning>
-            </Row>
-          </c.Bookrow>
-          <c.P>But after the initials <b>sh-</b>, <b>r-</b> , <b>ch-</b> and <b>zh-</b> it is pronounced like an American <i>r</i>!</c.P>
-          <c.Bookrow
-            buttonOptions={{
-              type: 'audio',
-              data: {
-                url: pinyinNumberToAudioUrl('shi4'),
-                text: '是'
-              }
-            }}
-          >
-            <Row>
-              <c.Char>是</c.Char>
-              <c.Pinyin>shì</c.Pinyin>
-              <c.Meaning>, to be (so this is pronounced like English shr in shrewd)</c.Meaning>
-            </Row>
-          </c.Bookrow>
-          <c.P>In a previous lesson, we learned the third pronunciation of <b>i</b>. After the initials <b>s-</b>, <b>c-</b> and <b>z-</b>, it is a little bit similar to the sound we make to imitate the buzzing of a bee: <i>bzzzzzzz</i>, but without the initial <i>bz-</i>sound, just the long <i>zzzzzz</i>.</c.P>
-          <c.Bookrow
-            buttonOptions={{
-              type: 'audio',
-              data: {
-                url: pinyinNumberToAudioUrl('zi3'),
-              }
-            }}
-          >
-            <Row>
-              <c.Char>子</c.Char>
-              <c.Pinyin>zǐ</c.Pinyin>
-              <c.Meaning>son, child</c.Meaning>
-            </Row>
-          </c.Bookrow>
-          <c.P>If we had designed <b>pīnyīn</b>, we would have chosen the following spellings, because that is what these syllables sound like:</c.P>
-          <c.Bookrow flexDirection="column">
-            <Row lineHeight={30}><span><b>nǐ</b> => něe</span></Row>
-            <Row lineHeight={30}><span><b>shì</b> => sh`r</span></Row>
-            <Row lineHeight={30}><span><b>zǐ</b> => dž</span></Row>
-          </c.Bookrow>
-          <c.P>Practice the different pronunciations carefully:</c.P>
-          <c.Bookrow
-            buttonOptions={{
-              type: 'audio',
-              data: {
-                url: 'https://s3.eu-west-2.amazonaws.com/chineseme/sentences/83.m4a'
-              }
-            }}
-          >
-            <b>xìng, shì, zǐ, nǐ, jiào, shì, xìng, zǐ</b>
-          </c.Bookrow>
-          <c.P>You can review all the sounds in this lesson more thoroughly in the <i>Introduction to Chinese pronunciation and writing</i>.</c.P>
           <c.PartTitle>ORACLE BONES</c.PartTitle>
           <c.Frame><OracleBone1/></c.Frame>
           <c.Frame><OracleBone2/></c.Frame>

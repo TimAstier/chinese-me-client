@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import * as c from '../components';
+import styled from 'styled-components';
 import { Objective } from '../../../containers/Book/containers';
 import { content as contentPropTypes } from '../../../helpers/propTypes';
 import pinyinNumberToAudioUrl from '../../../utils/pinyinNumberToAudioUrl';
 import { Row } from '../../Shared';
 // import insertVariables from '../../../utils/insertVariables';
+
+const CustomSpan = styled.span`
+  font-style: normal;
+`;
 
 export default class Content extends Component {
   static propTypes = contentPropTypes
@@ -36,16 +41,29 @@ export default class Content extends Component {
           </c.Bookrow>
           <c.PartTitle name="pronunciation" />
           {pronunciationTitle()}
-          <c.P
+          <c.P>The <b>pīnyīn</b> vowel <b>e</b> is pronounced like English <i>ea</i> in <i>learn</i>:</c.P>
+          <c.Bookrow
             buttonOptions={{
               type: 'audio',
               data: {
-                url: pinyinNumberToAudioUrl('yi1')
+                url: pinyinNumberToAudioUrl('sheng1'),
+                text: '生'
               }
             }}
           >
-            When <b>-i</b> comes first in a syllable (when there is no initial), it is written <b>yi</b> in <b>pīnyīn</b>; the pronunciation is still <i>ee</i>, as if it had been written just <b>i</b>.
-          </c.P>
+            <b>shēng</b>
+          </c.Bookrow>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: pinyinNumberToAudioUrl('er4'),
+                text: '二'
+              }
+            }}
+          >
+            <b>èr</b>
+          </c.Bookrow>
           {pronunciationTitle()}
           <c.P>Compare the sounds on the following syllables:</c.P>
           <c.Bookrow
@@ -113,7 +131,7 @@ export default class Content extends Component {
           <c.P>Chinese numbers are totally regular. There are nine numerals which can in turn be combined with ten to form the numbers 20, 30 and so on:</c.P>
           <c.Bookrow flexDirection="column">
             <Row><c.Space width={100}><c.Pinyin>1</c.Pinyin></c.Space><c.Space width={120}><c.Char>一</c.Char></c.Space><c.Space width={100}><c.Pinyin>yī</c.Pinyin></c.Space><c.Space width={100}><c.Meaning>one</c.Meaning></c.Space></Row>
-            <Row><c.Space width={100}><c.Pinyin>2</c.Pinyin></c.Space><c.Space width={120}><c.Char>二</c.Char></c.Space><c.Space width={100}><c.Pinyin>èr</c.Pinyin></c.Space><c.Space width={100}><c.Meaning>two</c.Meaning></c.Space></Row>
+            <Row><c.Space width={100}><c.Pinyin>2</c.Pinyin></c.Space><c.Space width={120}><c.Char>二</c.Char></c.Space><c.Space width={100}><c.Pinyin>èr</c.Pinyin></c.Space><c.Space width={100}><c.Meaning><i>two</i> <CustomSpan>(sometimes pronounced <b>àr</b>)</CustomSpan></c.Meaning></c.Space></Row>
             <Row><c.Space width={100}><c.Pinyin>3</c.Pinyin></c.Space><c.Space width={120}><c.Char>三</c.Char></c.Space><c.Space width={100}><c.Pinyin>sān</c.Pinyin></c.Space><c.Space width={100}><c.Meaning>three</c.Meaning></c.Space></Row>
             <Row><c.Space width={100}><c.Pinyin>4</c.Pinyin></c.Space><c.Space width={120}><c.Char>四</c.Char></c.Space><c.Space width={100}><c.Pinyin>sì</c.Pinyin></c.Space><c.Space width={100}><c.Meaning>four</c.Meaning></c.Space></Row>
             <Row><c.Space width={100}><c.Pinyin>5</c.Pinyin></c.Space><c.Space width={120}><c.Char>五</c.Char></c.Space><c.Space width={100}><c.Pinyin>wǔ</c.Pinyin></c.Space><c.Space width={100}><c.Meaning>five</c.Meaning></c.Space></Row>

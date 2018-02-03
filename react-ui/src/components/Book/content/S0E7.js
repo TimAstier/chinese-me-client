@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import * as c from '../components';
 import { Objective } from '../../../containers/Book/containers';
 import { content as contentPropTypes } from '../../../helpers/propTypes';
-// import pinyinNumberToAudioUrl from '../../../utils/pinyinNumberToAudioUrl';
+import pinyinNumberToAudioUrl from '../../../utils/pinyinNumberToAudioUrl';
 // import { Row } from '../../Shared';
 // import insertVariables from '../../../utils/insertVariables';
 
@@ -34,8 +34,22 @@ export default class Content extends Component {
           />
           <c.PartTitle name="pronunciation" />
           {pronunciationTitle()}
-          <c.P>We have previously seen that the finals -i, -ü and -ie are spelled with a y when there is no initial in the syllable: <b>yi</b>, <b>yu</b> and <b>yie</b>.</c.P>
-          <c.P>The same is true for <b>-üe</b>, which is written <b>yue</b>. This is a combination of two spelling rules: <b>i</b> and <b>ü</b> are always preceded by y if they come first in a syllable, and <b>ü</b> is in this case spelled <b>u</b>, without the umlaut dots.</c.P>
+          <c.P>The Chinese initial <b>d-</b> is pronounced like an English <i>t</i>, but with less flow of air. Hold your palm up facing your mouth at a distance of an inch or two and pronounce English <i>d</i> and <i>t</i>. You can feel that there is a much weaker flow of air when you pronounce <i>d</i> than when you pronounce <i>t</i>. Chinese <b>d-</b> is pronounced like an English <i>t</i> without the flow of air! Listen:</c.P>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                // url: pinyinNumberToAudioUrl('ta1'),
+                text: '她'
+              }
+            }}
+          >
+            <b>tā</b>
+          </c.Bookrow>
+          {pronunciationTitle()}
+          <c.P>We have previously seen that when there is no initial in the syllable, <b>-ü</b> is spelled with a <b>y-</b> and without dots over u: <b>yu</b>.</c.P>
+          <c.P>The same is true for <b>-üe</b>, which is written <b>yue</b>. Remember that this is a combination of two spelling rules: (1) <b>-i</b> and <b>-ü</b> are always preceded by <b>y-</b> if they come first in a syllable, and (2) <b>ü</b> is in this case spelled <b>u</b>, without the umlaut dots.</c.P>
+          <c.P>The first spelling rule also applies to the final <b>-iang</b>, which is written <b>yang</b>.</c.P>
           <c.PartTitle name="characters" />
           {newCharacters()}
           <c.PartTitle name="patterns" />

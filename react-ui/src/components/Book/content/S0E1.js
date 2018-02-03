@@ -199,7 +199,7 @@ export default class Content extends Component {
           </c.P>
           <c.P>So the tones are not totally alien. The difference is that in English, these tones only change the <i>mood</i> of a sentence; in Chinese, they change the <i>meaning</i> of words.</c.P>
           <c.PartTitle type="secondary">Pinyin – explaining Chinese pronunciation with English letters</c.PartTitle>
-          <c.P>In order to help us remember the pronunciation of each character, the sound can be written using the Latin alphabet. Each syllable is written with its tone mark above:</c.P>
+          <c.P>In order to help us remember the pronunciation of each character, the sound can be written using the Latin alphabet:</c.P>
           <c.Bookrow
             buttonOptions={{
               type: 'audio',
@@ -252,7 +252,8 @@ export default class Content extends Component {
               <c.Pinyin>{pinyinize('yi1')}</c.Pinyin>
             </Row>
           </c.Bookrow>
-          <c.P>This spelling system is called <b>pīnyīn</b>. It is used in dictionaries and textbooks to teach pronunciation. It is also a way of inputting characters on computers and mobile phones. But Chinese people never actually read or communicate in <b>pīnyīn</b> – they always use characters.</c.P>
+          <c.P>The tone on each syllable is indicated with a symbol called a <i>tone mark</i>: “ ¯ ” for Tone 1;  “ ´ ” for Tone 2; “ ˇ ” for Tone 3; and “ ` ” for Tone 4.</c.P>
+          <c.P>This system for writing Chinese with the help of Latin letters and tone marks is called <b>pīnyīn</b>. It is used in dictionaries and textbooks to teach pronunciation. It is also a way of inputting characters on computers and mobile phones. But Chinese people never actually read or communicate in <b>pīnyīn</b> – they always use characters.</c.P>
           <c.P
             buttonOptions={{
               type: 'practice',

@@ -80,6 +80,72 @@ export default class Content extends Component {
               <c.Pinyin>{pinyinize('xing4')}</c.Pinyin>
             </Row>
           </c.Bookrow>
+          {pronunciationTitle()}
+          <c.P>There is no vowel similar to Chinese <b>-ü</b> in English, but this sound is not too difficult to master. Just start saying <i>ee</i>, with your mouth wide, and then gradually round your lips as if you were going to say <i>oo</i>, without changing anything else. Try it:</c.P>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: pinyinNumberToAudioUrl('nv3')
+              }
+            }}
+          >
+            <b>nǚ</b>
+          </c.Bookrow>
+          {pronunciationTitle()}
+          <c.P>Listen carefully and you will notice that <b>-i</b> is pronounced very differently in the syllables below:</c.P>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: pinyinNumberToAudioUrl('ni3')
+              }
+            }}
+          >
+            <b>nǐ</b>
+          </c.Bookrow>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: pinyinNumberToAudioUrl('zi3')
+              }
+            }}
+          >
+            <b>zǐ</b>
+          </c.Bookrow>
+          <c.P>In <b>nǐ</b>, it sounds like English <i>ee</i>; in <b>zǐ</b>, it sounds like the buzzing of a bee: <i>zzz</i>.</c.P>
+          <c.P>The pronunciation of <b>-i</b> depends on the initial. It is only after <b>s-</b>, <b>c-</b>, and <b>z-</b> that it has the zzz sound. After the other initials we have learned so far, it is pronounced <i>ee</i>:</c.P>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: pinyinNumberToAudioUrl('jiao4')
+              }
+            }}
+          >
+            <b>jiào</b>
+          </c.Bookrow>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: pinyinNumberToAudioUrl('yi1')
+              }
+            }}
+          >
+            <b>yī</b>
+          </c.Bookrow>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: pinyinNumberToAudioUrl('xing4')
+              }
+            }}
+          >
+            <b>xìng</b>
+          </c.Bookrow>
           <c.PartTitle name="characters" />
           <c.P>Here are all the new characters in this lesson. Click on the stroke icon to review stroke order, on the brush icon to see calligraphy video, and on history icon to see the character etymology.</c.P>
           {newCharacters()}

@@ -81,6 +81,39 @@ export default class Content extends Component {
           />
           <c.PartTitle name="pronunciation" />
           {pronunciationTitle()}
+          <c.P>These two initials illustrate an important contrast between different consonants in English and Chinese: <i>voiced</i> versus <i>unvoiced</i>, and <i>aspirated</i> versus <i>non-aspirated</i>.</c.P>
+          <c.P>Let us begin by looking at voicing. A sound is called voiced if the vocal chords vibrate when you pronounce it. All vowels are voiced: if you hold your fingers softly against your Adam’s apple and pronounce the English vowels, you can feel the vibration.</c.P>
+          <c.P>Some consonants are also voiced: you can feel a vibration when pronouncing the <i>m</i>-sound; but if you pronounce the <i>s</i>-sound there is no vibration, which means that s is unvoiced (to hear this, don’t say the name of the letter “ess”; just pronounce the <i>s</i>-sound itself, “sss”).</c.P>
+          <c.P>In English, <i>d</i> is voiced: the vocal chords vibrate if you pronounce the <i>d</i> sound without any vowel following it. English <i>t</i>, on the other hand, is unvoiced: there is no vibration if you pronounce the <i>t</i> sound on its own.</c.P>
+          <c.P>
+            In Chinese, <b>d-</b> and <b>t-</b> are both unvoiced! The difference between Chinese <b>d-</b> and <b>t-</b> instead lies in what’s called <i>aspiration</i>: the breath expelled as you pronounce the sound. The initial <b>d-</b> is pronounced a bit like English <i>t</i> in <i>stun</i>, with little aspiration. Chinese <b>t-</b> is pronounced more like the English <i>t</i> in <i>ton</i>, but even more forcefully, with very strong aspiration. You can hear this difference if you listen carefully:
+          </c.P>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                // url: SOME_URL,
+                text: '耷，她'
+              }
+            }}
+          >
+            <b>dā, tā</b>
+          </c.Bookrow>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                // url: SOME_URL,
+                text: '大，踏'
+              }
+            }}
+          >
+            <b>dà, tà</b>
+          </c.Bookrow>
+          <c.P>If you hold your palm up facing your mouth at a distance of an inch or two, you should be able to feel the strong flow of air against your hand as you pronounce <b>t-</b>. Chinese <b>d-</b>, on the other hand, gives very little flow of air, or none at all.</c.P>
+          <c.P>To summarize: in English, <i>d</i> is voiced but non-aspirated, and <i>t</i> is aspirated but unvoiced. The biggest difference is in the voicing. Chinese is more or less the opposite: here, <i>both</i> sounds are unvoiced, so the <i>only</i> difference between <b>d-</b> and <b>t-</b> lies in the amount of aspiration.</c.P>
+          <c.P>For the beginner, this can make Chinese <b>d-</b> and <b>t-</b> harder to tell apart than English <i>d</i> and <i>t</i>: in English, there are two differences between these sounds, but in Chinese, there is only one. There are many other Chinese consonant pairs where the only difference is the amount of aspiration. Because of this, being able to tell the difference is important for oral comprehension; and as you master aspiration, you will start to sound more and more like a native.</c.P>
+          {pronunciationTitle()}
           <c.P>Just as in the other cases we have seen, the final <b>-ing</b> is spelled <b>ying</b> when there is no initial. In other words, the <b>y</b> is silent:</c.P>
           <c.P
             buttonOptions={{

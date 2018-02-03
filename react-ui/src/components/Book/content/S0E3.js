@@ -121,7 +121,7 @@ export default class Content extends Component {
             <c.Chinese>中</c.Chinese> means <i>middle</i>. Type the correct tone on <c.Chinese>中</c.Chinese> <b>zhong</b>. Repeat again after the recording.
           </c.P>
           {pronunciationTitle()}
-          <c.P>After most initials, Chinese <b>i</b> is pronounced like English <i>ee</i> in <i>tree</i>:</c.P>
+          <c.P>As we have seen, after most initials, Chinese <b>i</b> is pronounced like English <i>ee</i> in <i>tree</i>:</c.P>
           <c.Bookrow
             buttonOptions={{
               type: 'audio',
@@ -137,7 +137,6 @@ export default class Content extends Component {
               <c.Meaning>you</c.Meaning>
             </Row>
           </c.Bookrow>
-          <c.P>This is also the how it is pronounced in finals like <b>-ing</b> and <b>-iao</b>:</c.P>
           <c.Bookrow
             buttonOptions={{
               type: 'audio',
@@ -166,7 +165,23 @@ export default class Content extends Component {
               <c.Meaning>to be called</c.Meaning>
             </Row>
           </c.Bookrow>
-          <c.P>But after the initials <b>sh-</b>, <b>r-</b> , <b>ch-</b> and <b>zh-</b> it is pronounced like an American <i>r</i>!</c.P>
+          <c.P>We have also learned that <b>-i</b> is pronounced like the <i>buzzing of a bee</i> after the initials <b>s-</b>, <b>c-</b> and <b>z-</b>: <i>zzz</i>.</c.P>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: pinyinNumberToAudioUrl('zi3'),
+                text: '子'
+              }
+            }}
+          >
+            <Row>
+              <c.Char>子</c.Char>
+              <c.Pinyin>zǐ</c.Pinyin>
+              <c.Meaning>son, child</c.Meaning>
+            </Row>
+          </c.Bookrow>
+          <c.P>The final <b>-i</b> actually has one more pronunciation: after the initials <b>sh-</b>, <b>r-</b>, <b>ch-</b> and <b>zh-</b> it is pronounced like a British English <i>r</i>!</c.P>
           <c.Bookrow
             buttonOptions={{
               type: 'audio',
@@ -179,29 +194,15 @@ export default class Content extends Component {
             <Row>
               <c.Char>是</c.Char>
               <c.Pinyin>shì</c.Pinyin>
-              <c.Meaning>to be (so this is pronounced like English shr in shrewd)</c.Meaning>
+              <c.Meaning>to be</c.Meaning>
             </Row>
           </c.Bookrow>
-          <c.P>In a previous lesson, we learned the third pronunciation of <b>i</b>. After the initials <b>s-</b>, <b>c-</b> and <b>z-</b>, it is a little bit similar to the sound we make to imitate the buzzing of a bee: <i>bzzzzzzz</i>, but without the initial <i>bz-</i>sound, just the long <i>zzzzzz</i>.</c.P>
-          <c.Bookrow
-            buttonOptions={{
-              type: 'audio',
-              data: {
-                url: pinyinNumberToAudioUrl('zi3'),
-              }
-            }}
-          >
-            <Row>
-              <c.Char>子</c.Char>
-              <c.Pinyin>zǐ</c.Pinyin>
-              <c.Meaning>son, child</c.Meaning>
-            </Row>
-          </c.Bookrow>
+          <c.P>Since <b>-i</b> here is pronounced like <b>r</b>, <b>shì</b> should sound like English <i>shr</i> in <i>shrewd</i>!</c.P>
           <c.P>If we had designed <b>pīnyīn</b>, we would have chosen the following spellings, because that is what these syllables sound like:</c.P>
           <c.Bookrow flexDirection="column">
-            <Row lineHeight={30}><span><b>nǐ</b> => něe</span></Row>
-            <Row lineHeight={30}><span><b>shì</b> => sh`r</span></Row>
-            <Row lineHeight={30}><span><b>zǐ</b> => dž</span></Row>
+            <Row lineHeight={30}><span><b>nǐ</b> => nee</span></Row>
+            <Row lineHeight={30}><span><b>zǐ</b> => dz</span></Row>
+            <Row lineHeight={30}><span><b>shì</b> => shr</span></Row>
           </c.Bookrow>
           <c.P>Practice the different pronunciations carefully:</c.P>
           <c.Bookrow
@@ -215,6 +216,49 @@ export default class Content extends Component {
             <b>xìng, shì, zǐ, nǐ, jiào, shì, xìng, zǐ</b>
           </c.Bookrow>
           <c.P>You can review all the sounds in this lesson more thoroughly in the <i>Introduction to Chinese pronunciation and writing</i>.</c.P>
+          {pronunciationTitle()}
+          <c.P><b>Pīnyīn</b> doesn’t allow certain “naked” finals, so when there is no initial, the spelling changes. We have already seen examples of this, such as adding a <b>y-</b> to <b>-i</b>, and changing the <b>u</b> in <b>-uang</b> to a <b>w-</b>, for example in <b>wang</b>.</c.P>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: pinyinNumberToAudioUrl('yi1'),
+                text: '一'
+              }
+            }}
+          >
+            <Row>
+              <c.Char>一</c.Char>
+              <c.Pinyin>yī</c.Pinyin>
+            </Row>
+          </c.Bookrow>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: pinyinNumberToAudioUrl('wang2'),
+                text: '王'
+              }
+            }}
+          >
+            <Row>
+              <c.Char>王</c.Char>
+              <c.Pinyin>wáng </c.Pinyin>
+            </Row>
+          </c.Bookrow>
+          <c.P>The same thing goes for <b>-ü</b>. But to confuse things further, in this case the sound <b>-ü</b> is spelled <b>-u</b>, without its dots:</c.P>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: pinyinNumberToAudioUrl('yu4'),
+                text: '玉'
+              }
+            }}
+          >
+            <b>yù</b>
+          </c.Bookrow>
+          <c.P>So something that could have been written simply <b>ü</b> becomes “<b>yu</b>”! This becomes obvious if you compare the sound to the pronunciation of the character <c.Chinese>女</c.Chinese>, written <b>nǚ</b> in <b>pīnyīn</b>. The sound of <b>yu</b> is exactly the same as that of <b>ü</b> in <b>nü</b>.</c.P>
           {pronunciationTitle()}
           <c.P>So far, the words we have encountered have all been monosyllabic. This means one meaning is represented by a single syllable, for example:</c.P>
           <c.Bookrow>

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import * as c from '../components';
 import { Objective } from '../../../containers/Book/containers';
 import { content as contentPropTypes } from '../../../helpers/propTypes';
-// import pinyinNumberToAudioUrl from '../../../utils/pinyinNumberToAudioUrl';
+import pinyinNumberToAudioUrl from '../../../utils/pinyinNumberToAudioUrl';
 import { Row } from '../../Shared';
 // import insertVariables from '../../../utils/insertVariables';
 
@@ -21,21 +21,29 @@ export default class Content extends Component {
           />
           <c.PartTitle name="pronunciation" />
           {pronunciationTitle()}
-          <c.P>
-            We have already learned that the Chinese final <b>-i</b> is written <b>yi</b> when there is no initial before it (when it comes first in a syllable). In the same way, when there is no initial, the final <b>-ie</b> is spelled <b>ye</b> in pīnyīn.
-          </c.P>
-          {pronunciationTitle()}
-          <c.P
+          <c.P>The Chinese initial <b>g-</b> is pronounced like an English <i>k</i>, but with less flow of air. Hold your palm up facing your mouth at a distance of an inch or two and pronounce English <i>g</i> and <i>k</i>. You can feel that there is a much weaker flow of air when you pronounce <i>g</i> than when you pronounce <i>k</i>. Chinese <b>g-</b> is pronounced like an English <i>k</i> without the flow of air! Listen:</c.P>
+          <c.Bookrow
             buttonOptions={{
               type: 'audio',
               data: {
-                // url: pinyinNumberToAudioUrl('hen3'),
-                text: '很'
+                // url: pinyinNumberToAudioUrl('gao1'),
+                text: '高'
               }
             }}
           >
-            Listen to the audio voice and practice the pronunciation of <b>hěn</b> a few times.
-          </c.P>
+            <b>gāo</b>
+          </c.Bookrow>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                // url: pinyinNumberToAudioUrl('gui4'),
+                text: '贵'
+              }
+            }}
+          >
+            <b>guì</b>
+          </c.Bookrow>
           {pronunciationTitle()}
           <c.P>As we have seen, a Chinese syllable has one of the Tones 1-4. But in some cases, this tone disappears. The word <c.Chinese>认识</c.Chinese> in this lesson is an example.</c.P>
           <c.P>The two characters <c.Chinese>认</c.Chinese> and <c.Chinese>识</c.Chinese> in this word are pronounced <b>rèn</b> with Tone 4 and <b>shí</b> with Tone 2, respectively. But when they are combined into the polysyllabic word <c.Chinese>认识</c.Chinese>, the second syllable loses its original tone. The resulting tone is called <i>neutral</i> or <i>zero</i> tone, and we denote it with a little zero over the vowel:</c.P>

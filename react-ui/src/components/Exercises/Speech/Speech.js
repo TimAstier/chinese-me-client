@@ -22,7 +22,7 @@ class Speech extends Component {
         <QuestionWrapper fontSize={24}>
           {
             this.props.status === 'question'
-              ? 'Read the sentence aloud:'
+              ? 'Read aloud:'
               : ''
           }
         </QuestionWrapper>

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import * as c from '../components';
 import { Objective } from '../../../containers/Book/containers';
 import { content as contentPropTypes } from '../../../helpers/propTypes';
-import pinyinNumberToAudioUrl from '../../../utils/pinyinNumberToAudioUrl';
+// import pinyinNumberToAudioUrl from '../../../utils/pinyinNumberToAudioUrl';
 // import { Row } from '../../Shared';
 // import insertVariables from '../../../utils/insertVariables';
 
@@ -39,12 +39,12 @@ export default class Content extends Component {
             buttonOptions={{
               type: 'audio',
               data: {
-                // url: pinyinNumberToAudioUrl('ta1'),
-                text: '她'
+                // url: pinyinNumberToAudioUrl('da4'),
+                text: '大'
               }
             }}
           >
-            <b>tā</b>
+            <b>dà</b>
           </c.Bookrow>
           {pronunciationTitle()}
           <c.P>We have previously seen that when there is no initial in the syllable, <b>-ü</b> is spelled with a <b>y-</b> and without dots over u: <b>yu</b>.</c.P>

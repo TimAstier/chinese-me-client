@@ -115,7 +115,7 @@ export default class Content extends Component {
             <b>zǐ</b>
           </c.Bookrow>
           <c.P>In <b>nǐ</b>, it sounds like English <i>ee</i>; in <b>zǐ</b>, it sounds like the buzzing of a bee: <i>zzz</i>.</c.P>
-          <c.P>The pronunciation of <b>-i</b> depends on the initial. It is only after <b>s-</b>, <b>c-</b>, and <b>z-</b> that it has the zzz sound. After the other initials we have learned so far, it is pronounced <i>ee</i>:</c.P>
+          <c.P>The pronunciation of <b>-i</b> depends on the initial. It is only after <b>s-</b>, <b>c-</b>, and <b>z-</b> that it has the <i>zzz</i> sound. After the other initials we have learned so far, it is pronounced <i>ee</i>:</c.P>
           <c.Bookrow
             buttonOptions={{
               type: 'audio',

@@ -258,7 +258,7 @@ export default class Content extends Component {
           >
             <b>yù</b>
           </c.Bookrow>
-          <c.P>So something that could have been written simply <b>ü</b> becomes “<b>yu</b>”! This becomes obvious if you compare the sound to the pronunciation of the character <c.Chinese>女</c.Chinese>, written <b>nǚ</b> in <b>pīnyīn</b>. The sound of <b>yu</b> is exactly the same as that of <b>ü</b> in <b>nü</b>.</c.P>
+          <c.P>So something that could have been written simply <b>ü</b> becomes “<b>yu</b>”! This is obvious if you compare the sound to the pronunciation of the character <c.Chinese>女</c.Chinese>, written <b>nǚ</b> in <b>pīnyīn</b>. The sound of <b>yu</b> is exactly the same as that of <b>ü</b> in <b>nü</b>.</c.P>
           {pronunciationTitle()}
           <c.P>So far, the words we have encountered have all been monosyllabic. This means one meaning is represented by a single syllable, for example:</c.P>
           <c.Bookrow>

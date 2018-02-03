@@ -252,7 +252,11 @@ export default class Content extends Component {
               <c.Pinyin>{pinyinize('yi1')}</c.Pinyin>
             </Row>
           </c.Bookrow>
-          <c.P>The tone on each syllable is indicated with a symbol called a <i>tone mark</i>: “ ¯ ” for Tone 1;  “ ´ ” for Tone 2; “ ˇ ” for Tone 3; and “ ` ” for Tone 4.</c.P>
+          <c.P>The tone on each syllable is indicated with a symbol called a <i>tone mark</i>:</c.P>
+          <c.P><Row><c.Space width={80}>Tone 1:</c.Space>¯</Row></c.P>
+          <c.P><Row><c.Space width={80}>Tone 2:</c.Space>´</Row></c.P>
+          <c.P><Row><c.Space width={80}>Tone 3:</c.Space>ˇ</Row></c.P>
+          <c.P><Row><c.Space width={80}>Tone 4:</c.Space>`</Row></c.P>
           <c.P>This system for writing Chinese with the help of Latin letters and tone marks is called <b>pīnyīn</b>. It is used in dictionaries and textbooks to teach pronunciation. It is also a way of inputting characters on computers and mobile phones. But Chinese people never actually read or communicate in <b>pīnyīn</b> – they always use characters.</c.P>
           <c.P
             buttonOptions={{

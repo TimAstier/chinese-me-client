@@ -9,7 +9,7 @@ const Wrapper = styled.div`
   text-align: center;
   align-items: flex-end;
   font-family: 'STKaitiSC';
-  font-size: 30px;
+  font-size: ${props => props.fontSize ? `${props.fontSize}px` : '30px'};
   font-weight: bold;
   line-height: 1.2;
   color: #454545;
@@ -18,7 +18,7 @@ const Wrapper = styled.div`
 class QuestionWrapper extends Component {
   render() {
     return (
-      <Wrapper>
+      <Wrapper fontSize={this.props.fontSize} >
         {this.props.children}
       </Wrapper>
     );
@@ -26,7 +26,8 @@ class QuestionWrapper extends Component {
 }
 
 QuestionWrapper.propTypes = {
-  children: propTypes.node.isRequired
+  children: propTypes.node.isRequired,
+  fontSize: propTypes.number
 };
 
 export default QuestionWrapper;

@@ -7,8 +7,8 @@ import iconAudioPlayingC from '../../images/iconAudioPlayingC.svg';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-  height: 40px;
-  width: 40px;
+  height: ${props => `${props.size}px`};
+  width: ${props => `${props.size}px`};
   :hover {
     opacity: 0.92;
   }
@@ -35,7 +35,7 @@ class PlayAudioButton extends Component {
 
   componentDidMount() {
     this.timerID = setInterval(
-      () => this.tick(),
+      () => this._tick(),
       600
     );
   }
@@ -44,34 +44,44 @@ class PlayAudioButton extends Component {
     clearInterval(this.timerID);
   }
 
-  tick() {
+  _size() {
+    if (this.props.small) {
+      return 30;
+    }
+    if (this.props.big) {
+      return 80;
+    }
+    return 40;
+  }
+
+  _tick() {
     this.setState({
       time: this.state.time + 1
     });
   }
 
-  loopPlayingIcons() {
+  _loopPlayingIcons() {
     return this.playingIcons[this.state.time % 3];
   }
 
-  renderImage() {
+  _renderImage() {
     if (!this.props.isPlaying) {
       return (
         <img
           src={iconPlayAudio}
           alt="play audio"
-          height={this.props.small ? '30px' : '40px'}
-          width={this.props.small ? '30px' : '40px'}
+          height={this._size()}
+          width={this._size()}
         />
       );
     }
 
     return (
       <img
-        src={this.loopPlayingIcons()}
+        src={this._loopPlayingIcons()}
         alt="audio playing"
-        height={this.props.small ? '30px' : '40px'}
-        width={this.props.small ? '30px' : '40px'}
+        height={this._size()}
+        width={this._size()}
       />
     );
   }
@@ -80,8 +90,9 @@ class PlayAudioButton extends Component {
     return (
       <Wrapper
         onClick={this.props.onClick}
+        size={this._size()}
       >
-        {this.renderImage()}
+        {this._renderImage()}
       </Wrapper>
     );
   }
@@ -90,7 +101,8 @@ class PlayAudioButton extends Component {
 PlayAudioButton.propTypes = {
   onClick: propTypes.func.isRequired,
   isPlaying: propTypes.bool,
-  small: propTypes.bool
+  small: propTypes.bool,
+  big: propTypes.bool
 };
 
 export default PlayAudioButton;

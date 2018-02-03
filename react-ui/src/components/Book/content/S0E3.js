@@ -179,7 +179,7 @@ export default class Content extends Component {
             <Row>
               <c.Char>是</c.Char>
               <c.Pinyin>shì</c.Pinyin>
-              <c.Meaning>, to be (so this is pronounced like English shr in shrewd)</c.Meaning>
+              <c.Meaning>to be (so this is pronounced like English shr in shrewd)</c.Meaning>
             </Row>
           </c.Bookrow>
           <c.P>In a previous lesson, we learned the third pronunciation of <b>i</b>. After the initials <b>s-</b>, <b>c-</b> and <b>z-</b>, it is a little bit similar to the sound we make to imitate the buzzing of a bee: <i>bzzzzzzz</i>, but without the initial <i>bz-</i>sound, just the long <i>zzzzzz</i>.</c.P>

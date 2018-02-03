@@ -9,6 +9,7 @@ import * as fromDialogRoleplay from '../sagas/study/dialogRoleplay';
 import * as fromMultipleChoice from '../sagas/study/multipleChoice';
 import * as fromAudioToWords from '../sagas/study/audioToWords';
 import * as fromExam from '../sagas/study/exam';
+import * as fromSpeech from '../sagas/study/speech';
 import * as fromPractice from '../sagas/study/practice';
 import * as fromExamResult from '../sagas/study/examResult';
 import * as fromVideo from '../sagas/study/video';
@@ -35,6 +36,8 @@ export default function mapScreenTypeToModule(screenType) {
     case 'textToChoice/': return fromMultipleChoice;
     case 'textToText/':
     case 'audioToText/': return fromFreeInput;
+    case 'textToSpeech/':
+    case 'audioToSpeech/': return fromSpeech;
     case 'audioToWords/': return fromAudioToWords;
     case 'choicesToOrder/': return fromChoicesToOrder;
     case 'video/': return fromVideo;

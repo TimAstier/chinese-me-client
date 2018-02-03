@@ -8,6 +8,13 @@ import { actions as studyActions } from '../../redux/study';
 import getStudyFunctions from '../../helpers/getStudyFunctions';
 import { push } from 'react-router-redux';
 
+// All exercises' answers are saved in the DB, unless its type is in this array
+const unsavedExerciseTypes = [
+  'characterStroke',
+  'textToSpeech',
+  'audioToSpeech'
+];
+
 export function* isDataLoaded() {
   // id is not defined since there is no elementId
   const currentExercise = yield select(selectors.practice.getCurrentExercise);
@@ -88,7 +95,7 @@ export function* run() {
       }
       // Save answer in the DB:
       // TODO: save number of errors for characterStroke
-      if (type !== 'characterStroke') {
+      if (unsavedExerciseTypes.indexOf(type) === -1 ) {
         yield put(sagaActions.saveAnswer({
           exerciseId: exercise.get('id'),
           ...runExercise.result

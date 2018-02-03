@@ -50,6 +50,7 @@ export { default as ScrollableWrapper } from './ScrollableWrapper/ScrollableWrap
 export { default as SelectEpisode } from './SelectEpisode/SelectEpisode';
 export { default as SignupPage } from './Signup/Page';
 export { default as SignupActivate } from './Signup/Activate';
+export { default as Speech } from './Exercises/Speech/Speech';
 export { default as Statement } from './Statement/Statement';
 export { default as Study } from './Study/Study';
 export { default as Video } from './Video/Video';

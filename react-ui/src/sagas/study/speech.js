@@ -32,8 +32,9 @@ export function* run(isExam = false, type) {
     yield delay(0.5);
     yield put(sagaActions.playAudio());
   }
-  // Wait until at least one audio finishes to play
+  // Wait until click on playaudio and one audio finishes to play
   while (true) {
+    yield take(sagaTypes.PLAY_AUDIO);
     const action = yield take(audioTypes.SET);
     if (action.payload.attribute === 'isPlaying' &&
       action.payload.value === false) {

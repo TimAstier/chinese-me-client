@@ -6,7 +6,7 @@ export default class Content extends Component {
   render() {
     return (
       <div>
-        <c.P>The character <c.Chinese>找</c.Chinese> is composed of two elements: the very common <i>hand</i> radical on the left, and a character meaning battle axe right upward stroke. The hand radical contains an example of the upward slanting stroke, which is written using a small run-up going right and down, followed by a tapering stroke slanting upwards：</c.P>
+        <c.P>The character <c.Chinese>找</c.Chinese> is composed of two elements: the very common <i>hand</i> radical on the left, and a character meaning <i>battle axe</i>. The <i>hand</i> radical contains an example of the upward slanting stroke, which is written using a small run-up going right and down, followed by a tapering stroke slanting upwards:</c.P>
         <c.Bookrow>
           <c.CharacterBox simpChar="找" />
         </c.Bookrow>

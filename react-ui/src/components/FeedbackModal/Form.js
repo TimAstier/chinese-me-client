@@ -16,7 +16,7 @@ const ButtonWrapper = styled.div`
 `;
 
 const Button = styled.button`
-  width: 146px;
+  width: 250px;
   height: 48px;
   border-radius: 57px;
   background-color: #55b6ff;
@@ -133,7 +133,7 @@ class Form extends Component {
           <Field name="message" component={this.renderTextArea} required/>
         </FieldsWrapper>
         <ButtonWrapper>
-          <Button type="submit">Send</Button>
+          <Button type="submit">Send to ChineseMe</Button>
         </ButtonWrapper>
       </form>
     );

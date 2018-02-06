@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
 import Form from './Form';
-import messageIcon from '../../images/messageIcon.svg';
 
 const Wrapper = styled.div`
   height: 700px;
@@ -11,31 +10,36 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 
-const IconWrapper = styled.div`
+const TitleWrapper = styled.div`
+  font-family: 'Open Sans';
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  color: #454545;
   margin-top: 35px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `;
 
-const FormWrapper = styled.div`
-  flex: 8 0 0;
+
+const ExplanationWrapper = styled.div`
+  margin-top: 10px;
+  width: 600px;
+  text-align: center;
 `;
 
 class FeedbackWriting extends Component {
-
   render() {
     return (
       <Wrapper>
-        <IconWrapper>
-          <img src={messageIcon} width="90px" alt=""/>
-        </IconWrapper>
-        <FormWrapper>
-          <Form
-            onSubmit={this.props.onSubmit}
-            initialValues={ { email: this.props.email } }
-          />
-        </FormWrapper>
+        <TitleWrapper>
+          <p>Send a message to ChineseMe</p>
+        </TitleWrapper>
+        <ExplanationWrapper>
+          <p><i>We love to hear from our students. Do not hesitate to contact us any time you have a question or a comment about your learning experience! You can also get in touch with us on Twitter, <a href="https://twitter.com/ChineseMeHQ" target="_blank" rel="noopener noreferrer">@ChineseMeHQ</a>.</i></p>
+        </ExplanationWrapper>
+        <Form
+          onSubmit={this.props.onSubmit}
+          initialValues={ { email: this.props.email } }
+        />
       </Wrapper>
     );
   }

@@ -10,7 +10,7 @@ const getBackUrl = createSelector(
   s.practice.getType,
   (screenType, episode, bookUrl, practiceType) => {
     if (screenType === 'practice/') {
-      if (practiceType !== null && practiceType !== 'exam') {
+      if (practiceType && practiceType !== 'exam') {
         if (!episode) {
           // This should never happen but prevents from crashing just in case
           return '/';

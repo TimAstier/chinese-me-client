@@ -15,7 +15,6 @@ class CharacterPinyin extends Component {
     return (
       <CharacterPinyinComponent
         handleChange={this.handleChange.bind(this)}
-        text={this.props.exercise.text}
         { ...this.props }
       />
     );

@@ -72,7 +72,7 @@ export default class Content extends Component {
             buttonOptions={{
               type: 'practice',
               data: {
-                elementId: practiceIds[1]
+                elementId: practiceIds[0]
               }
             }}
           >Type the correct tone on <c.Chinese>是</c.Chinese> <b>shi</b>. Repeat again after the recording.</c.P>
@@ -93,7 +93,7 @@ export default class Content extends Component {
             buttonOptions={{
               type: 'practice',
               data: {
-                elementId: practiceIds[2]
+                elementId: practiceIds[1]
               }
             }}
           >Type the correct tone on 人 <b>ren</b>. Repeat again after the recording.</c.P>
@@ -114,7 +114,7 @@ export default class Content extends Component {
             buttonOptions={{
               type: 'practice',
               data: {
-                elementId: practiceIds[3]
+                elementId: practiceIds[2]
               }
             }}
           >
@@ -301,7 +301,7 @@ export default class Content extends Component {
             buttonOptions={{
               type: 'practice',
               data: {
-                elementId: practiceIds[4]
+                elementId: practiceIds[3]
               }
             }}
           >
@@ -311,7 +311,7 @@ export default class Content extends Component {
             buttonOptions={{
               type: 'practice',
               data: {
-                elementId: practiceIds[5]
+                elementId: practiceIds[4]
               }
             }}
           >

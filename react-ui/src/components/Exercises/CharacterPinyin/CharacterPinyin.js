@@ -105,9 +105,9 @@ class CharacterPinyin extends Component {
           isFinished={this.isFinished()}
           type="text"
           value={
-            this.props.status === 'correct' ?
-            pinyinize(this.props.userAnswer.replace(/\s+/g, ''))
-            : this.props.userAnswer
+            this.props.status === 'correct'
+            ? pinyinize(this.props.userAnswer.replace(/\s+/g, ''))
+              : this.props.userAnswer
           }
           onChange={this.props.handleChange}
           innerRef={this.props.openFeedbackModal ?
@@ -158,9 +158,6 @@ class CharacterPinyin extends Component {
 
   _renderQuestion() {
     if (this.props.status === 'question') {
-      if (this.props.text) {
-        return this.props.text;
-      }
       return 'Type the pinyin!';
     }
     return '';
@@ -196,8 +193,7 @@ CharacterPinyin.propTypes = {
   userAnswer: propTypes.string.isRequired,
   handleChange: propTypes.func.isRequired,
   openFeedbackModal: propTypes.bool.isRequired,
-  hideLabel: propTypes.bool,
-  text: propTypes.string
+  hideLabel: propTypes.bool
 };
 
 export default CharacterPinyin;

@@ -61,7 +61,7 @@ export default class Content extends Component {
             buttonOptions={{
               type: 'practice',
               data: {
-                elementId: practiceIds[1]
+                elementId: practiceIds[0]
               }
             }}
           >
@@ -73,7 +73,7 @@ export default class Content extends Component {
             buttonOptions={{
               type: 'practice',
               data: {
-                elementId: practiceIds[2]
+                elementId: practiceIds[1]
               }
             }}
           >
@@ -89,7 +89,7 @@ export default class Content extends Component {
             buttonOptions={{
               type: 'practice',
               data: {
-                elementId: practiceIds[3]
+                elementId: practiceIds[2]
               }
             }}
           >
@@ -102,7 +102,7 @@ export default class Content extends Component {
             buttonOptions={{
               type: 'practice',
               data: {
-                elementId: practiceIds[4]
+                elementId: practiceIds[3]
               }
             }}
           >
@@ -120,7 +120,7 @@ export default class Content extends Component {
             buttonOptions={{
               type: 'practice',
               data: {
-                elementId: practiceIds[5]
+                elementId: practiceIds[4]
               }
             }}
           >
@@ -134,7 +134,7 @@ export default class Content extends Component {
             buttonOptions={{
               type: 'practice',
               data: {
-                elementId: practiceIds[0]
+                elementId: practiceIds[5]
               }
             }}
           >

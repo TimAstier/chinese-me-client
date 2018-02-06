@@ -12,14 +12,22 @@ class FreeInput extends Component {
     return this.props.setUserAnswer(event.target.value);
   }
 
+  _text() {
+    const { guidelineText, questionText } = this.props.exercise;
+    return (
+      (guidelineText ? guidelineText : '')
+      + (questionText ? (' ' + questionText) : '')
+    ).trim();
+  }
+
   _question() {
     if (this.props.exercise.type === 'audioToText') {
-      if (this.props.exercise.text === null) {
+      if (!this._text()) {
         return 'Type what you hear in Chinese:';
       }
     }
     // textToChoice
-    return this.props.exercise.text;
+    return this._text();
   }
 
   render() {

@@ -21,7 +21,6 @@ MapContent.propTypes = {
   grammars: propTypes.array.isRequired,
   pronunciations: propTypes.array.isRequired,
   dialogs: propTypes.array.isRequired,
-  practices: propTypes.array.isRequired,
   mapLinkClick: propTypes.func.isRequired,
   mapCharactersCompletedCount: propTypes.number.isRequired,
   mapDialogsCompletedCount: propTypes.number.isRequired,
@@ -35,7 +34,6 @@ const mapStateToProps = state => ({
   grammars: s.map.getGrammars(state).toJS(),
   pronunciations: s.map.getPronunciations(state).toJS(),
   dialogs: s.map.getDialogs(state).toJS(),
-  practices: s.map.getPractices(state).toJS(),
   mapCharactersCompletedCount: s.getMapCharactersCompletedCount(state),
   mapDialogsCompletedCount: s.getMapDialogsCompletedCount(state),
   mapGrammarsCompletedCount: s.getMapGrammarsCompletedCount(state)

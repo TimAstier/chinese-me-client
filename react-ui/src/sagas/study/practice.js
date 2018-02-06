@@ -109,6 +109,7 @@ export function* run() {
   }
   // yield delay(1000);
   yield put(sagaActions.playLevelWinSound());
+  // TODO: Save practice completed in DB
   yield put(uiActions.set('nextButton', true));
   return yield take(sagaTypes.NEXT);
 }

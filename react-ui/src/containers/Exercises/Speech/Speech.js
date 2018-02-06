@@ -10,7 +10,8 @@ class Speech extends Component {
     return (
       <SpeechComponent
         status={this.props.status}
-        text={this.props.exercise.text}
+        guidelineText={this.props.exercise.guidelineText}
+        questionText={this.props.exercise.questionText}
         type={this.props.exercise.type}
       />
     );

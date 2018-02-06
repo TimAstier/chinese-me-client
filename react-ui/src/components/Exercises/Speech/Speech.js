@@ -16,18 +16,26 @@ const AudioWrapper = styled.div`
 `;
 
 class Speech extends Component {
+  _textToSpeechQuestion() {
+    return this.props.guidelineText ? this.props.guidelineText : 'Read aloud:';
+  }
+
+  _audioToSpeechQuestion() {
+    return this.props.guidelineText ? this.props.guidelineText : 'Listen and repeat:';
+  }
+
   _renderTextToSpeech() {
     return (
       <Wrapper>
         <QuestionWrapper fontSize={24}>
           {
             this.props.status === 'question'
-              ? 'Read aloud:'
+            ? this._textToSpeechQuestion()
               : ''
           }
         </QuestionWrapper>
-        <TextWrapper isChinese={containsChinese(this.props.text)}>
-          {this.props.text}
+        <TextWrapper isChinese={this.props.questionText && containsChinese(this.props.questionText)}>
+          {this.props.questionText}
         </TextWrapper>
         <QuestionWrapper fontSize={24}>
           {
@@ -49,7 +57,7 @@ class Speech extends Component {
         <QuestionWrapper fontSize={24}>
           {
             this.props.status === 'question'
-              ? 'Listen and repeat:'
+            ? this._audioToSpeechQuestion()
               : 'Repeat until you feel comfortable:'
           }
         </QuestionWrapper>
@@ -73,7 +81,8 @@ class Speech extends Component {
 
 Speech.propTypes = {
   status: propTypes.string.isRequired,
-  text: propTypes.string,
+  guidelineText: propTypes.string,
+  questionText: propTypes.string,
   type: propTypes.oneOf(['textToSpeech', 'audioToSpeech']).isRequired
 };
 

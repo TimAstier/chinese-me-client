@@ -167,7 +167,7 @@ class MapContent extends Component {
 
   render() {
     const { episode, focusedSeasonNumber, characters, grammars, dialogs,
-      practices, pronunciations } = this.props;
+      pronunciations } = this.props;
     if (!episode) {
       // TODO: return a message for empty screen
       return null;
@@ -234,15 +234,14 @@ class MapContent extends Component {
             )}
           />
           {
-            practices[0] &&
-              <ScreenButton
-                text="Exercises"
-                secondary
-                icon={exerciseIcon}
-                onClick={() => this.props.mapLinkClick(
-                  `/study/season/${focusedSeasonNumber}/episode/${episode.number}#review`
-                )}
-              />
+            <ScreenButton
+              text="Exercises"
+              secondary
+              icon={exerciseIcon}
+              onClick={() => this.props.mapLinkClick(
+                `/study/season/${focusedSeasonNumber}/episode/${episode.number}#review`
+              )}
+            />
           }
           <ScreenButton
             text="Exam"
@@ -263,7 +262,6 @@ MapContent.propTypes = {
   grammars: propTypes.array.isRequired,
   pronunciations: propTypes.array.isRequired,
   dialogs: propTypes.array.isRequired,
-  practices: propTypes.array.isRequired,
   focusedSeasonNumber: propTypes.number,
   episode: propTypes.instanceOf(models.Episode),
   mapLinkClick: propTypes.func.isRequired,

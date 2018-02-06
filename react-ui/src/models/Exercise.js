@@ -3,7 +3,8 @@ import Immutable from 'immutable';
 const ExerciseRecord = Immutable.Record({
   id: null,
   type: '',
-  text: '',
+  guidelineText: '',
+  questionText: '',
   audioUrl: '',
   translation: '',
   characterId: '',

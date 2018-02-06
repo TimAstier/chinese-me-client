@@ -150,7 +150,7 @@ export default class Content extends Component {
             buttonOptions={{
               type: 'practice',
               data: {
-                elementId: practiceIds[1]
+                elementId: practiceIds[0]
               }
             }}
           >
@@ -163,7 +163,7 @@ export default class Content extends Component {
             buttonOptions={{
               type: 'practice',
               data: {
-                elementId: practiceIds[2]
+                elementId: practiceIds[1]
               }
             }}
           >
@@ -180,7 +180,7 @@ export default class Content extends Component {
             buttonOptions={{
               type: 'practice',
               data: {
-                elementId: practiceIds[3]
+                elementId: practiceIds[2]
               }
             }}
           >

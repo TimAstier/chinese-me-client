@@ -8,14 +8,22 @@ import * as models from '../../../models';
 import { actions as sagaActions } from '../../../sagas/actions';
 
 class MultipleChoice extends Component {
+  _text() {
+    const { guidelineText, questionText } = this.props.exercise;
+    return (
+      (guidelineText ? guidelineText : '')
+      + (questionText ? (' ' + questionText) : '')
+    ).trim();
+  }
+
   _question() {
     if (this.props.exercise.type === 'audioToChoice') {
-      if (this.props.exercise.text === null) {
+      if (!this._text()) {
         return 'Listen and select the correct answer:';
       }
     }
     // textToChoice
-    return this.props.exercise.text;
+    return this._text();
   }
 
   render() {

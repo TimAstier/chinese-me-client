@@ -32,7 +32,7 @@ export function* initApp() {
   }
 }
 
-// Called after an exam to update episode score
+// Called after a practice or exam to update episode score
 export function* reloadApp() {
   while (true) { // eslint-disable-line no-constant-condition
     yield take(sagaTypes.RELOAD_APP);

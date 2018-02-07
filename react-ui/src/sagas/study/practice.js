@@ -7,6 +7,8 @@ import { types as sagaTypes, actions as sagaActions } from '../actions';
 import { actions as studyActions } from '../../redux/study';
 import getStudyFunctions from '../../helpers/getStudyFunctions';
 import { push } from 'react-router-redux';
+import getParamsFromUrl from '../../utils/getParamsFromUrl';
+import Api from '../../utils/api';
 
 // All exercises' answers are saved in the DB, unless its type is in this array
 const unsavedExerciseTypes = [
@@ -109,7 +111,12 @@ export function* run() {
   }
   // yield delay(1000);
   yield put(sagaActions.playLevelWinSound());
-  // TODO: Save practice completed in DB
+  // Save score in DB
+  // Might be better to save currentPracticeId in the state
+  const url = yield select(selectors.routing.getCurrentUrl);
+  const { elementId } = getParamsFromUrl(url);
+  yield call(Api.post, `/practice/${elementId}/completed`);
+  yield put(sagaActions.reloadApp());
   yield put(uiActions.set('nextButton', true));
   return yield take(sagaTypes.NEXT);
 }

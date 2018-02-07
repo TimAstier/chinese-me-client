@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
 import practiceNames from '../../constants/practiceNames';
+import iconCheck from '../../images/iconCheck.svg';
 
 const Wrapper = styled.div`
   flex-grow: 1;
@@ -30,7 +31,7 @@ const Title = styled.div`
 const Items = styled.div`
   display: flex;
   flex-direction: column;
-  padding-left: 50px;
+  padding-left: 30px;
   font-size: 18px;
   font-family: 'Open Sans';
   cursor: pointer;
@@ -38,6 +39,12 @@ const Items = styled.div`
 
 const Item = styled.div`
   margin-bottom: 10px;
+  display: flex;
+`;
+
+const CheckmarkWrapper = styled.div`
+  width: 20px;
+  margin-right: 10px;
 `;
 
 class ReviewPart extends Component {
@@ -51,7 +58,15 @@ class ReviewPart extends Component {
           key={e.type}
           onClick={() => this.props.itemClick(e.id)}
         >
-          {name}
+          <CheckmarkWrapper>
+            {
+              e.userPractices.length > 0 &&
+                <img src={iconCheck} alt="" width={20} />
+            }
+          </CheckmarkWrapper>
+          <div>
+            {name}
+          </div>
         </Item>
       );
     });

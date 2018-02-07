@@ -6,7 +6,7 @@
   "author": "Timothée Astier",
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && rm build/static/js/*.map",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "lint": "eslint *.js .; exit 0",

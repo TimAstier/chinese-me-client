@@ -33,7 +33,7 @@ export function* askUserSettings() {
   // TODO: Move isAuthenticated check into its own saga
   const isAuthenticated = yield select(selectors.auth.getIsAuthenticated);
   if (!isAuthenticated) {
-    yield put(push('login'));
+    yield put(push('/login'));
   } else {
     let requiredUserData = yield select(selectors.getRequiredUserData);
     if (requiredUserData) {

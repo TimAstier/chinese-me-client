@@ -1,5 +1,4 @@
 import { put, take, select, call } from 'redux-saga/effects';
-import { delay } from 'redux-saga';
 // import { types as uiTypes } from '../../redux/ui';
 import selectors from '../../rootSelectors';
 import { actions as studyActions } from '../../redux/study';
@@ -48,7 +47,8 @@ export function* run(isExam = false) {
     return result;
   }
   yield put(uiActions.set('hanziAgainButton', false));
-  yield delay(1000);
+  yield put(uiActions.set('nextButton', true));
+  yield take(sagaTypes.NEXT_QUESTION);
   return result;
 }
 

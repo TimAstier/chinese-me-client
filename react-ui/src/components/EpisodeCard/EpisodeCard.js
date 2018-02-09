@@ -3,7 +3,8 @@ import propTypes from 'prop-types';
 import styled from 'styled-components';
 import { ScreenButton, Star } from '../.';
 import containsChinese from '../../utils/containsChinese';
-
+import { MINIMUM_SCORE_TO_PASS, TWO_STARS_THRESHOLD, THREE_STARS_THRESHOLD }
+  from '../../constants/exam';
 
 const Wrapper = styled.div`
   width: 250px;
@@ -71,9 +72,9 @@ class EpisodeCard extends Component {
     if (this.props.score) {
       return (
         <StarsWrapper>
-          <Star filled={this.props.score >= 7} />
-          <Star filled={this.props.score >= 8} />
-          <Star filled={this.props.score >= 9} />
+          <Star filled={this.props.score >= MINIMUM_SCORE_TO_PASS} />
+          <Star filled={this.props.score >= TWO_STARS_THRESHOLD} />
+          <Star filled={this.props.score >= THREE_STARS_THRESHOLD} />
         </StarsWrapper>
       );
     }

@@ -18,7 +18,6 @@ const BlackSpan = styled.span`
 `;
 
 class ExamResultScoreLabel extends Component {
-
   render() {
     return (
       <Wrapper>

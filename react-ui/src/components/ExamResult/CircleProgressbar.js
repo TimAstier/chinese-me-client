@@ -3,6 +3,7 @@ import propTypes from 'prop-types';
 import { Circle } from 'react-progressbar.js';
 import styled from 'styled-components';
 import { ExamResultScoreLabel } from '../.';
+import { MINIMUM_SCORE_TO_PASS } from '../../constants/exam';
 
 const Wrapper = styled.div`
   width: 200px;
@@ -21,13 +22,12 @@ const Text = styled.div`
 `;
 
 class CircleProgressbar extends Component {
-
   render() {
     const options = {
       strokeWidth: 10,
       easing: 'easeInOut',
       duration: 1500,
-      color: this.props.score >= 7 ? '#91ca49' : '#55b6ff',
+      color: this.props.score >= MINIMUM_SCORE_TO_PASS ? '#91ca49' : '#55b6ff',
       trailColor: '#eaf2f6',
       trailWidth: 10,
       svgStyle: null

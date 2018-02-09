@@ -9,13 +9,7 @@ import getStudyFunctions from '../../helpers/getStudyFunctions';
 import { push } from 'react-router-redux';
 import getParamsFromUrl from '../../utils/getParamsFromUrl';
 import Api from '../../utils/api';
-
-// All exercises' answers are saved in the DB, unless its type is in this array
-const unsavedExerciseTypes = [
-  'characterStroke',
-  'textToSpeech',
-  'audioToSpeech'
-];
+import unsavedExerciseTypes from '../../constants/unsavedExerciseTypes';
 
 export function* isDataLoaded() {
   // id is not defined since there is no elementId
@@ -97,7 +91,7 @@ export function* run() {
       }
       // Save answer in the DB:
       // TODO: save number of errors for characterStroke
-      if (unsavedExerciseTypes.indexOf(type) === -1 ) {
+      if (unsavedExerciseTypes.indexOf(type) === -1) {
         yield put(sagaActions.saveAnswer({
           exerciseId: exercise.get('id'),
           ...runExercise.result

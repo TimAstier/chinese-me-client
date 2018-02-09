@@ -6,6 +6,11 @@ import styled from 'styled-components';
 const Wrapper = styled.div`
   width: 60px;
   height: 60px;
+`;
+
+const InnerWrapper = styled.div`
+  width: 60px;
+  height: 60px;
   position: relative;
 `;
 
@@ -21,7 +26,6 @@ const Text = styled.div`
 `;
 
 class CircleTimer extends Component {
-
   render() {
     const options = {
       strokeWidth: 5, // Unit is percentage of SVG canvas' size.
@@ -42,18 +46,20 @@ class CircleTimer extends Component {
     };
     return (
       <Wrapper>
-        <Circle
-          progress={this.props.timeLeft}
-          options={options}
-          initialAnimate={false}
-          containerStyle={containerStyle}
-          containerClassName={'.progressbar'}
-        />
-        <Text
-          timeLeft={this.props.timeLeft}
-        >
-          {this.props.timeLabel}
-        </Text>
+        <InnerWrapper>
+          <Circle
+            progress={this.props.timeLeft}
+            options={options}
+            initialAnimate={false}
+            containerStyle={containerStyle}
+            containerClassName={'.progressbar'}
+          />
+          <Text
+            timeLeft={this.props.timeLeft}
+          >
+            {this.props.timeLabel}
+          </Text>
+        </InnerWrapper>
       </Wrapper>
     );
   }

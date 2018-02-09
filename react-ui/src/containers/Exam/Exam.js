@@ -5,7 +5,6 @@ import { Exam as ExamComponent } from '../../components';
 import s from '../../rootSelectors';
 
 class Exam extends Component {
-
   render() {
     if (this.props.currentExercise) {
       return (

@@ -1,3 +1,5 @@
+import isEmpty from 'lodash/isEmpty';
+
 const setEntities = (state, newEntities, Model) => {
   // Assumes the JSON Api is returning entities and relations
   // in the correct order
@@ -12,7 +14,15 @@ const setEntities = (state, newEntities, Model) => {
         const relationships = entity.relationships;
         for (const r in relationships) {
           if (relationships.hasOwnProperty(r)) {
-            object[r] = relationships[r].data.map(e => Number(e.id));
+            if (relationships[r].data && !isEmpty(relationships[r].data)) {
+              if (relationships[r].data.constructor === Array) {
+                // hasMany case
+                object[r] = relationships[r].data.map(e => Number(e.id));
+              } else {
+                // hasOne case
+                object[r] = relationships[r].data.id;
+              }
+            }
           }
         }
       }

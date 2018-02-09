@@ -5,7 +5,6 @@ import { ExamResult as ExamResultComponent } from '../../components';
 import s from '../../rootSelectors';
 
 class ExamResult extends Component {
-
   render() {
     return (
       <ExamResultComponent { ...this.props } />

@@ -20,7 +20,6 @@ const BlackSpan = styled.span`
 `;
 
 class ExamScoreLabel extends Component {
-
   render() {
     return (
       <Wrapper>

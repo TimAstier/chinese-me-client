@@ -1,5 +1,6 @@
 import Immutable from 'immutable';
 import { createSelector } from 'reselect';
+import { EXAM_TIME } from '../constants/exam.js';
 
 // Types
 
@@ -15,7 +16,7 @@ export const types = {
 
 const INITIAL_STATE = Immutable.Map({
   status: 'stopped',
-  time: 180
+  time: EXAM_TIME
 });
 
 export default function reducer(state = INITIAL_STATE, action = {}) {

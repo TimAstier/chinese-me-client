@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import { ExamScoreLabel, ExamProgressbar, Star } from '../.';
 import { CircleTimer } from '../../containers';
 import mapTypeToContainers from '../../helpers/mapTypeToContainers';
+import { MINIMUM_SCORE_TO_PASS, TWO_STARS_THRESHOLD, THREE_STARS_THRESHOLD }
+  from '../../constants/exam';
 
 const Wrapper = styled.div`
   flex-grow: 1;
@@ -45,8 +47,11 @@ const ProgressbarWrapper = styled.div`
   margin-top: 5px;
 `;
 
-class Exam extends Component {
+const InnerWrapper = styled.div`
+  max-height: 500px;
+`;
 
+class Exam extends Component {
   render() {
     const Container =
       mapTypeToContainers(this.props.currentExercise.get('type'));
@@ -54,9 +59,9 @@ class Exam extends Component {
       <Wrapper>
         <LeftWrapper>
           <StarWrapper>
-            <Star filled={this.props.score >= 7} />
-            <Star filled={this.props.score >= 8} />
-            <Star filled={this.props.score >= 9} />
+            <Star filled={this.props.score >= MINIMUM_SCORE_TO_PASS} />
+            <Star filled={this.props.score >= TWO_STARS_THRESHOLD} />
+            <Star filled={this.props.score >= THREE_STARS_THRESHOLD} />
           </StarWrapper>
           <ScoreLabelWrapper>
             <ExamScoreLabel
@@ -73,7 +78,9 @@ class Exam extends Component {
         </LeftWrapper>
         <MiddleWrapper>
           <CircleTimer />
-          {this.props.initialized && <Container hideLabel />}
+          <InnerWrapper>
+            {this.props.initialized && <Container hideLabel />}
+          </InnerWrapper>
         </MiddleWrapper>
         <RightWrapper />
       </Wrapper>

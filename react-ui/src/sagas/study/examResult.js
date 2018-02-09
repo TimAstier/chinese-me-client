@@ -6,6 +6,7 @@ import { actions as examActions } from '../../redux/exam';
 import selectors from '../../rootSelectors';
 import Api from '../../utils/api';
 import { push } from 'react-router-redux';
+import { MINIMUM_SCORE_TO_PASS } from '../../constants/exam';
 
 export function isDataLoaded() {
   return true;
@@ -27,7 +28,7 @@ export function* initStudyData() {}
 export function* run() {
   const score = yield select(selectors.exam.getScore);
   yield delay(500);
-  yield put(score >= 7 ? sagaActions.playLevelWinSound() : sagaActions.playLevelFailSound());
+  yield put(score >= MINIMUM_SCORE_TO_PASS ? sagaActions.playLevelWinSound() : sagaActions.playLevelFailSound());
   // Tracking
   const exercises = yield select(selectors.exam.getExercises);
   const results = yield select(selectors.exam.getResults);
@@ -46,7 +47,7 @@ export function* run() {
   }));
   // End Tracking
   // Save score in DB
-  yield call(Api.post, '/episode/exam/completed',
+  yield call(Api.post, '/exam/completed',
     {
       episodeId: currentEpisode.get('id'),
       score

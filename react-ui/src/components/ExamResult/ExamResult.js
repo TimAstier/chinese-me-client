@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
 import { CircleProgressbar, Star } from '../.';
+import { MINIMUM_SCORE_TO_PASS, TWO_STARS_THRESHOLD, THREE_STARS_THRESHOLD,
+  NUMBER_OF_EXERCISES_IN_EXAM } from '../../constants/exam';
 
 const Wrapper = styled.div`
   flex: 1;
@@ -54,19 +56,18 @@ const Stars = styled.div`
 `;
 
 class ExamResult extends Component {
-
   renderHeaderText() {
-    if (this.props.score < 7) {
+    if (this.props.score < MINIMUM_SCORE_TO_PASS) {
       return 'Nice try. Practice makes perfect!';
     }
     return 'You successfully passed this test!';
   }
 
   renderCommentText() {
-    if (this.props.score < 7) {
+    if (this.props.score < MINIMUM_SCORE_TO_PASS) {
       return (
         <p>
-          You need a minimum score of 7/10 to pass this test.
+          You need a minimum score of {MINIMUM_SCORE_TO_PASS}/{NUMBER_OF_EXERCISES_IN_EXAM} to pass this test.
           <br/>
           You can redo this test any time whenever you feel ready.
         </p>
@@ -98,9 +99,9 @@ class ExamResult extends Component {
         </ProgressbarWrapper>
         <StarsWrapper>
           <Stars>
-            <Star filled={this.props.score >= 7} big />
-            <Star filled={this.props.score >= 8} big />
-            <Star filled={this.props.score >= 9} big />
+            <Star filled={this.props.score >= MINIMUM_SCORE_TO_PASS} big />
+            <Star filled={this.props.score >= TWO_STARS_THRESHOLD} big />
+            <Star filled={this.props.score >= THREE_STARS_THRESHOLD} big />
           </Stars>
         </StarsWrapper>
       </Wrapper>

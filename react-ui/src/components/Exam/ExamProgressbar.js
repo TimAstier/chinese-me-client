@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
 import { Motion, spring } from 'react-motion';
+import { MINIMUM_SCORE_TO_PASS } from '../../constants/exam';
 
 const Wrapper = styled.div`
   width: 20px;
@@ -24,14 +25,13 @@ const Score = styled.div`
     ${props => props.colorB}
     )
   };
-  box-shadow: ${props => props.abovePass ?
-    '0 2px 8px 0 #91ca49'
+  box-shadow: ${props => props.abovePass
+    ? '0 2px 8px 0 #91ca49'
     : '0 2px 8px 0 #55b6ff'
   };
 `;
 
 class ExamProgressbar extends Component {
-
   render() {
     const height = this.props.score / this.props.scoreMax * 320;
     return (
@@ -43,9 +43,9 @@ class ExamProgressbar extends Component {
           { ({ y }) => (
             <Score
               height={y}
-              abovePass={this.props.score >= 7}
-              colorA={this.props.score >= 7 ? '#9fdb53' : '#8edcff'}
-              colorB={this.props.score >= 7 ? '#91ca49' : '#55b6ff'}
+              abovePass={this.props.score >= MINIMUM_SCORE_TO_PASS}
+              colorA={this.props.score >= MINIMUM_SCORE_TO_PASS ? '#9fdb53' : '#8edcff'}
+              colorB={this.props.score >= MINIMUM_SCORE_TO_PASS ? '#91ca49' : '#55b6ff'}
             />
           )}
         </Motion>

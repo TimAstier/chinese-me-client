@@ -34,7 +34,6 @@ const Items = styled.div`
   padding-left: 30px;
   font-size: 18px;
   font-family: 'Open Sans';
-  cursor: pointer;
 `;
 
 const Item = styled.div`
@@ -47,6 +46,10 @@ const CheckmarkWrapper = styled.div`
   margin-right: 10px;
 `;
 
+const ItemName = styled.div`
+  cursor: pointer;
+`;
+
 class ReviewPart extends Component {
   _renderItems() {
     return this.props.items.map(e => {
@@ -56,7 +59,6 @@ class ReviewPart extends Component {
       return (
         <Item
           key={e.type}
-          onClick={() => this.props.itemClick(e.id)}
         >
           <CheckmarkWrapper>
             {
@@ -64,9 +66,9 @@ class ReviewPart extends Component {
                 <img src={iconCheck} alt="" width={20} />
             }
           </CheckmarkWrapper>
-          <div>
+          <ItemName onClick={() => this.props.itemClick(e.id)}>
             {name}
-          </div>
+          </ItemName>
         </Item>
       );
     });

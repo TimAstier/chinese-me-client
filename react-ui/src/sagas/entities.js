@@ -11,7 +11,11 @@ export function* fetchEntities(params) {
   const cb = params[1];
   try {
     const response = yield call(Api.get, endpoint);
-    const entities = normalize(response.data);
+    // The 'exam' route send back entities and other data (exercisesArray)
+    const unestedData = response.data.hasOwnProperty('entities')
+      ? response.data.entities
+      : response.data;
+    const entities = normalize(unestedData);
     yield put(actions.received(entities));
     if (cb) {
       yield call(cb, response);

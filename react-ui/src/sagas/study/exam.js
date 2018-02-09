@@ -8,6 +8,7 @@ import { actions as studyActions } from '../../redux/study';
 import getStudyFunctions from '../../helpers/getStudyFunctions';
 import { actions as timerActions, types as timerTypes } from '../../redux/timer';
 import { push } from 'react-router-redux';
+import unsavedExerciseTypes from '../../constants/unsavedExerciseTypes';
 
 export function* isDataLoaded() {
   // id is not defined since there is no elementId
@@ -27,7 +28,7 @@ export function* fetchData(episodeId) {
     '/episode/' + episodeId + '/exam',
     function* cb(response) {
       yield put(
-        examActions.setExercises(response.data.data.attributes.exercisesArray)
+        examActions.setExercises(response.data.exercisesArray)
       );
     }
   ]);
@@ -87,10 +88,13 @@ function* runExam() {
       } else {
         yield put(examActions.wrongAnswer());
       }
-      yield put(sagaActions.saveAnswer({
-        exerciseId: exercise.get('id'),
-        ...runExercise.result
-      }));
+      // Save answer in the DB:
+      if (unsavedExerciseTypes.indexOf(type) === -1) {
+        yield put(sagaActions.saveAnswer({
+          exerciseId: exercise.get('id'),
+          ...runExercise.result
+        }));
+      }
     }
   }
 }

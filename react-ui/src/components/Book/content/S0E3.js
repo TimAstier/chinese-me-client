@@ -215,7 +215,7 @@ export default class Content extends Component {
           >
             <b>xìng, shì, zǐ, nǐ, jiào, shì, xìng, zǐ</b>
           </c.Bookrow>
-          <c.P>You can review all the sounds in this lesson more thoroughly in the <i>Introduction to Chinese pronunciation and writing</i>.</c.P>
+          {/* <c.P>You can review all the sounds in this lesson more thoroughly in the <i>Introduction to Chinese pronunciation and writing</i>.</c.P> */}
           {pronunciationTitle()}
           <c.P><b>Pīnyīn</b> doesn’t allow certain “naked” finals, so when there is no initial, the spelling changes. We have already seen examples of this, such as adding a <b>y-</b> to <b>-i</b>, and changing the <b>u</b> in <b>-uang</b> to a <b>w-</b>, for example in <b>wang</b>.</c.P>
           <c.Bookrow

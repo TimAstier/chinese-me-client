@@ -121,7 +121,9 @@ export default class Content extends Component {
           <c.PartTitle name="characters" />
           {newCharacters()}
           <c.PartTitle>Typing Chinese characters</c.PartTitle>
-          <c.P>Starting in this lesson, you will need to type Chinese characters in some of the exercises. To do this, you will need to download a Chinese character input method for your computer.</c.P>
+          <c.P>
+            Starting in this lesson, you will need to type Chinese characters in some of the exercises. To do this, you will need to have an input method for Chinese characters on your computer. Those articles might be helpful to install Chinese input method on <a href="https://eastasiastudent.net/china/windows-7-chinese-input/" target="_blank" rel="noopener noreferrer">PC</a> or <a href="http://pinpinchinese.com/blog/how-to-use-pinyin-to-type-chinese-mac/" target="_blank" rel="noopener noreferrer">mac</a>.
+          </c.P>
           <c.PartTitle name="patterns" />
           {grammarTitle()}
           <c.P>In Chinese, numbers are usually written with the same Arabic numerals that we use in the West. But the handwriting may be different from what you are used to:</c.P>

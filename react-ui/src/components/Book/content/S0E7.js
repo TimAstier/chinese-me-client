@@ -98,16 +98,16 @@ export default class Content extends Component {
           {grammarTitle()}
           <c.P>The Chinese year starts at the Lunar New Year, which, depending on the year, falls on a date between January 21 and February 20. Time was traditionally divided into twelve-year cycles, and each year in a cycle is the year of a zodiac animal: rat, ox, tiger, rabbit, dragon, snake, horse, sheep, monkey, rooster, dog and pig. Being born in a particular animal is called <c.Chinese>属</c.Chinese> <b>shǔ</b> <i>to belong to</i> that animal.</c.P>
           {example(6, { audio: true })}
-          <c.P
+          {/* <c.P
             buttonOptions={{
               type: 'practice',
               data: {
                 elementId: practiceIds[3]
               }
             }}
-          >
+            >
             <i>Practice.</i>
-          </c.P>
+          </c.P> */}
           <c.Bookrow center marginTop={50}>
             <img src="http://via.placeholder.com/550x450" alt="" />
           </c.Bookrow>
@@ -116,30 +116,30 @@ export default class Content extends Component {
           <c.Bookrow>
             <img src="http://via.placeholder.com/400x250" alt="" />
           </c.Bookrow>
-          <c.P
+          {/* <c.P
             buttonOptions={{
               type: 'practice',
               data: {
                 elementId: practiceIds[4]
               }
             }}
-          >
+            >
             <i>Help Wang Yi say how old she is.</i>
-          </c.P>
+          </c.P> */}
           {dialog(2, { sentenceType: 'chinese', displayNames: false })}
           {dialog(2, { sentenceType: 'translation', displayNames: false })}
           {dialog(3, { sentenceType: 'chinese', displayNames: false })}
           {dialog(3, { sentenceType: 'translation', displayNames: false })}
-          <c.P
+          {/* <c.P
             buttonOptions={{
               type: 'practice',
               data: {
                 elementId: practiceIds[5]
               }
             }}
-          >
+            >
             <i>Help Wang Yuguo say how old he is.</i>
-          </c.P>
+          </c.P> */}
           {dialog(4, { sentenceType: 'chinese', displayNames: false, specialIntro })}
           {dialog(5, { sentenceType: 'chinese', displayNames: false })}
           {dialog(6, { sentenceType: 'chinese', displayNames: true })}

@@ -115,7 +115,7 @@ export default class Content extends Component {
           {example(4, { audio: true })}
           {example(5, { audio: true })}
           {example(6, { audio: true })}
-          <c.P>The transcription of <c.Chinese>什么</c.Chinese> can be confusing. Most dictionaries  just combine the pīnyīn for the individual characters, which results in "shénme̊" or "shénmo̊". But in natural speech, <c.Chinese>什么</c.Chinese> is always pronounced <b>shémme̊</b> - without any n-sound.</c.P>
+          <c.P>The transcription of <c.Chinese>什么</c.Chinese> can be confusing. Most dictionaries  just combine the pīnyīn for the individual characters, which results in "shénme̊" or "shénmo̊". But in natural speech, <c.Chinese>什么</c.Chinese> is always pronounced <b>shémme̊</b> – without any n-sound.</c.P>
           <c.P
             buttonOptions={{
               type: 'practice',
@@ -153,7 +153,7 @@ export default class Content extends Component {
           {example(13, { audio: true })}
           <c.P>In this lesson, <c.Chinese>好</c.Chinese>, <b>hǎo</b> also appears in the sense <i>easy (to do)</i>, as in the word <c.Chinese>好学</c.Chinese>, <b>hǎoxué</b>, <i>easy to learn</i>, literally GOOD (TO) LEARN:</c.P>
           {example(14, { audio: true })}
-          <c.P>Finally, we saw in lesson 9 that the character <c.Chinese>好</c.Chinese>, when pronounced <b>hào</b>, can mean <i>to like</i>. This meaning never appears on its own - only as  part of more complex, "compound" words. In this lesson, we meet another example:</c.P>
+          <c.P>Finally, we saw in lesson 9 that the character <c.Chinese>好</c.Chinese>, when pronounced <b>hào</b>, can mean <i>to like</i>. This meaning never appears on its own – only as  part of more complex, "compound" words. In this lesson, we meet another example:</c.P>
           <c.Bookrow>
             <c.Char>好学</c.Char>
             <c.Pinyin>hàoxué</c.Pinyin>

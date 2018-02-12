@@ -178,7 +178,7 @@ export default class Content extends Component {
           <c.P><Row>TOPIC<c.Space width={75}/>COMMENT</Row></c.P>
           <c.P>Linguists have measured the pauses between words in Chinese and found that the pause in the break between Topic and Comment is often a tiny bit longer than the pauses between the other words in a sentence. We can mark this break with a colon in the literal translation to make it even clearer which part is the Topic and which is the Comment:</c.P>
           <c.P>(I : TWENTY-SEVEN YEAR.)</c.P>
-          <c.P>The sentences above are all very simple - but the Topic-Comment construction is also used for more complex patterns. In fact, Topic-Comment sentences are so common that linguists call Chinese a <i>topic-prominent</i> language.</c.P>
+          <c.P>The sentences above are all very simple – but the Topic-Comment construction is also used for more complex patterns. In fact, Topic-Comment sentences are so common that linguists call Chinese a <i>topic-prominent</i> language.</c.P>
           <c.P
             buttonOptions={{
               type: 'practice',

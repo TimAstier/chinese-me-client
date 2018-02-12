@@ -20,7 +20,7 @@ export default class Content extends Component {
           <c.PartTitle name="pronunciation" />
           {pronunciationTitle()}
           <c.P>
-            A few characters can be pronounced in more than one way. For example, we have learned that <c.Chinese>好</c.Chinese> is pronounced <b>hǎo</b> and means <i>good</i>. But <c.Chinese>好</c.Chinese> can also be a verb meaning <i>to like</i>; in this case it has Tone 4: <b>hào</b>. This meaning - and pronunciation - of <c.Chinese>好</c.Chinese> only appears as part of words, such as <c.Chinese>好客</c.Chinese> <b>hàokè</b> <i>hospitable</i> which literally means <i>to like guests</i>.
+            A few characters can be pronounced in more than one way. For example, we have learned that <c.Chinese>好</c.Chinese> is pronounced <b>hǎo</b> and means <i>good</i>. But <c.Chinese>好</c.Chinese> can also be a verb meaning <i>to like</i>; in this case it has Tone 4: <b>hào</b>. This meaning – and pronunciation – of <c.Chinese>好</c.Chinese> only appears as part of words, such as <c.Chinese>好客</c.Chinese> <b>hàokè</b> <i>hospitable</i> which literally means <i>to like guests</i>.
           </c.P>
           <c.PartTitle name="characters" />
           {newCharacters()}
@@ -55,7 +55,7 @@ export default class Content extends Component {
             <Row><b>bú shì</b><c.Space width={30} /><i>is not</i></Row>
           </c.Bookrow>
           <c.P>
-            This is another example of <i>tone sandhi</i>, where the tone on a character changes depending on what comes after it - we have seen other examples of this, for example when a Tone 3 comes before another Tone 3. Tone sandhi is usually not marked in dictionaries and textbooks: <c.Chinese>不</c.Chinese> is written <b>bù</b>, with Tone 4, regardless of what comes after. You will just have to remember that the actual pronunciation is different from what the dictionary indicates.
+            This is another example of <i>tone sandhi</i>, where the tone on a character changes depending on what comes after it – we have seen other examples of this, for example when a Tone 3 comes before another Tone 3. Tone sandhi is usually not marked in dictionaries and textbooks: <c.Chinese>不</c.Chinese> is written <b>bù</b>, with Tone 4, regardless of what comes after. You will just have to remember that the actual pronunciation is different from what the dictionary indicates.
           </c.P>
           <c.P
             buttonOptions={{
@@ -88,7 +88,7 @@ export default class Content extends Component {
           {grammarTitle()}
           <c.P>In Lesson 6, we learned how to use the question particle <c.Chinese>吗</c.Chinese> <b>må</b> to formulate questions that can be answered <i>yes</i> or <i>no</i>, such as <i>can you write Chinese characters?</i> The most common way of answering <i>yes</i> is by repeating only the thing being asked about:</c.P>
           {example(10, { audio: true })}
-          <c.P>The answer is "KNOW-HOW-TO", because that is what the question is asking about. You normally can't just say <c.Chinese>是</c.Chinese> <b>shì</b> or  <c.Chinese>不</c.Chinese> <b>bù</b> as we say <i>yes</i> or <i>no</i> in English - in Chinese it would sound harsh, like a military order. But just like in English, you can answer with a shorter or longer phrase (<i>yes</i>; <i>yes I can</i>; or <i>yes I can speak Chinese</i>) depending on how clear you want to be:</c.P>
+          <c.P>The answer is "KNOW-HOW-TO", because that is what the question is asking about. You normally can't just say <c.Chinese>是</c.Chinese> <b>shì</b> or  <c.Chinese>不</c.Chinese> <b>bù</b> as we say <i>yes</i> or <i>no</i> in English – in Chinese it would sound harsh, like a military order. But just like in English, you can answer with a shorter or longer phrase (<i>yes</i>; <i>yes I can</i>; or <i>yes I can speak Chinese</i>) depending on how clear you want to be:</c.P>
           <c.Bookrow flexDirection="column">
             <Row><c.Char>- 你会说中国话吗？</c.Char></Row>
             <Row><c.Char>- 会。</c.Char></Row>

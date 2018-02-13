@@ -8,6 +8,7 @@ import insertVariables from '../../../utils/insertVariables';
 import { middle as OracleBone1 } from '../etymology';
 import { jade as OracleBone2 } from '../etymology';
 import { country as OracleBone3 } from '../etymology';
+import { audioUrls } from '../../../constants/urls';
 
 export default class Content extends Component {
   static propTypes = contentPropTypes
@@ -209,11 +210,11 @@ export default class Content extends Component {
             buttonOptions={{
               type: 'audio',
               data: {
-                url: 'https://s3.eu-west-2.amazonaws.com/chineseme/sentences/83.m4a'
+                url: `${audioUrls.othersPath}/3_1.mp3`
               }
             }}
           >
-            <b>xìng, shì, zǐ, nǐ, jiào, shì, xìng, zǐ</b>
+            <b>xìng, shì, zǐ, nǐ, jiào, shì, zǐ</b>
           </c.Bookrow>
           {/* <c.P>You can review all the sounds in this lesson more thoroughly in the <i>Introduction to Chinese pronunciation and writing</i>.</c.P> */}
           {pronunciationTitle()}

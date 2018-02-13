@@ -7,6 +7,7 @@ import pinyinize from 'pinyinize';
 import insertVariables from '../../../utils/insertVariables';
 import { king as OracleBone1 } from '../etymology';
 import { call as OracleBone2 } from '../etymology';
+import { audioUrls } from '../../../constants/urls';
 
 export default class Content extends Component {
   static propTypes = contentPropTypes
@@ -111,7 +112,7 @@ export default class Content extends Component {
             buttonOptions={{
               type: 'audio',
               data: {
-                url: 'https://s3.eu-west-2.amazonaws.com/chineseme/pinyin/ma1.m4a'
+                url: `${audioUrls.othersPath}/1_1.mp3`
               }
             }}>
             {image()}
@@ -121,7 +122,7 @@ export default class Content extends Component {
             buttonOptions={{
               type: 'audio',
               data: {
-                url: 'https://s3.eu-west-2.amazonaws.com/chineseme/pinyin/ma2.m4a'
+                url: `${audioUrls.othersPath}/1_2.mp3`
               }
             }}>
             {image()}
@@ -131,7 +132,7 @@ export default class Content extends Component {
             buttonOptions={{
               type: 'audio',
               data: {
-                url: 'https://s3.eu-west-2.amazonaws.com/chineseme/pinyin/ma3.m4a'
+                url: `${audioUrls.othersPath}/1_3.mp3`
               }
             }}>
             {image()}
@@ -141,7 +142,7 @@ export default class Content extends Component {
             buttonOptions={{
               type: 'audio',
               data: {
-                url: 'https://s3.eu-west-2.amazonaws.com/chineseme/pinyin/ma4.m4a'
+                url: `${audioUrls.othersPath}/1_4.mp3`
               }
             }}
           >

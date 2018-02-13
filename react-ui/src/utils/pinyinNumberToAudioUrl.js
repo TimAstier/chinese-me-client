@@ -1,5 +1,5 @@
-import { pinyinSoundBaseUrl } from '../constants/urls';
+import { audioUrls } from '../constants/urls';
 
 export default function pinyinNumberToAudioUrl(pinyinNumber) {
-  return `${pinyinSoundBaseUrl}${pinyinNumber}.m4a`;
+  return `${audioUrls.charactersPath}/${pinyinNumber}.mp3`;
 }

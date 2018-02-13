@@ -95,8 +95,9 @@ class Dialog extends Component {
     return (
       <Wrapper>
         {this.renderModeMenu()}
-        {this.props.dialogMode !== 'choserole' ?
-          this.renderDialog()
+        {
+          this.props.dialogMode !== 'choserole'
+          ? this.renderDialog()
             : <ChoseRole/>
         }
       </Wrapper>

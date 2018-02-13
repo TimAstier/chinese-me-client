@@ -5,6 +5,7 @@ import { actions as exerciseActions } from '../../redux/exercise';
 import { actions as sagaActions, types as sagaTypes } from '../actions';
 import { actions as uiActions } from '../../redux/ui';
 import { actions as audioActions } from '../../redux/audio';
+import makeAudioUrl from '../../helpers/makeAudioUrl';
 
 export function isDataLoaded() {
   return true;
@@ -30,7 +31,7 @@ export function* run(isExam = false, type) {
   const result = {};
   const exercise = yield select(selectors.getCurrentExercise);
   if (type === 'audioToChoice') {
-    yield put(audioActions.set('audioUrl', exercise.audioUrl));
+    yield put(audioActions.set('audioUrl', makeAudioUrl(exercise.audioUrl)));
     yield put(sagaActions.playAudio());
   }
   yield take(sagaTypes.CHECK_ANSWER);

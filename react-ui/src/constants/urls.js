@@ -1,5 +1,3 @@
-export const pinyinSoundBaseUrl = 'https://s3.eu-west-2.amazonaws.com/chineseme/pinyin/v0.2/';
-
 export const imageUrls = {
   S0E1: [
     'https://s3.eu-west-2.amazonaws.com/chineseme/images/tone1_diagram.png',
@@ -20,4 +18,14 @@ export const imageUrls = {
     'https://s3.eu-west-2.amazonaws.com/chineseme/images/S1E7_objectives.png',
     'https://s3.eu-west-2.amazonaws.com/chineseme/images/S1E7_culture.png'
   ]
+};
+
+export const audioUrls = {
+  basePath: 'https://s3.eu-west-2.amazonaws.com/chineseme/audio',
+  exercisesPath: 'https://s3.eu-west-2.amazonaws.com/chineseme/audio/exercises',
+  charactersPath: 'https://s3.eu-west-2.amazonaws.com/chineseme/audio/characters',
+  wordsPath: 'https://s3.eu-west-2.amazonaws.com/chineseme/audio/words',
+  examplesPath: 'https://s3.eu-west-2.amazonaws.com/chineseme/audio/examples',
+  othersPath: 'https://s3.eu-west-2.amazonaws.com/chineseme/audio/others',
+  sentencesPath: 'https://s3.eu-west-2.amazonaws.com/chineseme/audio/sentences'
 };

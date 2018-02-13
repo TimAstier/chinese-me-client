@@ -7,7 +7,6 @@ import s from '../../rootSelectors';
 import { actions as sagaActions } from '../../sagas/actions';
 
 class Dialog extends Component {
-
   render() {
     return (
       <DialogComponent { ...this.props } />

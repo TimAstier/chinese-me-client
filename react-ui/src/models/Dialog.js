@@ -10,7 +10,8 @@ const DialogRecord = Immutable.Record({
   words: [],
   completed: false,
   titleTranslation: '',
-  intro: ''
+  intro: '',
+  hasAudio: null
 });
 
 class Dialog extends DialogRecord {

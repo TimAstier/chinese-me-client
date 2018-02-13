@@ -6,8 +6,17 @@ import * as models from '../../../models';
 import { default as s } from '../../../rootSelectors';
 import { getGrammarSentenceCode } from '../../../utils/bookContent';
 import insertVariables from '../../../utils/insertVariables';
+import { audioUrls } from '../../../constants/urls';
 
 class Example extends Component {
+  _audioUrl() {
+    if (this.props.example.chinese.indexOf('[') !== -1) {
+      // contains a template variable so we need to use robotic voice instead
+      return null; // there is no audio file
+    }
+    return `${audioUrls.examplesPath}/${this.props.episodeNumber}_${this.props.example.order}.mp3`;
+  }
+
   render() {
     return (
       <c.Example
@@ -18,7 +27,7 @@ class Example extends Component {
         pinyin={this.props.example.pinyin}
         translation={this.props.example.translation}
         literalTranslation={this.props.example.literalTranslation}
-        audioUrl={this.props.example.audioUrl}
+        audioUrl={this._audioUrl()}
         displayTranslation={this.props.options.displayTranslation}
       />
     );

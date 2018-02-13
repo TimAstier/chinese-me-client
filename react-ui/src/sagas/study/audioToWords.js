@@ -8,6 +8,7 @@ import { actions as uiActions } from '../../redux/ui';
 import { Map } from 'immutable';
 import { fetchEntities } from '../entities';
 import { actions as audioActions } from '../../redux/audio';
+import makeAudioUrl from '../../helpers/makeAudioUrl';
 
 const trim = string => {
   return string.replace(/\s+/g, '').toLowerCase();
@@ -37,7 +38,7 @@ export function* initUi() {
 export function* run(isExam = false) {
   let result;
   const exercise = yield select(selectors.getCurrentExercise);
-  yield put(audioActions.set('audioUrl', exercise.audioUrl));
+  yield put(audioActions.set('audioUrl', makeAudioUrl(exercise.audioUrl)));
   yield put(sagaActions.playAudio());
   const words = yield select(selectors.getExerciseWords);
   for (let i = 0; i < words.length; i++) {

@@ -6,8 +6,7 @@ const ExampleRecord = Immutable.Record({
   chinese: '',
   pinyin: '',
   translation: '',
-  literalTranslation: '',
-  audioUrl: ''
+  literalTranslation: ''
 });
 
 class Example extends ExampleRecord {}

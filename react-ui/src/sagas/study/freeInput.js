@@ -7,6 +7,7 @@ import { actions as uiActions } from '../../redux/ui';
 import { actions as audioActions } from '../../redux/audio';
 import { fetch as fetchTeacherComment } from '../teacherComment';
 import { actions as practiceActions } from '../../redux/practice';
+import makeAudioUrl from '../../helpers/makeAudioUrl';
 
 export function isDataLoaded() {
   return true;
@@ -32,7 +33,7 @@ export function* run(isExam = false, type) {
   const result = {};
   const exercise = yield select(selectors.getCurrentExercise);
   if (type === 'audioToText') {
-    yield put(audioActions.set('audioUrl', exercise.audioUrl));
+    yield put(audioActions.set('audioUrl', makeAudioUrl(exercise.audioUrl)));
     yield put(sagaActions.playAudio());
   }
   yield take(sagaTypes.CHECK_ANSWER);

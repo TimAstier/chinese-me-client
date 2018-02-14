@@ -20,7 +20,6 @@ const ChineseText = styled.span`
 `;
 
 class LessonTitle extends Component {
-
   _label() {
     const type = this.props.seasonNumber === 0 ? 'LESSON ' : 'EPISODE ';
     return type + this.props.episodeNumber + ': ';

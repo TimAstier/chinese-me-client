@@ -7,13 +7,10 @@ export default class Content extends Component {
     return (
       <div>
         <c.P>
-          The four strokes at the bottom of <c.Chinese>走</c.Chinese> <i>walk</i> mean <i>foot</i>; they appear in characters that denote <i>movement</i>. The top of <c.Chinese>走</c.Chinese> is <c.Chinese>士</c.Chinese> which means <i>gentleman</i>, <i>aristocrat</i> but is also a synonym for <c.Chinese>人</c.Chinese> <i>man</i>, <i>person</i>, so
-          the entire character originally meant <i>a person walking</i>.
+          The character <c.Chinese>走</c.Chinese> originally meant <i>a person walking</i>. The four strokes at the bottom of <c.Chinese>走</c.Chinese> mean <i>foot</i>. This <i>foot</i> element often appears in characters that denote <i>movement</i>. The upper part of <c.Chinese>走</c.Chinese> is <c.Chinese>士</c.Chinese>, which usually means <i>gentleman</i>, <i>aristocrat</i>, but which is also often used as a synonym for <c.Chinese>人</c.Chinese> <i>man</i>, <i>person</i>.
         </c.P>
         <c.Bookrow><img src="https://s3.eu-west-2.amazonaws.com/chineseme/images/walk.png" alt="" /></c.Bookrow>
-        <c.P>
-          You may have noticed that the bottom four strokes of <c.Chinese>走</c.Chinese> also appear in <c.Chinese>是</c.Chinese>. The top of <c.Chinese>是</c.Chinese> means <i>sun</i> or <i>sundial</i>, but no-one has presented a convincing interpretation of this combination of elements: in ancient texts, <c.Chinese>是</c.Chinese> often means <i>correct</i>, <i>as things should be</i>, so some scholars have speculated that it might originally have meant “as the sun goes”.
-        </c.P>
+        <c.P>The <i>foot</i> element also appears at the bottom of the character <c.Chinese>是</c.Chinese>, but its role here is more difficult to interpret. In ancient texts, <c.Chinese>是</c.Chinese> often means <i>correct</i>, <i>as things should be</i>. Since its upper element is <c.Chinese>日</c.Chinese> <i>sun</i>, some scholars have speculated that it might originally have meant <i>as the sun goes</i>.</c.P>
         <c.Bookrow><img src="https://s3.eu-west-2.amazonaws.com/chineseme/images/be.png" alt="" /></c.Bookrow>
       </div>
     );

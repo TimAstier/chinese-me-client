@@ -32,7 +32,7 @@ export default class Content extends Component {
           />
           <c.PartTitle name="pronunciation" />
           {pronunciationTitle()}
-          <c.P>When there is no initial, the final <b>-ui</b> is spelled <b>wei</b> in pīnyīn. So in spite of the apparent spelling, <b>huì</b>, <b>guì</b> are pronounced exactly as if they had been spelled hwèi and gwèi.</c.P>
+          <c.P>When there is no initial, the final <b>-ui</b> is spelled <b>wei</b> in pīnyīn. So <b>huì</b> and <b>guì</b> are pronounced exactly as if they had been spelled <i>hwèi</i> and <i>gwèi</i>.</c.P>
           <c.P>Compare the sounds:</c.P>
           <c.P
             buttonOptions={{
@@ -94,7 +94,7 @@ export default class Content extends Component {
           {newCharacters()}
           <c.PartTitle name="patterns" />
           {grammarTitle()}
-          <c.P>The most basic meaning of <c.Chinese>想</c.Chinese> <b>xiǎng</b> is <i>think</i>. Just as English <i>think</i>, it can often have the sense <i>believe, consider</i>:</c.P>
+          <c.P>The most basic meaning of <c.Chinese>想</c.Chinese> <b>xiǎng</b> is <i>think</i>. Just as the English word <i>think</i>, it can also mean <i>believe</i>, <i>consider</i>:</c.P>
           {example(1, { audio: true })}
           <c.P>It can also mean <i>think about</i>, <i>miss</i>:</c.P>
           {example(2, { audio: true })}
@@ -153,7 +153,7 @@ export default class Content extends Component {
           {example(13, { audio: true })}
           <c.P>In this lesson, <c.Chinese>好</c.Chinese>, <b>hǎo</b> also appears in the sense <i>easy (to do)</i>, as in the word <c.Chinese>好学</c.Chinese>, <b>hǎoxué</b>, <i>easy to learn</i>, literally GOOD (TO) LEARN:</c.P>
           {example(14, { audio: true })}
-          <c.P>Finally, we saw in lesson 9 that the character <c.Chinese>好</c.Chinese>, when pronounced <b>hào</b>, can mean <i>to like</i>. This meaning never appears on its own – only as  part of more complex, "compound" words. In this lesson, we meet another example:</c.P>
+          <c.P>Finally, we saw in Lesson 9 that the character <c.Chinese>好</c.Chinese>, when pronounced <b>hào</b>, can mean <i>to like</i>. This meaning never appears on its own – only as  part of more complex, "compound" words. In this lesson, we meet another example:</c.P>
           <c.Bookrow>
             <c.Char>好学</c.Char>
             <c.Pinyin>hàoxué</c.Pinyin>

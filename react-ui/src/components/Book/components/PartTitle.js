@@ -39,6 +39,9 @@ class PartTitle extends Component {
   // }
 
   _fontSize() {
+    if (this.props.name === 'dialog_zh') {
+      return '32px';
+    }
     switch (this.props.type) {
       case 'secondary': return '24px';
       case 'tertiary': return '22px';

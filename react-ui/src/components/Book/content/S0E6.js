@@ -46,18 +46,38 @@ export default class Content extends Component {
             <Row><c.Char>见</c.Char><c.Pinyin>jiàn</c.Pinyin><c.Meaning>see</c.Meaning></Row>
             <Row><c.Char>先</c.Char><c.Pinyin>xiān</c.Pinyin><c.Meaning>first</c.Meaning></Row>
           </c.Bookrow>
+          <c.P
+            buttonOptions={{
+              type: 'practice',
+              data: {
+                elementId: practiceIds[0]
+              }
+            }}
+          >
+            <i>Practice.</i>
+          </c.P>
           {pronunciationTitle()}
           <c.P>Just like in English, you have to raise your tone at the end of a sentence when you ask a question:</c.P>
           <c.Bookrow flexDirection="column">
-            <Row lineHeight={25}><c.Char>她很好。/ 她很好吗?</c.Char>↗</Row>
-            <Row lineHeight={25}><b>Tā hěn hǎo. / Tā hěn hǎo må?</b></Row>
-            <Row lineHeight={25}><i>She is nice. / Is she nice?</i></Row>
+            <Row lineHeight={25}><c.Char>她很好。→ 她很好吗？</c.Char>⬈</Row>
+            <Row lineHeight={25}><b>Tā hěn hǎo. → Tā hěn hǎo må?</b></Row>
+            <Row lineHeight={25}><i>She is nice. → Is she nice?</i></Row>
           </c.Bookrow>
           <c.Bookrow flexDirection="column">
-            <Row lineHeight={25}><c.Char>我是中国人。/ 你也是中国人吗？</c.Char>↗</Row>
-            <Row lineHeight={25}><b>Wǒ shì zhōngguó rén. / Nǐ yě shì zhōngguó rén ma?</b></Row>
-            <Row lineHeight={25}><i>I am Chinese. / Are you Chinese, too?</i></Row>
+            <Row lineHeight={25}><c.Char>我是中国人。→ 你也是中国人吗？</c.Char>⬈</Row>
+            <Row lineHeight={25}><b>Wǒ shì zhōngguó rén. → Nǐ yě shì zhōngguó rén ma?</b></Row>
+            <Row lineHeight={25}><i>I am Chinese. → Are you Chinese, too?</i></Row>
           </c.Bookrow>
+          <c.P
+            buttonOptions={{
+              type: 'practice',
+              data: {
+                elementId: practiceIds[1]
+              }
+            }}
+          >
+            <i>Practice.</i>
+          </c.P>
           <c.PartTitle name="characters" />
           {newCharacters()}
           <c.PartTitle name="patterns" />
@@ -73,7 +93,7 @@ export default class Content extends Component {
             buttonOptions={{
               type: 'practice',
               data: {
-                elementId: practiceIds[0]
+                elementId: practiceIds[2]
               }
             }}
           >
@@ -101,7 +121,7 @@ export default class Content extends Component {
             buttonOptions={{
               type: 'practice',
               data: {
-                elementId: practiceIds[1]
+                elementId: practiceIds[3]
               }
             }}
           >

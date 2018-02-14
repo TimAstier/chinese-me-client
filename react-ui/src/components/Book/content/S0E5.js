@@ -46,11 +46,13 @@ export default class Content extends Component {
           </c.Bookrow>
           {pronunciationTitle()}
           <c.P>As we have seen, a Chinese syllable has one of the Tones 1-4. But in some cases, this tone disappears. The word <c.Chinese>认识</c.Chinese> in this lesson is an example.</c.P>
-          <c.P>The two characters <c.Chinese>认</c.Chinese> and <c.Chinese>识</c.Chinese> in this word are pronounced <b>rèn</b> with Tone 4 and <b>shí</b> with Tone 2, respectively. But when they are combined into the polysyllabic word <c.Chinese>认识</c.Chinese>, the second syllable loses its original tone. The resulting tone is called <i>neutral</i> or <i>zero</i> tone, and we denote it with a little zero over the vowel:</c.P>
+          <c.P>
+            The two characters <c.Chinese>认</c.Chinese> and <c.Chinese>识</c.Chinese> in this word are pronounced <b>rèn</b> with Tone 4 and <b>shí</b> with Tone 2, respectively. But when they are combined into the polysyllabic word <c.Chinese>认识</c.Chinese>, the second syllable loses its original tone. The resulting tone is called <i>neutral</i> or <i>zero</i> tone. In dictionaries, it is usually written by leaving out the tone mark, with no special symbol. In this course, we denote it with a little zero over the vowel:
+          </c.P>
           <c.Bookrow>
             <Row><c.Char>认识</c.Char><c.Pinyin>rènshi̊</c.Pinyin></Row>
           </c.Bookrow>
-          <c.P>We have already seen that this is not a general rule. In fact, most polysyllabic words keep the tone on each syllable: <c.Chinese>中国</c.Chinese> <b>zhōngguó</b> and <c.Chinese>中国人</c.Chinese> <b>zhōngguórén</b>, for example. Neither is there anything strange or difficult about it: we simply need to memorize the neutral tone as part of the “spelling” of certain words.</c.P>
+          <c.P>We have already seen that most polysyllabic words keep the tone on each syllable: <c.Chinese>中国</c.Chinese> <b>zhōngguó</b> and <c.Chinese>中国人</c.Chinese> <b>zhōngguórén</b>, for example. We simply need to memorize the neutral tone as part of the “spelling” of certain words.</c.P>
           <c.PartTitle name="characters" />
           {newCharacters()}
           <c.PartTitle name="patterns" />

@@ -6,7 +6,6 @@ const Wrapper = styled.div`
   font-family: 'Cambria';
   font-size: 21px;
   font-weight: bold;
-  color: #454545;
   margin-left: 10px;
   margin-top: 10px;
 `;

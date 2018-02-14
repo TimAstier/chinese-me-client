@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import * as c from '../components';
 import { Objective } from '../../../containers/Book/containers';
 import { content as contentPropTypes } from '../../../helpers/propTypes';
-// import pinyinNumberToAudioUrl from '../../../utils/pinyinNumberToAudioUrl';
-// import { Row } from '../../Shared';
+import pinyinNumberToAudioUrl from '../../../utils/pinyinNumberToAudioUrl';
+import { Row } from '../../Shared';
 // import insertVariables from '../../../utils/insertVariables';
 
 export default class Content extends Component {
@@ -39,8 +39,7 @@ export default class Content extends Component {
             buttonOptions={{
               type: 'audio',
               data: {
-                // url: pinyinNumberToAudioUrl('da4'),
-                text: '大'
+                url: pinyinNumberToAudioUrl('da4')
               }
             }}
           >
@@ -49,7 +48,7 @@ export default class Content extends Component {
           {pronunciationTitle()}
           <c.P>We have previously seen that when there is no initial in the syllable, <b>-ü</b> is spelled with a <b>y-</b> and without dots over u: <b>yu</b>.</c.P>
           <c.P>The same is true for <b>-üe</b>, which is written <b>yue</b>. Remember that this is a combination of two spelling rules: (1) <b>-i</b> and <b>-ü</b> are always preceded by <b>y-</b> if they come first in a syllable, and (2) <b>ü</b> is in this case spelled <b>u</b>, without the umlaut dots.</c.P>
-          <c.P>The first spelling rule also applies to the final <b>-iang</b>, which is written <b>yang</b>.</c.P>
+          <c.P>Rule (1) also applies to the final <b>-iang</b>, which is written <b>yang</b>.</c.P>
           <c.PartTitle name="characters" />
           {newCharacters()}
           <c.PartTitle name="patterns" />
@@ -81,7 +80,14 @@ export default class Content extends Component {
           </c.P>
           <c.P>Note that <c.Chinese>大</c.Chinese> <b>dà</b> <i>big</i> is more common than <c.Chinese>老</c.Chinese> <b>lǎo</b> <i>old</i> when you simply want to state the objective fact that you are older than someone. If you say <c.Chinese>我比你老三岁</c.Chinese>, you are emphasizing the fact that you are older (as in more tired, more experienced or more wrinkled) than the person you are talking to.</c.P>
           {grammarTitle()}
-          <c.P>Chinese dates are logically structured according to the formula YEAR-MONTH-DAY:</c.P>
+          <c.P>Chinese dates are logically structured according to the formula YEAR-MONTH-DAY.</c.P>
+          <c.P><i>Years</i> are just lists of digits: ONE-NINE-NINE-FOUR or just NINE-FOUR for 1994 and TWO-ZERO-ZERO-THREE or ZERO-THREE for 2003. <i>Zero</i> is pronounced <b>líng</b>.</c.P>
+          <c.P>
+            <i>
+              Months
+            </i> are the numbers <i>one</i> to <i>twelve</i> followed by <c.Chinese>月</c.Chinese> <b>yuè</b> <i>month</i>: <c.Chinese>一月</c.Chinese> <b>yīyuè</b> ONE-MONTH for <i>January</i>; <c.Chinese>二月</c.Chinese> <b>èryuè</b> TWO-MONTH for <i>February</i> and so on.
+          </c.P>
+          <c.P><i>Days</i> are numbers followed by either <c.Chinese>号</c.Chinese> <b>hào</b> <i>number</i> or  <c.Chinese>日 </c.Chinese> <b>rì</b> <i>day</i>.</c.P>
           {example(4, { audio: true })}
           <c.P>The date can be denoted by <c.Chinese>号</c.Chinese> <b>hào</b> <i>number</i> or <c.Chinese>日</c.Chinese> <b>rì</b> <i>day</i>:</c.P>
           {example(5, { audio: true })}
@@ -147,18 +153,18 @@ export default class Content extends Component {
           <c.PartTitle name="culture" />
           <c.PartTitle type="secondary">The personalities of Chinese zodiac animals</c.PartTitle>
           <c.P>Each animal of the Chinese zodiac is said to have certain characteristics:</c.P>
-          <c.P>- Rat: quick-witted, clever, charming</c.P>
-          <c.P>- Ox: solid, detail-oriented, hardworking</c.P>
-          <c.P>- Tiger: ambitious, courageous, warmhearted</c.P>
-          <c.P>- Rabbit: gregarious, popular, compassionate, sincere</c.P>
-          <c.P>- Dragon: powerful, energetic, charismatic</c.P>
-          <c.P>- Snake: seductive, introverted, generous, hardworking</c.P>
-          <c.P>- Horse: energetic, self-reliant, good with money</c.P>
-          <c.P>- Goat: creative, thinkers, unorganized, high-strung and insecure</c.P>
-          <c.P>- Monkey: upbeat, good at listening, lack self-control</c.P>
-          <c.P>- Rooster: practical, resourceful, analytical, honest, perfectionist</c.P>
-          <c.P>- Dog: loyal, faithful, honest, distrustful, sensitive</c.P>
-          <c.P>- Pig: nice, good-mannered, tasteful, helpful</c.P>
+          <c.P><Row>•<c.Space width={20}/> Rat: quick-witted, clever, charming</Row></c.P>
+          <c.P><Row>•<c.Space width={20}/> Ox: solid, detail-oriented, hardworking</Row></c.P>
+          <c.P><Row>•<c.Space width={20}/> Tiger: ambitious, courageous, warmhearted</Row></c.P>
+          <c.P><Row>•<c.Space width={20}/> Rabbit: gregarious, popular, compassionate, sincere</Row></c.P>
+          <c.P><Row>•<c.Space width={20}/> Dragon: powerful, energetic, charismatic</Row></c.P>
+          <c.P><Row>•<c.Space width={20}/> Snake: seductive, introverted, generous, hardworking</Row></c.P>
+          <c.P><Row>•<c.Space width={20}/> Horse: energetic, self-reliant, good with money</Row></c.P>
+          <c.P><Row>•<c.Space width={20}/> Goat: creative, thinkers, unorganized, high-strung and insecure</Row></c.P>
+          <c.P><Row>•<c.Space width={20}/> Monkey: upbeat, good at listening, lack self-control</Row></c.P>
+          <c.P><Row>•<c.Space width={20}/> Rooster: practical, resourceful, analytical, honest, perfectionist</Row></c.P>
+          <c.P><Row>•<c.Space width={20}/> Dog: loyal, faithful, honest, distrustful, sensitive</Row></c.P>
+          <c.P><Row>•<c.Space width={20}/> Pig: nice, good-mannered, tasteful, helpful</Row></c.P>
           <c.P>Some animals are more popular than others; a lot more babies are born in such years because many Chinese parents try to time having children then.</c.P>
           <c.PartTitle name="words" />
           {newWords()}

@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import * as c from '../components';
 import { Objective } from '../../../containers/Book/containers';
 import { content as contentPropTypes } from '../../../helpers/propTypes';
-// import { Row } from '../../Shared';
+import { Row } from '../../Shared';
+import insertVariables from '../../../utils/insertVariables';
 // import pinyinNumberToAudioUrl from '../../../utils/pinyinNumberToAudioUrl';
 
 export default class Content extends Component {
@@ -10,7 +11,7 @@ export default class Content extends Component {
 
   render() {
     const { newCharacters, example, lessonTitle, dialog, grammarTitle,
-      practiceIds, newWords, pronunciationTitle } = this.props;
+      practiceIds, newWords, pronunciationTitle, settings } = this.props;
       // This part comes between a dialog 'title' and 'intro'
     const specialIntro = () => {
       return (
@@ -19,7 +20,23 @@ export default class Content extends Component {
             buttonOptions={{
               type: 'askUserSettings'
             }}
-          ><i>Input why you are learning Chinese:</i></c.P>
+          ><i>Input why you are learning Chinese:</i>
+          </c.P>
+          <c.P>In Chinese, <i>{insertVariables('[REASON_LEARN_CHINESE_EN]', settings)}</i> is:</c.P>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                text: insertVariables('[REASON_LEARN_CHINESE]', settings)
+              }
+            }}
+          >
+            <Row>
+              <c.Char>{insertVariables('[REASON_LEARN_CHINESE]', settings)}</c.Char>
+              <c.Pinyin>{insertVariables('[REASON_LEARN_CHINESE_PINYIN]', settings)}</c.Pinyin>
+            </Row>
+          </c.Bookrow>
+          <c.P>Practice saying this a few times.</c.P>
         </div>
       );
     };

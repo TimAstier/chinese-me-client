@@ -25,6 +25,8 @@
 // [LANGUAGE_2]            => 法语 TODO
 // [LANGUAGE_3]            => 中文 TODO
 // [REASON_LEARN_CHINESE]  => 我喜欢中国文化。
+// [REASON_LEARN_CHINESE_PINYIN]  => Wǒ xǐhuān zhōngguó wénhuà. TODO
+// [REASON_LEARN_CHINESE_EN]  => I like Chinese culture. TODO
 // [MOTHER_TONGUE]         => English
 // [MOTHER_TONGUE_ZH]      => 英语
 // [MOTHER_TONGUE_PINYIN]      => 英语
@@ -42,6 +44,7 @@ import chineseToPinyin from '../utils/chineseToPinyin';
 import chineseLunar from 'chinese-lunar';
 import moment from 'moment';
 import { languageTranslations } from '../constants/languages';
+import reasons from '../constants/reasons';
 
 const WANG_YI_BIRTH_DATE = '1990-07-06';
 const WANG_XIN_BIRTH_DATE = '2003-02-28';
@@ -155,18 +158,10 @@ const getReasonLearnChinese = reason => {
   if (!reason) {
     return null;
   }
-  switch (reason) {
-    case 'culture': return '我喜欢中国文化';
-    case 'travel': return '我想去中国旅游';
-    case 'study': return '我想去中国上学';
-    case 'work': return '我想去中国工作';
-    case 'huaqiao': return '我是华侨';
-    case 'relationship_boyfriend': return '我男朋友是中国人';
-    case 'relationship_girlfriend': return '我女朋友是中国人';
-    case 'relationship_husband': return '我老公是中国人';
-    case 'relationship_wife': return '我老婆是中国人';
-    default: return null;
+  if (!reasons[reason]) {
+    return null;
   }
+  return reasons[reason].ZH;
 };
 
 const languageToChinese = language => {
@@ -200,6 +195,26 @@ const languageToPinyin = language => {
   return languageTranslations[language].PINYIN;
 };
 
+const reasonToPinyin = reason => {
+  if (!reason) {
+    return null;
+  }
+  if (!reasons[reason]) {
+    return null;
+  }
+  return reasons[reason].PINYIN;
+};
+
+const reasonToEn = reason => {
+  if (!reason) {
+    return null;
+  }
+  if (!reasons[reason]) {
+    return null;
+  }
+  return reasons[reason].EN;
+};
+
 
 // Add dynamically generated variables to the settings map.
 const getAugmentedSettings = createSelector(
@@ -223,6 +238,8 @@ const getAugmentedSettings = createSelector(
       ageDifference: getAgeDifference(settings.get('birthdate')),
       ageComparisonTwo: getAgeComparison(settings.get('birthdate'), WANG_XIN_BIRTH_DATE),
       reasonLearnChinese: getReasonLearnChinese(settings.get('reasonLearnChinese')),
+      reasonLearnChineseEn: reasonToEn(settings.get('reasonLearnChinese')),
+      reasonLearnChinesePinyin: reasonToPinyin(settings.get('reasonLearnChinese')),
       motherTongueZh: languageToChinese(settings.get('motherTongue')),
       otherLanguageZh: languageToChinese(settings.get('otherLanguage')),
       otherLanguageZhComma: getOtherLanguageComma(settings.get('otherLanguage')),

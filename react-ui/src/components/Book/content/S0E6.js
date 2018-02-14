@@ -59,14 +59,14 @@ export default class Content extends Component {
           {pronunciationTitle()}
           <c.P>Just like in English, you have to raise your tone at the end of a sentence when you ask a question:</c.P>
           <c.Bookrow flexDirection="column">
-            <Row lineHeight={25}><c.Char>她很好。→ 她很好吗？</c.Char>⬈</Row>
-            <Row lineHeight={25}><b>Tā hěn hǎo. → Tā hěn hǎo må?</b></Row>
-            <Row lineHeight={25}><i>She is nice. → Is she nice?</i></Row>
+            <Row lineHeight={25}><c.Char>她很好。/ 她很好吗？</c.Char>↗</Row>
+            <Row lineHeight={25}><b>Tā hěn hǎo. / Tā hěn hǎo må?</b></Row>
+            <Row lineHeight={25}><i>She is nice. / Is she nice?</i></Row>
           </c.Bookrow>
           <c.Bookrow flexDirection="column">
-            <Row lineHeight={25}><c.Char>我是中国人。→ 你也是中国人吗？</c.Char>⬈</Row>
-            <Row lineHeight={25}><b>Wǒ shì zhōngguó rén. → Nǐ yě shì zhōngguó rén ma?</b></Row>
-            <Row lineHeight={25}><i>I am Chinese. → Are you Chinese, too?</i></Row>
+            <Row lineHeight={25}><c.Char>我是中国人。/ 你也是中国人吗？</c.Char>↗</Row>
+            <Row lineHeight={25}><b>Wǒ shì zhōngguó rén. / Nǐ yě shì zhōngguó rén ma?</b></Row>
+            <Row lineHeight={25}><i>I am Chinese. / Are you Chinese, too?</i></Row>
           </c.Bookrow>
           <c.P
             buttonOptions={{

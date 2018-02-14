@@ -30,6 +30,7 @@ const constants = {
   },
   REASON_LEARN_CHINESE: {
     label: 'I want to learn Chinese because ...',
+    // Should DRY by using constants from reasons
     choices: [
       { value: 'culture', label: 'I like Chinese culture.' },
       { value: 'travel', label: 'I want to travel in China.' },

@@ -16,7 +16,7 @@ import howler from 'howler';
 ** https://github.com/redux-saga/redux-saga/blob/master/docs/advanced/Channels.md#using-the-eventchannel-factory-to-connect-to-external-events
 */
 
-export function *voiceText(text, muted = false) {
+export function *voiceText(text, muted = false, rate = 0.7) {
   // BUG: ResponsiveVoice Chinese voice currently doesn't work on Safari, IOS
   // An alternative could be: http://www.voicerss.org/api/demo.aspx
   // See ResponsiveVoice Api: https://responsivevoice.org/api/
@@ -28,7 +28,7 @@ export function *voiceText(text, muted = false) {
         'Chinese Female',
         {
           volume: muted ? 0 : 1,
-          rate: 0.5,
+          rate,
           onend: () => emitter(END)
         }
       );

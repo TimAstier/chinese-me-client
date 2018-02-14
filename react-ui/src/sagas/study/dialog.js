@@ -29,6 +29,7 @@ export function* playSentence() {
   const statement = yield select(selectors.getCurrentStatement);
   const sentence = yield select(selectors.getCurrentSentenceWithValues);
   const audioUrl = (mode === 'explore') ? sentence.slowAudioUrl : sentence.audioUrl;
+  const rate = (mode === 'explore') ? 0.4 : 0.7;
   try {
     yield put(entitiesActions
       .update('avatars', String(statement.avatarId), 'mood', sentence.mood));
@@ -43,7 +44,7 @@ export function* playSentence() {
     yield race({ // Allow stopping sound via "End" button
       task: audioUrl ?
         call(playSound, [ audioUrl ], muted)
-        : call(voiceText, sentence.chinese, muted),
+        : call(voiceText, sentence.chinese, muted, rate),
       stopSentence: take(sagaTypes.STOP_SENTENCE),
       pause: take(sagaTypes.PAUSE)
     });

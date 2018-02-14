@@ -13,18 +13,6 @@ export default class Content extends Component {
     const { newCharacters, example, lessonTitle, dialog, grammarTitle,
       practiceIds, newWords, pronunciationTitle } = this.props;
 
-    // This part comes between a dialog 'title' and 'intro'
-    const specialIntro = () => {
-      return (
-        <c.P
-          buttonOptions={{
-            type: 'askUserSettings'
-          }}
-        >Now, click on the <i>Me</i> icon and input your own birthdate to practice presenting yourself.
-        </c.P>
-      );
-    };
-
     return (
       <div>
         <c.Page>
@@ -146,7 +134,7 @@ export default class Content extends Component {
             >
             <i>Help Wang Yuguo say how old he is.</i>
           </c.P> */}
-          {dialog(4, { sentenceType: 'chinese', displayNames: false, specialIntro })}
+          {dialog(4, { sentenceType: 'chinese', displayNames: false })}
           {dialog(5, { sentenceType: 'chinese', displayNames: false })}
           {dialog(6, { sentenceType: 'chinese', displayNames: true })}
           {dialog(7, { sentenceType: 'chinese', displayNames: true })}

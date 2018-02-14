@@ -3,7 +3,6 @@ import propTypes from 'prop-types';
 import styled from 'styled-components';
 
 class ModeButton extends Component {
-
   render() {
     const Wrapper = styled.div`
       width: 115px;

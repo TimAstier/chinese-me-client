@@ -102,14 +102,14 @@ export default class Content extends Component {
             >
             <i>Practice.</i>
           </c.P> */}
-          <c.Bookrow center marginTop={50}>
+          {/* <c.Bookrow center marginTop={50}>
             <img src="http://via.placeholder.com/550x450" alt="" />
-          </c.Bookrow>
+          </c.Bookrow> */}
           <c.PartTitle name="dialogs" />
           {dialog(1, { sentenceType: 'chinese', displayNames: false })}
-          <c.Bookrow>
+          {/* <c.Bookrow>
             <img src="http://via.placeholder.com/400x250" alt="" />
-          </c.Bookrow>
+          </c.Bookrow> */}
           {/* <c.P
             buttonOptions={{
               type: 'practice',

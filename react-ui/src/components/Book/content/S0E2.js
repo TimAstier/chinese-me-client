@@ -221,9 +221,9 @@ export default class Content extends Component {
             <Row><Chinese>- 我姓王。</Chinese><Translation>- My family name is Wang.</Translation></Row>
             <Row><Chinese>- 我叫一。 </Chinese><Translation>- My given name is Yi.</Translation></Row>
           </c.Bookrow>
-          <c.Bookrow center marginTop={50}>
+          {/* <c.Bookrow center marginTop={50}>
             <img src="http://via.placeholder.com/550x450" alt="" />
-          </c.Bookrow>
+          </c.Bookrow> */}
           <c.PartTitle name="dialog" />
           {dialog(1, { sentenceType: 'chineseWithTranslation', displayNames: false })}
           <c.P>Repeat this until you feel comfortable.</c.P>
@@ -267,9 +267,9 @@ export default class Content extends Component {
             <Row><Chinese>- 你好！</Chinese><Translation>- Hi!</Translation></Row>
           </c.Bookrow>
           <c.P>It is also common to add a title or a kinship term to the name when you <i>call</i> someone; we will see many examples of this later.</c.P>
-          <c.Bookrow center marginTop={50}>
+          {/* <c.Bookrow center marginTop={50}>
             <img src="http://via.placeholder.com/550x450" alt="" />
-          </c.Bookrow>
+          </c.Bookrow> */}
           <c.PartTitle name="dialog" />
           {dialog(2, { sentenceType: 'chineseWithTranslation', displayNames: false })}
           {dialog(3, { sentenceType: 'chineseWithTranslation', displayNames: false })}

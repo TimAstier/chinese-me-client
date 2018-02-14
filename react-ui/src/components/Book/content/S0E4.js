@@ -36,9 +36,9 @@ export default class Content extends Component {
           <Objective
             text="How to tell someone your age"
           />
-          <c.Bookrow center marginTop={50}>
+          {/* <c.Bookrow center marginTop={50}>
             <img src="http://via.placeholder.com/550x450" alt="" />
-          </c.Bookrow>
+          </c.Bookrow> */}
           <c.PartTitle name="pronunciation" />
           {pronunciationTitle()}
           <c.P>The <b>pīnyīn</b> vowel <b>e</b> is pronounced like English <i>ea</i> in <i>learn</i>:</c.P>

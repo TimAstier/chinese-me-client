@@ -48,7 +48,7 @@ class Dialog extends Component {
         />
         <ModeButton
           active={dialogMode === 'roleplay' || dialogMode === 'choserole'}
-          label="Roleplay"
+          label="Role-play"
           onClick={() => dialogLinkClick(baseUrl + '/roleplay')}
         />
       </ModeMenu>

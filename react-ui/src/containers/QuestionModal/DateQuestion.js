@@ -6,7 +6,6 @@ import { default as dateQuestionConstants } from '../../constants/dateQuestion';
 import { actions as sagaActions } from '../../sagas/actions';
 
 class OpenQuestion extends Component {
-
   onSubmit(values) {
     return new Promise((resolve, reject) => {
       return this.props.questionAnswered({ values, resolve, reject });

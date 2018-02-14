@@ -72,9 +72,9 @@ class Help extends Component {
             >
               Work with <b><i>Dialogs</i></b> in one of three ways:
               <ul>
-                <li><b>Watch</b> to the whole dialog in natural speed</li>
+                <li><b>Watch</b> the whole dialog in natural speed</li>
                 <li><b>Explore</b> individual sentences and vocabulary</li>
-                <li><b>Roleplay</b> one of the actor to practice</li>
+                <li><b>Role-play</b> one of the actors to practice</li>
               </ul>
             </c.P>
             <c.P
@@ -104,7 +104,7 @@ class Help extends Component {
                 type: 'askUserSettings'
               }}
             >
-              With the <b><i>Me icons</i></b>, you ave the possibility to input your personal information. Some parts of the course will then be adapted based on the information you provided, in order to make the learning experience more meaningful for you. One example is to learn how to say <i>I am X years old</i> in Chinese.
+              With the <b><i>Me icons</i></b>, you have the possibility to input your personal information. Some parts of the course will then be adapted based on the information you provided, in order to make the learning experience more meaningful for you. One example is to learn how to say <i>I am X years old</i> in Chinese.
             </c.P>
             <c.P
               buttonOptions={{

@@ -32,19 +32,21 @@ export function* initStudyData() {
   yield put(studyActions.setPaused(false));
 }
 
-export function* run(mode = 'watch') {
-  yield call(playSentence, mode);
+export function* run() {
+  yield call(playSentence);
   const sentencesCount =
     yield select(selectors.getSentencesCountInCurrentDialog);
-  for (let i = 0; i < sentencesCount - 1; i++) {
+  for (let i = 0; i < sentencesCount; i++) {
     const paused = yield select(selectors.study.getPaused);
     if (paused) {
       yield take(sagaTypes.PAUSE);
-      yield call(playSentence, mode);
+      yield call(playSentence);
       i--;
     } else {
-      yield delay(500); // Create spaces between audios
-      yield call(next, mode);
+      if (i < sentencesCount - 1) {
+        yield delay(500); // Create spaces between audios
+        yield call(next);
+      }
     }
   }
   yield put(uiActions.set('pauseButton', false));

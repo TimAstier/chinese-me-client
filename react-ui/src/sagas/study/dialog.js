@@ -4,7 +4,7 @@ import { delay } from 'redux-saga';
 import { types as sagaTypes, actions as sagaActions } from '../actions';
 import { actions as studyActions } from '../../redux/study';
 import { actions as entitiesActions } from '../../redux/entities';
-import { actions as fromUi } from '../../redux/ui';
+// import { actions as fromUi } from '../../redux/ui';
 import { playSound, voiceText } from '../audio';
 import selectors from '../../rootSelectors';
 import { fetchEntities } from '../entities';
@@ -23,14 +23,12 @@ export function* fetchDialogData(episodeId) {
   // TODO: handle fetch error
 }
 
-export function* playSentence(mode = 'explore') {
-  if (mode === 'explore') {
-    // Disable next button
-    yield put(fromUi.set('nextButton', false));
-  }
+export function* playSentence() {
   // Animate and update avatar mood
+  const mode = yield select(selectors.study.getDialogMode);
   const statement = yield select(selectors.getCurrentStatement);
   const sentence = yield select(selectors.getCurrentSentenceWithValues);
+  const audioUrl = (mode === 'explore') ? sentence.slowAudioUrl : sentence.audioUrl;
   try {
     yield put(entitiesActions
       .update('avatars', String(statement.avatarId), 'mood', sentence.mood));
@@ -43,8 +41,8 @@ export function* playSentence(mode = 'explore') {
     }
     // Play current sentence
     yield race({ // Allow stopping sound via "End" button
-      task: sentence.audioUrl ?
-        call(playSound, [ sentence.audioUrl ], muted)
+      task: audioUrl ?
+        call(playSound, [ audioUrl ], muted)
         : call(voiceText, sentence.chinese, muted),
       stopSentence: take(sagaTypes.STOP_SENTENCE),
       pause: take(sagaTypes.PAUSE)
@@ -55,33 +53,26 @@ export function* playSentence(mode = 'explore') {
     }
   } finally {
     // Once the sound ends OR is cancelled,
-    // stop avatar animation and display next button
+    // stop avatar animation
     yield put(entitiesActions
       .update('avatars', String(statement.avatarId), 'isTalking', false));
-    if (mode === 'explore') {
-      yield put(fromUi.set('nextButton', true));
-    }
   }
 }
 
-function* nextSentence(mode = 'explore') {
+function* nextSentence() {
   // Go to next Sentence
   const nextSentenceId = yield select(selectors.getNextSentenceId);
   yield put(studyActions.setCurrentSentenceId(nextSentenceId));
-  if (mode === 'explore') {
-    yield put(sagaActions.playSentence());
-  } else {
-    yield call(playSentence, mode);
-  }
+  yield call(playSentence);
 }
 
 // Only used in explore mode
 function* switchSentence(action) {
   yield put(studyActions.setCurrentSentenceId(action.payload.id));
-  yield put(sagaActions.playSentence());
+  yield call(playSentence);
 }
 
-function* nextStatement(mode = 'explore') {
+function* nextStatement() {
   yield put(sagaActions.stopSentence());
   const nextStatementId = yield select(selectors.getNextStatementId);
   if (nextStatementId === undefined) {
@@ -90,11 +81,7 @@ function* nextStatement(mode = 'explore') {
     yield put(studyActions.setCurrentStatementId(nextStatementId));
     const statement = yield select(selectors.getCurrentStatement);
     yield put(studyActions.setCurrentSentenceId(statement.sentences[0]));
-    if (mode === 'explore') {
-      yield put(sagaActions.playSentence());
-    } else {
-      yield call(playSentence, mode);
-    }
+    yield call(playSentence);
   }
 }
 
@@ -108,12 +95,12 @@ function* previousStatement() {
   yield put(sagaActions.playSentence());
 }
 
-export function* next(mode = 'explore') {
+export function* next() {
   const nextSentenceId = yield select(selectors.getNextSentenceId);
   if (nextSentenceId !== undefined) {
-    return yield call(nextSentence, mode);
+    return yield call(nextSentence);
   }
-  return yield call(nextStatement, mode);
+  return yield call(nextStatement);
 }
 
 function* switchDialogMode(action) {

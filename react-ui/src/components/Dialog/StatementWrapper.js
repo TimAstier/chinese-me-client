@@ -46,7 +46,6 @@ const ChevronWrapper = styled.div`
 `;
 
 class StatementWrapper extends Component {
-
   render() {
     const { sentences, currentSentenceIndex, currentStatementIndex,
       statementsCount, nextStatement, previousStatement, dialogMode }

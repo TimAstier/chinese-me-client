@@ -20,6 +20,9 @@ const getCurrentSentenceWithValues = createSelector(
       translation: insertVariables(sentence.get('translation'), settings),
       audioUrl: dialog.hasAudio ?
         `${audioUrls.sentencesPath}/${episode.number}_${dialog.order}_${statement.order}_${sentence.order}.mp3`
+        : null,
+      slowAudioUrl: dialog.hasAudio ?
+        `${audioUrls.sentencesPath}/${episode.number}_${dialog.order}_${statement.order}_${sentence.order}_slow.mp3`
         : null
     }));
   }

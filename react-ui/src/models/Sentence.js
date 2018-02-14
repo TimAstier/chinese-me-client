@@ -6,7 +6,8 @@ const SentenceRecord = Immutable.Record({
   chinese: '',
   mood: '',
   translation: '',
-  audioUrl: null
+  audioUrl: null,
+  slowAudioUrl: null
 });
 
 class Sentence extends SentenceRecord {}

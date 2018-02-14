@@ -7,7 +7,6 @@ import { actions as sagaActions } from '../../sagas/actions';
 // import * as models from '../../models';
 
 class Statement extends Component {
-
   render() {
     return (
       <StatementComponent { ...this.props } />

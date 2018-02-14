@@ -189,9 +189,12 @@ class Statement extends Component {
         <ChineseWrapper length={this.props.currentStatementLength}>
           {this.renderStatement('chinese')}
         </ChineseWrapper>
-        <L1Wrapper>
-          {this.renderStatement('translation')}
-        </L1Wrapper>
+        {
+          this.props.dialogMode === 'explore' &&
+            <L1Wrapper>
+              {this.renderStatement('translation')}
+            </L1Wrapper>
+        }
         {this.renderControlWrapper()}
       </Wrapper>
     );

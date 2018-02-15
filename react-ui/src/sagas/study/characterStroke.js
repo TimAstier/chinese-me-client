@@ -6,6 +6,7 @@ import { types as sagaTypes } from '../actions';
 import { fetchEntities } from '../entities';
 import { actions as sagaActions } from '../actions';
 import { actions as uiActions } from '../../redux/ui';
+import { actions as exerciseActions } from '../../redux/exercise';
 import { push } from 'react-router-redux';
 
 export function* isDataLoaded(id) {
@@ -33,7 +34,9 @@ export function* initStudyData() {
   }
 }
 
-export function* initUi() {}
+export function* initUi() {
+  yield put(exerciseActions.setStatus('question'));
+}
 
 export function* run(isExam = false) {
   // There is currently no way to fail this exercise

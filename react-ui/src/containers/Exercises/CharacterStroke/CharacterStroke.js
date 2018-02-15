@@ -5,6 +5,7 @@ import { CharacterStroke as CharacterStrokeComponent } from '../../../components
 import { Character } from '../../../models';
 import s from '../../../rootSelectors';
 import { actions as sagaActions } from '../../../sagas/actions';
+import { actions as exerciseActions } from '../../../redux/exercise';
 
 class CharacterStroke extends Component {
   render() {
@@ -20,19 +21,23 @@ CharacterStroke.propTypes = {
   hideLabel: propTypes.bool,
   strokeQuizCompleted: propTypes.func.isRequired,
   watchAgain: propTypes.bool.isRequired,
-  screenType: propTypes.string.isRequired
+  screenType: propTypes.string.isRequired,
+  setStatus: propTypes.func.isRequired,
+  status: propTypes.string.isRequired
 };
 
 const mapStateToProps = state => ({
   character: s.getCurrentCharacter(state),
   timerStatus: s.timer.getStatus(state),
   watchAgain: s.hanzi.getWatchAgain(state),
-  screenType: s.routing.getCurrentScreenType(state)
+  screenType: s.routing.getCurrentScreenType(state),
+  status: s.exercise.getStatus(state)
 });
 
 export default connect(
   mapStateToProps,
   {
-    strokeQuizCompleted: sagaActions.strokeQuizCompleted
+    strokeQuizCompleted: sagaActions.strokeQuizCompleted,
+    setStatus: exerciseActions.setStatus
   }
 )(CharacterStroke);

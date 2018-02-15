@@ -34,25 +34,16 @@ const IconWrapper = styled.div`
 `;
 
 class CharacterStroke extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      finished: false
-    };
-  }
-
   onQuizComplete() {
     this.props.strokeQuizCompleted();
     if (this.props.timerStatus === 'running') {
       return null;
     }
-    return this.setState({
-      finished: true
-    });
+    return this.props.setStatus('finished');
   }
 
   _label() {
-    if (this.state.finished || this.props.watchAgain) {
+    if (this.props.status === 'finished' || this.props.watchAgain) {
       return '';
     }
     if (this.props.screenType === 'character/strokeQuiz') {
@@ -76,7 +67,7 @@ class CharacterStroke extends Component {
         />
         <Pinyin text={pinyinize(this.props.character.pinyinNumber)} />
         <Meaning text={this.props.character.meaning} />
-        <IconWrapper hideCheck={!this.state.finished}>
+        <IconWrapper hideCheck={this.props.status !== 'finished'}>
           <img src={iconCorrect} alt="icon-correct" />
         </IconWrapper>
       </Wrapper>
@@ -90,7 +81,9 @@ CharacterStroke.propTypes = {
   timerStatus: propTypes.string.isRequired,
   hideLabel: propTypes.bool,
   watchAgain: propTypes.bool.isRequired,
-  screenType: propTypes.string.isRequired
+  screenType: propTypes.string.isRequired,
+  setStatus: propTypes.func.isRequired,
+  status: propTypes.string.isRequired
 };
 
 export default CharacterStroke;

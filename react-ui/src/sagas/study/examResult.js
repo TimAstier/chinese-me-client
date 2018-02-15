@@ -3,6 +3,7 @@ import { delay } from 'redux-saga';
 import { actions as sagaActions, types as sagaTypes } from '../actions';
 import { actions as uiActions } from '../../redux/ui';
 import { actions as examActions } from '../../redux/exam';
+import { actions as studyActions } from '../../redux/study';
 import selectors from '../../rootSelectors';
 import Api from '../../utils/api';
 import { push } from 'react-router-redux';
@@ -23,7 +24,9 @@ export function* initUi() {
   yield put(uiActions.set('nextButton', true));
 }
 
-export function* initStudyData() {}
+export function* initStudyData() {
+  yield put(studyActions.setCurrentExerciseId(null));
+}
 
 export function* run() {
   const score = yield select(selectors.exam.getScore);

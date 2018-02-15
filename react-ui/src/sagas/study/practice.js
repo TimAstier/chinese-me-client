@@ -103,6 +103,7 @@ export function* run() {
       completed = true;
     }
   }
+  yield put(studyActions.setCurrentExerciseId(null));
   // yield delay(1000);
   yield put(sagaActions.playLevelWinSound());
   // Save score in DB

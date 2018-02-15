@@ -1,5 +1,7 @@
 import Immutable from 'immutable';
 import { types as sagaTypes } from '../sagas/actions';
+import { types as practiceTypes } from '../redux/practice';
+import { types as examTypes } from '../redux/exam';
 
 // Action Types
 
@@ -71,6 +73,9 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
       return state.set('paused', action.payload);
     case sagaTypes.PAUSE:
       return state.set('paused', !state.get('paused'));
+    case practiceTypes.CLEAN:
+    case examTypes.CLEAN:
+      return state.set('currentExerciseId', null);
     default:
       return state;
   }

@@ -3,7 +3,10 @@ import propTypes from 'prop-types';
 import { ScrollableWrapper } from '../../containers';
 import * as models from '../../models';
 import { ContentHOC } from '../.';
-const Preload = require('react-preload').Preload;
+// react-preloaded is a forw of react-preload which seems abandonned and not
+// up-to-date with the latest releases of react
+// see https://github.com/sambernard/react-preload/pull/23
+const Preload = require('react-preloaded').Preload;
 
 class Book extends Component {
   render() {

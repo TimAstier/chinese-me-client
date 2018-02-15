@@ -33,7 +33,6 @@ const ContentWrapper = styled.div`
 `;
 
 class MapSidebar extends Component {
-
   _renderEpisodesList(seasonId, seasonNumber) {
     // convert to array to avoid calling .map() on an ordered List
     // (not officially supported)
@@ -63,13 +62,18 @@ class MapSidebar extends Component {
   _generatePanels() {
     const seasons = this.props.seasons.sortBy(e => e.number);
     const panels = [];
-    seasons.valueSeq().forEach(season => {
+    seasons.valueSeq().forEach((season, i) => {
       // TODO: Add a title field in DB (in a translation table)
       const title = season.number === 0 ? 'The Basics' : 'Season '
         + season.number;
       return panels.push({
         title,
-        content: this._renderEpisodesList(season.id, season.number)
+        content: {
+          content: (
+            this._renderEpisodesList(season.id, season.number)
+          ),
+          key: `content-${i}`
+        }
       });
     });
     return panels;
@@ -85,7 +89,6 @@ class MapSidebar extends Component {
             panels={this._generatePanels()}
             fluid
             defaultActiveIndex={defaultActiveIndex}
-            exclusive
           />
         </ContentWrapper>
       </Wrapper>

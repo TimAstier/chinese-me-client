@@ -8,7 +8,6 @@ import Immutable from 'immutable';
 import { Season } from '../../models';
 
 class MapSidebar extends Component {
-
   render() {
     return (
       <MapSidebarComponent { ...this.props } />

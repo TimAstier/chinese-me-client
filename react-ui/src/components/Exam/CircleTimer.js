@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
-import { Circle } from 'react-progressbar.js';
+// react-progress-bar is a fork from original react-progressbar project
+// which seems abandonned and not compatible with react 16
+// see https://github.com/kimmobrunfeldt/react-progressbar.js/pull/26
+import { Circle } from 'react-progress-bar.js';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
@@ -21,7 +24,7 @@ const Text = styled.div`
 	text-align: center;
 	color: ${props => props.timeLeft <= 0.125 ? '#f65859' : '#7f8c94'};
   position: relative;
-  top: 50%;
+  top: -50%;
   transform: translateY(-50%);
 `;
 

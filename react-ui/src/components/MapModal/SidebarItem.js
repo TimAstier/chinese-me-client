@@ -17,7 +17,6 @@ const rotate360 = keyframes`
 `;
 
 class SidebarItem extends Component {
-
   render() {
     const { episode, focused, playing } = this.props;
 

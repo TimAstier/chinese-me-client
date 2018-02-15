@@ -5,7 +5,10 @@ import styled from 'styled-components';
 import { Link } from 'react-router';
 import { Row } from '../Shared';
 import messageIcon from '../../images/messageIcon.svg';
-const Preload = require('react-preload').Preload;
+// react-preloaded is a forw of react-preload which seems abandonned and not
+// up-to-date with the latest releases of react
+// see https://github.com/sambernard/react-preload/pull/23
+const Preload = require('react-preloaded').Preload;
 
 const Title = styled.span`
   font-size: 34px;

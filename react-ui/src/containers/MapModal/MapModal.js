@@ -6,7 +6,6 @@ import s from '../../rootSelectors';
 import { actions as uiActions } from '../../redux/ui';
 
 class MapModal extends Component {
-
   render() {
     return <MapModalComponent { ...this.props } />;
   }

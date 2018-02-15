@@ -9,10 +9,13 @@ import insertVariables from '../../../utils/insertVariables';
 import { audioUrls } from '../../../constants/urls';
 
 class Example extends Component {
-  _audioUrl() {
+  _audioUrl(slow) {
     if (this.props.example.chinese.indexOf('[') !== -1) {
       // contains a template variable so we need to use robotic voice instead
       return null; // there is no audio file
+    }
+    if (slow) {
+      return `${audioUrls.examplesPath}/${this.props.episodeNumber}_${this.props.example.order}_slow.mp3`;
     }
     return `${audioUrls.examplesPath}/${this.props.episodeNumber}_${this.props.example.order}.mp3`;
   }
@@ -22,12 +25,14 @@ class Example extends Component {
       <c.Example
         basic={this.props.options.basic}
         audio={this.props.options.audio}
+        slow={this.props.slow}
         code={getGrammarSentenceCode(this.props.episodeNumber, this.props.example.order)}
         chinese={insertVariables(this.props.example.chinese, this.props.settings)}
         pinyin={this.props.example.pinyin}
         translation={this.props.example.translation}
         literalTranslation={this.props.example.literalTranslation}
-        audioUrl={this._audioUrl()}
+        audioUrl={this._audioUrl(false)}
+        slowAudioUrl={this._audioUrl(true)}
         displayTranslation={this.props.options.displayTranslation}
       />
     );
@@ -43,12 +48,14 @@ Example.propTypes = {
     audio: propTypes.bool,
     displayTranslation: propTypes.bool
   }),
-  episodeNumber: propTypes.number.isRequired
+  episodeNumber: propTypes.number.isRequired,
+  slow: propTypes.bool.isRequired
 };
 
 const mapStateToProps = (state, ownProps) => ({
   example: s.entities.getExamples(state).get(String(ownProps.exampleId)),
-  settings: s.getAugmentedSettings(state)
+  settings: s.getAugmentedSettings(state),
+  slow: s.audio.getSlow(state)
 });
 
 export default connect(

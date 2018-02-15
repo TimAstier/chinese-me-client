@@ -90,13 +90,29 @@ export function *playSound(src, muted = false, volume = 1) {
 }
 
 function* playAudio(action) {
+  // Deciding on the speed
+  let slow = action.payload.slow;
+  const lastOrigin = yield select(selectors.audio.getLastOrigin);
+  if (action.payload.origin) {
+    if (lastOrigin === '' || lastOrigin === action.payload.origin) {
+      if (action.payload.toggleSlow) {
+        yield put(audioActions.toggleSlow());
+        yield put(audioActions.set('lastOrigin', action.payload.origin));
+      }
+    } else {
+      slow = false;
+      yield put(audioActions.set('slow', true));
+      yield put(audioActions.set('lastOrigin', action.payload.origin));
+    }
+  }
   // Priorities to define which sound to play:
   // 1. payload.url 2. payload.text 3. getAudioUrl
   if (action.payload.url) {
-    return yield call(playSound, [action.payload.url]);
+    return yield call(playSound, [slow ? action.payload.slowUrl : action.payload.url]);
   }
   if (action.payload.text) {
-    return yield call(voiceText, action.payload.text);
+    const rate = slow ? 0.4 : 0.7;
+    return yield call(voiceText, action.payload.text, false, rate);
   }
   return yield call(playSound, [
     yield select(selectors.audio.getAudioUrl)

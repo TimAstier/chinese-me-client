@@ -91,9 +91,13 @@ class Example extends Component {
             type: 'audio',
             data: {
               url: this.props.audioUrl,
+              slowUrl: this.props.slowAudioUrl,
               text: this.props.chinese
             },
-            top: true
+            top: true,
+            slow: this.props.slow,
+            toggleSlow: true,
+            origin: this.props.code
           }
             : undefined
         }
@@ -112,8 +116,10 @@ Example.propTypes = {
   translation: propTypes.string,
   literalTranslation: propTypes.string,
   audioUrl: propTypes.string,
+  slowAudioUrl: propTypes.string,
   audio: propTypes.bool.isRequired,
-  displayTranslation: propTypes.bool
+  displayTranslation: propTypes.bool,
+  slow: propTypes.bool.isRequired
 };
 
 export default Example;

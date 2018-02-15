@@ -36,7 +36,14 @@ class PlayAudioButton extends Component {
         onClick={this.props.onClick ?
           this.props.onClick
           : () => {
-            this.props.playAudio(this.props.url, this.props.text);
+            this.props.playAudio(
+              this.props.url,
+              this.props.slowUrl,
+              this.props.text,
+              this.props.slow,
+              this.props.toggleSlow,
+              this.props.origin
+            );
           }
         }
         small={this.props.small}
@@ -52,11 +59,15 @@ PlayAudioButton.propTypes = {
   onClick: propTypes.func,
   isPlaying: propTypes.bool.isRequired,
   url: propTypes.string,
+  slowUrl: propTypes.string,
   text: propTypes.string,
   keyPress: propTypes.bool,
   animation: propTypes.bool,
   small: propTypes.bool,
-  big: propTypes.bool
+  big: propTypes.bool,
+  toggleSlow: propTypes.bool,
+  slow: propTypes.bool,
+  origin: propTypes.string
 };
 
 const mapStateToProps = state => ({

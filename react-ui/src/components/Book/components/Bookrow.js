@@ -27,9 +27,13 @@ class Bookrow extends Component {
     return (
       <PlayAudioButton
         url={this.props.buttonOptions.data.url}
+        slowUrl={this.props.buttonOptions.data.slowUrl}
         text={this.props.buttonOptions.data.text}
+        slow={this.props.buttonOptions.slow}
+        toggleSlow={this.props.buttonOptions.toggleSlow}
         keyPress={false}
         animation={false}
+        origin={this.props.buttonOptions.origin}
         small
       />
     );
@@ -100,7 +104,10 @@ Bookrow.propTypes = {
       'askUserSettings'
     ]).isRequired,
     data: propTypes.object,
-    top: propTypes.bool
+    top: propTypes.bool,
+    slow: propTypes.bool,
+    toggleSlow: propTypes.bool,
+    origin: propTypes.string
   }),
   backgroundColor: propTypes.string,
   flexDirection: propTypes.oneOf(['row', 'column']),

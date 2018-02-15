@@ -38,7 +38,7 @@ class Dialog extends Component {
       <ModeMenu>
         <ModeButton
           active={dialogMode === 'watch'}
-          label="Watch"
+          label="Listen"
           onClick={() => dialogLinkClick(baseUrl + '/watch')}
         />
         <ModeButton

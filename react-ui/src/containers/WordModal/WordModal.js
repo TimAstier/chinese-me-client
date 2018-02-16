@@ -7,7 +7,6 @@ import { Word } from '../../models';
 import { actions as uiActions } from '../../redux/ui';
 
 class WordModal extends Component {
-
   render() {
     return (
       <WordModalComponent { ...this.props } />

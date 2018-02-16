@@ -6,7 +6,6 @@ import { NewWordLink as NewWordLinkComponent } from '../../components';
 import { actions as sagaActions } from '../../sagas/actions';
 
 class NewWordLink extends Component {
-
   render() {
     return (
       <NewWordLinkComponent {...this.props} />

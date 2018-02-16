@@ -27,21 +27,23 @@ const ListLink = styled.div`
 `;
 
 class NewWordLink extends Component {
-
   renderMultiLinks() {
     const orderedWords = this.props.words.sort(
       (a, b) => a.get('chinese').length - b.get('chinese').length
     );
     const links = orderedWords.map(w => {
       return (
-      <ListLink
-        key={w.get('id')}
-        onClick={
-          () => this.props.newWordLinkClicked(w.get('id'))
-        }
-      >
-        {w.get('chinese')}
-      </ListLink>);
+        <ListLink
+          key={w.get('id')}
+          onClick={
+            (e) => {
+              e.stopPropagation();
+              this.props.newWordLinkClicked(w.get('id'));
+            }
+          }
+        >
+          {w.get('chinese')}
+        </ListLink>);
     });
     return (
       <NewWordPopup

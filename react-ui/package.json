@@ -19,6 +19,7 @@
     "chinese-lunar": "^0.1.4",
     "chinese-to-pinyin": "^0.1.6",
     "classnames": "^2.2.5",
+    "detect-browser": "^2.0.0",
     "hanzi-writer": "^0.2.2",
     "howler": "^2.0.8",
     "i18n-iso-countries": "^3.2.2",
@@ -54,6 +55,7 @@
     "semantic-ui-react": "^0.78.2",
     "shortid": "^2.2.6",
     "styled-components": "^2.1.0",
+    "sweetalert": "^2.1.0",
     "validator": "^6.2.1"
   },
   "devDependencies": {

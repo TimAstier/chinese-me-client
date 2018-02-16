@@ -7,9 +7,13 @@ import selectors from '../rootSelectors';
 import { actions as appActions } from '../redux/app';
 import { loadSettings } from './userSettings';
 import getParamsFromUrl from '../utils/getParamsFromUrl';
+import { detect } from 'detect-browser';
+import swal from 'sweetalert';
+import { capitalizeFirstLetter } from '../utils/strings';
 
 // This is called only one time, when Study containers mounts
 export function* initApp() {
+  const browser = detect();
   while (true) { // eslint-disable-line no-constant-condition
     const { payload: { isAuthenticated } } = yield take(sagaTypes.INIT_APP);
     yield call(fetchEntities, ['/seasons']);
@@ -28,6 +32,17 @@ export function* initApp() {
     yield put(appActions.setInitialized(true));
     if (isAuthenticated) {
       yield call(loadSettings);
+    }
+    // browser disclaimer for people not using Chrome
+    if (browser) {
+      if (browser.name !== 'chrome') {
+        swal({
+          title: 'This browser is not supported',
+          text: `ChineseMe only works properly on the Chrome web browser, on a computer.\n\nWe noticed you are using ${capitalizeFirstLetter(browser.name)}. Please consider using Chrome as we cannot guarantee a satisfying learning experience on ${capitalizeFirstLetter(browser.name)}.\n\nIf you don't have Chrome already, you can download it here: https://www.google.com/chrome/\n\nThanks for your understanding!`,
+          icon: 'warning',
+          button: 'Got it!'
+        });
+      }
     }
   }
 }

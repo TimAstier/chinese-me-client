@@ -14,7 +14,6 @@ const Wrapper = styled.div`
 `;
 
 class ScreenWrapper extends Component {
-
   render() {
     return (
       <Wrapper>{this.props.children}</Wrapper>

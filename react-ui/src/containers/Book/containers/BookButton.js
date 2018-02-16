@@ -32,6 +32,9 @@ class BookButton extends Component {
     return (
       <c.BookButton
         onClick={() => {
+          if (this.props.buttonOptions.clickable === false) {
+            return null;
+          }
           if (this.props.buttonOptions.type === 'askUserSettings') {
             return this.props.askUserSettings();
           }
@@ -59,7 +62,8 @@ BookButton.propTypes = {
       'exam',
       'askUserSettings'
     ]).isRequired,
-    data: propTypes.object
+    data: propTypes.object,
+    clickable: propTypes.bool
   }).isRequired,
   episodeId: propTypes.string,
   askUserSettings: propTypes.func.isRequired,

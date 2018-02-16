@@ -4,7 +4,7 @@ export const languageTranslations = {
   Spanish: { ZH: '西班牙语', PINYIN: 'xībānyáyǔ' },
   Arabic: { ZH: '阿拉伯语', PINYIN: 'ālābóyǔ' },
   Malay: { ZH: '马来玉', PINYIN: 'mǎláiyù' },
-  Russian: { ZH: '俄语', PINYIN: 'èyǔ' },
+  Russian: { ZH: '俄语', PINYIN: 'éyǔ' },
   Portuguese: { ZH: '葡萄牙语', PINYIN: 'pútáoyáyǔ' },
   French: { ZH: '法语', PINYIN: 'fǎyǔ' },
   German: { ZH: '德语', PINYIN: 'déyǔ' },

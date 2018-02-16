@@ -104,6 +104,7 @@ Bookrow.propTypes = {
       'askUserSettings'
     ]).isRequired,
     data: propTypes.object,
+    clickable: propTypes.bool,
     top: propTypes.bool,
     slow: propTypes.bool,
     toggleSlow: propTypes.bool,

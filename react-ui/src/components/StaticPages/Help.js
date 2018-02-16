@@ -5,10 +5,12 @@ import styled from 'styled-components';
 import { Link } from 'react-router';
 import { Row } from '../Shared';
 import messageIcon from '../../images/messageIcon.svg';
+import { audioUrls } from '../../constants/urls';
 // react-preloaded is a forw of react-preload which seems abandonned and not
 // up-to-date with the latest releases of react
 // see https://github.com/sambernard/react-preload/pull/23
 const Preload = require('react-preloaded').Preload;
+
 
 const Title = styled.span`
   font-size: 34px;
@@ -54,7 +56,7 @@ class Help extends Component {
               buttonOptions={{
                 type: 'audio',
                 data: {
-                  text: '你好'
+                  url: audioUrls.wordsPath + '/ni2hao3.mp3'
                 }
               }}
             >
@@ -62,7 +64,8 @@ class Help extends Component {
             </c.P>
             <c.P
               buttonOptions={{
-                type: 'practice'
+                type: 'practice',
+                clickable: false
               }}
             >
               Test your understanding of the course through <b><i>Practice</i></b> exercises
@@ -70,7 +73,8 @@ class Help extends Component {
             <c.P
               buttonOptions={{
                 type: 'dialog',
-                top: true
+                top: true,
+                clickable: false
               }}
             >
               Work with <b><i>Dialogs</i></b> in one of three ways:
@@ -83,6 +87,7 @@ class Help extends Component {
             <c.P
               buttonOptions={{
                 type: 'stroke',
+                clickable: false
               }}
             >
               Watch <b><i>Stroke order</i></b> animations of every Chinese character
@@ -90,28 +95,32 @@ class Help extends Component {
             <c.P>Some Chinese characters have extra resources:</c.P>
             <c.P
               buttonOptions={{
-                type: 'calligraphy'
+                type: 'calligraphy',
+                clickable: false
               }}
             >
               <b><i>Calligraphy</i></b> videos, to learn how to write characters beautifully
             </c.P>
             <c.P
               buttonOptions={{
-                type: 'etymology'
+                type: 'etymology',
+                clickable: false
               }}
             >
               <b><i>Oracle bone</i></b> explanations, to learn the origin and stories behind the characters
             </c.P>
             <c.P
               buttonOptions={{
-                type: 'askUserSettings'
+                type: 'askUserSettings',
+                clickable: false
               }}
             >
               With the <b><i>Me icons</i></b>, you have the possibility to input your personal information. Some parts of the course will then be adapted based on the information you provided, in order to make the learning experience more meaningful for you. One example is to learn how to say <i>I am X years old</i> in Chinese.
             </c.P>
             <c.P
               buttonOptions={{
-                type: 'exam'
+                type: 'exam',
+                clickable: false
               }}
             >
               At the end of every lesson or episode, you can challenge yourself by taking the <b><i>Exam</i></b>. <i>You can redo all exams later if you want to improve your score</i>.

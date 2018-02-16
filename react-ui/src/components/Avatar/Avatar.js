@@ -81,7 +81,7 @@ class Avatar extends Component {
       <Wrapper>
         {this.renderImage()}
         <AvatarName>
-          <div>{this.props.chosen ? 'Me' : this.props.avatar.name}</div>
+          <div>{this.props.avatar.name}</div>
         </AvatarName>
       </Wrapper>
     );

@@ -99,6 +99,13 @@ class MultipleChoice extends Component {
 
   renderChoices() {
     // Note: The correct answer is always the first one in the choices array
+    // Find the appropriate fontSize:
+    let fontSize = '30px';
+    this.props.choices.forEach(choice => {
+      if (choice.length >= 25) {
+        fontSize = '20px';
+      }
+    });
     const choices = this.props.choices.map((choice, i) => {
       const onClick = () => {
         this.props.setUserChoice(i, false);
@@ -113,6 +120,7 @@ class MultipleChoice extends Component {
           disabled={this.props.status !== 'question' && i !== this.props.userChoice}
           wrong={this.props.status !== 'question' && i === this.props.userChoice && i !== 0}
           correct={this.props.status !== 'question' && i === 0}
+          fontSize={fontSize}
         />
       );
     });

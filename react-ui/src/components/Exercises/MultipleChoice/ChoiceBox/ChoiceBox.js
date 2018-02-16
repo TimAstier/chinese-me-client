@@ -53,7 +53,7 @@ class ChoiceBox extends Component {
       justify-content: center;
       align-items: center;
       font-family: 'STKaitiSC';
-    	font-size: ${this.props.label.length < 25 ? '30px' : '20px'};
+    	font-size: ${this.props.fontSize};
     	font-weight: bold;
     	color: ${this.color()};
       cursor: pointer;
@@ -77,7 +77,8 @@ ChoiceBox.propTypes = {
   focused: propTypes.bool,
   disabled: propTypes.bool,
   wrong: propTypes.bool,
-  correct: propTypes.bool
+  correct: propTypes.bool,
+  fontSize: propTypes.string.isRequired
 };
 
 export default ChoiceBox;

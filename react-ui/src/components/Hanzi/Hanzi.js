@@ -62,20 +62,23 @@ class Hanzi extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    // Happens when moving through characters with ElementsNav
+    // Happens when two characterStroke exercises follow one-another
+    // and click on "continue" (not hit enter) for some unkown reasons
     if (this.props.char !== nextProps.char) {
       this.writer.setCharacter(nextProps.char);
+      return this.quiz();
     }
     // Happens when clicking watchAgain button in CharacterStrokeQuiz
     if (this.props.watchAgain === false && nextProps.watchAgain === true) {
       this.writer.cancelQuiz();
-      this.writer.animateCharacter({
+      return this.writer.animateCharacter({
         onComplete: () => {
           this.props.setWatchAgain(false);
           this.quiz();
         }
       });
     }
+    return null;
   }
 
   // Force a single-render

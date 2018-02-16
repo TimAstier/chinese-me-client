@@ -7,7 +7,6 @@ import { actions as hanziActions } from '../../redux/hanzi';
 import s from '../../rootSelectors';
 
 class Hanzi extends Component {
-
   render() {
     return (
       <HanziComponent { ...this.props } />

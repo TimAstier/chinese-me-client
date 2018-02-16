@@ -7,6 +7,7 @@ import { Row } from '../../Shared';
 import styled from 'styled-components';
 import pinyinize from 'pinyinize';
 import { good as OracleBone1 } from '../etymology';
+import { practiceSheet } from '../../../constants/urls';
 
 // Custom code to handle "example" dialogs
 const Chinese = styled.div`
@@ -309,7 +310,7 @@ export default class Content extends Component {
           >
             <c.CharacterBox simpChar="姓"/>
           </c.Bookrow>
-          <c.P>The horizontal stroke is shortened to give room for the phonetic, and the right-hand leg is also shorter and a bit more inclined. Download the <a href="https://s3.eu-west-2.amazonaws.com/chineseme/pdf/Exercise+sheet.pdf" target="_blank" rel="noopener noreferrer">practice sheet</a>, and practice writing:</c.P>
+          <c.P>The horizontal stroke is shortened to give room for the phonetic, and the right-hand leg is also shorter and a bit more inclined. Download the <a href={practiceSheet} target="_blank" rel="noopener noreferrer">practice sheet</a>, and practice writing:</c.P>
           {character(2, { mode: 'practice' })}
           {character(3, { mode: 'practice' })}
           {character(5, { mode: 'practice' })}

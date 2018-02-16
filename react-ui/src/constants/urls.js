@@ -29,3 +29,5 @@ export const audioUrls = {
   othersPath: 'https://s3.eu-west-2.amazonaws.com/chineseme/audio/others',
   sentencesPath: 'https://s3.eu-west-2.amazonaws.com/chineseme/audio/sentences'
 };
+
+export const practiceSheet = 'https://s3.eu-west-2.amazonaws.com/chineseme/pdf/practice_sheet.pdf';

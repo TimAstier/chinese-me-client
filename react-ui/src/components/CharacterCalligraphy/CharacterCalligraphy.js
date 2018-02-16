@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { bookComponents as c } from '../.';
 import brushIcon from '../../images/brushIcon.svg';
 import { VideoPlayer } from '../../containers';
+import { practiceSheet } from '../../constants/urls';
 
 const Wrapper = styled.div`
   flex-grow: 1;
@@ -111,7 +112,7 @@ class CharacterEtymology extends Component {
         </MiddleWrapper>
         <PrintWrapper>
           <i>
-            Print out a <a href="https://s3.eu-west-2.amazonaws.com/chineseme/pdf/Exercise+sheet.pdf" target="_blank" rel="noopener noreferrer">practice sheet</a>
+            Print out a <a href={practiceSheet} target="_blank" rel="noopener noreferrer">practice sheet</a>
           </i>
         </PrintWrapper>
       </Wrapper>

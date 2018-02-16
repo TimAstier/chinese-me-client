@@ -8,7 +8,6 @@ import createArrayOfRandomIntegers from '../../../utils/createArrayOfRandomInteg
 import { Wrapper, QuestionWrapper } from '../Shared';
 
 const ChoicesWrapper = styled.div`
-  background-color: blue;
   min-height: 250px;
   max-height: 250px;
   margin-top: 22px;

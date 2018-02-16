@@ -9,7 +9,6 @@ import { loadSettings } from './userSettings';
 import getParamsFromUrl from '../utils/getParamsFromUrl';
 import { detect } from 'detect-browser';
 import swal from 'sweetalert';
-import { capitalizeFirstLetter } from '../utils/strings';
 
 // This is called only one time, when Study containers mounts
 export function* initApp() {
@@ -38,7 +37,7 @@ export function* initApp() {
       if (browser.name !== 'chrome') {
         swal({
           title: 'This browser is not supported',
-          text: `ChineseMe only works properly on the Chrome web browser, on a computer.\n\nWe noticed you are using ${capitalizeFirstLetter(browser.name)}. Please consider using Chrome as we cannot guarantee a satisfying learning experience on ${capitalizeFirstLetter(browser.name)}.\n\nIf you don't have Chrome already, you can download it here: https://www.google.com/chrome/\n\nThanks for your understanding!`,
+          text: 'ChineseMe only works properly on the Chrome web browser, on a computer.\n\nWe noticed you are using another web browser. Please consider using Chrome as we otherwise cannot guarantee a satisfying learning experience for you.\n\nIf you don\'t have Chrome already, you can download it here: https://www.google.com/chrome/\n\nThanks for your understanding!',
           icon: 'warning',
           button: 'Got it!'
         });

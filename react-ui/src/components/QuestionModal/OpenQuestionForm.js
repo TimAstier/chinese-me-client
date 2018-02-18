@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
 import { Field, reduxForm } from 'redux-form/immutable';
-import { required } from '../../utils/formValidations';
+import { required, validDate } from '../../utils/formValidations';
 import { ScreenButton } from '../.';
 
 const Wrapper = styled.div`
@@ -31,6 +31,8 @@ class OpenQuestionForm extends Component {
   // This render method allows the inner input element to get the props
   // that are otherwise on the styled.input element
   // https://github.com/erikras/redux-form/issues/1094
+  // TODO: Display validation errors
+  // TODO: Server-side validations (especially for dates)
   renderField({
     input,
     type,
@@ -60,7 +62,7 @@ class OpenQuestionForm extends Component {
             component={ this.renderField }
             type={this.props.date ? 'date' : 'text'}
             autocomplete="off"
-            validate={ [required] }
+            validate={ this.props.date ? [ required, validDate ] : [ required ] }
           />
           <ScreenButton
             width={300}

@@ -35,6 +35,13 @@ $ heroku create chinese-me --remote production
 $ git push production master // This will run the build
 ```
 
+## Heroku DNS / CNAME:
+
+Followed instructions from:  
+- https://devcenter.heroku.com/articles/automated-certificate-management
+- https://help.heroku.com/VKRNVVF5/what-is-the-correct-dns-cname-target-for-my-custom-domains
+- https://devcenter.heroku.com/articles/custom-domains
+
 ## Environment variables
 See .env.example file
 

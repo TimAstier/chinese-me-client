@@ -8,12 +8,11 @@ const Text = styled.div`
   font-family: 'Cambria';
   text-align: justify;
   text-justify: inter-word;
-  line-height: normal;
+  line-height: 1.5;
   color: ${props => props.color ? props.color : 'black'}
 `;
 
 class Paragraph extends Component {
-
   render() {
     return (
       <Bookrow buttonOptions={this.props.buttonOptions}>

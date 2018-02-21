@@ -42,6 +42,13 @@ Followed instructions from:
 - https://help.heroku.com/VKRNVVF5/what-is-the-correct-dns-cname-target-for-my-custom-domains
 - https://devcenter.heroku.com/articles/custom-domains
 
+Gotcha: rootdomain doesn't work with SSL because Nammecheap isnt compatible
+using CNAME on rootdomain can cause lots of troubles (conflict with emails?)
+See: https://help.heroku.com/NH44MODG/my-root-domain-isn-t-working-what-s-wrong
+
+See: https://www.namecheap.com/support/knowledgebase/article.aspx/579/2237/which-record-type-option-should-i-choose-for-the-information-im-about-to-enter
+"Please do not set up a CNAME record for a naked domain (@ hostname) since this may affect the operation of the domain's MX records and, consequently, the email service. In most cases, you will need to create a CNAME record for WWW (or other subdomain) and a URL redirect for @ that will point to http://www.yourdomain.tld/""
+
 ## Environment variables
 See .env.example file
 

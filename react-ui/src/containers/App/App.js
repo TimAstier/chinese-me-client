@@ -24,12 +24,15 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  @media print {
+    height: auto;
+  }
 `;
 
 class App extends Component {
   render() {
     return (
-      <Wrapper>
+      <Wrapper div="appWrapper">
         {this.props.children}
       </Wrapper>
     );

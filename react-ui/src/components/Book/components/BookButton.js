@@ -20,11 +20,19 @@ const Wrapper = styled.div`
     background-color: #F2F7FA;
   }
   cursor: pointer;
+  a {
+    pointer-events: none;
+  }
+  @media print {
+    a {
+      pointer-events: auto;
+    }
+  }
 `;
 
 const Img = styled.img`
-  max-width:80%;
-  max-height:80%;
+  max-width: 35px;
+  height: 35px;;
 `;
 
 class BookButton extends Component {
@@ -45,7 +53,9 @@ class BookButton extends Component {
   render() {
     return (
       <Wrapper onClick={this.props.onClick}>
-        <Img src={this._image()} />
+        <a href={this.props.url}>
+          <Img src={this._image()} />
+        </a>
       </Wrapper>
     );
   }
@@ -62,7 +72,8 @@ BookButton.propTypes = {
     'review',
     'exam',
     'askUserSettings'
-  ]).isRequired
+  ]).isRequired,
+  url: propTypes.string.isRequired
 };
 
 export default BookButton;

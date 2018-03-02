@@ -11,6 +11,9 @@ const Wrapper = styled.footer`
   display: flex;
   flex-direction: column;
   align-items: center;
+  @media print {
+    display: none;
+  }
 `;
 
 const CopyrightWrapper = styled.div`

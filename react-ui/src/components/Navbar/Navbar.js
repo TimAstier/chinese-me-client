@@ -15,6 +15,9 @@ const Wrapper = styled.div`
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.18);
   display: flex;
   z-index: 1;
+  @media print {
+    display: none;
+  }
 `;
 
 const Icon = styled.img`

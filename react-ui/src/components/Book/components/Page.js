@@ -18,6 +18,9 @@ const Wrapper = styled.div`
   a {
     text-decoration:  underline;
   }
+  @media print {
+    box-shadow: none;
+  }
 `;
 
 const Body = styled.div`

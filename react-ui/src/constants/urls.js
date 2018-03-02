@@ -1,3 +1,5 @@
+export const PRODUCTION_ROOT_URL = 'https://app.chinese-me.com';
+
 export const imageUrls = {
   S0E1: [
     'https://s3.eu-west-2.amazonaws.com/chineseme/images/tone1_diagram.png',

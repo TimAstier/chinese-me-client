@@ -5,6 +5,7 @@ import { bookComponents as c } from '../../../components';
 import { push } from 'react-router-redux';
 import s from '../../../rootSelectors';
 import { actions as sagaActions } from '../../../sagas/actions';
+import { PRODUCTION_ROOT_URL } from '../../../constants/urls';
 
 class BookButton extends Component {
   _url = () => {
@@ -24,7 +25,8 @@ class BookButton extends Component {
       case 'exam':
         return `/study/${this.props.episodeId}/exam`;
       default:
-        return console.log('Unknown bookButton type');
+        console.log('Unknown bookButton type');
+        return PRODUCTION_ROOT_URL + this.props.currentUrl;
     }
   }
 
@@ -44,6 +46,7 @@ class BookButton extends Component {
           return this.props.push(this._url());
         }}
         type={this.props.buttonOptions.type}
+        url={this._url()}
       />
     );
   }
@@ -67,10 +70,12 @@ BookButton.propTypes = {
   }).isRequired,
   episodeId: propTypes.string,
   askUserSettings: propTypes.func.isRequired,
+  currentUrl: propTypes.string.isRequired
 };
 
 const mapStateToProps = state => ({
-  episodeId: s.study.getCurrentEpisodeId(state)
+  episodeId: s.study.getCurrentEpisodeId(state),
+  currentUrl: s.routing.getCurrentUrl(state)
 });
 
 export default connect(

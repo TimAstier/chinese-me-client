@@ -53,7 +53,8 @@ export const types = {
   SET_EPISODE_DATA: 'signal/SET_EPISODE_DATA',
   INIT_BOOK: 'signal/INIT_BOOK',
   ASK_USER_SETTINGS: 'signal/ASK_USER_SETTINGS',
-  SAVE_ANSWER: 'signal/SAVE_ANSWER'
+  SAVE_ANSWER: 'signal/SAVE_ANSWER',
+  GOT_CHINESE_NAME: 'signal/GOT_CHINESE_NAME'
 };
 
 // Action Creators
@@ -233,6 +234,18 @@ const saveAnswer = answer => ({
   payload: { answer }
 });
 
+const gotChineseName = () => ({
+  type: types.GOT_CHINESE_NAME,
+  meta: {
+    analytics: {
+      eventType: EventTypes.track,
+      eventPayload: {
+        event: 'Got Chinese Name'
+      }
+    }
+  }
+});
+
 export const actions = {
   next,
   nextSentence,
@@ -280,5 +293,6 @@ export const actions = {
   setEpisodeData,
   initBook,
   askUserSettings,
-  saveAnswer
+  saveAnswer,
+  gotChineseName
 };

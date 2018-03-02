@@ -7,6 +7,7 @@ import Api from '../utils/api';
 import { actions as settingsActions } from '../redux/settings';
 import { types as sagaTypes } from './actions';
 import { push } from 'react-router-redux';
+import { actions as sagaActions } from './actions';
 
 function* ensureAppInitialized() {
   const appInitialized = yield select(selectors.app.getInitialized);
@@ -44,6 +45,10 @@ export function* askUserSettings() {
         yield call(askQuestion, setting);
         // }
       }
+    }
+    // Track "Got a Chinese Name" event
+    if (requiredUserData[0] === 'NATIONALITY') {
+      yield put(sagaActions.gotChineseName());
     }
   }
 }

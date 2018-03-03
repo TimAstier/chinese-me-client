@@ -90,6 +90,11 @@ const newUserCreated = attributes => ({
   type: types.NEW_USER_CREATED,
   meta: {
     analytics: [{
+      eventType: EventTypes.alias,
+      eventPayload: {
+        userId: attributes.id
+      }
+    }, {
       eventType: EventTypes.identify,
       eventPayload: {
         userId: attributes.id,

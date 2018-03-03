@@ -39,8 +39,7 @@ const setCurrentUser = user => {
           userId: user.id,
           traits: {
             email: user.email,
-            createdAt: user.createdAt,
-            settings: user.settings
+            createdAt: user.createdAt
           }
         },
       }, {

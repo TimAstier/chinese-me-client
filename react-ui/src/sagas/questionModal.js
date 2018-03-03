@@ -34,6 +34,7 @@ export function* askQuestion(setting) {
 // TODO: Clean this
 // A little bit messy because closedQuestions are not built with redux form.
 function* sendQuestionAnswer(params) {
+  const userId = yield select(selectors.auth.getCurrentUserId);
   const setting = settingsConstants[params[0]].name;
   let value = undefined;
   let resolve;
@@ -54,7 +55,7 @@ function* sendQuestionAnswer(params) {
       '/users/settings',
       { setting, value }
     );
-    yield put(settingsActions.set(savedSettings.data));
+    yield put(settingsActions.set(userId, savedSettings.data));
     if (resolve) { yield call(resolve); }
   } catch (error) {
     if (reject) { yield call(reject, error.response.data.errors[0].message); }

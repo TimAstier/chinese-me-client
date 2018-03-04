@@ -11,6 +11,7 @@ import { syncHistoryWithStore, routerMiddleware } from 'react-router-redux';
 import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 import { Map } from 'immutable';
 import { createTracker } from 'redux-segment';
+// import pathnameToPageNameMapper from './constants/pathnameToPageNameMapper';
 
 import rootReducer from './rootReducer';
 import setAuthorizationToken from './utils/setAuthorizationToken';
@@ -21,6 +22,14 @@ import routes from './routes';
 import rootSaga from './rootSaga';
 
 const initialState = Map();
+
+/* if we want to add category and name property to Page Loaded events */
+// const customMapper = {
+//   skipDefaultMapping: true,
+//   mapper: pathnameToPageNameMapper
+// };
+// const tracker = createTracker(customMapper);
+
 const tracker = createTracker(); // Create redux-segment tracker
 
 const sagaMiddleware = createSagaMiddleware();

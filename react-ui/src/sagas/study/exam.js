@@ -55,6 +55,14 @@ function* defaultExamUi() {
 }
 
 function* runExam() {
+  // Tracking properties
+  const currentEpisode = yield select(selectors.getCurrentEpisode);
+  const currentSeason = yield select(selectors.getCurrentSeason);
+  const trackingProperties = {
+    episodeCode: `S${currentSeason.get('number')}E${currentEpisode.get('number')}`
+  };
+  // END Tracking properties
+  yield put(examActions.startedExam(trackingProperties));
   const exercises = yield select(selectors.exam.getExercises);
   for (let i = 0; i < exercises.size; i++) {
     const exercise = exercises.get(i);

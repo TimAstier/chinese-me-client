@@ -28,6 +28,7 @@ export const types = {
   LOGOUT: 'signal/LOGOUT',
   SEND_FEEDBACK: 'signal/SEND_FEEDBACK',
   ACTIVATE: 'signal/ACTIVATE',
+  ACTIVATED: 'signal/ACTIVATED',
   INIT_APP: 'signal/INIT_APP',
   RELOAD_APP: 'signal/RELOAD_APP',
   MAP_LINK_CLICK: 'signal/MAP_LINK_CLICK',
@@ -54,7 +55,7 @@ export const types = {
   INIT_BOOK: 'signal/INIT_BOOK',
   ASK_USER_SETTINGS: 'signal/ASK_USER_SETTINGS',
   SAVE_ANSWER: 'signal/SAVE_ANSWER',
-  GOT_CHINESE_NAME: 'signal/GOT_CHINESE_NAME'
+  CLICKED_BOOK_BUTTON: 'signal/CLICKED_BOOK_BUTTON'
 };
 
 // Action Creators
@@ -107,7 +108,7 @@ const newUserCreated = attributes => ({
     }, {
       eventType: EventTypes.track,
       eventPayload: {
-        event: 'New user Created'
+        event: 'Created Account'
       }
     }]
   }
@@ -117,7 +118,17 @@ const loginRequest = payload => ({
   payload
 });
 const loginError = () => ({ type: types.LOGIN_ERROR });
-const logout = () => ({ type: types.LOGOUT });
+const logout = () => ({
+  type: types.LOGOUT,
+  meta: {
+    analytics: {
+      eventType: EventTypes.track,
+      eventPayload: {
+        event: 'Logged out'
+      }
+    }
+  }
+});
 const sendFeedback = payload => ({
   type: types.SEND_FEEDBACK,
   payload
@@ -125,6 +136,17 @@ const sendFeedback = payload => ({
 const activate = payload => ({
   type: types.ACTIVATE,
   payload
+});
+const activated = () => ({
+  type: types.ACTIVATED,
+  meta: {
+    analytics: {
+      eventType: EventTypes.track,
+      eventPayload: {
+        event: 'Activated Account'
+      }
+    }
+  }
 });
 const initApp = isAuthenticated => ({
   type: types.INIT_APP,
@@ -145,7 +167,7 @@ const videoEnded = src => ({
     analytics: {
       eventType: EventTypes.track,
       eventPayload: {
-        event: 'Video Ended',
+        event: 'Finished Video',
         properties: {
           src
         }
@@ -182,24 +204,15 @@ const startRoleplay = () => ({
   type: types.START_ROLEPLAY
 });
 const pause = () => ({ type: types.PAUSE });
-const examCompleted = data => {
+const examCompleted = properties => {
   return {
     type: types.EXAM_COMPLETED,
     meta: {
       analytics: {
         eventType: EventTypes.track,
         eventPayload: {
-          event: 'Exam Completed',
-          properties: {
-            seasonId: data.seasonId,
-            seasonNumber: data.seasonNumber,
-            episodeId: data.episodeId,
-            episodeNumber: data.episodeNumber,
-            score: data.score,
-            timeLeft: data.timeLeft,
-            exercises: data.exercises.toJS(),
-            results: data.results.toJS()
-          }
+          event: 'Completed Exam',
+          properties
         }
       }
     }
@@ -210,14 +223,25 @@ const playWrongSound = () => ({ type: types.PLAY_WRONG_SOUND });
 const playLevelWinSound = () => ({ type: types.PLAY_LEVEL_WIN_SOUND });
 const playLevelFailSound = () => ({ type: types.PLAY_LEVEL_FAIL_SOUND });
 const nextQuestion = () => ({ type: types.NEXT_QUESTION });
-const questionAnswered = answer => ({
-  type: types.QUESTION_ANSWERED,
-  payload: { answer }
-});
+const questionAnswered = (setting, userInput, reduxFormFcs) => {
+  return {
+    type: types.QUESTION_ANSWERED,
+    payload: { userInput, reduxFormFcs },
+    meta: {
+      analytics: {
+        eventType: EventTypes.track,
+        eventPayload: {
+          event: 'Added Personal Info',
+          properties: { setting, userInput }
+        }
+      }
+    }
+  };
+};
 
 const newWordLinkClicked = id => ({
   type: types.NEW_WORD_LINK_CLICKED,
-  payload: {id}
+  payload: { id }
 });
 
 const setEpisodeData = episodeId => ({
@@ -239,13 +263,14 @@ const saveAnswer = answer => ({
   payload: { answer }
 });
 
-const gotChineseName = () => ({
-  type: types.GOT_CHINESE_NAME,
+const clickedBookButton = properties => ({
+  type: types.CLICKED_BOOK_BUTTON,
   meta: {
     analytics: {
       eventType: EventTypes.track,
       eventPayload: {
-        event: 'Got Chinese Name'
+        event: 'Clicked Book Button',
+        properties
       }
     }
   }
@@ -273,6 +298,7 @@ export const actions = {
   logout,
   sendFeedback,
   activate,
+  activated,
   initApp,
   reloadApp,
   mapLinkClick,
@@ -299,5 +325,5 @@ export const actions = {
   initBook,
   askUserSettings,
   saveAnswer,
-  gotChineseName
+  clickedBookButton
 };

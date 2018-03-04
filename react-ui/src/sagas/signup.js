@@ -25,8 +25,10 @@ function* watchActivate() {
   while (true) { // eslint-disable-line no-constant-condition
     const { payload } = yield take(types.ACTIVATE);
     try {
-      yield call(Api.get, '/users/activate/' + payload);
-      console.log('Account activated');
+      const activated = yield call(Api.get, '/users/activate/' + payload);
+      if (activated.data === true) {
+        yield put(sagaActions.activated());
+      }
       yield put(push('/signup/activated'));
       //
     } catch (error) {

@@ -32,7 +32,7 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
 const set = (userId, settings) => ({
   type: types.SET,
   payload: { settings },
-  meta: {
+  meta: !userId ? undefined : {
     analytics: {
       eventType: EventTypes.identify,
       eventPayload: {

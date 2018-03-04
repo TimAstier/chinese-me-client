@@ -32,6 +32,9 @@ class BookButton extends Component {
     return (
       <c.BookButton
         onClick={() => {
+          this.props.clickedBookButton({
+            type: this.props.buttonOptions.type
+          });
           if (this.props.buttonOptions.clickable === false) {
             return null;
           }
@@ -67,6 +70,7 @@ BookButton.propTypes = {
   }).isRequired,
   episodeId: propTypes.string,
   askUserSettings: propTypes.func.isRequired,
+  clickedBookButton: propTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -77,6 +81,7 @@ export default connect(
   mapStateToProps,
   {
     push,
-    askUserSettings: sagaActions.askUserSettings
+    askUserSettings: sagaActions.askUserSettings,
+    clickedBookButton: sagaActions.clickedBookButton
   }
 )(BookButton);

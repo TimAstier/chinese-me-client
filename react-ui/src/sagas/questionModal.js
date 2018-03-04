@@ -28,32 +28,22 @@ export function* askQuestion(setting) {
   yield put(questionActions.setSetting(setting));
   yield put(uiActions.openQuestionModal());
   const action = yield take(sagaTypes.QUESTION_ANSWERED);
-  yield call(sendQuestionAnswer, [setting, action.payload.answer]);
+  yield call(sendQuestionAnswer, [setting, action.payload.userInput, action.payload.reduxFormFcs]);
 }
 
-// TODO: Clean this
-// A little bit messy because closedQuestions are not built with redux form.
 function* sendQuestionAnswer(params) {
   const userId = yield select(selectors.auth.getCurrentUserId);
   const setting = settingsConstants[params[0]].name;
-  let value = undefined;
-  let resolve;
-  let reject;
-  if (typeof params[1] === 'string') {
-    // Raw data
-    value = params[1]; // closedQuestion answer
-  } else {
-    // Data from registered redux-form
-    value = params[1].values.get('value');
-    resolve = params[1].resolve;
-    reject = params[1].reject;
-  }
+  const userInput = params[1];
+  // A little bit messy because closedQuestions are not built with redux form.
+  const resolve = params[2] ? params[2].resolve : undefined;
+  const reject = params[2] ? params[2].reject : undefined;
   yield put(uiActions.closeQuestionModal());
   try {
     const savedSettings = yield call(
       Api.post,
       '/users/settings',
-      { setting, value }
+      { setting, userInput }
     );
     yield put(settingsActions.set(userId, savedSettings.data));
     if (resolve) { yield call(resolve); }

@@ -6,9 +6,12 @@ import { default as closedQuestionConstants } from '../../constants/closedQuesti
 import { actions as sagaActions } from '../../sagas/actions';
 
 class ClosedQuestion extends Component {
-
   handleClick(e) {
-    return this.props.questionAnswered(e.target.getAttribute('data'));
+    return this.props.questionAnswered(
+      this.props.setting,
+      e.target.getAttribute('data'),
+      undefined // no reduxFormFcs since this is not built with redux-form
+    );
   }
 
   render() {

@@ -35,6 +35,7 @@ class Bookrow extends Component {
         animation={false}
         origin={this.props.buttonOptions.origin}
         small
+        trackClick
       />
     );
   }

@@ -7,7 +7,6 @@ import Api from '../utils/api';
 import { actions as settingsActions } from '../redux/settings';
 import { types as sagaTypes } from './actions';
 import { push } from 'react-router-redux';
-import { actions as sagaActions } from './actions';
 
 function* ensureAppInitialized() {
   const appInitialized = yield select(selectors.app.getInitialized);
@@ -22,7 +21,8 @@ export function* loadSettings() {
   if (settingsInitialized === false) {
     try {
       const savedSettings = yield call(Api.get, '/users/settings');
-      yield put(settingsActions.set(savedSettings.data));
+      // we don't pass a userId because we dont need to identify
+      yield put(settingsActions.set(null, savedSettings.data));
     } catch (error) {
       // TODO: handle errors
     }
@@ -45,10 +45,6 @@ export function* askUserSettings() {
         yield call(askQuestion, setting);
         // }
       }
-    }
-    // Track "Got a Chinese Name" event
-    if (requiredUserData[0] === 'NATIONALITY') {
-      yield put(sagaActions.gotChineseName());
     }
   }
 }

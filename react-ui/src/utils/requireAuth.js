@@ -3,6 +3,7 @@ import propTypes from 'prop-types';
 import { connect } from 'react-redux';
 // import { showFlashMessageWithTimeout } from '../redux/flashMessages';
 import selectors from '../rootSelectors';
+import swal from 'sweetalert';
 
 // High Order Component
 
@@ -10,18 +11,28 @@ export default function(ComposedComponent) {
   class Authenticate extends Component {
     componentDidMount() {
       if (!this.props.isAuthenticated) {
-        // this.props.showFlashMessageWithTimeout({
-        //   type: 'error',
-        //   text: 'You need to login to access this page.'
-        // }, 5000);
-        this.props.router.replace('/signup');
+        this._redirectUser();
       }
     }
 
     componentWillUpdate(nextProps) {
       if (!nextProps.isAuthenticated) {
-        this.context.router.replace('/signup');
+        this._redirectUser();
       }
+    }
+
+    _redirectUser() {
+      return swal({
+        title: 'ChineseMe account required',
+        text: 'The interactive part of the course requires students to log in.\n\n This allows us to save your progression and make sure we can provide you with personalised support to assist you in your study of the Chinese language.\n\nIf you don\'t want to create an account now, no worry! You can register later if you want to.',
+        icon: 'info',
+        buttons: ['Back to the course', 'Register']
+      }).then(register => {
+        if (register) {
+          return this.props.router.replace('/signup');
+        }
+        return this.props.router.replace('/');
+      });
     }
 
     render() {

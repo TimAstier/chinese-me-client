@@ -69,6 +69,7 @@ const UserIconWrapper = styled.div`
   justify-content: center;
   align-items: center;
   padding-top: 5px;
+  justify-content: flex-end;
 `;
 
 const LoginLinks = styled.div`

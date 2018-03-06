@@ -37,7 +37,10 @@ const LeftMenuWrapper = styled.div`
   flex-basis: 250px;
   display: flex;
   justify-content: space-around;
-  align-items: center
+  align-items: center;
+  @media (max-width: 780px) {
+    display: none;
+  }
 `;
 
 const LeftMenuItem = styled.div`
@@ -98,11 +101,13 @@ class Navbar extends Component {
         </LogoWrapper>
         <LeftMenuWrapper>
           <LeftMenuItem>
-            <Clickable>
-              <div onClick={this.props.openMapModal}>
-                Table of Contents
-              </div>
-            </Clickable>
+            <ScreenButton
+              text="Table of Contents"
+              width={160}
+              height={38}
+              fontSize={16}
+              onClick={this.props.openMapModal}
+            />
           </LeftMenuItem>
           <LeftMenuItem>
             <IconWrapper>
@@ -126,10 +131,21 @@ class Navbar extends Component {
               !this.props.isAuthenticated &&
                 <LoginLinks>
                   <Link to={'/login'}>
-                    <ScreenButton text="LOG IN" width={100} height={35} fontSize={14} />
+                    <ScreenButton
+                      text="LOG IN"
+                      width={100}
+                      height={35}
+                      fontSize={14}
+                    />
                   </Link>
                   <Link to={'/signup'}>
-                    <ScreenButton text="REGISTER" width={100} height={35} fontSize={14} primary />
+                    <ScreenButton
+                      text="REGISTER"
+                      width={100}
+                      height={35}
+                      fontSize={14}
+                      primary
+                    />
                   </Link>
                 </LoginLinks>
             }

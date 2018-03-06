@@ -12,7 +12,7 @@ import { actions as settingsActions } from '../redux/settings';
 function* login(token) {
   localStorage.setItem('jwtToken', token);
   setAuthorizationToken(token);
-  yield put(authActions.setCurrentUser(jwtDecode(token)));
+  yield put(authActions.setCurrentUser(jwtDecode(token), true));
 }
 
 function* logout() {

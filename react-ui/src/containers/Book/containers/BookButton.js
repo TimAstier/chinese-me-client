@@ -6,6 +6,7 @@ import { push } from 'react-router-redux';
 import s from '../../../rootSelectors';
 import { actions as sagaActions } from '../../../sagas/actions';
 import { PRODUCTION_ROOT_URL } from '../../../constants/urls';
+import swal from 'sweetalert';
 
 class BookButton extends Component {
   _url = () => {
@@ -40,8 +41,24 @@ class BookButton extends Component {
     return (
       <c.BookButton
         onClick={() => {
+          this.props.clickedBookButton({
+            type: this.props.buttonOptions.type
+          });
           if (this.props.buttonOptions.clickable === false) {
             return null;
+          }
+          if (!this.props.isAuthenticated) {
+            return swal({
+              title: 'ChineseMe account required',
+              text: 'The interactive part of the course requires students to log in.\n\n This allows us to save your progression and make sure we can provide you with personalised support to assist you in your study of the Chinese language.\n\nIf you don\'t want to create an account now, no worry! You can continue reading the course and register later if you want to.',
+              icon: 'info',
+              buttons: ['Continue reading', 'Register']
+            }).then(register => {
+              if (register) {
+                return this.props.push('/signup');
+              }
+              return null;
+            });
           }
           if (this.props.buttonOptions.type === 'askUserSettings') {
             return this.props.askUserSettings();
@@ -76,18 +93,22 @@ BookButton.propTypes = {
   }).isRequired,
   episodeId: propTypes.string,
   askUserSettings: propTypes.func.isRequired,
-  currentUrl: propTypes.string.isRequired
+  currentUrl: propTypes.string.isRequired,
+  clickedBookButton: propTypes.func.isRequired,
+  isAuthenticated: propTypes.bool.isRequired
 };
 
 const mapStateToProps = state => ({
   episodeId: s.study.getCurrentEpisodeId(state),
-  currentUrl: s.routing.getCurrentUrl(state)
+  currentUrl: s.routing.getCurrentUrl(state),
+  isAuthenticated: s.auth.getIsAuthenticated(state)
 });
 
 export default connect(
   mapStateToProps,
   {
     push,
-    askUserSettings: sagaActions.askUserSettings
+    askUserSettings: sagaActions.askUserSettings,
+    clickedBookButton: sagaActions.clickedBookButton
   }
 )(BookButton);

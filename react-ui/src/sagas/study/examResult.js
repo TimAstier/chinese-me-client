@@ -39,14 +39,11 @@ export function* run() {
   const currentEpisode = yield select(selectors.getCurrentEpisode);
   const currentSeason = yield select(selectors.getCurrentSeason);
   yield put(sagaActions.examCompleted({
-    seasonId: currentSeason.get('id'),
-    seasonNumber: currentSeason.get('number'),
-    episodeId: currentEpisode.get('id'),
-    episodeNumber: currentEpisode.get('number'),
+    episodeCode: `S${currentSeason.get('number')}E${currentEpisode.get('number')}`,
     score,
     timeLeft,
-    exercises,
-    results
+    exercises: exercises.toJS().map(e => e.id),
+    results: results.toJS()
   }));
   // End Tracking
   // Save score in DB

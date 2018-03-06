@@ -21,7 +21,8 @@ export function* loadSettings() {
   if (settingsInitialized === false) {
     try {
       const savedSettings = yield call(Api.get, '/users/settings');
-      yield put(settingsActions.set(savedSettings.data));
+      // we don't pass a userId because we dont need to identify
+      yield put(settingsActions.set(null, savedSettings.data));
     } catch (error) {
       // TODO: handle errors
     }

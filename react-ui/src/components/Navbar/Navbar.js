@@ -7,6 +7,7 @@ import messageIcon from '../../images/messageIcon.svg';
 import Clickable from '../Shared/Clickable';
 import { Link } from 'react-router';
 import { UserPopup } from '../.';
+import { ScreenButton } from '../.';
 
 const Wrapper = styled.div`
   align-self: stretch;
@@ -29,14 +30,20 @@ const LogoWrapper = styled.div`
   flex-basis: 186px;
   display: flex;
   justify-content: center;
-  align-items: center
+  align-items: center;
+  @media (max-width: 780px) {
+    display: none;
+  }
 `;
 
 const LeftMenuWrapper = styled.div`
   flex-basis: 250px;
   display: flex;
   justify-content: space-around;
-  align-items: center
+  align-items: center;
+  @media (max-width: 780px) {
+    display: none;
+  }
 `;
 
 const LeftMenuItem = styled.div`
@@ -46,7 +53,7 @@ const LeftMenuItem = styled.div`
 `;
 
 const RightMenuWrapper = styled.div`
-  width: 140px;
+  width: 320px;
   margin-left: auto;
   display: flex;
 `;
@@ -65,6 +72,16 @@ const UserIconWrapper = styled.div`
   justify-content: center;
   align-items: center;
   padding-top: 5px;
+  justify-content: flex-end;
+`;
+
+const LoginLinks = styled.div`
+  margin-top: 5px;
+  display: flex;
+  justify-content: space-between;
+  min-width: 245px;
+  padding-right: 10px;
+  padding-left: 10px;
 `;
 
 const IconWrapper = styled.div`
@@ -72,6 +89,9 @@ const IconWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media (max-width: 780px) {
+    display: none;
+  }
 `;
 
 class Navbar extends Component {
@@ -85,11 +105,13 @@ class Navbar extends Component {
         </LogoWrapper>
         <LeftMenuWrapper>
           <LeftMenuItem>
-            <Clickable>
-              <div onClick={this.props.openMapModal}>
-                Table of Contents
-              </div>
-            </Clickable>
+            <ScreenButton
+              text="Table of Contents"
+              width={160}
+              height={38}
+              fontSize={16}
+              onClick={this.props.openMapModal}
+            />
           </LeftMenuItem>
           <LeftMenuItem>
             <IconWrapper>
@@ -111,11 +133,25 @@ class Navbar extends Component {
             </UserIconWrapper>
             {
               !this.props.isAuthenticated &&
-                <Link
-                  to={'/login'}
-                >
-                  LOG IN
-                </Link>
+                <LoginLinks>
+                  <Link to={'/login'}>
+                    <ScreenButton
+                      text="LOG IN"
+                      width={100}
+                      height={35}
+                      fontSize={14}
+                    />
+                  </Link>
+                  <Link to={'/signup'}>
+                    <ScreenButton
+                      text="REGISTER"
+                      width={100}
+                      height={35}
+                      fontSize={14}
+                      primary
+                    />
+                  </Link>
+                </LoginLinks>
             }
           </UserMenuWrapper>
           <IconWrapper>

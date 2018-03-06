@@ -6,10 +6,13 @@ import { default as selectQuestionConstants } from '../../constants/selectQuesti
 import { actions as sagaActions } from '../../sagas/actions';
 
 class SelectQuestion extends Component {
-
   onSubmit(values) {
     return new Promise((resolve, reject) => {
-      return this.props.questionAnswered({ values, resolve, reject });
+      return this.props.questionAnswered(
+        this.props.setting,
+        values.get('value'),
+        { resolve, reject }
+      );
     });
   }
 

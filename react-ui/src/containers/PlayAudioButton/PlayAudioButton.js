@@ -36,6 +36,13 @@ class PlayAudioButton extends Component {
         onClick={this.props.onClick ?
           this.props.onClick
           : () => {
+            if (this.props.trackClick) {
+              this.props.clickedBookButton({
+                type: 'sound',
+                src: this.props.url,
+                text: this.props.text
+              });
+            }
             this.props.playAudio(
               this.props.url,
               this.props.slowUrl,
@@ -67,7 +74,9 @@ PlayAudioButton.propTypes = {
   big: propTypes.bool,
   toggleSlow: propTypes.bool,
   slow: propTypes.bool,
-  origin: propTypes.string
+  origin: propTypes.string,
+  trackClick: propTypes.bool,
+  clickedBookButton: propTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -77,5 +86,6 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   {
-    playAudio: sagaActions.playAudio
+    playAudio: sagaActions.playAudio,
+    clickedBookButton: sagaActions.clickedBookButton
   })(PlayAudioButton);

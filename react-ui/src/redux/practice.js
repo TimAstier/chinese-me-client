@@ -1,5 +1,6 @@
 import { fromJS } from 'immutable';
 import { createSelector } from 'reselect';
+import { EventTypes } from 'redux-segment';
 
 // Types
 
@@ -13,7 +14,9 @@ export const types = {
   SET_CORRECT_ANSWER: 'practice/SET_CORRECT_ANSWER',
   SET_EXPLANATION: 'practice/SET_EXPLANATION',
   SET_ERROR: 'practice/SET_ERROR',
-  SET_TYPE: 'practice/SET_TYPE'
+  SET_TYPE: 'practice/SET_TYPE',
+  STARTED_PRACTICE: 'practice/STARTED_PRACTICE',
+  COMPLETED_PRACTICE: 'practice/COMPLETED_PRACTICE'
 };
 
 // Reducer
@@ -84,6 +87,30 @@ const setTotal = total => ({
 });
 const setError = payload => ({ type: types.SET_ERROR, payload });
 const setType = payload => ({ type: types.SET_TYPE, payload });
+const startedPractice = properties => ({
+  type: types.STARTED_PRACTICE,
+  meta: {
+    analytics: {
+      eventType: EventTypes.track,
+      eventPayload: {
+        event: 'Started Practice',
+        properties
+      }
+    }
+  }
+});
+const completedPractice = properties => ({
+  type: types.COMPLETED_PRACTICE,
+  meta: {
+    analytics: {
+      eventType: EventTypes.track,
+      eventPayload: {
+        event: 'Completed Practice',
+        properties
+      }
+    }
+  }
+});
 
 export const actions = {
   setInitialized,
@@ -95,7 +122,9 @@ export const actions = {
   setCorrectAnswer,
   setExplanation,
   setError,
-  setType
+  setType,
+  startedPractice,
+  completedPractice
 };
 
 // Selectors

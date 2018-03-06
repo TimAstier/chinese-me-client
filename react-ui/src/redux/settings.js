@@ -1,4 +1,5 @@
 import { fromJS } from 'immutable';
+import { EventTypes } from 'redux-segment';
 
 // Types
 
@@ -28,9 +29,31 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
 
 // Actions
 
-const set = settings => ({
+const set = (userId, settings) => ({
   type: types.SET,
-  payload: { settings }
+  payload: { settings },
+  meta: !userId ? undefined : {
+    analytics: {
+      eventType: EventTypes.identify,
+      eventPayload: {
+        userId,
+        traits: {
+          // Segment reserved traits: https://segment.com/docs/spec/identify/
+          birthday: settings.birthdate,
+          firstName: settings.givenName,
+          lastName: settings.familyName,
+          gender: settings.gender,
+          // custom traits
+          nationality: settings.nationality,
+          motherTongue: settings.motherTongue,
+          otherLanguage: settings.otherLanguage,
+          reasonLearnChinese: settings.reasonLearnChinese,
+          chineseFamilyName: settings.chineseFamilyName,
+          chineseGivenName: settings.chineseGivenName
+        }
+      }
+    }
+  }
 });
 
 const clear = () => ({

@@ -6,7 +6,6 @@ import s from '../../rootSelectors';
 import { actions as uiActions } from '../../redux/ui';
 
 class QuestionModal extends Component {
-
   handleClose() {
     return this.props.closeQuestionModal();
   }

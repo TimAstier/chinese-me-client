@@ -1,5 +1,6 @@
 import { Map } from 'immutable';
 import { types as sagaTypes } from '../sagas/actions';
+import { EventTypes } from 'redux-segment';
 
 // Types
 
@@ -88,13 +89,41 @@ const set = (attribute, value) => ({
 });
 const openHintModal = () => ({ type: types.OPEN_HINT_MODAL });
 const closeHintModal = () => ({ type: types.CLOSE_HINT_MODAL });
-const openFeedbackModal = () => ({ type: types.OPEN_FEEDBACK_MODAL });
+const openFeedbackModal = () => ({
+  type: types.OPEN_FEEDBACK_MODAL,
+  meta: {
+    analytics: {
+      eventType: EventTypes.track,
+      eventPayload: {
+        event: 'Opened Feedback Modal'
+      }
+    }
+  }
+});
 const closeFeedbackModal = () => ({ type: types.CLOSE_FEEDBACK_MODAL });
 const updateFeedbackStatus = status => ({
   type: types.UPDATE_FEEDBACK_STATUS,
-  payload: status
+  payload: status,
+  meta: status !== 'sent' ? undefined : {
+    analytics: {
+      eventType: EventTypes.track,
+      eventPayload: {
+        event: 'Sent Feedback'
+      }
+    }
+  }
 });
-const openMapModal = () => ({ type: types.OPEN_MAP_MODAL });
+const openMapModal = () => ({
+  type: types.OPEN_MAP_MODAL,
+  meta: {
+    analytics: {
+      eventType: EventTypes.track,
+      eventPayload: {
+        event: 'Opened TOC'
+      }
+    }
+  }
+});
 const closeMapModal = () => ({ type: types.CLOSE_MAP_MODAL });
 const openQuestionModal = () => ({ type: types.OPEN_QUESTION_MODAL });
 const closeQuestionModal = () => ({ type: types.CLOSE_QUESTION_MODAL });

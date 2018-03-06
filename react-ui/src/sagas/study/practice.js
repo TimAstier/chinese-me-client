@@ -52,6 +52,16 @@ function* defaultExamUi() {
 }
 
 export function* run() {
+  // Tracking properties
+  const currentEpisode = yield select(selectors.getCurrentEpisode);
+  const currentSeason = yield select(selectors.getCurrentSeason);
+  const currentUrl = yield select(selectors.routing.getCurrentUrl);
+  const trackingProperties = {
+    episodeCode: `S${currentSeason.get('number')}E${currentEpisode.get('number')}`,
+    practiceId: currentUrl.split('/')[4]
+  };
+  // END Tracking properties
+  yield put(practiceActions.startedPractice(trackingProperties));
   let completed = false;
   const total = yield select(selectors.practice.getExercisesSize);
   yield put(practiceActions.setTotal(total));
@@ -106,6 +116,9 @@ export function* run() {
   yield put(studyActions.setCurrentExerciseId(null));
   // yield delay(1000);
   yield put(sagaActions.playLevelWinSound());
+  // Tracking
+  yield put(practiceActions.completedPractice(trackingProperties));
+  // End Tracking
   // Save score in DB
   // Might be better to save currentPracticeId in the state
   const url = yield select(selectors.routing.getCurrentUrl);

@@ -28,28 +28,30 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
 
 // Actions
 
-const setCurrentUser = user => {
+const setCurrentUser = (user, trackLogin) => {
+  // only track "Logged in" even when coming from Login saga
+  const identify = {
+    eventType: EventTypes.identify,
+    eventPayload: {
+      userId: user.id,
+      traits: {
+        email: user.email,
+        createdAt: user.createdAt
+      }
+    },
+  };
+  const loggedIn = {
+    eventType: EventTypes.track,
+    eventPayload: {
+      event: 'Logged in'
+    }
+  };
   return {
     type: types.SET_CURRENT_USER,
     user,
     meta: {
-      analytics: [{
-        eventType: EventTypes.identify,
-        eventPayload: {
-          userId: user.id,
-          traits: {
-            email: user.email,
-            createdAt: user.createdAt,
-            settings: user.settings
-          }
-        },
-      }, {
-        eventType: EventTypes.track,
-        eventPayload: {
-          event: 'User Logged in'
-        }
-      }],
-    },
+      analytics: trackLogin ? [ identify, loggedIn ] : identify,
+    }
   };
 };
 

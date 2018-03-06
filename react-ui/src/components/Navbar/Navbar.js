@@ -7,6 +7,7 @@ import messageIcon from '../../images/messageIcon.svg';
 import Clickable from '../Shared/Clickable';
 import { Link } from 'react-router';
 import { UserPopup } from '../.';
+import { ScreenButton } from '../.';
 
 const Wrapper = styled.div`
   align-self: stretch;
@@ -26,7 +27,10 @@ const LogoWrapper = styled.div`
   flex-basis: 186px;
   display: flex;
   justify-content: center;
-  align-items: center
+  align-items: center;
+  @media (max-width: 780px) {
+    display: none;
+  }
 `;
 
 const LeftMenuWrapper = styled.div`
@@ -43,7 +47,7 @@ const LeftMenuItem = styled.div`
 `;
 
 const RightMenuWrapper = styled.div`
-  width: 140px;
+  width: 320px;
   margin-left: auto;
   display: flex;
 `;
@@ -64,11 +68,23 @@ const UserIconWrapper = styled.div`
   padding-top: 5px;
 `;
 
+const LoginLinks = styled.div`
+  margin-top: 5px;
+  display: flex;
+  justify-content: space-between;
+  min-width: 245px;
+  padding-right: 10px;
+  padding-left: 10px;
+`;
+
 const IconWrapper = styled.div`
   flex-basis: 93px;
   display: flex;
   justify-content: center;
   align-items: center;
+  @media (max-width: 780px) {
+    display: none;
+  }
 `;
 
 class Navbar extends Component {
@@ -108,11 +124,14 @@ class Navbar extends Component {
             </UserIconWrapper>
             {
               !this.props.isAuthenticated &&
-                <Link
-                  to={'/login'}
-                >
-                  LOG IN
-                </Link>
+                <LoginLinks>
+                  <Link to={'/login'}>
+                    <ScreenButton text="LOG IN" width={100} height={35} fontSize={14} />
+                  </Link>
+                  <Link to={'/signup'}>
+                    <ScreenButton text="REGISTER" width={100} height={35} fontSize={14} primary />
+                  </Link>
+                </LoginLinks>
             }
           </UserMenuWrapper>
           <IconWrapper>

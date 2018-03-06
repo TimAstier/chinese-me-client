@@ -38,6 +38,7 @@ class BookButton extends Component {
           if (this.props.buttonOptions.clickable === false) {
             return null;
           }
+          // TODO: If not logged in, display a modal explaining they need an account 
           if (this.props.buttonOptions.type === 'askUserSettings') {
             return this.props.askUserSettings();
           }

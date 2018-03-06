@@ -9,6 +9,12 @@ import { PRODUCTION_ROOT_URL } from '../../../constants/urls';
 
 class BookButton extends Component {
   _url = () => {
+    // bookButtons in "Help" page do not necessary have all options
+    if (['review', 'exam'].indexOf(this.props.buttonOptions.type !== -1)) {
+      if (!this.props.buttonOptions.data || !this.props.buttonOptions.data.elementId) {
+        return PRODUCTION_ROOT_URL + this.props.currentUrl;
+      }
+    }
     switch (this.props.buttonOptions.type) {
       case 'calligraphy':
         return `/study/${this.props.episodeId}/character/${this.props.buttonOptions.data.elementId}/calligraphy`;

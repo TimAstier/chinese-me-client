@@ -13,6 +13,10 @@ import swal from 'sweetalert';
 // This is called only one time, when Study containers mounts
 export function* initApp() {
   const browser = detect();
+  const isFacebookApp = () => {
+    const ua = navigator.userAgent || navigator.vendor || window.opera;
+    return (ua.indexOf('FBAN') > -1) || (ua.indexOf('FBAV') > -1);
+  };
   while (true) { // eslint-disable-line no-constant-condition
     const { payload: { isAuthenticated } } = yield take(sagaTypes.INIT_APP);
     yield call(fetchEntities, ['/seasons']);
@@ -34,10 +38,10 @@ export function* initApp() {
     }
     // browser disclaimer for people not using Chrome
     if (browser) {
-      if (browser.name !== 'chrome') {
+      if (browser.name !== 'chrome' || isFacebookApp()) {
         swal({
-          title: 'This browser is not supported',
-          text: 'ChineseMe only works properly on the Chrome web browser, on a computer.\n\nWe noticed you are using another web browser. Please consider using Chrome as we otherwise cannot guarantee a satisfying learning experience for you.\n\nIf you don\'t have Chrome already, you can download it here: https://www.google.com/chrome/\n\nThanks for your understanding!',
+          title: 'Web browser not supported',
+          text: 'For now, ChineseMe only works properly on the Chrome web browser, on a computer.\n\nWe noticed you are using another web browser. Please consider using Chrome as we otherwise cannot guarantee a satisfying learning experience for you.\n\nIf you don\'t have Chrome already, you can download it here: https://www.google.com/chrome/\n\nThanks for your understanding!',
           icon: 'warning',
           button: 'Got it!'
         });

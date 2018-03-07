@@ -128,7 +128,7 @@ class Help extends Component {
             <c.P>If you want to get started now, go to <Link to="/study/season/0/episode/1">Lesson 1</Link>. By the end of this lesson, you should have a good idea about how the Chinese language works. You will have learnt your first five Chinese characters. And you will have your own Chinese name!</c.P>
             <c.P>We wish you pleasure and success in your study.</c.P>
             <c.P>Johan & Tim</c.P>
-            <c.P><i>Note: If you prefer reading the book on paper, it is available as a free download <a href="https://s3.eu-west-2.amazonaws.com/chineseme/pdf/ChineseMe+paper_version.pdf" target="_blank" rel="noopener noreferrer">here</a>.</i></c.P>
+            <c.P><i>Note: If you prefer reading the book on paper, it is available as a free download <a href="https://s3.eu-west-2.amazonaws.com/chineseme/pdf/ChineseMe_Mandarin_Chinese_Language_of_the_Middle_Kingdom_v0_1.pdf" target="_blank" rel="noopener noreferrer">here</a>.</i></c.P>
           </c.Page>
         </ScrollableWrapper>
       </Preload>

@@ -4,6 +4,7 @@ import { Bookrow } from './.';
 import styled from 'styled-components';
 
 const Text = styled.div`
+  width: 100%;
   font-size: 21px;
   font-family: 'Cambria';
   text-align: justify;

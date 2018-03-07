@@ -56,6 +56,8 @@ class PlayAudioButton extends Component {
         small={this.props.small}
         big={this.props.big}
         isPlaying={this.props.animation === false ? false : this.props.isPlaying}
+        printLink={this.props.printLink}
+        currentUrl={this.props.currentUrl}
       />
     );
   }
@@ -76,11 +78,14 @@ PlayAudioButton.propTypes = {
   slow: propTypes.bool,
   origin: propTypes.string,
   trackClick: propTypes.bool,
-  clickedBookButton: propTypes.func.isRequired
+  clickedBookButton: propTypes.func.isRequired,
+  printLink: propTypes.bool,
+  currentUrl: propTypes.string.isRequired
 };
 
 const mapStateToProps = state => ({
-  isPlaying: s.audio.getIsPlaying(state)
+  isPlaying: s.audio.getIsPlaying(state),
+  currentUrl: s.routing.getCurrentUrl(state)
 });
 
 export default connect(

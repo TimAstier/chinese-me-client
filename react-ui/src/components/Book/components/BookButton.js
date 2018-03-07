@@ -8,6 +8,7 @@ import storyIcon from '../../../images/storyIcon.svg';
 import strokeIcon from '../../../images/strokeIcon.svg';
 import examIcon from '../../../images/examIcon.svg';
 import squareLogo from '../../../images/squareLogo.png';
+import { PRODUCTION_ROOT_URL, PDF_VERSION } from '../../../constants/urls';
 
 const Wrapper = styled.div`
   display: flex;
@@ -53,7 +54,7 @@ class BookButton extends Component {
   render() {
     return (
       <Wrapper onClick={this.props.onClick}>
-        <a href={this.props.url}>
+        <a href={PRODUCTION_ROOT_URL + this.props.url + '/?utm_source=pdf_v' + PDF_VERSION}>
           <Img src={this._image()} />
         </a>
       </Wrapper>

@@ -11,7 +11,7 @@ import { ScreenButton } from '../.';
 
 const Wrapper = styled.div`
   align-self: stretch;
-  min-height: 70px;
+  min-height: 55px;
   background-color: #363636;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.18);
   display: flex;

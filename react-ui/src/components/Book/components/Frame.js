@@ -7,6 +7,11 @@ const Frame = styled.div`
   padding-top: 30px;
   padding-bottom: 30px;
   width: 750px;
+  margin-left: auto;
+  margin-right: auto;
+  @media print {
+    display: none;
+  }
 `;
 
 export default Frame;

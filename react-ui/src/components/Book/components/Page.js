@@ -9,9 +9,9 @@ const Wrapper = styled.div`
   border-radius: 10px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.08);
   background-color: white;
-  display: flex;
+  ${''/* display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center; */}
   padding-top: 80px;
   font-size: 21px;
   font-family: 'Cambria';
@@ -23,13 +23,6 @@ const Wrapper = styled.div`
   }
 `;
 
-const Body = styled.div`
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
 const Footer = styled.div`
   min-height: 100px;
   font-size: 18px;
@@ -38,13 +31,16 @@ const Footer = styled.div`
   justify-content: center;
 `;
 
+/* Do not use Flexbox in the div around content
+** as otherise the page-break features from CSS */
+
 class Page extends Component {
   render() {
     return (
       <Wrapper>
-        <Body>
+        <div>
           {this.props.children}
-        </Body>
+        </div>
         <Footer>
           {this.props.number}
         </Footer>

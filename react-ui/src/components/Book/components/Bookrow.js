@@ -36,6 +36,7 @@ class Bookrow extends Component {
         origin={this.props.buttonOptions.origin}
         small
         trackClick
+        printLink
       />
     );
   }
@@ -71,7 +72,11 @@ class Bookrow extends Component {
   render() {
     const { marginBottom, marginTop } = this.props;
     return (
-      <Row marginBottom={marginBottom || 15} marginTop={marginTop || 0}>
+      <Row
+        marginBottom={marginBottom || 15}
+        marginTop={marginTop || 0}
+        noPrint={this.props.noPrint}
+      >
         <Margin top={this.props.buttonOptions ? this.props.buttonOptions.top : false}>
           {this._renderButton()}
         </Margin>
@@ -113,7 +118,8 @@ Bookrow.propTypes = {
   }),
   backgroundColor: propTypes.string,
   flexDirection: propTypes.oneOf(['row', 'column']),
-  center: propTypes.bool
+  center: propTypes.bool,
+  noPrint: propTypes.bool
 };
 
 export default Bookrow;

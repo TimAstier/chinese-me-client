@@ -5,35 +5,52 @@ import { bookComponents as c } from '../../../components';
 import { push } from 'react-router-redux';
 import s from '../../../rootSelectors';
 import { actions as sagaActions } from '../../../sagas/actions';
-import { PRODUCTION_ROOT_URL } from '../../../constants/urls';
 import swal from 'sweetalert';
 
 class BookButton extends Component {
+  _redirectUser = () => {
+    return swal({
+      title: 'ChineseMe account required',
+      text: 'The interactive part of the course requires students to log in.\n\n This allows us to save your progression and make sure we can provide you with personalised support to assist you in your study of the Chinese language.\n\nIf you don\'t want to create an account now, no worry! You can continue reading the course and register later if you want to.',
+      icon: 'info',
+      buttons: ['Continue reading', 'Register']
+    }).then(register => {
+      if (register) {
+        return this.props.push('/signup');
+      }
+      return null;
+    });
+  }
+
   _url = () => {
     // bookButtons in "Help" page do not necessary have all options
-    if (['review', 'exam'].indexOf(this.props.buttonOptions.type !== -1)) {
+    if (['review', 'exam'].indexOf(this.props.buttonOptions.type) === -1) {
       if (!this.props.buttonOptions.data || !this.props.buttonOptions.data.elementId) {
-        return PRODUCTION_ROOT_URL + this.props.currentUrl;
+        return this.props.currentUrl;
       }
-    }
-    switch (this.props.buttonOptions.type) {
-      case 'calligraphy':
-        return `/study/${this.props.episodeId}/character/${this.props.buttonOptions.data.elementId}/calligraphy`;
-      case 'dialog':
-        return `/study/${this.props.episodeId}/dialog/${this.props.buttonOptions.data.elementId}/explore`;
-      case 'etymology':
-        return `/study/${this.props.episodeId}/character/${this.props.buttonOptions.data.elementId}/etymology`;
-      case 'stroke':
-        return `/study/${this.props.episodeId}/character/${this.props.buttonOptions.data.elementId}/animation`;
-      case 'practice':
-        return `/study/${this.props.episodeId}/practice/${this.props.buttonOptions.data.elementId}`;
-      case 'review':
-        return `/study/${this.props.episodeId}/review`;
-      case 'exam':
-        return `/study/${this.props.episodeId}/exam`;
-      default:
-        console.log('Unknown bookButton type');
-        return PRODUCTION_ROOT_URL + this.props.currentUrl;
+      switch (this.props.buttonOptions.type) {
+        case 'calligraphy':
+          return `/study/${this.props.episodeId}/character/${this.props.buttonOptions.data.elementId}/calligraphy`;
+        case 'dialog':
+          return `/study/${this.props.episodeId}/dialog/${this.props.buttonOptions.data.elementId}/explore`;
+        case 'etymology':
+          return `/study/${this.props.episodeId}/character/${this.props.buttonOptions.data.elementId}/etymology`;
+        case 'stroke':
+          return `/study/${this.props.episodeId}/character/${this.props.buttonOptions.data.elementId}/animation`;
+        case 'practice':
+          return `/study/${this.props.episodeId}/practice/${this.props.buttonOptions.data.elementId}`;
+        default:
+          return this.props.currentUrl;
+      }
+    } else {
+      switch (this.props.buttonOptions.type) {
+        case 'review':
+          return `/study/${this.props.episodeId}/review`;
+        case 'exam':
+          return `/study/${this.props.episodeId}/exam`;
+        default:
+          return this.props.currentUrl;
+      }
     }
   }
 
@@ -48,17 +65,7 @@ class BookButton extends Component {
             return null;
           }
           if (!this.props.isAuthenticated) {
-            return swal({
-              title: 'ChineseMe account required',
-              text: 'The interactive part of the course requires students to log in.\n\n This allows us to save your progression and make sure we can provide you with personalised support to assist you in your study of the Chinese language.\n\nIf you don\'t want to create an account now, no worry! You can continue reading the course and register later if you want to.',
-              icon: 'info',
-              buttons: ['Continue reading', 'Register']
-            }).then(register => {
-              if (register) {
-                return this.props.push('/signup');
-              }
-              return null;
-            });
+            return this._redirectUser();
           }
           if (this.props.buttonOptions.type === 'askUserSettings') {
             return this.props.askUserSettings();

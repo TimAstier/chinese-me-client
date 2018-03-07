@@ -275,7 +275,7 @@ export default class Content extends Component {
           <c.P><b>{insertVariables('[FAMILY_NAME_PINYIN]', settings)} {insertVariables('[GIVEN_NAME_PINYIN]', settings)}</b></c.P>
           <c.P>Listen to the audio voice and practice reading the pīnyīn a few times:</c.P>
           {example(4, { basic: true, audio: true })}
-          <c.PartTitle>ORACLE BONES</c.PartTitle>
+          <c.PartTitle noPrint>ORACLE BONES</c.PartTitle>
           <c.Frame><OracleBone1 /></c.Frame>
           <c.Frame><OracleBone2 /></c.Frame>
           <c.PartTitle>CALLIGRAPHY</c.PartTitle>

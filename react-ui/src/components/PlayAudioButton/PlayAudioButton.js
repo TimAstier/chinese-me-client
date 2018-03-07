@@ -5,6 +5,7 @@ import iconAudioPlayingA from '../../images/iconAudioPlayingA.svg';
 import iconAudioPlayingB from '../../images/iconAudioPlayingB.svg';
 import iconAudioPlayingC from '../../images/iconAudioPlayingC.svg';
 import styled from 'styled-components';
+import { PRODUCTION_ROOT_URL, PDF_VERSION} from '../../constants/urls';
 
 const Wrapper = styled.div`
   height: ${props => `${props.size}px`};
@@ -16,6 +17,14 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  a {
+    pointer-events: none;
+  }
+  @media print {
+    a {
+      pointer-events: auto;
+    }
+  }
 `;
 
 class PlayAudioButton extends Component {
@@ -92,7 +101,9 @@ class PlayAudioButton extends Component {
         onClick={this.props.onClick}
         size={this._size()}
       >
-        {this._renderImage()}
+        <a href={PRODUCTION_ROOT_URL + this.props.currentUrl + '/?utm_source=pdf_v' + PDF_VERSION}>
+          {this._renderImage()}
+        </a>
       </Wrapper>
     );
   }
@@ -102,7 +113,9 @@ PlayAudioButton.propTypes = {
   onClick: propTypes.func.isRequired,
   isPlaying: propTypes.bool,
   small: propTypes.bool,
-  big: propTypes.bool
+  big: propTypes.bool,
+  printLink: propTypes.bool,
+  currentUrl: propTypes.string.isRequired
 };
 
 export default PlayAudioButton;

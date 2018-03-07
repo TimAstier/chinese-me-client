@@ -40,6 +40,10 @@ const Placeholder = styled.span`
   color: red;
 `;
 
+const Wrapper = styled.div`
+  width: 100%;
+`;
+
 class Example extends Component {
   _renderBasic() {
     if (this.props.displayTranslation) {
@@ -102,7 +106,9 @@ class Example extends Component {
             : undefined
         }
       >
-        { this.props.basic ? this._renderBasic() : this._renderFull() }
+        <Wrapper>
+          { this.props.basic ? this._renderBasic() : this._renderFull() }
+        </Wrapper>
       </Bookrow>
     );
   }

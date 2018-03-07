@@ -79,6 +79,7 @@ class PartTitle extends Component {
         center={!this.props.type}
         buttonOptions={this.props.buttonOptions}
         marginTop={this._marginTop()}
+        noPrint={this.props.noPrint}
       >
         <Element name={this.props.anchor}>
           <H2 fontSize={this._fontSize()} color={this._color()} fontFamily={this._fontFamily()}>
@@ -108,7 +109,8 @@ PartTitle.propTypes = {
   type: propTypes.oneOf(['secondary', 'tertiary']),
   buttonOptions: propTypes.object,
   anchor: propTypes.string,
-  noMargin: propTypes.bool
+  noMargin: propTypes.bool,
+  noPrint: propTypes.bool
   // linkUrl: propTypes.string
 };
 

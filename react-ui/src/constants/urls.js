@@ -1,4 +1,5 @@
 export const PRODUCTION_ROOT_URL = 'https://app.chinese-me.com';
+export const PDF_VERSION = '0.1';
 
 export const imageUrls = {
   S0E1: [

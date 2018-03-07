@@ -136,6 +136,7 @@ export default class Content extends Component {
             translation="What is your family name?"
             literalTranslation="(YOU: PRECIOUS NAME?)"
             audio
+            slow={false}
           />
           <c.P><c.Chinese>您</c.Chinese> <b>nín</b> is a more formal form of <c.Chinese>你</c.Chinese> <b>nǐ</b> <i>you</i>. It is used when addressing someone older or in a higher social position. <c.Chinese>贵</c.Chinese> <b>guì</b>, means <i>precious</i> or <i>expensive</i>.</c.P>
           <c.P>When you meet somebody for the first time, it is common to say:</c.P>
@@ -145,6 +146,7 @@ export default class Content extends Component {
             translation="I am happy to meet you."
             literalTranslation="(KNOW YOU: I (VERY) HAPPY.)"
             audio
+            slow={false}
           />
           <c.PartTitle name="words" />
           {newWords()}

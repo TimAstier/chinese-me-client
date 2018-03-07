@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import { PartTitle } from './.';
+
 const Scroll = require('react-scroll');
 const Element = Scroll.Element;
 

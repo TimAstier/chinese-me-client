@@ -5,7 +5,6 @@ import iconTwitter from '../../images/iconTwitter.svg';
 import iconMedium from '../../images/iconMedium.svg';
 
 const Wrapper = styled.footer`
-  height: 148px;
   width: 100%;
   background-color: #f8f8f8;
   display: flex;
@@ -17,40 +16,44 @@ const Wrapper = styled.footer`
 `;
 
 const CopyrightWrapper = styled.div`
-  height: 48px;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
+  text-align: center;
   font-family: 'Open Sans';
 	font-size: 18px;
 	color: #b2babf;
+  width: 70%;
 `;
 
 const LinksWrapper = styled.div`
-  height: 50px;
-  ${''/* width: 700px; */}
-  width: 500px;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 40px;
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+  justify-content: center;
+  @media (max-width: 800px) {
+    flex-direction: column;
+    align-items: center;
+  }
   font-family: 'Open Sans';
   font-size: 18px;
 	font-weight: 600;
-	line-height: 1.0;
 	color: #7f8c94;
   a {
+    width: 150px;
     color: #7f8c94;
     text-decoration: none;
+    text-align: center;
+    margin-bottom: 10px;
   }
 `;
 
 const SocialMediaLinks = styled.div`
-  width: 107px;
+  width: 150px;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   a {
     text-decoration: none;
+    min-width: 0;
   }
 `;
 

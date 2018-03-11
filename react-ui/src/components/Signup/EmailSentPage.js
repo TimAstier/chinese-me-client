@@ -7,16 +7,14 @@ const ImageWrapper = styled.div`
   height: 230px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
 `;
 
 const MainMessage = styled.div`
-  height: 80px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
+  min-height: 80px;
+  width: 95%;
+  text-align: center;
 `;
 
 const Text = styled.div`
@@ -43,13 +41,12 @@ const Link = styled.span`
 class EmailSentPage extends Component {
   render() {
     return (
-      <OnboardingScreen>
+      <OnboardingScreen minHeight="400px">
         <ImageWrapper>
           <img src={iconMailSent} alt="mail sent" />
         </ImageWrapper>
         <MainMessage>
-          <Text>An email has been sent to you with an activation link.</Text>
-          <Text>Please check your emails to activate your account.</Text>
+          <Text>An email has been sent to you with an activation link. Please check your emails to activate your account.</Text>
         </MainMessage>
         <FooterText>
           Haven't received any email? <Link>Contact us.</Link>

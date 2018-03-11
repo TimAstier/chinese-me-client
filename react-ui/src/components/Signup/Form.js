@@ -4,24 +4,7 @@ import styled from 'styled-components';
 import { TransparentInput } from '../.';
 import { reduxForm } from 'redux-form/immutable';
 import { required, email } from '../../utils/formValidations';
-
-const Button = styled.button`
-  width: 350px;
-  height: 60px;
-  border-radius: 10px;
-  background-color: #55b6ff;
-  box-shadow: 0 5px 18px 0 rgba(85, 182, 255, 0.5);
-  font-family: 'Open Sans';
-	font-size: 20px;
-	text-align: center;
-	color: #ffffff;
-  outline: 0;
-  border: 0;
-  :hover {
-    background-color: #5fb9fc;
-    box-shadow: 0 5px 30px 0 rgba(85, 182, 255, 0.8);
-  }
-`;
+import { Button } from '../Shared/Onboarding';
 
 const FieldsWrapper = styled.div`
   min-height: 245px;
@@ -48,7 +31,6 @@ const validate = values => {
 };
 
 class Form extends Component {
-
   render() {
     const { handleSubmit, error } = this.props;
     return (

@@ -8,7 +8,7 @@ const Wrapper = styled.div`
 `;
 
 const Input = styled.input`
-  width: 350px;
+  width: 100%;
   font-family: 'Open Sans';
   font-size: 22px;
   color: #454545;

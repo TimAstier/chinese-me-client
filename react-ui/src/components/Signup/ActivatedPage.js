@@ -5,7 +5,7 @@ import { OnboardingScreen } from '../.';
 import iconSucceed from '../../images/iconSucceed.svg';
 
 const ImageWrapper = styled.div`
-  height: 240px;
+  height: 180px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -13,11 +13,12 @@ const ImageWrapper = styled.div`
 `;
 
 const MainMessage = styled.div`
-  height: 50px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
+  margin-top: 20px;
+  height: 100px;
+  width: 90%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
   font-family: 'Open Sans';
 	font-size: 20px;
 	font-weight: 300;
@@ -25,15 +26,9 @@ const MainMessage = styled.div`
 	color: #000000;
 `;
 
-const ButtonWrapper = styled.div`
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  padding-top: 30px;
-`;
-
 const Button = styled.button`
-  width: 350px;
+  margin-top: 20px;
+  width: 90%;
   height: 60px;
   border-radius: 10px;
   background-color: #55b6ff;
@@ -47,7 +42,6 @@ const Button = styled.button`
 `;
 
 class ActivatedPage extends Component {
-
   render() {
     return (
       <OnboardingScreen>
@@ -57,11 +51,9 @@ class ActivatedPage extends Component {
         <MainMessage>
           Your account has been successfully activated.
         </MainMessage>
-        <ButtonWrapper>
-          <Button onClick={() => this.props.router.push('/login')}>
-            Start learning Chinese
-          </Button>
-        </ButtonWrapper>
+        <Button onClick={() => this.props.router.push('/login')}>
+          Start learning Chinese
+        </Button>
       </OnboardingScreen>
     );
   }

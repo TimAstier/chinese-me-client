@@ -9,16 +9,13 @@ import Immutable from 'immutable';
 const ScreenWrapper = styled.div`
   margin: 30px auto 50px;
   min-height: 640px;
-  width: 1200px;
-  border-radius: 10px;
-  background-color: #ffffff;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.08);
+  width: 85%;
   display: flex;
   flex-direction: column;
 `;
 
 const TitleWrapper = styled.div`
-  height: 75px;
+  height: 35px;
   font-family: 'Open Sans';
 	font-size: 35px;
   font-weight: bold;
@@ -29,9 +26,11 @@ const TitleWrapper = styled.div`
 `;
 
 const EpisodeCardsWrapper = styled.div`
-  margin: 16px 40px 50px;
+  margin-top: 16px;
+  margin-bottom: 16px;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 `;
 
 class SelectEpisode extends Component {

@@ -5,8 +5,9 @@ import logo from '../../images/whiteBackgroundLogo.svg';
 import { Link } from 'react-router';
 
 const Wrapper = styled.div`
-  width: 640px;
-  height: 691px;
+  max-width: 640px;
+  width: 95%;
+  min-height: '${props => props.minHeight ? props.minHeight : '691px'}';
   border-radius: 10px;
 	background-color: #ffffff;
 	box-shadow: 0 0 33px 0 rgba(0, 0, 0, 0.07);
@@ -26,14 +27,13 @@ const HeaderLine = styled.div`
 `;
 
 const ContentWrapper = styled.div`
-  height: 591px;
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 
 const Footer = styled.div`
-  height: 90px;
+  min-height: 90px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -41,10 +41,9 @@ const Footer = styled.div`
 `;
 
 class OnboardingScreen extends Component {
-
   render() {
     return (
-      <Wrapper>
+      <Wrapper minHeight={this.props.minHeight}>
         <HeaderLine />
         <ContentWrapper>
           {this.props.children}
@@ -60,7 +59,8 @@ class OnboardingScreen extends Component {
 }
 
 OnboardingScreen.propTypes = {
-  children: propTypes.node
+  children: propTypes.node,
+  minHeight: propTypes.string
 };
 
 export default OnboardingScreen;

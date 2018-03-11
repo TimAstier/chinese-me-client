@@ -10,7 +10,9 @@ import { UserPopup } from '../.';
 import { ScreenButton } from '../.';
 
 const Wrapper = styled.div`
-  align-self: stretch;
+  position: fixed;
+  top: 0;
+  width: 100%;
   min-height: 55px;
   background-color: #363636;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.18);

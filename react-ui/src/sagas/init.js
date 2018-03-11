@@ -37,13 +37,15 @@ export function* initApp() {
       yield call(loadSettings);
     }
     // browser disclaimer for people not using Chrome
-    if (browser) {
+    if (browser && localStorage.getItem('browserNotice') !== 'false') {
       if (browser.name !== 'chrome' || isFacebookApp()) {
         swal({
           title: 'Web browser not supported',
           text: 'For now, ChineseMe only works properly on the Chrome web browser, on a computer.\n\nWe noticed you are using another web browser. Please consider using Chrome as we otherwise cannot guarantee a satisfying learning experience for you.\n\nIf you don\'t have Chrome already, you can download it here: https://www.google.com/chrome/\n\nThanks for your understanding!',
           icon: 'warning',
           button: 'Got it!'
+        }).then(() => {
+          localStorage.setItem('browserNotice', false);
         });
       }
     }

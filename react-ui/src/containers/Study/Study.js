@@ -9,6 +9,15 @@ import s from '../../rootSelectors';
 const Wrapper = styled.div`
   height: 100%;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const ContentWrapper = styled.div`
+  height: 100%;
+  width: 100%;
+  margin-top: 55px;
   background-color: #B2BABF;
   display: flex;
   flex-direction: column;
@@ -28,7 +37,9 @@ class Study extends Component {
         <MapModal />
         <QuestionModal />
         <Navbar id="navbar"/>
-        {this.props.initialized && this.props.children}
+        <ContentWrapper>
+          {this.props.initialized && this.props.children}
+        </ContentWrapper>
       </Wrapper>
     );
   }

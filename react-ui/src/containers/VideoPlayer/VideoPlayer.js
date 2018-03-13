@@ -9,8 +9,8 @@ class VideoPlayer extends Component {
   render() {
     return (
       <VideoPlayerComponent
-        width={this.props.width}
-        height={this.props.height}
+        width={this.props.width || '100%'}
+        height={this.props.height || 'auto'}
         autoPlay={this.props.autoPlay}
         src={this.props.src}
         onEnded={() => this.props.videoEnded(this.props.src)}
@@ -20,8 +20,8 @@ class VideoPlayer extends Component {
 }
 
 VideoPlayer.propTypes = {
-  width: propTypes.number.isRequired,
-  height: propTypes.number.isRequired,
+  width: propTypes.number,
+  height: propTypes.number,
   autoPlay: propTypes.bool,
   src: propTypes.string,
   videoEnded: propTypes.func.isRequired

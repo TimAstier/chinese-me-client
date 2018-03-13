@@ -78,6 +78,12 @@ const BackIcon = styled.div`
 `;
 
 class EpisodeScreen extends Component {
+  _displayBottomWrapper() {
+    const elementTypesWithoutBottomWrapper
+      = ['review', 'etymology', 'calligraphy'];
+    return elementTypesWithoutBottomWrapper.indexOf(this.props.url.split('/').pop()) === -1;
+  }
+
   renderBottomMiddleWrapper() {
     const { playAudio, pause, hanziAgain } = this.props;
     if (playAudio) {
@@ -111,7 +117,7 @@ class EpisodeScreen extends Component {
           {this.props.children}
         </MiddleWrapper>
         {
-          this.props.elementType !== 'review' && <BottomWrapper>
+          this._displayBottomWrapper() && <BottomWrapper>
             <BottomLeftWrapper />
             <BottomMiddleWrapper>
               {this.renderBottomMiddleWrapper()}
@@ -139,7 +145,8 @@ EpisodeScreen.propTypes = {
   hanziAgain: propTypes.bool,
   pause: propTypes.bool,
   children: propTypes.object,
-  exit: propTypes.func.isRequired
+  exit: propTypes.func.isRequired,
+  url: propTypes.string.isRequired
 };
 
 export default EpisodeScreen;

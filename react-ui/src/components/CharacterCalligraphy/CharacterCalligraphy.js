@@ -5,6 +5,7 @@ import { bookComponents as c } from '../.';
 import brushIcon from '../../images/brushIcon.svg';
 import { VideoPlayer } from '../../containers';
 import { practiceSheet } from '../../constants/urls';
+import Media from 'react-media';
 
 const Wrapper = styled.div`
   flex-grow: 1;
@@ -13,20 +14,18 @@ const Wrapper = styled.div`
   margin-left: auto;
   margin-right: auto;
   min-height: 550px;
+  max-width: 100%;
 `;
 
 const TitleWrapper = styled.div`
-  margin-top: -50px;
+  margin-top: -25px;
   text-align: center;
-  ${''/* This is a sort of workaround. We should probably use a different
-  parent component than EpisodeScreen. See https://robertnyman.com/2010/03/22/
-  css-pointer-events-to-allow-clicks-on-underlying-elements/ */}
   pointer-events: none;
 `;
 
 const Img = styled.img`
-  max-width:40px;
-  max-height:40px;
+  max-width: 40px;
+  max-height: 40px;
 `;
 
 const Title = styled.div`
@@ -38,6 +37,7 @@ const Title = styled.div`
 
 const MiddleWrapper = styled.div`
   display: flex;
+  justify-content: center;
   align-items: center;
   border-top: 3px solid red;
   border-bottom: 3px solid red;
@@ -45,15 +45,18 @@ const MiddleWrapper = styled.div`
 `;
 
 const VideoWrapper = styled.div`
-  margin-left: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  flex: 1 0 0;
 `;
 
 const ContentWrapper = styled.div`
+  flex: 1 0 0;
   overflow-y: auto;
   padding-top: 15px;
   padding-bottom: 15px;
   max-width: 650px;
-  height: 480px;
+  height: 450px;
   ${''/* Always display the scrollbar  */}
   ::-webkit-scrollbar {
       -webkit-appearance: none;
@@ -68,7 +71,7 @@ const ContentWrapper = styled.div`
 
 const PrintWrapper = styled.div`
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
   font-family: 'cambria';
   font-size: 16px;
@@ -78,7 +81,21 @@ const PrintWrapper = styled.div`
   }
 `;
 
-class CharacterEtymology extends Component {
+class CharacterCalligraphy extends Component {
+  _renderVideo() {
+    return (
+      <VideoWrapper>
+        {
+          (this.props.videoUrl) ?
+            <VideoPlayer
+              src={this.props.videoUrl}
+            />
+          : <img src="http://via.placeholder.com/500x281" alt="" />
+        }
+      </VideoWrapper>
+    );
+  }
+
   render() {
     if (!this.props.content) {
       return <div>'Error: Could not find calligrphy content file.'</div>;
@@ -96,19 +113,16 @@ class CharacterEtymology extends Component {
         </TitleWrapper>
         <MiddleWrapper>
           <ContentWrapper>
+            <Media
+              query="(max-width: 900px)"
+              render={() => this._renderVideo()}
+            />
             <this.props.content />
           </ContentWrapper>
-          <VideoWrapper>
-            {
-              (this.props.videoUrl) ?
-                <VideoPlayer
-                  src={this.props.videoUrl}
-                  width={500}
-                  height={281}
-                />
-              : <img src="http://via.placeholder.com/500x281" alt="" />
-            }
-          </VideoWrapper>
+          <Media
+            query="(min-width: 901px)"
+            render={() => this._renderVideo()}
+          />
         </MiddleWrapper>
         <PrintWrapper>
           <i>
@@ -120,10 +134,10 @@ class CharacterEtymology extends Component {
   }
 }
 
-CharacterEtymology.propTypes = {
+CharacterCalligraphy.propTypes = {
   content: propTypes.func.isRequired,
   character: propTypes.string.isRequired,
   videoUrl: propTypes.string
 };
 
-export default CharacterEtymology;
+export default CharacterCalligraphy;

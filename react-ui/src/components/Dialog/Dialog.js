@@ -28,6 +28,10 @@ const PersonalitiesWrapper = styled.div`
   align-items: center;
 `;
 
+const DialogWrapper = styled.div`
+  width: 100%;
+`;
+
 class Dialog extends Component {
   // TODO: use containers and components instead of renderMethods
   renderModeMenu() {
@@ -74,7 +78,7 @@ class Dialog extends Component {
       statementsCount, nextStatement, previousStatement, dialogMode }
       = this.props;
     return (
-      <div>
+      <DialogWrapper>
         <StatementWrapper
           dialogMode={dialogMode}
           sentences={sentences}
@@ -87,7 +91,7 @@ class Dialog extends Component {
         <PersonalitiesWrapper>
           {this.renderAvatars()}
         </PersonalitiesWrapper>
-      </div>
+      </DialogWrapper>
     );
   }
 

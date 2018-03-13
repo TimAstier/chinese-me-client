@@ -10,20 +10,31 @@ const Wrapper = styled.div`
   min-height: 310px;
   display: flex;
   justify-content: center;
+  width: 100%;
 `;
 
 const LeftChevronWrapper = styled.div`
-  width: 90px;
+  max-width: 90px;
+  min-width: 50px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  @media (max-width: 500px) {
+    width: 25px;
+    min-width: 0;
+  }
 `;
 
 const RightChevronWrapper = styled.div`
-  width: 90px;
+  max-width: 90px;
+  min-width: 50px;
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  @media (max-width: 500px) {
+    width: 25px;
+    min-width: 0;
+  }
 `;
 
 const ChevronWrapper = styled.div`
@@ -43,6 +54,11 @@ const ChevronWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media (max-width: 500px) {
+    width: 25px;
+    height: 150px;
+    border-radius: 12px;
+  }
 `;
 
 class StatementWrapper extends Component {

@@ -12,8 +12,9 @@ const blinker = keyframes`
 `;
 
 const Wrapper = styled.div`
-  width: 550px;
+  max-width: 550px;
   height: 310px;
+  flex-grow: 1;
   border-radius: 15px;
   background-color: #ffffff;
   box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.08);
@@ -94,6 +95,11 @@ const FormatedSentences = styled.div`
   max-width: 500px;
   line-height: 1.2;
   text-align: center;
+  @media (max-width: 500px) {
+    padding-left: 10px;
+    padding-right: 10px;
+    max-width: 300px;
+  }
 `;
 
 class Statement extends Component {

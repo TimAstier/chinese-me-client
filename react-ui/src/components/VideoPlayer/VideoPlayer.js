@@ -44,8 +44,8 @@ class VideoPlayer extends Component {
 }
 
 VideoPlayer.propTypes = {
-  width: propTypes.number.isRequired,
-  height: propTypes.number.isRequired,
+  width: propTypes.oneOfType([ propTypes.number, propTypes.string]).isRequired,
+  height: propTypes.oneOfType([ propTypes.number, propTypes.string]).isRequired,
   autoPlay: propTypes.bool,
   src: propTypes.string,
   onEnded: propTypes.func.isRequired

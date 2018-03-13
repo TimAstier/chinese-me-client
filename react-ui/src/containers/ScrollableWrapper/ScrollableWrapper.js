@@ -5,7 +5,6 @@ import { ScrollableWrapper as ScrollableWrapperComponent } from '../../component
 import s from '../../rootSelectors';
 
 class ScrollableWrapper extends Component {
-
   render() {
     return (
       <ScrollableWrapperComponent { ...this.props } />

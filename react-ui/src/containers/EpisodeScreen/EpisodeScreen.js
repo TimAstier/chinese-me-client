@@ -40,8 +40,13 @@ class EpisodeScreen extends Component {
         { ...this.props }
         exit={this._handleExit.bind(this)}
         elementType={this.props.elementType}
+        url={this.props.url}
       />
-      : <EpisodeScreenComponent exit={this._handleExit.bind(this)} />;
+      :
+      <EpisodeScreenComponent
+        exit={this._handleExit.bind(this)}
+        url={this.props.url}
+      />;
   }
 }
 

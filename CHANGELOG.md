@@ -11,6 +11,19 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 ### Fixed
 
+## [0.1.21] YYYY-MM-DD
+
+### Added
+- Responsiveness
+
+### Content
+- Made Lesson 1 more digest
+
+### Changed
+- Browser notice only displayed once
+
+### Fixed
+
 ## [0.1.2] 2017-12-21
 
 ### Changed

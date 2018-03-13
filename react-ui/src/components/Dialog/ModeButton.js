@@ -19,6 +19,10 @@ class ModeButton extends Component {
       align-items: center;
       margin: 0 5px;
       cursor: pointer;
+      @media (max-width: 500px) {
+        width: 90px;
+        font-size: 14px;
+      }
     `;
     return (
       <Wrapper onClick={this.props.onClick}>

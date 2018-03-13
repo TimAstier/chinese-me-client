@@ -9,10 +9,11 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   max-width: 750px;
-  margin-top: -50px;
-  margin-bottom: -70px;
+  width: 100%;
+  margin-top: -25px;
   margin-left: auto;
   margin-right: auto;
+  height: 98%;
 `;
 
 const MiddleWrapper = styled.div`
@@ -40,7 +41,7 @@ const ContentWrapper = styled.div`
   border: 3px solid red;
   padding-top: 15px;
   padding-bottom: 15px;
-  max-height: 530px;
+  width: 100%;
   ${''/* Always display the scrollbar  */}
   ::-webkit-scrollbar {
       -webkit-appearance: none;

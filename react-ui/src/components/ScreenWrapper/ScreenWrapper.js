@@ -17,6 +17,12 @@ const Wrapper = styled.div`
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.08);
   display: flex;
   flex-direction: column;
+  ${''/* // This would be an easy fix for landscape but it destroys Hanzi-writter */}
+  ${''/* @media (orientation: landscape) and (max-height: 400px){
+    zoom: 0.6;
+    -moz-transform: scale(0.6);
+    -moz-transform-origin: 0 0;
+  } */}
 `;
 
 class ScreenWrapper extends Component {

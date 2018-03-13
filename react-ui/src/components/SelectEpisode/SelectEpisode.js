@@ -41,7 +41,7 @@ class SelectEpisode extends Component {
         <EpisodeCard
           key={i}
           episode={episode}
-          seasonNumber={this.props.currentSeasonNumber}
+          seasonNumber={this.props.seasonNumber}
         />
       );
     });
@@ -63,7 +63,7 @@ class SelectEpisode extends Component {
 SelectEpisode.propTypes = {
   episodes: propTypes.instanceOf(Immutable.OrderedMap).isRequired,
   title: propTypes.string,
-  currentSeasonNumber: propTypes.number
+  seasonNumber: propTypes.number.isRequired
 };
 
 export default SelectEpisode;

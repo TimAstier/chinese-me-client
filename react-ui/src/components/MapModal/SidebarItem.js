@@ -74,7 +74,7 @@ class SidebarItem extends Component {
               {episode.completed && <img src={iconCheck} alt="icon-check" />}
             </CheckWrapper>
 						<ItemTitle>
-							{this.props.label + ' ' + episode.number}
+							{episode.number + '. ' + episode.title}
 						</ItemTitle>
             {playing &&
               <PlayingIconWrapper>
@@ -92,8 +92,7 @@ SidebarItem.propTypes = {
   episode: propTypes.instanceOf(Episode).isRequired,
   focused: propTypes.bool.isRequired,
   playing: propTypes.bool,
-  setFocusedEpisodeId: propTypes.func.isRequired,
-  label: propTypes.string.isRequired
+  setFocusedEpisodeId: propTypes.func.isRequired
 };
 
 export default SidebarItem;

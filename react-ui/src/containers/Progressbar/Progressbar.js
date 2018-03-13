@@ -5,7 +5,6 @@ import { Progressbar as ProgressbarComponent } from '../../components';
 import s from '../../rootSelectors';
 
 class Progressbar extends Component {
-
   render() {
     return (
       <ProgressbarComponent

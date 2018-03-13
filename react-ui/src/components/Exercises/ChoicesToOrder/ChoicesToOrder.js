@@ -9,20 +9,24 @@ import iconCorrect from '../../../images/iconCorrect.svg';
 
 const DropArea = styled.div`
   min-height: 120px;
-  width: 550px;
+  max-width: 550px;
+  width: 95%;
   background-color: lightgrey;
   padding: 20px 20px;
   display: flex;
+  flex-wrap: wrap;
   margin-top: 20px;
   margin-bottom: 20px;
 `;
 
 const ChoicesArea = styled.div`
   min-height: 120px;
-  width: 550px;
+  max-width: 550px;
+  width: 95%;
   background-color: lightgrey;
   padding: 20px 20px;
   display: flex;
+  flex-wrap: wrap;
 `;
 
 const Block = styled.div`

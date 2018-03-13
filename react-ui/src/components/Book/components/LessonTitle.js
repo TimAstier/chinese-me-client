@@ -15,25 +15,14 @@ const Title = styled.span`
   color: #C0504D;
 `;
 
-const ChineseText = styled.span`
-  font-family: Kai;
-`;
-
 class LessonTitle extends Component {
-  _label() {
-    const type = this.props.seasonNumber === 0 ? 'LESSON ' : 'EPISODE ';
-    return type + this.props.episodeNumber + ': ';
-  }
-
-  _title() {
-    return <span>{this._label()}<ChineseText>{this.props.title}</ChineseText></span>;
-  }
-
   render() {
     return (
       <Bookrow marginBottom={30} center>
         <H1>
-          <Title>{this._title()}</Title>
+          <Title>
+            {this.props.episodeNumber + '. ' + this.props.title}
+          </Title>
         </H1>
       </Bookrow>
     );
@@ -41,7 +30,6 @@ class LessonTitle extends Component {
 }
 
 LessonTitle.propTypes = {
-  seasonNumber: propTypes.number.isRequired,
   episodeNumber: propTypes.number.isRequired,
   title: propTypes.string.isRequired
 };

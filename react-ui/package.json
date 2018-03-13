@@ -34,6 +34,7 @@
     "react": "^16.2.0",
     "react-datepicker": "^1.1.0",
     "react-dom": "^16.2.0",
+    "react-media": "^1.8.0",
     "react-motion": "^0.5.2",
     "react-preload": "^0.5.1",
     "react-preloaded": "^1.0.0",
@@ -61,7 +62,6 @@
   "devDependencies": {
     "@storybook/addon-centered": "^3.1.2",
     "@storybook/react": "^3.1.5",
-    "eslint-plugin-react": "^7.1.0",
-    "react-scripts": "1.0.17"
+    "eslint-plugin-react": "^7.1.0"
   }
 }

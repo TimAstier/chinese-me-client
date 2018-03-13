@@ -9,6 +9,7 @@ const Wrapper = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
+  align-items: center;
 `;
 
 const HeaderWrapper = styled.div`
@@ -16,25 +17,26 @@ const HeaderWrapper = styled.div`
   font-size: 35px;
   font-weight: 600;
   color: #454545;
-  height: 80px;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
+  text-align: center;
+  line-height: 1.2;
+  width: 95%;
 `;
 
 const CommentWrapper = styled.div`
   font-family: 'Open Sans';
   font-size: 20px;
-  line-height: 1.5;
+  @media (max-width: 600px) {
+    font-size: 14px;
+  }
+  line-height: 1.2;
   color: #7f8c94;
   height: 80px;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
+  text-align: center;
+  margin-top: 20px;
 `;
 
 const ProgressbarWrapper = styled.div`
-  height: 220px;
+  height: 180px;
   display: flex;
   justify-content: center;
   align-items: flex-end;

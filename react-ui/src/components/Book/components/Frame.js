@@ -6,7 +6,7 @@ const Frame = styled.div`
   border: 3px solid red;
   padding-top: 30px;
   padding-bottom: 30px;
-  width: 750px;
+  width: 80%;
   margin-left: auto;
   margin-right: auto;
   @media print {

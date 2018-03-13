@@ -9,8 +9,12 @@ import { ScreenButton } from '../../../containers';
 import { Wrapper, CheckWrapper } from '../Shared';
 
 const GuidelineWrapper = styled.div`
+  width: 95%;
   height: 171px;
   font-size: 24px;
+  @media (max-height: 800px) {
+    font-size: 18px;
+  }
   font-weight: 600;
   line-height: 1.5;
   color: #b2babf;
@@ -19,6 +23,7 @@ const GuidelineWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
+  text-align: center;
 `;
 
 const MainGuideline = styled.div`
@@ -30,10 +35,11 @@ const SecondaryGuideline = styled.div`
 `;
 
 const WordBoxesWrapper = styled.div`
-  height: 108px;
+  min-height: 108px;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 `;
 
 class AudioToWords extends Component {

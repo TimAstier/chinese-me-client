@@ -14,22 +14,33 @@ const Wrapper = styled.div`
 
 const CharWrapper = styled.div`
   min-width: 90px;
+  @media (max-width: 500px) {
+    min-width: 0;
+  }
 `;
 
 const PinyinWrapper = styled.div`
   min-width: 110px;
+  @media (max-width: 500px) {
+    min-width: 0;
+  }
 `;
 
 const LinksWrapper = styled.div`
-  min-width: 150px;
+  min-width: 120px;
   display: flex;
+  justify-content: space-between;
 `;
+
 const Link = styled.div`
   width: 40px;
 `;
 
 const MeaningWrapper = styled.div`
   max-width: 400px;
+  @media (max-width: 500px) {
+    max-width: 100px;
+  }
   display: flex;
   flex: wrap;
   margin-left: 10px;

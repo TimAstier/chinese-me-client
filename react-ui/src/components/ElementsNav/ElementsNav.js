@@ -6,7 +6,7 @@ import iconElementPrevious from '../../images/iconElementPrevious.svg';
 import iconElementNext from '../../images/iconElementNext.svg';
 
 const Wrapper = styled.div`
-  width: 400px;
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
 `;
@@ -35,13 +35,14 @@ const RightChevronWrapper = styled.div`
 `;
 
 const LabelWrapper = styled.div`
-  width: 180px;
+  max-width: 180px;
   font-family: 'Open Sans';
 	font-size: 18px;
 	color: #b2babf;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  text-align: center;
+  @media (max-width: 600px) {
+    font-size: 14px;
+  }
 `;
 
 const LabelA = styled.span`
@@ -64,7 +65,6 @@ const IconWrapper = styled.div`
 
 // TODO: Separate ElementsNav and XX Left into 2 different components
 class ElementsNav extends Component {
-
   renderWithPosition() {
     const { type, currentElement, totalElements } = this.props;
     const labelA = capitalizeFirstLetter(type) + ' ' + currentElement;

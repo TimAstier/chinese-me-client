@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { bookComponents as c } from '../../.';
 import { Row } from '../../Shared';
+import Img from '../../Shared/Img';
 
 export default class Content extends Component {
   render() {
@@ -27,9 +28,9 @@ export default class Content extends Component {
           </Row>
         </c.Bookrow>
         <c.P>A character element indicating sound in this way is called a <i>phonetic</i>. To summarize, the ancient scribes would make new characters by combining a radical for meaning with a phonetic for sound to write “something you do with your mouth which sounds similar to horse” or “a female person which sounds similar to horse”:</c.P>
-        <c.Bookrow><img src="https://s3.eu-west-2.amazonaws.com/chineseme/images/combinations.png" alt="" /></c.Bookrow>
+        <c.Bookrow><Img src="https://s3.eu-west-2.amazonaws.com/chineseme/images/combinations.png" alt="" /></c.Bookrow>
         <c.P>The radical <c.Chinese>口</c.Chinese> <i>mouth</i> also appears in the character <c.Chinese>叫</c.Chinese> <i>to call</i>:</c.P>
-        <c.Bookrow><img src="https://s3.eu-west-2.amazonaws.com/chineseme/images/kou_plus_jiu.png" alt="" /></c.Bookrow>
+        <c.Bookrow><Img src="https://s3.eu-west-2.amazonaws.com/chineseme/images/kou_plus_jiu.png" alt="" /></c.Bookrow>
         <c.P>Clearly, <i>calling</i> is something you do with your mouth. But the pronunciation of the phonetic <c.Chinese>丩</c.Chinese> is <b>jīu</b>, which may not seem very similar to <b>jiào</b>. Over hundreds of years, the Chinese sound system has changed a lot, so the phonetic usually does not give us the exact modern pronunciation. In the same way, the radical of a character only points to a general category. Even so, these hints of meaning and pronunciation can make it easier for us to memorize characters. Some radicals are so common that you will quickly start to recognize them.</c.P>
       </div>
     );

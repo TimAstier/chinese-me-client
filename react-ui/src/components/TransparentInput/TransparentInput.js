@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { Field } from 'redux-form/immutable';
 
 const Wrapper = styled.div`
-  height: 100px;
+  height: 10%;
 `;
 
 const Input = styled.input`

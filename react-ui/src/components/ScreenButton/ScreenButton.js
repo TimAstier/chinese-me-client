@@ -19,7 +19,14 @@ class Screen extends Component {
     const Button = styled.button`
       width: ${ width ? `${width}px` : '146px' };
       height: ${ height ? `${height}px` : '48px' };
+      @media (max-width: 500px) {
+        width: ${ width ? `${width}px` : '120px' };
+        height: ${ height ? `${height}px` : '45px' };
+      }
       border-radius: 57px;
+      @media (max-width: 500px) {
+        border-radius: 43px;
+      }
       background-color: ${ primary ? '#55b6ff' : '#ffffff' };
       outline: none;
       border: none;

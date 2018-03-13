@@ -33,7 +33,7 @@ const ContentWrapper = styled.div`
 `;
 
 class MapSidebar extends Component {
-  _renderEpisodesList(seasonId, seasonNumber) {
+  _renderEpisodesList(seasonId) {
     // convert to array to avoid calling .map() on an ordered List
     // (not officially supported)
     const episodesArray = [];
@@ -47,7 +47,6 @@ class MapSidebar extends Component {
           return (
             <SidebarItem
               episode={e}
-              label={seasonNumber !== 0 ? 'Episode ' : 'Lesson '}
               focused={e.id === this.props.focusedEpisodeId}
               key={e.id}
               playing={this.props.currentEpisodeId === e.id}
@@ -70,7 +69,7 @@ class MapSidebar extends Component {
         title,
         content: {
           content: (
-            this._renderEpisodesList(season.id, season.number)
+            this._renderEpisodesList(season.id)
           ),
           key: `content-${i}`
         }

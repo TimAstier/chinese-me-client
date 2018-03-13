@@ -9,8 +9,8 @@ import { ExamResultScoreLabel } from '../.';
 import { MINIMUM_SCORE_TO_PASS } from '../../constants/exam';
 
 const Wrapper = styled.div`
-  width: 200px;
-  height: 200px;
+  width: 180px;
+  height: 180px;
   position: relative;
 `;
 
@@ -39,8 +39,8 @@ class CircleProgressbar extends Component {
     // Make sure that your container has same aspect ratio as the SVG canvas
     // See: https://github.com/kimmobrunfeldt/react-progressbar.js/tree/master#api
     const containerStyle = {
-      width: '200px',
-      height: '200px',
+      width: '180px',
+      height: '180px',
       position: 'absolute',
       top: 0,
       left: 0,

@@ -9,7 +9,8 @@ import { Button } from '../Shared/Onboarding';
 
 const FieldsWrapper = styled.div`
   min-height: 140px;
-  padding-top: 70px;
+  margin-top: 8%;
+  margin-bottom: 8%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

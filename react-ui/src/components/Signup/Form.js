@@ -8,14 +8,15 @@ import { Button } from '../Shared/Onboarding';
 
 const FieldsWrapper = styled.div`
   min-height: 245px;
-  padding-top: 40px;
+  margin-top: 5%;
+  margin-bottom: 5%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 `;
 
 const FormErrorWrapper = styled.div`
-  margin-top: 20px;
+  margin-top: 2%;
   font-family: 'Open Sans';
 	font-size: 14px;
 	text-align: center;

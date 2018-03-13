@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { Progressbar, ElementsNav } from '../../containers';
 
 const Wrapper = styled.div`
-  flex: 1 0 0;
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -13,6 +13,7 @@ const Wrapper = styled.div`
 
 const TopMiddleUpWrapper = styled.div`
   height: 43px;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;

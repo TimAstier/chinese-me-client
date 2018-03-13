@@ -32,26 +32,15 @@ const BottomWrapper = styled.div`
   justify-content: space-around;
 `;
 
-const TitleWrapper = styled.div`
+const Title = styled.div`
   padding-top: 15px;
   display: flex;
   flex-grow: 1;
   justify-content: center;
-`;
-
-const EpisodeNumber = styled.div`
   font-family: 'Open Sans';
   font-size: 30px;
   font-weight: 900;
   color: #454545;
-`;
-
-const EpisodeTitle = styled.div`
-  font-family: Kai;
-  font-size: 30px;
-  font-weight: 900;
-  color: #454545;
-  margin-left: 20px;
 `;
 
 const ContentWrapper = styled.div`
@@ -185,17 +174,9 @@ class MapContent extends Component {
     return (
       <Wrapper>
         <TopWrapper>
-          <TitleWrapper>
-            <EpisodeNumber>
-              {
-                (focusedSeasonNumber !== 0 ? 'Episode ' : 'Lesson ')
-                + episode.number + ':'
-              }
-            </EpisodeNumber>
-            <EpisodeTitle>
-              {episode.title}
-            </EpisodeTitle>
-          </TitleWrapper>
+          <Title>
+            { episode.number + '. ' + episode.title }
+          </Title>
         </TopWrapper>
         <ContentWrapper>
           {

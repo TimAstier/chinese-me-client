@@ -3,7 +3,8 @@ import propTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-  flex-basis: 98px;
+  max-height: 98px;
+  height: 13%;
   display: flex;
   justify-content: center;
   align-items: flex-end;

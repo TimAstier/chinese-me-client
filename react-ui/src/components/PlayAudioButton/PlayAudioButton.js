@@ -25,6 +25,10 @@ const Wrapper = styled.div`
       pointer-events: auto;
     }
   }
+  @media (max-width: 500px) {
+    width: 25px;
+    height: 25px;
+  }
 `;
 
 class PlayAudioButton extends Component {

@@ -10,8 +10,8 @@ import { Clickable } from '../Shared';
 // 2nd level wrappers
 
 const TopWrapper = styled.div`
-  flex: 0 0 80px;
   display: flex;
+  min-height: 71px;
 `;
 
 const MiddleWrapper = styled.div`
@@ -20,35 +20,40 @@ const MiddleWrapper = styled.div`
 `;
 
 const BottomWrapper = styled.div`
-  flex: 0 0 100px;
+  height: 100px;
+  @media (max-height: 700px) {
+    height: 8%;
+  }
   display: flex;
 `;
 
 // 3rd level wrappers
 
 const BottomLeftWrapper = styled.div`
-  flex: 0 0 250px;
+  width: 40%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  padding-left: 20px;
 `;
 
 const BottomRightWrapper = styled.div`
-  flex: 0 0 250px;
+  width: 40%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
+  padding-right: 20px;
 `;
 
 const BottomMiddleWrapper = styled.div`
-  flex: 1 0 0;
+  width: 20%;
   display: flex;
   justify-content: center;
   align-items: center;
 `;
 
 const TopLeftWrapper = styled.div`
-  flex: 0 0 100px;
+  min-width: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -58,7 +63,7 @@ const TopLeftWrapper = styled.div`
 `;
 
 const TopRightWrapper = styled.div`
-  flex: 0 0 100px;
+  min-width: 100px;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -105,21 +110,23 @@ class EpisodeScreen extends Component {
         <MiddleWrapper>
           {this.props.children}
         </MiddleWrapper>
-        <BottomWrapper>
-          <BottomLeftWrapper />
-          <BottomMiddleWrapper>
-            {this.renderBottomMiddleWrapper()}
-          </BottomMiddleWrapper>
-          <BottomRightWrapper>
-            {next &&
-              <ScreenButton
-                text="Continue"
-                primary
-                action="next"
-              />
-            }
-          </BottomRightWrapper>
-        </BottomWrapper>
+        {
+          this.props.elementType !== 'review' && <BottomWrapper>
+            <BottomLeftWrapper />
+            <BottomMiddleWrapper>
+              {this.renderBottomMiddleWrapper()}
+            </BottomMiddleWrapper>
+            <BottomRightWrapper>
+              {next &&
+                <ScreenButton
+                  text="Continue"
+                  primary
+                  action="next"
+                />
+              }
+            </BottomRightWrapper>
+          </BottomWrapper>
+        }
       </ScreenWrapper>
     );
   }

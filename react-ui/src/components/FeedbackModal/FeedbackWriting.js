@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
-import Form from './Form';
+import FeedbackForm from './FeedbackForm';
 
 const Wrapper = styled.div`
   height: 700px;
@@ -19,10 +19,9 @@ const TitleWrapper = styled.div`
   margin-top: 35px;
 `;
 
-
 const ExplanationWrapper = styled.div`
   margin-top: 10px;
-  width: 600px;
+  width: 90%;
   text-align: center;
 `;
 
@@ -36,7 +35,7 @@ class FeedbackWriting extends Component {
         <ExplanationWrapper>
           <p><i>We love to hear from our students. Do not hesitate to contact us any time you have a question or a comment about your learning experience! You can also get in touch with us on Twitter, <a href="https://twitter.com/ChineseMeHQ" target="_blank" rel="noopener noreferrer">@ChineseMeHQ</a>.</i></p>
         </ExplanationWrapper>
-        <Form
+        <FeedbackForm
           onSubmit={this.props.onSubmit}
           initialValues={ { email: this.props.email } }
         />

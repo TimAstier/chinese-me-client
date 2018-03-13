@@ -7,7 +7,10 @@ const Wrapper = styled.div`
   min-height: 640px;
   width: 80%;
   @media (max-width: 800px) {
-    width: 95%;
+    width: 100%;
+    margin: 0 auto 50px;
+    border-radius: 0px;
+    box-shadow: none;
   }
   border-radius: 10px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.08);

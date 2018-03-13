@@ -12,52 +12,27 @@ const Wrapper = styled.div`
   flex-direction: column;
   margin-left: auto;
   margin-right: auto;
-  min-height: 550px;
   align-items: center;
 `;
 
 const TopWrapper = styled.div`
-  margin-top: -50px;
-  ${''/* This is a sort of workaround. We should probably use a different
-  parent component than EpisodeScreen. See https://robertnyman.com/2010/03/22/
-  css-pointer-events-to-allow-clicks-on-underlying-elements/ */}
-  ${''/* pointer-events: none; */}
+  margin-top: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-`;
-
-const Title = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 340px;
-  font-size: 20px;
-  color: #CD3C44;
-  font-family: 'Open Sans';
-`;
-
-const Separator = styled.div`
-  flex-grow: 1;
-  width: 340px;
 `;
 
 const Table = styled.div`
   display: flex;
-  flex-direction: column;
-  margin-top: 20px;
-  width: 1000px;
-`;
-
-const Row = styled.div`
-  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  max-width: 1000px;
+  width: 100%;
+  overflow-y: scroll;
 `;
 
 class Review extends Component {
-  _title() {
-    return 'Lesson ' + this.props.episode.number + ' - Exercises';
-  }
-
   _filterPractices(typeLetter) {
     return this.props.episode.practices
       .filter(e => {
@@ -82,41 +57,29 @@ class Review extends Component {
     return (
       <Wrapper>
         <TopWrapper>
-          <Separator />
-          <Separator>
-            <FilterControl />
-          </Separator>
-          <Separator>
-            <Title>
-              {this._title()}
-            </Title>
-          </Separator>
+          <FilterControl />
         </TopWrapper>
         <Table>
-          <Row>
-            <Part
-              title="PRONUNCIATION"
-              items={this._filterPractices('P')}
-              itemClick={this.props.itemClick}
-            />
-            <Part
-              title="CHARACTERS"
-              items={this._filterPractices('C')}
-              itemClick={this.props.itemClick}
-            />
-          </Row>
-          <Row>
-            <Part
-              title="WORDS"
-              items={this._filterPractices('W')}
-              itemClick={this.props.itemClick}
-            />
-            <Part
-              title="PATTERNS"
-              items={this._filterPractices('G')}
-              itemClick={this.props.itemClick}
-            />
-          </Row>
+          <Part
+            title="PRONUNCIATION"
+            items={this._filterPractices('P')}
+            itemClick={this.props.itemClick}
+          />
+          <Part
+            title="CHARACTERS"
+            items={this._filterPractices('C')}
+            itemClick={this.props.itemClick}
+          />
+          <Part
+            title="WORDS"
+            items={this._filterPractices('W')}
+            itemClick={this.props.itemClick}
+          />
+          <Part
+            title="PATTERNS"
+            items={this._filterPractices('G')}
+            itemClick={this.props.itemClick}
+          />
         </Table>
       </Wrapper>
     );

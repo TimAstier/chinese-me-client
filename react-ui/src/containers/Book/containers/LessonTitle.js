@@ -4,11 +4,9 @@ import { bookComponents as c } from '../../../components';
 import * as models from '../../../models';
 
 class LessonTitle extends Component {
-
   render() {
     return (
       <c.LessonTitle
-        seasonNumber={this.props.seasonNumber}
         episodeNumber={this.props.episode.number}
         title={this.props.episode.title}
       />

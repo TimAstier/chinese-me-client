@@ -4,6 +4,7 @@ import { bookContainers as C } from '../../containers';
 import { getTitleLetter } from '../../utils/bookContent';
 import * as models from '../../models';
 import styled from 'styled-components';
+import Img from '../Shared/Img';
 
 const Placeholder = styled.p`
   color: red;
@@ -58,7 +59,7 @@ class ContentHOC extends Component {
       if (!images[count]) {
         return <Placeholder>{`IMAGE #${count + 1} PLACEHOLDER`}</Placeholder>;
       }
-      return <img src={images[count]} alt=""/>;
+      return <Img src={images[count]} alt=""/>;
     };
   }
 

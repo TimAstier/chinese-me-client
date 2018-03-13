@@ -12,7 +12,8 @@ const TextWrapper = styled.div`
 `;
 
 const AudioWrapper = styled.div`
-  margin-top: 30px;
+  margin-top: 60px;
+  height: 80px;
 `;
 
 class Speech extends Component {
@@ -27,7 +28,7 @@ class Speech extends Component {
   _renderTextToSpeech() {
     return (
       <Wrapper>
-        <QuestionWrapper fontSize={24}>
+        <QuestionWrapper fontSize={24} fixedHeight>
           {
             this.props.status === 'question'
             ? this._textToSpeechQuestion()
@@ -37,7 +38,7 @@ class Speech extends Component {
         <TextWrapper isChinese={this.props.questionText && containsChinese(this.props.questionText)}>
           {this.props.questionText}
         </TextWrapper>
-        <QuestionWrapper fontSize={24}>
+        <QuestionWrapper fontSize={24} fixedHeight>
           {
             this.props.status === 'question'
               ? 'Then compare with the model:'
@@ -54,7 +55,7 @@ class Speech extends Component {
   _renderAudioToSpeech() {
     return (
       <Wrapper>
-        <QuestionWrapper fontSize={24}>
+        <QuestionWrapper fontSize={24} fixedHeight>
           {
             this.props.status === 'question'
             ? this._audioToSpeechQuestion()

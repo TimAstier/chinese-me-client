@@ -15,8 +15,8 @@ const Wrapper = styled.div`
 `;
 
 const ContentWrapper = styled.div`
-  height: 100%;
   width: 100%;
+  height: calc(100vh - 55px);
   margin-top: 55px;
   background-color: #B2BABF;
   display: flex;

@@ -13,9 +13,11 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   max-width: 480px;
-  min-height: 250px;
+  width: 95%;
+  min-height: 245px;
   background-color: #F2F7FA;
   border-radius: 25px;
+  border: solid 2px black;
 `;
 
 const Title = styled.div`

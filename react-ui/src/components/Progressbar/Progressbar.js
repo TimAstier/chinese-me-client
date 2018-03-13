@@ -4,7 +4,8 @@ import styled from 'styled-components';
 import { Motion, spring } from 'react-motion';
 
 const Wrapper = styled.div`
-  width: 600px;
+  max-width: 600px;
+  flex-grow: 1;
   height: 15px;
   border-radius: 10px;
   background-color: #f2f7fa;
@@ -12,12 +13,10 @@ const Wrapper = styled.div`
 `;
 
 class Progressbar extends Component {
-
   render() {
-    const width = this.props.completionPercentage ?
-      this.props.completionPercentage * 6 : 0;
+    const width = this.props.completionPercentage || 0;
     const Progress = styled.div`
-      width: ${props => props.width + 'px'};
+      width: ${props => props.width + '%'};
       height: 15px;
       border-radius: 10px;
       background-image: linear-gradient(to right, #8edcff, #55b6ff);

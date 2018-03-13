@@ -10,7 +10,6 @@ import { actions as studyActions } from '../../redux/study';
 import { actions as mapActions } from '../../redux/map';
 
 class SelectEpisodeScreen extends Component {
-
   componentDidMount() {
     this.props.setCurrentEpisodeId(null);
     this.props.setFocusedEpisodeId(null);
@@ -33,11 +32,7 @@ class SelectEpisodeScreen extends Component {
       <SelectEpisodeComponent
         episodes={this.props.episodes}
         title={this._title()}
-        currentSeasonNumber={
-          this.props.currentSeason ?
-          this.props.currentSeason.get('number')
-          : undefined
-        }
+        seasonNumber={this.props.currentSeason.number}
       />
     );
   }

@@ -8,6 +8,7 @@ const Wrapper = styled.div`
   max-width: 640px;
   width: 95%;
   min-height: '${props => props.minHeight ? props.minHeight : '691px'}';
+  max-height: 100%;
   border-radius: 10px;
 	background-color: #ffffff;
 	box-shadow: 0 0 33px 0 rgba(0, 0, 0, 0.07);

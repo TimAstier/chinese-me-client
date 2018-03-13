@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import { Bookrow, CharacterBox } from './.';
 import { Row } from '../../Shared';
+import Media from 'react-media';
 
 class CharacterPractice extends Component {
-
-  _renderCharacterBoxes() {
+  _renderCharacterBoxes(boxCount) {
     const array = [];
-    for (let i = 1; i < 10; i++) {
+    for (let i = 1; i < boxCount; i++) {
       array.push(
         <CharacterBox
           simpChar={i <= 3 ? this.props.simpChar : undefined}
@@ -31,7 +31,15 @@ class CharacterPractice extends Component {
           : null
         }
       >
-        {this._renderCharacterBoxes()}
+        <Media query="(max-width: 1150px)">
+          {matches =>
+            matches ? (
+              this._renderCharacterBoxes(5)
+            ) : (
+              this._renderCharacterBoxes(10)
+            )
+          }
+        </Media>
       </Bookrow>
     );
   }

@@ -5,6 +5,9 @@ import { Field, reduxForm } from 'redux-form/immutable';
 
 const FieldsWrapper = styled.div`
   display: flex;
+  
+  margin-left: auto;
+  margin-right: auto;
   flex-direction: column;
   justify-content: space-around;
 `;
@@ -40,7 +43,7 @@ const Label = styled.div`
 `;
 
 const Select = styled.select`
-  width: 600px;
+  width: 100%;
   height: 50px;
   border-radius: 10px;
   background-color: #ffffff;
@@ -52,7 +55,7 @@ const Select = styled.select`
 `;
 
 const Input = styled.input`
-  width: 600px;
+  width: 100%;
   height: 50px;
   border-radius: 10px;
   background-color: #ffffff;
@@ -66,8 +69,11 @@ const Input = styled.input`
 `;
 
 const TextArea = styled.textarea`
-  width: 600px;
+  width: 100%;
   height: 227px;
+  @media (max-width: 500px) {
+    height: 130px;
+  }
   border-radius: 10px;
   background-color: #ffffff;
   border: solid 2px #cdd6db;
@@ -81,7 +87,11 @@ const TextArea = styled.textarea`
   padding-right: 10px;
 `;
 
-class Form extends Component {
+const Form = styled.form`
+  width: 90%;
+`;
+
+class FeedbackForm extends Component {
   // This render method allows the inner input element to get the props
   // that are otherwise on the styled.input element
   // https://github.com/erikras/redux-form/issues/1094
@@ -108,7 +118,7 @@ class Form extends Component {
   render() {
     // console.log('re-render')
     return (
-      <form
+      <Form
         onSubmit={ this.props.handleSubmit }
         autoComplete="off"
       >
@@ -133,20 +143,20 @@ class Form extends Component {
           <Field name="message" component={this.renderTextArea} required/>
         </FieldsWrapper>
         <ButtonWrapper>
-          <Button type="submit">Send to ChineseMe</Button>
+          <Button type="submit">Send</Button>
         </ButtonWrapper>
-      </form>
+      </Form>
     );
   }
 }
 
-Form.propTypes = {
+FeedbackForm.propTypes = {
   onSubmit: propTypes.func.isRequired,
   handleSubmit: propTypes.func.isRequired
 };
 
-Form = reduxForm({
+FeedbackForm = reduxForm({
   form: 'feedback', // a unique name for the form
-})(Form);
+})(FeedbackForm);
 
-export default Form;
+export default FeedbackForm;

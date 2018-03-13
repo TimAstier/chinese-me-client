@@ -13,7 +13,10 @@ const Wrapper = styled.div`
 `;
 
 const LeftWrapper = styled.div`
-  width: 150px;
+  min-width: 150px;
+  @media (max-width: 600px) {
+    display: none;
+  }
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,7 +24,10 @@ const LeftWrapper = styled.div`
 `;
 
 const RightWrapper = styled.div`
-  width: 150px;
+  min-width: 150px;
+  @media (max-width: 600px) {
+    display: none;
+  }
 `;
 
 const MiddleWrapper = styled.div`

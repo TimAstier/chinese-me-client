@@ -5,8 +5,6 @@ import pinyinNumberToAudioUrl from '../../../utils/pinyinNumberToAudioUrl';
 import { Row } from '../../Shared';
 import pinyinize from 'pinyinize';
 import insertVariables from '../../../utils/insertVariables';
-import { king as OracleBone1 } from '../etymology';
-import { call as OracleBone2 } from '../etymology';
 import { audioUrls } from '../../../constants/urls';
 import { practiceSheet } from '../../../constants/urls';
 
@@ -23,14 +21,16 @@ export default class Content extends Component {
           <c.P>This is Wang Yi. Click on the sound icon and listen carefully as she introduces herself to you. Try to repeat after her a few times.</c.P>
           {example(1, { basic: true, audio: true })}
           {/* <c.Bookrow center><img src="http://via.placeholder.com/550x450" alt="" /></c.Bookrow> */}
-          <c.P>The literal translation of this sentence is I CALLED WANG YI. Translated to more natural English, it means <i>My name is Wang Yi.</i> In the West, you point at your chest when you say <i>I</i>; in China, you point at your nose.</c.P>
-          <c.P>In China, the family name comes before the given name. There are only a few hundred family names, but any combination of one or two characters can be used as a given name. Different names have been popular during different periods: in revolutionary times, some children were named <i>New Constitution</i> and <i>Strong Country</i>. Names often reflect traditional gender roles: <i>Strong</i> and <i>Thunder</i> for boys; <i>Little Swallow</i> and <i>Beautiful Jade</i> for girls. Wang Yi’s family name is Wang, which means <i>king</i>, and her given name is the gender-neutral <i>One</i>.</c.P>
+          <c.P>
+            This sentence means <i>My name is Wang Yi</i>. Chinese is grammatically simple in that words do not change shape; grammatical function is indicated by word order and the use of a small set of grammatical function words called <i>particles</i>. This is great news for Chinese language learners: students of other languages, like Spanish or German, have to deal with tenses, plurals, cases and many other factors that influence how a word is pronounced and written.
+          </c.P>
+          <c.P>In China, the family name comes before the given name. There are only a few hundred family names, but any combination of one or two characters can be used as a given name. Names often reflect traditional gender roles: <i>Strong</i> and <i>Thunder</i> for boys; <i>Little Swallow</i> and <i>Beautiful Jade</i> for girls. Different names have been popular during different periods: in revolutionary times, some children were named New Constitution and Strong Country. Wang Yi’s family name is Wang, which means <i>king</i>, and her given name is the gender-neutral <i>One</i>.</c.P>
           <c.PartTitle type="secondary">Learn your Chinese name</c.PartTitle>
           <c.P
             buttonOptions={{
               type: 'askUserSettings'
             }}
-          >Now, it’s your turn to introduce yourself. Western names are hard to pronounce for Chinese people. Click on the <i>Me</i> icon and we will give you a Chinese name based on your real name, gender and nationality.</c.P>
+          >Now, it’s your turn to introduce yourself. Western names can be hard to pronounce for Chinese people. Click on the <i>Me</i> icon and we will give you a Chinese name based on your real name, gender and nationality.</c.P>
           <c.P>We chose a Chinese family name for you based on the sound of your real name. Listen and practice imitating the audio voice a few times!</c.P>
           {example(2, { basic: true, audio: true })}
           <c.P>Your given name is <c.Chinese>{insertVariables('[CHINESE_GIVEN_NAME]', settings)}</c.Chinese> and means <i>{insertVariables('[NAME_MEANING]', settings)}</i>. Practice!</c.P>
@@ -39,7 +39,7 @@ export default class Content extends Component {
           <c.P>Now, practice your full Chinese name. Remember that the family name comes first, followed by the given name:</c.P>
           {example(4, { basic: true, audio: true })}
           <c.P>Repeat until you can say the name exactly as the audio voice.</c.P>
-          <c.P>Practice saying “my name is” by adding <c.Chinese>我叫</c.Chinese> before your name:</c.P>
+          <c.P>Practice saying <i>my name is</i> by adding <c.Chinese>我叫</c.Chinese> before your name:</c.P>
           {example(5, { basic: true, audio: true })}
           <c.P>Repeat this phrase until you can say it exactly like the voice on the recording.</c.P>
           <c.PartTitle name="dialog" />
@@ -47,8 +47,7 @@ export default class Content extends Component {
           <c.P>Repeat this until you feel comfortable.</c.P>
           <c.P>Now, change roles! Pretend you are Wang Yi, and introduce yourself.</c.P>
           {dialog(1, { sentenceType: 'chinese', displayNames: false, hideHeader: true })}
-          <c.P>Good!</c.P>
-          <c.P>Chinese is very different from Western languages. Let’s use our first sentence to explore some aspects of the Chinese language.</c.P>
+          <c.P>Let’s now use our ﬁrst sentence to learn a bit more about the Chinese language.</c.P>
           <c.PartTitle type="secondary">Each Chinese character corresponds to one spoken syllable</c.PartTitle>
           <c.P>When Wang Yi presents herself, you hear four syllables. Let’s look again at how they are written in Chinese.</c.P>
           {example(1, { basic: true, audio: false })}
@@ -105,10 +104,10 @@ export default class Content extends Component {
               <c.Meaning>one</c.Meaning>
             </Row>
           </c.Bookrow>
-          <c.P>Let us practice a bit of pronunciation using this sentence. If you listen carefully one more time, you will notice that each Chinese word has a tone. Practice pronouncing each syllable clearly, with the tone:</c.P>
+          <c.P>Let us practice a bit of pronunciation using this sentence. If you listen carefully one more time, you will notice that each syllabe has a "tone". Practice pronouncing each syllable clearly, with its tone:</c.P>
           {example(1, { basic: true, audio: true })}
-          <c.P>These tones are important, because there are many characters that sound exactly the same except for the tone. The classical example of this are four words that are all pronounced <b>ma</b>; the only difference is the tone. The diagrams on the left show the pitch contour of each tone.</c.P>
-          <c.P>The first of these words means <i>mother</i>, and is pronounced with Tone 1, which is a long, flat tone pronounced at the top of the pitch range:</c.P>
+          <c.P>These tones are important, because there are many characters that otherwise sound exactly the same. The classical example are four words which are pronounced <b>ma</b>.</c.P>
+          <c.P>The first of them means <i>mother</i>. It is pronounced with Tone 1, which is a long, flat tone pronounced high in the speaker’s pitch range:</c.P>
           <c.Bookrow
             buttonOptions={{
               type: 'audio',
@@ -128,7 +127,7 @@ export default class Content extends Component {
             }}>
             {image()}
           </c.Bookrow>
-          <c.P>The third means <i>horse</i>, and is pronounced with Tone 3. This starts at a mid-high pitch, and then goes down so low that it almost breaks off at the bottom, before going slightly up again:</c.P>
+          <c.P>The third means <i>horse</i>. It is pronounced with Tone 3, which starts at a low pitch and then goes down further, so low that it almost breaks off at the bottom, before going up again to end at a medium-high pitch:</c.P>
           <c.Bookrow
             buttonOptions={{
               type: 'audio',
@@ -138,7 +137,7 @@ export default class Content extends Component {
             }}>
             {image()}
           </c.Bookrow>
-          <c.P>The fourth means <i>scold</i>, and is pronounced with Tone 4, which is a rapidly falling tone starting at the top of the speaker’s pitch range and going all the way down:</c.P>
+          <c.P>The fourth means <i>scold</i>, and is pronounced with Tone 4, starting at the top of the speaker’s pitch range and rapidly going all the way down:</c.P>
           <c.Bookrow
             buttonOptions={{
               type: 'audio',
@@ -157,7 +156,7 @@ export default class Content extends Component {
               }
             }}
           >
-            Practice to see if you can identify the tones.
+            Practice to see if you can identify the tone on each syllabe.
           </c.P>
           <c.P
             buttonOptions={{
@@ -167,7 +166,7 @@ export default class Content extends Component {
               }
             }}
           >
-            If you find tones strange, it can be a comfort to know we actually have the exact same tones in English! The equivalent of Tone 1 would be the tone on the second syllable on <i>tadaa</i>! A magician pulling a rabbit out of a hat might say, with a flourish, <i>tadaa!</i>
+            If you find tones strange, it might be a comfort to know we actually have the exact same sounds in English! The equivalent of Tone 1 would be the tone on the second syllable of <i>tad<u>aa</u></i>! A magician pulling a rabbit out of a hat might say, with a flourish, <i>tadaa!</i>
           </c.P>
           <c.P
             buttonOptions={{
@@ -177,7 +176,7 @@ export default class Content extends Component {
               }
             }}
           >
-            Tone 2 is like the tone of a surprised question in English: <i>what?</i>
+            Tone 2 is like the tone of a surprised question in English: <i><u>what?</u></i>
           </c.P>
           <c.P
             buttonOptions={{
@@ -187,7 +186,7 @@ export default class Content extends Component {
               }
             }}
           >
-            Tone 3 starts at middle pitch, goes down so low that it is sometimes broken off in the middle, and then rises again. In English, we use a similar tone when we are skeptical or irritated, for example on the word <i>so</i> in this conversation: <i>You haven’t given me any reason to do it. So? Do it anyway!</i>
+            Tone 3 starts at middle pitch, goes down so low that it is sometimes broken off in the middle, and then rises again. In English, we use a similar tone when we are skeptical or irritated, for example on the word <i><u>so</u></i> in this conversation: <i>You haven’t given me any reason to do it. So? Do it anyway!</i>
           </c.P>
           <c.P
             buttonOptions={{
@@ -197,11 +196,11 @@ export default class Content extends Component {
               }
             }}
           >
-            Tone 4 falls sharply from an initially high pitch to a low one, like the tone on <i>hey</i> in <i>Hey! You there!</i>
+            Tone 4 falls sharply from an initially high pitch to a low one, like the tone on <i><u>hey</u></i> in <i>Hey! You there!</i>
           </c.P>
-          <c.P>So the tones are not totally alien. The difference is that in English, these tones only change the <i>mood</i> of a sentence; in Chinese, they change the <i>meaning</i> of words.</c.P>
+          <c.P>This is just to show that the tones are not impossible to pronounce for a westerner. The difference, of course, is that in English, these tones only change the <i>mood</i> of a sentence; in Chinese, they change the <i>meaning</i> of words.</c.P>
           <c.PartTitle type="secondary">Pinyin – explaining Chinese pronunciation with English letters</c.PartTitle>
-          <c.P>In order to help us remember the pronunciation of each character, the sound can be written using the Latin alphabet:</c.P>
+          <c.P>In order to help us remember the pronunciation of a Chinese character, its sound can be written using the Latin alphabet:</c.P>
           <c.Bookrow
             buttonOptions={{
               type: 'audio',
@@ -275,9 +274,6 @@ export default class Content extends Component {
           <c.P><b>{insertVariables('[FAMILY_NAME_PINYIN]', settings)} {insertVariables('[GIVEN_NAME_PINYIN]', settings)}</b></c.P>
           <c.P>Listen to the audio voice and practice reading the pīnyīn a few times:</c.P>
           {example(4, { basic: true, audio: true })}
-          <c.PartTitle noPrint>ORACLE BONES</c.PartTitle>
-          <c.Frame><OracleBone1 /></c.Frame>
-          <c.Frame><OracleBone2 /></c.Frame>
           <c.PartTitle>CALLIGRAPHY</c.PartTitle>
           <c.P>Another aid in memorizing characters is to understand their aesthetics. The art of writing the characters beautifully is called <i>calligraphy</i>. It is an ancient art form that embodies many concepts of Chinese philosophy. Historically, good handwriting was seen as the hallmark of an educated person. Today, there is a revival of interest, and most Chinese children practice calligraphy at school.</c.P>
           <c.P>Practicing calligraphy is not something you <i>have</i> to do to learn Chinese. But many people find it enjoyable. The aesthetic principles help us develop a feel for the logic of how Chinese characters have been put together; the rhythm of writing each stroke makes the whole character come alive. After just a short while of practice, this will help you to see the characters in a new way. Have a try; in later lessons you can decide whether you want to continue writing calligraphy.</c.P>
@@ -315,8 +311,7 @@ export default class Content extends Component {
           </c.Bookrow>
           <c.P>But it is not enough to write each individual stroke correctly. The strokes must always be written in the same <i>order</i>.</c.P>
           <c.P>Chinese people are taught this standard order for each character in school, and they always use it. The pen flows through the character in the same way every time, and this makes the characters easier to memorize, easier to recognize, and ultimately much faster to write. Stroke order is also the basis for one of the methods used to look up characters in dictionaries.</c.P>
-          <c.P>Fortunately, most students find stroke order easy to remember. We need to memorize each character individually, but there are some general guidelines that make this easier: for example, characters are written <i>top</i> to <i>bottom</i>. The stroke order of <b>wáng</b> is an illustration of this rule.</c.P>
-          <c.P>Now, practice writing it yourself, as beautifully as you can:</c.P>
+          <c.P>Fortunately, most students find stroke order easy to remember. We need to memorize each character individually, but there are some general guidelines that make this easier: for example, characters are written <i>top</i> to <i>bottom</i>. The stroke order of <b>wáng</b> is an illustration of this rule. Practice writing it yourself, as beautifully as you can:</c.P>
           {character(2, { mode: 'practice' })}
           <c.PartTitle
             type="secondary"
@@ -365,7 +360,7 @@ export default class Content extends Component {
           <c.P>Since <c.Chinese>我</c.Chinese> is one of the most common characters in the Chinese language, writing it quickly will save you lots of time. If you practice writing it elegantly, you will develop a rhythm which will eventually make you faster. Look at the calligraphy video and try to mimic not just each stroke, but the flow of writing:</c.P>
           {character(5, { mode: 'practice' })}
           <c.PartTitle anchor="new-characters" name="characters"/>
-          <c.P>Here are all the new characters in this lesson. Click on the stroke icon to review stroke order, on the brush icon to see calligraphy video, and on history icon to see the character etymology.</c.P>
+          <c.P>Here are the new characters we need to memorize in this lesson. Click on the stroke icon to review stroke order, on the brush icon to see calligraphy video, and on the history icon to see the character etymology.</c.P>
           {newCharacters()}
           <c.Review />
           <c.Exam />

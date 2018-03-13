@@ -51,11 +51,14 @@ class SidebarItem extends Component {
     `;
 
     const ItemTitle = styled.div`
-      margin-left: 25px;
       font-size: 16px;
       font-weight: 900;
       font-family: 'Open Sans';
-      width: 160px;
+      width: 185px;
+			height: 20px;
+			text-overflow: ellipsis;
+  		overflow: hidden;
+			white-space: nowrap;
     `;
 
     const PlayingIconWrapper = styled.div`

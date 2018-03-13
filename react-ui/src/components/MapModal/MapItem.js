@@ -33,7 +33,6 @@ const TitleWrapper = styled.div`
 `;
 
 class MapItem extends Component {
-
   render() {
     return (
       <Wrapper onClick={this.props.onClick}>

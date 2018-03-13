@@ -26,7 +26,7 @@ const ImageWrapper = styled.div`
 `;
 
 const NumberWrapper = styled.div`
-  height: 29px;
+  height: 20px;
   font-family: 'Open Sans';
 	font-size: 14px;
 	font-weight: bold;
@@ -37,18 +37,21 @@ const NumberWrapper = styled.div`
 `;
 
 const TitleWrapper = styled.div`
-  height: 34px;
+  height: 59px;
   font-family: ${props => props.chineseFont ? 'ChineseFont' : 'STKaitiSC' };
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 900;
   color: #454545;
   display: flex;
   justify-content: center;
-  align-items: flex-end;
+  align-items: center;
+  text-align: center;
+  width: 95%;
+  line-height: 1.1;
 `;
 
 const StatusWrapper = styled.div`
-  height: 37px;
+  height: 15px;
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -92,7 +95,7 @@ class EpisodeCard extends Component {
         </ImageWrapper>
         <NumberWrapper>
           {
-            'Episode' + this.props.number
+            'Episode ' + this.props.number
           }
         </NumberWrapper>
         <TitleWrapper

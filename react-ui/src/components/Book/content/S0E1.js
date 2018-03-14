@@ -7,6 +7,7 @@ import pinyinize from 'pinyinize';
 import insertVariables from '../../../utils/insertVariables';
 import { audioUrls } from '../../../constants/urls';
 import { practiceSheet } from '../../../constants/urls';
+import { call as OracleBone1 } from '../etymology';
 
 export default class Content extends Component {
   static propTypes = contentPropTypes
@@ -274,6 +275,8 @@ export default class Content extends Component {
           <c.P><b>{insertVariables('[FAMILY_NAME_PINYIN]', settings)} {insertVariables('[GIVEN_NAME_PINYIN]', settings)}</b></c.P>
           <c.P>Listen to the audio voice and practice reading the pīnyīn a few times:</c.P>
           {example(4, { basic: true, audio: true })}
+          <c.PartTitle noPrint>ORACLE BONES</c.PartTitle>
+          <OracleBone1 />
           <c.PartTitle>CALLIGRAPHY</c.PartTitle>
           <c.P>Another aid in memorizing characters is to understand their aesthetics. The art of writing the characters beautifully is called <i>calligraphy</i>. It is an ancient art form that embodies many concepts of Chinese philosophy. Historically, good handwriting was seen as the hallmark of an educated person. Today, there is a revival of interest, and most Chinese children practice calligraphy at school.</c.P>
           <c.P>Practicing calligraphy is not something you <i>have</i> to do to learn Chinese. But many people find it enjoyable. The aesthetic principles help us develop a feel for the logic of how Chinese characters have been put together; the rhythm of writing each stroke makes the whole character come alive. After just a short while of practice, this will help you to see the characters in a new way. Have a try; in later lessons you can decide whether you want to continue writing calligraphy.</c.P>

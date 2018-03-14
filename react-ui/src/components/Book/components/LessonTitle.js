@@ -13,6 +13,14 @@ const Title = styled.span`
   font-style: bold;
   font-family: 'Cambria';
   color: #C0504D;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  span:first-child {
+    font-size: 20px;
+  	font-weight: bold;
+    color: #b2babf;
+  }
 `;
 
 class LessonTitle extends Component {
@@ -21,7 +29,8 @@ class LessonTitle extends Component {
       <Bookrow marginBottom={30} center>
         <H1>
           <Title>
-            {this.props.episodeNumber + '. ' + this.props.title}
+            <span>{'- EPISODE ' + this.props.episodeNumber + ' -'}</span>
+            <span>{this.props.title}</span>
           </Title>
         </H1>
       </Bookrow>

@@ -198,7 +198,7 @@ export default class Content extends Component {
           >
             Tone 4 falls sharply from an initially high pitch to a low one, like the tone on <i><u>hey</u></i> in <i>Hey! You there!</i>
           </c.P>
-          <c.P>This is just to show that the tones are not impossible to pronounce for a westerner. The difference, of course, is that in English, these tones only change the <i>mood</i> of a sentence; in Chinese, they change the <i>meaning</i> of words.</c.P>
+          <c.P>This is just to show that the tones are not impossible to pronounce for a westerner. The difference, of course, is that in English these tones only change the <i>mood</i> of a sentence; in Chinese, they change the <i>meaning</i> of words.</c.P>
           <c.PartTitle type="secondary">Pinyin – explaining Chinese pronunciation with English letters</c.PartTitle>
           <c.P>In order to help us remember the pronunciation of a Chinese character, its sound can be written using the Latin alphabet:</c.P>
           <c.Bookrow
@@ -289,7 +289,7 @@ export default class Content extends Component {
             一 yī one
           </c.PartTitle>
           <c.P>This is the simplest character in the Chinese language: just a single horizontal stroke. But in all its simplicity, it illustrates important principles of writing. For example, looking at the printed character, the “horizontal” stroke seems absolutely flat:</c.P>
-          <c.P><c.Chinese>一</c.Chinese></c.P>
+          <c.P>一</c.P>
           <c.P>But if you look carefully at the hand-written character, you will see that the horizontal stroke is not just a flat line. It is always written from left to right, with a clearly defined beginning and end and. The whole stroke curves gently, giving it the organic look of a bone or a tree branch:</c.P>
           {character(1, { mode: 'box' })}
           <c.P>If you click on the calligraphy icon, you can see a video showing how to write it correctly. Print out a <a href={practiceSheet} target="_blank" rel="noopener noreferrer">practice sheet</a> and use an ordinary, black ballpoint pen to practice writing it as beautifully as you can:</c.P>

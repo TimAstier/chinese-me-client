@@ -5,7 +5,7 @@ export const imageUrls = {
   S0E1: [
     'https://s3.eu-west-2.amazonaws.com/chineseme/images/tone1_diagram.png',
     'https://s3.eu-west-2.amazonaws.com/chineseme/images/tone2_diagram.png',
-    'https://s3.eu-west-2.amazonaws.com/chineseme/images/tone3_diagram.png',
+    'https://s3.eu-west-2.amazonaws.com/chineseme/images/tone3_diagram_v2.png',
     'https://s3.eu-west-2.amazonaws.com/chineseme/images/tone4_diagram.png',
     'https://s3.eu-west-2.amazonaws.com/chineseme/images/lopsided_wo.png'
   ],

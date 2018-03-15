@@ -70,6 +70,11 @@ const StarsWrapper = styled.div`
   justify-content: space-between;
 `;
 
+const Img = styled.img`
+  height: 100px;
+  width: auto;
+`;
+
 class EpisodeCard extends Component {
   _renderStars() {
     if (this.props.score) {
@@ -88,7 +93,7 @@ class EpisodeCard extends Component {
     return (
       <Wrapper>
         <ImageWrapper>
-          <img
+          <Img
             src={this.props.imageUrl}
             alt={`episode ${this.props.number}`}
           />

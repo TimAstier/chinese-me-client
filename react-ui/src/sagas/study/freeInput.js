@@ -8,8 +8,8 @@ import { actions as audioActions } from '../../redux/audio';
 import { fetch as fetchTeacherComment } from '../teacherComment';
 import { actions as practiceActions } from '../../redux/practice';
 import makeAudioUrl from '../../helpers/makeAudioUrl';
-import trim from 'lodash/trim';
 import replace from 'lodash/replace';
+import { trimPunct } from '../../utils/strings';
 
 export function isDataLoaded() {
   return true;
@@ -40,7 +40,7 @@ export function* run(isExam = false, type) {
   }
   yield take(sagaTypes.CHECK_ANSWER);
   const userAnswer = yield select(selectors.exercise.getUserAnswer);
-  const trimedUserAnswer = replace(trim(userAnswer), /\s/g, '');
+  const trimedUserAnswer = replace(trimPunct(userAnswer), /\s/g, '');
   result.value = trimedUserAnswer;
   // Compare to correct answers in DB
   const teacherComment = yield call(fetchTeacherComment, exercise.get('id'), trimedUserAnswer);

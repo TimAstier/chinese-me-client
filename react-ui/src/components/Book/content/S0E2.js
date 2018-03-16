@@ -222,13 +222,6 @@ export default class Content extends Component {
             <Row><Chinese>- 我姓王。</Chinese><Translation>- My family name is Wang.</Translation></Row>
             <Row><Chinese>- 我叫一。 </Chinese><Translation>- My given name is Yi.</Translation></Row>
           </c.Bookrow>
-          {/* <c.Bookrow center marginTop={50}>
-            <img src="http://via.placeholder.com/550x450" alt="" />
-          </c.Bookrow> */}
-          <c.PartTitle name="dialog" />
-          {dialog(1, { sentenceType: 'chineseWithTranslation', displayNames: false })}
-          <c.P>Repeat this until you feel comfortable.</c.P>
-          <c.P>Now, change roles by pretending you are Wang Yi.</c.P>
           <c.P
             buttonOptions={{
               type: 'practice',
@@ -239,6 +232,13 @@ export default class Content extends Component {
           >
             <i>Practice.</i>
           </c.P>
+          {/* <c.Bookrow center marginTop={50}>
+            <img src="http://via.placeholder.com/550x450" alt="" />
+          </c.Bookrow> */}
+          <c.PartTitle name="dialog" />
+          {dialog(1, { sentenceType: 'chineseWithTranslation', displayNames: false })}
+          <c.P>Repeat this until you feel comfortable.</c.P>
+          <c.P>Now, change roles by pretending you are Wang Yi.</c.P>
           <c.PartTitle name="patterns" />
           {grammarTitle()}
           <c.P>When Chinese people meet each other they often say the other person's name as a form of greeting. This is called to <c.Chinese>叫</c.Chinese> <i>call</i> someone:</c.P>
@@ -275,7 +275,7 @@ export default class Content extends Component {
           {dialog(2, { sentenceType: 'chineseWithTranslation', displayNames: false })}
           {dialog(3, { sentenceType: 'chineseWithTranslation', displayNames: false })}
           <c.PartTitle>ORACLE BONES</c.PartTitle>
-          <c.Frame><OracleBone1/></c.Frame>
+          <OracleBone1/>
           <c.PartTitle>CALLIGRAPHY</c.PartTitle>
           <c.P>The characters we have learned in this lesson are a good illustration of how different character components are fitted together in complex characters.</c.P>
           <c.P>When <c.Chinese>女</c.Chinese> <i>woman</i> appears on its own as a character, it has lots of room to fill its imagined square:</c.P>

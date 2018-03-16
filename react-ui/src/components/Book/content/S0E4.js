@@ -166,6 +166,16 @@ export default class Content extends Component {
           >
             <i>Practice saying numbers in Chinese.</i>
           </c.P>
+          <c.P
+            buttonOptions={{
+              type: 'practice',
+              data: {
+                elementId: practiceIds[2]
+              }
+            }}
+          >
+            <i>Practice writing a few Chinese numbers.</i>
+          </c.P>
           {grammarTitle()}
           <c.P>We have seen that some Chinese sentences are made up of a Subject, a Verb and an Object, just as in English:</c.P>
           {example(1, { audio: true })}
@@ -185,7 +195,7 @@ export default class Content extends Component {
             buttonOptions={{
               type: 'practice',
               data: {
-                elementId: practiceIds[2]
+                elementId: practiceIds[3]
               }
             }}
           >

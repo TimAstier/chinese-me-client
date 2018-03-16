@@ -4,14 +4,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [X.X.X] YYYY-MM-DD
-
-### Added
-### Content
-### Changed
-### Fixed
-
-## [0.1.21] YYYY-MM-DD
+## [0.1.21] 2017-03-16
 
 ### Added
 - Responsiveness
@@ -21,6 +14,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 - Browser notice only displayed once
+- Answers in freeInput ignore punctuation and spaces
 
 ### Fixed
 

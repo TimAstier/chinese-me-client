@@ -65,8 +65,8 @@ export default class Content extends Component {
             buttonOptions={{
               type: 'audio',
               data: {
-                text: '我很高兴。'
-                // url: pinyinNumberToAudioUrl('')
+                text: '我很高兴。',
+                url: 'https://s3.eu-west-2.amazonaws.com/chineseme/audio/examples/S0E5_custom_example_1.m4a'
               }
             }}
           >
@@ -80,8 +80,8 @@ export default class Content extends Component {
             buttonOptions={{
               type: 'audio',
               data: {
-                text: '你很好！'
-                // url: pinyinNumberToAudioUrl('')
+                text: '你很好！',
+                url: 'https://s3.eu-west-2.amazonaws.com/chineseme/audio/examples/S0E5_custom_example_2.m4a'
               }
             }}
           >

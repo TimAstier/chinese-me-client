@@ -106,12 +106,14 @@ export default class Content extends Component {
           <c.Bookrow>
             <Row><Chinese>- 王一，你好！</Chinese><Translation>- Hi, Wang Yi!</Translation></Row>
           </c.Bookrow>
-          <c.P>At work and in formal settings, it is more common to use only the family name followed by a title or kinship term. The most frequent is to call someone <c.Chinese>小</c.Chinese> <i>little</i> or <c.Chinese>老</c.Chinese> <i>old</i>, depending on their age relative to your own:</c.P>
+          <c.P>At work and in formal settings, it is more common to use only the family name followed by a title or kinship term. The most frequent is to call someone <c.Chinese>小</c.Chinese> <i>little</i> or <c.Chinese>老</c.Chinese> <i>old</i>:</c.P>
           <c.Bookrow flexDirection="column">
             <Row><Chinese>- 小王！</Chinese><Translation>- Little Wang!</Translation></Row>
             <Row><Chinese>- 老李，你好！</Chinese><Translation>- Hi, Old Li!</Translation></Row>
           </c.Bookrow>
-          <c.P>Age is important in China, so a younger person addresses someone older with <c.Chinese>老</c.Chinese> <b>lǎo</b> <i>old</i> as a term of respect, while an older person uses 小 <b>xiǎo</b> <i>little</i> as a term of endearment.</c.P>
+          <c.P>
+            Both <c.Chinese>小</c.Chinese> and <c.Chinese>老</c.Chinese> can be used as general terms of affection, so someone at the office can be known as <c.Chinese>老王</c.Chinese> to all her colleagues, whether they are older than her or not. In addition, many middle-aged married couples address each other as <c.Chinese>老</c.Chinese>+last name. Most commonly, however, the choice between <c.Chinese>小</c.Chinese> and <c.Chinese>老</c.Chinese> depends on whether the person you are addressing is younger or older than yourself. Age is important in China, so a younger person almost always addresses someone older with <c.Chinese>老</c.Chinese> <b>lǎo</b> <i>old</i> as a term of respect, while an older person would usually say <c.Chinese>小</c.Chinese> <b>xiǎo</b> <i>little</i> as a term of endearment. If you follow this general rule, you will never go wrong.
+          </c.P>
           <c.P>If you don't know the person, or the relationship is very formal, you would use the titles <c.Chinese>先生</c.Chinese> <i>mr.</i> and <c.Chinese>女士</c.Chinese> <i>ms. </i>:</c.P>
           <c.Bookrow flexDirection="column">
             <Row><Chinese>- 王先生！</Chinese><Translation>- Mr. Wang!</Translation></Row>

@@ -156,7 +156,7 @@ export default class Content extends Component {
               }
             }}
           >
-            Practice to see if you can identify the tone on each syllabe.
+            Practice to see if you can identify the tone on each syllable.
           </c.P>
           <c.P
             buttonOptions={{

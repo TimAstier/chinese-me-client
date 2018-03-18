@@ -21,6 +21,7 @@ export default class Content extends Component {
           />
           <c.PartTitle name="pronunciation" />
           {pronunciationTitle()}
+          <c.P>As we have seen, the flow of air – also called <i>aspiration</i> – is an important feature of Chinese initials. In fact, there are some pairs of initials where aspiration is the only difference. We will learn more about this in later lessons.</c.P>
           <c.P>The Chinese initial <b>g-</b> is pronounced like an English <i>k</i>, but with less flow of air. Hold your palm up facing your mouth at a distance of an inch or two and pronounce English <i>g</i> and <i>k</i>. You can feel that there is a much weaker flow of air when you pronounce <i>g</i> than when you pronounce <i>k</i>. Chinese <b>g-</b> is pronounced like an English <i>k</i> without the flow of air! Listen:</c.P>
           <c.Bookrow
             buttonOptions={{

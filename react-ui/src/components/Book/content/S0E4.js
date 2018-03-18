@@ -64,8 +64,10 @@ export default class Content extends Component {
           >
             <b>èr</b>
           </c.Bookrow>
+          <c.P>In the syllable <b>èr</b>, pronunciation varies a bit; some native speakers pronounce it more like <i>àr</i>.</c.P>
           {pronunciationTitle()}
-          <c.P>Compare the sounds on the following syllables:</c.P>
+          <c.P>These can be a bit tricky to tell apart for the beginner. They are spelled with only two vowels, <b>i</b> and <b>u</b>, but in fact we hear <i>three</i> sounds in each of them.</c.P>
+          <c.P>The final -<b>ui</b> is pronounced as if it were actually spelled -<i>uei</i>. Listen:</c.P>
           <c.Bookrow
             buttonOptions={{
               type: 'audio',
@@ -80,6 +82,7 @@ export default class Content extends Component {
               <c.Meaning>year (of age)</c.Meaning>
             </Row>
           </c.Bookrow>
+          <c.P>The final -<b>iu</b>, on the other hand, is often pronounced as if it were written -<i>iou</i>.</c.P>
           <c.Bookrow
             buttonOptions={{
               type: 'audio',

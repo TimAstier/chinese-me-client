@@ -39,7 +39,8 @@ export default class Content extends Component {
           />
           <c.PartTitle name="pronunciation" />
           {pronunciationTitle()}
-          <c.P>A Chinese syllable is composed of three parts: an <i>initial</i>, which comes first; a <i>final</i>, which comes last, and a <i>tone</i>.</c.P>
+          <c.P>Chinese pronunciation can be a challenge for beginners. But there is one feature that makes it easy compared to many other languages: syllables are usually pronounced clearly and distinctly, and this makes it easier to hear what people are saying.</c.P>
+          <c.P>Syllables are the basis of spoken Chinese because they are the smallest units of meaning: each written character corresponds to one spoken syllable. Each syllable is composed of three parts: an <i>initial</i>, which comes first; a <i>final</i>, which comes last, and a <i>tone</i>. <b>Jiào</b>, for example, is made up of the initial <b>j</b>-, the final -<b>iao</b>, and Tone 4.</c.P>
           <c.P
             buttonOptions={{
               type: 'practice',
@@ -51,7 +52,7 @@ export default class Content extends Component {
             <i>Practice recognizing the initials, finals and tones on a few syllables.</i>
           </c.P>
           {pronunciationTitle()}
-          <c.P>Chinese <b>h-</b> is much “harder” than English <i>h</i>; it sounds more like its German counterpart. Mimic the audio voice and try to exaggerate the strong aspiration on the initial:</c.P>
+          <c.P>Chinese <b>h</b>- is much “harder” than English <i>h</i>; it sounds more like its German counterpart, which has a stronger flow of air. This air flow is called <i>aspiration</i>; it is an important feature of Chinese pronunciation. Mimic the audio voice and try to exaggerate the strong aspiration on the initial:</c.P>
           <c.Bookrow
             buttonOptions={{
               type: 'audio',
@@ -192,7 +193,7 @@ export default class Content extends Component {
           {grammarTitle()}
           <c.P>In the previous lesson, we learned to introduce ourselves using the verb <c.Chinese>叫</c.Chinese> which means <i>to be called</i>. The verb <c.Chinese>姓</c.Chinese> is used in a similar pattern to introduce one’s family name:</c.P>
           {example(1, { basic: true, audio: true, displayTranslation: true})}
-          <c.P>So while <c.Chinese>叫</c.Chinese> means <i>to be called</i>, <c.Chinese>姓</c.Chinese> literally means <i>to have as family name</i>. The two words are often used together in presentations, a bit like when agent double-oh- seven introduces himself saying <i>My name is Bond; James Bond:</i></c.P>
+          <c.P>So while <c.Chinese>叫</c.Chinese> means <i>to be called</i>, <c.Chinese>姓</c.Chinese> literally means <i>to have as family name</i>. The two words are often used together in presentations, a bit like when agent double-oh-seven introduces himself saying <i>My name is Bond; James Bond:</i></c.P>
           <c.Bookrow
             flexDirection="column"
             buttonOptions={{

@@ -42,7 +42,7 @@ class Speech extends Component {
           {
             this.props.status === 'question'
               ? 'Then compare with the model:'
-              : 'Repeat until you feel comfortable:'
+              : 'Repeat until you feel comfortable.'
           }
         </QuestionWrapper>
         <AudioWrapper>

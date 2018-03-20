@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import * as c from '../components';
 import { Objective } from '../../../containers/Book/containers';
 import { content as contentPropTypes } from '../../../helpers/propTypes';
-// import pinyinNumberToAudioUrl from '../../../utils/pinyinNumberToAudioUrl';
+import pinyinNumberToAudioUrl from '../../../utils/pinyinNumberToAudioUrl';
 import { Row } from '../../Shared';
 // import insertVariables from '../../../utils/insertVariables';
 
@@ -27,7 +27,7 @@ export default class Content extends Component {
             buttonOptions={{
               type: 'audio',
               data: {
-                // url: pinyinNumberToAudioUrl('gao1'),
+                url: pinyinNumberToAudioUrl('gao1'),
                 text: '高'
               }
             }}
@@ -38,7 +38,7 @@ export default class Content extends Component {
             buttonOptions={{
               type: 'audio',
               data: {
-                // url: pinyinNumberToAudioUrl('gui4'),
+                url: pinyinNumberToAudioUrl('gui4'),
                 text: '贵'
               }
             }}
@@ -46,14 +46,52 @@ export default class Content extends Component {
             <b>guì</b>
           </c.Bookrow>
           {pronunciationTitle()}
+          <c.P>As we have seen, Chinese syllables are usually pronounced clearly; each syllable is stressed and has a clear tone. But this is not always the case. Syllables can lose their stress, and when this happens the tone becomes a short, relaxed version called <i>neutral</i> or <i>zero</i> tone. This process is not difficult to master; we mention it here so that you will not be confused when you notice it.</c.P>
+          <c.P>In some cases, the neutral tone is an optional feature of relaxed, fast speech, just as we in English say <i>wanna</i> instead of <i>want to</i>. If your professor pronounces the word <c.Chinese>中国人</c.Chinese> carefully for you, in order to teach you the pronunciation, he or she might say:</c.P>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                text: '中国人',
+                url: 'https://s3.eu-west-2.amazonaws.com/chineseme/audio/others/5_1.m4a'
+              }
+            }}
+          >
+            <b>zhōngguórén</b>
+          </c.Bookrow>
+          <c.P>But at natural conversational speed, the second syllable usually loses its stress and is pronounced without a clear Tone 2:</c.P>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                text: '中国人',
+                url: 'https://s3.eu-west-2.amazonaws.com/chineseme/audio/others/5_2.m4a'
+              }
+            }}
+          >
+            <b>zhōngguo̊rén</b>
+          </c.Bookrow>
+          <c.P>This kind of optional neutral tone is usually not mentioned in dictionaries and textbooks; its pīnyīn is written with all three original tone marks. In this course, we want to be a bit more serious about pronunciation, so when we want to draw attention to tone neutralization we replace the original tone mark with a little “zero” symbol.</c.P>
           <c.P>As we have seen, a Chinese syllable has one of the Tones 1-4. But in some cases, this tone disappears. The word <c.Chinese>认识</c.Chinese> in this lesson is an example.</c.P>
           <c.P>
-            The two characters <c.Chinese>认</c.Chinese> and <c.Chinese>识</c.Chinese> in this word are pronounced <b>rèn</b> with Tone 4 and <b>shí</b> with Tone 2, respectively. But when they are combined into the polysyllabic word <c.Chinese>认识</c.Chinese>, the second syllable loses its original tone. The resulting tone is called <i>neutral</i> or <i>zero</i> tone. In dictionaries, it is usually written by leaving out the tone mark, with no special symbol. In this course, we denote it with a little zero over the vowel:
+            Some neutral tones are mandatory. In this chapter, for example, each character in the word <c.Chinese>认识</c.Chinese> has its own tone:  <c.Chinese>认</c.Chinese> is pronounced <b>rèn</b> with Tone 4 and <c.Chinese>识</c.Chinese> is pronounced <b>shí</b> with
+            Tone 2. But when these two characters are combined into the bisyllabic word <c.Chinese>认识</c.Chinese>, the second syllable loses its original tone.
           </c.P>
-          <c.Bookrow>
-            <Row><c.Char>认识</c.Char><c.Pinyin>rènshi̊</c.Pinyin></Row>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                text: '认识',
+                url: 'https://s3.eu-west-2.amazonaws.com/chineseme/audio/words/ren4shi0.mp3'
+              }
+            }}
+          >
+            <b>rènshi̊</b>
           </c.Bookrow>
-          <c.P>We have already seen that most polysyllabic words keep the tone on each syllable: <c.Chinese>中国</c.Chinese> <b>zhōngguó</b> and <c.Chinese>中国人</c.Chinese> <b>zhōngguórén</b>, for example. We simply need to memorize the neutral tone as part of the “spelling” of certain words.</c.P>
+          <c.P>Here, the neutral tone is a permanent feature of the word, independent of how fast the speaker is going. No Chinese person would pronounce this word with the tone intact on the second syllable. In dictionaries and most textbooks, this mandatory neutral tone is marked by the absence of any tone mark; again, to make things as clear as possible, we mark it with a “zero” over the syllable.</c.P>
+          <c.P>
+            The neutral tone is short and less distinct than the four main tones. It always appears in unstressed position; never at the beginning of a word or phrase. Its pitch depends on the preceding tone: If you listen again to <c.Chinese>认识</c.Chinese>, for example, you will notice that the neutral tone ends up at the bottom of the speaker’s pitch range when it comes after Tone 4. After Tone 1 the neutral tone has a slightly higher pitch; after Tone 2 higher still; and after Tone 3 it ends up close to the top of the speaker’s pitch range. Most people don’t have to memorize this; it comes naturally as you practice speaking.
+          </c.P>
           <c.PartTitle name="characters" />
           {newCharacters()}
           <c.PartTitle name="patterns" />

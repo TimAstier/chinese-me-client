@@ -189,7 +189,7 @@ export default class Content extends Component {
           >
             <c.Char>你好！</c.Char>
           </c.Bookrow>
-          <c.P>You may have noticed that the first tone changes to Tone 2. This is an example of a <i>tone change rule</i>: sometimes, the tone on a character changes depending on the tone that comes after. This sounds complicated, but actually comes naturally as you get used to speaking; we just mention it so you won’t be surprised when it happens! The linguistic term for this kind of change is <i>tone sandhi</i>, from the sanscrit word <i>sandhi</i> meaning <i>change</i>.</c.P>
+          <c.P>You may have noticed that the tone on <b>nǐ</b>, which is originally Tone 3, changes to Tone 2. This is an example of a <i>tone change rule</i>: sometimes, the tone on a character changes depending on the tone that comes after. This sounds complicated, but actually comes naturally as you get used to speaking; we just mention it so you won’t be surprised when it happens! The linguistic term for this kind of change is <i>tone sandhi</i>, from the sanscrit word <i>sandhi</i> meaning <i>change</i>.</c.P>
           {grammarTitle()}
           <c.P>In the previous lesson, we learned to introduce ourselves using the verb <c.Chinese>叫</c.Chinese> which means <i>to be called</i>. The verb <c.Chinese>姓</c.Chinese> is used in a similar pattern to introduce one’s family name:</c.P>
           {example(1, { basic: true, audio: true, displayTranslation: true})}

@@ -209,7 +209,7 @@ class MapContent extends Component {
           {
             dialogs.length !== 0 &&
               <ChapterHeader
-                name="DIALOGS"
+                name="DIALOGUES"
                 // completedElements={mapDialogsCompletedCount}
                 // totalElements={dialogs.length}
               />

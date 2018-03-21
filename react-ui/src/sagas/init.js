@@ -27,7 +27,7 @@ export function* initApp() {
     const { episodeId } = getParamsFromUrl(url);
     // Workaround for book urls and static pages
     if (episodeId && episodeId !== 'season') {
-      if (['help', 'privacy-policy', 'terms-of-service', 'about', 'philosophy'].indexOf(episodeId ) === -1) {
+      if (['help', 'privacy-policy', 'terms-of-service', 'about', 'philosophy', 'account'].indexOf(episodeId ) === -1) {
         yield put(studyActions.setCurrentEpisodeId(episodeId));
         yield put(mapActions.setFocusedEpisodeId(episodeId));
       }

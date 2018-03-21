@@ -32,6 +32,7 @@ export default (
     <Route path="login" component={containers.LoginPage} />
     <Route path="study" component={containers.Study} >
       <IndexRoute component={containers.SelectEpisode} />
+      <Route path="account" component={requireAuth(containers.Account)} />
       <Route path="about" component={components.About} />
       <Route path="help" component={components.Help} />
       <Route path="privacy-policy" component={components.Privacy} />

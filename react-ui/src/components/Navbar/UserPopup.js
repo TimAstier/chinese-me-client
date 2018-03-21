@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import { Popup } from 'semantic-ui-react';
 import userIcon from '../../images/defaultMaleUserIcon.svg';
 import logoutIcon from '../../images/logoutIcon.svg';
+import accountIcon from '../../images/iconSetting.svg';
+import { Link } from 'react-router';
 
 const trigger = (
   <img src={userIcon} alt=""/>
@@ -27,14 +29,18 @@ const Item = styled.div`
   :hover {
     background-color: #F2F7FA;
   }
+  width: 100%;
 `;
 
 const Label = styled.div`
   font-family: 'Open Sans';
+  flex-grow: 1;
   display: flex;
-  align-items: center;
-  span {
-    margin-left: 11px;
+  div:nth-child(1) {
+    flex-grow: 2;
+  }
+  div:nth-child(2) {
+    flex-grow: 5;
   }
 `;
 
@@ -47,9 +53,22 @@ class UserPopup extends Component {
         hoverable
       >
         <Menu>
+          <Link to={'/study/account'}>
+            <Item>
+              <Label>
+                <div>
+                  <img src={accountIcon} alt=""/>
+                </div>
+                <div>Account</div>
+              </Label>
+            </Item>
+          </Link>
           <Item onClick={this.props.logout}>
             <Label>
-              <img src={logoutIcon} alt=""/><span>Log Out</span>
+              <div>
+                <img src={logoutIcon} alt=""/>
+              </div>
+              <div>Log Out</div>
             </Label>
           </Item>
         </Menu>

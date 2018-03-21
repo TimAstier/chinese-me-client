@@ -3,6 +3,7 @@ import * as bookComponents from './Book/components';
 export { bookComponents };
 
 // Keep in alphabetical order
+export { default as Account } from './Account/Account';
 export { default as ActivatedPage } from './Signup/ActivatedPage';
 export { default as About } from './StaticPages/About';
 export { default as AudioToWords } from './Exercises/AudioToWords/AudioToWords';
@@ -76,6 +77,7 @@ export { default as Star } from './Star/Star';
 export { default as Statement } from './Statement/Statement';
 export { default as StatementWrapper } from './Dialog/StatementWrapper';
 export { default as StudyVideo } from './StudyVideo/StudyVideo';
+export { default as TakeMoney } from './TakeMoney/TakeMoney';
 export { default as Terms } from './StaticPages/Terms';
 export { default as TransparentInput } from './TransparentInput/TransparentInput';
 export { default as VideoPlayer } from './VideoPlayer/VideoPlayer';

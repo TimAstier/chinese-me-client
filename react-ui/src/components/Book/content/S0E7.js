@@ -69,7 +69,7 @@ export default class Content extends Component {
           <c.P>Note that <c.Chinese>大</c.Chinese> <b>dà</b> <i>big</i> is more common than <c.Chinese>老</c.Chinese> <b>lǎo</b> <i>old</i> when you simply want to state the objective fact that you are older than someone. If you say <c.Chinese>我比你老三岁</c.Chinese>, you are emphasizing the fact that you are older (as in more tired, more experienced or more wrinkled) than the person you are talking to.</c.P>
           {grammarTitle()}
           <c.P>Chinese dates are logically structured according to the formula YEAR-MONTH-DAY.</c.P>
-          <c.P><i>Years</i> are just lists of digits: ONE-NINE-NINE-FOUR or just NINE-FOUR for 1994 and TWO-ZERO-ZERO-THREE or ZERO-THREE for 2003. <i>Zero</i> is pronounced <b>líng</b>.</c.P>
+          <c.P><i>Years</i> are just lists of digits followed by the character <c.Chinese>年</c.Chinese> <b>nián</b> <i>year</i>: ONE-NINE-NINE-FOUR or just NINE-FOUR for 1994 and TWO-ZERO-ZERO-THREE or ZERO-THREE for 2003. <i>Zero</i> is pronounced <b>líng</b>.</c.P>
           <c.P>
             <i>
               Months

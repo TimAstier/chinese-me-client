@@ -82,7 +82,7 @@ export default class Content extends Component {
           {newCharacters()}
           <c.PartTitle name="patterns" />
           {grammarTitle()}
-          <c.P>Function words, also called "particles", are an important feature of Chinese. One of the most common examples is the question particle <c.Chinese>吗</c.Chinese> <b>må</b> which transforms statements to "yes/no" questions, questions that can be answered with a <i>yes</i> or a <i>no</i>:</c.P>
+          <c.P>Function words, also called "particles", are an important feature of Chinese. One of the most common examples is the question particle <c.Chinese>吗</c.Chinese> <b>må</b> which transforms statements into "yes/no" questions, questions that can be answered with a <i>yes</i> or a <i>no</i>:</c.P>
           {example(1, { audio: true })}
           <c.P>The question particle always has neutral tone.</c.P>
           <c.P>In English, we usually change the word order to formulate a question:</c.P>
@@ -99,7 +99,7 @@ export default class Content extends Component {
           >
             <i>Practice asking questions using <c.Chinese>吗</c.Chinese> <b>må</b>.</i>
           </c.P>
-          <c.P>The question particle <c.Chinese>吗</c.Chinese> <b>må</b> is used for one of the most common polite phrases in Chinese:</c.P>
+          <c.P>The question particle <c.Chinese>吗</c.Chinese> <b>må</b> is used for one a common polite expression:</c.P>
           {example(3, { audio: true })}
           {grammarTitle()}
           <c.P>In a previous lesson, we learned how to <c.Chinese>叫</c.Chinese> <b>jiào</b> <i>call</i> someone we know well. The simplest way is to say the person's full name followed by a greeting:</c.P>

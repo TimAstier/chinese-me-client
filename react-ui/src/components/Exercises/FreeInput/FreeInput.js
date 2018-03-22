@@ -55,6 +55,11 @@ const Input = styled.input`
   outline: none;
 `;
 
+const Explanation = styled.div`
+  margin-top: 10px;
+  color: #55b6ff;
+`;
+
 class FreeInput extends Component {
   isFinished() {
     const status = this.props.status;
@@ -111,7 +116,9 @@ class FreeInput extends Component {
           <AnswerLabel>
             {`The correct answer is: "${this.props.correctAnswer}".`}
             <br />
-            {this.props.explanation}
+            <Explanation>
+              {this.props.explanation}
+            </Explanation>
           </AnswerLabel>
         </CorrectAnswerWrapper>
       </AnswerWrapper>

@@ -142,6 +142,7 @@ export default class Content extends Component {
             buttonOptions={{
               type: 'audio',
               data: {
+                url: pinyinNumberToAudioUrl('xing4'),
                 text: '姓'
               }
             }}
@@ -156,6 +157,7 @@ export default class Content extends Component {
             buttonOptions={{
               type: 'audio',
               data: {
+                url: pinyinNumberToAudioUrl('jiao4'),
                 text: '叫'
               }
             }}

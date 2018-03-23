@@ -20,6 +20,7 @@ export function *voiceText(text, muted = false, rate = 0.7) {
   // BUG: ResponsiveVoice Chinese voice currently doesn't work on Safari, IOS
   // An alternative could be: http://www.voicerss.org/api/demo.aspx
   // See ResponsiveVoice Api: https://responsivevoice.org/api/
+  yield put(audioActions.startLoading());
   const voicer = window.responsiveVoice;
   if (voicer.voiceSupport()) {
     const channel = eventChannel(emitter => {
@@ -29,6 +30,7 @@ export function *voiceText(text, muted = false, rate = 0.7) {
         {
           volume: muted ? 0 : 1,
           rate,
+          onstart: () => emitter({ loaded: true }),
           onend: () => emitter(END)
         }
       );
@@ -38,11 +40,13 @@ export function *voiceText(text, muted = false, rate = 0.7) {
       };
     });
 
-    yield put(audioActions.set('isPlaying', true));
-
     try {
       while (true) { // eslint-disable-line no-constant-condition
-        yield take(channel); // The loop breaks via the END in the channel
+        const status = yield take(channel); // The loop breaks via the END in the channel
+        if (status.loaded === true) {
+          yield put(audioActions.loadingSuccess());
+          yield put(audioActions.set('isPlaying', true));
+        }
       }
     } finally {
       // Audio is done playing OR playSound was cancelled
@@ -58,11 +62,16 @@ export function *playSound(src, muted = false, volume = 1) {
   const sound = new howler.Howl({
     src,
     html5: true, // Fix CORS errors. See https://github.com/goldfire/howler.js/issues/64
+    // NOTE: playing sounds with HTML has a drawback. On mobile, sounds requires a
+    // user action in order to be played, which breaks the dialog features.
     volume
   });
   sound.mute(muted);
 
   const channel = eventChannel(emitter => {
+    sound.on('load', () => {
+      emitter({ loaded: true });
+    });
     sound.on('end', () => {
       emitter(END); // Ends the channel
     });
@@ -73,12 +82,16 @@ export function *playSound(src, muted = false, volume = 1) {
     };
   });
 
+  yield put(audioActions.startLoading());
   sound.play();
-  yield put(audioActions.set('isPlaying', true));
 
   try {
     while (true) { // eslint-disable-line no-constant-condition
-      yield take(channel); // The loop breaks via the END in the channel
+      const status = yield take(channel); // The loop breaks via the END in the channel
+      if (status.loaded === true) {
+        yield put(audioActions.loadingSuccess());
+        yield put(audioActions.set('isPlaying', true));
+      }
     }
   } finally {
     // Audio is done playing OR playSound was cancelled

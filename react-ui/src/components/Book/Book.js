@@ -4,6 +4,11 @@ import { ScrollableWrapper } from '../../containers';
 import * as models from '../../models';
 import { ContentHOC } from '../.';
 import assetEndpointToUrl from '../../helpers/assetEndpointToUrl';
+import iconPlayAudio from '../../images/iconPlayAudio.svg';
+import iconAudioPlayingA from '../../images/iconAudioPlayingA.svg';
+import iconAudioPlayingB from '../../images/iconAudioPlayingB.svg';
+import iconAudioPlayingC from '../../images/iconAudioPlayingC.svg';
+import spinner from '../../images/spinner.svg';
 // react-preloaded is a forw of react-preload which seems abandonned and not
 // up-to-date with the latest releases of react
 // see https://github.com/sambernard/react-preload/pull/23
@@ -19,7 +24,9 @@ class Book extends Component {
       return (
         <Preload
           loadingIndicator={<div>...</div>}
-          images={this.props.images.map(image => assetEndpointToUrl('/images/' + image))}
+          images={
+            this.props.images.map(image => assetEndpointToUrl('/images/' + image)).concat([iconPlayAudio, iconAudioPlayingA, iconAudioPlayingB, iconAudioPlayingC, spinner])
+          }
         >
           <ScrollableWrapper>
             <ContentHOC

@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import iconPlayAudio from '../../images/iconPlayAudio.svg';
-import iconAudioPlayingA from '../../images/iconAudioPlayingA.svg';
-import iconAudioPlayingB from '../../images/iconAudioPlayingB.svg';
-import iconAudioPlayingC from '../../images/iconAudioPlayingC.svg';
 import styled from 'styled-components';
 import { PRODUCTION_ROOT_URL, PDF_VERSION} from '../../constants/urls';
+import { PlayingLoop, Spinner } from '../.';
 
 const Wrapper = styled.div`
   height: ${props => `${props.size}px`};
@@ -32,81 +30,60 @@ const Wrapper = styled.div`
 `;
 
 class PlayAudioButton extends Component {
-  // BUG: twinkling button (probably need to preload icons)
-
-  // Timer from react docs:
-  // https://facebook.github.io/react/docs/state-and-lifecycle.html
   constructor(props) {
     super(props);
-    this.state = { time: 0 };
-    this.playingIcons = [
-      iconAudioPlayingA,
-      iconAudioPlayingB,
-      iconAudioPlayingC
-    ];
+    this.state = { active: false };
   }
 
-  componentDidMount() {
-    this.timerID = setInterval(
-      () => this._tick(),
-      600
-    );
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.timerID);
+  componentWillReceiveProps(nextProps) {
+    if (this.props.isPlaying === true && this.state.active === true) {
+      if (nextProps.isPlaying === false) {
+        this.setState({ active: false });
+      }
+    }
   }
 
   _size() {
-    if (this.props.small) {
-      return 30;
-    }
-    if (this.props.big) {
-      return 80;
-    }
+    if (this.props.small) { return 30; }
+    if (this.props.big) { return 80; }
     return 40;
   }
 
-  _tick() {
-    this.setState({
-      time: this.state.time + 1
-    });
-  }
-
-  _loopPlayingIcons() {
-    return this.playingIcons[this.state.time % 3];
-  }
-
-  _renderImage() {
-    if (!this.props.isPlaying) {
-      return (
-        <img
-          src={iconPlayAudio}
-          alt="play audio"
-          height={this._size()}
-          width={this._size()}
-        />
-      );
+  _renderIcon() {
+    const { isLoading, isPlaying, requireActive } = this.props;
+    if (isLoading) {
+      if (!requireActive || (requireActive && this.state.active === true)) {
+        return <Spinner size={ this._size() } />;
+      }
     }
-
+    if (isPlaying) {
+      if (!requireActive || (requireActive && this.state.active === true)) {
+        return <PlayingLoop size={ this._size() } />;
+      }
+    }
     return (
       <img
-        src={this._loopPlayingIcons()}
-        alt="audio playing"
+        src={iconPlayAudio}
+        alt=""
         height={this._size()}
         width={this._size()}
       />
     );
   }
 
+  _handleClick() {
+    this.setState({ active: true });
+    return this.props.onClick();
+  }
+
   render() {
     return (
       <Wrapper
-        onClick={this.props.onClick}
+        onClick={this._handleClick.bind(this)}
         size={this._size()}
       >
         <a href={PRODUCTION_ROOT_URL + this.props.currentUrl + '/?utm_source=pdf_v' + PDF_VERSION}>
-          {this._renderImage()}
+          {this._renderIcon()}
         </a>
       </Wrapper>
     );
@@ -116,10 +93,12 @@ class PlayAudioButton extends Component {
 PlayAudioButton.propTypes = {
   onClick: propTypes.func.isRequired,
   isPlaying: propTypes.bool,
+  isLoading: propTypes.bool.isRequired,
   small: propTypes.bool,
   big: propTypes.bool,
   printLink: propTypes.bool,
-  currentUrl: propTypes.string.isRequired
+  currentUrl: propTypes.string.isRequired,
+  requireActive: propTypes.bool
 };
 
 export default PlayAudioButton;

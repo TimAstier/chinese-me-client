@@ -63,6 +63,11 @@ $ git push heroku master
 ## Data licenses:
 Pinyin sounds: https://github.com/pffy/mp3-chinese-pinyin-sound
 
+## Static assets
+Static assets are stored in an AWS S3 bucket.
+Content is delivered by Amazon CloudFront based on this tutorial:
+https://aws.amazon.com/getting-started/tutorials/deliver-content-faster/
+
 ## Environments
 - development - http://localhost:3000
 - staging - https://floating-dusk-88295.herokuapp.com

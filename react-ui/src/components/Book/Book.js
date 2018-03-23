@@ -3,6 +3,7 @@ import propTypes from 'prop-types';
 import { ScrollableWrapper } from '../../containers';
 import * as models from '../../models';
 import { ContentHOC } from '../.';
+import assetEndpointToUrl from '../../helpers/assetEndpointToUrl';
 // react-preloaded is a forw of react-preload which seems abandonned and not
 // up-to-date with the latest releases of react
 // see https://github.com/sambernard/react-preload/pull/23
@@ -18,7 +19,7 @@ class Book extends Component {
       return (
         <Preload
           loadingIndicator={<div>...</div>}
-          images={this.props.images}
+          images={this.props.images.map(image => assetEndpointToUrl('/images/' + image))}
         >
           <ScrollableWrapper>
             <ContentHOC

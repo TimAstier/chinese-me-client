@@ -5,6 +5,7 @@ import { content as contentPropTypes } from '../../../helpers/propTypes';
 import pinyinNumberToAudioUrl from '../../../utils/pinyinNumberToAudioUrl';
 import { Row } from '../../Shared';
 // import insertVariables from '../../../utils/insertVariables';
+import assetEndpointToUrl from '../../../helpers/assetEndpointToUrl';
 
 export default class Content extends Component {
   static propTypes = contentPropTypes
@@ -53,7 +54,7 @@ export default class Content extends Component {
               type: 'audio',
               data: {
                 text: '中国人',
-                url: 'https://s3.eu-west-2.amazonaws.com/chineseme/audio/others/5_1.m4a'
+                url: assetEndpointToUrl('/audio/others/5_1.m4a')
               }
             }}
           >
@@ -65,7 +66,7 @@ export default class Content extends Component {
               type: 'audio',
               data: {
                 text: '中国人',
-                url: 'https://s3.eu-west-2.amazonaws.com/chineseme/audio/others/5_2.m4a'
+                url: assetEndpointToUrl('/audio/others/5_2.m4a')
               }
             }}
           >
@@ -82,7 +83,7 @@ export default class Content extends Component {
               type: 'audio',
               data: {
                 text: '认识',
-                url: 'https://s3.eu-west-2.amazonaws.com/chineseme/audio/words/ren4shi0.mp3'
+                url: assetEndpointToUrl('/audio/words/ren4shi0.mp3')
               }
             }}
           >
@@ -105,7 +106,7 @@ export default class Content extends Component {
               type: 'audio',
               data: {
                 text: '我很高兴。',
-                url: 'https://s3.eu-west-2.amazonaws.com/chineseme/audio/examples/S0E5_custom_example_1.m4a'
+                url: assetEndpointToUrl('/audio/examples/S0E5_custom_example_1.m4a')
               }
             }}
           >
@@ -120,7 +121,7 @@ export default class Content extends Component {
               type: 'audio',
               data: {
                 text: '你很好！',
-                url: 'https://s3.eu-west-2.amazonaws.com/chineseme/audio/examples/S0E5_custom_example_2.m4a'
+                url: assetEndpointToUrl('/audio/examples/S0E5_custom_example_2.m4a')
               }
             }}
           >

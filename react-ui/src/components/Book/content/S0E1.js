@@ -7,6 +7,7 @@ import pinyinize from 'pinyinize';
 import insertVariables from '../../../utils/insertVariables';
 import { audioUrls } from '../../../constants/urls';
 import { practiceSheet } from '../../../constants/urls';
+import assetEndpointToUrl from '../../../helpers/assetEndpointToUrl';
 
 export default class Content extends Component {
   static propTypes = contentPropTypes
@@ -162,7 +163,7 @@ export default class Content extends Component {
             buttonOptions={{
               type: 'audio',
               data: {
-                url: 'https://s3.eu-west-2.amazonaws.com/chineseme/sentences/tada.m4a'
+                url: assetEndpointToUrl('/sentences/tada.m4a')
               }
             }}
           >
@@ -172,7 +173,7 @@ export default class Content extends Component {
             buttonOptions={{
               type: 'audio',
               data: {
-                url: 'https://s3.eu-west-2.amazonaws.com/chineseme/sentences/what.m4a'
+                url: assetEndpointToUrl('/sentences/what.m4a')
               }
             }}
           >
@@ -182,7 +183,7 @@ export default class Content extends Component {
             buttonOptions={{
               type: 'audio',
               data: {
-                url: 'https://s3.eu-west-2.amazonaws.com/chineseme/sentences/so.m4a'
+                url: assetEndpointToUrl('/sentences/so.m4a')
               }
             }}
           >
@@ -192,7 +193,7 @@ export default class Content extends Component {
             buttonOptions={{
               type: 'audio',
               data: {
-                url: 'https://s3.eu-west-2.amazonaws.com/chineseme/sentences/hey.m4a'
+                url: assetEndpointToUrl('/sentences/hey.m4a')
               }
             }}
           >

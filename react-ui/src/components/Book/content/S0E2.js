@@ -8,6 +8,7 @@ import styled from 'styled-components';
 import pinyinize from 'pinyinize';
 import { good as OracleBone1 } from '../etymology';
 import { practiceSheet } from '../../../constants/urls';
+import assetEndpointToUrl from '../../../helpers/assetEndpointToUrl';
 
 // Custom code to handle "example" dialogs
 const Chinese = styled.div`
@@ -183,7 +184,7 @@ export default class Content extends Component {
             buttonOptions={{
               type: 'audio',
               data: {
-                url: 'https://s3.eu-west-2.amazonaws.com/chineseme/sentences/69.m4a'
+                url: assetEndpointToUrl('/sentences/69.m4a')
               }
             }}
           >
@@ -200,7 +201,7 @@ export default class Content extends Component {
               top: true,
               type: 'audio',
               data: {
-                url: 'https://s3.eu-west-2.amazonaws.com/chineseme/sentences/71.m4a'
+                url: assetEndpointToUrl('/sentences/71.m4a')
               }
             }}
           >
@@ -215,7 +216,7 @@ export default class Content extends Component {
               top: true,
               type: 'audio',
               data: {
-                url: 'https://s3.eu-west-2.amazonaws.com/chineseme/sentences/72.m4a'
+                url: assetEndpointToUrl('/sentences/72.m4a')
               }
             }}
           >
@@ -248,7 +249,7 @@ export default class Content extends Component {
             buttonOptions={{
               type: 'audio',
               data: {
-                url: 'https://s3.eu-west-2.amazonaws.com/chineseme/sentences/73.m4a'
+                url: assetEndpointToUrl('/sentences/73.m4a')
               }
             }}
           >
@@ -261,7 +262,7 @@ export default class Content extends Component {
             buttonOptions={{
               type: 'audio',
               data: {
-                url: 'https://s3.eu-west-2.amazonaws.com/chineseme/sentences/74.m4a'
+                url: assetEndpointToUrl('/sentences/74.m4a')
               }
             }}
           >

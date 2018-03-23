@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled, { keyframes } from 'styled-components';
 import * as models from '../../models';
+import assetEndpointToUrl from '../../helpers/assetEndpointToUrl';
 
 const bouncy = keyframes`
   0% { transform: scale(1.0); }
@@ -53,7 +54,8 @@ class Avatar extends Component {
   renderImage() {
     const onClick = this.props.onClick ? this.props.onClick : undefined;
     const isTalking = this.props.avatar.isTalking;
-    const image = this.props.avatar[ this.props.avatar.mood + 'Image' ];
+    const imageName = this.props.avatar[ this.props.avatar.mood + 'Image' ];
+    const image = imageName ? assetEndpointToUrl('/personalities/biaoqing/' + imageName) : null;
     const chosen = this.props.chosen;
     if (image) {
       return (

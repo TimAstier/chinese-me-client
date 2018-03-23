@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import assetEndpointToUrl from '../../helpers/assetEndpointToUrl';
 
 const Wrapper = styled.div`
   display: flex;
@@ -18,13 +19,12 @@ const Header = styled.div`
 `;
 
 class PracticeResult extends Component {
-
   _avatar() {
     const funnyFaces = [
-      'https://s3.eu-west-2.amazonaws.com/chineseme/personalities/biaoqing/marvin_question.png',
-      'https://s3.eu-west-2.amazonaws.com/chineseme/personalities/biaoqing/yuguo_happy.png',
-      'https://s3.eu-west-2.amazonaws.com/chineseme/personalities/biaoqing/liyu_surprised.png',
-      'https://s3.eu-west-2.amazonaws.com/chineseme/personalities/biaoqing/meixin_surprised.png'
+      assetEndpointToUrl('/personalities/biaoqing/marvin_question.png'),
+      assetEndpointToUrl('/personalities/biaoqing/yuguo_happy.png'),
+      assetEndpointToUrl('/personalities/biaoqing/liyu_surprised.png'),
+      assetEndpointToUrl('/personalities/biaoqing/meixin_surprised.png')
     ];
     return funnyFaces[Math.floor(Math.random() * funnyFaces.length)];
   }

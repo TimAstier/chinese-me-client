@@ -26,7 +26,7 @@ export default class Content extends Component {
 
   render() {
     const { newCharacters, example, lessonTitle, dialog, practiceIds,
-      newWords, grammarTitle, pronunciationTitle } = this.props;
+      newWords, grammarTitle, pronunciationTitle, image } = this.props;
     return (
       <div>
         <c.Page>
@@ -112,7 +112,9 @@ export default class Content extends Component {
             <Row><Chinese>- 老李，你好！</Chinese><Translation>- Hi, Old Li!</Translation></Row>
           </c.Bookrow>
           <c.P>
-            Both <c.Chinese>小</c.Chinese> and <c.Chinese>老</c.Chinese> can be used as general terms of affection, so someone at the office can be known as <c.Chinese>老王</c.Chinese> to all her colleagues, whether they are older than her or not. In addition, many middle-aged married couples address each other as <c.Chinese>老</c.Chinese>+last name. Most commonly, however, the choice between <c.Chinese>小</c.Chinese> and <c.Chinese>老</c.Chinese> depends on whether the person you are addressing is younger or older than yourself. Age is important in China, so a younger person almost always addresses someone older with <c.Chinese>老</c.Chinese> <b>lǎo</b> <i>old</i> as a term of respect, while an older person would usually say <c.Chinese>小</c.Chinese> <b>xiǎo</b> <i>little</i> as a term of endearment. If you follow this general rule, you will never go wrong.
+            Both <c.Chinese>小</c.Chinese> and <c.Chinese>老</c.Chinese> can be used as general terms of affection, so someone at the office can be known as <c.Chinese>老王</c.Chinese> to all her colleagues, whether they are older than her or not. In addition, many middle-aged married couples address each other as <c.Chinese>老</c.Chinese> + last name.
+            Most commonly, however, the choice between <c.Chinese>小</c.Chinese> and <c.Chinese>老</c.Chinese> depends on whether the person you are addressing is younger or older than yourself. Age is important in China, so a younger person almost always addresses someone older with <c.Chinese>老</c.Chinese> <b>lǎo</b> <i>old</i> as a term of respect,
+            while an older person would usually say <c.Chinese>小</c.Chinese> <b>xiǎo</b> <i>little</i> as a term of endearment. If you follow this general rule, you will never go wrong.
           </c.P>
           <c.P>If you don't know the person, or the relationship is very formal, you would use the titles <c.Chinese>先生</c.Chinese> <i>mr.</i> and <c.Chinese>女士</c.Chinese> <i>ms. </i>:</c.P>
           <c.Bookrow flexDirection="column">
@@ -134,9 +136,7 @@ export default class Content extends Component {
           {example(4, { audio: true })}
           <c.P>These days, many people also use the English term <i>bye, bye, </i> usually pronounced <b>bāibāi</b> (or <b>bābāi</b> with the second syllable much longer than the first).</c.P>
           <c.P>Before saying goodbye, it is also common to add the phrase <c.Chinese>我先走</c.Chinese> <b>wǒ xiān zǒu</b>, literally I FIRST LEAVE, meaning <i>I’ll leave now</i> or <i>OK, I’ll be off</i>.</c.P>
-          {/* <c.Bookrow center marginTop={50}>
-            <img src="http://via.placeholder.com/550x450" alt="" />
-          </c.Bookrow> */}
+          <c.Bookrow center marginTop={30}>{image({ maxWidth: 550, caption: 'ADD SOME TEXT.'})}</c.Bookrow>
           <c.PartTitle name="dialogs" />
           {dialog(1, { sentenceType: 'chinese', displayNames: true })}
           {dialog(1, { sentenceType: 'translation', displayNames: true })}

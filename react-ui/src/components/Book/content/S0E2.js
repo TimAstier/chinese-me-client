@@ -29,7 +29,7 @@ export default class Content extends Component {
 
   render() {
     const { newCharacters, example, lessonTitle, dialog, character,
-      characterIds, practiceIds, grammarTitle, pronunciationTitle }
+      characterIds, practiceIds, grammarTitle, pronunciationTitle, image }
       = this.props;
     return (
       <div>
@@ -234,9 +234,7 @@ export default class Content extends Component {
           >
             <i>Practice.</i>
           </c.P>
-          {/* <c.Bookrow center marginTop={50}>
-            <img src="http://via.placeholder.com/550x450" alt="" />
-          </c.Bookrow> */}
+          <c.Bookrow center>{image({ maxWidth: 550, caption: 'ADD SOME TEXT.'})}</c.Bookrow>
           <c.PartTitle name="dialog" />
           {dialog(1, { sentenceType: 'chineseWithTranslation', displayNames: false })}
           <c.P>Repeat this until you feel comfortable.</c.P>
@@ -270,9 +268,7 @@ export default class Content extends Component {
             <Row><Chinese>- 你好！</Chinese><Translation>- Hi!</Translation></Row>
           </c.Bookrow>
           <c.P>It is also common to add a title or a kinship term to the name when you <i>call</i> someone; we will see many examples of this later.</c.P>
-          {/* <c.Bookrow center marginTop={50}>
-            <img src="http://via.placeholder.com/550x450" alt="" />
-          </c.Bookrow> */}
+          <c.Bookrow center marginTop={30}>{image({ maxWidth: 550, caption: 'ADD SOME TEXT.'})}</c.Bookrow>
           <c.PartTitle name="dialog" />
           {dialog(2, { sentenceType: 'chineseWithTranslation', displayNames: false })}
           {dialog(3, { sentenceType: 'chineseWithTranslation', displayNames: false })}

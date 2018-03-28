@@ -9,7 +9,7 @@ export default class Content extends Component {
 
   render() {
     const { newCharacters, example, lessonTitle, dialog, grammarTitle,
-      practiceIds, newWords, pronunciationTitle } = this.props;
+      practiceIds, newWords, pronunciationTitle, image } = this.props;
     return (
       <div>
         <c.Page>
@@ -137,12 +137,11 @@ export default class Content extends Component {
           >
             <i>Practice.</i>
           </c.P>
-          {/* <c.Bookrow center>
-            <img src="http://via.placeholder.com/550x450" alt="" />
-          </c.Bookrow> */}
+          <c.Bookrow center marginTop={30}>{image({ maxWidth: 550, caption: 'ADD SOME TEXT.'})}</c.Bookrow>
           <c.PartTitle name="dialog_zh" />
           {dialog(1, { sentenceType: 'chinese', displayNames: true })}
           {dialog(1, { sentenceType: 'translation', displayNames: true })}
+          <c.Bookrow center marginTop={30}>{image({ maxWidth: 550, caption: 'ADD SOME TEXT.'})}</c.Bookrow>
           {dialog(2, { sentenceType: 'chinese', displayNames: true })}
           <c.PartTitle name="words" />
           {newWords()}

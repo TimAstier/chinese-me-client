@@ -11,7 +11,7 @@ export default class Content extends Component {
 
   render() {
     const { newCharacters, example, lessonTitle, dialog, grammarTitle,
-      practiceIds, newWords, pronunciationTitle } = this.props;
+      practiceIds, newWords, pronunciationTitle, image } = this.props;
 
     return (
       <div>
@@ -102,14 +102,10 @@ export default class Content extends Component {
             >
             <i>Practice.</i>
           </c.P> */}
-          {/* <c.Bookrow center marginTop={50}>
-            <img src="http://via.placeholder.com/550x450" alt="" />
-          </c.Bookrow> */}
+          <c.Bookrow center marginTop={30}>{image({ maxWidth: 550, caption: 'ADD SOME TEXT.'})}</c.Bookrow>
           <c.PartTitle name="dialogs" />
           {dialog(1, { sentenceType: 'chinese', displayNames: false })}
-          {/* <c.Bookrow>
-            <img src="http://via.placeholder.com/400x250" alt="" />
-          </c.Bookrow> */}
+          <c.Bookrow center marginTop={30}>{image({ maxWidth: 400, caption: 'ADD SOME TEXT.'})}</c.Bookrow>
           {/* <c.P
             buttonOptions={{
               type: 'practice',

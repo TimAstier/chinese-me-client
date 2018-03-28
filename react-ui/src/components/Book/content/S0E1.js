@@ -21,7 +21,7 @@ export default class Content extends Component {
           {lessonTitle()}
           <c.P>This is Wang Yi. Click on the sound icon and listen carefully as she introduces herself to you. Try to repeat after her a few times.</c.P>
           {example(1, { basic: true, audio: true })}
-          {/* <c.Bookrow center><img src="http://via.placeholder.com/550x450" alt="" /></c.Bookrow> */}
+          <c.Bookrow center>{image({ maxWidth: 550, caption: 'ADD SOME TEXT.'})}</c.Bookrow>
           <c.P>
             This sentence means <i>My name is Wang Yi</i>. Chinese grammar is based on word order and a small set of function words called <i>particles</i>. This is great news for language learners: when you study a language like Spanish or German, you have to deal with tenses, plurals, separate noun forms for direct and indirect objects, and many other factors that influence how each word is pronounced and written. In this way, Chinese grammar is easier, because individual words never change.
           </c.P>

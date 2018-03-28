@@ -50,9 +50,7 @@ export default class Content extends Component {
           <Objective
             text="How to say where you are from"
           />
-          {/* <c.Bookrow center marginTop={50}>
-            <img src="http://via.placeholder.com/550x450" alt="" />
-          </c.Bookrow> */}
+          <c.Bookrow center>{image({ maxWidth: 550, caption: 'ADD SOME TEXT.'})}</c.Bookrow>
           <c.PartTitle name="pronunciation" />
           {pronunciationTitle()}
           <c.P>In this lesson, we encounter three initials that are closely related to each other. In <b>pīnyīn</b>, they are spelled <b>sh-</b>, <b>zh-</b> and <b>r-</b>.</c.P>
@@ -363,9 +361,7 @@ export default class Content extends Component {
           {example(3, { audio: true })}
           <c.P>We have already encountered <c.Chinese>是</c.Chinese> <b>shì</b> which functions like English <i>be</i> (<i>am, is</i>):</c.P>
           {example(4, { audio: true })}
-          {/* <c.Bookrow center marginTop={50}>
-            <img src="http://via.placeholder.com/550x450" alt="" />
-          </c.Bookrow> */}
+          <c.Bookrow center>{image({ maxWidth: 550, caption: 'ADD SOME TEXT.'})}</c.Bookrow>
           <c.PartTitle name="dialogs" />
           {dialog(1, { sentenceType: 'chineseWithTranslation', displayNames: false })}
           {dialog(2, { sentenceType: 'chineseWithTranslation', displayNames: false })}

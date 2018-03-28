@@ -54,12 +54,19 @@ class ContentHOC extends Component {
 
   _image = images => {
     let count = - 1;
-    return () => {
+    return (options = {}) => {
       count ++;
       if (!images[count]) {
         return <Placeholder>{`IMAGE #${count + 1} PLACEHOLDER`}</Placeholder>;
       }
-      return <Img name={images[count]} alt=""/>;
+      return (
+        <Img
+          name={images[count]}
+          maxWidth={options.maxWidth}
+          caption={options.caption}
+          alt={options.caption ? options.caption : ''}
+        />
+      );
     };
   }
 

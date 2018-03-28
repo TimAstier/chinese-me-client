@@ -101,6 +101,7 @@ export default class Content extends Component {
           </c.P>
           <c.P>The question particle <c.Chinese>吗</c.Chinese> <b>må</b> is used for one a common polite expression:</c.P>
           {example(3, { audio: true })}
+          <c.P>Some language learners have misunderstood this phrase as an alternative to <c.Chinese>你好</c.Chinese> <b>nǐhǎo</b> <i>hi!</i> But adding the question particle changes the meaning to <i>How are you?</i>, which is used to inquire about the other person’s well-being, and never as a greeting.</c.P>
           {grammarTitle()}
           <c.P>In a previous lesson, we learned how to <c.Chinese>叫</c.Chinese> <b>jiào</b> <i>call</i> someone we know well. The simplest way is to say the person's full name followed by a greeting:</c.P>
           <c.Bookrow>

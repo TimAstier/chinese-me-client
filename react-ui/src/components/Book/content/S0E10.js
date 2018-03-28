@@ -81,10 +81,10 @@ export default class Content extends Component {
             buttonOptions={{
               type: 'audio',
               data: {
-                url: pinyinNumberToAudioUrl('jue2')
+                url: pinyinNumberToAudioUrl('yue4')
               }
             }}
-          ><b>jué</b></c.P>
+          ><b>yuè</b></c.P>
           <c.P
             buttonOptions={{
               type: 'audio',
@@ -97,10 +97,10 @@ export default class Content extends Component {
             buttonOptions={{
               type: 'audio',
               data: {
-                url: pinyinNumberToAudioUrl('yue4')
+                url: pinyinNumberToAudioUrl('jue2')
               }
             }}
-          ><b>yuè</b></c.P>
+          ><b>jué</b></c.P>
           <c.PartTitle name="characters" />
           {newCharacters()}
           <c.PartTitle name="patterns" />

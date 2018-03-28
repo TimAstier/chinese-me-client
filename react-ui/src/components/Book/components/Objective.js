@@ -11,7 +11,7 @@ const Wrapper = styled.div`
   border-radius: 40px;
   width: 80%;
   margin-top: 60px;
-  padding-bottom: 50px;
+  padding-bottom: 10px;
 `;
 
 class Objective extends Component {

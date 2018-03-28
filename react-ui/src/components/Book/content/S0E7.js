@@ -17,6 +17,7 @@ export default class Content extends Component {
       <div>
         <c.Page>
           {lessonTitle()}
+          <c.Bookrow center>{image({ caption: 'The Chinese zodiac is made up of twelve animals, one for each year in a twelve-year cycle.'})}</c.Bookrow>
           <Objective
             text="How to say when you were born and to which Chinese zodiac animal you belong"
           />
@@ -102,10 +103,9 @@ export default class Content extends Component {
             >
             <i>Practice.</i>
           </c.P> */}
-          <c.Bookrow center marginTop={30}>{image({ maxWidth: 550, caption: 'ADD SOME TEXT.'})}</c.Bookrow>
           <c.PartTitle name="dialogs" />
+          <c.Bookrow center marginTop={30}>{image()}</c.Bookrow>
           {dialog(1, { sentenceType: 'chinese', displayNames: false })}
-          <c.Bookrow center marginTop={30}>{image({ maxWidth: 400, caption: 'ADD SOME TEXT.'})}</c.Bookrow>
           {/* <c.P
             buttonOptions={{
               type: 'practice',

@@ -44,6 +44,7 @@ export default class Content extends Component {
       <div>
         <c.Page>
           {lessonTitle()}
+          <c.Bookrow center>{image({ caption: '你为什么学中文？'})}</c.Bookrow>
           <Objective
             text="Explaining why you want to study Chinese"
           />
@@ -172,7 +173,6 @@ export default class Content extends Component {
             <c.Meaning>(LIKE-TO-STUDY)</c.Meaning>
           </c.Bookrow>
           <c.P>So when we read the characters <c.Chinese>好学</c.Chinese>, we have to decide from context whether <b>hao</b> should be pronounced with Tone 3 or Tone 4: <b>hǎoxué</b> <i>easy (to learn)</i> or <b>hàoxué</b> <i>diligent</i>.</c.P>
-          <c.Bookrow center marginTop={30}>{image({ maxWidth: 550, caption: 'ADD SOME TEXT.'})}</c.Bookrow>
           <c.PartTitle name="dialog_zh" />
           {dialog(1, { sentenceType: 'chinese', displayNames: true })}
           {dialog(2, { sentenceType: 'chinese', displayNames: true, specialIntro })}

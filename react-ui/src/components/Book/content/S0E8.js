@@ -76,6 +76,7 @@ export default class Content extends Component {
       <div>
         <c.Page>
           {lessonTitle()}
+          <c.Bookrow center>{image({ caption: '我会写“中文”！'})}</c.Bookrow>
           <Objective
             text="How to say that you can speak Chinese"
           />
@@ -186,8 +187,8 @@ export default class Content extends Component {
           >
             <i>Practice.</i>
           </c.P>
-          <c.Bookrow center marginTop={30}>{image({ maxWidth: 550, caption: 'ADD SOME TEXT.'})}</c.Bookrow>
           <c.PartTitle name="dialogs" />
+          <c.Bookrow center marginTop={30}>{image({ caption: '你是美国人吗？我是英国人。'})}</c.Bookrow>
           {dialog(1, { sentenceType: 'chinese', displayNames: true })}
           {dialog(1, { sentenceType: 'translation', displayNames: true })}
           {dialog(2, { sentenceType: 'chinese', displayNames: true })}

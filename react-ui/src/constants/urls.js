@@ -21,7 +21,6 @@ export const imageNames = {
     'illustrations/2-2.jpg'
   ],
   S0E3: [
-    'illustrations/3-1.jpg',
     'illustrations/3-2.jpg',
     'pie_stroke.png',
     'na_stroke.png',
@@ -43,10 +42,10 @@ export const imageNames = {
     'illustrations/7-2.jpg'
   ],
   S0E8: [
+    'illustrations/9-1.jpg',
     'illustrations/8-1.jpg'
   ],
   S0E9: [
-    'illustrations/9-1.jpg',
     'illustrations/9-2.jpg'
   ],
   S0E10: [

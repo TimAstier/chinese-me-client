@@ -33,10 +33,10 @@ export default class Content extends Component {
       <div>
         <c.Page>
           {lessonTitle()}
+          <c.Bookrow center>{image({ caption: 'In this lesson, we learn the basic numbers. Some numbers are regarded as unlucky; many Chinese buildings lack a 14th floor.'})}</c.Bookrow>
           <Objective
             text="How to tell someone your age"
           />
-          <c.Bookrow center marginTop={40}>{image({ maxWidth: 550, caption: 'ADD SOME TEXT.'})}</c.Bookrow>
           <c.PartTitle name="pronunciation" />
           {pronunciationTitle()}
           <c.P>The <b>pīnyīn</b> vowel <b>e</b> is pronounced like English <i>ea</i> in <i>learn</i>:</c.P>

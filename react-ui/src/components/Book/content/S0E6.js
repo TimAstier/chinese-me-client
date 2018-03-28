@@ -31,6 +31,7 @@ export default class Content extends Component {
       <div>
         <c.Page>
           {lessonTitle()}
+          <c.Bookrow center>{image({ caption: 'At work and in formal settings, you can can call people by family name followed by a title, or preceded by the more relaxed 小 little or 老 old.'})}</c.Bookrow>
           <Objective
             text="How to greet people a bit more formally"
           />
@@ -137,7 +138,6 @@ export default class Content extends Component {
           {example(4, { audio: true })}
           <c.P>These days, many people also use the English term <i>bye, bye, </i> usually pronounced <b>bāibāi</b> (or <b>bābāi</b> with the second syllable much longer than the first).</c.P>
           <c.P>Before saying goodbye, it is also common to add the phrase <c.Chinese>我先走</c.Chinese> <b>wǒ xiān zǒu</b>, literally I FIRST LEAVE, meaning <i>I’ll leave now</i> or <i>OK, I’ll be off</i>.</c.P>
-          <c.Bookrow center marginTop={30}>{image({ maxWidth: 550, caption: 'ADD SOME TEXT.'})}</c.Bookrow>
           <c.PartTitle name="dialogs" />
           {dialog(1, { sentenceType: 'chinese', displayNames: true })}
           {dialog(1, { sentenceType: 'translation', displayNames: true })}

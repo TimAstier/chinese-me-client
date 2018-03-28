@@ -10,10 +10,10 @@ import swal from 'sweetalert';
 class BookButton extends Component {
   _redirectUser = () => {
     return swal({
-      title: 'ChineseMe account required',
-      text: 'The interactive part of the course requires students to log in.\n\n This allows us to save your progression and make sure we can provide you with personalised support to assist you in your study of the Chinese language.\n\nIf you don\'t want to create an account now, no worry! You can continue reading the course and register later if you want to.',
+      title: 'Account required',
+      text: 'You need to log in to access the "Me" part of the experience.\n\nIf you don\'t want to create an account now, no worry! You can continue reading the course and register later if you want to.',
       icon: 'info',
-      buttons: ['Continue reading', 'Register']
+      buttons: ['Continue reading', 'Register for free']
     }).then(register => {
       if (register) {
         return this.props.push('/signup');
@@ -64,7 +64,7 @@ class BookButton extends Component {
           if (this.props.buttonOptions.clickable === false) {
             return null;
           }
-          if (!this.props.isAuthenticated) {
+          if (!this.props.isAuthenticated && this.props.buttonOptions.type === 'askUserSettings') {
             return this._redirectUser();
           }
           if (this.props.buttonOptions.type === 'askUserSettings') {

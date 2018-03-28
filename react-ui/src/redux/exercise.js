@@ -12,7 +12,8 @@ export const types = {
   SET_ATTEMPTS_LEFT: 'exercise/SET_ATTEMPTS_LEFT',
   SET_CURRENT_BOX_INDEX: 'exercise/SET_CURRENT_BOX_INDEX',
   ADD_RESULT: 'exercise/ADD_RESULT',
-  INIT: 'exercise/INIT'
+  INIT: 'exercise/INIT',
+  SET_LOADING_ANSWER: 'exercise/SET_LOADING_ANSWER'
 };
 
 // Reducer
@@ -23,6 +24,7 @@ export const INITIAL_STATE = fromJS({
   userChoice: null,
   attemptsLeft: 2,
   currentBoxIndex: 0,
+  loadingAnswer: false,
   results: [], // [{ success: false, userAnswer: 'de' }, { success: true, userAnswer: 'ta1' }]
   indexes: []
 });
@@ -51,6 +53,8 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
       return state.set('currentBoxIndex', action.payload.index);
     case types.ADD_RESULT:
       return state.set('results', state.get('results').push(fromJS(action.payload.result)));
+    case types.SET_LOADING_ANSWER:
+      return state.set('loadingAnswer', action.payload);
     case types.INIT:
       return INITIAL_STATE;
     default:
@@ -102,6 +106,11 @@ const addResult = result => ({
   payload: { result }
 });
 
+const setLoadingAnswer = loading => ({
+  type: types.SET_LOADING_ANSWER,
+  payload: loading
+});
+
 export const actions = {
   setStatus,
   setUserAnswer,
@@ -111,7 +120,8 @@ export const actions = {
   init,
   setAttemptsLeft,
   setCurrentBoxIndex,
-  addResult
+  addResult,
+  setLoadingAnswer
 };
 
 // Selectors
@@ -132,6 +142,7 @@ const getSuccess = createSelector(
     return wrongAnswersCount === 0; // Correct only if no wrong answers
   }
 );
+const getLoadingAnswer = state => state.get('loadingAnswer');
 
 export const selectors = {
   getStatus,
@@ -141,5 +152,6 @@ export const selectors = {
   getAttemptsLeft,
   getCurrentBoxIndex,
   getResults,
-  getSuccess
+  getSuccess,
+  getLoadingAnswer
 };

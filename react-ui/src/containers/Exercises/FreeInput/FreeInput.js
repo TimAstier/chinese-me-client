@@ -42,6 +42,7 @@ class FreeInput extends Component {
         openFeedbackModal={this.props.openFeedbackModal}
         correctAnswer={this.props.correctAnswer}
         explanation={this.props.explanation}
+        loadingAnswer={this.props.loadingAnswer}
       />
     );
   }
@@ -55,7 +56,8 @@ FreeInput.propTypes = {
   checkAnswer: propTypes.func.isRequired,
   openFeedbackModal: propTypes.bool.isRequired,
   correctAnswer: propTypes.string,
-  explanation: propTypes.string
+  explanation: propTypes.string,
+  loadingAnswer: propTypes.bool.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -64,7 +66,8 @@ const mapStateToProps = state => ({
   userAnswer: s.exercise.getUserAnswer(state),
   openFeedbackModal: s.ui.getOpenFeedbackModal(state),
   correctAnswer: s.practice.getCorrectAnswer(state),
-  explanation: s.practice.getExplanation(state)
+  explanation: s.practice.getExplanation(state),
+  loadingAnswer: s.exercise.getLoadingAnswer(state)
 });
 
 export default connect(

@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
+import { Spinner } from '../.';
 
 class Screen extends Component {
   render() {
-    const { text, primary, disabled, height, width, fontSize } = this.props;
-
+    const { text, primary, disabled, height, width, fontSize, loading }
+      = this.props;
     const hoverBackgroundColor = () => {
       if (disabled) return 'none';
       return primary ? '#4ea7eb' : '#f2f7fa';
@@ -53,6 +54,9 @@ class Screen extends Component {
         margin-right: 10px;
       }
     `;
+    if (loading) {
+      return <Spinner size={48}/>;
+    }
     return (
       <Button
         onClick={this.props.onClick}
@@ -77,7 +81,8 @@ Screen.propTypes = {
   width: propTypes.number,
   fontSize: propTypes.number,
   data: propTypes.string,
-  icon: propTypes.string
+  icon: propTypes.string,
+  loading: propTypes.bool
 };
 
 export default Screen;

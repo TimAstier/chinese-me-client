@@ -93,6 +93,7 @@ class FreeInput extends Component {
       <CheckWrapper>
         <ScreenButton
           text="Check"
+          loading={this.props.loadingAnswer}
           primary
           action={'checkAnswer'}
           disabled={this.props.userAnswer === '' ? true : undefined}
@@ -146,7 +147,8 @@ FreeInput.propTypes = {
   handleChange: propTypes.func.isRequired,
   openFeedbackModal: propTypes.bool.isRequired,
   correctAnswer: propTypes.string,
-  explanation: propTypes.string
+  explanation: propTypes.string,
+  loadingAnswer: propTypes.bool.isRequired
 };
 
 export default FreeInput;

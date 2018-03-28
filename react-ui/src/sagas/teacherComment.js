@@ -1,5 +1,6 @@
-import { call } from 'redux-saga/effects';
+import { call, put } from 'redux-saga/effects';
 import Api from '../utils/api';
+import { actions as exerciseActions } from '../redux/exercise';
 
 /**
  * Check the userAnswer against answers in the DB.
@@ -13,11 +14,15 @@ import Api from '../utils/api';
  *   explanation: {string}
  * }
  */
+
 export function* fetch(exerciseId, userAnswer) {
   try {
+    yield put(exerciseActions.setLoadingAnswer(true));
     const response = yield call(Api.get, `/teacherComment/${exerciseId}/${userAnswer}`);
+    yield put(exerciseActions.setLoadingAnswer(false));
     return response.data;
   } catch (error) {
+    yield put(exerciseActions.setLoadingAnswer(false));
     // TODO: handle error
     console.log(error);
   }

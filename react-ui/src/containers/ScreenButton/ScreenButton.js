@@ -61,6 +61,7 @@ class ScreenButton extends Component {
         onClick={this.mapActionToOnClick(this.props.action).bind(this)}
         primary={this.props.primary}
         disabled={this.props.disabled}
+        loading={this.props.loading}
       />
     );
   }
@@ -76,7 +77,8 @@ ScreenButton.propTypes = {
   checkAnswer: propTypes.func.isRequired,
   onClick: propTypes.func,
   isReviewInitialized: propTypes.bool.isRequired,
-  nextQuestion: propTypes.func.isRequired
+  nextQuestion: propTypes.func.isRequired,
+  loading: propTypes.bool
 };
 
 const mapStateToProps = state => ({

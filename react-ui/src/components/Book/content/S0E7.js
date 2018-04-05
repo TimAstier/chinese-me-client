@@ -11,12 +11,13 @@ export default class Content extends Component {
 
   render() {
     const { newCharacters, example, lessonTitle, dialog, grammarTitle,
-      practiceIds, newWords, pronunciationTitle } = this.props;
+      practiceIds, newWords, pronunciationTitle, image } = this.props;
 
     return (
       <div>
         <c.Page>
           {lessonTitle()}
+          <c.Bookrow center>{image({ caption: 'The Chinese zodiac is made up of twelve animals, one for each year in a twelve-year cycle.'})}</c.Bookrow>
           <Objective
             text="How to say when you were born and to which Chinese zodiac animal you belong"
           />
@@ -69,7 +70,7 @@ export default class Content extends Component {
           <c.P>Note that <c.Chinese>大</c.Chinese> <b>dà</b> <i>big</i> is more common than <c.Chinese>老</c.Chinese> <b>lǎo</b> <i>old</i> when you simply want to state the objective fact that you are older than someone. If you say <c.Chinese>我比你老三岁</c.Chinese>, you are emphasizing the fact that you are older (as in more tired, more experienced or more wrinkled) than the person you are talking to.</c.P>
           {grammarTitle()}
           <c.P>Chinese dates are logically structured according to the formula YEAR-MONTH-DAY.</c.P>
-          <c.P><i>Years</i> are just lists of digits: ONE-NINE-NINE-FOUR or just NINE-FOUR for 1994 and TWO-ZERO-ZERO-THREE or ZERO-THREE for 2003. <i>Zero</i> is pronounced <b>líng</b>.</c.P>
+          <c.P><i>Years</i> are just lists of digits followed by the character <c.Chinese>年</c.Chinese> <b>nián</b> <i>year</i>: ONE-NINE-NINE-FOUR or just NINE-FOUR for 1994 and TWO-ZERO-ZERO-THREE or ZERO-THREE for 2003. <i>Zero</i> is pronounced <b>líng</b>.</c.P>
           <c.P>
             <i>
               Months
@@ -102,14 +103,9 @@ export default class Content extends Component {
             >
             <i>Practice.</i>
           </c.P> */}
-          {/* <c.Bookrow center marginTop={50}>
-            <img src="http://via.placeholder.com/550x450" alt="" />
-          </c.Bookrow> */}
           <c.PartTitle name="dialogs" />
+          <c.Bookrow center marginTop={30}>{image()}</c.Bookrow>
           {dialog(1, { sentenceType: 'chinese', displayNames: false })}
-          {/* <c.Bookrow>
-            <img src="http://via.placeholder.com/400x250" alt="" />
-          </c.Bookrow> */}
           {/* <c.P
             buttonOptions={{
               type: 'practice',

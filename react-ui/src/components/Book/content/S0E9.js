@@ -9,11 +9,12 @@ export default class Content extends Component {
 
   render() {
     const { newCharacters, example, lessonTitle, dialog, grammarTitle,
-      practiceIds, newWords, pronunciationTitle } = this.props;
+      practiceIds, newWords, pronunciationTitle, image } = this.props;
     return (
       <div>
         <c.Page>
           {lessonTitle()}
+          <c.Bookrow center>{image({ caption: '你中文很好！不好，不好，我中文很不好！'})}</c.Bookrow>
           <Objective
             text="The importance of being humble in Chinese"
           />
@@ -46,13 +47,13 @@ export default class Content extends Component {
           {example(5, { audio: true })}
           <c.P>Note the pronunciation in the patterns above: <c.Chinese>不</c.Chinese> is pronounced in two different ways, depending on the tone that comes after. If the following tone is 1, 2, or 3, <c.Chinese>不</c.Chinese> is pronounced <b>bù</b>, with Tone 4:</c.P>
           <c.Bookrow flexDirection="column">
-            <Row><b>bù hǎo</b><c.Space width={30} /><i>not good</i></Row>
-            <Row><b>bù měi</b><c.Space width={30} /><i>not beautiful</i></Row>
+            <Row marginBottom={10}><b>bù hǎo</b><c.Space width={30}/><i>not good</i></Row>
+            <Row><b>bù měi</b><c.Space width={30}/><i>not beautiful</i></Row>
           </c.Bookrow>
           <c.P>But if the following tone is Tone 4, <c.Chinese>不</c.Chinese> changes to Tone 2, <b>bú</b>:</c.P>
           <c.Bookrow flexDirection="column">
-            <Row><b>bú huì</b><c.Space width={30} /><i>cannot</i></Row>
-            <Row><b>bú shì</b><c.Space width={30} /><i>is not</i></Row>
+            <Row marginBottom={10}><b>bú huì</b><c.Space width={30} marginBottom={10}/><i>cannot</i></Row>
+            <Row><b>bú shì</b><c.Space width={30}/><i>is not</i></Row>
           </c.Bookrow>
           <c.P>
             This is another example of <i>tone sandhi</i>, where the tone on a character changes depending on what comes after it – we have seen other examples of this, for example when a Tone 3 comes before another Tone 3. Tone sandhi is usually not marked in dictionaries and textbooks: <c.Chinese>不</c.Chinese> is written <b>bù</b>, with Tone 4, regardless of what comes after. You will just have to remember that the actual pronunciation is different from what the dictionary indicates.
@@ -137,9 +138,7 @@ export default class Content extends Component {
           >
             <i>Practice.</i>
           </c.P>
-          {/* <c.Bookrow center>
-            <img src="http://via.placeholder.com/550x450" alt="" />
-          </c.Bookrow> */}
+          <c.Bookrow center marginTop={30}>{image({ maxWidth: 550, caption: 'ADD SOME TEXT.'})}</c.Bookrow>
           <c.PartTitle name="dialog_zh" />
           {dialog(1, { sentenceType: 'chinese', displayNames: true })}
           {dialog(1, { sentenceType: 'translation', displayNames: true })}

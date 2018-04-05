@@ -12,13 +12,13 @@ class PlayAudioButton extends Component {
   }
 
   componentDidMount() {
-    if (!this.props.keyPress === false) {
+    if (!(this.props.keyPress === false)) {
       document.addEventListener('keydown', this.handleEnterKeyPress);
     }
   }
 
   componentWillUnmount() {
-    if (!this.props.keyPress === false) {
+    if (!(this.props.keyPress === false)) {
       document.removeEventListener('keydown', this.handleEnterKeyPress);
     }
   }
@@ -55,9 +55,11 @@ class PlayAudioButton extends Component {
         }
         small={this.props.small}
         big={this.props.big}
-        isPlaying={this.props.animation === false ? false : this.props.isPlaying}
+        isPlaying={this.props.isPlaying}
+        isLoading={this.props.isLoading}
         printLink={this.props.printLink}
         currentUrl={this.props.currentUrl}
+        requireActive={this.props.requireActive}
       />
     );
   }
@@ -67,11 +69,12 @@ PlayAudioButton.propTypes = {
   playAudio: propTypes.func.isRequired,
   onClick: propTypes.func,
   isPlaying: propTypes.bool.isRequired,
+  isLoading: propTypes.bool.isRequired,
   url: propTypes.string,
   slowUrl: propTypes.string,
   text: propTypes.string,
   keyPress: propTypes.bool,
-  animation: propTypes.bool,
+  requireActive: propTypes.bool,
   small: propTypes.bool,
   big: propTypes.bool,
   toggleSlow: propTypes.bool,
@@ -85,6 +88,7 @@ PlayAudioButton.propTypes = {
 
 const mapStateToProps = state => ({
   isPlaying: s.audio.getIsPlaying(state),
+  isLoading: s.audio.getIsLoading(state),
   currentUrl: s.routing.getCurrentUrl(state)
 });
 

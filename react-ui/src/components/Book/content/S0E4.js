@@ -33,12 +33,10 @@ export default class Content extends Component {
       <div>
         <c.Page>
           {lessonTitle()}
+          <c.Bookrow center>{image({ caption: 'In this lesson, we learn the basic numbers. Some numbers are regarded as unlucky; many Chinese buildings lack a 14th floor.'})}</c.Bookrow>
           <Objective
             text="How to tell someone your age"
           />
-          {/* <c.Bookrow center marginTop={50}>
-            <img src="http://via.placeholder.com/550x450" alt="" />
-          </c.Bookrow> */}
           <c.PartTitle name="pronunciation" />
           {pronunciationTitle()}
           <c.P>The <b>pīnyīn</b> vowel <b>e</b> is pronounced like English <i>ea</i> in <i>learn</i>:</c.P>
@@ -125,7 +123,7 @@ export default class Content extends Component {
           {newCharacters()}
           <c.PartTitle>Typing Chinese characters</c.PartTitle>
           <c.P>
-            Starting in this lesson, you will need to type Chinese characters in some of the exercises. To do this, you will need to have an input method for Chinese characters on your computer. Those articles might be helpful to install Chinese input method on <a href="https://eastasiastudent.net/china/windows-7-chinese-input/" target="_blank" rel="noopener noreferrer">PC</a> or <a href="http://pinpinchinese.com/blog/how-to-use-pinyin-to-type-chinese-mac/" target="_blank" rel="noopener noreferrer">mac</a>.
+            Starting in this lesson, you will need to type Chinese characters in some of the exercises. To do this, you will need to have an input method for Chinese characters on your computer. These articles might be helpful for installing a Chinese input method on <a href="https://eastasiastudent.net/china/windows-7-chinese-input/" target="_blank" rel="noopener noreferrer">PC</a> or <a href="http://pinpinchinese.com/blog/how-to-use-pinyin-to-type-chinese-mac/" target="_blank" rel="noopener noreferrer">mac</a>.
           </c.P>
           <c.PartTitle name="patterns" />
           {grammarTitle()}

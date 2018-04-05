@@ -62,7 +62,7 @@ class Footer extends Component {
     return (
       <Wrapper>
         <CopyrightWrapper>
-          © 2017 ChineseMe AB All Rights Reserved.
+          © 2018 ChineseMe AB All Rights Reserved.
         </CopyrightWrapper>
         <LinksWrapper>
           <a href="/study/about">

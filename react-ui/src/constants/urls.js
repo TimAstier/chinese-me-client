@@ -1,39 +1,67 @@
 export const PRODUCTION_ROOT_URL = 'https://app.chinese-me.com';
 export const PDF_VERSION = '0.1';
 
-export const imageUrls = {
+export const STATIC_ASSETS_ROOT_URL = 'https://d1vi6gdem0f6wt.cloudfront.net';
+
+// Those images are available in the s3 bucket at STATIC_ASSETS_ROOT_URL/images/
+export const imageNames = {
   S0E1: [
-    'https://s3.eu-west-2.amazonaws.com/chineseme/images/tone1_diagram.png',
-    'https://s3.eu-west-2.amazonaws.com/chineseme/images/tone2_diagram.png',
-    'https://s3.eu-west-2.amazonaws.com/chineseme/images/tone3_diagram.png',
-    'https://s3.eu-west-2.amazonaws.com/chineseme/images/tone4_diagram.png',
-    'https://s3.eu-west-2.amazonaws.com/chineseme/images/shell.png',
-    'https://s3.eu-west-2.amazonaws.com/chineseme/images/yi_er_san.png',
-    'https://s3.eu-west-2.amazonaws.com/chineseme/images/combinations.png',
-    'https://s3.eu-west-2.amazonaws.com/chineseme/images/lopsided_wo.png'
+    'illustrations/1-1.jpg',
+    'tone1_diagram.png',
+    'tone2_diagram.png',
+    'tone3_diagram.png',
+    'tone4_diagram.png',
+    'shell.png',
+    'yi_er_san.png',
+    'combinations.png',
+    'lopsided_wo.png'
+  ],
+  S0E2: [
+    'illustrations/2-1.jpg',
+    'illustrations/2-2.jpg'
   ],
   S0E3: [
-    'https://s3.eu-west-2.amazonaws.com/chineseme/images/pie_stroke.png',
-    'https://s3.eu-west-2.amazonaws.com/chineseme/images/na_stroke.png',
-    'https://s3.eu-west-2.amazonaws.com/chineseme/images/broken_ren.png'
+    'illustrations/3-2.jpg',
+    'pie_stroke.png',
+    'na_stroke.png',
+    'broken_ren.png'
   ],
   S0E4: [
-    'https://s3.eu-west-2.amazonaws.com/chineseme/images/hanwriting_numbers_2.png'
+    'illustrations/4-1.jpg',
+    'hanwriting_numbers_2.png'
   ],
-  S1E7: [
-    'https://s3.eu-west-2.amazonaws.com/chineseme/images/S1E7_objectives.png',
-    'https://s3.eu-west-2.amazonaws.com/chineseme/images/S1E7_culture.png'
+  S0E5: [
+    'illustrations/5-1.jpg',
+    'illustrations/5-2.jpg'
+  ],
+  S0E6: [
+    'illustrations/6-1.jpg'
+  ],
+  S0E7: [
+    'illustrations/7-1_cut.png',
+    'illustrations/7-2.jpg'
+  ],
+  S0E8: [
+    'illustrations/9-1.jpg',
+    'illustrations/8-1.jpg'
+  ],
+  S0E9: [
+    'illustrations/9-2.jpg'
+  ],
+  S0E10: [
+    'illustrations/10-1.jpg'
   ]
 };
 
 export const audioUrls = {
-  basePath: 'https://s3.eu-west-2.amazonaws.com/chineseme/audio',
-  exercisesPath: 'https://s3.eu-west-2.amazonaws.com/chineseme/audio/exercises',
-  charactersPath: 'https://s3.eu-west-2.amazonaws.com/chineseme/audio/characters',
-  wordsPath: 'https://s3.eu-west-2.amazonaws.com/chineseme/audio/words',
-  examplesPath: 'https://s3.eu-west-2.amazonaws.com/chineseme/audio/examples',
-  othersPath: 'https://s3.eu-west-2.amazonaws.com/chineseme/audio/others',
-  sentencesPath: 'https://s3.eu-west-2.amazonaws.com/chineseme/audio/sentences'
+  basePath: STATIC_ASSETS_ROOT_URL + '/audio',
+  exercisesPath: STATIC_ASSETS_ROOT_URL + '/audio/exercises',
+  charactersPath: STATIC_ASSETS_ROOT_URL + '/audio/characters',
+  wordsPath: STATIC_ASSETS_ROOT_URL + '/audio/words',
+  examplesPath: STATIC_ASSETS_ROOT_URL + '/audio/examples',
+  othersPath: STATIC_ASSETS_ROOT_URL + '/audio/others',
+  sentencesPath: STATIC_ASSETS_ROOT_URL + '/audio/sentences'
 };
 
-export const practiceSheet = 'https://s3.eu-west-2.amazonaws.com/chineseme/pdf/practice_sheet.pdf';
+export const pdfCourse = STATIC_ASSETS_ROOT_URL + '/pdf/ChineseMe_Mandarin_Chinese_Language_of_the_Middle_Kingdom_v0_1.pdf';
+export const practiceSheet = STATIC_ASSETS_ROOT_URL + '/pdf/practice_sheet.pdf';

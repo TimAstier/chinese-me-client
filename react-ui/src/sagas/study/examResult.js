@@ -29,6 +29,7 @@ export function* initStudyData() {
 }
 
 export function* run() {
+  const isAuthenticated = yield select(selectors.auth.getIsAuthenticated);
   const score = yield select(selectors.exam.getScore);
   yield delay(500);
   yield put(score >= MINIMUM_SCORE_TO_PASS ? sagaActions.playLevelWinSound() : sagaActions.playLevelFailSound());
@@ -47,12 +48,15 @@ export function* run() {
   }));
   // End Tracking
   // Save score in DB
-  yield call(Api.post, '/exam/completed',
-    {
-      episodeId: currentEpisode.get('id'),
-      score
-    }
-  );
+  if (isAuthenticated) {
+    yield call(Api.post, '/exam/completed',
+      {
+        episodeId: currentEpisode.get('id'),
+        score
+      }
+    );
+  }
+  // END Save score in DB
   yield put(sagaActions.reloadApp());
   yield take(sagaTypes.NEXT);
 }

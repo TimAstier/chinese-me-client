@@ -8,11 +8,11 @@ import { actions as sagaActions } from '../../sagas/actions';
 injectGlobal`
   @font-face {
     font-family: ChineseFont;
-    src: url('https://s3.eu-west-2.amazonaws.com/chineseme/fonts/FZKTJW.TTF') format('opentype');
+    src: url('https://d1vi6gdem0f6wt.cloudfront.net/fonts/FZKTJW.TTF') format('opentype');
   }
   @font-face {
     font-family: YingBi;
-    src: url('https://s3.eu-west-2.amazonaws.com/chineseme/fonts/FZYBKSJW.ttf') format('opentype');
+    src: url('https://d1vi6gdem0f6wt.cloudfront.net/fonts/FZYBKSJW.ttf') format('opentype');
   }
 `;
 

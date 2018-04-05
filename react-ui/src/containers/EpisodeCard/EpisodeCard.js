@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { actions as sagaActions } from '../../sagas/actions';
 import { Episode } from '../../models';
 import propTypes from 'prop-types';
+import assetEndpointToUrl from '../../helpers/assetEndpointToUrl';
 
 import { EpisodeCard as EpisodeCardComponent } from '../../components';
 
@@ -22,7 +23,7 @@ class EpisodeCard extends Component {
         number={this.props.episode.number}
         title={this.props.episode.title}
         score={this.props.episode.score}
-        imageUrl={this.props.episode.imageUrl}
+        imageUrl={assetEndpointToUrl('/Episode+Images/' + this.props.episode.imageUrl)}
       />
     );
   }

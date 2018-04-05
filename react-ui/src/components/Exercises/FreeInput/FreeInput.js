@@ -55,6 +55,11 @@ const Input = styled.input`
   outline: none;
 `;
 
+const Explanation = styled.div`
+  margin-top: 10px;
+  color: #55b6ff;
+`;
+
 class FreeInput extends Component {
   isFinished() {
     const status = this.props.status;
@@ -88,6 +93,7 @@ class FreeInput extends Component {
       <CheckWrapper>
         <ScreenButton
           text="Check"
+          loading={this.props.loadingAnswer}
           primary
           action={'checkAnswer'}
           disabled={this.props.userAnswer === '' ? true : undefined}
@@ -111,7 +117,9 @@ class FreeInput extends Component {
           <AnswerLabel>
             {`The correct answer is: "${this.props.correctAnswer}".`}
             <br />
-            {this.props.explanation}
+            <Explanation>
+              {this.props.explanation}
+            </Explanation>
           </AnswerLabel>
         </CorrectAnswerWrapper>
       </AnswerWrapper>
@@ -139,7 +147,8 @@ FreeInput.propTypes = {
   handleChange: propTypes.func.isRequired,
   openFeedbackModal: propTypes.bool.isRequired,
   correctAnswer: propTypes.string,
-  explanation: propTypes.string
+  explanation: propTypes.string,
+  loadingAnswer: propTypes.bool.isRequired
 };
 
 export default FreeInput;

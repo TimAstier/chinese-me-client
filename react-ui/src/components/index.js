@@ -56,6 +56,7 @@ export { default as OnboardingScreen } from './OnboardingScreen/OnboardingScreen
 export { default as PauseButton } from './PauseButton/PauseButton';
 export { default as Philosophy } from './StaticPages/Philosophy';
 export { default as PlayAudioButton } from './PlayAudioButton/PlayAudioButton';
+export { default as PlayingLoop } from './PlayAudioButton/PlayingLoop';
 export { default as PracticeResult } from './PracticeResult/PracticeResult';
 export { default as Privacy } from './StaticPages/Privacy';
 export { default as Progressbar } from './Progressbar/Progressbar';
@@ -73,6 +74,7 @@ export { default as SelectEpisode } from './SelectEpisode/SelectEpisode';
 export { default as Speech } from './Exercises/Speech/Speech';
 export { default as SignupForm } from './Signup/Form';
 export { default as SignupPage } from './Signup/Page';
+export { default as Spinner } from './Spinner/Spinner';
 export { default as Star } from './Star/Star';
 export { default as Statement } from './Statement/Statement';
 export { default as StatementWrapper } from './Dialog/StatementWrapper';

@@ -53,6 +53,7 @@ function* defaultExamUi() {
 
 export function* run() {
   // Tracking properties
+  const isAuthenticated = yield select(selectors.auth.getIsAuthenticated);
   const currentEpisode = yield select(selectors.getCurrentEpisode);
   const currentSeason = yield select(selectors.getCurrentSeason);
   const currentUrl = yield select(selectors.routing.getCurrentUrl);
@@ -114,16 +115,18 @@ export function* run() {
     }
   }
   yield put(studyActions.setCurrentExerciseId(null));
-  // yield delay(1000);
   yield put(sagaActions.playLevelWinSound());
   // Tracking
   yield put(practiceActions.completedPractice(trackingProperties));
   // End Tracking
   // Save score in DB
   // Might be better to save currentPracticeId in the state
-  const url = yield select(selectors.routing.getCurrentUrl);
-  const { elementId } = getParamsFromUrl(url);
-  yield call(Api.post, `/practice/${elementId}/completed`);
+  if (isAuthenticated) {
+    const url = yield select(selectors.routing.getCurrentUrl);
+    const { elementId } = getParamsFromUrl(url);
+    yield call(Api.post, `/practice/${elementId}/completed`);
+  }
+  // END Save score in DB
   yield put(sagaActions.reloadApp());
   yield put(uiActions.set('nextButton', true));
   return yield take(sagaTypes.NEXT);

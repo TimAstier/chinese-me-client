@@ -7,8 +7,6 @@ import { elementTypes } from '../constants/study';
 // import { elementTypesToTrack } from '../constants/study';
 import getStudyFunctions from '../helpers/getStudyFunctions';
 import getParamsFromUrl from '../utils/getParamsFromUrl';
-// import Api from '../utils/api';
-import { loadSettings } from './userSettings';
 
 // Every screenType has those "studyFunctions" (generators):
 // 1. isDataLoaded
@@ -24,7 +22,6 @@ export function* runStudySaga(url) {
   let isDataLoaded = undefined;
   // IMPORTANT: start by hiding screen content
   yield put(studyActions.setInitialized(false)); // Hide screen content
-  yield call(loadSettings);
   const { episodeId, elementType, elementId, mode }
     = getParamsFromUrl(url); // Get params from url
   const screenType = elementType + '/' + mode; // Define screenType

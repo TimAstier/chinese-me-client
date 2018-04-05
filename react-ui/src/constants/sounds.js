@@ -1,8 +1,10 @@
+import { STATIC_ASSETS_ROOT_URL } from './urls';
+
 const sounds = {
-  success: 'https://s3.eu-west-2.amazonaws.com/chineseme/correct_02.wav',
-  wrong: 'https://s3.eu-west-2.amazonaws.com/chineseme/wrong.wav',
-  levelWin: 'https://s3.eu-west-2.amazonaws.com/chineseme/levelWin.wav',
-  levelFail: 'https://s3.eu-west-2.amazonaws.com/chineseme/levelFail.wav',
+  success: STATIC_ASSETS_ROOT_URL + '/correct_02.wav',
+  wrong: STATIC_ASSETS_ROOT_URL + '/wrong.wav',
+  levelWin: STATIC_ASSETS_ROOT_URL + '/levelWin.wav',
+  levelFail: STATIC_ASSETS_ROOT_URL + '/levelFail.wav',
 };
 
 export default sounds;

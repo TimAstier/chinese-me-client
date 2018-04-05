@@ -4,14 +4,14 @@ import { Objective } from '../../../containers/Book/containers';
 import { content as contentPropTypes } from '../../../helpers/propTypes';
 import { Row } from '../../Shared';
 import insertVariables from '../../../utils/insertVariables';
-// import pinyinNumberToAudioUrl from '../../../utils/pinyinNumberToAudioUrl';
+import pinyinNumberToAudioUrl from '../../../utils/pinyinNumberToAudioUrl';
 
 export default class Content extends Component {
   static propTypes = contentPropTypes
 
   render() {
     const { newCharacters, example, lessonTitle, dialog, grammarTitle,
-      practiceIds, newWords, pronunciationTitle, settings } = this.props;
+      practiceIds, newWords, pronunciationTitle, settings, image } = this.props;
       // This part comes between a dialog 'title' and 'intro'
     const specialIntro = () => {
       return (
@@ -44,6 +44,7 @@ export default class Content extends Component {
       <div>
         <c.Page>
           {lessonTitle()}
+          <c.Bookrow center>{image({ caption: '你为什么学中文？'})}</c.Bookrow>
           <Objective
             text="Explaining why you want to study Chinese"
           />
@@ -55,8 +56,7 @@ export default class Content extends Component {
             buttonOptions={{
               type: 'audio',
               data: {
-                // url: pinyinNumberToAudioUrl('wei4'),
-                text: '魏'
+                url: pinyinNumberToAudioUrl('wei4')
               }
             }}
           ><b>wèi</b></c.P>
@@ -64,8 +64,7 @@ export default class Content extends Component {
             buttonOptions={{
               type: 'audio',
               data: {
-                // url: pinyinNumberToAudioUrl('hui4'),
-                text: '会'
+                url: pinyinNumberToAudioUrl('hui4')
               }
             }}
           ><b>huì</b></c.P>
@@ -73,8 +72,7 @@ export default class Content extends Component {
             buttonOptions={{
               type: 'audio',
               data: {
-                // url: pinyinNumberToAudioUrl('gui4'),
-                text: '贵'
+                url: pinyinNumberToAudioUrl('gui4')
               }
             }}
           ><b>guì</b></c.P>
@@ -84,17 +82,15 @@ export default class Content extends Component {
             buttonOptions={{
               type: 'audio',
               data: {
-                // url: pinyinNumberToAudioUrl('gui4'),
-                text: '觉'
+                url: pinyinNumberToAudioUrl('yue4')
               }
             }}
-          ><b>jué</b></c.P>
+          ><b>yuè</b></c.P>
           <c.P
             buttonOptions={{
               type: 'audio',
               data: {
-                // url: pinyinNumberToAudioUrl('gui4'),
-                text: '学'
+                url: pinyinNumberToAudioUrl('xue2')
               }
             }}
           ><b>xué</b></c.P>
@@ -102,11 +98,10 @@ export default class Content extends Component {
             buttonOptions={{
               type: 'audio',
               data: {
-                // url: pinyinNumberToAudioUrl('gui4'),
-                text: '月'
+                url: pinyinNumberToAudioUrl('jue2')
               }
             }}
-          ><b>yuè</b></c.P>
+          ><b>jué</b></c.P>
           <c.PartTitle name="characters" />
           {newCharacters()}
           <c.PartTitle name="patterns" />
@@ -174,13 +169,10 @@ export default class Content extends Component {
           <c.Bookrow>
             <c.Char>好学</c.Char>
             <c.Pinyin>hàoxué</c.Pinyin>
-            <c.Meaning>diligent, studious, hard-working (in studies)</c.Meaning>
+            <c.Meaning>diligent, studious</c.Meaning>
             <c.Meaning>(LIKE-TO-STUDY)</c.Meaning>
           </c.Bookrow>
           <c.P>So when we read the characters <c.Chinese>好学</c.Chinese>, we have to decide from context whether <b>hao</b> should be pronounced with Tone 3 or Tone 4: <b>hǎoxué</b> <i>easy (to learn)</i> or <b>hàoxué</b> <i>diligent</i>.</c.P>
-          {/* <c.Bookrow center>
-            <img src="http://via.placeholder.com/550x450" alt=""/>
-          </c.Bookrow> */}
           <c.PartTitle name="dialog_zh" />
           {dialog(1, { sentenceType: 'chinese', displayNames: true })}
           {dialog(2, { sentenceType: 'chinese', displayNames: true, specialIntro })}

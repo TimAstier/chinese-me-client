@@ -5,17 +5,19 @@ import { content as contentPropTypes } from '../../../helpers/propTypes';
 import pinyinNumberToAudioUrl from '../../../utils/pinyinNumberToAudioUrl';
 import { Row } from '../../Shared';
 // import insertVariables from '../../../utils/insertVariables';
+import assetEndpointToUrl from '../../../helpers/assetEndpointToUrl';
 
 export default class Content extends Component {
   static propTypes = contentPropTypes
 
   render() {
     const { newCharacters, example, lessonTitle, dialog, grammarTitle,
-      practiceIds, newWords, pronunciationTitle } = this.props;
+      practiceIds, newWords, pronunciationTitle, image } = this.props;
     return (
       <div>
         <c.Page>
           {lessonTitle()}
+          <c.Bookrow center>{image({ caption: '我姓王。我也姓王！In the 2008 Olympics in Beijing, China took all three medals – gold, silver and bronze – in men’s table tennis.'})}</c.Bookrow>
           <Objective
             text="A more polite way of inquiring about somebody's name"
           />
@@ -53,7 +55,7 @@ export default class Content extends Component {
               type: 'audio',
               data: {
                 text: '中国人',
-                url: 'https://s3.eu-west-2.amazonaws.com/chineseme/audio/others/5_1.m4a'
+                url: assetEndpointToUrl('/audio/others/5_1.m4a')
               }
             }}
           >
@@ -65,7 +67,7 @@ export default class Content extends Component {
               type: 'audio',
               data: {
                 text: '中国人',
-                url: 'https://s3.eu-west-2.amazonaws.com/chineseme/audio/others/5_2.m4a'
+                url: assetEndpointToUrl('/audio/others/5_2.m4a')
               }
             }}
           >
@@ -82,7 +84,7 @@ export default class Content extends Component {
               type: 'audio',
               data: {
                 text: '认识',
-                url: 'https://s3.eu-west-2.amazonaws.com/chineseme/audio/words/ren4shi0.mp3'
+                url: assetEndpointToUrl('/audio/words/ren4shi0.mp3')
               }
             }}
           >
@@ -105,7 +107,7 @@ export default class Content extends Component {
               type: 'audio',
               data: {
                 text: '我很高兴。',
-                url: 'https://s3.eu-west-2.amazonaws.com/chineseme/audio/examples/S0E5_custom_example_1.m4a'
+                url: assetEndpointToUrl('/audio/examples/S0E5_custom_example_1.m4a')
               }
             }}
           >
@@ -120,7 +122,7 @@ export default class Content extends Component {
               type: 'audio',
               data: {
                 text: '你很好！',
-                url: 'https://s3.eu-west-2.amazonaws.com/chineseme/audio/examples/S0E5_custom_example_2.m4a'
+                url: assetEndpointToUrl('/audio/examples/S0E5_custom_example_2.m4a')
               }
             }}
           >
@@ -143,9 +145,6 @@ export default class Content extends Component {
           {grammarTitle()}
           <c.P><c.Chinese>也</c.Chinese> <b>yě</b> <i>also</i>, <i>too</i> can be added to any of the sentences we have learned so far.  <c.Chinese>也</c.Chinese> <b>yě</b> is placed after the subject and before the verb of the sentence:</c.P>
           {example(3, { audio: true })}
-          {/* <c.Bookrow>
-            <img src="http://via.placeholder.com/400x250" alt="" />
-          </c.Bookrow> */}
           <c.P>In a Topic-Comment construction, <c.Chinese>也</c.Chinese> <b>yě</b> comes after the Topic and before the Comment:</c.P>
           {example(4, { audio: true })}
           {example(5, { audio: true })}
@@ -159,10 +158,8 @@ export default class Content extends Component {
           >
             <i>Practice.</i>
           </c.P>
-          {/* <c.Bookrow center marginTop={50}>
-            <img src="http://via.placeholder.com/550x450" alt="" />
-          </c.Bookrow> */}
           <c.PartTitle name="dialogs" />
+          <c.Bookrow center>{image({ caption: 'In formal and business settings, Chinese people often do not shake hands. People with international experience, especially if they are male, are more likely to shake hands.'})}</c.Bookrow>
           {dialog(1, { sentenceType: 'chinese', displayNames: true })}
           {dialog(1, { sentenceType: 'translation', displayNames: true })}
           {dialog(2, { sentenceType: 'chinese', displayNames: true })}

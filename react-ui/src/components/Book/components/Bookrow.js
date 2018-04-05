@@ -60,7 +60,7 @@ class Bookrow extends Component {
         slow={this.props.buttonOptions.slow}
         toggleSlow={this.props.buttonOptions.toggleSlow}
         keyPress={false}
-        animation={false}
+        requireActive
         origin={this.props.buttonOptions.origin}
         small
         trackClick

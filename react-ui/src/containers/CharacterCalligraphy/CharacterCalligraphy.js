@@ -5,6 +5,7 @@ import { CharacterCalligraphy as CharacterCalligraphyComponent } from '../../com
 import s from '../../rootSelectors';
 import { Character } from '../../models';
 import * as content from '../../components/Book/calligraphy';
+import assetEndpointToUrl from '../../helpers/assetEndpointToUrl';
 
 class CharacterCalligraphy extends Component {
   render() {
@@ -12,7 +13,7 @@ class CharacterCalligraphy extends Component {
       <CharacterCalligraphyComponent
         content={content[this.props.character.calligraphyHash]}
         character={this.props.character.simpChar}
-        videoUrl={this.props.character.calligraphyVideo}
+        videoUrl={assetEndpointToUrl('/videos/calligraphy/' + this.props.character.calligraphyVideo)}
       />
     );
   }

@@ -10,7 +10,7 @@ import * as models from '../../models';
 
 class EpisodeScreen extends Component {
   componentDidMount() {
-    this.props.runEpisodeScreen(this.props.url);
+    this.props.runEpisodeScreen(this.props.episode.locked, this.props.url);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -22,7 +22,7 @@ class EpisodeScreen extends Component {
   componentDidUpdate(prevProps) {
     // Rerun study saga when the URL changes
     if (this.props.url !== prevProps.url) {
-      this.props.runEpisodeScreen(this.props.url);
+      this.props.runEpisodeScreen(this.props.episode.locked, this.props.url);
     }
   }
 

@@ -22,8 +22,10 @@ class Book extends Component {
   }
 
   componentWillUnmount() {
-    this.props.setScrollPosition(this._getBookScrollPosition());
-    this.props.setInitialized(false);
+    if (this.props.initialized) {
+      this.props.setScrollPosition(this._getBookScrollPosition());
+      this.props.setInitialized(false);
+    }
   }
 
   _init() {

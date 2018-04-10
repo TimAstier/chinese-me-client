@@ -4,6 +4,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+
+## [0.1.23] 2017-04-10
+
+### Added
+- Store with Stripe payment
+- Locked episodes above number 3 if the season is not purchased by the user
+
+### Content
+- Moved some calligraphy and oracle bone content into screens
+- Added explanations about icons in the text
+- Added one stroke order image with arrows
+- Removed empty character boxes
+
+### Fixed
+- Character screens crashing the app on reload page
+
 ## [0.1.22] 2017-03-23
 
 ### Changed

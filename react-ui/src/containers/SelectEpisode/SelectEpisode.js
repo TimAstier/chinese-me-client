@@ -21,10 +21,7 @@ class SelectEpisodeScreen extends Component {
     if (!season) {
       return null;
     }
-    if (season.number === 0) {
-      return 'The Basics';
-    }
-    return `Season ${season.number}`;
+    return season.name;
   }
 
   render() {

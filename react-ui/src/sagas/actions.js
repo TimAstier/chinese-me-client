@@ -186,9 +186,9 @@ const startEpisode = (seasonNumber, episodeNumber) => ({
   type: types.START_EPISODE,
   payload: { seasonNumber, episodeNumber }
 });
-const runEpisodeScreen = url => ({
+const runEpisodeScreen = (locked, url) => ({
   type: types.RUN_EPISODE_SCREEN,
-  payload: { url }
+  payload: { locked, url }
 });
 const unmountEpisodeScreen = () => ({
   type: types.UNMOUNT_EPISODE_SCREEN

@@ -1,120 +1,117 @@
 import React, { Component } from 'react';
 import * as c from '../components';
+import { Objective } from '../../../containers/Book/containers';
 import { content as contentPropTypes } from '../../../helpers/propTypes';
 import { Row } from '../../Shared';
+import insertVariables from '../../../utils/insertVariables';
+import pinyinNumberToAudioUrl from '../../../utils/pinyinNumberToAudioUrl';
 
 export default class Content extends Component {
   static propTypes = contentPropTypes
 
   render() {
     const { newCharacters, example, lessonTitle, dialog, grammarTitle,
-      practiceIds, newWords, image } = this.props;
+      practiceIds, newWords, pronunciationTitle, settings, image } = this.props;
+      // This part comes between a dialog 'title' and 'intro'
+    const specialIntro = () => {
+      return (
+        <div>
+          <c.P
+            buttonOptions={{
+              type: 'askUserSettings'
+            }}
+          ><i>Input why you are learning Chinese:</i>
+          </c.P>
+          <c.P>In Chinese, <i>{insertVariables('[REASON_LEARN_CHINESE_EN]', settings)}</i> is:</c.P>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                text: insertVariables('[REASON_LEARN_CHINESE]', settings)
+              }
+            }}
+          >
+            <Row>
+              <c.Char>{insertVariables('[REASON_LEARN_CHINESE]', settings)}</c.Char>
+              <c.Pinyin>{insertVariables('[REASON_LEARN_CHINESE_PINYIN]', settings)}</c.Pinyin>
+            </Row>
+          </c.Bookrow>
+          <c.P>Practice saying this a few times.</c.P>
+        </div>
+      );
+    };
     return (
       <div>
         <c.Page>
           {lessonTitle()}
+          <c.Bookrow center>{image({ caption: '你为什么学中文？'})}</c.Bookrow>
+          <Objective
+            text="Explaining why you want to study Chinese"
+          />
+          <c.PartTitle name="pronunciation" />
+          {pronunciationTitle()}
+          <c.P>When there is no initial, the final <b>-ui</b> is spelled <b>wei</b> in pīnyīn. So <b>huì</b> and <b>guì</b> are pronounced exactly as if they had been spelled <i>hwèi</i> and <i>gwèi</i>.</c.P>
+          <c.P>Compare the sounds:</c.P>
+          <c.P
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: pinyinNumberToAudioUrl('wei4')
+              }
+            }}
+          ><b>wèi</b></c.P>
+          <c.P
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: pinyinNumberToAudioUrl('hui4')
+              }
+            }}
+          ><b>huì</b></c.P>
+          <c.P
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: pinyinNumberToAudioUrl('gui4')
+              }
+            }}
+          ><b>guì</b></c.P>
+          {pronunciationTitle()}
+          <c.P>We have already learned that the final <b>-üe </b> is spelled <b>-ue</b>, without umlaut dots, when there is no initial: <b>yue</b>. The same is true after the initials <b>x</b>-, <b>j</b>- and <b>q</b>-.</c.P>
+          <c.P
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: pinyinNumberToAudioUrl('yue4')
+              }
+            }}
+          ><b>yuè</b></c.P>
+          <c.P
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: pinyinNumberToAudioUrl('xue2')
+              }
+            }}
+          ><b>xué</b></c.P>
+          <c.P
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: pinyinNumberToAudioUrl('jue2')
+              }
+            }}
+          ><b>jué</b></c.P>
           <c.PartTitle name="characters" />
-          <c.P><i>Practice the stroke order animations. Some characters have material on Stories and Calligraphy.</i></c.P>
           {newCharacters()}
           <c.PartTitle name="patterns" />
           {grammarTitle()}
-          <c.P>是 <b>shì</b> can be used to reinforce the strength of a statement:</c.P>
+          <c.P>The most basic meaning of <c.Chinese>想</c.Chinese> <b>xiǎng</b> is <i>think</i>. Just as the English word <i>think</i>, it can also mean <i>believe</i>, <i>consider</i>:</c.P>
           {example(1, { audio: true })}
-          <c.P>English has a similar pattern: <i>this book does cost a lot</i> is stronger than the plain <i>this book costs a lot</i>.</c.P>
-          <c.P>Sometimes, depending on where the speaker places the stress, a sentence like this can be interpreted in more than one way:</c.P>
+          <c.P>It can also mean <i>think about</i>, <i>miss</i>:</c.P>
           {example(2, { audio: true })}
-          <c.P>If the stress in this sentence is on 中国 <b>zhōngguó</b>, it means that you are talking about <i>China</i> (and not somewhere else):</c.P>
-          <c.Bookrow>
-            <c.Ul>
-              <li><Row><c.Meaning>It is in China that I am studying Chinese.</c.Meaning></Row></li>
-            </c.Ul>
-          </c.Bookrow>
-          <c.P>If the stress is on 是 <b>shì</b>, the most natural interpretation is:</c.P>
-          <c.Bookrow>
-            <c.Ul>
-              <li><Row><c.Meaning>I do study Chinese in China.</c.Meaning></Row></li>
-            </c.Ul>
-          </c.Bookrow>
-          {grammarTitle()}
-          <c.P>Just as 是 can be inserted on its own to create emphasis, we can put the focus on a past event using the construction 是...的 <b>shì...de̊.1</b>: </c.P>
+          <c.P>Even more commonly, it can be used before another verb in the meaning <i>want to</i>, <i>would like to</i> or <i>plan to</i>:</c.P>
           {example(3, { audio: true })}
-          {example(4, { audio: true })}
-          {example(5, { audio: true })}
-          <c.P>The purpose of 是...的 <b>shì...de̊.1</b> is emphasis or focus on a certain detail of an event. But note that this construction is always used for events that have <i>already happened</i>. Even though Chinese does not have any formal tenses (<i>go</i>, <i>went</i>, <i>gone</i>), patterns such as this one can still signal past time in an <i>indirect</i> way.</c.P>
-          {grammarTitle()}
-          <c.P>The character 了 <b>le̊</b> is used for two very common particles, often called <b>le̊.1</b> and <b>le̊.2</b> in pīnyīn. We will start looking at what is usually called the <i>perfective aspect marker</i>, <b>le̊.1</b>.</c.P>
-          <c.P>In Episode 9, we learned that the aspect of a verb defines <i>how an action is seen</i>. We also learned the <i>progressive</i> aspect (the <i>-ing</i> form of a verb in English and the aspect marker 在 <b>zài</b> in Chinese) which describes an action as <i>ongoing</i>, and the <i>delimitative</i> aspect which says that something is done <i>a little bit</i> or <i>for a short while</i>.</c.P>
-          <c.P>The Chinese perfective aspect, signalled by 了 <b>le.1</b>, describes that an event or action reaches a certain limit or end-state; the event or action is said to be <i>bounded</i>. For example, the phrase <i>read five books</i> describes a bounded action because it describes an end state where "five books have been read". The phrase <i>read books</i>, on the other hand, describes an activity in general; it is unbounded because there is no limit or end-state involved.</c.P>
-          <c.P>Let us look at the following pattern:</c.P>
-          {example(6, { audio: true })}
-          <c.P>To understand how aspect influences the meaning of this sentence, let's compare it to two other examples:</c.P>
-          <c.Bookrow>
-            <c.Ul>
-              <li><Row><c.Char>她看那本书。</c.Char><c.Meaning>She reads that book.</c.Meaning></Row></li>
-              <li><Row><c.Char>她在看那本书。</c.Char><c.Meaning>She is reading that book.</c.Meaning></Row></li>
-              <li><Row><c.Char>她看了那本书。</c.Char><c.Meaning>She has read that book.</c.Meaning></Row></li>
-            </c.Ul>
-          </c.Bookrow>
-          <c.P>These three sentences differ only in aspect. The first is about the general action of reading a book; it can be used in an imagined dialog where someone asks you <i>how does she learn Chinese?</i> Your response is: <i>She reads that book</i>. This action is not ongoing (she is not doing it now), nor is it bounded (it is not about reading a certain number of pages or about finishing the book; it is just about "reading" it in general). So there is no aspect marker in this sentence.</c.P>
-          <c.P>The second sentence has the progressive aspect marker 在 <b>zài</b>, which signals that the action is ongoing, is happening now. This sentence would be appropriate as an answer to questions such as <i>What is she doing?</i> or <i>Where is she?</i></c.P>
-          <c.P>The third sentence has the perfective aspect marker 了 <b>le.1</b>. This makes it bounded: it tells us that she has <i>finished</i> or <i>completed</i> reading the book. We can imagine this sentence as the answer to questions like <i>Has she read any Chinese books?</i> or <i>What did she do today?</i></c.P>
-          <c.P>Let us look at some more examples using perfective aspect with 了 <b>le.1</b>:</c.P>
-          {example(7, { audio: true })}
-          {example(8, { audio: true })}
-          {example(9, { audio: true })}
-          {example(10, { audio: true })}
-          {example(11, { audio: true })}
-          <c.P>The perfective aspect is of course especially common with resultative verbs, since these have an "in-built" sense of completion:</c.P>
-          {example(12, { audio: true })}
-          {example(13, { audio: true })}
-          {example(14, { audio: true })}
-          {example(15, { audio: true })}
-          <c.P>Another way of understanding the function of perfective aspect is to look at cases where the perfective can <i>not</i> be used. For example, since 了 <b>le̊.1</b> signals boundedness, it can only be used with verbs that can actually be bounded: a phrase like ?她姓了李? <b>tā xìng le̊.1 Lǐ?</b> is grammatically impossible, because "being named something" is an ongoing state so there can be no "boundedness" or "completion" involved. Other verbs that cannot have perfective aspect are:</c.P>
-          <c.Bookrow>
-            <c.Ul>
-              <li><Row><c.Char>觉得</c.Char><c.Pinyin>juéde̊</c.Pinyin><c.Meaning>think, feel</c.Meaning></Row></li>
-              <li><Row><c.Char>相信</c.Char><c.Pinyin>xiāngxìn</c.Pinyin><c.Meaning>believe</c.Meaning></Row></li>
-              <li><Row><c.Char>知道</c.Char><c.Pinyin>zhīdåo</c.Pinyin><c.Meaning>know</c.Meaning></Row></li>
-              <li><Row><c.Char>有</c.Char><c.Pinyin>yǒu</c.Pinyin><c.Meaning>have</c.Meaning></Row></li>
-              <li><Row><c.Char>姓 </c.Char><c.Pinyin>xìng</c.Pinyin><c.Meaning>be named (as family name)</c.Meaning></Row></li>
-            </c.Ul>
-          </c.Bookrow>
-          <c.P>
-            These counterexamples also illustrate the difference between <i>aspect</i> and <i>tense</i>. You will have noticed that all the sentence patterns above were translated to past tense in English. This is not a coincidence: bounded actions will of course usually have occurred in the past. It is therefore easy to confuse Chinese <i>perfective aspect</i> with English <i>past tense</i>. But perfective aspect only works with verbs  describing actions that <i>can be completed</i>.
-            In English, we can use present and past tense to express the difference between <i>she is named Li</i> and <i>she was named Li</i>, or <i>he knows</i> and <i>he knew</i>. There is no way to make this distinction in Chinese without using words like <i>yesterday</i> or <i>last year</i> to make the timing explicit.
-          </c.P>
-          <c.P>Here is another example showing that perfective aspect is different from past tense:</c.P>
-          {example(16, { audio: true })}
-          <c.P>This sentence talks about something that will happen in the future, and is translated to future tense in English, so it cannot be said to be in past tense. The perfective <b>le̊.1</b> in Chinese just says that something <i>will</i> be completed: she will <i>have seen</i> something and <i>will be happy</i> as a result. In later episodes, we will encounter other examples illustrating that perfective aspect really has nothing to do with whether an event occurs in the future or in the past.</c.P>
-          {grammarTitle()}
-          <c.P>Since 了 <b>le.1</b> says that something has been completed, you cannot negate it with 不 <b>bù</b>. Instead, we use 没有 <b>méiyǒu</b> or just 没 <b>méi</b>. It is interesting to note that <i>not have</i> is used in both English and Chinese to describe the state of something that has not been completed:</c.P>
-          {example(17, { audio: true })}
-          {example(18, { audio: true })}
-          {example(19, { audio: true })}
-          {example(20, { audio: true })}
-          <c.P>还没（有）<b>hái méi(yǒu)</b> means <i>still hasn't</i>:</c.P>
-          {example(21, { audio: true })}
-          {grammarTitle()}
-          <c.P>The basic meaning of 给 <b>gěi</b> is <i>to give</i>:</c.P>
-          {example(22, { audio: true })}
-          <c.P>But it is also used as a preposition to replace English <i>for</i> and <i>to</i>, synonymous with 跟 <b>gēn</b>:</c.P>
-          {example(23, { audio: true })}
-          <c.P>The word order can either be Subject-gěi-Object-Verb or Subject-Verb-gěi-Object:</c.P>
-          {example(24, { audio: true })}
-          {example(25, { audio: true })}
-          {grammarTitle()}
-          <c.P>If you pronounce several 一 <b>yī</b> in a row, it can be hard for the listener to tell how many there are (try it over the phone!) To make it easier for the listener, 一 is often pronounced <b>yāo</b> in numbers:</c.P>
-          {example(26, { audio: true })}
-          <c.PartTitle name="dialog" />
-          <c.PartTitle type="secondary">你的电话号码是多少？</c.PartTitle>
-          <c.P color={'#C0504D'}><i>Wang Meixin promises to help Marvin find a place to stay, giving her a good reason to note down his phone number.</i></c.P>
-          {dialog(1, { sentenceType: 'chinese', displayNames: true })}
-          {dialog(1, { sentenceType: 'translation', displayNames: true })}
-          <c.PartTitle name="culture" />
-          <c.Bookrow center>{image()}</c.Bookrow>
-          <c.PartTitle name="words" />
-          {newWords()}
-          <c.PartTitle anchor="review" name="review" />
           <c.P
             buttonOptions={{
               type: 'practice',
@@ -123,8 +120,65 @@ export default class Content extends Component {
               }
             }}
           >
-            <i>Now, go through the review exercises to practice pronunciation, grammar and character writing. Then do the Exam to progress to the next Lesson.</i>
+            <i>Practice.</i>
           </c.P>
+          {grammarTitle()}
+          <c.P>Chinese has direct equivalents of English question words like <i>what</i>, <i>why</i>, <i>how</i> and so on. Just as with <c.Chinese>吗</c.Chinese> <b>må</b>, the word order of a question is the same as that of a statement:</c.P>
+          {example(4, { audio: true })}
+          {example(5, { audio: true })}
+          {example(6, { audio: true })}
+          <c.P>The transcription of <c.Chinese>什么</c.Chinese> can be confusing. Most dictionaries  just combine the pīnyīn for the individual characters, which results in "shénme̊" or "shénmo̊". But in natural speech, <c.Chinese>什么</c.Chinese> is always pronounced <b>shémme̊</b> – without any n-sound.</c.P>
+          <c.P
+            buttonOptions={{
+              type: 'practice',
+              data: {
+                elementId: practiceIds[1]
+              }
+            }}
+          >
+            <i>Practice.</i>
+          </c.P>
+          {grammarTitle()}
+          <c.P>One of the most common question words is <c.Chinese>为什么</c.Chinese> <b>wèishe̊mme̊</b> <i>why?</i> The character <c.Chinese>为</c.Chinese> <b>wèi</b> means <i>for</i>, <i>to some purpose</i>, so the literal translation of <c.Chinese>为什么</c.Chinese> <b>wèishe̊mme̊</b> is <i>for what</i>:</c.P>
+          {example(7, { audio: true })}
+          {example(8, { audio: true })}
+          <c.P><c.Chinese>为什么</c.Chinese> <b>wèishe̊mme̊</b> can also be placed at the beginning of the whole sentence:</c.P>
+          {example(9, { audio: true })}
+          <c.P>As with <c.Chinese>什么</c.Chinese> <b>shémme̊</b>, the transcription of <c.Chinese>为什么</c.Chinese> in most dictionaries is confusing. You will find it written "wèishénme̊" or "wèishénmo̊", but in natural speech <c.Chinese>为什么</c.Chinese> is always pronounced <b>wèishe̊mme̊</b> with a long <i>m</i> sound and neutral tone on the two last syllables.</c.P>
+          <c.P
+            buttonOptions={{
+              type: 'practice',
+              data: {
+                elementId: practiceIds[2]
+              }
+            }}
+          >
+            <i>Practice.</i>
+          </c.P>
+          {grammarTitle()}
+          <c.P>The same word in one language can often be translated into many different words in another. The word <c.Chinese>好</c.Chinese> <b>hǎo</b>, for example, basically means <i>good</i>. But depending on the context, it often makes more sense to translate it using other adjectives:</c.P>
+          {example(10, { audio: true })}
+          {example(11, { audio: true })}
+          <c.P>It can also be used at the beginning of a sentence as a mood word meaning <i>OK, good then</i>:</c.P>
+          {example(12, { audio: true })}
+          <c.P>In idiomatic expressions, there is no need to translate word for word at all. The most common Chinese greeting, for example, is basically the same as just saying <i>hi!</i> or <i>hello!</i> in English:</c.P>
+          {example(13, { audio: true })}
+          <c.P>In this lesson, <c.Chinese>好</c.Chinese>, <b>hǎo</b> also appears in the sense <i>easy (to do)</i>, as in the word <c.Chinese>好学</c.Chinese>, <b>hǎoxué</b>, <i>easy to learn</i>, literally GOOD (TO) LEARN:</c.P>
+          {example(14, { audio: true })}
+          <c.P>Finally, we saw in Lesson 9 that the character <c.Chinese>好</c.Chinese>, when pronounced <b>hào</b>, can mean <i>to like</i>. This meaning never appears on its own – only as  part of more complex, "compound" words. In this lesson, we meet another example:</c.P>
+          <c.Bookrow>
+            <c.Char>好学</c.Char>
+            <c.Pinyin>hàoxué</c.Pinyin>
+            <c.Meaning>diligent, studious</c.Meaning>
+            <c.Meaning>(LIKE-TO-STUDY)</c.Meaning>
+          </c.Bookrow>
+          <c.P>So when we read the characters <c.Chinese>好学</c.Chinese>, we have to decide from context whether <b>hao</b> should be pronounced with Tone 3 or Tone 4: <b>hǎoxué</b> <i>easy (to learn)</i> or <b>hàoxué</b> <i>diligent</i>.</c.P>
+          <c.PartTitle name="dialog_zh" />
+          {dialog(1, { sentenceType: 'chinese', displayNames: true })}
+          {dialog(2, { sentenceType: 'chinese', displayNames: true, specialIntro })}
+          <c.PartTitle name="words" />
+          {newWords()}
+          <c.Review />
           <c.Exam />
         </c.Page>
       </div>

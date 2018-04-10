@@ -15,7 +15,7 @@ export default class Content extends Component {
         <c.Bookrow><Img name="na_stroke.png" alt="" /></c.Bookrow>
         <c.P>The foot should not be at an angle with the rest of the stroke; this will create an ugly, broken impression:</c.P>
         <c.Bookrow><Img name="broken_ren.png" alt="" /></c.Bookrow>
-        <c.P>Practice: Left and right downward strokes</c.P>
+        <c.P>Practice writing:</c.P>
         <c.Bookrow>
           <c.CharacterBox simpChar="人" />
         </c.Bookrow>

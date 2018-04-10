@@ -18,6 +18,9 @@ const TitleWrapper = styled.div`
   height: 35px;
   font-family: 'Open Sans';
 	font-size: 35px;
+  @media(max-width: 658px) {
+    font-size: 24px;
+  }
   font-weight: bold;
 	color: #454545;
   display: flex;

@@ -59,12 +59,13 @@ class MapSidebar extends Component {
   }
 
   _generatePanels() {
-    const seasons = this.props.seasons.sortBy(e => e.number);
+    const seasons = this.props.seasons
+      .filter(e => e.available)
+      .sortBy(e => e.number);
     const panels = [];
     seasons.valueSeq().forEach((season, i) => {
       // TODO: Add a title field in DB (in a translation table)
-      const title = season.number === 0 ? 'The Basics' : 'Season '
-        + season.number;
+      const title = season.name;
       return panels.push({
         title,
         content: {
@@ -80,7 +81,7 @@ class MapSidebar extends Component {
 
   render() {
     const { currentSeason } = this.props;
-    const defaultActiveIndex = currentSeason ? currentSeason.number : undefined;
+    const defaultActiveIndex = currentSeason ? currentSeason.number - 1 : undefined;
     return (
       <Wrapper>
         <ContentWrapper>

@@ -1,85 +1,114 @@
 import React, { Component } from 'react';
 import * as c from '../components';
+import styled from 'styled-components';
+import { Objective } from '../../../containers/Book/containers';
 import { content as contentPropTypes } from '../../../helpers/propTypes';
+import pinyinNumberToAudioUrl from '../../../utils/pinyinNumberToAudioUrl';
 import { Row } from '../../Shared';
+// import insertVariables from '../../../utils/insertVariables';
+
+const CustomSpan = styled.span`
+  font-style: normal;
+`;
 
 export default class Content extends Component {
   static propTypes = contentPropTypes
 
   render() {
     const { newCharacters, example, lessonTitle, dialog, grammarTitle,
-      practiceIds, newWords } = this.props;
+      practiceIds, newWords, image, pronunciationTitle } = this.props;
+
+    // This part comes between a dialog 'title' and 'intro'
+    const specialIntro = () => {
+      return (
+        <c.P
+          buttonOptions={{
+            type: 'askUserSettings'
+          }}
+        ><i>Now, input your own birthdate to practice presenting yourself.</i>
+        </c.P>
+      );
+    };
     return (
       <div>
         <c.Page>
           {lessonTitle()}
-          <c.PartTitle name="characters" />
-          <c.P><i>Practice the stroke order animations. Some characters have material on Stories and Calligraphy.</i></c.P>
-          {newCharacters()}
-          <c.PartTitle name="patterns" />
-          {grammarTitle()}
-          <c.P>Up to now, we have formulated yes/no-questions using the question particle <b>må</b>. Another common way of asking this type of question is by listing both the alternative answers one after another.</c.P>
-          {example(1, { audio: true })}
-          <c.P>This means the same thing as using the question particle to say 我美吗？<b>Wǒ měi må?</b></c.P>
-          <c.P>At natural speed, the second part often loses its tone: <b>Wǒ měi bů měi?</b> or <b>Wǒ měi bů me̊i?</b> This is always the case in questions with 是不是, which is pronounced <b>shìbůshi̊</b>:</c.P>
-          {example(2, { audio: true })}
-          <c.P>Just as when we use <b>må</b>, this is a perfectly neutral question: the speaker is simply asking whether or not you are Chinese. You sometimes see a variant of this pattern where the two characters 不是 <b>bů shi̊</b> appear at the end:</c.P>
-          {example(3, { audio: true })}
-          <c.P>This tends to give the question a more subjective and demanding nuance, as when you add <i>or not</i> to a question in English: the literal translation should make this clear.</c.P>
-          <c.P>Of course, if the statement is already negated, you cannot use the <i>A NOT A</i> pattern – the only possibility is to use <b>må</b>:</c.P>
-          {example(4, { audio: true })}
-          <c.P>是不是 <b>shìbůshi̊</b> is actually possible to use as a general alternative to the question particle 吗. When it is used like this, 是不是 loses its literal meaning BE NOT BE and is simply a way of posing a yes-no question, so we can gloss it the same way as the question particle:</c.P>
-          {example(5, { audio: true })}
-          <c.P>If the original sentence contains a 是 <b>shì</b>, you then have to repeat it:</c.P>
-          {example(6, { audio: true })}
-          <c.P>If this seems strange at first, it should become clearer if you remove 是不是 <b>shìbůshi̊</b> and add the question particle 吗 <b>må</b> instead.</c.P>
-          <c.P>ith two-character words, it is not necessary to repeat the whole word; usually, only the first character is repeated:</c.P>
-          {example(7, { audio: true })}
-          {example(8, { audio: true })}
-          <c.P>Note the neutral tone on 不 <b>bů</b> above.</c.P>
-          <c.P>The potential forms of resultative verbs work the same way:</c.P>
-          {example(9, { audio: true })}
-          {example(10, { audio: true })}
-          {grammarTitle()}
-          <c.P>These words are often translated as <i>can</i> in English. But they have  different meanings. 会 <b>huì</b> means <i>can</i> in the sense of <i>know how to</i>:</c.P>
-          {example(11, { audio: true })}
-          <c.P>可以 <b>kěyǐ</b> means <i>be able to</i> as in <i>have the time to</i>, <i>be willing to</i> or <i>be allowed to</i>:</c.P>
-          {example(12, { audio: true })}
-          {example(13, { audio: true })}
-          <c.P>能 <b>néng</b> means <i>to be capable of</i>, <i>have the possibility to</i>, <i>be available to</i>:</c.P>
-          {example(14, { audio: true })}
-          {grammarTitle()}
-          <c.P>Chinese grammars often call sentence-final particles "mood words". This is because they provide subtle nuances that change how you should perceive a statement. 啊 <b>å</b> is a good example: it is used to soften or reduce the forcefulness of a statement. For example, if you ask somebody to tell you something, just saying 你说 <b>nǐ shuō</b> sounds like a harsh command. But if you add 啊 <b>å</b>, it instead becomes a polite request or encouragement to talk, a bit like adding English <i>please</i> or <i>come on</i>:</c.P>
-          {example(15, { audio: true })}
-          <c.P>Similarly, just saying <i>I don't understand</i> when someone says something unintelligible sounds agressive in both English in Chinese. In English, we would say something like <i>sorry, but...</i> to soften this statement; in Chinese we can use 啊 <b>å</b>: </c.P>
-          {example(16, { audio: true })}
-          <c.P>If someone asks you if you can speak Chinese, just replying 会 <b>huì</b> feels a bit cold and impolite, as if you would just answer a short <i>yes</i> in English; the listener might interpret it as <i>yes, why are you asking such a question?</i> or even <i>yes, but I don't want to</i>. With 啊 <b>å</b>, the response becomes more like English <i>sure I can</i>:</c.P>
-          {example(17, { audio: true })}
-          <c.P>If someone suggests something, simply replying 好 <b>hǎo</b> makes the listener unsure about how enthusiastic your agreement really is. 啊 <b>å</b> softens the response, implying that this is a <i>great</i> idea: </c.P>
-          {example(18, { audio: true })}
-          <c.P>As the name implies, Chinese mood words tell a listener in what spirit to understand what the speaker says. Using them correctly is therefore often a matter of "feeling" rather than "right and wrong".</c.P>
-          {grammarTitle()}
-          <c.P>As we have seen, Chinese usually does not differentiate between plural and singular forms: 语言 <b>yǔyán</b> can mean either <i>language</i> or <i>languages</i>, depending on context. But there is a special case: for people, we can use the particle 们 <b>-me̊n</b>, to form plurals. It is most commonly used with the personal pronouns 你, 我, 他, 她:</c.P>
-          <c.Bookrow>
-            <c.Ul>
-              <li><Row><c.Char>我</c.Char>  <c.Pinyin><b>wǒ</b></c.Pinyin>  <c.Meaning><i>I, me</i></c.Meaning></Row></li>
-              <li><Row><c.Char>我们</c.Char>  <c.Pinyin><b>wǒme̊n</b></c.Pinyin>  <c.Meaning><i>we</i></c.Meaning></Row></li>
-              <li><Row><c.Char>你</c.Char>  <c.Pinyin><b>nǐ</b></c.Pinyin>  <c.Meaning><i>you</i></c.Meaning></Row></li>
-              <li><Row><c.Char>你们</c.Char>  <c.Pinyin><b>nǐme̊n</b></c.Pinyin>  <c.Meaning><i>you (plural)</i></c.Meaning></Row></li>
-              <li><Row><c.Char>他</c.Char>  <c.Pinyin><b>tā</b></c.Pinyin>  <c.Meaning><i>he, him</i></c.Meaning></Row></li>
-              <li><Row><c.Char>他们</c.Char>  <c.Pinyin><b>tāme̊n</b></c.Pinyin>  <c.Meaning><i>they, them (male or mixed)</i></c.Meaning></Row></li>
-              <li><Row><c.Char>她</c.Char>  <c.Pinyin><b>tā</b></c.Pinyin>  <c.Meaning><i>she, her</i></c.Meaning></Row></li>
-              <li><Row><c.Char>她们</c.Char>  <c.Pinyin><b>tāme̊n</b></c.Pinyin>  <c.Meaning><i>they, them (female)</i></c.Meaning></Row></li>
-            </c.Ul>
+          <c.Bookrow center>{image({ caption: 'In this lesson, we learn the basic numbers. Some numbers are regarded as unlucky; many Chinese buildings lack a 14th floor.'})}</c.Bookrow>
+          <Objective
+            text="How to tell someone your age"
+          />
+          <c.PartTitle name="pronunciation" />
+          {pronunciationTitle()}
+          <c.P>The <b>pīnyīn</b> vowel <b>e</b> is pronounced like English <i>ea</i> in <i>learn</i>:</c.P>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: pinyinNumberToAudioUrl('sheng1'),
+                text: '生'
+              }
+            }}
+          >
+            <b>shēng</b>
           </c.Bookrow>
-          <c.PartTitle name="dialog" />
-          <c.PartTitle type="secondary">你可以帮我学中文吗？</c.PartTitle>
-          <c.P color={'#C0504D'}><i>Colleen suggests that Marvin and Wang Yuguo could do a language exchange. Marvin comes up with an English name for Yuguo.</i></c.P>
-          {dialog(1, { sentenceType: 'chinese', displayNames: true })}
-          {dialog(1, { sentenceType: 'translation', displayNames: true })}
-          <c.PartTitle name="words" />
-          {newWords()}
-          <c.PartTitle anchor="review" name="review"/>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: pinyinNumberToAudioUrl('er4'),
+                text: '二'
+              }
+            }}
+          >
+            <b>èr</b>
+          </c.Bookrow>
+          <c.P>In the syllable <b>èr</b>, pronunciation varies a bit; some native speakers pronounce it more like <i>àr</i>.</c.P>
+          {pronunciationTitle()}
+          <c.P>These can be a bit tricky to tell apart for the beginner. They are spelled with only two vowels, <b>i</b> and <b>u</b>, but in fact we hear <i>three</i> sounds in each of them.</c.P>
+          <c.P>The final -<b>ui</b> is pronounced as if it were actually spelled -<i>uei</i>. Listen:</c.P>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: pinyinNumberToAudioUrl('sui4')
+              }
+            }}
+          >
+            <Row>
+              <c.Char>岁</c.Char>
+              <c.Pinyin>suì</c.Pinyin>
+              <c.Meaning>year (of age)</c.Meaning>
+            </Row>
+          </c.Bookrow>
+          <c.P>The final -<b>iu</b>, on the other hand, is often pronounced as if it were written -<i>iou</i>.</c.P>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: pinyinNumberToAudioUrl('liu4')
+              }
+            }}
+          >
+            <Row>
+              <c.Char>六</c.Char>
+              <c.Pinyin>lìu</c.Pinyin>
+              <c.Meaning>six</c.Meaning>
+            </Row>
+          </c.Bookrow>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: pinyinNumberToAudioUrl('jiu3')
+              }
+            }}
+          >
+            <Row>
+              <c.Char>九</c.Char>
+              <c.Pinyin>jiǔ</c.Pinyin>
+              <c.Meaning>nine</c.Meaning>
+            </Row>
+          </c.Bookrow>
           <c.P
             buttonOptions={{
               type: 'practice',
@@ -88,8 +117,123 @@ export default class Content extends Component {
               }
             }}
           >
-            <i>Now, go through the review exercises to practice pronunciation, grammar and character writing. Then do the Exam to progress to the next Lesson.</i>
+            <i>Practice a few words with these sounds and spellings.</i>
           </c.P>
+          <c.PartTitle name="characters" />
+          {newCharacters()}
+          <c.PartTitle>Typing Chinese characters</c.PartTitle>
+          <c.P>
+            Starting in this lesson, you will need to type Chinese characters in some of the exercises. To do this, you will need to have an input method for Chinese characters on your computer. These articles might be helpful for installing a Chinese input method on <a href="https://eastasiastudent.net/china/windows-7-chinese-input/" target="_blank" rel="noopener noreferrer">PC</a> or <a href="http://pinpinchinese.com/blog/how-to-use-pinyin-to-type-chinese-mac/" target="_blank" rel="noopener noreferrer">mac</a>.
+          </c.P>
+          <c.PartTitle name="patterns" />
+          {grammarTitle()}
+          <c.P>In Chinese, numbers are usually written with the same Arabic numerals that we use in the West. But the handwriting may be different from what you are used to:</c.P>
+          <c.Bookrow center>{image()}</c.Bookrow>
+          <c.P>Numbers can also be written with Chinese characters. In English, we use letters to write smaller numbers: <i>five</i> and <i>25</i> are more common than <i>5</i> and <i>twenty-five</i>. In running text, the same is true for Chinese.</c.P>
+          <c.P>Strings of digits like phone numbers or prices, on the other hand, are almost always written with Arabic digits; birthdays usually so. But sometimes, there is no clear preference: for house numbers, both systems are common.</c.P>
+          <c.P>Chinese numbers are totally regular. There are nine numerals which can in turn be combined with ten to form the numbers 20, 30 and so on:</c.P>
+          <c.Bookrow flexDirection="column">
+            <Row><c.Space width={100}><c.Pinyin>1</c.Pinyin></c.Space><c.Space width={120}><c.Char>一</c.Char></c.Space><c.Space width={100}><c.Pinyin>yī</c.Pinyin></c.Space><c.Space width={100}><c.Meaning>one</c.Meaning></c.Space></Row>
+            <Row>
+              <c.Space width={100}><c.Pinyin>2</c.Pinyin></c.Space><c.Space width={120}><c.Char>二</c.Char></c.Space><c.Space width={100}><c.Pinyin>èr</c.Pinyin></c.Space><c.Space width={100}><c.Meaning><i>two</i> <CustomSpan>(sometimes pronounced <b>àr</b>)</CustomSpan></c.Meaning></c.Space>
+            </Row>
+            <Row><c.Space width={100}><c.Pinyin>3</c.Pinyin></c.Space><c.Space width={120}><c.Char>三</c.Char></c.Space><c.Space width={100}><c.Pinyin>sān</c.Pinyin></c.Space><c.Space width={100}><c.Meaning>three</c.Meaning></c.Space></Row>
+            <Row><c.Space width={100}><c.Pinyin>4</c.Pinyin></c.Space><c.Space width={120}><c.Char>四</c.Char></c.Space><c.Space width={100}><c.Pinyin>sì</c.Pinyin></c.Space><c.Space width={100}><c.Meaning>four</c.Meaning></c.Space></Row>
+            <Row><c.Space width={100}><c.Pinyin>5</c.Pinyin></c.Space><c.Space width={120}><c.Char>五</c.Char></c.Space><c.Space width={100}><c.Pinyin>wǔ</c.Pinyin></c.Space><c.Space width={100}><c.Meaning>five</c.Meaning></c.Space></Row>
+            <Row><c.Space width={100}><c.Pinyin>6</c.Pinyin></c.Space><c.Space width={120}><c.Char>六</c.Char></c.Space><c.Space width={100}><c.Pinyin>lìu</c.Pinyin></c.Space><c.Space width={100}><c.Meaning>six</c.Meaning></c.Space></Row>
+            <Row><c.Space width={100}><c.Pinyin>7</c.Pinyin></c.Space><c.Space width={120}><c.Char>七</c.Char></c.Space><c.Space width={100}><c.Pinyin>qī</c.Pinyin></c.Space><c.Space width={100}><c.Meaning>seven</c.Meaning></c.Space></Row>
+            <Row><c.Space width={100}><c.Pinyin>8</c.Pinyin></c.Space><c.Space width={120}><c.Char>八</c.Char></c.Space><c.Space width={100}><c.Pinyin>bā</c.Pinyin></c.Space><c.Space width={100}><c.Meaning>eight</c.Meaning></c.Space></Row>
+            <Row><c.Space width={100}><c.Pinyin>9</c.Pinyin></c.Space><c.Space width={120}><c.Char>九</c.Char></c.Space><c.Space width={100}><c.Pinyin>jiǔ</c.Pinyin></c.Space><c.Space width={100}><c.Meaning>nine</c.Meaning></c.Space></Row>
+            <Row><c.Space width={100}><c.Pinyin>10</c.Pinyin></c.Space><c.Space width={120}><c.Char>十</c.Char></c.Space><c.Space width={100}><c.Pinyin>shí</c.Pinyin></c.Space><c.Space width={100}><c.Meaning>ten</c.Meaning></c.Space></Row>
+            <Row><c.Space width={100}><c.Pinyin>11</c.Pinyin></c.Space><c.Space width={120}><c.Char>十一</c.Char></c.Space><c.Space width={100}><c.Pinyin>shíyī</c.Pinyin></c.Space><c.Space width={100}><c.Meaning>eleven</c.Meaning></c.Space></Row>
+            <Row><c.Space width={100}><c.Pinyin>12</c.Pinyin></c.Space><c.Space width={120}><c.Char>十二</c.Char></c.Space><c.Space width={100}><c.Pinyin>shíèr</c.Pinyin></c.Space><c.Space width={100}><c.Meaning>twelve</c.Meaning></c.Space></Row>
+            <Row><c.Space width={100}><c.Pinyin>13</c.Pinyin></c.Space><c.Space width={120}><c.Char>十三</c.Char></c.Space><c.Space width={100}><c.Pinyin>shísān</c.Pinyin></c.Space><c.Space width={100}><c.Meaning>thirteen</c.Meaning></c.Space></Row>
+          </c.Bookrow>
+          <c.Bookrow flexDirection="column">
+            <Row><c.Space width={100}><c.Pinyin>20</c.Pinyin></c.Space><c.Space width={120}><c.Char>二十</c.Char></c.Space><c.Space width={100}><c.Pinyin>èrshí</c.Pinyin></c.Space><c.Space width={100}><c.Meaning>twenty</c.Meaning></c.Space></Row>
+            <Row><c.Space width={100}><c.Pinyin>21</c.Pinyin></c.Space><c.Space width={120}><c.Char>二十一</c.Char></c.Space><c.Space width={100}><c.Pinyin>èrshíyī</c.Pinyin></c.Space><c.Space width={100}><c.Meaning>twenty-one</c.Meaning></c.Space></Row>
+            <Row><c.Space width={100}><c.Pinyin>22</c.Pinyin></c.Space><c.Space width={120}><c.Char>二十二</c.Char></c.Space><c.Space width={100}><c.Pinyin>èrshíèr</c.Pinyin></c.Space><c.Space width={100}><c.Meaning>twenty-two</c.Meaning></c.Space></Row>
+          </c.Bookrow>
+          <c.Bookrow flexDirection="column">
+            <Row><c.Space width={100}><c.Pinyin>99</c.Pinyin></c.Space><c.Space width={120}><c.Char>九十九</c.Char></c.Space><c.Space width={100}><c.Pinyin>jiǔshíjiǔ</c.Pinyin></c.Space><c.Space width={100}><c.Meaning>ninenty-nine</c.Meaning></c.Space></Row>
+          </c.Bookrow>
+          <c.P
+            buttonOptions={{
+              type: 'practice',
+              data: {
+                elementId: practiceIds[1]
+              }
+            }}
+          >
+            <i>Practice saying numbers in Chinese.</i>
+          </c.P>
+          <c.P
+            buttonOptions={{
+              type: 'practice',
+              data: {
+                elementId: practiceIds[2]
+              }
+            }}
+          >
+            <i>Practice writing a few Chinese numbers.</i>
+          </c.P>
+          {grammarTitle()}
+          <c.P>We have seen that some Chinese sentences are made up of a Subject, a Verb and an Object, just as in English:</c.P>
+          {example(1, { audio: true })}
+          <c.P>But unlike in English, not every Chinese sentence needs to contain a verb. For example, we can have a sentence made up of a personal pronoun and a number of years:</c.P>
+          {example(2, { audio: true })}
+          <c.P>So to tell somebody your age, you literally say I X YEARS. This would of course sound odd in English. And you can even shorten this to:</c.P>
+          {example(3, { audio: true })}
+          <c.P>In fact, in relaxed colloquial language you can shorten some sentences with <c.Chinese>是</c.Chinese> <b>shì</b> in the same way:</c.P>
+          {example(4, { audio: true })}
+          <c.P>Sentences like this may be easier to understand by using a different grammatical concept: Topic and Comment. The Topic indicates what the sentence "is about" and the Comment makes some remark regarding this Topic. The Topic always comes first in a sentence:</c.P>
+          <c.P><Row><c.Char>我</c.Char><c.Space width={100}/><c.Char>二十七。</c.Char></Row></c.P>
+          <c.P><Row>TOPIC<c.Space width={75}/>COMMENT</Row></c.P>
+          <c.P>Linguists have measured the pauses between words in Chinese and found that the pause in the break between Topic and Comment is often a tiny bit longer than the pauses between the other words in a sentence. We can mark this break with a colon in the literal translation to make it even clearer which part is the Topic and which is the Comment:</c.P>
+          <c.P>(I : TWENTY-SEVEN YEAR.)</c.P>
+          <c.P>The sentences above are all very simple – but the Topic-Comment construction is also used for more complex patterns. In fact, Topic-Comment sentences are so common that linguists call Chinese a <i>topic-prominent</i> language.</c.P>
+          <c.P
+            buttonOptions={{
+              type: 'practice',
+              data: {
+                elementId: practiceIds[3]
+              }
+            }}
+          >
+            <i>Check your understanding of Topic-Comment constructions.</i>
+          </c.P>
+          {grammarTitle()}
+          <c.P>In Chinese, it is often possible to omit words when they are clear from the context. In the second phrase below, the subject <c.Chinese>我</c.Chinese> <i>I</i> has been omitted:</c.P>
+          {example(5, { audio: true })}
+          <c.P>In this example, it is already clear who you are talking about – yourself – so it is not necessary to repeat this subject <i>I</i>.</c.P>
+          <c.P>Again, we could analyze this as a Topic-Comment construction:</c.P>
+          <c.Bookrow>(I : FAMILY-NAMED WANG, CALLED WANG YUGUO.)</c.Bookrow>
+          <c.PartTitle name="dialogs" />
+          {dialog(1, { sentenceType: 'chinese', displayNames: false })}
+          {dialog(1, { sentenceType: 'translation', displayNames: false })}
+          {dialog(2, { sentenceType: 'chinese', displayNames: false })}
+          {dialog(2, { sentenceType: 'translation', displayNames: false })}
+          {dialog(3, { sentenceType: 'chinese', displayNames: false, specialIntro })}
+          {dialog(4, { sentenceType: 'chinese', displayNames: false })}
+          {dialog(5, { sentenceType: 'chinese', displayNames: false })}
+          {dialog(6, { sentenceType: 'chinese', displayNames: true })}
+          {dialog(7, { sentenceType: 'chinese', displayNames: true })}
+          <c.PartTitle name="culture" />
+          <c.PartTitle type="secondary">How Chinese people count age</c.PartTitle>
+          <c.P>In Western countries, age changes on a person’s birthday. In China, people state their age by saying <i>how old they will be this calendar year</i>; it doesn't matter whether they have actually passed this year's birthday or not. As of January 1 each year, they are one year older than the year before.</c.P>
+          <c.PartTitle type="secondary">Number symbolism</c.PartTitle>
+          <c.P>
+            Number symbolism is so important in China that many people will pay extra for a “lucky” phone number or license plate.
+            There are also “unlucky” numbers that people tend to avoid. The most famous example is <c.Chinese>四</c.Chinese> <b>sì</b> <i>four</i>, which sounds similar to another character, <b>sǐ</b> <i>to die</i>. As a consequence, many Chinese buildings lack all floors ending in this dreaded number: 4, 14, 24 and so on.
+          </c.P>
+          <c.P>
+            Numbers can also be used in puns which come to symbolize more complex ideas: May 21 is recognized as "Chinese Valentine's Day" because May is the fifth month and <b>wǔ</b> <i>five</i> sounds similar to <b>wǒ</b> <i>I</i>; <b>èryī</b> is interpreted as <b>ài nǐ</b> <i>love you</i>. Such puns are even used to create brand names: the job-hunting internet site <i>51job</i> chose its name because <i>one</i> can
+            be pronounced to sound like <i>want</i> and <i>five</i> like <i>I</i>.
+            An educated Chinese reader who understands the English word <i>job</i> will immediately get the pun: “I want job”. This kind of punning is especially common in text messages and internet chats.
+          </c.P>
+          <c.PartTitle name="words" />
+          {newWords()}
+          <c.Review />
           <c.Exam />
         </c.Page>
       </div>

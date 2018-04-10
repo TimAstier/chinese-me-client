@@ -4,8 +4,8 @@ import styled from 'styled-components';
 import { ScreenButton } from '../.';
 import { Popup } from 'semantic-ui-react';
 import userIcon from '../../images/defaultMaleUserIcon.svg';
-import logoutIcon from '../../images/logoutIcon.svg';
 import { Link } from 'react-router';
+import { UserPopup } from '../.';
 
 const Wrapper = styled.div`
   position: fixed;
@@ -97,15 +97,6 @@ const Item = styled.div`
   }
 `;
 
-const Label = styled.div`
-  font-family: 'Open Sans';
-  display: flex;
-  align-items: center;
-  span {
-    margin-left: 11px;
-  }
-`;
-
 class MobileNavbar extends Component {
   render() {
     return (
@@ -139,21 +130,15 @@ class MobileNavbar extends Component {
           />
         </MiddleWrapper>
         <RightWrapper>
-          <Popup
-            trigger={rightTrigger}
-            positioning="bottom center"
-            hoverable
-          >
-            {this.props.isAuthenticated &&
-              <Menu>
-                <Item onClick={this.props.logout}>
-                  <Label>
-                    <img src={logoutIcon} alt=""/><span>Log Out</span>
-                  </Label>
-                </Item>
-              </Menu>
-            }
-            {!this.props.isAuthenticated &&
+          {this.props.isAuthenticated &&
+            <UserPopup logout={this.props.logout} />
+          }
+          {!this.props.isAuthenticated &&
+            <Popup
+              trigger={rightTrigger}
+              positioning="bottom center"
+              hoverable
+            >
               <Menu>
                 <Link to={'/login'}>
                   <ScreenButton
@@ -173,8 +158,8 @@ class MobileNavbar extends Component {
                   />
                 </Link>
               </Menu>
-            }
-          </Popup>
+            </Popup>
+          }
         </RightWrapper>
       </Wrapper>
     );

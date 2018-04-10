@@ -81,7 +81,7 @@ class MapContent extends Component {
             key={i}
             char={c.simpChar}
             completed={c.userCharacters.length !== 0}
-            onClick={() => this.props.mapLinkClick(
+            onClick={() => this.props.handleMapLinkClick(
               `/study/season/${focusedSeasonNumber}/episode/${episode.number}#character-${c.id}`
             )}
           />
@@ -107,7 +107,7 @@ class MapContent extends Component {
             key={i}
             title={d.translations[0].titleTranslation}
             // completed={d.userDialogs.length !== 0 ? true : undefined}
-            onClick={() => this.props.mapLinkClick(
+            onClick={() => this.props.handleMapLinkClick(
               `/study/season/${focusedSeasonNumber}/episode/${episode.number}#dialog-${d.id}`
             )}
           />
@@ -130,7 +130,7 @@ class MapContent extends Component {
             key={i}
             title={title}
             // completed={g.userGrammars.length !== 0 ? true : undefined}
-            onClick={() => this.props.mapLinkClick(
+            onClick={() => this.props.handleMapLinkClick(
               `/study/season/${focusedSeasonNumber}/episode/${episode.number}#grammar-${g.id}`
             )}
           />
@@ -153,7 +153,7 @@ class MapContent extends Component {
             key={i}
             title={title}
             // completed={p.userGrammars.length !== 0 ? true : undefined}
-            onClick={() => this.props.mapLinkClick(
+            onClick={() => this.props.handleMapLinkClick(
               `/study/season/${focusedSeasonNumber}/episode/${episode.number}#pronunciation-${p.id}`
             )}
           />
@@ -219,8 +219,8 @@ class MapContent extends Component {
         <BottomWrapper>
           <ScreenButton
             text="Study"
-            primary
-            onClick={() => this.props.mapLinkClick(
+            primary={!this.props.episode.locked}
+            onClick={() => this.props.handleMapLinkClick(
               `/study/season/${focusedSeasonNumber}/episode/${episode.number}`
             )}
           />
@@ -229,7 +229,7 @@ class MapContent extends Component {
               text="Exercises"
               secondary
               icon={exerciseIcon}
-              onClick={() => this.props.mapLinkClick(
+              onClick={() => this.props.handleMapLinkClick(
                 `/study/season/${focusedSeasonNumber}/episode/${episode.number}#review`
               )}
             />
@@ -238,7 +238,7 @@ class MapContent extends Component {
             text="Exam"
             secondary
             icon={examIcon}
-            onClick={() => this.props.mapLinkClick(
+            onClick={() => this.props.handleMapLinkClick(
               `/study/season/${focusedSeasonNumber}/episode/${episode.number}#exam`
             )}
           />
@@ -255,7 +255,7 @@ MapContent.propTypes = {
   dialogs: propTypes.array.isRequired,
   focusedSeasonNumber: propTypes.number,
   episode: propTypes.instanceOf(models.Episode),
-  mapLinkClick: propTypes.func.isRequired,
+  handleMapLinkClick: propTypes.func.isRequired,
   // mapCharactersCompletedCount: propTypes.number.isRequired,
   // mapDialogsCompletedCount: propTypes.number.isRequired,
   // mapGrammarsCompletedCount: propTypes.number.isRequired

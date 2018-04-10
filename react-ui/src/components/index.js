@@ -78,6 +78,8 @@ export { default as Spinner } from './Spinner/Spinner';
 export { default as Star } from './Star/Star';
 export { default as Statement } from './Statement/Statement';
 export { default as StatementWrapper } from './Dialog/StatementWrapper';
+export { default as Store } from './Store/Store';
+export { default as StoreItem } from './Store/StoreItem';
 export { default as StudyVideo } from './StudyVideo/StudyVideo';
 export { default as TakeMoney } from './TakeMoney/TakeMoney';
 export { default as Terms } from './StaticPages/Terms';

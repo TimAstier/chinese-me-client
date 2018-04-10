@@ -24,7 +24,7 @@ export default function(ComposedComponent) {
     _redirectUser() {
       return swal({
         title: 'ChineseMe account required',
-        text: 'The interactive part of the course requires students to log in.\n\n This allows us to save your progression and make sure we can provide you with personalised support to assist you in your study of the Chinese language.\n\nIf you don\'t want to create an account now, no worry! You can register later if you want to.',
+        text: 'This part of the course requires students to log in.\n\n This allows us to save your progression and make sure we can provide you with personalised support to assist you in your study of the Chinese language.\n\nIf you don\'t want to create an account now, no worry! You can register later if you want to.',
         icon: 'info',
         buttons: ['Back to the course', 'Register']
       }).then(register => {

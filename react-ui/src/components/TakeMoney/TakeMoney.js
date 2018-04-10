@@ -12,10 +12,14 @@ class TakeMoney extends Component {
         source: token.id,
         productName: this.props.productName,
         amount: this.props.price,
-        email: token.email
+        email: token.email,
+        seasonId: this.props.seasonId
       })
       .then(response => {
-        console.log(response);
+        if (response.status === 200) {
+          return this.props.reloadApp();
+        }
+        return null;
       });
   }
 
@@ -23,17 +27,22 @@ class TakeMoney extends Component {
     return (
       <StripeCheckout
         token={this.onToken}
-        stripeKey={process.env.REACT_APP_STRIPE_API_KEY}
+        stripeKey={process.env.REACT_APP_STRIPE_PUBLIC_KEY}
         name="ChineseMe"
         description={this.props.productName}
         image="https://s3.eu-west-2.amazonaws.com/chineseme/square_logo_small.png"
         amount={this.props.price}
         currency="USD"
         email={this.props.email}
-        allowRememberMe={false}
         panelLabel="Buy for"
       >
-        <ScreenButton primary text="Buy"/>
+        <ScreenButton
+          primary
+          text="Buy"
+          fontSize={14}
+          height={25}
+          width={75}
+        />
       </StripeCheckout>
     );
   }
@@ -42,7 +51,9 @@ class TakeMoney extends Component {
 TakeMoney.propTypes = {
   email: propTypes.string.isRequired,
   productName: propTypes.string.isRequired,
-  price: propTypes.number.isRequired
+  price: propTypes.number.isRequired,
+  seasonId: propTypes.number.isRequired,
+  reloadApp: propTypes.func.isRequired
 };
 
 export default TakeMoney;

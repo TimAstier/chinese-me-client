@@ -7,6 +7,7 @@ import { elementTypes } from '../constants/study';
 // import { elementTypesToTrack } from '../constants/study';
 import getStudyFunctions from '../helpers/getStudyFunctions';
 import getParamsFromUrl from '../utils/getParamsFromUrl';
+import { replace } from 'react-router-redux';
 
 // Every screenType has those "studyFunctions" (generators):
 // 1. isDataLoaded
@@ -88,7 +89,11 @@ export function* finishOrExit(url) {
 }
 
 function* runEpisodeScreen(action) {
-  yield call(finishOrExit, action.payload.url);
+  if (action.payload.locked) {
+    // Redirect users if the episode is locked
+    return yield put(replace('/study'));
+  }
+  return yield call(finishOrExit, action.payload.url);
 }
 
 export default function* watchStudySagas() {

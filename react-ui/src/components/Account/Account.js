@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
-import { TakeMoney } from '../.';
 
 const Wrapper = styled.div`
   border-radius: 10px;
@@ -17,13 +16,6 @@ class Account extends Component {
     return (
       <Wrapper>
         <h1>My account</h1>
-        <h2>My Books</h2>
-        <p>Status: no subscription</p>
-        <TakeMoney
-          email={this.props.userEmail}
-          productName="The basics"
-          price={1900}
-        />
       </Wrapper>
     );
   }

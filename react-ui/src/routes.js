@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 // import { IndexRoute } from 'react-router';
-// import requireAuth from './utils/requireAuth';
+import requireAuth from './utils/requireAuth';
 import * as containers from './containers';
 import * as components from './components';
 
@@ -33,6 +33,7 @@ export default (
     <Route path="study" component={containers.Study} >
       <IndexRoute component={containers.SelectEpisode} />
       <Route path="account" component={requireAuth(containers.Account)} />
+      <Route path="store" component={requireAuth(containers.Store)} />
       <Route path="about" component={components.About} />
       <Route path="help" component={components.Help} />
       <Route path="privacy-policy" component={components.Privacy} />

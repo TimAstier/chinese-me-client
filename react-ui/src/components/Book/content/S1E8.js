@@ -1,77 +1,152 @@
 import React, { Component } from 'react';
 import * as c from '../components';
+import { Objective } from '../../../containers/Book/containers';
 import { content as contentPropTypes } from '../../../helpers/propTypes';
+import pinyinNumberToAudioUrl from '../../../utils/pinyinNumberToAudioUrl';
 import { Row } from '../../Shared';
+import insertVariables from '../../../utils/insertVariables';
+// import chineseToPinyin from '../../../utils/chineseToPinyin';
 
 export default class Content extends Component {
   static propTypes = contentPropTypes
 
   render() {
     const { newCharacters, example, lessonTitle, dialog, grammarTitle,
-      practiceIds, newWords, image } = this.props;
+      practiceIds, newWords, pronunciationTitle, settings, image } = this.props;
+
+    // This part comes between a dialog 'title' and 'intro'
+    const specialIntro = () => {
+      return (
+        <div>
+          <c.P
+            buttonOptions={{
+              type: 'askUserSettings'
+            }}
+          >Now, click on the <i>Me</i> icon and input the languages you speak to learn their names in Chinese.
+          </c.P>
+          <c.P>Here are the names of your languages in Chinese. Listen to their pronunciation and repeat until you feel confident.</c.P>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                text: insertVariables('[MOTHER_TONGUE_ZH]', settings)
+              }
+            }}
+          >
+            <Row>
+              <c.Char>{insertVariables('[MOTHER_TONGUE_ZH]', settings)}</c.Char>
+              <c.Pinyin>{insertVariables('[MOTHER_TONGUE_PINYIN]', settings)}</c.Pinyin>
+            </Row>
+          </c.Bookrow>
+          {
+            insertVariables('[OTHER_LANGUAGE]', settings) !== '__' &&
+            insertVariables('[OTHER_LANGUAGE]', settings) !== 'N/A' &&
+              <c.Bookrow
+                buttonOptions={{
+                  type: 'audio',
+                  data: {
+                    text: insertVariables('[OTHER_LANGUAGE_ZH]', settings)
+                  }
+                }}
+              >
+                <Row>
+                  <c.Char>{insertVariables('[OTHER_LANGUAGE_ZH]', settings)}</c.Char>
+                  <c.Pinyin>{insertVariables('[OTHER_LANGUAGE_PINYIN]', settings)}</c.Pinyin>
+                </Row>
+              </c.Bookrow>
+          }
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                text: '中文'
+              }
+            }}
+          >
+            <Row>
+              <c.Char>中文</c.Char>
+              <c.Pinyin>zhōngwén</c.Pinyin>
+            </Row>
+          </c.Bookrow>
+        </div>
+      );
+    };
+
     return (
       <div>
         <c.Page>
           {lessonTitle()}
+          <c.Bookrow center>{image({ caption: '我会写“中文”！'})}</c.Bookrow>
+          <Objective
+            text="How to say that you can speak Chinese"
+          />
+          <c.PartTitle name="pronunciation" />
+          {pronunciationTitle()}
+          <c.P>These two initials illustrate an important contrast between different consonants in English and Chinese: <i>voiced</i> versus <i>unvoiced</i>, and <i>aspirated</i> versus <i>non-aspirated</i>.</c.P>
+          <c.P>Let us begin by looking at voicing. A sound is called voiced if the vocal chords vibrate when you pronounce it. All vowels are voiced: if you hold your fingers softly against your Adam’s apple and pronounce the English vowels, you can feel the vibration.</c.P>
+          <c.P>Some consonants are also voiced: you can feel a vibration when pronouncing the <i>m</i>-sound; but if you pronounce the <i>s</i>-sound there is no vibration, which means that s is unvoiced (to hear this, don’t say the name of the letter “ess”; just pronounce the <i>s</i>-sound itself, “sss”).</c.P>
+          <c.P>In English, <i>d</i> is voiced: the vocal chords vibrate if you pronounce the <i>d</i> sound without any vowel following it. English <i>t</i>, on the other hand, is unvoiced: there is no vibration if you pronounce the <i>t</i> sound on its own.</c.P>
+          <c.P>
+            In Chinese, <b>d-</b> and <b>t-</b> are both unvoiced! The difference between Chinese <b>d-</b> and <b>t-</b> instead lies in what’s called <i>aspiration</i>: the breath expelled as you pronounce the sound. The initial <b>d-</b> is pronounced a bit like English <i>t</i> in <i>stun</i>, with little aspiration. Chinese <b>t-</b> is pronounced more like the English <i>t</i> in <i>ton</i>, but even more forcefully, with very strong aspiration. You can hear this difference if you listen carefully:
+          </c.P>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                // url: SOME_URL,
+                text: '耷，她'
+              }
+            }}
+          >
+            <b>dā, tā</b>
+          </c.Bookrow>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                // url: SOME_URL,
+                text: '大，踏'
+              }
+            }}
+          >
+            <b>dà, tà</b>
+          </c.Bookrow>
+          <c.P>If you hold your palm up facing your mouth at a distance of an inch or two, you should be able to feel the strong flow of air against your hand as you pronounce <b>t-</b>. Chinese <b>d-</b>, on the other hand, gives very little flow of air, or none at all.</c.P>
+          <c.P>To summarize: in English, <i>d</i> is voiced but non-aspirated, and <i>t</i> is aspirated but unvoiced. The biggest difference is in the voicing. Chinese is more or less the opposite: here, <i>both</i> sounds are unvoiced, so the <i>only</i> difference between <b>d-</b> and <b>t-</b> lies in the amount of aspiration.</c.P>
+          <c.P>For the beginner, this can make Chinese <b>d-</b> and <b>t-</b> harder to tell apart than English <i>d</i> and <i>t</i>: in English, there are two differences between these sounds, but in Chinese, there is only one. There are many other Chinese consonant pairs where the only difference is the amount of aspiration. Because of this, being able to tell the difference is important for oral comprehension; and as you master aspiration, you will start to sound more and more like a native.</c.P>
+          {pronunciationTitle()}
+          <c.P>Just as in the other cases we have seen, the final <b>-ing</b> is spelled <b>ying</b> when there is no initial. In other words, the <b>y</b> is silent:</c.P>
+          <c.P
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: pinyinNumberToAudioUrl('xing4'),
+                text: '姓'
+              }
+            }}
+          >
+            <Row><c.Char>姓</c.Char><c.Pinyin>xìng</c.Pinyin></Row>
+          </c.P>
+          <c.P
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: pinyinNumberToAudioUrl('ying1'),
+                text: '英'
+              }
+            }}
+          >
+            <Row><c.Char>英</c.Char><c.Pinyin>yīng</c.Pinyin></Row>
+          </c.P>
           <c.PartTitle name="characters" />
-          <c.P><i>Practice the stroke order animations. Some characters have material on Stories and Calligraphy.</i></c.P>
           {newCharacters()}
           <c.PartTitle name="patterns" />
           {grammarTitle()}
-          <c.P>If there is no subject doing the "having", 有 <b>yǒu</b> simply means <i>there is</i>, <i>there exists</i>. Perhaps the simplest example is the one often heard in Chinese restrooms:</c.P>
+          <c.P><c.Chinese>会</c.Chinese> <b>huì</b> means <i>know</i> in the sense of <i>know how to</i>. It can be used as a verb:</c.P>
           {example(1, { audio: true })}
+          <c.P>It can also be used as an auxiliary verb, that is, in combination with another verb, meaning <i>know how to do something</i>:</c.P>
           {example(2, { audio: true })}
           {example(3, { audio: true })}
-          <c.P>As usual, 有 <b>yǒu</b> is negated with 没 <b>méi</b>:</c.P>
-          {example(4, { audio: true })}
-          {grammarTitle()}
-          <c.P>还 <b>hái</b> is a very common Chinese adverb with several uses. It can be used to mean <i>also</i>. We have previously learned another word for <i>also</i>: 也 <b>yě</b>. But the function of these two words in a sentence is different.</c.P>
-          <c.P>也 <b>yě</b> refers to the subject of the sentence, in this case 我 <b>wǒ</b> <i>I</i>:</c.P>
-          <c.Bookrow>
-            <c.Ul>
-              <li><Row><c.Char>我也会说中文。</c.Char></Row></li>
-              <li><Row><c.Pinyin>Wǒ yě huì shuō zhōngwén.</c.Pinyin></Row></li>
-              <li><Row><c.Meaning>I, too, can speak Chinese.</c.Meaning></Row></li>
-            </c.Ul>
-          </c.Bookrow>
-          <c.P>还 <b>hái</b>, on the other hand, refers to the predicate, in this case 中文 <b>zhōngwén</b> <i>Chinese</i>:</c.P>
-          <c.Bookrow>
-            <c.Ul>
-              <li><Row><c.Char>我还会说中文。</c.Char></Row></li>
-              <li><Row><c.Pinyin>Wǒ hái huì shuō zhōngwén.</c.Pinyin></Row></li>
-              <li><Row><c.Meaning>I can also speak Chinese.</c.Meaning></Row></li>
-            </c.Ul>
-          </c.Bookrow>
-          <c.P>So while English uses the same word <i>also</i> in both of these sentences, Chinese differentiates between them:</c.P>
-          {example(5, { audio: true })}
-          {example(6, { audio: true })}
-          {grammarTitle()}
-          <c.P>还 <b>hái</b> can also mean that something is <i>still going on</i>, <i>still happening</i>:</c.P>
-          {example(7, { audio: true })}
-          {example(8, { audio: true })}
-          {grammarTitle()}
-          <c.P>就 <b>jiù</b> has several meanings. The most simple is as a synonym for 只 <b>zhǐ</b> <i>only, just</i>:</c.P>
-          {example(9, { audio: true })}
-          {grammarTitle()}
-          <c.P>更 <b>gèng</b> means <i>more</i> and is used to say that something is <i>better</i>, <i>larger</i>, and so on:</c.P>
-          {example(10, { audio: true })}
-          <c.P>最 <b>zuì</b> <i>most</i> is used to form superlatives like <i>best</i>, <i>largest</i>:</c.P>
-          {example(11, { audio: true })}
-          {grammarTitle()}
-          <c.P>In order to ask for a particular item out of several, Chinese uses the question word 哪, pronounced <b>nǎ</b> or <b>něi</b>. As with other question words, the word order is the same in a question as in a statement:</c.P>
-          {example(12, { audio: true })}
-          <c.P>哪, <b>nǎ/něi</b> can be combined with just a measure word to say <i>which (one)?</i></c.P>
-          {example(13, { audio: true })}
-          {example(14, { audio: true })}
-          <c.PartTitle name="dialog" />
-          <c.P color={'#C0504D'}><i>Meizi is showing a photograph of her family to Wang Yuguo and Li Yu. Marvin and Wang Meixin admire the cute kids.</i></c.P>
-          {dialog(1, { sentenceType: 'chinese', displayNames: true })}
-          {dialog(1, { sentenceType: 'translation', displayNames: true })}
-          <c.PartTitle name="culture" />
-          <c.Bookrow center>{image()}</c.Bookrow>
-          <c.PartTitle name="words" />
-          {newWords()}
-          <c.PartTitle anchor="review" name="review" />
           <c.P
             buttonOptions={{
               type: 'practice',
@@ -80,8 +155,52 @@ export default class Content extends Component {
               }
             }}
           >
-            <i>Now, go through the review exercises to practice pronunciation, grammar and character writing. Then do the Exam to progress to the next Lesson.</i>
+            <i>Practice.</i>
           </c.P>
+          {grammarTitle()}
+          <c.P><c.Chinese>好吗</c.Chinese> <b>hǎo må</b> can also be used to ask for agreement with something you have just said:</c.P>
+          {example(4, { audio: true })}
+          <c.P
+            buttonOptions={{
+              type: 'practice',
+              data: {
+                elementId: practiceIds[1]
+              }
+            }}
+          >
+            <i>Practice.</i>
+          </c.P>
+          {grammarTitle()}
+          <c.P>Spoken Chinese uses a single word, <b>tā</b>, for both <i>he</i> and <i>she</i>: there is no difference between gender in the third person. This is why Chinese people sometimes confuse these pronouns in English: <i>Where is Mary? He is not here.</i> But the modern written language uses different characters for <i>he</i> and <i>she</i>:</c.P>
+          <c.Bookrow flexDirection="column">
+            <Row><c.Char>他</c.Char><c.Pinyin>tā</c.Pinyin><c.Meaning>he, him</c.Meaning></Row>
+            <Row><c.Char>她</c.Char><c.Pinyin>tā</c.Pinyin><c.Meaning>she, her</c.Meaning></Row>
+          </c.Bookrow>
+          <c.P>As usual, words do not change form so there is no difference between <i>he</i> and <i>him</i>, <i>she</i> and <i>her</i>.</c.P>
+          <c.P
+            buttonOptions={{
+              type: 'practice',
+              data: {
+                elementId: practiceIds[2]
+              }
+            }}
+          >
+            <i>Practice.</i>
+          </c.P>
+          <c.PartTitle name="dialogs" />
+          <c.Bookrow center marginTop={30}>{image({ caption: '你是美国人吗？我是英国人。'})}</c.Bookrow>
+          {dialog(1, { sentenceType: 'chinese', displayNames: true })}
+          {dialog(1, { sentenceType: 'translation', displayNames: true })}
+          {dialog(2, { sentenceType: 'chinese', displayNames: true })}
+          {dialog(2, { sentenceType: 'translation', displayNames: true })}
+          {dialog(3, { sentenceType: 'chinese', displayNames: true })}
+          {dialog(3, { sentenceType: 'translation', displayNames: true })}
+          {dialog(4, { sentenceType: 'chinese', displayNames: false, specialIntro })}
+          {dialog(5, { sentenceType: 'chinese', displayNames: true })}
+          {dialog(6, { sentenceType: 'chinese', displayNames: true })}
+          <c.PartTitle name="words" />
+          {newWords()}
+          <c.Review />
           <c.Exam />
         </c.Page>
       </div>

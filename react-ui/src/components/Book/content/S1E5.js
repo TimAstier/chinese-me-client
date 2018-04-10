@@ -1,77 +1,137 @@
 import React, { Component } from 'react';
 import * as c from '../components';
+import { Objective } from '../../../containers/Book/containers';
 import { content as contentPropTypes } from '../../../helpers/propTypes';
+import pinyinNumberToAudioUrl from '../../../utils/pinyinNumberToAudioUrl';
 import { Row } from '../../Shared';
+// import insertVariables from '../../../utils/insertVariables';
+import assetEndpointToUrl from '../../../helpers/assetEndpointToUrl';
 
 export default class Content extends Component {
   static propTypes = contentPropTypes
 
   render() {
     const { newCharacters, example, lessonTitle, dialog, grammarTitle,
-      practiceIds, newWords } = this.props;
+      practiceIds, newWords, pronunciationTitle, image } = this.props;
     return (
       <div>
         <c.Page>
           {lessonTitle()}
+          <c.Bookrow center>{image({ caption: '我姓王。我也姓王！In the 2008 Olympics in Beijing, China took all three medals – gold, silver and bronze – in men’s table tennis.'})}</c.Bookrow>
+          <Objective
+            text="A more polite way of inquiring about somebody's name"
+          />
+          <c.PartTitle name="pronunciation" />
+          {pronunciationTitle()}
+          <c.P>As we have seen, the flow of air – also called <i>aspiration</i> – is an important feature of Chinese initials. In fact, there are some pairs of initials where aspiration is the only difference. We will learn more about this in later lessons.</c.P>
+          <c.P>The Chinese initial <b>g-</b> is pronounced like an English <i>k</i>, but with less flow of air. Hold your palm up facing your mouth at a distance of an inch or two and pronounce English <i>g</i> and <i>k</i>. You can feel that there is a much weaker flow of air when you pronounce <i>g</i> than when you pronounce <i>k</i>. Chinese <b>g-</b> is pronounced like an English <i>k</i> without the flow of air! Listen:</c.P>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: pinyinNumberToAudioUrl('gao1'),
+                text: '高'
+              }
+            }}
+          >
+            <b>gāo</b>
+          </c.Bookrow>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: pinyinNumberToAudioUrl('gui4'),
+                text: '贵'
+              }
+            }}
+          >
+            <b>guì</b>
+          </c.Bookrow>
+          {pronunciationTitle()}
+          <c.P>As we have seen, Chinese syllables are usually pronounced clearly; each syllable is stressed and has a clear tone. But this is not always the case. Syllables can lose their stress, and when this happens the tone becomes a short, relaxed version called <i>neutral</i> or <i>zero</i> tone. This process is not difficult to master; we mention it here so that you will not be confused when you notice it.</c.P>
+          <c.P>In some cases, the neutral tone is an optional feature of relaxed, fast speech, just as we in English say <i>wanna</i> instead of <i>want to</i>. If your professor pronounces the word <c.Chinese>中国人</c.Chinese> carefully for you, in order to teach you the pronunciation, he or she might say:</c.P>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                text: '中国人',
+                url: assetEndpointToUrl('/audio/others/5_1.m4a')
+              }
+            }}
+          >
+            <b>zhōngguórén</b>
+          </c.Bookrow>
+          <c.P>But at natural conversational speed, the second syllable usually loses its stress and is pronounced without a clear Tone 2:</c.P>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                text: '中国人',
+                url: assetEndpointToUrl('/audio/others/5_2.m4a')
+              }
+            }}
+          >
+            <b>zhōngguo̊rén</b>
+          </c.Bookrow>
+          <c.P>This kind of optional neutral tone is usually not mentioned in dictionaries and textbooks; its pīnyīn is written with all three original tone marks. In this course, we want to be a bit more serious about pronunciation, so when we want to draw attention to tone neutralization we replace the original tone mark with a little “zero” symbol.</c.P>
+          <c.P>As we have seen, a Chinese syllable has one of the Tones 1-4. But in some cases, this tone disappears. The word <c.Chinese>认识</c.Chinese> in this lesson is an example.</c.P>
+          <c.P>
+            Some neutral tones are mandatory. In this chapter, for example, each character in the word <c.Chinese>认识</c.Chinese> has its own tone:  <c.Chinese>认</c.Chinese> is pronounced <b>rèn</b> with Tone 4 and <c.Chinese>识</c.Chinese> is pronounced <b>shí</b> with
+            Tone 2. But when these two characters are combined into the bisyllabic word <c.Chinese>认识</c.Chinese>, the second syllable loses its original tone.
+          </c.P>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                text: '认识',
+                url: assetEndpointToUrl('/audio/words/ren4shi0.mp3')
+              }
+            }}
+          >
+            <b>rènshi̊</b>
+          </c.Bookrow>
+          <c.P>Here, the neutral tone is a permanent feature of the word, independent of how fast the speaker is going. No Chinese person would pronounce this word with the tone intact on the second syllable. In dictionaries and most textbooks, this mandatory neutral tone is marked by the absence of any tone mark; again, to make things as clear as possible, we mark it with a “zero” over the syllable.</c.P>
+          <c.P>
+            The neutral tone is short and less distinct than the four main tones. It always appears in unstressed position; never at the beginning of a word or phrase. Its pitch depends on the preceding tone: If you listen again to <c.Chinese>认识</c.Chinese>, for example, you will notice that the neutral tone ends up at the bottom of the speaker’s pitch range when it comes after Tone 4. After Tone 1 the neutral tone has a slightly higher pitch; after Tone 2 higher still; and after Tone 3 it ends up close to the top of the speaker’s pitch range. Most people don’t have to memorize this; it comes naturally as you practice speaking.
+          </c.P>
           <c.PartTitle name="characters" />
-          <c.P><i>Practice the stroke order animations. Some characters have material on Stories and Calligraphy.</i></c.P>
           {newCharacters()}
           <c.PartTitle name="patterns" />
           {grammarTitle()}
-          <c.P>谁 <b>shéi</b>, means <i>who</i>. (Some dictionaries transcribe 谁 as <b>shuí</b> in pīnyīn, but <b>shéi</b> is the actual pronunciation.) As usual, the word order is the same in a question as in a statement:</c.P>
+          <c.P><c.Chinese>很</c.Chinese> <b>hěn</b> literally means <i>very</i>, <i>to a high degree</i>. Because of this, some textbooks call it an “intensifier”. But in modern Chinese, <c.Chinese>很</c.Chinese> <b>hěn</b> is used as a sort of "filler" between a noun and an adjective, and doesn't make any real difference to the meaning:</c.P>
           {example(1, { audio: true })}
-          <c.P>怎么 <b>zěmme̊</b> (transcribed <b>zěnme̊</b> in dictionaries, since 怎 is pronounced <b>zěn</b>) can mean <i>how</i> or <i>why</i>, depending on context:</c.P>
           {example(2, { audio: true })}
-          {example(3, { audio: true })}
-          {grammarTitle()}
-          <c.P>In informal oral speech, 好 <b>hǎo</b>, often replaces 很 <b>hěn</b>:</c.P>
-          <c.Bookrow>
-            <c.Ul>
-              <li><Row><c.Char>好美 = 很美</c.Char></Row></li>
-              <li><Row><c.Char>好难 = 很难</c.Char></Row></li>
-              <li><Row><c.Char>好好 = 很好</c.Char></Row></li>
-            </c.Ul>
+          <c.P>If you really want to express the sense of <i>very</i> or <i>extremely</i> good, you have to emphasize the pronunciation of <b>hěn</b>:</c.P>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                text: '我很高兴。',
+                url: assetEndpointToUrl('/audio/examples/S0E5_custom_example_1.m4a')
+              }
+            }}
+          >
+            <Row>
+              <c.Char>我很高兴！</c.Char>
+              <c.Pinyin>Wǒ hěn gāoxìng.</c.Pinyin>
+              <c.Meaning>I am really happy!</c.Meaning>
+            </Row>
           </c.Bookrow>
-          <c.P>Using 好 <b>hǎo</b>, is a bit more emphatic than 很 <b>hěn</b>, so we should usually translate it with <i>really</i> or <i>very</i>.</c.P>
-          {example(4, { audio: true })}
-          {grammarTitle()}
-          <c.P>In the introductory Lesson 5, we learned one way of asking someone for agreement using 好吗 <i>hǎo må</i>:</c.P>
-          {example(5, { audio: true })}
-          <c.P>This question is translated with the English <i>ok?</i> since it explicitly asks the listener to agree to do something.</c.P>
-          <c.P>A more common and neutral tool for asking someone for agreement is the particle 吧 <b>bå</b>. This particle can be used in two ways. First, as an imperative, meaning a <i>suggestion</i> to do something:</c.P>
-          {example(6, { audio: true })}
-          {example(7, { audio: true })}
-          <c.P>When the speaker states a subjective fact and adds 吧 <b>bå</b>, the result becomes a rhetorical question where the speaker supposes that something is the case: <i>isn’t it true that…?</i> or <i>…, right?</i></c.P>
-          {example(8, { audio: true })}
-          <c.P>In other cases, the question becomes more like a statement <i>don’t you think…?</i></c.P>
-          {example(9, { audio: true })}
-          <c.P>The most natural interpretation of this sentence is a statement: the speaker thinks Chinese characters are beautiful and asks you to agree. This is why we have used an exclamation mark rather than a question mark here.</c.P>
-          <c.P>Finally, the agreement function of 吧 <b>bå</b> can be used to say <i>yes</i> to a suggestion:</c.P>
-          {example(10, { audio: true })}
-          {grammarTitle()}
-          <c.P>对 <b>duì</b> can be used as a preposition meaning <i>to</i>, <i>towards</i>, <i>against</i>. Prepositions are usually placed between the subject and the verb in Chinese. This is different from English, as the literal translation makes clear:</c.P>
-          {example(11, { audio: true })}
-          {grammarTitle()}
-          <c.P>We have previously encountered 呢 <b>ne̊</b> as a question particle for follow-on questions - 你呢？ <b>nǐ ne̊?</b> <i>what about you?</i> This sense of "follow-on" can also be extended to <i>in that case</i> or <i>so then</i>:</c.P>
-          {example(12, { audio: true })}
-          <c.P>This use of 呢 <b>ne̊</b> is limited to conversation, since the function is to bring a listener’s attention to the special importance of what is being said. 呢 <b>ne̊</b> often has a sense of <i>mild surprise</i>, indicating that what is being said is especially relevant because it is contrary to expectation:</c.P>
-          {example(13, { audio: true })}
-          <c.P>In the dialog in this episode, it "softens" a question which might otherwise sound a bit like an order: <i>Say something!</i></c.P>
-          {grammarTitle()}
-          <c.P>跟 <b>gēn</b> can mean <i>and</i>, <i>with</i>; in this case it is synonymous with 和 <b>hé</b>:</c.P>
-          {example(14, { audio: true })}
-          <c.P>Sometimes, we can translate 跟 <b>gēn</b> as <i>for</i>:</c.P>
-          {example(15, { audio: true })}
-          <c.P>It can also mean <i>to</i>; in this case it is synonymous with 对 <b>duì</b>:</c.P>
-          {example(16, { audio: true })}
-          <c.PartTitle name="dialog" />
-          <c.PartTitle type="secondary">他是谁？</c.PartTitle>
-          <c.P color={'#C0504D'}><i>Li Yu's friend Wang Meixin is interested in getting to know Marvin - "just to learn English". Li Yu is unimpressed.</i></c.P>
-          {dialog(1, { sentenceType: 'chinese', displayNames: true })}
-          {dialog(1, { sentenceType: 'translation', displayNames: true })}
-          <c.PartTitle name="words" />
-          {newWords()}
-          <c.PartTitle anchor="review" name="review"/>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                text: '你很好！',
+                url: assetEndpointToUrl('/audio/examples/S0E5_custom_example_2.m4a')
+              }
+            }}
+          >
+            <Row>
+              <c.Char>你很好！</c.Char>
+              <c.Pinyin>Nǐ hěn hǎo!</c.Pinyin>
+              <c.Meaning>You’re great! You’re very nice!</c.Meaning>
+            </Row>
+          </c.Bookrow>
           <c.P
             buttonOptions={{
               type: 'practice',
@@ -80,8 +140,53 @@ export default class Content extends Component {
               }
             }}
           >
-            <i>Now, go through the review exercises to practice pronunciation, grammar and character writing. Then do the Exam to progress to the next Lesson.</i>
+            <i>Practice.</i>
           </c.P>
+          {grammarTitle()}
+          <c.P><c.Chinese>也</c.Chinese> <b>yě</b> <i>also</i>, <i>too</i> can be added to any of the sentences we have learned so far.  <c.Chinese>也</c.Chinese> <b>yě</b> is placed after the subject and before the verb of the sentence:</c.P>
+          {example(3, { audio: true })}
+          <c.P>In a Topic-Comment construction, <c.Chinese>也</c.Chinese> <b>yě</b> comes after the Topic and before the Comment:</c.P>
+          {example(4, { audio: true })}
+          {example(5, { audio: true })}
+          <c.P
+            buttonOptions={{
+              type: 'practice',
+              data: {
+                elementId: practiceIds[1]
+              }
+            }}
+          >
+            <i>Practice.</i>
+          </c.P>
+          <c.PartTitle name="dialogs" />
+          <c.Bookrow center>{image({ caption: 'In formal and business settings, Chinese people often do not shake hands. People with international experience, especially if they are male, are more likely to shake hands.'})}</c.Bookrow>
+          {dialog(1, { sentenceType: 'chinese', displayNames: true })}
+          {dialog(1, { sentenceType: 'translation', displayNames: true })}
+          {dialog(2, { sentenceType: 'chinese', displayNames: true })}
+          <c.PartTitle name="culture" />
+          <c.PartTitle type="secondary">Polite greetings</c.PartTitle>
+          <c.P>To inquire politely about somebody’s family name, you would say:</c.P>
+          <c.Example
+            chinese="您贵姓？"
+            pinyin="Nín guìxìng?"
+            translation="What is your family name?"
+            literalTranslation="(YOU: PRECIOUS NAME?)"
+            audio
+            slow={false}
+          />
+          <c.P><c.Chinese>您</c.Chinese> <b>nín</b> is a more formal form of <c.Chinese>你</c.Chinese> <b>nǐ</b> <i>you</i>. It is used when addressing someone older or in a higher social position. <c.Chinese>贵</c.Chinese> <b>guì</b>, means <i>precious</i> or <i>expensive</i>.</c.P>
+          <c.P>When you meet somebody for the first time, it is common to say:</c.P>
+          <c.Example
+            chinese="认识你我很高兴。"
+            pinyin="Rènshi nǐ wǒ hěn gāoxìng."
+            translation="I am happy to meet you."
+            literalTranslation="(KNOW YOU: I (VERY) HAPPY.)"
+            audio
+            slow={false}
+          />
+          <c.PartTitle name="words" />
+          {newWords()}
+          <c.Review />
           <c.Exam />
         </c.Page>
       </div>

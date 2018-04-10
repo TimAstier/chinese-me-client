@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
 import { ScreenButton, Star } from '../.';
+import iconLock from '../../images/iconLock.svg';
 import containsChinese from '../../utils/containsChinese';
 import { MINIMUM_SCORE_TO_PASS, TWO_STARS_THRESHOLD, THREE_STARS_THRESHOLD }
   from '../../constants/exam';
@@ -15,7 +16,6 @@ const Wrapper = styled.div`
   align-items: center;
   margin: 15px;
   background-color: #ffffff;
-  box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.05);
 `;
 
 const ImageWrapper = styled.div`
@@ -41,7 +41,7 @@ const TitleWrapper = styled.div`
   font-family: ${props => props.chineseFont ? 'ChineseFont' : 'STKaitiSC' };
   font-size: 22px;
   font-weight: 900;
-  color: #454545;
+  color: ${props => props.locked ? '#b2babf' : '#454545'};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -70,14 +70,9 @@ const StarsWrapper = styled.div`
   justify-content: space-between;
 `;
 
-const Img = styled.img`
-  height: 100px;
-  width: auto;
-`;
-
 class EpisodeCard extends Component {
   _renderStars() {
-    if (this.props.score) {
+    if (this.props.score && !this.props.locked) {
       return (
         <StarsWrapper>
           <Star filled={this.props.score >= MINIMUM_SCORE_TO_PASS} />
@@ -93,18 +88,19 @@ class EpisodeCard extends Component {
     return (
       <Wrapper>
         <ImageWrapper>
-          <Img
-            src={this.props.imageUrl}
+          <img
+            src={this.props.locked ? iconLock : this.props.imageUrl}
             alt={`episode ${this.props.number}`}
           />
         </ImageWrapper>
         <NumberWrapper>
           {
-            'Episode ' + this.props.number
+            '- Episode ' + this.props.number + ' -'
           }
         </NumberWrapper>
         <TitleWrapper
           chineseFont={containsChinese(this.props.title)}
+          locked={this.props.locked}
         >
           {this.props.title}
         </TitleWrapper>
@@ -112,7 +108,7 @@ class EpisodeCard extends Component {
         <ButtonWrapper>
           <ScreenButton
             text="Study"
-            primary
+            primary={!this.props.locked}
             onClick={this.props.onClick}
             height={40}
             width={140}
@@ -130,7 +126,8 @@ EpisodeCard.propTypes = {
   onClick: propTypes.func,
   title: propTypes.string.isRequired,
   score: propTypes.number,
-  imageUrl: propTypes.string
+  imageUrl: propTypes.string,
+  locked: propTypes.bool.isRequired
 };
 
 export default EpisodeCard;

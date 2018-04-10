@@ -5,6 +5,7 @@ import { Popup } from 'semantic-ui-react';
 import userIcon from '../../images/defaultMaleUserIcon.svg';
 import logoutIcon from '../../images/logoutIcon.svg';
 import accountIcon from '../../images/iconSetting.svg';
+import booksIcon from '../../images/books.png';
 import { Link } from 'react-router';
 
 const trigger = (
@@ -14,34 +15,33 @@ const trigger = (
 const Menu = styled.div`
   display: flex;
   flex-direction: column;
-  width: 120px;
+  width: 130px;
 `;
 
 const Item = styled.div`
   font-size: 16px;
-  text-align: center;
   color: #7f8c94;
   height: 40px;
   display: flex;
-  justify-content: center;
   align-items: center;
   cursor: pointer;
+  font-family: 'Open Sans';
   :hover {
     background-color: #F2F7FA;
   }
   width: 100%;
 `;
 
+const IconWrapper = styled.div`
+  width: 22px;
+  img {
+    max-width: 22px;
+    height: auto;
+  }
+`;
+
 const Label = styled.div`
-  font-family: 'Open Sans';
-  flex-grow: 1;
-  display: flex;
-  div:nth-child(1) {
-    flex-grow: 2;
-  }
-  div:nth-child(2) {
-    flex-grow: 5;
-  }
+  padding-left: 20px;
 `;
 
 class UserPopup extends Component {
@@ -55,21 +55,25 @@ class UserPopup extends Component {
         <Menu>
           <Link to={'/study/account'}>
             <Item>
-              <Label>
-                <div>
-                  <img src={accountIcon} alt=""/>
-                </div>
-                <div>Account</div>
-              </Label>
+              <IconWrapper>
+                <img src={accountIcon} alt=""/>
+              </IconWrapper>
+              <Label>Account</Label>
+            </Item>
+          </Link>
+          <Link to={'/study/store'}>
+            <Item>
+              <IconWrapper>
+                <img src={booksIcon} alt=""/>
+              </IconWrapper>
+              <Label>Store</Label>
             </Item>
           </Link>
           <Item onClick={this.props.logout}>
-            <Label>
-              <div>
-                <img src={logoutIcon} alt=""/>
-              </div>
-              <div>Log Out</div>
-            </Label>
+            <IconWrapper>
+              <img src={logoutIcon} alt=""/>
+            </IconWrapper>
+            <Label>Log Out</Label>
           </Item>
         </Menu>
       </Popup>

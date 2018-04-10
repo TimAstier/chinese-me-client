@@ -1,113 +1,70 @@
 import React, { Component } from 'react';
 import * as c from '../components';
+import { Objective } from '../../../containers/Book/containers';
 import { content as contentPropTypes } from '../../../helpers/propTypes';
+import pinyinNumberToAudioUrl from '../../../utils/pinyinNumberToAudioUrl';
 import { Row } from '../../Shared';
+import insertVariables from '../../../utils/insertVariables';
+import { country as OracleBone1 } from '../etymology';
+import { audioUrls } from '../../../constants/urls';
 
 export default class Content extends Component {
   static propTypes = contentPropTypes
 
   render() {
-    const { newCharacters, example, lessonTitle, dialog, grammarTitle,
-      practiceIds, newWords } = this.props;
+    const { newCharacters, example, lessonTitle, dialog, character, settings,
+      practiceIds, newWords, image, grammarTitle, pronunciationTitle } = this.props;
+
+    // This part comes between a dialog 'title' and 'intro'
+    const specialIntro = () => {
+      return (
+        <div>
+          <c.P>Now, it’s your turn to tell Wang Yi and Wang Yuguo where you are from. In Chinese, <i>{insertVariables('[NATIONALITY_EN]', settings)}</i> is:</c.P>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                text: insertVariables('[NATIONALITY_ZH]', settings)
+              }
+            }}
+          >
+            <Row>
+              <c.Char>{insertVariables('[NATIONALITY_ZH]', settings)}</c.Char>
+              <c.Pinyin>{insertVariables('[COUNTRY_PINYIN]', settings)}</c.Pinyin>
+            </Row>
+          </c.Bookrow>
+          <c.P>Listen to the audio voice and repeat until you feel confident saying your country name.</c.P>
+          <c.P>
+            In order to say <i>I am from {insertVariables('[NATIONALITY_EN]', settings)}</i>, just add <c.Chinese>人</c.Chinese>. Listen and repeat:
+          </c.P>
+          {example(5, { basic: true, audio: true })}
+        </div>
+      );
+    };
     return (
       <div>
         <c.Page>
           {lessonTitle()}
-          <c.PartTitle name="characters" />
-          <c.P><i>Practice the stroke order animations. Some characters have material on Stories and Calligraphy.</i></c.P>
-          {newCharacters()}
-          <c.PartTitle name="patterns" />
-          {grammarTitle()}
-          <c.P>In this episode, we meet another of the three structural particles, 得. Since all three are pronounced the same, but written with different characters, we will call this one <b>de̊.3</b>.</c.P>
-          <c.P>A common function of 得 <b>de̊.3</b> is to link a verb with an adverb specifying <i>how</i> something is done:</c.P>
-          {example(1, { audio: true })}
-          {example(2, { audio: true })}
-          <c.P>If you compare this pattern with an example we have learned earlier, you will see that they both mean more or less the same thing but have different grammatical structures:</c.P>
-          <c.Bookrow>
-            <c.Ul>
-              <li><Row><c.Char>你的中文很好。</c.Char> <c.Meaning>Your Chinese is good.</c.Meaning></Row></li>
-              <li><Row><c.Char>你中文说得很好。</c.Char> <c.Meaning>You speak Chinese very well.</c.Meaning></Row></li>
-            </c.Ul>
+          <c.Bookrow center>{image({ caption: '我是中国人!'})}</c.Bookrow>
+          <Objective
+            text="How to say where you are from"
+          />
+          <c.PartTitle name="pronunciation" />
+          {pronunciationTitle()}
+          <c.P>In this lesson, we encounter three initials that are closely related to each other. In <b>pīnyīn</b>, they are spelled <b>sh-</b>, <b>zh-</b> and <b>r-</b>.</c.P>
+          <c.P>Chinese <b>sh-</b> is pronounced more or less like English <i>sh</i> in <i>show</i>:</c.P>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: pinyinNumberToAudioUrl('shi4')
+              }
+            }}
+          >
+            <Row>
+              <c.Char>是</c.Char>
+            </Row>
           </c.Bookrow>
-          <c.P>The first sentence says something about <i>your</i> Chinese; the second about how you <i>speak</i> Chinese. In the first pattern, 很好 is an adjective, <i>good</i>; in the second it has become an adverb, <i>well</i>.</c.P>
-          <c.P>得 <b>de̊.3</b> is mandatory in this pattern; you cannot just say "说很好". The pattern can always be understood as a <i>state</i> - how the action is or was generally performed - rather than just an <i>action</i>:</c.P>
-          {example(3, { audio: true })}
-          <c.P>As we see, in both patterns above, the speaker is emphasizing the general states of the listener's "speaking Chinese well" and "ability to learn quickly".</c.P>
-          <c.P>If the verb has an object, the verb is often repeated in a Topic-Comment pattern:</c.P>
-          {example(4, { audio: true })}
-          {grammarTitle()}
-          <c.P>English tends to use different verbs to describe an action and its result: <i>look</i> and <i>see</i>, for example. Chinese uses the same verb for both, just appending the <i>result</i> to the original verb. This gives a new compound verb, <i>doing something so that something happens</i>, composed of the "action" and the "result" (often called the <i>verb</i> and the <i>verb complement</i>):</c.P>
-          <c.Bookrow>
-            <c.Ul>
-              <li><Row><c.Char>看</c.Char> <c.Pinyin><b>kàn</b></c.Pinyin> <c.Meaning><i>look</i></c.Meaning></Row></li>
-              <li><Row><c.Char>看见</c.Char> <c.Pinyin><b>kànjiån</b></c.Pinyin><c.Meaning><i>see</i></c.Meaning></Row></li>
-            </c.Ul>
-          </c.Bookrow>
-          <c.P>Another example is <i>listen</i> and <i>hear</i></c.P>
-          <c.Bookrow>
-            <c.Ul>
-              <li><Row><c.Char>听</c.Char> <c.Pinyin><b>tīng</b></c.Pinyin> <c.Meaning><i>listen</i></c.Meaning></Row></li>
-              <li><Row><c.Char>听见</c.Char> <c.Pinyin><b>tīngjiån </b></c.Pinyin><c.Meaning><i>hear</i></c.Meaning></Row></li>
-            </c.Ul>
-          </c.Bookrow>
-          <c.P>
-            Another example is 看懂 <b>kàndǒng</b> which is a compound of 看 <b>kàn</b> which can also mean <i>read</i> and 懂 <b>dǒng</b> <i>understand</i>. It literally means <i>understand by reading</i> or <i>read so I understand</i>. English doesn't have an equivalent word, so we usually translate 看懂 <b>kàndǒng</b> as just <i>understand</i>. But Chinese makes a difference between verbs such as 听懂 <b>tīngdǒng</b> <i>understanding by hearing</i> (for example what somebody is saying)
-            and 看懂 <b>kàndǒng</b> <i>understanding by reading</i>, even if we would translate them the same way in English.
-          </c.P>
-          <c.P>When 得 <b>de̊.3</b> is inserted between a verb and its complement,  the meaning becomes <i>be able to</i>. This is called the <i>potential</i> form of the verb:</c.P>
-          <c.Bookrow>
-            <c.Ul>
-              <li><Row><c.Char>看得见</c.Char> <c.Pinyin><b>kànde̊.3jiån</b></c.Pinyin> <c.Meaning><i>be able to see</i></c.Meaning></Row></li>
-              <li><Row><c.Char>听得见</c.Char> <c.Pinyin><b>tīngde̊.3jiån</b></c.Pinyin> <c.Meaning><i>be able to hear</i></c.Meaning></Row></li>
-              <li><Row><c.Char>听得懂</c.Char> <c.Pinyin><b>tīngde̊.3dǒng</b></c.Pinyin> <c.Meaning><i>be able to understand(by listening) </i></c.Meaning></Row></li>
-              <li><Row><c.Char>看得懂</c.Char> <c.Pinyin><b>kànde̊.3dǒng</b></c.Pinyin> <c.Meaning><i>be able to understand (by reading)</i></c.Meaning></Row></li>
-            </c.Ul>
-          </c.Bookrow>
-          {example(5, { audio: true })}
-          {example(6, { audio: true })}
-          {example(7, { audio: true })}
-          <c.P>We can also replace 得 <b>>de̊.3</b> in this pattern with 不 <b>bù</b> to get a <i>negative potential form</i> meaning <i>not able to</i>:</c.P>
-          {example(8, { audio: true })}
-          {example(9, { audio: true })}
-          {example(10, { audio: true })}
-          <c.P>A very common verb complement is 起 <b>qǐ</b>, which means <i>up</i> but only appears in compound words in modern Chinese:</c.P>
-          {example(11, { audio: true })}
-          <c.P>Another common complement is 完 <b>wán</b>, <i>end</i>, <i>finish</i>:</c.P>
-          {example(12, { audio: true })}
-          <c.P>Some verbs exist only - or mainly - in this potential form. The basic form 看起 <b>kànqǐ</b>, for example, is very rare, but its potential forms are common:</c.P>
-          <c.Bookrow>
-            <c.Ul>
-              <li><Row><c.Char>看得起</c.Char><c.Pinyin>kànde̊qǐ</c.Pinyin> <c.Meaning>have a good opinion of, think highly of (somebody)</c.Meaning></Row></li>
-              <li><Row><c.Char>看不起</c.Char><c.Pinyin>kànbůqǐ </c.Pinyin> <c.Meaning>look down on, despise</c.Meaning></Row></li>
-            </c.Ul>
-          </c.Bookrow>
-          {example(13, { audio: true })}
-          <c.P>The most common Chinese expression for <i>I'm sorry</i> has this form; it literally means <i>(I am) not able to answer up (to your expectations):</i></c.P>
-          <c.P>对不起 <b>duìbůqǐ</b> <i>sorry</i></c.P>
-          <c.P>This expression can also be used in the sense of <i>letting someone down</i> or <i>not answering up to someone's (rightful) expectations:</i></c.P>
-          {example(14, { audio: true })}
-          <c.P>Another common expression which has a similar form is 怪不得 <b>guàibůdé</b>, <i>no wonder</i>:</c.P>
-          {example(15, { audio: true })}
-          {grammarTitle()}
-          <c.P>Chinese has relatively few family names - but there are still some names that are pronounced the same although they are written with different characters. So when people introduce themselves, it is sometimes necessary to specify which of two possibilities the speaker has in mind. One way of doing this is to list the character components of the name. For example, somebody with the surname Li could say <i>the family name <b>Lǐ</b> consisting of the characters <b>mù</b> and <b>zǐ</b></i>:</c.P>
-          {example(16, { audio: true })}
-          {grammarTitle()}
-          <c.P>A common use of the <b>de̊.1</b> construction is to define which Chinese character a speaker has in mind. Let’s again take 李玉 <b>Lǐ Yù</b> as an example.  Since 李 <b>Lǐ</b> is one of the most common family names in China, most people will get the character right - so the explanation in pattern 3:7 is not always necessary. Given names, on the other hand, can be almost anything - and since there are many characters pronounced <b>yù</b>, <b>Lǐ Yù</b> cannot assume that a new acquaintance will understand her name just by hearing it spoken.</c.P>
-          <c.P>One way to explain it would be to write it down - and you can often see Chinese people writing characters with a finger in the palm of their hand to show which character they have in mind. But it is also possible to describe a character without writing, by using a 的 <b>de̊.1</b> construction with a common word containing the character. In <b>Lǐ Yù</b>’s case, the <b>yù</b> in her name means <i>jade</i>, but in modern Chinese the more common word for <i>jade</i> is 美玉 <b>měiyù</b>. So when she explains that the <b>yù</b> in her name is <i>“the yù of měiyù”</i>, a Chinese listener will immediately know which character she means:</c.P>
-          {example(17, { audio: true })}
-          <c.P>It is not just names that are explained this way; the same principle can be used to specify which characters make up an unusual word by listing a more common word for each character.</c.P>
-          {grammarTitle()}
-          <c.P>The Chinese numbers for one, two, three are 一 <b>yī</b>，二 <b>èr</b>, 三 <b>sān</b>. But in front of measure words, Chinese uses 两 <b>liǎng</b> instead of 二 <b>èr</b>. This is just something we have to remember:</c.P>
-          {example(18, { audio: true })}
-          {example(19, { audio: true })}
-          <c.PartTitle name="dialog" />
-          <c.PartTitle type="secondary">我姓李，木子李</c.PartTitle>
-          <c.P color={'#C0504D'}><i>At the party, another acquaintance of Colleen joins the group. She tries to explain her name to Marvin, who is a bit confused.</i></c.P>
-          {dialog(1, { sentenceType: 'chinese', displayNames: true })}
-          {dialog(1, { sentenceType: 'translation', displayNames: true })}
-          <c.PartTitle name="words" />
-          {newWords()}
-          <c.PartTitle anchor="review" name="review" />
           <c.P
             buttonOptions={{
               type: 'practice',
@@ -115,9 +72,308 @@ export default class Content extends Component {
                 elementId: practiceIds[0]
               }
             }}
+          >Type the correct tone on <c.Chinese>是</c.Chinese> <b>shi</b>. Repeat again after the recording.</c.P>
+          <c.P>Chinese <b>r-</b> is pronounced a bit like British English <i>r</i> (not a thick American <i>r</i>). The position of your tongue and mouth should be exactly the same as when you pronounce <b>sh-</b>. The difference is that <b>r-</b> is voiced and less aspirated. <i>Voiced</i> means that the vocal cords vibrate when you pronounce the sound; hold your fingers against your Adam’s apple and you can feel the vibration. <i>Aspirated</i> means there is a strong airflow; if you hold your palm in front of your mouth, you will feel a strong stream of air as you pronounce <b>sh-</b>, but only a weak flow when you pronounce <b>r-</b>.</c.P>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: pinyinNumberToAudioUrl('ren2')
+              }
+            }}
           >
-            <i>Now, go through the review exercises to practice pronunciation, grammar and character writing. Then do the Exam to progress to the next Lesson.</i>
+            <Row>
+              <c.Char>人</c.Char>
+            </Row>
+          </c.Bookrow>
+          <c.P
+            buttonOptions={{
+              type: 'practice',
+              data: {
+                elementId: practiceIds[1]
+              }
+            }}
+          >Type the correct tone on 人 <b>ren</b>. Repeat again after the recording.</c.P>
+          <c.P><b>Zh-</b> is a <i>d-</i>sound followed by a Chinese <i>r</i>.</c.P>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: pinyinNumberToAudioUrl('zhong1')
+              }
+            }}
+          >
+            <Row>
+              <c.Char>中</c.Char>
+            </Row>
+          </c.Bookrow>
+          <c.P
+            buttonOptions={{
+              type: 'practice',
+              data: {
+                elementId: practiceIds[2]
+              }
+            }}
+          >
+            <c.Chinese>中</c.Chinese> means <i>middle</i>. Type the correct tone on <c.Chinese>中</c.Chinese> <b>zhong</b>. Repeat again after the recording.
           </c.P>
+          {pronunciationTitle()}
+          <c.P>As we have seen, after most initials, Chinese <b>i</b> is pronounced like English <i>ee</i> in <i>tree</i>:</c.P>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: pinyinNumberToAudioUrl('ni3'),
+                text: '你'
+              }
+            }}
+          >
+            <Row>
+              <c.Char>你</c.Char>
+              <c.Pinyin>nǐ</c.Pinyin>
+              <c.Meaning>you</c.Meaning>
+            </Row>
+          </c.Bookrow>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: pinyinNumberToAudioUrl('xing4'),
+                text: '姓'
+              }
+            }}
+          >
+            <Row>
+              <c.Char>姓</c.Char>
+              <c.Pinyin>xìng</c.Pinyin>
+              <c.Meaning>to have as family name</c.Meaning>
+            </Row>
+          </c.Bookrow>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: pinyinNumberToAudioUrl('jiao4'),
+                text: '叫'
+              }
+            }}
+          >
+            <Row>
+              <c.Char>叫</c.Char>
+              <c.Pinyin>jiào</c.Pinyin>
+              <c.Meaning>to be called</c.Meaning>
+            </Row>
+          </c.Bookrow>
+          <c.P>We have also learned that <b>-i</b> is pronounced like the <i>buzzing of a bee</i> after the initials <b>s-</b>, <b>c-</b> and <b>z-</b>: <i>zzz</i>.</c.P>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: pinyinNumberToAudioUrl('zi3'),
+                text: '子'
+              }
+            }}
+          >
+            <Row>
+              <c.Char>子</c.Char>
+              <c.Pinyin>zǐ</c.Pinyin>
+              <c.Meaning>son, child</c.Meaning>
+            </Row>
+          </c.Bookrow>
+          <c.P>The final <b>-i</b> actually has one more pronunciation: after the initials <b>sh-</b>, <b>r-</b>, <b>ch-</b> and <b>zh-</b> it is pronounced like a British English <i>r</i>!</c.P>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: pinyinNumberToAudioUrl('shi4'),
+                text: '是'
+              }
+            }}
+          >
+            <Row>
+              <c.Char>是</c.Char>
+              <c.Pinyin>shì</c.Pinyin>
+              <c.Meaning>to be</c.Meaning>
+            </Row>
+          </c.Bookrow>
+          <c.P>Since <b>-i</b> here is pronounced like <b>r</b>, <b>shì</b> should sound like English <i>shr</i> in <i>shrewd</i>!</c.P>
+          <c.P>If we had designed <b>pīnyīn</b>, we would have chosen the following spellings, because that is what these syllables sound like:</c.P>
+          <c.Bookrow flexDirection="column">
+            <Row lineHeight={30}><span><b>nǐ</b> => nee</span></Row>
+            <Row lineHeight={30}><span><b>zǐ</b> => dz</span></Row>
+            <Row lineHeight={30}><span><b>shì</b> => shr</span></Row>
+          </c.Bookrow>
+          <c.P>Practice the different pronunciations carefully:</c.P>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: `${audioUrls.othersPath}/3_1.mp3`
+              }
+            }}
+          >
+            <b>xìng, shì, zǐ, nǐ, jiào, shì, zǐ</b>
+          </c.Bookrow>
+          {/* <c.P>You can review all the sounds in this lesson more thoroughly in the <i>Introduction to Chinese pronunciation and writing</i>.</c.P> */}
+          {pronunciationTitle()}
+          <c.P><b>Pīnyīn</b> doesn’t allow certain “naked” finals, so when there is no initial, the spelling changes. We have already seen examples of this, such as adding a <b>y-</b> to <b>-i</b>, and changing the <b>u</b> in <b>-uang</b> to a <b>w-</b>, for example in <b>wang</b>.</c.P>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: pinyinNumberToAudioUrl('yi1'),
+                text: '一'
+              }
+            }}
+          >
+            <Row>
+              <c.Char>一</c.Char>
+              <c.Pinyin>yī</c.Pinyin>
+            </Row>
+          </c.Bookrow>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: pinyinNumberToAudioUrl('wang2'),
+                text: '王'
+              }
+            }}
+          >
+            <Row>
+              <c.Char>王</c.Char>
+              <c.Pinyin>wáng </c.Pinyin>
+            </Row>
+          </c.Bookrow>
+          <c.P>The same thing goes for <b>-ü</b>. But to confuse things further, in this case the sound <b>-ü</b> is spelled <b>-u</b>, without its dots:</c.P>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: pinyinNumberToAudioUrl('yu4'),
+                text: '玉'
+              }
+            }}
+          >
+            <b>yù</b>
+          </c.Bookrow>
+          <c.P>So something that could have been written simply <b>ü</b> becomes “<b>yu</b>”! This is obvious if you compare the sound to the pronunciation of the character <c.Chinese>女</c.Chinese>, written <b>nǚ</b> in <b>pīnyīn</b>. The sound of <b>yu</b> is exactly the same as that of <b>ü</b> in <b>nü</b>.</c.P>
+          {pronunciationTitle()}
+          <c.P>So far, the words we have encountered have all been monosyllabic. This means one meaning is represented by a single syllable, for example:</c.P>
+          <c.Bookrow>
+            <Row>
+              <c.Char>我</c.Char>
+              <c.Pinyin>wǒ</c.Pinyin>
+              <c.Meaning>I, me</c.Meaning>
+            </Row>
+          </c.Bookrow>
+          <c.Bookrow>
+            <Row>
+              <c.Char>叫</c.Char>
+              <c.Pinyin>jiào</c.Pinyin>
+              <c.Meaning>to be called</c.Meaning>
+            </Row>
+          </c.Bookrow>
+          <c.Bookrow>
+            <Row>
+              <c.Char>姓</c.Char>
+              <c.Pinyin>xìng</c.Pinyin>
+              <c.Meaning>have as surname</c.Meaning>
+            </Row>
+          </c.Bookrow>
+          <c.P>Each of these syllables are written with a single character. But words can also be <i>polysyllabic</i>; two examples from this lesson are:</c.P>
+          <c.Bookrow>
+            <Row>
+              <c.Char>中国</c.Char>
+              <c.Pinyin>Zhōngguó</c.Pinyin>
+              <c.Meaning>China</c.Meaning>
+            </Row>
+          </c.Bookrow>
+          <c.Bookrow>
+            <Row>
+              <c.Char>中国人</c.Char>
+              <c.Pinyin>Zhōngguórén</c.Pinyin>
+              <c.Meaning>Chinese (person)</c.Meaning>
+            </Row>
+          </c.Bookrow>
+          <c.P
+            buttonOptions={{
+              type: 'practice',
+              data: {
+                elementId: practiceIds[3]
+              }
+            }}
+          >
+            Type the correct tones on <c.Chinese>中国</c.Chinese> <b>zhongguo</b>. Practice pronunciation again.
+          </c.P>
+          <c.P
+            buttonOptions={{
+              type: 'practice',
+              data: {
+                elementId: practiceIds[4]
+              }
+            }}
+          >
+            Type the correct tones on <c.Chinese>中国人</c.Chinese> <b>zhongguoren</b>. Practice pronunciation again.
+          </c.P>
+          <c.P>
+            In fact, most words in modern Chinese are polysyllabic. But this was not always so: in classical Chinese, the ancient language spoken in China thousands of years ago, one word almost always corresponded to a single character. As the language developed, however, simple ideas were combined to more and more complex concepts by making words composed of more than one character. Each character still contributes meaning:
+          </c.P>
+          <c.P><c.Chinese>中国</c.Chinese> = MIDDLE COUNTRY = <i>China</i></c.P>
+          <c.P><c.Chinese>中国人</c.Chinese> = MIDDLE COUNTRY PERSON = <i>Chinese</i></c.P>
+          <c.P>
+            There are no spaces between words in written Chinese, so we have to determine from context which characters go together to form words. This may seem daunting, but it is no more difficult than hearing which syllables go together in any spoken language – after all, we don’t put “spaces” or pauses between words in spoken English either.
+          </c.P>
+          <c.P>
+            The fact that we can combine characters into polysyllabic words is good news for students of Chinese: you don’t always have to learn a new character for a new word. And the meaning of each character is always useful for understanding a word where it appears.
+          </c.P>
+          <c.P>
+            Some characters are no longer used independently at all; they can <i>only</i> appear as elements of polysyllabic words. Starting from this lesson, new characters and new vocabulary will be presented under separate headings so that it will be clear which characters are real words that you can use, and which characters are simply “elements of meaning”. Single-character words will appear in both character and word lists.
+          </c.P>
+          <c.PartTitle name="characters" />
+          {newCharacters()}
+          <c.PartTitle name="patterns" />
+          {grammarTitle()}
+          <c.P>Chinese has a reputation for being difficult. Is this really true?</c.P>
+          <c.P>Imagine that you are a Chinese student studying English. Your teacher asks you to describe your holiday:</c.P>
+          <c.Bookrow flexDirection="column">
+            <Row lineHeight={30}><c.Space width={100}>Teacher:</c.Space><span><i>Where did you go?</i></span></Row>
+            <Row lineHeight={30}><c.Space width={100}>You:</c.Space><span><i>I go to Hong Kong.</i></span></Row>
+            <Row lineHeight={30}><c.Space width={100}>Teacher:</c.Space><span><i>No, no, no: I <u>went</u> to Hong Kong. Have you visited Singapore?</i></span></Row>
+            <Row lineHeight={30}><c.Space width={100}>You:</c.Space><span><i>No: I have never went to Singapore.</i></span></Row>
+            <Row lineHeight={30}><c.Space width={100}>Teacher:</c.Space><span><i>I have never <u>gone</u> to Singapore.</i></span></Row>
+          </c.Bookrow>
+          <c.P>English words often change depending on the grammatical context. This does not happen in Chinese: it has no plurals (such as English <i>pen</i> and <i>pens</i>), no verb tenses (<i>go</i> – <i>went</i> – <i>gone</i>) and no comparatives of adjectives (<i>good</i> – <i>better</i> – <i>best</i>). In Chinese, the word always has the same form:</c.P>
+          <c.Bookrow flexDirection="column">
+            <Row lineHeight={30}><span>I <i>am</i> Chinese -> I <b>shì</b> Chinese.</span></Row>
+            <Row lineHeight={30}><span>He <i>is</i> Chinese-> He <b>shì</b> Chinese.</span></Row>
+            <Row lineHeight={30}><span>They <i>are</i> Chinese-> They <b>shì</b> Chinese.</span></Row>
+          </c.Bookrow>
+          <c.P>A language without word forms is called an <i>isolating</i> language. When we study an isolating language like Chinese, we don’t have to worry about singular and plural, tenses and declinations. We just need to learn <i>sentence patterns</i>. Once you know the pattern for how to say something, you can insert new words without having to think about how to modify the words themselves.</c.P>
+          <c.P>This course is based on such patterns. You should study these examples carefully; if you want, they are even available as flash cards so you can learn them by heart. You will get a feel for the language by internalizing the structures of Chinese as well as directly improving your pronunciation and ability to speak and understand.</c.P>
+          <c.P>All patterns come with translations to idiomatic English so that you will know how to use them in the right way. In those cases where we think it will help you understand the structure of a pattern better, we also provide a literal translation in capital letters to show the function of each Chinese word.</c.P>
+          {grammarTitle()}
+          <c.P>The sentences we have learned in previous lessons are made up of Subject, Verb and Object, just as in English:</c.P>
+          {example(1, { audio: true })}
+          {example(2, { audio: true })}
+          {example(3, { audio: true })}
+          <c.P>We have already encountered <c.Chinese>是</c.Chinese> <b>shì</b> which functions like English <i>be</i> (<i>am, is</i>):</c.P>
+          {example(4, { audio: true })}
+          <c.PartTitle name="dialogs" />
+          {dialog(1, { sentenceType: 'chineseWithTranslation', displayNames: false })}
+          {dialog(2, { sentenceType: 'chineseWithTranslation', displayNames: false })}
+          {dialog(3, { sentenceType: 'chinese', displayNames: false, specialIntro })}
+          <c.P>Repeat this until you feel comfortable.</c.P>
+          <c.P>Now, change roles! Pretend you are Wang Yuguo, and introduce yourself.</c.P>
+          <c.PartTitle>ORACLE BONES</c.PartTitle>
+          <c.PartTitle type="secondary">Simplified and traditional characters</c.PartTitle>
+          <OracleBone1/>
+          <c.PartTitle>CALLIGRAPHY</c.PartTitle>
+          <c.P>Practice the <i>left</i> and <i>right downward</i> strokes:</c.P>
+          {character(5, { mode: 'practice' })}
+          <c.PartTitle name="words" />
+          {newWords()}
+          <c.Review />
           <c.Exam />
         </c.Page>
       </div>

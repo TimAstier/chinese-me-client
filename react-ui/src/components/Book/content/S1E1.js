@@ -14,7 +14,7 @@ export default class Content extends Component {
 
   render() {
     const { newCharacters, example, lessonTitle, dialog, character, settings,
-      characterIds, practiceIds, image } = this.props;
+      characterIds, practiceIds, image, pronunciationTitle } = this.props;
     return (
       <div>
         <c.Page>
@@ -45,13 +45,8 @@ export default class Content extends Component {
           <c.P>Practice saying <i>my name is</i> by adding <c.Chinese>我叫</c.Chinese> before your name:</c.P>
           {example(5, { basic: true, audio: true })}
           <c.P>Repeat this phrase until you can say it exactly like the voice on the recording.</c.P>
-          <c.PartTitle name="dialog" />
-          {dialog(1, { sentenceType: 'chinese', displayNames: false })}
-          <c.P>Repeat this until you feel comfortable.</c.P>
-          <c.P>Now, change roles! Pretend you are Wang Yi, and introduce yourself.</c.P>
-          {dialog(1, { sentenceType: 'chinese', displayNames: false, hideHeader: true })}
-          <c.P>Let’s now use our ﬁrst sentence to learn a bit more about the Chinese language.</c.P>
-          <c.PartTitle type="secondary">Each Chinese character corresponds to one spoken syllable</c.PartTitle>
+          <c.PartTitle name="pronunciation" />
+          {pronunciationTitle()}
           <c.P>When Wang Yi presents herself, you hear four syllables. Let’s look again at how they are written in Chinese.</c.P>
           {example(1, { basic: true, audio: false })}
           <c.P>English, like most other languages, is written using a phonetic alphabet. When you read a word, you decipher the pronunciation and then you know which word it is. Chinese is the other way around: it is written with characters that indicate <i>meaning</i>. Each Chinese character corresponds to a spoken syllable. Listen:</c.P>
@@ -107,9 +102,10 @@ export default class Content extends Component {
               <c.Meaning>one</c.Meaning>
             </Row>
           </c.Bookrow>
-          <c.P>Let us practice a bit of pronunciation using this sentence. If you listen carefully one more time, you will notice that each syllabe has a "tone". Practice pronouncing each syllable clearly, with its tone:</c.P>
+          {pronunciationTitle()}
+          <c.P>Let us practice a bit of pronunciation using the same sentence. If you listen carefully one more time, you will notice that each syllabe has a "tone". Practice pronouncing each syllable clearly, with its tone:</c.P>
           {example(1, { basic: true, audio: true })}
-          <c.P>These tones are important, because there are many characters that otherwise sound exactly the same. The classical example are four words which are pronounced <b>ma</b>.</c.P>
+          <c.P>These tones are important because there are many characters that otherwise sound exactly the same. The classical example are four words which are pronounced <b>ma</b>.</c.P>
           <c.P>The first of them means <i>mother</i>. It is pronounced with Tone 1, which is a long, flat tone pronounced high in the speaker’s pitch range:</c.P>
           <c.Bookrow
             buttonOptions={{
@@ -120,7 +116,7 @@ export default class Content extends Component {
             }}>
             {image()}
           </c.Bookrow>
-          <c.P>The second means <i>hemp</i>, and is pronounced with Tone 2, a short tone which starts at middle pitch and goes upward:</c.P>
+          <c.P>The second means <i>hemp</i> and is pronounced with Tone 2, a short tone which starts at middle pitch and goes upward:</c.P>
           <c.Bookrow
             buttonOptions={{
               type: 'audio',
@@ -202,7 +198,7 @@ export default class Content extends Component {
             Tone 4 falls sharply from an initially high pitch to a low one, like the tone on <i><u>hey</u></i> in <i>Hey! You there!</i>
           </c.P>
           <c.P>This is just to show that the tones are not impossible to pronounce for a westerner. The difference, of course, is that in English these tones only change the <i>mood</i> of a sentence; in Chinese, they change the <i>meaning</i> of words.</c.P>
-          <c.PartTitle type="secondary">Pinyin – explaining Chinese pronunciation with English letters</c.PartTitle>
+          {pronunciationTitle()}
           <c.P>In order to help us remember the pronunciation of a Chinese character, its sound can be written using the Latin alphabet:</c.P>
           <c.Bookrow
             buttonOptions={{
@@ -277,6 +273,11 @@ export default class Content extends Component {
           <c.P><b>{insertVariables('[FAMILY_NAME_PINYIN]', settings)} {insertVariables('[GIVEN_NAME_PINYIN]', settings)}</b></c.P>
           <c.P>Listen to the audio voice and practice reading the pīnyīn a few times:</c.P>
           {example(4, { basic: true, audio: true })}
+          <c.PartTitle name="dialog" />
+          {dialog(1, { sentenceType: 'chinese', displayNames: false })}
+          <c.P>Repeat this until you feel comfortable.</c.P>
+          <c.P>Now, change roles! Pretend you are Wang Yi, and introduce yourself.</c.P>
+          {dialog(1, { sentenceType: 'chinese', displayNames: false, hideHeader: true })}
           <c.PartTitle noPrint>ORACLE BONES</c.PartTitle>
           <c.PartTitle type="secondary">Origins of Chinese characters</c.PartTitle>
           <c.P>So where do Chinese characters come from? We know from archaeological finds that they were originally pictures. During the <b>Shāng</b> dynasty, more than 3,000 years ago, the oracles at the royal court used the shells of turtles and shoulder blades of oxen to tell the future.</c.P>
@@ -319,7 +320,7 @@ export default class Content extends Component {
           </c.Bookrow>
           <c.P>A character element indicating sound in this way is called a <i>phonetic</i>. To summarize, the ancient scribes would make new characters by combining a radical for meaning with a phonetic for sound to write “something you do with your mouth which sounds similar to horse” or “a female person which sounds similar to horse”:</c.P>
           <c.Bookrow>{image()}</c.Bookrow>
-          <c.P>The characters were created long ago; today, radical and phonetic usually no longer not provide exact indications of meaning and sound. Click on the oracle bone icon to see an example:</c.P>
+          <c.P>The characters were created long ago; today, radical and phonetic usually no longer not provide exact indications of meaning and sound. Even so, these hints of meaning and pronunciation can make it easier for us to memorize characters. Click on the oracle bone icon to see an example from this Episode:</c.P>
           <c.Bookrow
             buttonOptions={{
               type: 'etymology',
@@ -330,7 +331,6 @@ export default class Content extends Component {
           >
             <Row><c.Char>叫</c.Char> <c.Pinyin>jiào</c.Pinyin> <c.Meaning>to be called</c.Meaning></Row>
           </c.Bookrow>
-          <c.P>Even so, these hints of meaning and pronunciation can make it easier for us to memorize characters.</c.P>
           <c.PartTitle>CALLIGRAPHY</c.PartTitle>
           <c.P>Another aid in memorizing characters is to understand their aesthetics. The art of writing characters beautifully using a traditional writing brush is called <i>calligraphy</i>. It is an ancient art form that embodies many concepts of Chinese philosophy.</c.P>
           <c.PartTitle type="secondary">Each stroke has its own beauty</c.PartTitle>
@@ -343,7 +343,7 @@ export default class Content extends Component {
           <c.P>If you click on the brush icon, you can see a calligraphy video showing how to write it correctly. Print out a <a href={practiceSheet} target="_blank" rel="noopener noreferrer">practice sheet</a> and use an ordinary, black ballpoint pen to try writing it as beautifully as you can:</c.P>
           {character(1, { mode: 'practice' })}
           <c.PartTitle type="secondary">Strokes are written according to a fixed order</c.PartTitle>
-          <c.P>The <i>horizontal</i> stroke is always written from left to right. But it is not enough to write each individual stroke correctly; in addition, the strokes of each character must always be written in the same <i>order</i>. You can watch a stroke order animation for each character in the course by clicking the stroke order icon. The stroke order for <c.Chinese>王</c.Chinese> <b>wáng</b> <i>king</i>, for example, looks like this:</c.P>
+          <c.P>The <i>horizontal</i> stroke is always written from left to right. But it is not enough to write each individual stroke correctly; in addition, the strokes of each character must always be written in the same <i>order</i>. You can watch a stroke order animation for each character in the course by clicking the stroke order icon. The stroke order for <c.Chinese>王</c.Chinese> <b>wáng</b> <i>king</i> looks like this:</c.P>
           <c.Bookrow
             buttonOptions={{
               type: 'stroke',
@@ -356,7 +356,7 @@ export default class Content extends Component {
           </c.Bookrow>
           <c.P>Chinese people are taught this standard order for each character in school, and they always use it. The pen flows through the character in the same way every time, and this makes the characters easier to memorize, easier to recognize, and ultimately much faster to write. Stroke order is also the basis for one of the methods used to look up characters in dictionaries.</c.P>
           <c.P>Fortunately, most students find stroke order easy to remember. We do need to memorize each character individually, but there are some general guidelines that make the task easier: <c.Chinese>王</c.Chinese> <b>wáng</b> <i>king</i>, for example, is an illustration of the rule stating that characters should be written <i>top</i> to <i>bottom</i>.</c.P>
-          <c.P>Using the correct stroke order for each character is a must. Practicing how to write characters beautifully, on the other hand, is not something you <i>have</i> to do to learn Chinese. But many people find it enjoyable. And the aesthetic principles help us develop a feel for the logic of Chinese characters; the rhythm of writing each stroke makes the whole character come alive. After just a short while of practice, this will help you to see the characters in a new way.</c.P>
+          <c.P>Using the correct stroke order for each character is a must. Practicing how to write characters beautifully, on the other hand, is not something you <i>have</i> to do to learn Chinese. But many people find it enjoyable, and the aesthetic principles help us develop a feel for the logic of Chinese characters; the rhythm of writing each stroke makes the whole character come alive. After just a short while of practice, this will help you to see the characters in a new way.</c.P>
           <c.P>Historically, good handwriting was seen as the hallmark of an educated person. Today, there is a revival of interest, and most Chinese children practice calligraphy at school.</c.P>
           <c.PartTitle anchor="new-characters" name="characters"/>
           <c.P>Here are the new characters we need to memorize in this lesson. Click on stroke order icons to review stroke order, on brush icons to see calligraphy videos, and on oracle bone icons to see character etymologies.</c.P>

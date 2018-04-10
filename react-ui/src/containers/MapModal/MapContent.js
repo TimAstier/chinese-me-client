@@ -13,13 +13,13 @@ class MapContent extends Component {
   _redirectUser = () => {
     return swal({
       title: 'Free trial',
-      text: 'Only the first three episodes are available for free.\n\nPlease consider buying the book in the store if you like this learning experience. This allows us to continue creating more content and improving the way people learn Chinese.\n\nThank you!\n\nThe ChineseMe team',
+      text: 'Only the first three episodes are available for free.\n\nPlease consider buying the full season in the store if you like this learning experience. This allows us to continue creating more content and improving the way people learn Chinese.\n\nThank you!\n\nThe ChineseMe team',
       icon: 'info',
-      buttons: ['Maybe later', 'Go to bookstore']
+      buttons: ['Maybe later', 'Go to the store']
     }).then(bookstore => {
       if (bookstore) {
         this.props.closeMapModal();
-        return this.props.push('/study/books');
+        return this.props.push('/study/store');
       }
       return null;
     });

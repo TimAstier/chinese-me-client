@@ -13,7 +13,7 @@ class Review extends Component {
             data: null
           }}
         >
-          <i>Now, go through the review exercises to practice pronunciation, characters, grammar patterns and vocabulary. Then do the Exam before continuing to the next Lesson.</i>
+          <i>Now, go through the review exercises to practice pronunciation, characters, grammar patterns and vocabulary. Then do the Exam before continuing to the next Episode.</i>
         </c.P>
       </div>
     );

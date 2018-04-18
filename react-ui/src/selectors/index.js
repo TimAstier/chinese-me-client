@@ -40,6 +40,7 @@ export { default as getNextStatementId } from './getNextStatementId';
 export { default as getPracticeNavParams } from './getPracticeNavParams';
 export { default as getPreviousStatementId } from './getPreviousStatementId';
 export { default as getProgressbarCompletion } from './getProgressbarCompletion';
+export { default as getQuestionCompletion } from './getQuestionCompletion';
 export { default as getRequiredUserData } from './getRequiredUserData';
 export { default as getSentencesCountInCurrentDialog } from './getSentencesCountInCurrentDialog';
 export { default as getSentencesWithValues } from './getSentencesWithValues';

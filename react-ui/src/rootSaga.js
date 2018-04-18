@@ -13,7 +13,7 @@ import watchMapSagas from './sagas/map';
 import watchVideoSagas from './sagas/video';
 import runTimer from './sagas/timer';
 import watchBookSagas from './sagas/book';
-import watchUserSettingsSagas from './sagas/userSettings';
+// import watchUserSettingsSagas from './sagas/userSettings';
 import { watchSaveAnswer } from './sagas/answers';
 
 export default function* rootSaga() {
@@ -32,7 +32,7 @@ export default function* rootSaga() {
     watchVideoSagas(),
     runTimer(),
     watchBookSagas(),
-    watchUserSettingsSagas(),
+    // watchUserSettingsSagas(),
     watchSaveAnswer()
   ]);
 }

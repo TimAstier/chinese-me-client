@@ -24,7 +24,8 @@ class BookButton extends Component {
 
   _url = () => {
     // bookButtons in "Help" page do not necessary have all options
-    if (['review', 'exam'].indexOf(this.props.buttonOptions.type) === -1) {
+    if (['review', 'exam', 'askUserSettings'].indexOf(this.props.buttonOptions.type) === -1) {
+      // Those buttons require additional data (elementId)
       if (!this.props.buttonOptions.data || !this.props.buttonOptions.data.elementId) {
         return this.props.currentUrl;
       }
@@ -48,6 +49,8 @@ class BookButton extends Component {
           return `/study/${this.props.episodeId}/review`;
         case 'exam':
           return `/study/${this.props.episodeId}/exam`;
+        case 'askUserSettings':
+          return `/study/${this.props.episodeId}/question`;
         default:
           return this.props.currentUrl;
       }
@@ -66,9 +69,6 @@ class BookButton extends Component {
           }
           if (!this.props.isAuthenticated && this.props.buttonOptions.type === 'askUserSettings') {
             return this._redirectUser();
-          }
-          if (this.props.buttonOptions.type === 'askUserSettings') {
-            return this.props.askUserSettings();
           }
           if (!this.props.buttonOptions.hasOwnProperty('data')) {
             return null;

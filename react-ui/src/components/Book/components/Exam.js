@@ -11,7 +11,7 @@ class Exam extends Component {
         />
         <c.P buttonOptions={{
           type: 'exam',
-          data: {}
+          data: null
         }}>
           <i>Work against the clock to maximize your final grade!</i>
         </c.P>

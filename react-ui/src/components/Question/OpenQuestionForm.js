@@ -41,10 +41,11 @@ class OpenQuestionForm extends Component {
     return (
       <Input
         {...input}
+        autoFocus
         type={type}
         error={touched && error}
         active={active}
-        onBlur=""
+        onBlur={() => {}}
       />
     );
   }
@@ -65,7 +66,6 @@ class OpenQuestionForm extends Component {
             validate={ this.props.date ? [ required, validDate ] : [ required ] }
           />
           <ScreenButton
-            width={300}
             text={'Submit'}
             primary
           />

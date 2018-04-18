@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { FeedbackModal, Navbar, MapModal, QuestionModal } from '../.';
+import { FeedbackModal, Navbar, MapModal } from '../.';
 import { actions as sagaActions } from '../../sagas/actions';
 import s from '../../rootSelectors';
 
@@ -35,7 +35,6 @@ class Study extends Component {
       <Wrapper>
         <FeedbackModal />
         <MapModal />
-        <QuestionModal />
         <Navbar id="navbar"/>
         <ContentWrapper>
           {this.props.initialized && this.props.children}

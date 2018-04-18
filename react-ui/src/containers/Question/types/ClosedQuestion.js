@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
-import { ClosedQuestion as ClosedQuestionComponent } from '../../components';
-import { default as closedQuestionConstants } from '../../constants/closedQuestion';
-import { actions as sagaActions } from '../../sagas/actions';
+import { ClosedQuestion as ClosedQuestionComponent } from '../../../components';
+import { default as closedQuestionConstants } from '../../../constants/closedQuestion';
+import { actions as sagaActions } from '../../../sagas/actions';
 
 class ClosedQuestion extends Component {
   handleClick(e) {

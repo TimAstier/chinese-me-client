@@ -17,7 +17,6 @@ const StyledSelect = styled.select`
 `;
 
 class Select extends Component {
-
   renderOptions(choices) {
     return choices.map((choice, i) => {
       return (
@@ -30,7 +29,7 @@ class Select extends Component {
 
   renderField({ input, renderOptions, choices }) {
     return (
-      <StyledSelect {...input} onBlur="">
+      <StyledSelect {...input} onBlur={() => {}}>
         <option value="" />
         {renderOptions(choices)}
       </StyledSelect>

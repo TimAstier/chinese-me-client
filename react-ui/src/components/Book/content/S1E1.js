@@ -31,7 +31,8 @@ export default class Content extends Component {
           <c.PartTitle type="secondary">Learn your Chinese name</c.PartTitle>
           <c.P
             buttonOptions={{
-              type: 'askUserSettings'
+              type: 'askUserSettings',
+              data: null
             }}
           >Now, it’s your turn to introduce yourself. Western names can be hard to pronounce for Chinese people. Click on the <i>Me</i> icon and we will give you a Chinese name based on your real name, gender and nationality.</c.P>
           <c.P>We chose a Chinese family name for you based on the sound of your real name. Listen and practice imitating the audio voice a few times!</c.P>

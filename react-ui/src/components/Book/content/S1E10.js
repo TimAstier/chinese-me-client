@@ -18,7 +18,8 @@ export default class Content extends Component {
         <div>
           <c.P
             buttonOptions={{
-              type: 'askUserSettings'
+              type: 'askUserSettings',
+              data: null
             }}
           ><i>Input why you are learning Chinese:</i>
           </c.P>

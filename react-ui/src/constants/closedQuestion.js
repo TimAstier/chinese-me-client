@@ -1,6 +1,6 @@
 const constants = {
   GENDER: {
-    label: 'What is you gender?',
+    label: 'What is your gender?',
     choiceA: 'Female',
     choiceB: 'Male'
   }

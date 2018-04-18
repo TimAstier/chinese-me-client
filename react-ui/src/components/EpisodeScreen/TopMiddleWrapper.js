@@ -35,6 +35,7 @@ class TopMiddleWrapper extends Component {
     switch (this.props.elementType) {
       case 'dialog':
       case 'practice':
+      case 'question':
         return (
           <Wrapper>
             <TopMiddleUpWrapper>

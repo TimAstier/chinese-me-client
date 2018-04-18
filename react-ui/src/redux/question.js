@@ -5,36 +5,76 @@ import { default as settingConstants } from '../constants/settings';
 // Types
 
 export const types = {
-  SET_SETTING: 'question/SET_SETTING'
+  SET_SETTING: 'question/SET_SETTING',
+  SET_INITIALIZED: 'question/SET_INITIALIZED',
+  INCREMENT_CURRENT_INDEX: 'question/INCREMENT_CURRENT_INDEX',
+  INIT: 'question/INIT',
+  SET_SAVING: 'question/SET_SAVING'
 };
 
 // Reducer
 
 const INITIAL_STATE = Map({
-  setting: ''
+  initialized: false,
+  setting: '',
+  currentIndex: 0,
+  saving: false
 });
 
 export default function reducer(state = INITIAL_STATE, action = {}) {
   switch (action.type) {
-    case types.SET_SETTING: return state.set('setting', action.payload.setting);
+    case types.INIT:
+      return INITIAL_STATE;
+    case types.SET_SETTING:
+      return state.set('setting', action.payload.setting);
+    case types.SET_INITIALIZED:
+      return state.set('initialized', action.payload.initialized);
+    case types.INCREMENT_CURRENT_INDEX:
+      return state.set('currentIndex', state.get('currentIndex') + 1);
+    case types.SET_SAVING:
+      return state.set('saving', action.payload.saving);
     default: return state;
   }
 }
 
 // Actions
 
+const init = () => ({
+  type: types.INIT
+});
+
 const setSetting = setting => ({
   type: types.SET_SETTING,
   payload: { setting }
 });
 
+const setInitialized = initialized => ({
+  type: types.SET_INITIALIZED,
+  payload: { initialized }
+});
+
+const incrementCurrentIndex = () => ({
+  type: types.INCREMENT_CURRENT_INDEX
+});
+
+const setSaving = saving => ({
+  type: types.SET_SAVING,
+  payload: { saving }
+});
+
 export const actions = {
-  setSetting
+  init,
+  setSetting,
+  setInitialized,
+  incrementCurrentIndex,
+  setSaving
 };
 
 // Selectors
 
 const getSetting = state => state.get('setting');
+const getInitialized = state => state.get('initialized');
+const getCurrentIndex = state => state.get('currentIndex');
 const getType = createSelector(
   getSetting,
   setting => {
@@ -48,8 +88,12 @@ const getType = createSelector(
     return '';
   }
 );
+const getSaving = state => state.get('saving');
 
 export const selectors = {
   getSetting,
-  getType
+  getInitialized,
+  getCurrentIndex,
+  getType,
+  getSaving
 };

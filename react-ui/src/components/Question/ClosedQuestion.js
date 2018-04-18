@@ -7,6 +7,8 @@ const Wrapper = styled.div`
   height: 230px;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  width: 100%;
 `;
 
 const QuestionWrapper = styled.div`
@@ -31,7 +33,6 @@ const ButtonsWrapper = styled.div`
 `;
 
 class ClosedQuestion extends Component {
-
   render() {
     return (
       <Wrapper>
@@ -40,13 +41,11 @@ class ClosedQuestion extends Component {
         </QuestionWrapper>
         <ButtonsWrapper>
           <ScreenButton
-            width={300}
             text={this.props.choiceA}
             onClick={this.props.onClick}
             data={this.props.choiceA}
           />
           <ScreenButton
-            width={300}
             text={this.props.choiceB}
             onClick={this.props.onClick}
             data={this.props.choiceB}

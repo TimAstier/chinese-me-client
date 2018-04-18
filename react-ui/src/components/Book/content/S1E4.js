@@ -23,7 +23,8 @@ export default class Content extends Component {
       return (
         <c.P
           buttonOptions={{
-            type: 'askUserSettings'
+            type: 'askUserSettings',
+            data: null
           }}
         ><i>Now, input your own birthdate to practice presenting yourself.</i>
         </c.P>

@@ -13,7 +13,6 @@ const Wrapper = styled.div`
 `;
 
 class SelectQuestionForm extends Component {
-
   render() {
     const { handleSubmit } = this.props;
     return (
@@ -28,7 +27,6 @@ class SelectQuestionForm extends Component {
             validate={[required]}
           />
           <ScreenButton
-            width={300}
             text={'Submit'}
             primary
           />

@@ -20,7 +20,8 @@ export default class Content extends Component {
         <div>
           <c.P
             buttonOptions={{
-              type: 'askUserSettings'
+              type: 'askUserSettings',
+              data: null
             }}
           >Now, click on the <i>Me</i> icon and input the languages you speak to learn their names in Chinese.
           </c.P>

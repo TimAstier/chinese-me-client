@@ -1,6 +1,8 @@
 import * as bookContainers from './Book/containers';
+import * as questionTypes from './Question/types';
 
 export { bookContainers };
+export { questionTypes };
 
 // Keep in alphabetical order
 export { default as Account } from './Account/Account';
@@ -15,7 +17,6 @@ export { default as CharacterStroke } from './Exercises/CharacterStroke/Characte
 export { default as ChoicesToOrder } from './Exercises/ChoicesToOrder/ChoicesToOrder';
 export { default as ChoseRole } from './Dialog/ChoseRole';
 export { default as CircleTimer } from './Exam/CircleTimer';
-export { default as DateQuestion } from './QuestionModal/DateQuestion';
 export { default as Dialog } from './Dialog/Dialog';
 export { default as ElementsNav } from './ElementsNav/ElementsNav';
 export { default as EpisodeCard } from './EpisodeCard/EpisodeCard';
@@ -39,13 +40,10 @@ export { default as NewWordLink } from './NewWordLink/NewWordLink';
 export { default as PauseButton } from './PauseButton/PauseButton';
 export { default as PlayAudioButton } from './PlayAudioButton/PlayAudioButton';
 export { default as Progressbar } from './Progressbar/Progressbar';
-export { default as QuestionModal } from './QuestionModal/QuestionModal';
-export { default as ClosedQuestion } from './QuestionModal/ClosedQuestion';
-export { default as OpenQuestion } from './QuestionModal/OpenQuestion';
+export { default as Question } from './Question/Question';
 export { default as Practice } from './Practice/Practice';
 export { default as Review } from './Review/Review';
 export { default as ReviewFilterControl } from './Review/ReviewFilterControl';
-export { default as SelectQuestion } from './QuestionModal/SelectQuestion';
 export { default as ScreenButton } from './ScreenButton/ScreenButton';
 export { default as ScrollableWrapper } from './ScrollableWrapper/ScrollableWrapper';
 export { default as SelectEpisode } from './SelectEpisode/SelectEpisode';

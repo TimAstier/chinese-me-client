@@ -13,8 +13,6 @@ export const types = {
   OPEN_MAP_MODAL: 'ui/OPEN_MAP_MODAL',
   CLOSE_MAP_MODAL: 'ui/CLOSE_MAP_MODAL',
   UPDATE_FEEDBACK_STATUS: 'ui/UPDATE_FEEDBACK_STATUS',
-  OPEN_QUESTION_MODAL: 'ui/OPEN_QUESTION_MODAL',
-  CLOSE_QUESTION_MODAL: 'ui/CLOSE_QUESTION_MODAL',
   CLOSE_WORD_MODAL: 'ui/CLOSE_WORD_MODAL',
   SET_DEFAULT_EPISODE_SCREEN_UI: 'ui/SET_DEFAULT_EPISODE_SCREEN_UI',
   SET_CONTEXTUAL_TEXT: 'ui/SET_CONTEXTUAL_TEXT',
@@ -32,7 +30,6 @@ export const INITIAL_STATE = Map({
   openFeedbackModal: false,
   feedbackStatus: 'writing',
   openMapModal: false,
-  openQuestionModal: false,
   openWordModal: false,
   scrollPosition: 0
 });
@@ -58,10 +55,6 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
       return state.set('openMapModal', true);
     case types.CLOSE_MAP_MODAL:
       return state.set('openMapModal', false);
-    case types.OPEN_QUESTION_MODAL:
-      return state.set('openQuestionModal', true);
-    case types.CLOSE_QUESTION_MODAL:
-      return state.set('openQuestionModal', false);
     case sagaTypes.NEW_WORD_LINK_CLICKED:
       return state.set('openWordModal', true);
     case types.CLOSE_WORD_MODAL:
@@ -125,8 +118,6 @@ const openMapModal = () => ({
   }
 });
 const closeMapModal = () => ({ type: types.CLOSE_MAP_MODAL });
-const openQuestionModal = () => ({ type: types.OPEN_QUESTION_MODAL });
-const closeQuestionModal = () => ({ type: types.CLOSE_QUESTION_MODAL });
 const openWordModal = () => ({ type: types.OPEN_WORD_MODAL });
 const closeWordModal = () => ({ type: types.CLOSE_WORD_MODAL });
 const setDefaultEpisodeScreenUi = () => ({
@@ -146,8 +137,6 @@ export const actions = {
   updateFeedbackStatus,
   openMapModal,
   closeMapModal,
-  openQuestionModal,
-  closeQuestionModal,
   openWordModal,
   closeWordModal,
   setDefaultEpisodeScreenUi,
@@ -163,7 +152,6 @@ const getPauseButton = state => state.get('pauseButton');
 const getOpenFeedbackModal = state => state.get('openFeedbackModal');
 const getFeedbackStatus = state => state.get('feedbackStatus');
 const getOpenMapModal = state => state.get('openMapModal');
-const getOpenQuestionModal = state => state.get('openQuestionModal');
 const getOpenWordModal = state => state.get('openWordModal');
 const getHanziAgainButton = state => state.get('hanziAgainButton');
 const getScrollPosition = state => state.get('scrollPosition');
@@ -176,7 +164,6 @@ export const selectors = {
   getOpenFeedbackModal,
   getFeedbackStatus,
   getOpenMapModal,
-  getOpenQuestionModal,
   getOpenWordModal,
   getHanziAgainButton,
   getScrollPosition

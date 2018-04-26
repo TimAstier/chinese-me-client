@@ -297,7 +297,7 @@ export default class Content extends Component {
               }
             }}
           >
-            Type the correct tones on <c.Chinese>中国</c.Chinese> <b>zhongguo</b>. Practice pronunciation again.
+            <i>Type the correct tones on <c.Chinese>中国</c.Chinese> <b>zhongguo</b>. Practice pronunciation again.</i>
           </c.P>
           <c.P
             buttonOptions={{

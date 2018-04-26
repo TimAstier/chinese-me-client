@@ -23,9 +23,32 @@ class PlayAudioButton extends Component {
     }
   }
 
+  _playAudio() {
+    if (this.props.onClick) {
+      return this.props.onClick;
+    }
+    return () => {
+      if (this.props.trackClick) {
+        this.props.clickedBookButton({
+          type: 'sound',
+          src: this.props.url,
+          text: this.props.text
+        });
+      }
+      this.props.playAudio(
+        this.props.url,
+        this.props.slowUrl,
+        this.props.text,
+        this.props.slow,
+        this.props.toggleSlow,
+        this.props.origin
+      );
+    };
+  }
+
   handleEnterKeyPress(event) {
     if (event.keyCode === 32) {
-      return this.props.onClick ? this.props.onClick() : this.props.playAudio();
+      return this._playAudio()();
     }
     return null;
   }
@@ -33,26 +56,7 @@ class PlayAudioButton extends Component {
   render() {
     return (
       <PlayAudioButtonComponent
-        onClick={this.props.onClick ?
-          this.props.onClick
-          : () => {
-            if (this.props.trackClick) {
-              this.props.clickedBookButton({
-                type: 'sound',
-                src: this.props.url,
-                text: this.props.text
-              });
-            }
-            this.props.playAudio(
-              this.props.url,
-              this.props.slowUrl,
-              this.props.text,
-              this.props.slow,
-              this.props.toggleSlow,
-              this.props.origin
-            );
-          }
-        }
+        onClick={this._playAudio()}
         small={this.props.small}
         big={this.props.big}
         isPlaying={this.props.isPlaying}

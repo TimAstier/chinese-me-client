@@ -1,6 +1,7 @@
 import * as bookComponents from './Book/components';
-
+import * as questionResults from './Question/results';
 export { bookComponents };
+export { questionResults };
 
 // Keep in alphabetical order
 export { default as Account } from './Account/Account';

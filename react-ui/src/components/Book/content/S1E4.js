@@ -21,13 +21,26 @@ export default class Content extends Component {
     // This part comes between a dialog 'title' and 'intro'
     const specialIntro = () => {
       return (
-        <c.P
-          buttonOptions={{
-            type: 'askUserSettings',
-            data: null
-          }}
-        ><i>Now, input your own birthdate to practice presenting yourself.</i>
-        </c.P>
+        <div>
+          <c.P
+            buttonOptions={{
+              type: 'askUserSettings',
+              data: null
+            }}
+          >
+            <i>Now, input your own birthdate to practice presenting yourself.</i>
+          </c.P>
+          <c.P
+            buttonOptions={{
+              type: 'practice',
+              data: {
+                elementId: practiceIds[4]
+              }
+            }}
+          >
+            <i>Practice saying your age in Chinese.</i>
+          </c.P>
+        </div>
       );
     };
     return (

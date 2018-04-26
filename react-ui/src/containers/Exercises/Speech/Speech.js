@@ -13,6 +13,8 @@ class Speech extends Component {
         guidelineText={this.props.exercise.guidelineText}
         questionText={this.props.exercise.questionText}
         type={this.props.exercise.type}
+        audioUrl={this.props.exercise.audioUrl}
+        userSettings={this.props.userSettings}
       />
     );
   }
@@ -20,7 +22,8 @@ class Speech extends Component {
 
 Speech.propTypes = {
   status: propTypes.string.isRequired,
-  exercise: propTypes.instanceOf(models.Exercise).isRequired
+  exercise: propTypes.instanceOf(models.Exercise).isRequired,
+  userSettings: propTypes.object
 };
 
 const mapStateToProps = state => ({

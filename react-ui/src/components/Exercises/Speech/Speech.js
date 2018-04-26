@@ -4,6 +4,7 @@ import propTypes from 'prop-types';
 import { Wrapper, QuestionWrapper } from '../Shared';
 import { PlayAudioButton } from '../../../containers';
 import containsChinese from '../../../utils/containsChinese';
+import insertVariables from '../../../utils/insertVariables';
 
 const TextWrapper = styled.div`
   font-family: ${props => props.isChinese ? 'Kai' : 'Calibri'};
@@ -18,14 +19,15 @@ const AudioWrapper = styled.div`
 
 class Speech extends Component {
   _textToSpeechQuestion() {
-    return this.props.guidelineText ? this.props.guidelineText : 'Read aloud:';
+    return this.props.guidelineText ? insertVariables(this.props.guidelineText, this.props.userSettings) : 'Read aloud:';
   }
 
   _audioToSpeechQuestion() {
-    return this.props.guidelineText ? this.props.guidelineText : 'Listen and repeat:';
+    return this.props.guidelineText ? insertVariables(this.props.guidelineText, this.props.userSettings) : 'Listen and repeat:';
   }
 
   _renderTextToSpeech() {
+    const questionItem = insertVariables(this.props.questionText, this.props.userSettings);
     return (
       <Wrapper>
         <QuestionWrapper fontSize={24} fixedHeight>
@@ -35,8 +37,8 @@ class Speech extends Component {
               : ''
           }
         </QuestionWrapper>
-        <TextWrapper isChinese={this.props.questionText && containsChinese(this.props.questionText)}>
-          {this.props.questionText}
+        <TextWrapper isChinese={this.props.questionText && containsChinese(questionItem)}>
+          {questionItem}
         </TextWrapper>
         <QuestionWrapper fontSize={24} fixedHeight>
           {
@@ -46,7 +48,11 @@ class Speech extends Component {
           }
         </QuestionWrapper>
         <AudioWrapper>
-          <PlayAudioButton keyPress big />
+          <PlayAudioButton
+            keyPress
+            big
+            text={this.props.audioUrl.includes('[') ? insertVariables(this.props.audioUrl, this.props.userSettings) : undefined}
+          />
         </AudioWrapper>
       </Wrapper>
     );
@@ -63,7 +69,11 @@ class Speech extends Component {
           }
         </QuestionWrapper>
         <AudioWrapper>
-          <PlayAudioButton keyPress big />
+          <PlayAudioButton
+            keyPress
+            big
+            text={this.props.audioUrl.includes('[') ? insertVariables(this.props.audioUrl, this.props.userSettings) : undefined}
+          />
         </AudioWrapper>
       </Wrapper>
     );
@@ -84,7 +94,9 @@ Speech.propTypes = {
   status: propTypes.string.isRequired,
   guidelineText: propTypes.string,
   questionText: propTypes.string,
-  type: propTypes.oneOf(['textToSpeech', 'audioToSpeech']).isRequired
+  type: propTypes.oneOf(['textToSpeech', 'audioToSpeech']).isRequired,
+  userSettings: propTypes.object,
+  audioUrl: propTypes.string.isRequired
 };
 
 export default Speech;

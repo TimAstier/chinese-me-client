@@ -1,6 +1,7 @@
 import { Map } from 'immutable';
 import { createSelector } from 'reselect';
 import { default as settingConstants } from '../constants/settings';
+import wordings from '../constants/wordings';
 
 // Types
 
@@ -9,7 +10,8 @@ export const types = {
   SET_INITIALIZED: 'question/SET_INITIALIZED',
   INCREMENT_CURRENT_INDEX: 'question/INCREMENT_CURRENT_INDEX',
   INIT: 'question/INIT',
-  SET_SAVING: 'question/SET_SAVING'
+  SET_SAVING: 'question/SET_SAVING',
+  SET_STATUS: 'question/SET_STATUS'
 };
 
 // Reducer
@@ -18,7 +20,8 @@ const INITIAL_STATE = Map({
   initialized: false,
   setting: '',
   currentIndex: 0,
-  saving: false
+  saving: false,
+  status: 'input' // 'input' or 'result'
 });
 
 export default function reducer(state = INITIAL_STATE, action = {}) {
@@ -33,6 +36,8 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
       return state.set('currentIndex', state.get('currentIndex') + 1);
     case types.SET_SAVING:
       return state.set('saving', action.payload.saving);
+    case types.SET_STATUS:
+      return state.set('status', action.payload.status);
     default: return state;
   }
 }
@@ -62,12 +67,18 @@ const setSaving = saving => ({
   payload: { saving }
 });
 
+const setStatus = status => ({
+  type: types.SET_STATUS,
+  payload: { status }
+});
+
 export const actions = {
   init,
   setSetting,
   setInitialized,
   incrementCurrentIndex,
-  setSaving
+  setSaving,
+  setStatus
 };
 
 // Selectors
@@ -89,11 +100,33 @@ const getType = createSelector(
   }
 );
 const getSaving = state => state.get('saving');
+const getTitle = createSelector(
+  getSetting,
+  setting => {
+    if (!setting) {
+      return null;
+    }
+    return wordings[settingConstants[setting].location].title;
+  }
+);
+const getQuestionIntro = createSelector(
+  getSetting,
+  setting => {
+    if (!setting) {
+      return null;
+    }
+    return wordings[settingConstants[setting].location].questionIntro;
+  }
+);
+const getStatus = state => state.get('status');
 
 export const selectors = {
   getSetting,
   getInitialized,
   getCurrentIndex,
   getType,
-  getSaving
+  getSaving,
+  getTitle,
+  getQuestionIntro,
+  getStatus
 };

@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import * as c from '../components';
 import { Objective } from '../../../containers/Book/containers';
 import { content as contentPropTypes } from '../../../helpers/propTypes';
-import { Row } from '../../Shared';
-import insertVariables from '../../../utils/insertVariables';
 import pinyinNumberToAudioUrl from '../../../utils/pinyinNumberToAudioUrl';
 
 export default class Content extends Component {
@@ -11,7 +9,7 @@ export default class Content extends Component {
 
   render() {
     const { newCharacters, example, lessonTitle, dialog, grammarTitle,
-      practiceIds, newWords, pronunciationTitle, settings, image } = this.props;
+      practiceIds, newWords, pronunciationTitle, image } = this.props;
       // This part comes between a dialog 'title' and 'intro'
     const specialIntro = () => {
       return (
@@ -21,23 +19,19 @@ export default class Content extends Component {
               type: 'askUserSettings',
               data: null
             }}
-          ><i>Input why you are learning Chinese:</i>
+          >
+            <i>Input why you are learning Chinese.</i>
           </c.P>
-          <c.P>In Chinese, <i>{insertVariables('[REASON_LEARN_CHINESE_EN]', settings)}</i> is:</c.P>
-          <c.Bookrow
+          <c.P
             buttonOptions={{
-              type: 'audio',
+              type: 'practice',
               data: {
-                text: insertVariables('[REASON_LEARN_CHINESE]', settings)
+                elementId: practiceIds[4]
               }
             }}
           >
-            <Row>
-              <c.Char>{insertVariables('[REASON_LEARN_CHINESE]', settings)}</c.Char>
-              <c.Pinyin>{insertVariables('[REASON_LEARN_CHINESE_PINYIN]', settings)}</c.Pinyin>
-            </Row>
-          </c.Bookrow>
-          <c.P>Practice saying this a few times.</c.P>
+            <i>Practice saying why you are learning Chinese.</i>
+          </c.P>
         </div>
       );
     };
@@ -174,6 +168,16 @@ export default class Content extends Component {
             <c.Meaning>(LIKE-TO-STUDY)</c.Meaning>
           </c.Bookrow>
           <c.P>So when we read the characters <c.Chinese>好学</c.Chinese>, we have to decide from context whether <b>hao</b> should be pronounced with Tone 3 or Tone 4: <b>hǎoxué</b> <i>easy (to learn)</i> or <b>hàoxué</b> <i>diligent</i>.</c.P>
+          <c.P
+            buttonOptions={{
+              type: 'practice',
+              data: {
+                elementId: practiceIds[3]
+              }
+            }}
+          >
+            <i>Practice.</i>
+          </c.P>
           <c.PartTitle name="dialog_zh" />
           {dialog(1, { sentenceType: 'chinese', displayNames: true })}
           {dialog(2, { sentenceType: 'chinese', displayNames: true, specialIntro })}

@@ -4,7 +4,6 @@ import { content as contentPropTypes } from '../../../helpers/propTypes';
 import pinyinNumberToAudioUrl from '../../../utils/pinyinNumberToAudioUrl';
 import { Row } from '../../Shared';
 import pinyinize from 'pinyinize';
-import insertVariables from '../../../utils/insertVariables';
 import { audioUrls } from '../../../constants/urls';
 import { practiceSheet } from '../../../constants/urls';
 import assetEndpointToUrl from '../../../helpers/assetEndpointToUrl';
@@ -13,7 +12,7 @@ export default class Content extends Component {
   static propTypes = contentPropTypes
 
   render() {
-    const { newCharacters, example, lessonTitle, dialog, character, settings,
+    const { newCharacters, example, lessonTitle, dialog, character,
       characterIds, practiceIds, image, pronunciationTitle } = this.props;
     return (
       <div>
@@ -34,18 +33,19 @@ export default class Content extends Component {
               type: 'askUserSettings',
               data: null
             }}
-          >Now, it’s your turn to introduce yourself. Western names can be hard to pronounce for Chinese people. Click on the <i>Me</i> icon and we will give you a Chinese name based on your real name, gender and nationality.</c.P>
-          <c.P>We chose a Chinese family name for you based on the sound of your real name. Listen and practice imitating the audio voice a few times!</c.P>
-          {example(2, { basic: true, audio: true })}
-          <c.P>Your given name is <c.Chinese>{insertVariables('[CHINESE_GIVEN_NAME]', settings)}</c.Chinese> and means <i>{insertVariables('[NAME_MEANING]', settings)}</i>. Practice!</c.P>
-          {example(3, { basic: true, audio: true })}
-          <c.PartTitle type="secondary">Practice your full Chinese name</c.PartTitle>
-          <c.P>Now, practice your full Chinese name. Remember that the family name comes first, followed by the given name:</c.P>
-          {example(4, { basic: true, audio: true })}
-          <c.P>Repeat until you can say the name exactly as the audio voice.</c.P>
-          <c.P>Practice saying <i>my name is</i> by adding <c.Chinese>我叫</c.Chinese> before your name:</c.P>
-          {example(5, { basic: true, audio: true })}
-          <c.P>Repeat this phrase until you can say it exactly like the voice on the recording.</c.P>
+          >
+            <i>Now, it’s your turn to introduce yourself. Western names can be hard to pronounce for Chinese people. Click on the <i>Me</i> icon and we will give you a Chinese name based on your real name, gender and nationality.</i>
+          </c.P>
+          <c.P
+            buttonOptions={{
+              type: 'practice',
+              data: {
+                elementId: practiceIds[2]
+              }
+            }}
+          >
+            <i>Practice your Chinese name.</i>
+          </c.P>
           <c.PartTitle name="pronunciation" />
           {pronunciationTitle()}
           <c.P>When Wang Yi presents herself, you hear four syllables. Let’s look again at how they are written in Chinese.</c.P>
@@ -156,7 +156,7 @@ export default class Content extends Component {
               }
             }}
           >
-            Practice to see if you can identify the tone on each syllable.
+            <i>Practice to see if you can identify the tone on each syllable.</i>
           </c.P>
           <c.P
             buttonOptions={{
@@ -268,12 +268,19 @@ export default class Content extends Component {
 
             }}
           >
-            Try to memorize the <b>pīnyīn</b> spelling of the four characters above, and then click on the exercise icon to see if you can spell them correctly.
+            <i>Try to memorize the <b>pīnyīn</b> spelling of the four characters above, and then click on the exercise icon to see if you can spell them correctly.</i>
           </c.P>
-          <c.P>Here is how your Chinese name is written in <b>pīnyīn</b>:</c.P>
-          <c.P><b>{insertVariables('[FAMILY_NAME_PINYIN]', settings)} {insertVariables('[GIVEN_NAME_PINYIN]', settings)}</b></c.P>
-          <c.P>Listen to the audio voice and practice reading the pīnyīn a few times:</c.P>
-          {example(4, { basic: true, audio: true })}
+          <c.P
+            buttonOptions={{
+              type: 'practice',
+              data: {
+                elementId: practiceIds[3]
+              }
+
+            }}
+          >
+            <i>Practice the <b>pīnyīn</b> of your Chinese name.</i>
+          </c.P>
           <c.PartTitle name="dialog" />
           {dialog(1, { sentenceType: 'chinese', displayNames: false })}
           <c.P>Repeat this until you feel comfortable.</c.P>

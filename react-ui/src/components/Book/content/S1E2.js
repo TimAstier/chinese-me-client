@@ -237,6 +237,16 @@ export default class Content extends Component {
           >
             <i>Practice.</i>
           </c.P>
+          <c.P
+            buttonOptions={{
+              type: 'practice',
+              data: {
+                elementId: practiceIds[2]
+              }
+            }}
+          >
+            <i>Practice introducing your own family name, given name and full name.</i>
+          </c.P>
           <c.PartTitle name="dialog" />
           {dialog(1, { sentenceType: 'chineseWithTranslation', displayNames: false })}
           <c.P>Repeat this until you feel comfortable.</c.P>

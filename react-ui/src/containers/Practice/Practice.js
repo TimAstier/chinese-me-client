@@ -18,6 +18,7 @@ class Practice extends Component {
           currentExercise={this.props.currentExercise}
           initialized={this.props.initialized}
           error={this.props.error}
+          userSettings={this.props.userSettings}
         />
       );
     }
@@ -28,13 +29,15 @@ class Practice extends Component {
 Practice.propTypes = {
   currentExercise: propTypes.object,
   initialized: propTypes.bool.isRequired,
-  error: propTypes.bool.isRequired
+  error: propTypes.bool.isRequired,
+  userSettings: propTypes.object
 };
 
 const mapStateToProps = state => ({
   currentExercise: s.practice.getCurrentExercise(state),
   initialized: s.practice.getInitialized(state),
-  error: s.practice.getError(state)
+  error: s.practice.getError(state),
+  userSettings: s.getAugmentedSettings(state)
 });
 
 export default connect(

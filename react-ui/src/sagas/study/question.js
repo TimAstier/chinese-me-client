@@ -1,7 +1,9 @@
 import { call, put, take, select } from 'redux-saga/effects';
+import { push } from 'react-router-redux';
 import { types as sagaTypes } from '../actions';
 import Api from '../../utils/api';
-// import { actions as uiActions } from '../../redux/ui';
+import { actions as uiActions } from '../../redux/ui';
+import { actions as sagaActions } from '../actions';
 import { actions as settingsActions } from '../../redux/settings';
 import { actions as questionActions } from '../../redux/question';
 import selectors from '../../rootSelectors';
@@ -66,13 +68,28 @@ export function* run() {
   let requiredUserData = yield select(selectors.getRequiredUserData);
   if (requiredUserData) {
     requiredUserData = requiredUserData.map(e => trim(e));
-    for (const setting of requiredUserData) {
-      yield call(askQuestion, setting);
+    // for (const setting of requiredUserData) {
+    //   yield call(askQuestion, setting);
+    //   yield put(questionActions.incrementCurrentIndex());
+    // }
+    for (let i = 0; i < requiredUserData.length; i++) {
+      yield call(askQuestion, requiredUserData[i]);
       yield put(questionActions.incrementCurrentIndex());
+      if (i === requiredUserData.length - 1) {
+        yield put(sagaActions.playLevelWinSound());
+      } else {
+        yield put(sagaActions.playSuccessSound());
+      }
     }
+    yield put(questionActions.setStatus('result'));
+    yield put(uiActions.set('nextButton', true));
+    return yield take(sagaTypes.NEXT);
   }
 }
 
-// export function* nextScreen() {}
+export function* nextScreen() {
+  const url = yield select(selectors.getBackUrl);
+  return yield put(push(url));
+}
 
 // export function* clean() {}

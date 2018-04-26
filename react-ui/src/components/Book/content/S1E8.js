@@ -4,7 +4,6 @@ import { Objective } from '../../../containers/Book/containers';
 import { content as contentPropTypes } from '../../../helpers/propTypes';
 import pinyinNumberToAudioUrl from '../../../utils/pinyinNumberToAudioUrl';
 import { Row } from '../../Shared';
-import insertVariables from '../../../utils/insertVariables';
 // import chineseToPinyin from '../../../utils/chineseToPinyin';
 
 export default class Content extends Component {
@@ -12,7 +11,7 @@ export default class Content extends Component {
 
   render() {
     const { newCharacters, example, lessonTitle, dialog, grammarTitle,
-      practiceIds, newWords, pronunciationTitle, settings, image } = this.props;
+      practiceIds, newWords, pronunciationTitle, image } = this.props;
 
     // This part comes between a dialog 'title' and 'intro'
     const specialIntro = () => {
@@ -23,52 +22,19 @@ export default class Content extends Component {
               type: 'askUserSettings',
               data: null
             }}
-          >Now, click on the <i>Me</i> icon and input the languages you speak to learn their names in Chinese.
+          >
+            <i>Now, click on the </i>Me<i> icon and input the languages you speak to learn their names in Chinese.</i>
           </c.P>
-          <c.P>Here are the names of your languages in Chinese. Listen to their pronunciation and repeat until you feel confident.</c.P>
-          <c.Bookrow
+          <c.P
             buttonOptions={{
-              type: 'audio',
+              type: 'practice',
               data: {
-                text: insertVariables('[MOTHER_TONGUE_ZH]', settings)
+                elementId: practiceIds[3]
               }
             }}
           >
-            <Row>
-              <c.Char>{insertVariables('[MOTHER_TONGUE_ZH]', settings)}</c.Char>
-              <c.Pinyin>{insertVariables('[MOTHER_TONGUE_PINYIN]', settings)}</c.Pinyin>
-            </Row>
-          </c.Bookrow>
-          {
-            insertVariables('[OTHER_LANGUAGE]', settings) !== '__' &&
-            insertVariables('[OTHER_LANGUAGE]', settings) !== 'N/A' &&
-              <c.Bookrow
-                buttonOptions={{
-                  type: 'audio',
-                  data: {
-                    text: insertVariables('[OTHER_LANGUAGE_ZH]', settings)
-                  }
-                }}
-              >
-                <Row>
-                  <c.Char>{insertVariables('[OTHER_LANGUAGE_ZH]', settings)}</c.Char>
-                  <c.Pinyin>{insertVariables('[OTHER_LANGUAGE_PINYIN]', settings)}</c.Pinyin>
-                </Row>
-              </c.Bookrow>
-          }
-          <c.Bookrow
-            buttonOptions={{
-              type: 'audio',
-              data: {
-                text: '中文'
-              }
-            }}
-          >
-            <Row>
-              <c.Char>中文</c.Char>
-              <c.Pinyin>zhōngwén</c.Pinyin>
-            </Row>
-          </c.Bookrow>
+            <i>Practice saying the languages you speak.</i>
+          </c.P>
         </div>
       );
     };

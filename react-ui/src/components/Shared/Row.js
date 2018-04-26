@@ -14,6 +14,8 @@ const Wrapper = styled.div`
     `${props.marginTop}px` : undefined };
   line-height: ${ props => props.lineHeight ?
     `${props.lineHeight}px` : undefined };
+  align-items: ${ props => props.alignItems ?
+    props.alignItems : 'stretch' };
 `;
 
 class Row extends Component {
@@ -24,6 +26,7 @@ class Row extends Component {
         marginTop={this.props.marginTop}
         lineHeight={this.props.lineHeight}
         noPrint={this.props.noPrint}
+        alignItems={this.props.alignItems}
       >
         {this.props.children}
       </Wrapper>
@@ -36,7 +39,8 @@ Row.propTypes = {
   marginBottom: propTypes.number,
   marginTop: propTypes.number,
   lineHeight: propTypes.number,
-  noPrint: propTypes.bool
+  noPrint: propTypes.bool,
+  alignItems: propTypes.string
 };
 
 export default Row;

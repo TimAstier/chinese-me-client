@@ -2,26 +2,10 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
 import { ScreenButton } from '../.';
-
-const Wrapper = styled.div`
-  height: 230px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-`;
-
-const QuestionWrapper = styled.div`
-  height: 67px;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  font-family: 'Open Sans';
-	font-size: 20px;
-	color: #454545;
-`;
+import LabelWrapper from './LabelWrapper';
 
 const ButtonsWrapper = styled.div`
+  min-height: 110px;
   flex-grow: 1;
   margin-top: 25px;
   margin-bottom: 32px;
@@ -35,10 +19,10 @@ const ButtonsWrapper = styled.div`
 class ClosedQuestion extends Component {
   render() {
     return (
-      <Wrapper>
-        <QuestionWrapper>
+      <div>
+        <LabelWrapper>
           {this.props.label}
-        </QuestionWrapper>
+        </LabelWrapper>
         <ButtonsWrapper>
           <ScreenButton
             text={this.props.choiceA}
@@ -51,7 +35,7 @@ class ClosedQuestion extends Component {
             data={this.props.choiceB}
           />
         </ButtonsWrapper>
-      </Wrapper>
+      </div>
     );
   }
 }

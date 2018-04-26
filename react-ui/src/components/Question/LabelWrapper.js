@@ -9,6 +9,7 @@ const LabelWrapper = styled.div`
 	font-size: 20px;
 	color: #454545;
   margin-bottom: 20px;
+  font-weight: 600;
 `;
 
 export default LabelWrapper;

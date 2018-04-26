@@ -46,7 +46,6 @@ class Book extends Component {
         images={imageNames[`S${seasonNumber}E${episodeNumber}`] || []}
         episode={this.props.episode}
         season={this.props.season}
-        settings={this.props.settings}
       />
     );
   }
@@ -59,7 +58,6 @@ Book.propTypes = {
   season: propTypes.instanceOf(models.Season),
   episode: propTypes.instanceOf(models.Episode),
   location: propTypes.object.isRequired,
-  settings: propTypes.object.isRequired,
   setInitialized: propTypes.func.isRequired,
   setScrollPosition: propTypes.func.isRequired
 };
@@ -67,8 +65,7 @@ Book.propTypes = {
 const mapStateToProps = state => ({
   initialized: s.book.getInitialized(state),
   episode: s.getCurrentEpisode(state),
-  season: s.getCurrentSeason(state),
-  settings: s.getAugmentedSettings(state)
+  season: s.getCurrentSeason(state)
 });
 
 export default connect(

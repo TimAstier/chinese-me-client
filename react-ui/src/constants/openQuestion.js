@@ -4,6 +4,9 @@ const constants = {
   },
   GIVEN_NAME: {
     label: 'What is your given name?'
+  },
+  BIRTHDATE: {
+    label: 'What is your birthdate?'
   }
 };
 

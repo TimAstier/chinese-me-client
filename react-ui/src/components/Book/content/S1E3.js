@@ -4,7 +4,6 @@ import { Objective } from '../../../containers/Book/containers';
 import { content as contentPropTypes } from '../../../helpers/propTypes';
 import pinyinNumberToAudioUrl from '../../../utils/pinyinNumberToAudioUrl';
 import { Row } from '../../Shared';
-import insertVariables from '../../../utils/insertVariables';
 import { country as OracleBone1 } from '../etymology';
 import { audioUrls } from '../../../constants/urls';
 
@@ -12,32 +11,22 @@ export default class Content extends Component {
   static propTypes = contentPropTypes
 
   render() {
-    const { newCharacters, example, lessonTitle, dialog, character, settings,
+    const { newCharacters, example, lessonTitle, dialog, character,
       practiceIds, newWords, image, grammarTitle, pronunciationTitle } = this.props;
 
     // This part comes between a dialog 'title' and 'intro'
     const specialIntro = () => {
       return (
         <div>
-          <c.P>Now, it’s your turn to tell Wang Yi and Wang Yuguo where you are from. In Chinese, <i>{insertVariables('[NATIONALITY_EN]', settings)}</i> is:</c.P>
-          <c.Bookrow
+          <c.P
             buttonOptions={{
-              type: 'audio',
+              type: 'practice',
               data: {
-                text: insertVariables('[NATIONALITY_ZH]', settings)
+                elementId: practiceIds[5]
               }
             }}
-          >
-            <Row>
-              <c.Char>{insertVariables('[NATIONALITY_ZH]', settings)}</c.Char>
-              <c.Pinyin>{insertVariables('[COUNTRY_PINYIN]', settings)}</c.Pinyin>
-            </Row>
-          </c.Bookrow>
-          <c.P>Listen to the audio voice and repeat until you feel confident saying your country name.</c.P>
-          <c.P>
-            In order to say <i>I am from {insertVariables('[NATIONALITY_EN]', settings)}</i>, just add <c.Chinese>人</c.Chinese>. Listen and repeat:
+          ><i>Practice how to say where you are from.</i>
           </c.P>
-          {example(5, { basic: true, audio: true })}
         </div>
       );
     };
@@ -72,7 +61,9 @@ export default class Content extends Component {
                 elementId: practiceIds[0]
               }
             }}
-          >Type the correct tone on <c.Chinese>是</c.Chinese> <b>shi</b>. Repeat again after the recording.</c.P>
+          >
+            <i>Type the correct tone on <c.Chinese>是</c.Chinese> <b>shi</b>. Repeat again after the recording.</i>
+          </c.P>
           <c.P>Chinese <b>r-</b> is pronounced a bit like British English <i>r</i> (not a thick American <i>r</i>). The position of your tongue and mouth should be exactly the same as when you pronounce <b>sh-</b>. The difference is that <b>r-</b> is voiced and less aspirated. <i>Voiced</i> means that the vocal cords vibrate when you pronounce the sound; hold your fingers against your Adam’s apple and you can feel the vibration. <i>Aspirated</i> means there is a strong airflow; if you hold your palm in front of your mouth, you will feel a strong stream of air as you pronounce <b>sh-</b>, but only a weak flow when you pronounce <b>r-</b>.</c.P>
           <c.Bookrow
             buttonOptions={{
@@ -93,7 +84,9 @@ export default class Content extends Component {
                 elementId: practiceIds[1]
               }
             }}
-          >Type the correct tone on 人 <b>ren</b>. Repeat again after the recording.</c.P>
+          >
+            <i>Type the correct tone on 人 <b>ren</b>. Repeat again after the recording.</i>
+          </c.P>
           <c.P><b>Zh-</b> is a <i>d-</i>sound followed by a Chinese <i>r</i>.</c.P>
           <c.Bookrow
             buttonOptions={{
@@ -115,7 +108,7 @@ export default class Content extends Component {
               }
             }}
           >
-            <c.Chinese>中</c.Chinese> means <i>middle</i>. Type the correct tone on <c.Chinese>中</c.Chinese> <b>zhong</b>. Repeat again after the recording.
+            <i><c.Chinese>中</c.Chinese> means <i>middle</i>. Type the correct tone on <c.Chinese>中</c.Chinese> <b>zhong</b>. Repeat again after the recording.</i>
           </c.P>
           {pronunciationTitle()}
           <c.P>As we have seen, after most initials, Chinese <b>i</b> is pronounced like English <i>ee</i> in <i>tree</i>:</c.P>
@@ -314,7 +307,7 @@ export default class Content extends Component {
               }
             }}
           >
-            Type the correct tones on <c.Chinese>中国人</c.Chinese> <b>zhongguoren</b>. Practice pronunciation again.
+            <i>Type the correct tones on <c.Chinese>中国人</c.Chinese> <b>zhongguoren</b>. Practice pronunciation again.</i>
           </c.P>
           <c.P>
             In fact, most words in modern Chinese are polysyllabic. But this was not always so: in classical Chinese, the ancient language spoken in China thousands of years ago, one word almost always corresponded to a single character. As the language developed, however, simple ideas were combined to more and more complex concepts by making words composed of more than one character. Each character still contributes meaning:

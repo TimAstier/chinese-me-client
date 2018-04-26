@@ -10,7 +10,7 @@ class Spinner extends Component {
 
   componentDidMount() {
     if (this.props.delay) {
-      this.displayLoader = setTimeout(() => {this.setState({ display: true });}, 350);
+      this.displayLoader = setTimeout(() => {this.setState({ display: true });}, 200);
     }
   }
 

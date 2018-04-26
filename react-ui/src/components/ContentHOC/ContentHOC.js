@@ -183,7 +183,6 @@ class ContentHOC extends Component {
         grammarTitle={this._grammarTitle(grammars)}
         pronunciationTitle={this._pronunciationTitle(pronunciations)}
         pageNumber={this._pageNumberDumper()}
-        settings={this.props.settings}
         characterIds={characters}
         practiceIds={practices.map(p => p.id)}
         image={this._image(this.props.images)}
@@ -196,7 +195,6 @@ ContentHOC.propTypes = {
   content: propTypes.func.isRequired,
   season: propTypes.instanceOf(models.Season),
   episode: propTypes.instanceOf(models.Episode),
-  settings: propTypes.object.isRequired,
   images: propTypes.array.isRequired
 };
 

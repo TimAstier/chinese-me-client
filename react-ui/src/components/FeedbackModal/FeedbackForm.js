@@ -134,10 +134,11 @@ class FeedbackForm extends Component {
           <Field name="subject" component={this.renderSelect}>
             <option />
             <option value="question">I have a question about Chinese language</option>
-            <option value="name">My Chinese name</option>
-            <option value="idea">I have a idea for ChineseMe</option>
+            <option value="name">I have a question about my Chinese name</option>
+            <option value="idea">I have an idea for ChineseMe</option>
             <option value="mistake">I think I found a mistake</option>
             <option value="bug">I found a bug</option>
+            <option value="idk">I just want to write to you and don't know what subject to choose</option>
             <option value="other">Other...</option>
           </Field>
           <Label>Message:</Label>

@@ -34,10 +34,6 @@ const FooterText = styled.div`
   color: #bfbfbf;
 `;
 
-const Link = styled.span`
-  color: #55b6ff;
-`;
-
 class EmailSentPage extends Component {
   render() {
     return (
@@ -49,7 +45,7 @@ class EmailSentPage extends Component {
           <Text>An email has been sent to you with an activation link. Please check your emails to activate your account.</Text>
         </MainMessage>
         <FooterText>
-          Haven't received any email? <Link>Contact us.</Link>
+          Haven't received any email? <a href="mailto:hello@chinese-me.com">Contact us</a>.
         </FooterText>
       </OnboardingScreen>
     );

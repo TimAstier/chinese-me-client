@@ -20,7 +20,7 @@ class Page extends Component {
               <LinkComponent><Link to="/signup"> Sign up.</Link></LinkComponent>
             </p>
           </FooterText>
-          <FooterText><LinkComponent>Forgot your password?</LinkComponent></FooterText>
+          {/* <FooterText><LinkComponent>Forgot your password?</LinkComponent></FooterText> */}
         </Footer>
       </OnboardingScreen>
     );

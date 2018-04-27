@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.1.241] 2017-04-27
+
+### Added
+- Embeded NL signup form on About page
+
+### Changed
+- Update content on About page
+
+### Fixed
+- Broken link to Episode 1 in help page
+- Missing link to contact us on MailSent
+
 ## [0.1.24] 2017-04-26
 
 ### Added

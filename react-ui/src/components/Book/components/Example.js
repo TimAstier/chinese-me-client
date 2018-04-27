@@ -99,7 +99,6 @@ class Example extends Component {
               text: this.props.chinese
             },
             top: true,
-            slow: this.props.slow,
             toggleSlow: true,
             origin: this.props.code
           }
@@ -124,8 +123,7 @@ Example.propTypes = {
   audioUrl: propTypes.string,
   slowAudioUrl: propTypes.string,
   audio: propTypes.bool.isRequired,
-  displayTranslation: propTypes.bool,
-  slow: propTypes.bool.isRequired
+  displayTranslation: propTypes.bool
 };
 
 export default Example;

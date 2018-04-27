@@ -25,7 +25,6 @@ class Example extends Component {
       <c.Example
         basic={this.props.options.basic}
         audio={this.props.options.audio}
-        slow={this.props.slow}
         code={getGrammarSentenceCode(this.props.episodeNumber, this.props.example.order)}
         chinese={insertVariables(this.props.example.chinese, this.props.settings)}
         pinyin={this.props.example.pinyin}
@@ -48,14 +47,12 @@ Example.propTypes = {
     audio: propTypes.bool,
     displayTranslation: propTypes.bool
   }),
-  episodeNumber: propTypes.number.isRequired,
-  slow: propTypes.bool.isRequired
+  episodeNumber: propTypes.number.isRequired
 };
 
 const mapStateToProps = (state, ownProps) => ({
   example: s.entities.getExamples(state).get(String(ownProps.exampleId)),
-  settings: s.getAugmentedSettings(state),
-  slow: s.audio.getSlow(state)
+  settings: s.getAugmentedSettings(state)
 });
 
 export default connect(

@@ -29,9 +29,9 @@ class ChineseName extends Component {
     return (
       <Wrapper>
         <InfoWrapper>
+          <Row alignItems="center" lineHeight={35}>Your Chinese family name is &nbsp;<c.Char>{insertVariables('[CHINESE_FAMILY_NAME]', settings)}</c.Char>.</Row>
           <Row alignItems="center" lineHeight={35}>Your Chinese given name is &nbsp;<c.Char>{insertVariables('[CHINESE_GIVEN_NAME]', settings)}</c.Char>.</Row>
           <Row lineHeight={35}>It means &nbsp;<i>{insertVariables('[NAME_MEANING]', settings)}</i>.</Row>
-          <Row alignItems="center" lineHeight={35}>Your Chinese family name is &nbsp;<c.Char>{insertVariables('[CHINESE_FAMILY_NAME]', settings)}</c.Char>.</Row>
           <Row alignItems="center" lineHeight={35}>Your full Chinese name is &nbsp;<c.Char>{insertVariables('[CHINESE_FAMILY_NAME][CHINESE_GIVEN_NAME]', settings)}</c.Char>.</Row>
         </InfoWrapper>
         <div>

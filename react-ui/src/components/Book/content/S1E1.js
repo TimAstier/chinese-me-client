@@ -19,14 +19,85 @@ export default class Content extends Component {
         <c.Page>
           {lessonTitle()}
           <c.Bookrow center>{image({ caption: 'In the West, we point at our chest when we say I; Chinese people often point at their face or even nose.'})}</c.Bookrow>
-          <c.P>This is Wang Yi. Click on the sound icon and listen carefully as she introduces herself to you. Try to repeat after her a few times.</c.P>
+          <c.P
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: `${audioUrls.examplesPath}/1_1.mp3`,
+                slowUrl: `${audioUrls.examplesPath}/1_1_slow.mp3`,
+              },
+              toggleSlow: true,
+              origin: '1:0'
+            }}
+          >
+            This is Wang Yi. Click on the sound icon and listen carefully as she introduces herself to you in Chinese. Try to repeat after her a few times.
+          </c.P>
+          <c.P>
+            This sentence means <i>My name is Wang Yi</i>. Unlike many languages, Chinese doesn't have an alphabet. Instead, the Chinese language is based on Chinese characters. Below is the same sentence written in Chinese:
+          </c.P>
           {example(1, { basic: true, audio: true })}
           <c.P>
-            This sentence means <i>My name is Wang Yi</i>. In China, the family name comes before the given name. There are only a few hundred family names, but any combination of one or two characters can be used as a given name. Names often reflect traditional gender roles: <i>Strong</i> and <i>Thunder</i> for boys; <i>Little Swallow</i> and <i>Beautiful Jade</i> for girls. Different names have been popular during different periods: in revolutionary times, some children were named New Constitution and Strong Country. Wang Yi’s family name is Wang, which means <i>king</i>, and her given name is the gender-neutral <i>One</i>.
+            In China, the family name comes before the given name. Wang Yi’s family name is Wang, which means <i>king</i>, and her given name is the gender-neutral <i>one</i>.
+          </c.P>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: pinyinNumberToAudioUrl('wang2')
+              }
+            }}
+          >
+            <Row>
+              <c.Char>王</c.Char>
+              <c.Meaning>king</c.Meaning>
+            </Row>
+          </c.Bookrow>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: pinyinNumberToAudioUrl('yi1')
+              }
+            }}
+          >
+            <Row>
+              <c.Char>一</c.Char>
+              <c.Meaning>one</c.Meaning>
+            </Row>
+          </c.Bookrow>
+          <c.P>
+            There are only a few hundred family names, but any combination of one or two characters can be used as a given name. Names often reflect traditional gender roles: <i>Strong</i> and <i>Thunder</i> for boys; <i>Little Swallow</i> and <i>Beautiful Jade</i> for girls. Different names have been popular during different periods: in revolutionary times, some children were named <i>New Constitution</i> and <i>Strong Country</i>.
           </c.P>
           <c.P>
-            English words can have different forms depending on grammatical function: in a phrase like <i>my name is Yi</i>, for example, we say <i>my</i> instead of <i>I</i> to signal “possession” of the name. Chinese words don’t change form in this way. Instead, Chinese grammar is based on word order and a small set of function words called <i>particles</i>. This is great news for language learners: when you study a language like Spanish or German, you have to deal with tenses, plurals, separate noun forms for direct and indirect objects, and many other factors that influence how each word is pronounced and written. Chinese grammar is often easier to master, because individual words never change.
+            The other two words in this sentence mean <i>I</i> and <i>to be called</i>:
           </c.P>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: pinyinNumberToAudioUrl('wo3')
+              }
+            }}
+          >
+            <Row>
+              <c.Char>我</c.Char>
+              <c.Meaning>I, me</c.Meaning>
+            </Row>
+          </c.Bookrow>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: pinyinNumberToAudioUrl('jiao4')
+              }
+            }}
+          >
+            <Row>
+              <c.Char>叫</c.Char>
+              <c.Meaning>to be called</c.Meaning>
+            </Row>
+          </c.Bookrow>
+          <c.P>Now that you can understand what Wang Yi is saying, it’s your turn to introduce yourself.</c.P>
           <c.PartTitle type="secondary">Learn your Chinese name</c.PartTitle>
           <c.P
             buttonOptions={{
@@ -34,7 +105,7 @@ export default class Content extends Component {
               data: null
             }}
           >
-            <i>Now, it’s your turn to introduce yourself. Western names can be hard to pronounce for Chinese people. Click on the <i>Me</i> icon and we will give you a Chinese name based on your real name, gender and nationality.</i>
+            <i>Western names can be hard to pronounce for Chinese people. Click on the <i>Me</i> icon and we will give you a Chinese name based on your real name, gender and nationality.</i>
           </c.P>
           <c.P
             buttonOptions={{
@@ -44,13 +115,13 @@ export default class Content extends Component {
               }
             }}
           >
-            <i>Practice your Chinese name.</i>
+            <i>Practice saying your Chinese name.</i>
           </c.P>
           <c.PartTitle name="pronunciation" />
           {pronunciationTitle()}
           <c.P>When Wang Yi presents herself, you hear four syllables. Let’s look again at how they are written in Chinese.</c.P>
-          {example(1, { basic: true, audio: false })}
-          <c.P>English, like most other languages, is written using a phonetic alphabet. When you read a word, you decipher the pronunciation and then you know which word it is. Chinese is the other way around: it is written with characters that indicate <i>meaning</i>. Each Chinese character corresponds to a spoken syllable. Listen:</c.P>
+          {example(1, { basic: true, audio: true })}
+          <c.P>English, like most other languages, is written using a phonetic alphabet. When you read a word, you decipher the pronunciation and then you know which word it is. Chinese is the other way around: it is written with characters that indicate <i>meaning</i>. Each Chinese character corresponds to a spoken syllable. Listen and repeat:</c.P>
           <c.Bookrow
             buttonOptions={{
               type: 'audio',
@@ -106,7 +177,7 @@ export default class Content extends Component {
           {pronunciationTitle()}
           <c.P>Let us practice a bit of pronunciation using the same sentence. If you listen carefully one more time, you will notice that each syllabe has a "tone". Practice pronouncing each syllable clearly, with its tone:</c.P>
           {example(1, { basic: true, audio: true })}
-          <c.P>These tones are important because there are many characters that otherwise sound exactly the same. The classical example are four words which are pronounced <b>ma</b>.</c.P>
+          <c.P>These tones are very important because there are many characters that otherwise sound exactly the same. The classical example to explain the tones are four words which are pronounced <b>ma</b>.</c.P>
           <c.P>The first of them means <i>mother</i>. It is pronounced with Tone 1, which is a long, flat tone pronounced high in the speaker’s pitch range:</c.P>
           <c.Bookrow
             buttonOptions={{
@@ -148,6 +219,7 @@ export default class Content extends Component {
           >
             {image()}
           </c.Bookrow>
+          <c.P>Not paying attention to the Chinese tones is one of the biggest mistake people can do when learning Chinese. Still, many people neglect them at the beginning. This creates problems later, because native speakers will have a hard time understanding what they say. It's better to develop a good habit early.</c.P>
           <c.P
             buttonOptions={{
               type: 'practice',
@@ -286,7 +358,11 @@ export default class Content extends Component {
           <c.P>Repeat this until you feel comfortable.</c.P>
           <c.P>Now, change roles! Pretend you are Wang Yi, and introduce yourself.</c.P>
           {dialog(1, { sentenceType: 'chinese', displayNames: false, hideHeader: true })}
-          <c.PartTitle noPrint>ORACLE BONES</c.PartTitle>
+          <c.PartTitle>GRAMMAR</c.PartTitle>
+          <c.P>
+            English words can have different forms depending on grammatical function: in a phrase like <i>my name is Yi</i>, for example, we say <i>my</i> instead of <i>I</i> to signal “possession” of the name. Chinese words don’t change form in this way. Instead, Chinese grammar is based on word order and a small set of function words called <i>particles</i>. This is great news for language learners: when you study a language like Spanish or German, you have to deal with tenses, plurals, separate noun forms for direct and indirect objects, and many other factors that influence how each word is pronounced and written. Chinese grammar is often easier to master, because individual words never change. You will start learning more about Chinese grammar in the next episode.
+          </c.P>
+          <c.PartTitle>ORACLE BONES</c.PartTitle>
           <c.PartTitle type="secondary">Origins of Chinese characters</c.PartTitle>
           <c.P>So where do Chinese characters come from? We know from archaeological finds that they were originally pictures. During the <b>Shāng</b> dynasty, more than 3,000 years ago, the oracles at the royal court used the shells of turtles and shoulder blades of oxen to tell the future.</c.P>
           <c.Bookrow center>{image()}</c.Bookrow>

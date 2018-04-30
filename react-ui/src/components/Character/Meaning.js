@@ -3,7 +3,6 @@ import propTypes from 'prop-types';
 import styled from 'styled-components';
 
 class Meaning extends Component {
-
   render() {
     const Wrapper = styled.div`
       margin-top: 15px;
@@ -11,6 +10,7 @@ class Meaning extends Component {
       font-size: 25px;
       font-style: italic;
       color: #454545;
+      margin-bottom: 30px;
     `;
     return (
       <Wrapper>{this.props.text}</Wrapper>

@@ -5,9 +5,17 @@ import { getTitleLetter } from '../../utils/bookContent';
 import * as models from '../../models';
 import styled from 'styled-components';
 import Img from '../Shared/Img';
+import { ScreenButton } from '../.';
 
 const Placeholder = styled.p`
   color: red;
+`;
+
+const ButtonWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 45px;
 `;
 
 class ContentHOC extends Component {
@@ -173,20 +181,33 @@ class ContentHOC extends Component {
       pronunciations } = this.props.episode;
     const Content = this.props.content;
     return (
-      <Content
-        lessonTitle={this._lessonTitle.bind(this)}
-        character={this._character(characters)}
-        example={this._example(examples)}
-        dialog={this._dialog(dialogs)}
-        newCharacters={this._newCharactersDumper(characters)}
-        newWords={this._newWordsDumper(words)}
-        grammarTitle={this._grammarTitle(grammars)}
-        pronunciationTitle={this._pronunciationTitle(pronunciations)}
-        pageNumber={this._pageNumberDumper()}
-        characterIds={characters}
-        practiceIds={practices.map(p => p.id)}
-        image={this._image(this.props.images)}
-      />
+      <div>
+        <Content
+          lessonTitle={this._lessonTitle.bind(this)}
+          character={this._character(characters)}
+          example={this._example(examples)}
+          dialog={this._dialog(dialogs)}
+          newCharacters={this._newCharactersDumper(characters)}
+          newWords={this._newWordsDumper(words)}
+          grammarTitle={this._grammarTitle(grammars)}
+          pronunciationTitle={this._pronunciationTitle(pronunciations)}
+          pageNumber={this._pageNumberDumper()}
+          characterIds={characters}
+          practiceIds={practices.map(p => p.id)}
+          image={this._image(this.props.images)}
+        />
+        { this.props.nextEpisode &&
+          <ButtonWrapper>
+            <a href={`/study/season/${this.props.season.number}/episode/${this.props.nextEpisode.number}`}>
+              <ScreenButton
+                primary
+                text="Next episode"
+                width={150}
+              />
+            </a>
+          </ButtonWrapper>
+        }
+      </div>
     );
   }
 }
@@ -195,6 +216,7 @@ ContentHOC.propTypes = {
   content: propTypes.func.isRequired,
   season: propTypes.instanceOf(models.Season),
   episode: propTypes.instanceOf(models.Episode),
+  nextEpisode: propTypes.instanceOf(models.Episode),
   images: propTypes.array.isRequired
 };
 

@@ -33,6 +33,7 @@ class Book extends Component {
             <ContentHOC
               season={this.props.season}
               episode={this.props.episode}
+              nextEpisode={this.props.nextEpisode}
               content={Content}
               images={this.props.images}
             />
@@ -49,6 +50,7 @@ Book.propTypes = {
   initialized: propTypes.bool.isRequired,
   season: propTypes.instanceOf(models.Season),
   episode: propTypes.instanceOf(models.Episode),
+  nextEpisode: propTypes.instanceOf(models.Episode),
   images: propTypes.array
 };
 

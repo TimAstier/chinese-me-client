@@ -35,6 +35,7 @@ export { default as getIsChosenAvatarTalking } from './getIsChosenAvatarTalking'
 export { default as getMapCharactersCompletedCount } from './getMapCharactersCompletedCount';
 export { default as getMapDialogsCompletedCount } from './getMapDialogsCompletedCount';
 export { default as getMapGrammarsCompletedCount } from './getMapGrammarsCompletedCount';
+export { default as getNextEpisode } from './getNextEpisode';
 export { default as getNextSentenceId } from './getNextSentenceId';
 export { default as getNextStatementId } from './getNextStatementId';
 export { default as getPracticeNavParams } from './getPracticeNavParams';

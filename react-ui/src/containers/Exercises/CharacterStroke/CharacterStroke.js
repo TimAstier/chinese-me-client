@@ -17,7 +17,7 @@ class CharacterStroke extends Component {
 
 CharacterStroke.propTypes = {
   character: propTypes.instanceOf(Character).isRequired,
-  timerStatus: propTypes.string.isRequired,
+  examInitialized: propTypes.bool.isRequired,
   hideLabel: propTypes.bool,
   strokeQuizCompleted: propTypes.func.isRequired,
   watchAgain: propTypes.bool.isRequired,
@@ -28,7 +28,7 @@ CharacterStroke.propTypes = {
 
 const mapStateToProps = state => ({
   character: s.getCurrentCharacter(state),
-  timerStatus: s.timer.getStatus(state),
+  examInitialized: s.exam.getInitialized(state),
   watchAgain: s.hanzi.getWatchAgain(state),
   screenType: s.routing.getCurrentScreenType(state),
   status: s.exercise.getStatus(state)

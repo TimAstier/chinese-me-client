@@ -36,7 +36,7 @@ const IconWrapper = styled.div`
 class CharacterStroke extends Component {
   onQuizComplete() {
     this.props.strokeQuizCompleted();
-    if (this.props.timerStatus === 'running') {
+    if (this.props.examInitialized) {
       return null;
     }
     return this.props.setStatus('finished');
@@ -78,7 +78,7 @@ class CharacterStroke extends Component {
 CharacterStroke.propTypes = {
   character: propTypes.instanceOf(Character).isRequired,
   strokeQuizCompleted: propTypes.func.isRequired,
-  timerStatus: propTypes.string.isRequired,
+  examInitialized: propTypes.bool.isRequired,
   hideLabel: propTypes.bool,
   watchAgain: propTypes.bool.isRequired,
   screenType: propTypes.string.isRequired,

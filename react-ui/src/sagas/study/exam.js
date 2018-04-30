@@ -6,7 +6,6 @@ import { actions as examActions } from '../../redux/exam';
 import { actions as sagaActions, types as sagaTypes } from '../actions';
 import { actions as studyActions } from '../../redux/study';
 import getStudyFunctions from '../../helpers/getStudyFunctions';
-import { actions as timerActions, types as timerTypes } from '../../redux/timer';
 import { push } from 'react-router-redux';
 import unsavedExerciseTypes from '../../constants/unsavedExerciseTypes';
 
@@ -44,7 +43,6 @@ export function* initUi() {}
 export function* initStudyData() {
   yield put(examActions.setInitialized(false));
   yield put(examActions.setCompleted(false));
-  yield put(timerActions.reset());
 }
 
 function* defaultExamUi() {
@@ -82,10 +80,6 @@ function* runExam() {
       result: call(funcs.run, true, type),
       exit: take(sagaTypes.EXIT)
     });
-    // Stop timer at end of last exercise
-    if (i === exercises.size - 1) {
-      yield put(timerActions.stop());
-    }
     if (runExercise.hasOwnProperty('result')) {
       // Important: initialized needs to be set to false to avoid
       // rendering the next exercise too early, before initializing the data
@@ -108,11 +102,7 @@ function* runExam() {
 }
 
 export function* run() {
-  yield put(timerActions.start());
-  yield race({
-    runExam: call(runExam),
-    outOfTime: take(timerTypes.OUT_OF_TIME)
-  });
+  yield call(runExam);
   yield put(examActions.setCompleted(true));
 }
 
@@ -123,7 +113,6 @@ export function* nextScreen() {
 
 export function* clean(isCancelled) {
   if (isCancelled) {
-    yield put(timerActions.stop());
     yield put(examActions.clean());
   }
 }

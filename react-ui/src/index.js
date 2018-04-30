@@ -77,5 +77,5 @@ render(
       <Redirect from="/" to="/study" />
       {routes}
     </Router>
-    </Provider>, document.getElementById('app')
+  </Provider>, document.getElementById('app')
 );

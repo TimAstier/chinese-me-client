@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
 import { ExamScoreLabel, ExamProgressbar, Star } from '../.';
-import { CircleTimer } from '../../containers';
 import mapTypeToContainers from '../../helpers/mapTypeToContainers';
 import { MINIMUM_SCORE_TO_PASS, TWO_STARS_THRESHOLD, THREE_STARS_THRESHOLD }
   from '../../constants/exam';
@@ -54,6 +53,7 @@ const ProgressbarWrapper = styled.div`
 `;
 
 const InnerWrapper = styled.div`
+  margin-top: 40px;
   max-height: 500px;
 `;
 
@@ -83,7 +83,6 @@ class Exam extends Component {
           </ProgressbarWrapper>
         </LeftWrapper>
         <MiddleWrapper>
-          <CircleTimer />
           <InnerWrapper>
             {this.props.initialized && <Container hideLabel />}
           </InnerWrapper>

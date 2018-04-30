@@ -13,7 +13,7 @@ class Exam extends Component {
           type: 'exam',
           data: null
         }}>
-          <i>Work against the clock to maximize your final grade!</i>
+          <i>Finish the exam for this episode and try to maximize your final grade!</i>
         </c.P>
       </div>
     );

@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.1.242] 2017-04-30
+
+### Added
+- 404 page
+- Next episode button
+
+### Changed
+- Removed clock in Exam
+
+### Fixed
+- Fix characterPinyin UI in Exam
+
 ## [0.1.241] 2017-04-27
 
 ### Added

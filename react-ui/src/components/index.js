@@ -49,6 +49,7 @@ export { default as MapSidebar } from './MapModal/MapSidebar';
 export { default as Modal } from './Modal/Modal';
 export { default as ModeButton } from './Dialog/ModeButton';
 export { default as MultipleChoice } from './Exercises/MultipleChoice/MultipleChoice';
+export { default as My404Component } from './My404Component/My404Component';
 export { default as Navbar } from './Navbar/Navbar';
 export { default as UserPopup } from './Navbar/UserPopup';
 export { default as NewWordLink } from './NewWordLink/NewWordLink';

@@ -63,10 +63,12 @@ export const actions = {
 
 const getCurrentUserId = state => state.getIn(['user', 'id']);
 const getCurrentUserEmail = state => state.getIn(['user', 'email']);
+const getCurrentUserCreatedAt = state => state.getIn(['user', 'createdAt']);
 const getIsAuthenticated = state => state.get('isAuthenticated');
 
 export const selectors = {
   getCurrentUserId,
   getCurrentUserEmail,
-  getIsAuthenticated
+  getIsAuthenticated,
+  getCurrentUserCreatedAt
 };

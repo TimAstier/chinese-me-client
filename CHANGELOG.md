@@ -4,7 +4,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [0.1.242] 2017-04-30
+## [0.1.251] 2017-05XX
+
+### Added
+- Free coupon system
+
+### Fixed
+- Cleaner log out
+
+## [0.1.25] 2017-04-30
 
 ### Added
 - 404 page

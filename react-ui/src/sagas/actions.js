@@ -55,7 +55,9 @@ export const types = {
   INIT_BOOK: 'signal/INIT_BOOK',
   ASK_USER_SETTINGS: 'signal/ASK_USER_SETTINGS',
   SAVE_ANSWER: 'signal/SAVE_ANSWER',
-  CLICKED_BOOK_BUTTON: 'signal/CLICKED_BOOK_BUTTON'
+  CLICKED_BOOK_BUTTON: 'signal/CLICKED_BOOK_BUTTON',
+  ACTIVATE_GIFT_CODE: 'signal/ACTIVATE_GIFT_CODE',
+  UNLOCK_SEASON: 'signal/UNLOCK_SEASON'
 };
 
 // Action Creators
@@ -276,6 +278,18 @@ const clickedBookButton = properties => ({
   }
 });
 
+const activateGiftCode = payload => ({
+  type: types.ACTIVATE_GIFT_CODE,
+  payload
+});
+
+const unlockSeason = seasonId => ({
+  type: types.UNLOCK_SEASON,
+  payload: {
+    seasonId
+  }
+});
+
 export const actions = {
   next,
   nextSentence,
@@ -325,5 +339,7 @@ export const actions = {
   initBook,
   askUserSettings,
   saveAnswer,
-  clickedBookButton
+  clickedBookButton,
+  activateGiftCode,
+  unlockSeason
 };

@@ -8,6 +8,7 @@ import { push } from 'react-router-redux';
 import { SubmissionError } from 'redux-form/immutable';
 import serverErrors from '../constants/serverErrors';
 import { actions as settingsActions } from '../redux/settings';
+import { actions as sagaActions } from './actions';
 
 function* login(token) {
   localStorage.setItem('jwtToken', token);
@@ -20,6 +21,7 @@ function* logout() {
   setAuthorizationToken(false);
   yield put(authActions.setCurrentUser({}));
   yield put(settingsActions.clear());
+  yield put(sagaActions.reloadApp());
   yield put(push('/'));
 }
 

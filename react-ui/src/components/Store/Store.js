@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
 import Immutable from 'immutable';
-import { StoreItem, ScrollableWrapper } from '../.';
+import { StoreItem, ScrollableWrapper, Spinner } from '../.';
 
 const Header = styled.div`
-  
   margin-top: 30px;
   max-width: 870px;
   margin-left: auto;
@@ -37,6 +36,12 @@ const BookItemsWrapper = styled.div`
   margin-bottom: 50px;
 `;
 
+const SpinnerWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`;
+
 class Store extends Component {
   _renderBookItems() {
     if (this.props.seasons.size === 0) {
@@ -54,6 +59,8 @@ class Store extends Component {
           purchaseDate={s.purchaseDate}
           available={s.available}
           seasonId={s.id}
+          giftCode={this.props.giftCode}
+          unlockSeason={this.props.unlockSeason}
         />
       );
     });
@@ -61,6 +68,13 @@ class Store extends Component {
   }
 
   render() {
+    if (!this.props.initialized) {
+      return (
+        <SpinnerWrapper>
+          <Spinner />
+        </SpinnerWrapper>
+      );
+    }
     return (
       <ScrollableWrapper>
         <Header>
@@ -75,7 +89,10 @@ class Store extends Component {
 
 Store.propTypes = {
   userEmail: propTypes.string.isRequired,
-  seasons: propTypes.instanceOf(Immutable.OrderedMap).isRequired
+  seasons: propTypes.instanceOf(Immutable.OrderedMap).isRequired,
+  initialized: propTypes.bool.isRequired,
+  giftCode: propTypes.bool,
+  unlockSeason: propTypes.func.isRequired
 };
 
 export default Store;

@@ -54,6 +54,7 @@ export function* initApp() {
 }
 
 // Called after a practice or exam to update episode score
+// Called after logout
 export function* reloadApp() {
   while (true) { // eslint-disable-line no-constant-condition
     yield take(sagaTypes.RELOAD_APP);

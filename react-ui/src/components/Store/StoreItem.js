@@ -49,13 +49,21 @@ const Details = styled.div`
   div {
     display: flex;
     justify-content: space-between;
-    max-width: 200px;
+    max-width: 230px;
   }
+`;
+
+const Free = styled.span`
+  margin-left: 10px;
+  margin-top: 3px;
+  color: #55b6ff;
+  font-size: 16px;
 `;
 
 const Price = styled.span`
   margin-left: 10px;
   margin-top: 3px;
+  text-decoration: ${ props => props.giftCode ? 'line-through' : 'none' };
 `;
 
 const Owned = styled.span`
@@ -102,6 +110,19 @@ class StoreItem extends Component {
     );
   }
 
+  _renderUnlockButton() {
+    return (
+      <ScreenButton
+        primary
+        text="Unlock"
+        fontSize={14}
+        height={25}
+        onClick={() => this.props.unlockSeason(this.props.seasonId)}
+        width={75}
+      />
+    );
+  }
+
   _renderPurchaseButton() {
     return (
       <TakeMoney
@@ -140,8 +161,11 @@ class StoreItem extends Component {
       return (
         <div>
           { this._renderLink() }
-          { this._renderPurchaseButton() }
-          <Price>${this.props.price}</Price>
+          { this.props.giftCode ? this._renderUnlockButton() : this._renderPurchaseButton() }
+          { this.props.giftCode && <Free>$0</Free> }
+          <Price giftCode={this.props.giftCode}>
+            {`$${this.props.price}`}
+          </Price>
         </div>
       );
     }
@@ -177,7 +201,9 @@ StoreItem.propTypes = {
   purchased: propTypes.bool.isRequired,
   available: propTypes.bool,
   seasonId: propTypes.number.isRequired,
-  purchaseDate: propTypes.string
+  purchaseDate: propTypes.string,
+  giftCode: propTypes.bool,
+  unlockSeason: propTypes.func.isRequired
 };
 
 export default StoreItem;

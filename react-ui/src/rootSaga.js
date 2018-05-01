@@ -15,6 +15,8 @@ import runTimer from './sagas/timer';
 import watchBookSagas from './sagas/book';
 // import watchUserSettingsSagas from './sagas/userSettings';
 import { watchSaveAnswer } from './sagas/answers';
+import watchCodesSagas from './sagas/codes';
+import watchStoreSagas from './sagas/store';
 
 export default function* rootSaga() {
   yield all([
@@ -33,6 +35,8 @@ export default function* rootSaga() {
     runTimer(),
     watchBookSagas(),
     // watchUserSettingsSagas(),
-    watchSaveAnswer()
+    watchSaveAnswer(),
+    watchCodesSagas(),
+    watchStoreSagas()
   ]);
 }

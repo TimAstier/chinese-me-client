@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { Popup } from 'semantic-ui-react';
 import userIcon from '../../images/defaultMaleUserIcon.svg';
 import logoutIcon from '../../images/logoutIcon.svg';
-// import accountIcon from '../../images/iconSetting.svg';
+import accountIcon from '../../images/iconSetting.svg';
 import booksIcon from '../../images/books.png';
 import { Link } from 'react-router';
 
@@ -53,14 +53,14 @@ class UserPopup extends Component {
         hoverable
       >
         <Menu>
-          {/* <Link to={'/study/account'}>
+          <Link to={'/study/account'}>
             <Item>
               <IconWrapper>
                 <img src={accountIcon} alt=""/>
               </IconWrapper>
               <Label>Account</Label>
             </Item>
-          </Link> */}
+          </Link>
           <Link to={'/study/store'}>
             <Item>
               <IconWrapper>

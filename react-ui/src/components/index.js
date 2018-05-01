@@ -36,6 +36,7 @@ export { default as ExamScoreLabel } from './Exam/ExamScoreLabel';
 export { default as FeedbackModal } from './FeedbackModal/FeedbackModal';
 export { default as FreeInput } from './Exercises/FreeInput/FreeInput';
 export { default as Footer } from './Footer/Footer';
+export { default as GiftCodeForm } from './Account/GiftCodeForm';
 export { default as Hanzi } from './Hanzi/Hanzi';
 export { default as HanziAgainButton } from './HanziAgainButton/HanziAgainButton';
 export { default as Help } from './StaticPages/Help';

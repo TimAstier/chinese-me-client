@@ -138,7 +138,6 @@ export default class Content extends Component {
           >
             <i>Practice.</i>
           </c.P>
-          <c.Bookrow center marginTop={30}>{image({ maxWidth: 550, caption: 'ADD SOME TEXT.'})}</c.Bookrow>
           <c.PartTitle name="dialog_zh" />
           {dialog(1, { sentenceType: 'chinese', displayNames: true })}
           {dialog(1, { sentenceType: 'translation', displayNames: true })}

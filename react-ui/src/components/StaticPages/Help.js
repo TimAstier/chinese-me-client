@@ -49,7 +49,7 @@ class Help extends Component {
             <c.P>Learning Chinese is a wonderful adventure. Our mission is to provide you with a great learning experience: the perfect course, with a reliable teacher always at your side.</c.P>
             <c.P>The course is designed to gradually introduce new piece of knowledge. But in the end, it's up to you to decide on what to study and in which order.</c.P>
             <c.P><Row><TextBlock>You can click on the ChineseMe logo to see the <b><i>Season</i></b> you're currently studying and all available <b><i>Episodes.</i></b></TextBlock><div><img src={assetEndpointToUrl('/images/black_logo.png')} alt="chineseMe logo"/></div></Row></c.P>
-            <c.P><Row><TextBlock>You can navigate through the course via the Table of Contents. <i>Completed content and exercises are shown as checked</i>.</TextBlock><div><img src={assetEndpointToUrl('/images/toc.png')} alt="table of contents icon"/></div></Row></c.P>
+            <c.P><Row><TextBlock>You can navigate through the course via the Table of Contents.</TextBlock><div><img src={assetEndpointToUrl('/images/toc.png')} alt="table of contents icon"/></div></Row></c.P>
             <c.P><Row><TextBlock>If you have questions, comments or suggestions, we would love to hear from you! Send your <b><i>Message</i></b> via the message button.</TextBlock><div><img src={messageIcon} alt="message icon" width="40px"/></div></Row></c.P>
             <c.P>As you go along in the course, you can:</c.P>
             <c.P

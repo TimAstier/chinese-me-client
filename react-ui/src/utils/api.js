@@ -11,6 +11,10 @@ const post = (endpoint, data) => {
   return axios.post(API_BASE_URL + endpoint, data);
 };
 
-const Api = { get, post };
+const put = (endpoint, data) => {
+  return axios.put(API_BASE_URL + endpoint, data);
+};
+
+const Api = { get, post, put };
 
 export default Api;

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import iconFb from '../../images/iconFb.svg';
 import iconTwitter from '../../images/iconTwitter.svg';
 import iconMedium from '../../images/iconMedium.svg';
+import { Link } from 'react-router';
 
 const Wrapper = styled.footer`
   width: 100%;
@@ -65,21 +66,13 @@ class Footer extends Component {
           © 2018 ChineseMe AB All Rights Reserved.
         </CopyrightWrapper>
         <LinksWrapper>
-          <a href="/study/about">
-            About
-          </a>
+          <Link to="/study/about">About</Link>
           {/* <a>FAQ</a>
           <a>Jobs</a> */}
           {/* <a>Contact us</a> */}
-          <a href="/study/philosophy">
-            Our Philosophy
-          </a>
-          <a href="/study/terms-of-service">
-            Terms
-          </a>
-          <a href="/study/privacy-policy">
-            Privacy
-          </a>
+          <Link to="/study/philosophy">Our Philosophy</Link>
+          <Link to="/study/terms-of-service">Terms</Link>
+          <Link to="/study/privacy-policy">Privacy</Link>
           <SocialMediaLinks>
             <a
               href="https://www.facebook.com/learnChinese.chinese.me"

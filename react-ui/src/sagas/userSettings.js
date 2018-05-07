@@ -7,6 +7,7 @@ export function* loadSettings() {
     const savedSettings = yield call(Api.get, '/users/settings');
     // we don't pass a userId because we dont need to identify
     yield put(settingsActions.set(null, savedSettings.data));
+    return savedSettings.data;
   } catch (error) {
   // TODO: handle errors
   }

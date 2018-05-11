@@ -29,7 +29,7 @@ export function* initApp() {
     // TODO: Clean this
     // Workaround for book urls and static pages
     if (episodeId && episodeId !== 'season') {
-      if (['help', 'privacy-policy', 'terms-of-service', 'about', 'philosophy', 'account', 'store'].indexOf(episodeId ) === -1) {
+      if (['help', 'privacy-policy', 'terms-of-service', 'about', 'philosophy', 'account', 'store', 'activated'].indexOf(episodeId ) === -1) {
         yield put(studyActions.setCurrentEpisodeId(episodeId));
         yield put(mapActions.setFocusedEpisodeId(episodeId));
       }

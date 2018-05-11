@@ -11,7 +11,8 @@ import { syncHistoryWithStore, routerMiddleware } from 'react-router-redux';
 import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 import { Map } from 'immutable';
 import { createTracker } from 'redux-segment';
-// import pathnameToPageNameMapper from './constants/pathnameToPageNameMapper';
+import Raven from 'raven-js';
+import createRavenMiddleware from 'raven-for-redux';
 
 import rootReducer from './rootReducer';
 import setAuthorizationToken from './utils/setAuthorizationToken';
@@ -30,6 +31,9 @@ const initialState = Map();
 // };
 // const tracker = createTracker(customMapper);
 
+Raven.config(process.env.REACT_APP_SENTRY_DSN, {
+  environment: process.env.NODE_ENV
+}).install();
 const tracker = createTracker(); // Create redux-segment tracker
 
 const sagaMiddleware = createSagaMiddleware();
@@ -39,8 +43,12 @@ const store = createStore(
   composeWithDevTools(
     // Note: Make sure to include the tracker after thunk or promise middleware
     // so that it sees actual actions.
-    applyMiddleware(sagaMiddleware, tracker),
-    applyMiddleware(routerMiddleware(browserHistory))
+    applyMiddleware(
+      createRavenMiddleware(Raven),
+      sagaMiddleware,
+      tracker,
+      routerMiddleware(browserHistory)
+    )
   )
 );
 

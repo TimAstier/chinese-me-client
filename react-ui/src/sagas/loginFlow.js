@@ -9,11 +9,16 @@ import { SubmissionError } from 'redux-form/immutable';
 import serverErrors from '../constants/serverErrors';
 import { actions as settingsActions } from '../redux/settings';
 import { actions as sagaActions } from './actions';
+import { loadSettings } from './userSettings';
+import trackRef from './trackRef';
 
 function* login(token) {
   localStorage.setItem('jwtToken', token);
   setAuthorizationToken(token);
   yield put(authActions.setCurrentUser(jwtDecode(token), true));
+  yield put(sagaActions.reloadApp());
+  const settings = yield call(loadSettings);
+  yield call(trackRef, true, settings);
 }
 
 function* logout() {

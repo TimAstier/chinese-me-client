@@ -9,7 +9,7 @@ import { loadSettings } from './userSettings';
 import getParamsFromUrl from '../utils/getParamsFromUrl';
 import { detect } from 'detect-browser';
 import swal from 'sweetalert';
-import handleAffiliate from './handleAffiliate';
+import trackRef from './trackRef';
 
 // This is called only one time, when Study containers mounts
 export function* initApp() {
@@ -37,7 +37,7 @@ export function* initApp() {
     yield put(appActions.setInitialized(true));
     if (isAuthenticated) {
       const settings = yield call(loadSettings);
-      yield call(handleAffiliate, isAuthenticated, settings);
+      yield call(trackRef, isAuthenticated, settings);
     }
     // browser disclaimer for people not using Chrome
     if (browser && localStorage.getItem('browserNotice') !== 'false') {

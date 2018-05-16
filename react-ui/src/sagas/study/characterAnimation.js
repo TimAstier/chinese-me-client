@@ -14,7 +14,7 @@ import randomID from '../../utils/randomID';
 export function* isDataLoaded(id) {
   yield put(studyActions.setCurrentCharacterId(id));
   const currentElement = yield select(selectors.getCurrentCharacter);
-  return (currentElement === undefined) ? false : true;
+  return (currentElement === undefined || !currentElement.hanziData) ? false : true;
 }
 
 export function* fetchData(episodeId) {
@@ -23,9 +23,6 @@ export function* fetchData(episodeId) {
 }
 
 export function checkData() {
-  // NOTE: we currently fetch hanziData from an online api
-  // const currentElement = yield select(selectors.getCurrentCharacter);
-  // return currentElement.hanziData ? true : false;
   return true;
 }
 

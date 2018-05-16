@@ -16,6 +16,7 @@ class Hanzi extends Component {
 
 Hanzi.propTypes = {
   char: propTypes.string.isRequired,
+  hanziData: propTypes.object.isRequired,
   mode: propTypes.oneOf(['static', 'animation', 'quiz']).isRequired,
   strokeAnimationFinished: propTypes.func.isRequired,
   onQuizComplete: propTypes.func,

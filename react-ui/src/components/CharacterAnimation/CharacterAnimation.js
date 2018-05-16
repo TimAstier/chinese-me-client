@@ -6,6 +6,7 @@ import Meaning from '../Character/Meaning';
 import Pinyin from '../Character/Pinyin';
 import pinyinize from 'pinyinize';
 import { Hanzi } from '../../containers';
+import { ErrorBoundary } from '../Shared';
 
 const Wrapper = styled.div`
   display: flex;
@@ -30,11 +31,14 @@ class CharacterAnimation extends Component {
     return (
       <Wrapper>
         <LabelWrapper>Watch:</LabelWrapper>
-        <Hanzi
-          char={this.props.character.simpChar}
-          mode="animation"
-          animationId={this.props.animationId}
-        />
+        <ErrorBoundary>
+          <Hanzi
+            char={this.props.character.simpChar}
+            hanziData={this.props.character.hanziData}
+            mode="animation"
+            animationId={this.props.animationId}
+          />
+        </ErrorBoundary>
         <Pinyin text={pinyinize(this.props.character.pinyinNumber)} />
         <Meaning text={this.props.character.meaning} />
       </Wrapper>

@@ -31,7 +31,9 @@ const initialState = Map();
 // };
 // const tracker = createTracker(customMapper);
 
-Raven.config(process.env.REACT_APP_SENTRY_DSN, {
+// Raven (Sentry) is only configured for production
+Raven.config(process.env.NODE_ENV === 'production' ? process.env.REACT_APP_SENTRY_DSN : null, {
+// Raven.config(process.env.REACT_APP_SENTRY_DSN, {
   environment: process.env.NODE_ENV
 }).install();
 const tracker = createTracker(); // Create redux-segment tracker

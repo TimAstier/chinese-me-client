@@ -35,6 +35,9 @@ const Wrapper = styled.div`
   	top: 0;
   	left: 0;
   }
+  div > div {
+    font-size: 20px;
+  }
 `;
 
 class Hanzi extends Component {
@@ -44,16 +47,7 @@ class Hanzi extends Component {
   */
   componentDidMount() {
     this.targetDiv = this.refs.targetDiv;
-    this.writer = new HanziWriter(this.targetDiv, this.props.char, { // eslint-disable-line
-      width: hanziWriterConfig.width,
-      height: hanziWriterConfig.height,
-      strokeAnimationDuration: 800,
-      strokeHighlightDuration: 200,
-      delayBetweenStrokes: 300,
-      showHintAfterMisses: 1,
-      showCharacter: this.props.mode === 'static',
-      showOutline: this.props.mode === 'animation'
-    });
+    this.configureWriter(this.props.char, this.props.hanziData);
     switch (this.props.mode) {
       case 'animation': return this.animateCharacter();
       case 'quiz': return this.quiz();
@@ -65,7 +59,8 @@ class Hanzi extends Component {
     // Happens when two characterStroke exercises follow one-another
     // and click on "continue" (not hit enter) for some unkown reasons
     if (this.props.char !== nextProps.char) {
-      this.writer.setCharacter(nextProps.char);
+      this.writer.hideCharacter();
+      this.configureWriter(nextProps.char, nextProps.hanziData);
       return this.quiz();
     }
     // Happens when clicking watchAgain button in CharacterStrokeQuiz
@@ -86,6 +81,23 @@ class Hanzi extends Component {
     return false;
   }
 
+  configureWriter(char, hanziData) {
+    if (!hanziData) {
+      throw new Error(`Missing hanziData for ${this.props.char}`);
+    }
+    this.writer = new HanziWriter(this.targetDiv, char, { // eslint-disable-line
+      charDataLoader: () => hanziData,
+      width: hanziWriterConfig.width,
+      height: hanziWriterConfig.height,
+      strokeAnimationDuration: 800,
+      strokeHighlightDuration: 200,
+      delayBetweenStrokes: 300,
+      showHintAfterMisses: 1,
+      showCharacter: this.props.mode === 'static',
+      showOutline: this.props.mode === 'animation'
+    });
+  }
+
   animateCharacter() {
     this.writer.animateCharacter({
       onComplete: () => {
@@ -103,7 +115,7 @@ class Hanzi extends Component {
   render() {
     return (
       <Wrapper>
-        <div ref="targetDiv" />
+        <div ref="targetDiv"/>
       </Wrapper>
     );
   }
@@ -111,6 +123,7 @@ class Hanzi extends Component {
 
 Hanzi.propTypes = {
   char: propTypes.string.isRequired,
+  hanziData: propTypes.object.isRequired,
   mode: propTypes.oneOf(['static', 'animation', 'quiz']).isRequired,
   strokeAnimationFinished: propTypes.func.isRequired,
   onQuizComplete: propTypes.func,

@@ -7,6 +7,7 @@ import { Hanzi } from '../../../containers';
 import Meaning from '../../Character/Meaning';
 import Pinyin from '../../Character/Pinyin';
 import pinyinize from 'pinyinize';
+import { ErrorBoundary } from '../../Shared';
 
 const Wrapper = styled.div`
   display: flex;
@@ -60,11 +61,14 @@ class CharacterStroke extends Component {
             {this._label()}
           </LabelWrapper>
         }
-        <Hanzi
-          char={this.props.character.simpChar}
-          mode="quiz"
-          onQuizComplete={this.onQuizComplete.bind(this)}
-        />
+        <ErrorBoundary>
+          <Hanzi
+            char={this.props.character.simpChar}
+            hanziData={this.props.character.hanziData}
+            mode="quiz"
+            onQuizComplete={this.onQuizComplete.bind(this)}
+          />
+        </ErrorBoundary>
         <Pinyin text={pinyinize(this.props.character.pinyinNumber)} />
         <Meaning text={this.props.character.meaning} />
         <IconWrapper hideCheck={this.props.status !== 'finished'}>

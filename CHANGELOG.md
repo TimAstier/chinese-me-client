@@ -4,7 +4,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [0.1.251] 2017-05XX
+## [0.1.26] 2017-05-16
+
+### Added
+- Error report (in production only) with Sentry
+
+### Changed
+- hanziData loaded from our server
+
+## [0.1.251] 2017-05-07
 
 ### Added
 - Free coupon system

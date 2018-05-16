@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Error report (in production only) with Sentry
 
 ### Changed
+- increase size of image captions
 - hanziData loaded from our server
 
 ## [0.1.251] 2017-05-07

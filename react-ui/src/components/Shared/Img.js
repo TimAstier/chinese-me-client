@@ -13,7 +13,8 @@ const Figcaption = styled.figcaption`
   text-align: center;
   font-style: italic;
   color: rgba(0,0,0,.68);
-  font-size: 16px;
+  font-size: 18px;
+  line-height: 1.3;
   font-weight: 400;
   margin-top: 10px;
   font-family: "Lucida Grande","Lucida Sans Unicode","Lucida Sans", Geneva, Arial, sans-serif;

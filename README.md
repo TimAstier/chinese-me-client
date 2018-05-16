@@ -72,3 +72,9 @@ https://aws.amazon.com/getting-started/tutorials/deliver-content-faster/
 - development - http://localhost:3000
 - staging - https://floating-dusk-88295.herokuapp.com
 - production - https://chinese-me.herokuapp.com
+
+## Printing new PDF
+- updated the PDF version constant
+- for every episode (in production) go in Chrome > dev console >tools > rendering and set Emulate css media to "print"
+- select all (cmd+A), right click on the selection and click print...
+- save as PDF (advanced settings, scale should be 70%)

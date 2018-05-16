@@ -4,6 +4,10 @@ import { PracticeResult } from '../.';
 import mapTypeToContainers from '../../helpers/mapTypeToContainers';
 
 class Practice extends Component {
+  componentWillUnmount() {
+    return this.props.init();
+  }
+
   render() {
     // Display an error if there was no exercise linked to this practice
     if (this.props.error) {
@@ -24,7 +28,8 @@ Practice.propTypes = {
   initialized: propTypes.bool.isRequired,
   userSettings: propTypes.object,
   error: propTypes.bool.isRequired,
-  children: propTypes.node
+  children: propTypes.node,
+  init: propTypes.func.isRequired
 };
 
 export default Practice;

@@ -5,11 +5,11 @@ import { EventTypes } from 'redux-segment';
 // Types
 
 export const types = {
+  INIT: 'practice/INIT',
   SET_INITIALIZED: 'practice/SET_INITIALIZED',
   SET_EXERCISES: 'practice/SET_EXERCISES',
   CORRECT_ANSWER: 'practice/CORRECT_ANSWER',
   WRONG_ANSWER: 'practice/WRONG_ANSWER',
-  CLEAN: 'practice/CLEAN',
   SET_TOTAL: 'practice/SET_TOTAL',
   SET_CORRECT_ANSWER: 'practice/SET_CORRECT_ANSWER',
   SET_EXPLANATION: 'practice/SET_EXPLANATION',
@@ -33,6 +33,8 @@ export const INITIAL_STATE = fromJS({
 
 export default function reducer(state = INITIAL_STATE, action = {}) {
   switch (action.type) {
+    case types.INIT:
+      return INITIAL_STATE;
     case types.SET_INITIALIZED:
       return state.set('initialized', action.payload.initialized);
     case types.SET_EXERCISES:
@@ -49,8 +51,6 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
       return state.set('explanation', action.payload);
     case types.SET_TOTAL:
       return state.set('total', action.payload.total);
-    case types.CLEAN:
-      return INITIAL_STATE;
     case types.SET_ERROR:
       return state.set('error', action.payload);
     case types.SET_TYPE:
@@ -80,7 +80,7 @@ const setExplanation = explanation => ({
 });
 const correctAnswer = () => ({ type: types.CORRECT_ANSWER });
 const wrongAnswer = () => ({ type: types.WRONG_ANSWER });
-const clean = () => ({ type: types.CLEAN });
+const init = () => ({ type: types.INIT });
 const setTotal = total => ({
   type: types.SET_TOTAL,
   payload: { total }
@@ -117,7 +117,7 @@ export const actions = {
   setExercises,
   correctAnswer,
   wrongAnswer,
-  clean,
+  init,
   setTotal,
   setCorrectAnswer,
   setExplanation,
@@ -147,7 +147,10 @@ const getCurrentExercise = createSelector(
 const getPracticeCompletion = createSelector(
   getExercisesSize,
   getTotal,
-  (size, total) => (size && total) ? (total - size) / total * 100 : 100
+  (size, total) => {
+    if (size === null || total === null) { return 0; }
+    return (total - size) / total * 100;
+  }
 );
 const getError = state => state.get('error');
 const getType = state => state.get('type');

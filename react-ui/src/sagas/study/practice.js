@@ -137,8 +137,4 @@ export function* nextScreen() {
   return yield put(push(url));
 }
 
-export function* clean(isCancelled) {
-  if (isCancelled) {
-    yield put(practiceActions.clean());
-  }
-}
+// export function* clean() {}

@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - move rendering logic from Practice container to component
 
 ### Fixed
+- weird progressbar behavior when starting practice
 
 ## [0.1.251] 2017-05-07
 

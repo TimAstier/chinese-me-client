@@ -2,17 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 import { Practice as PracticeComponent } from '../../components';
+import { actions as practiceActions } from '../../redux/practice';
 import s from '../../rootSelectors';
 
 class Practice extends Component {
   render() {
     return (
-      <PracticeComponent
-        currentExercise={this.props.currentExercise}
-        initialized={this.props.initialized}
-        error={this.props.error}
-        userSettings={this.props.userSettings}
-      />
+      <PracticeComponent { ...this.props } />
     );
   }
 }
@@ -21,7 +17,8 @@ Practice.propTypes = {
   currentExercise: propTypes.object,
   initialized: propTypes.bool.isRequired,
   error: propTypes.bool.isRequired,
-  userSettings: propTypes.object
+  userSettings: propTypes.object,
+  init: propTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -32,5 +29,8 @@ const mapStateToProps = state => ({
 });
 
 export default connect(
-  mapStateToProps
+  mapStateToProps,
+  {
+    init: practiceActions.init
+  }
 )(Practice);

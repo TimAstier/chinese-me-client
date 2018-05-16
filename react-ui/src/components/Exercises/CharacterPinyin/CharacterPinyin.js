@@ -8,6 +8,7 @@ import iconCorrect from '../../../images/iconCorrect.svg';
 import Meaning from '../../Character/Meaning';
 import pinyinize from 'pinyinize';
 import { Wrapper, CheckWrapper } from '../Shared';
+import { ErrorBoundary } from '../../Shared';
 
 const LabelWrapper = styled.div`
   min-height: 35px;
@@ -172,10 +173,13 @@ class CharacterPinyin extends Component {
             {this._renderQuestion()}
           </LabelWrapper>
         }
-        <Hanzi
-          char={this.props.character.simpChar}
-          mode="static"
-        />
+        <ErrorBoundary>
+          <Hanzi
+            char={this.props.character.simpChar}
+            hanziData={this.props.character.hanziData}
+            mode="static"
+          />
+        </ErrorBoundary>
         {this.renderInputWrapper()}
         <Meaning text={this.props.character.meaning} />
         {this.isFinished() ?

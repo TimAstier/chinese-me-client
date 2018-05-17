@@ -24,11 +24,11 @@ const ImageWrapper = styled.div`
   width: 120px;
   display: flex;
   justify-content: center;
-  align-items: flex-end;
-  border-radius: 60px;
+  align-items: center;
+  border-radius: ${props => props.locked ? 0 : '60px'};
   overflow: hidden;
   img {
-    height: 100%;
+    height: ${props => props.locked ? '60%' : '100%'};
     width: auto;
   }
 `;
@@ -95,7 +95,7 @@ class EpisodeCard extends Component {
   render() {
     return (
       <Wrapper>
-        <ImageWrapper>
+        <ImageWrapper locked={this.props.locked}>
           <img
             src={this.props.locked ? iconLock : this.props.imageUrl}
             alt={`episode ${this.props.number}`}

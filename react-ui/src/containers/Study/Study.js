@@ -23,6 +23,7 @@ const ContentWrapper = styled.div`
   align-items: center;
   @media print {
     height: auto;
+    margin-top: 0;
   }
 `;
 

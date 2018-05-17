@@ -27,17 +27,6 @@ const Wrapper = styled.div`
   }
 `;
 
-// Hack to create an additional element before Title
-// And allow full selection fo the page with CMD+A without breaking
-// The Title centering
-const PrintAnchor = styled.span`
-  display: none;
-  color: white;
-  @media print {
-    display: block;
-  }
-`;
-
 const Footer = styled.div`
   min-height: 100px;
   font-size: 18px;
@@ -53,10 +42,7 @@ class Page extends Component {
   render() {
     return (
       <Wrapper>
-        <div>
-          <PrintAnchor>.</PrintAnchor>
-          {this.props.children}
-        </div>
+        {this.props.children}
         <Footer>
           {this.props.number}
         </Footer>

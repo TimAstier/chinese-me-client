@@ -37,7 +37,7 @@ export default class Content extends Component {
       <div>
         <c.Page>
           {lessonTitle()}
-          <c.Bookrow center>{image({ caption: 'Handing over a name card with just one hand is impolite; Chinese people always use both hands as a sign of respect. It is also customary to spend a few moments looking at the other party’s card, perhaps asking a question or making a comment.'})}</c.Bookrow>
+          <c.Bookrow center>{image({ caption: 'Handing over a name card with just one hand is impolite; Chinese people always use both hands as a sign of respect. It is also customary to spend a few moments looking at the other person’s card, perhaps asking a question or making a comment.'})}</c.Bookrow>
           <Objective
             text="The most common Chinese greeting"
           />

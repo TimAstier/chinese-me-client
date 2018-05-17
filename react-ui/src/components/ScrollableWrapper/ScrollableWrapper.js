@@ -11,6 +11,9 @@ const Wrapper = styled.div`
   width: 100%;
   background-color: #F2F7FA;
   overflow-y: auto;
+  @media print {
+    height: auto;
+  }
   @media (orientation: landscape) and (max-height: 400px){
     zoom: 0.8; 
     -moz-transform: scale(0.8); 

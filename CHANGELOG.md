@@ -17,7 +17,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Update formatting for printing
 
 ### Content
-- Update Pronunciation A in S1E7
+- Add Pronunciation B in S1E7
 
 ## [0.1.26] 2017-05-16
 

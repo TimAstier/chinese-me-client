@@ -4,6 +4,7 @@ import { Objective } from '../../../containers/Book/containers';
 import { content as contentPropTypes } from '../../../helpers/propTypes';
 import pinyinNumberToAudioUrl from '../../../utils/pinyinNumberToAudioUrl';
 import { Row } from '../../Shared';
+import { audioUrls } from '../../../constants/urls';
 // import insertVariables from '../../../utils/insertVariables';
 
 export default class Content extends Component {
@@ -34,6 +35,29 @@ export default class Content extends Component {
           >
             <b>dà</b>
           </c.Bookrow>
+          {pronunciationTitle()}
+          <c.P>We have seen that Tone 3 changes to Tone 2 before another Tone 3: <b>nǐ hǎo</b> becomes <b>ní hǎo</b>. In the same way, three Tone 3's in a row become Tone 2,  Tone 1 and Tone 3. Compare the pronunciation of the following two phrases, for example:</c.P>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: `${audioUrls.othersPath}/sandhi_3_3_2.m4a`
+              }
+            }}
+          >
+            <i>I am born in the year of the sheep</i>:&nbsp;<b>wǒ shǔ yáng => wó shǔ yáng</b>
+          </c.Bookrow>
+          <c.Bookrow
+            buttonOptions={{
+              type: 'audio',
+              data: {
+                url: `${audioUrls.othersPath}/sandhi_3_3_3.m4a`
+              }
+            }}
+          >
+            <i>I am born in the year of the horse</i>:&nbsp;<b>wǒ shǔ mǎ => wó shū mǎ</b>
+          </c.Bookrow>
+          <c.P>In the first example, the tone on the first syllables changes to Tone 2: 3-3-2 become 2-3-2. In the second example, the tones on both first and second syllables are changed: 3-3-3 changes to 2-1-3.</c.P>
           {pronunciationTitle()}
           <c.P>We have previously seen that when there is no initial in the syllable, <b>-ü</b> is spelled with a <b>y-</b> and without dots over u: <b>yu</b>.</c.P>
           <c.P>The same is true for <b>-üe</b>, which is written <b>yue</b>. Remember that this is a combination of two spelling rules: (1) <b>-i</b> and <b>-ü</b> are always preceded by <b>y-</b> if they come first in a syllable, and (2) <b>ü</b> is in this case spelled <b>u</b>, without the umlaut dots.</c.P>

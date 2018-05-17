@@ -9,7 +9,8 @@ import { MINIMUM_SCORE_TO_PASS, TWO_STARS_THRESHOLD, THREE_STARS_THRESHOLD }
 
 const Wrapper = styled.div`
   width: 250px;
-  height: 281px;
+  height: 291px;
+  padding-top: 10px;
   border-radius: 15px;
   display: flex;
   flex-direction: column;
@@ -20,9 +21,16 @@ const Wrapper = styled.div`
 
 const ImageWrapper = styled.div`
   height: 120px;
+  width: 120px;
   display: flex;
   justify-content: center;
   align-items: flex-end;
+  border-radius: 60px;
+  overflow: hidden;
+  img {
+    height: 100%;
+    width: auto;
+  }
 `;
 
 const NumberWrapper = styled.div`

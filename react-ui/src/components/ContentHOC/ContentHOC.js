@@ -16,6 +16,9 @@ const ButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
   margin-bottom: 45px;
+  @media print {
+    display: none;
+  }
 `;
 
 class ContentHOC extends Component {

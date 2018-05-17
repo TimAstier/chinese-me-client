@@ -6,6 +6,7 @@ import { EpisodeCard as EpisodeCardComponent } from '../../components';
 import { push } from 'react-router-redux';
 import propTypes from 'prop-types';
 import assetEndpointToUrl from '../../helpers/assetEndpointToUrl';
+import { imageNames } from '../../constants/urls';
 import swal from 'sweetalert';
 
 class EpisodeCard extends Component {
@@ -41,7 +42,7 @@ class EpisodeCard extends Component {
         number={this.props.episode.number}
         title={this.props.episode.title}
         score={this.props.episode.score}
-        imageUrl={assetEndpointToUrl('/Episode+Images/' + this.props.episode.imageUrl)}
+        imageUrl={assetEndpointToUrl(`/images/${imageNames[`S${this.props.seasonNumber}E${this.props.episode.number}`][0]}`)}
         locked={this.props.episode.locked}
       />
     );

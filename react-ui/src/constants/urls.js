@@ -1,5 +1,5 @@
 export const PRODUCTION_ROOT_URL = 'https://app.chinese-me.com';
-export const PDF_VERSION = '0.1';
+export const PDF_VERSION = '1.0';
 
 export const STATIC_ASSETS_ROOT_URL = 'https://d1vi6gdem0f6wt.cloudfront.net';
 
@@ -63,5 +63,5 @@ export const audioUrls = {
   sentencesPath: STATIC_ASSETS_ROOT_URL + '/audio/sentences'
 };
 
-export const pdfCourse = STATIC_ASSETS_ROOT_URL + '/pdf/ChineseMe_Mandarin_Chinese_Language_of_the_Middle_Kingdom_v0_1.pdf';
+export const pdfCourse = STATIC_ASSETS_ROOT_URL + '/pdf/ChineseMe_Season_1.pdf';
 export const practiceSheet = STATIC_ASSETS_ROOT_URL + '/pdf/practice_sheet.pdf';

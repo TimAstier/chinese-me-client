@@ -10,7 +10,8 @@ const Wrapper = styled.div`
   border: solid black 2px;
   border-radius: 40px;
   width: 80%;
-  margin-top: 60px;
+  margin-top: 30px;
+  padding-top: 15px;
   padding-bottom: 10px;
 `;
 
@@ -52,8 +53,7 @@ class Objective extends Component {
   render() {
     return (
       <Wrapper>
-        <c.PartTitle name="objective" />
-        <br />
+        <c.PartTitle name="objective" noMargin />
         <c.PartTitle type="secondary">Conversation skill</c.PartTitle>
         <c.P><i>{this.props.text}</i></c.P>
         {

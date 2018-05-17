@@ -4,6 +4,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.1.27] 2017-05-17
+
+### Added
+- Docs for How to print PDF
+
+### Changed
+- PDF v1.0
+- EpisodeCards display illustrations from the episodes
+
+### Fixed
+- Update formatting for printing
+
+### Content
+- Update Pronunciation A in S1E7
+
 ## [0.1.26] 2017-05-16
 
 ### Added

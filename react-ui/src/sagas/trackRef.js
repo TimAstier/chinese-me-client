@@ -2,8 +2,7 @@ import getCookie from '../utils/getCookie';
 import deleteCookie from '../utils/deleteCookie';
 import { call } from 'redux-saga/effects';
 import Api from '../utils/api';
-
-const AFFILIATE_CODE_COOKIE_NAME = 'cm_ref';
+import { AFFILIATE_CODE_COOKIE_NAME } from '../constants/urls';
 
 function* trackRef(isAuthenticated, settings) {
   // const isAuthenticated = params[0];

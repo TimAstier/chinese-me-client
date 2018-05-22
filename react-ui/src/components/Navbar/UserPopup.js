@@ -53,7 +53,7 @@ class UserPopup extends Component {
         hoverable
       >
         <Menu>
-          <Link to={'/study/account'}>
+          <Link to={'/account'}>
             <Item>
               <IconWrapper>
                 <img src={accountIcon} alt=""/>
@@ -61,7 +61,7 @@ class UserPopup extends Component {
               <Label>Settings</Label>
             </Item>
           </Link>
-          <Link to={'/study/store'}>
+          <Link to={'/store'}>
             <Item>
               <IconWrapper>
                 <img src={booksIcon} alt=""/>

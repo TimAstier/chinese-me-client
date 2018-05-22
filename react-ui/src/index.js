@@ -4,7 +4,7 @@ import { render } from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import { Provider } from 'react-redux';
-import { Router, browserHistory, applyRouterMiddleware, Redirect }
+import { Router, browserHistory, applyRouterMiddleware }
   from 'react-router';
 import { useScroll } from 'react-router-scroll';
 import { syncHistoryWithStore, routerMiddleware } from 'react-router-redux';
@@ -84,7 +84,6 @@ render(
       history={history}
       render={applyRouterMiddleware(useScroll())}
     >
-      <Redirect from="/" to="/study" />
       {routes}
     </Router>
   </Provider>, document.getElementById('app')

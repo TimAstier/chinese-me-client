@@ -9,22 +9,26 @@ import { loadSettings } from './userSettings';
 import getParamsFromUrl from '../utils/getParamsFromUrl';
 import { detect } from 'detect-browser';
 import swal from 'sweetalert';
+import setRefCookie from './setRefCookie';
 import trackRef from './trackRef';
 
 // This is called only one time, when Study containers mounts
 export function* initApp() {
-  const browser = detect();
-  const isFacebookApp = () => {
-    const ua = navigator.userAgent || navigator.vendor || window.opera;
-    return (ua.indexOf('FBAN') > -1) || (ua.indexOf('FBAV') > -1);
-  };
   while (true) { // eslint-disable-line no-constant-condition
     const { payload: { isAuthenticated } } = yield take(sagaTypes.INIT_APP);
+    const url = yield select(selectors.routing.getCurrentUrl);
+    if (url === '/') { // look for a ref cookie on Homepage only
+      yield call(setRefCookie);
+    }
+    const browser = detect();
+    const isFacebookApp = () => {
+      const ua = navigator.userAgent || navigator.vendor || window.opera;
+      return (ua.indexOf('FBAN') > -1) || (ua.indexOf('FBAV') > -1);
+    };
     yield call(fetchEntities, ['/seasons']);
     yield call(fetchEntities, ['/episodes']);
     const firstSeasonId = yield select(selectors.getFirstSeasonId);
     yield put(studyActions.setCurrentSeasonId(firstSeasonId));
-    const url = yield select(selectors.routing.getCurrentUrl);
     const { episodeId } = getParamsFromUrl(url);
     // TODO: Clean this
     // Workaround for book urls and static pages

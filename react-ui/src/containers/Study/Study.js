@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { FeedbackModal, Navbar, MapModal } from '../.';
 import s from '../../rootSelectors';
 
 const Wrapper = styled.div`
@@ -13,30 +12,11 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 
-const ContentWrapper = styled.div`
-  width: 100%;
-  height: calc(100vh - 55px);
-  margin-top: 55px;
-  background-color: #B2BABF;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  @media print {
-    height: auto;
-    margin-top: 0;
-  }
-`;
-
 class Study extends Component {
   render() {
     return (
       <Wrapper>
-        <FeedbackModal />
-        <MapModal />
-        <Navbar id="navbar"/>
-        <ContentWrapper>
-          {this.props.initialized && this.props.children}
-        </ContentWrapper>
+        {this.props.initialized && this.props.children}
       </Wrapper>
     );
   }

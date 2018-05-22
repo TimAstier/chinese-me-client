@@ -1,7 +1,8 @@
-export const PRODUCTION_ROOT_URL = 'https://app.chinese-me.com';
+export const PRODUCTION_ROOT_URL = 'https://www.chinese-me.com';
 export const PDF_VERSION = '1.0';
 
 export const STATIC_ASSETS_ROOT_URL = 'https://d1vi6gdem0f6wt.cloudfront.net';
+export const AFFILIATE_CODE_COOKIE_NAME = 'cm_ref';
 
 // Those images are available in the s3 bucket at STATIC_ASSETS_ROOT_URL/images/
 export const imageNames = {

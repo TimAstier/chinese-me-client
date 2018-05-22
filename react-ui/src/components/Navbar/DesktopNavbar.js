@@ -109,7 +109,7 @@ class DesktopNavbar extends Component {
           <LeftMenuItem>
             <IconWrapper>
               <Clickable>
-                <Link to={'/study/help'}>
+                <Link to={'/help'}>
                   <Icon src={helpIcon} />
                 </Link>
               </Clickable>

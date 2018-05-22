@@ -41,6 +41,7 @@ export { default as Hanzi } from './Hanzi/Hanzi';
 export { default as HanziAgainButton } from './HanziAgainButton/HanziAgainButton';
 export { default as Help } from './StaticPages/Help';
 export { default as HintModal } from './Exercises/CharacterPinyin/HintModal';
+export { default as HomePage } from './StaticPages/HomePage';
 export { default as LoginForm } from './Login/Form';
 export { default as LoginPage } from './Login/Page';
 export { default as MapContent } from './MapModal/MapContent';

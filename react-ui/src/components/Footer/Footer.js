@@ -66,13 +66,13 @@ class Footer extends Component {
           © 2018 ChineseMe AB All Rights Reserved.
         </CopyrightWrapper>
         <LinksWrapper>
-          <Link to="/study/about">About</Link>
+          <Link to="/about">About</Link>
           {/* <a>FAQ</a>
           <a>Jobs</a> */}
           {/* <a>Contact us</a> */}
-          <Link to="/study/philosophy">Our Philosophy</Link>
-          <Link to="/study/terms-of-service">Terms</Link>
-          <Link to="/study/privacy-policy">Privacy</Link>
+          <Link to="/philosophy">Our Philosophy</Link>
+          <Link to="/terms-of-service">Terms</Link>
+          <Link to="/privacy-policy">Privacy</Link>
           <SocialMediaLinks>
             <a
               href="https://www.facebook.com/learnChinese.chinese.me"

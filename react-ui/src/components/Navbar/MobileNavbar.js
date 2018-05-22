@@ -115,7 +115,7 @@ class MobileNavbar extends Component {
                 Ask Question
               </Item>
               <Item>
-                <Link to={'/study/help'}>Help</Link>
+                <Link to={'/help'}>Help</Link>
               </Item>
             </Menu>
           </Popup>

@@ -36,6 +36,7 @@
     "react": "^16.2.0",
     "react-datepicker": "^1.1.0",
     "react-dom": "^16.2.0",
+    "react-mailchimp-subscribe": "^2.0.2",
     "react-media": "^1.8.0",
     "react-motion": "^0.5.2",
     "react-preload": "^0.5.1",

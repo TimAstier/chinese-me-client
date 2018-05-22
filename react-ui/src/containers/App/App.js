@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 import styled, { injectGlobal } from 'styled-components';
+import { FeedbackModal, Navbar, MapModal } from '../.';
 import { actions as sagaActions } from '../../sagas/actions';
 import s from '../../rootSelectors';
 
@@ -29,6 +30,20 @@ const Wrapper = styled.div`
   }
 `;
 
+const ContentWrapper = styled.div`
+  width: 100%;
+  height: calc(100vh - 55px);
+  margin-top: 55px;
+  background-color: #B2BABF;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @media print {
+    height: auto;
+    margin-top: 0;
+  }
+`;
+
 class App extends Component {
   componentWillMount() {
     const { initApp, isAuthenticated } = this.props;
@@ -38,7 +53,12 @@ class App extends Component {
   render() {
     return (
       <Wrapper div="appWrapper">
-        {this.props.children}
+        <FeedbackModal />
+        <MapModal />
+        <Navbar id="navbar"/>
+        <ContentWrapper>
+          {this.props.children}
+        </ContentWrapper>
       </Wrapper>
     );
   }

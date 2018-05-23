@@ -57,7 +57,8 @@ export const types = {
   SAVE_ANSWER: 'signal/SAVE_ANSWER',
   CLICKED_BOOK_BUTTON: 'signal/CLICKED_BOOK_BUTTON',
   ACTIVATE_GIFT_CODE: 'signal/ACTIVATE_GIFT_CODE',
-  UNLOCK_SEASON: 'signal/UNLOCK_SEASON'
+  UNLOCK_SEASON: 'signal/UNLOCK_SEASON',
+  DISPLAY_BROWSER_NOTICE: 'signal/DISPLAY_BROWSER_NOTICE'
 };
 
 // Action Creators
@@ -290,6 +291,10 @@ const unlockSeason = seasonId => ({
   }
 });
 
+const displayBrowserNotice = () => ({
+  type: types.DISPLAY_BROWSER_NOTICE
+});
+
 export const actions = {
   next,
   nextSentence,
@@ -341,5 +346,6 @@ export const actions = {
   saveAnswer,
   clickedBookButton,
   activateGiftCode,
-  unlockSeason
+  unlockSeason,
+  displayBrowserNotice
 };

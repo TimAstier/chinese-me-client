@@ -17,6 +17,7 @@ import watchBookSagas from './sagas/book';
 import { watchSaveAnswer } from './sagas/answers';
 import watchCodesSagas from './sagas/codes';
 import watchStoreSagas from './sagas/store';
+import browserNotice from './sagas/browserNotice';
 
 export default function* rootSaga() {
   yield all([
@@ -37,6 +38,7 @@ export default function* rootSaga() {
     // watchUserSettingsSagas(),
     watchSaveAnswer(),
     watchCodesSagas(),
-    watchStoreSagas()
+    watchStoreSagas(),
+    browserNotice()
   ]);
 }

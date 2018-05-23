@@ -58,7 +58,7 @@ class UserPopup extends Component {
               <IconWrapper>
                 <img src={accountIcon} alt=""/>
               </IconWrapper>
-              <Label>Settings</Label>
+              <Label>Account</Label>
             </Item>
           </Link>
           <Link to={'/store'}>

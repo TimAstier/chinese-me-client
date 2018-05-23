@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
+import { actions as sagaActions } from '../../sagas/actions';
 import s from '../../rootSelectors';
 
 const Wrapper = styled.div`
@@ -13,6 +14,10 @@ const Wrapper = styled.div`
 `;
 
 class Study extends Component {
+  componentDidMount() {
+    this.props.displayBrowserNotice();
+  }
+
   render() {
     return (
       <Wrapper>
@@ -25,6 +30,7 @@ class Study extends Component {
 Study.propTypes = {
   children: propTypes.object,
   initialized: propTypes.bool.isRequired,
+  displayBrowserNotice: propTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -32,5 +38,7 @@ const mapStateToProps = state => ({
 });
 
 export default connect(
-  mapStateToProps
+  mapStateToProps, {
+    displayBrowserNotice: sagaActions.displayBrowserNotice
+  }
 )(Study);

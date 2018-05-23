@@ -47,6 +47,7 @@ export { default as ReviewFilterControl } from './Review/ReviewFilterControl';
 export { default as ScreenButton } from './ScreenButton/ScreenButton';
 export { default as ScrollableWrapper } from './ScrollableWrapper/ScrollableWrapper';
 export { default as SelectEpisode } from './SelectEpisode/SelectEpisode';
+export { default as SEO } from './SEO/SEO';
 export { default as SignupPage } from './Signup/Page';
 export { default as SignupActivate } from './Signup/Activate';
 export { default as Speech } from './Exercises/Speech/Speech';

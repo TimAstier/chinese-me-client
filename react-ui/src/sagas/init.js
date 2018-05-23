@@ -7,8 +7,6 @@ import selectors from '../rootSelectors';
 import { actions as appActions } from '../redux/app';
 import { loadSettings } from './userSettings';
 import getParamsFromUrl from '../utils/getParamsFromUrl';
-import { detect } from 'detect-browser';
-import swal from 'sweetalert';
 import setRefCookie from './setRefCookie';
 import trackRef from './trackRef';
 
@@ -20,11 +18,6 @@ export function* initApp() {
     if (url === '/') { // look for a ref cookie on Homepage only
       yield call(setRefCookie);
     }
-    const browser = detect();
-    const isFacebookApp = () => {
-      const ua = navigator.userAgent || navigator.vendor || window.opera;
-      return (ua.indexOf('FBAN') > -1) || (ua.indexOf('FBAV') > -1);
-    };
     yield call(fetchEntities, ['/seasons']);
     yield call(fetchEntities, ['/episodes']);
     const firstSeasonId = yield select(selectors.getFirstSeasonId);
@@ -42,19 +35,6 @@ export function* initApp() {
     if (isAuthenticated) {
       const settings = yield call(loadSettings);
       yield call(trackRef, isAuthenticated, settings);
-    }
-    // browser disclaimer for people not using Chrome
-    if (browser && localStorage.getItem('browserNotice') !== 'false') {
-      if (browser.name !== 'chrome' || isFacebookApp()) {
-        swal({
-          title: 'Web browser not supported',
-          text: 'For now, ChineseMe only works properly on the Chrome web browser, on a computer.\n\nWe noticed you are using another web browser. Please consider using Chrome as we otherwise cannot guarantee a satisfying learning experience for you.\n\nIf you don\'t have Chrome already, you can download it here: https://www.google.com/chrome/\n\nThanks for your understanding!',
-          icon: 'warning',
-          button: 'Got it!'
-        }).then(() => {
-          localStorage.setItem('browserNotice', false);
-        });
-      }
     }
   }
 }

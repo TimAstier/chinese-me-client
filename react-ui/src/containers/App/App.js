@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 import styled, { injectGlobal } from 'styled-components';
-import { FeedbackModal, Navbar, MapModal } from '../.';
+import { FeedbackModal, Navbar, MapModal, SEO } from '../.';
 import { actions as sagaActions } from '../../sagas/actions';
 import s from '../../rootSelectors';
 
@@ -53,6 +53,7 @@ class App extends Component {
   render() {
     return (
       <Wrapper div="appWrapper">
+        <SEO />
         <FeedbackModal />
         <MapModal />
         <Navbar id="navbar"/>

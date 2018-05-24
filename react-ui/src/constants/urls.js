@@ -64,5 +64,5 @@ export const audioUrls = {
   sentencesPath: STATIC_ASSETS_ROOT_URL + '/audio/sentences'
 };
 
-export const pdfCourse = STATIC_ASSETS_ROOT_URL + '/pdf/ChineseMe_S1_v1.1.pdf';
+export const pdfCourse = STATIC_ASSETS_ROOT_URL + '/pdf/ChineseMe_S1_v1.12.pdf';
 export const practiceSheet = STATIC_ASSETS_ROOT_URL + '/pdf/practice_sheet.pdf';

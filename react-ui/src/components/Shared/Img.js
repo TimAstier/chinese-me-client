@@ -4,6 +4,12 @@ import assetEndpointToUrl from '../../helpers/assetEndpointToUrl';
 
 import styled from 'styled-components';
 
+const Figure = styled.figure`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
 const StyledImg = styled.img`
   max-width: ${props => props.maxWidth ? `${props.maxWidth}px` : '100%'};
   height: auto;
@@ -23,7 +29,7 @@ const Figcaption = styled.figcaption`
 class Img extends Component {
   render() {
     return (
-      <figure>
+      <Figure>
         <StyledImg
           src={assetEndpointToUrl('/images/' + this.props.name)}
           maxWidth={this.props.maxWidth}
@@ -33,7 +39,7 @@ class Img extends Component {
           this.props.caption &&
             <Figcaption>{this.props.caption}</Figcaption>
         }
-      </figure>
+      </Figure>
     );
   }
 }

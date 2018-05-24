@@ -136,7 +136,7 @@ class StoreItem extends Component {
 
   _renderLink() {
     return (
-      <Link to={'/study'}>
+      <Link to={'/course'}>
         <ScreenButton
           primary= {this.props.purchased}
           text={this.props.purchased ? 'Study' : 'Browse'}

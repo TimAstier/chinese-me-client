@@ -111,6 +111,12 @@ class MobileNavbar extends Component {
               <Item>
                 <Link to={'/'}>Home</Link>
               </Item>
+              <Item>
+                <Link to={'/course'}>Course</Link>
+              </Item>
+              <Item>
+                <Link to={'/blog'}>Blog</Link>
+              </Item>
               <Item onClick={this.props.askQuestion}>
                 Ask Question
               </Item>

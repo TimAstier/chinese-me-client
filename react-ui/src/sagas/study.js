@@ -7,6 +7,7 @@ import { elementTypes } from '../constants/study';
 // import { elementTypesToTrack } from '../constants/study';
 import getStudyFunctions from '../helpers/getStudyFunctions';
 import getParamsFromUrl from '../utils/getParamsFromUrl';
+import { actions as mapActions } from '../redux/map';
 import { replace } from 'react-router-redux';
 
 // Every screenType has those "studyFunctions" (generators):
@@ -25,6 +26,11 @@ export function* runStudySaga(url) {
   yield put(studyActions.setInitialized(false)); // Hide screen content
   const { episodeId, elementType, elementId, mode }
     = getParamsFromUrl(url); // Get params from url
+  // TODO: Clean this
+  if (episodeId && episodeId !== 'season') {
+    yield put(studyActions.setCurrentEpisodeId(episodeId));
+    yield put(mapActions.setFocusedEpisodeId(episodeId));
+  }
   const screenType = elementType + '/' + mode; // Define screenType
   const funcs = getStudyFunctions(screenType); // Get studyFunctions
   if (elementTypes.indexOf(elementType) !== -1) { // Check data
@@ -91,7 +97,7 @@ export function* finishOrExit(url) {
 function* runEpisodeScreen(action) {
   if (action.payload.locked) {
     // Redirect users if the episode is locked
-    return yield put(replace('/study'));
+    return yield put(replace('/course'));
   }
   return yield call(finishOrExit, action.payload.url);
 }

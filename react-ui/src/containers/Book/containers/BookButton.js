@@ -31,26 +31,26 @@ class BookButton extends Component {
       }
       switch (this.props.buttonOptions.type) {
         case 'calligraphy':
-          return `/study/${this.props.episodeId}/character/${this.props.buttonOptions.data.elementId}/calligraphy`;
+          return `/course/${this.props.episodeId}/character/${this.props.buttonOptions.data.elementId}/calligraphy`;
         case 'dialog':
-          return `/study/${this.props.episodeId}/dialog/${this.props.buttonOptions.data.elementId}/explore`;
+          return `/course/${this.props.episodeId}/dialog/${this.props.buttonOptions.data.elementId}/explore`;
         case 'etymology':
-          return `/study/${this.props.episodeId}/character/${this.props.buttonOptions.data.elementId}/etymology`;
+          return `/course/${this.props.episodeId}/character/${this.props.buttonOptions.data.elementId}/etymology`;
         case 'stroke':
-          return `/study/${this.props.episodeId}/character/${this.props.buttonOptions.data.elementId}/animation`;
+          return `/course/${this.props.episodeId}/character/${this.props.buttonOptions.data.elementId}/animation`;
         case 'practice':
-          return `/study/${this.props.episodeId}/practice/${this.props.buttonOptions.data.elementId}`;
+          return `/course/${this.props.episodeId}/practice/${this.props.buttonOptions.data.elementId}`;
         default:
           return this.props.currentUrl;
       }
     } else {
       switch (this.props.buttonOptions.type) {
         case 'review':
-          return `/study/${this.props.episodeId}/review`;
+          return `/course/${this.props.episodeId}/review`;
         case 'exam':
-          return `/study/${this.props.episodeId}/exam`;
+          return `/course/${this.props.episodeId}/exam`;
         case 'askUserSettings':
-          return `/study/${this.props.episodeId}/question`;
+          return `/course/${this.props.episodeId}/question`;
         default:
           return this.props.currentUrl;
       }

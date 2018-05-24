@@ -15,7 +15,7 @@ const getBackUrl = createSelector(
           // This should never happen but prevents from crashing just in case
           return '/';
         }
-        return `/study/${episode.id}/review`;
+        return `/course/${episode.id}/review`;
       }
     }
     if (!bookUrl) {

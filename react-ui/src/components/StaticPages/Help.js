@@ -125,7 +125,7 @@ class Help extends Component {
             >
               At the end of every Episode, you can challenge yourself by taking the <b><i>Exam</i></b>. <i>You can redo all exams later if you want to improve your score</i>.
             </c.P>
-            <c.P>If you want to get started now, go to <Link to="/study/season/1/episode/1">Lesson 1</Link>. By the end of this lesson, you should have a good idea about how the Chinese language works. You will have learnt your first five Chinese characters. And you will have your own Chinese name!</c.P>
+            <c.P>If you want to get started now, go to <Link to="/course/season/1/episode/1">Lesson 1</Link>. By the end of this lesson, you should have a good idea about how the Chinese language works. You will have learnt your first five Chinese characters. And you will have your own Chinese name!</c.P>
             <c.P>We wish you pleasure and success in your study.</c.P>
             <c.P>Johan & Tim</c.P>
             <c.P><i>Note: If you prefer reading the book on paper, it is available as a free download <a href={pdfCourse} target="_blank" rel="noopener noreferrer">here</a>.</i></c.P>

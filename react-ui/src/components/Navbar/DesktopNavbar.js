@@ -36,7 +36,7 @@ const LogoWrapper = styled.div`
 `;
 
 const LeftMenuWrapper = styled.div`
-  flex-basis: 250px;
+  flex-basis: 400px;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -46,10 +46,16 @@ const LeftMenuItem = styled.div`
   font-family: 'Open Sans';
   font-size: 20px;
   color: #ffffff;
+  a {
+    color: inherit;
+  }
+  a:hover {
+    color: #f2f7fa;
+  }
 `;
 
 const RightMenuWrapper = styled.div`
-  width: 320px;
+  width: 120px;
   margin-left: auto;
   display: flex;
 `;
@@ -59,7 +65,9 @@ const UserMenuWrapper = styled.div`
   display: flex;
   margin-top: -5px;
   align-items: center;
+  justify-content: flex-end;
   cursor: pointer;
+  margin-right: 15px;
 `;
 
 const UserIconWrapper = styled.div`
@@ -75,9 +83,7 @@ const LoginLinks = styled.div`
   margin-top: 5px;
   display: flex;
   justify-content: space-between;
-  min-width: 245px;
-  padding-right: 10px;
-  padding-left: 10px;
+  min-width: 225px;
 `;
 
 const IconWrapper = styled.div`
@@ -92,11 +98,21 @@ class DesktopNavbar extends Component {
     return (
       <Wrapper>
         <LogoWrapper>
-          <Link to={'/study'}>
+          <Link to={'/'}>
             <img src={logo} alt="chineseMe logo"/>
           </Link>
         </LogoWrapper>
         <LeftMenuWrapper>
+          <LeftMenuItem>
+            <Link to={'/blog'}>
+              Blog
+            </Link>
+          </LeftMenuItem>
+          <LeftMenuItem>
+            <Link to={'/course'}>
+              Course
+            </Link>
+          </LeftMenuItem>
           <LeftMenuItem>
             <ScreenButton
               text="Table of Contents"
@@ -106,47 +122,38 @@ class DesktopNavbar extends Component {
               onClick={this.props.openMapModal}
             />
           </LeftMenuItem>
-          <LeftMenuItem>
-            <IconWrapper>
-              <Clickable>
-                <Link to={'/help'}>
-                  <Icon src={helpIcon} />
-                </Link>
-              </Clickable>
-            </IconWrapper>
-          </LeftMenuItem>
         </LeftMenuWrapper>
-        <RightMenuWrapper>
-          <UserMenuWrapper>
-            <UserIconWrapper>
-              {
-                this.props.isAuthenticated &&
-                  <UserPopup logout={this.props.logout} />
-              }
-            </UserIconWrapper>
+        <UserMenuWrapper>
+          <UserIconWrapper>
             {
-              !this.props.isAuthenticated &&
-                <LoginLinks>
-                  <Link to={'/login'}>
-                    <ScreenButton
-                      text="LOG IN"
-                      width={100}
-                      height={35}
-                      fontSize={14}
-                    />
-                  </Link>
-                  <Link to={'/signup'}>
-                    <ScreenButton
-                      text="REGISTER"
-                      width={100}
-                      height={35}
-                      fontSize={14}
-                      primary
-                    />
-                  </Link>
-                </LoginLinks>
+              this.props.isAuthenticated &&
+                <UserPopup logout={this.props.logout} />
             }
-          </UserMenuWrapper>
+          </UserIconWrapper>
+          {
+            !this.props.isAuthenticated &&
+              <LoginLinks>
+                <Link to={'/login'}>
+                  <ScreenButton
+                    text="LOG IN"
+                    width={100}
+                    height={35}
+                    fontSize={14}
+                  />
+                </Link>
+                <Link to={'/signup'}>
+                  <ScreenButton
+                    text="REGISTER"
+                    width={100}
+                    height={35}
+                    fontSize={14}
+                    primary
+                  />
+                </Link>
+              </LoginLinks>
+          }
+        </UserMenuWrapper>
+        <RightMenuWrapper>
           <IconWrapper>
             <Clickable>
               <Icon
@@ -156,7 +163,13 @@ class DesktopNavbar extends Component {
               />
             </Clickable>
           </IconWrapper>
-
+          <IconWrapper>
+            <Clickable>
+              <Link to={'/help'}>
+                <Icon src={helpIcon} alt= "" />
+              </Link>
+            </Clickable>
+          </IconWrapper>
         </RightMenuWrapper>
       </Wrapper>
     );

@@ -54,7 +54,7 @@ export function* run() {
 export function* nextScreen() {
   const episodeId = yield select(selectors.study.getCurrentEpisodeId);
   const currentElement = yield select(selectors.getCurrentCharacter);
-  yield put(replace(`/study/${episodeId}/character/${currentElement.id}/stroke`));
+  yield put(replace(`/course/${episodeId}/character/${currentElement.id}/stroke`));
 }
 
 // export function* clean() {}

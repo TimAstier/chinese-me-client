@@ -21,7 +21,7 @@ function* fetchData(action) {
           yield put(mapActions.setFocusedEpisodeId(response.data.data.id)); // Triger fetchMapData
         } else {
           // Redirect users if the episode is locked
-          yield put(replace('/study'));
+          yield put(replace('/course'));
         }
       }
     ]);

@@ -6,7 +6,7 @@ import { EventTypes } from 'redux-segment';
 const { page } = EventTypes;
 
 // TODO: refactor with function which takes URL and return Category and name.
-// TODO: unfinished
+// TODO: unfinished (ony useful to customize segment Load Page events name)
 const pageNames = {
   '/study/season/0/episode/1': '1',
   '/study/season/0/episode/2': '2'

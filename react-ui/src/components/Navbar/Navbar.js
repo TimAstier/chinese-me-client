@@ -7,7 +7,7 @@ import MobileNavbar from './MobileNavbar';
 class Navbar extends Component {
   render() {
     return (
-      <Media query="(max-width: 800px)">
+      <Media query="(max-width: 970px)">
         { matches =>
           matches
           ? (<MobileNavbar { ...this.props } />)

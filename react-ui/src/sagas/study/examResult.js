@@ -60,7 +60,7 @@ export function* run() {
 }
 
 export function* nextScreen() {
-  yield put(push('/study'));
+  yield put(push('/course'));
 }
 
 export function* clean(isCancelled) {

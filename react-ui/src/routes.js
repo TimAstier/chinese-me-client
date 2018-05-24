@@ -17,7 +17,7 @@ import * as components from './components';
 
 /* ----- */
 // Study routes:
-// /study/:episodeId/[element]/:elementId/[mode]
+// /course/:episodeId/[element]/:elementId/[mode]
 
 // Study flow:
 // Hit URL -> Component Render -> trigger saga -> next -> push next URL
@@ -26,7 +26,7 @@ import * as components from './components';
 export default (
   <div>
     <Route path="/" component={ containers.App } >
-      <IndexRoute component={ components.HomePage }/>
+      <IndexRoute component={ components.HomePage } />
       <Route path="404" component={ components.My404Component } />
       <Route path="signup" component={ containers.SignupPage } />
       <Route path="signup/activated" component={ components.ActivatedPage } />
@@ -40,7 +40,7 @@ export default (
       <Route path="philosophy" component={ components.Philosophy } />
       <Route path="store" component={ requireAuth(containers.Store) } />
       <Route path="account" component={ requireAuth(containers.Account) } />
-      <Route path="study" component={ containers.Study } >
+      <Route path="course" component={ containers.Study } >
         <IndexRoute component={ containers.SelectEpisode } />
         <Route path="season/:seasonNumber/episode/:episodeNumber" component={ containers.Book } />
         <Route path=":episodeId" component={ containers.EpisodeHOC } >
@@ -60,6 +60,8 @@ export default (
           <Route path="question" component={ containers.Question } />
         </Route>
       </Route>
+      <Route path="blog" component={ components.Blog } />
+      <Route path="blog/:slug" component={ containers.Article } />
     </Route>
     <Redirect from="*" to="/404" />
   </div>

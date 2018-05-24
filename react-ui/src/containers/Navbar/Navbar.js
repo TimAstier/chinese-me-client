@@ -8,7 +8,11 @@ import s from '../../rootSelectors';
 
 class Navbar extends Component {
   render() {
-    return <NavbarComponent { ...this.props } />;
+    return (
+      <NavbarComponent
+        { ...this.props }
+      />
+    );
   }
 }
 

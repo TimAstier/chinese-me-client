@@ -37,7 +37,7 @@ class Dialog extends Component {
   renderModeMenu() {
     const { currentEpisodeId, currentDialogId, dialogMode, dialogLinkClick }
       = this.props;
-    const baseUrl = `/study/${currentEpisodeId}/dialog/${currentDialogId}`;
+    const baseUrl = `/course/${currentEpisodeId}/dialog/${currentDialogId}`;
     return (
       <ModeMenu>
         <ModeButton

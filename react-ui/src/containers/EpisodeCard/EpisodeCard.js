@@ -18,7 +18,7 @@ class EpisodeCard extends Component {
       buttons: ['Maybe later', 'Go to the store']
     }).then(bookstore => {
       if (bookstore) {
-        return this.props.push('/study/store');
+        return this.props.push('/store');
       }
       return null;
     });

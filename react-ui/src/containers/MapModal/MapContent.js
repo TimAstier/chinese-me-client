@@ -19,7 +19,7 @@ class MapContent extends Component {
     }).then(bookstore => {
       if (bookstore) {
         this.props.closeMapModal();
-        return this.props.push('/study/store');
+        return this.props.push('/store');
       }
       return null;
     });

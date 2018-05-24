@@ -51,7 +51,7 @@ class Terms extends Component {
           <c.P>We make no warranty. Your use of the Service is at your own risk. The service is provided on an "as is" and "as available" basis.</c.P>
           <c.P>You need to understand that we use third party vendors and hosting partners to provide the necessary hardware, software, networking, storage, and related technology required to run the Service. So we cannot be responsible for their failure.</c.P>
           <c.PartTitle type="secondary">Privacy Policy</c.PartTitle>
-          <c.P>You also agree with our <a href="/study/privacy-policy">Privacy policy</a>.</c.P>
+          <c.P>You also agree with our <a href="/privacy-policy">Privacy policy</a>.</c.P>
           <c.PartTitle type="secondary">Change in Terms of Service</c.PartTitle>
           <c.P>Occasionally, we may change or update our Terms of Service with or without notice.</c.P>
           <c.P>Last Updated: January 26, 2018</c.P>

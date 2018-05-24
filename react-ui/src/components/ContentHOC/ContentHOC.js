@@ -201,7 +201,7 @@ class ContentHOC extends Component {
         />
         { this.props.nextEpisode &&
           <ButtonWrapper>
-            <a href={`/study/season/${this.props.season.number}/episode/${this.props.nextEpisode.number}`}>
+            <a href={`/course/season/${this.props.season.number}/episode/${this.props.nextEpisode.number}`}>
               <ScreenButton
                 primary
                 text="Next episode"

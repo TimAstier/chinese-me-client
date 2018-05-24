@@ -39,7 +39,7 @@ function* authorize(params) {
     const token = response.data.token;
     yield call(login, token);
     yield call(resolve);
-    yield put(push('/study'));
+    yield put(push('/course'));
   } catch (error) {
     yield put(actions.loginError());
     const errorMessage = serverErrors[error.response.data.errors[0].message];

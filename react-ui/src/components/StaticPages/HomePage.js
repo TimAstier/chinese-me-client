@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import './homepage.css';
 import assetEndpointToUrl from '../../helpers/assetEndpointToUrl';
-import { ScrollableWrapper } from '../.';
+import { ScrollableWrapper, NLSignupForm } from '../.';
 import styled from 'styled-components';
-import MailchimpSubscribe from 'react-mailchimp-subscribe';
 import { Link } from 'react-router';
 
 const FeatureLabel = styled.div`
@@ -45,62 +44,6 @@ const SCREENSHOT_IMAGES = {
   etymology: { src: '/images/homepage/etymologyScreenshot.png', label: 'Etymology' }
 };
 
-const SignupFormWrapper = styled.div`
-  background-color: #ce3535;
-  div {
-    padding-top: 30px;
-    padding-bottom: 15px;
-    color: white;
-    text-align: center;
-    h2 {
-      margin: 0;
-      margin-bottom: 20px;
-      font-size: 30px;
-    }
-    p {
-      font-size: 16px;
-      line-height: 22px;
-    }
-    div > div {
-      background-color: #ffffff;
-      margin-bottom: 20px;
-      padding-top: 15px;
-      padding-bottom: 15px;
-    }
-    input {
-      font-family: "Open Sans","Helvetica Neue",Arial,Helvetica,Verdana,sans-serif;
-      font-size: 15px;
-      border: 1px solid #ABB0B2;
-      -webkit-border-radius: 3px;
-      -moz-border-radius: 3px;
-      border-radius: 3px;
-      color: #343434;
-      background-color: #fff;
-      box-sizing: border-box;
-      height: 32px;
-      padding: 0px 0.4em;
-      display: inline-block;
-      margin: 0;
-      width: 350px;
-      vertical-align: top;
-    }
-    button {
-      background-color: #244746;
-      height: 32px;
-      line-height: 32px;
-      padding: 0 18px;
-      transition: all 0.23s ease-in-out 0s;
-      border-radius: 3px;
-      border: none;
-      margin-left: 5px;
-    }
-    button:hover {
-      background-color: #777;
-      cursor: pointer;
-    }
-  }
-`;
-
 class HomePage extends Component {
   constructor(props) {
     super(props);
@@ -118,7 +61,6 @@ class HomePage extends Component {
   }
 
   render() {
-    const SimpleForm = () => <MailchimpSubscribe url="https://chinese-me.us17.list-manage.com/subscribe/post?u=e766866f8f1d9b5c999504f74&amp;id=220277c22b"/>;
     return (
       <ScrollableWrapper>
         <Wrapper>
@@ -127,7 +69,7 @@ class HomePage extends Component {
               <h1>ChineseMe</h1>
               <h2>The integrated Chinese course<br/>for committed learners</h2>
               <div id="main-cta">
-                <Link to="/study" className="btn-base btn-cta btn-read">
+                <Link to="/course" className="btn-base btn-cta btn-read">
                   <span>Get started</span>
                 </Link>
               </div>
@@ -199,13 +141,10 @@ class HomePage extends Component {
             </div>
           </div>
 
-          <SignupFormWrapper>
-            <div>
-              <h2>Get our free PDF course</h2>
-              <p>Sign up now to receive the free PDF version of our Chinese course for beginners,<br />as well as the latest news about the project.</p>
-              { SimpleForm() }
-            </div>
-          </SignupFormWrapper>
+          <NLSignupForm
+            title="Get our free PDF course"
+            text="Sign up now to receive the free PDF version of our Chinese course for beginners, as well as the latest news about the project."
+          />
 
           <div id="learnChinese" className="centered">
             <img id="logo" src={assetEndpointToUrl('/images/homepage/square_logo_small.png')} alt="logo"/>

@@ -1,4 +1,4 @@
-const helmetData = {
+const SEOData = {
   '/': {
     title: 'Learn Mandarin Chinese - ChineseMe',
     description: 'Learn Mandarin Chinese online. ChineseMe is the world’s most integrated Mandarin Chinese course. It adapts to your interests and covers practical situations, pronunciation, grammar, calligraphy, character etymology and cultural tips.',
@@ -24,9 +24,9 @@ const helmetData = {
     description: 'This document gives you information about how we manage personal data from our users.',
     keywords: 'ChineseMe Privacy Policy'
   },
-  '/study': {
-    title: 'Study - ChineseMe',
-    description: 'Pick the Season you ant to study and learn Mandarin Chinese.',
+  '/course': {
+    title: 'Course - ChineseMe',
+    description: 'Select the Season you want to study and learn Mandarin Chinese.',
     keywords: 'ChineseMe course, ChineseMe lessons'
   },
   '/login': {
@@ -39,20 +39,30 @@ const helmetData = {
     description: 'Create your ChineseMe account and start learning Chinese.',
     keywords: 'ChineseMe Signup, ChineseMe register, ChineseMe account'
   },
-  '/study/season/1/episode/1': {
+  '/course/season/1/episode/1': {
     title: 'S1E1 - ChineseMe',
     description: 'The very first episode of the ChineseMe course. Ideal for beginners.',
     keywords: 'ChineseMe course, S1E1'
   },
-  '/study/season/1/episode/2': {
+  '/course/season/1/episode/2': {
     title: 'S1E2 - ChineseMe',
     description: 'The second episode of the ChineseMe course. Ideal for beginners.',
     keywords: 'ChineseMe course, S1E2'
   },
-  '/study/season/1/episode/3': {
+  '/course/season/1/episode/3': {
     title: 'S1E3 - ChineseMe',
     description: 'The third episode of the ChineseMe course. Ideal for beginners.',
     keywords: 'ChineseMe course, S1E3'
+  },
+  '/blog': {
+    title: 'Blog - ChineseMe',
+    description: 'A collection of high-quality articles about Mandarin Chinese and how to learn Chinese more efficiently.',
+    keywords: 'ChineseMe blog'
+  },
+  '/blog/the-ultimate-chinese-flashcard-system': {
+    title: 'The ultimate Chinese flashcard system - ChineseMe',
+    description: 'Discover our recommended approach to review your Chinese knowledge in the most efficient way.',
+    keywords: 'Chinese flashcards, SRS, Anki'
   },
   // The URLs below are restricted and non-listed in Google's sitemap
   '/account': {
@@ -61,27 +71,27 @@ const helmetData = {
   '/store': {
     title: 'Store - ChineseMe'
   },
-  '/study/season/1/episode/4': {
+  '/course/season/1/episode/4': {
     title: 'S1E4 - ChineseMe'
   },
-  '/study/season/1/episode/5': {
+  '/course/season/1/episode/5': {
     title: 'S1E5 - ChineseMe'
   },
-  '/study/season/1/episode/6': {
+  '/course/season/1/episode/6': {
     title: 'S1E6 - ChineseMe'
   },
-  '/study/season/1/episode/7': {
+  '/course/season/1/episode/7': {
     title: 'S1E7 - ChineseMe'
   },
-  '/study/season/1/episode/8': {
+  '/course/season/1/episode/8': {
     title: 'S1E8 - ChineseMe'
   },
-  '/study/season/1/episode/9': {
+  '/course/season/1/episode/9': {
     title: 'S1E9 - ChineseMe'
   },
-  '/study/season/1/episode/10': {
+  '/course/season/1/episode/10': {
     title: 'S1E10 - ChineseMe'
   },
 };
 
-export default helmetData;
+export default SEOData;

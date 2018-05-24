@@ -23,7 +23,7 @@ class Page extends Component {
           <br />
           <FooterText fontSize={'13px'}>
             <p>
-              By clicking on the Sign Up button above you are agreeing to the <LinkComponent><a href="/study/terms-of-service">Terms of Service</a></LinkComponent> and the <LinkComponent><a href="/study/privacy-policy">Privacy Policy</a></LinkComponent>.
+              By clicking on the Sign Up button above you are agreeing to the <LinkComponent><a href="/terms-of-service">Terms of Service</a></LinkComponent> and the <LinkComponent><a href="/privacy-policy">Privacy Policy</a></LinkComponent>.
             </p>
           </FooterText>
         </Footer>

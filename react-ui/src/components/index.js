@@ -1,5 +1,7 @@
 import * as bookComponents from './Book/components';
 import * as questionResults from './Question/results';
+import * as articles from './Articles';
+export { articles };
 export { bookComponents };
 export { questionResults };
 
@@ -7,8 +9,11 @@ export { questionResults };
 export { default as Account } from './Account/Account';
 export { default as ActivatedPage } from './Signup/ActivatedPage';
 export { default as About } from './StaticPages/About';
+export { default as Article } from './Article/Article';
+export { default as ArticleBreadcrumb } from './Article/Breadcrumb';
 export { default as AudioToWords } from './Exercises/AudioToWords/AudioToWords';
 export { default as Avatar } from './Avatar/Avatar';
+export { default as Blog } from './Blog/Blog';
 export { default as Book } from './Book/Book';
 export { default as CharacterAnimation } from './CharacterAnimation/CharacterAnimation';
 export { default as CharacterBox } from './MapModal/CharacterBox';
@@ -53,6 +58,7 @@ export { default as ModeButton } from './Dialog/ModeButton';
 export { default as MultipleChoice } from './Exercises/MultipleChoice/MultipleChoice';
 export { default as My404Component } from './My404Component/My404Component';
 export { default as Navbar } from './Navbar/Navbar';
+export { default as NLSignupForm } from './NLSignupForm/NLSignupForm';
 export { default as UserPopup } from './Navbar/UserPopup';
 export { default as NewWordLink } from './NewWordLink/NewWordLink';
 export { default as NewWordPopup } from './NewWordLink/NewWordPopup';

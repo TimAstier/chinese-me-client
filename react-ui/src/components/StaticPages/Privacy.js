@@ -47,7 +47,7 @@ class Privacy extends Component {
           <c.PartTitle type="secondary">Do we comply with COPPA?</c.PartTitle>
           <c.P>No, this website is not directed to children under 13.</c.P>
           <c.PartTitle type="secondary">Terms of Service</c.PartTitle>
-          <c.P>Please also read our <a href="/study/terms-of-service">Terms of Service</a>.</c.P>
+          <c.P>Please also read our <a href="/terms-of-service">Terms of Service</a>.</c.P>
           <c.PartTitle type="secondary">How can I contact ChineseMe with questions or concerns?</c.PartTitle>
           <c.P>Please feel free to contact us via the message button on the top-right corner. You can also email us at hello@chinese-me.com</c.P>
           <c.PartTitle type="secondary">Will this website privacy policy change in future?</c.PartTitle>

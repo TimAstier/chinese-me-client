@@ -7,6 +7,7 @@ export { questionTypes };
 // Keep in alphabetical order
 export { default as Account } from './Account/Account';
 export { default as App } from './App/App';
+export { default as Article } from './Article/Article';
 export { default as AudioToWords } from './Exercises/AudioToWords/AudioToWords';
 export { default as Book } from './Book/Book';
 export { default as CharacterAnimation } from './CharacterAnimation/CharacterAnimation';

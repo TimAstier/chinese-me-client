@@ -9,7 +9,7 @@ import { push } from 'react-router-redux';
 class Review extends Component {
   _itemClick(practiceId) {
     return this.props.push(
-      `/study/${this.props.episode.id}/practice/${practiceId}`
+      `/course/${this.props.episode.id}/practice/${practiceId}`
     );
   }
 

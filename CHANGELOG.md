@@ -6,6 +6,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [0.2] 2017-05-24
 
+### Added
+- Blog
+- NLSignupForm
+
+### Changed
+- App now available under www.chinese-me.com URL (removed app.chinese-me.com)
+- Hompeage is now integrated to the client
+- Navbar shows links to Blog and Course
+- /study route renamed into /course
+- PDF 1.1
+
 ## [0.1.27] 2017-05-17
 
 ### Added

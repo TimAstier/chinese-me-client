@@ -4,6 +4,11 @@ const SEOData = {
     description: 'Learn Mandarin Chinese online. ChineseMe is the world’s most integrated Mandarin Chinese course. It adapts to your interests and covers practical situations, pronunciation, grammar, calligraphy, character etymology and cultural tips.',
     keywords: 'ChineseMe, Learn Chinese, Learn Chinese Online, Chinese Language Course, Learn to speak Chinese, Learn to speak Mandarin, Study Mandarin Online, Learn Mandarin Online, Learning Chinese Online, Learning Chinese Language Online, Learn Chinese Mandarin Online, Learning the Chinese Language, Best Chinese course, Mandarin Language Learning Online, The Best Way to Learn Chinese'
   },
+  '/help': {
+    title: 'Help - ChineseMe',
+    description: 'A short user guide explaining how the ChineseMe course works.',
+    keywords: 'ChineseMe help, how it works'
+  },
   '/about': {
     title: 'About - ChineseMe',
     description: 'ChineseMe is the first integrated Chinese course designed for committed learners. Our aim is to combine the best ideas for pronunciation, vocabulary, characters, sentence patterns (grammar), cultural knowledge and interactive exercises in a single, integrated learning experience.',

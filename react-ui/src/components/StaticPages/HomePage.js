@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
-import './homepage.css';
+// import './homepage.css';
 import assetEndpointToUrl from '../../helpers/assetEndpointToUrl';
 import { ScrollableWrapper, NLSignupForm } from '../.';
 import styled from 'styled-components';
@@ -28,6 +28,710 @@ const Wrapper = styled.div`
   background-color: #ffffff;
   h2 {
     margin: 0;
+  }
+  /* Extra small devices (phones, less than 768px) */
+  /* No media query since this is the default in Bootstrap */
+  /* Small devices (tablets, 768px and up) */
+  /* Medium devices (desktops, 992px and up) */
+  /* Large devices (large desktops, 1200px and up) */
+
+  .centered {
+    text-align: center;
+  }
+
+  #mainHeader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 30px;
+  }
+
+  #logo {
+    margin-top: 20px;
+    margin-bottom: 40px;
+    width: 100px;
+    height: auto;
+    border-radius: 50px;
+  }
+
+  #mainHeader h1 {
+    margin-top: 10px;
+    margin-bottom: 0px;
+    font-size: 53px;
+    font-weight: 700;
+    line-height: 48px;
+    color: #ffffff;
+    font-family: Whitney SSm A,Whitney SSm B,Whitney,Helvetica Neue,sans-serif;
+  }
+
+  @media(max-width: 991px) {
+    #mainHeader h1 {
+      margin-top: 30px;
+    }
+  }
+
+  #mainHeader h2 {
+    margin-top: 20px;
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 35px;
+    font-family: Whitney SSm A,Whitney SSm B,Whitney,Helvetica Neue,sans-serif;
+    text-align: center;
+    color: black;
+  }
+
+  #main-cta {
+    margin-top: 30px;
+    height: 45px;
+    width: 200px;
+    display: flex;
+  }
+
+  #screenshotWrapper {
+    margin-top: 30px;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #screenshotDiv {
+    width: 700px;
+  }
+
+  #screenshotWrapper > div:nth-of-type(1){
+    display: flex;
+  }
+
+  #screenshotWrapper > div:nth-of-type(3){
+    display: flex;
+    width: 700px;
+    justify-content: space-around;
+    align-self: center;
+    margin-top: 20px;
+    margin-bottom: 70px;
+  }
+
+  #screenshotWrapper .leftColumn {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding-right: 90px;
+  }
+
+  #screenshotWrapper .rightColumn {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding-left: 90px;
+  }
+
+  #screenshotWrapper .leftColumn > div:nth-of-type(1) {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  #screenshotWrapper .leftColumn > div:nth-of-type(2) {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #screenshotWrapper .leftColumn > div:nth-of-type(3) {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  #screenshotWrapper .rightColumn > div:nth-of-type(1) {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  #screenshotWrapper .rightColumn > div:nth-of-type(2) {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #screenshotWrapper .rightColumn > div:nth-of-type(3) {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .app-icon {
+    background-color: #ffffff;
+    width: 70px;
+    height: 70px;
+    border-radius: 35px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 5px solid #602323;
+    box-shadow: 0 3px 2px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+  }
+
+  #mobileFeatures {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  #mobileFeatures h2 {
+    margin-bottom: 40px;
+    margin-top: 40px;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 36px;
+    font-family: Whitney SSm A,Whitney SSm B,Whitney,Helvetica Neue,sans-serif;
+  }
+
+  .mobile-icon {
+    border: 5px solid #602323;
+    box-shadow: 0 3px 2px rgba(0, 0, 0, 0.3);
+    height: 70px;
+    border-radius: 35px;
+    max-width: 60%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .mobile-icon img {
+    height: 55%;
+    width: auto;
+    margin-right: 20px;
+  }
+
+  .mobile-icon > span {
+    font-size: 18px;
+    font-weight: 500;
+    font-family: Whitney SSm A,Whitney SSm B,Whitney,Helvetica Neue,sans-serif;
+  }
+
+  .app-icon:hover {
+    background: radial-gradient(white, #55b6ff);
+  }
+
+  .app-icon img {
+    height: 55%;
+    width: auto;
+  }
+
+  .screenshot {
+    width: 700px;
+    height: auto;
+  }
+
+  @media(max-width: 1300px) {
+    #screenshotDiv {
+      width: 600px;
+      margin-top: 10px;
+    }
+    #screenshotWrapper > div:nth-of-type(3){
+      width: 600px;
+    }
+    .screenshot {
+      max-width: 600px;
+    }
+  }
+
+  @media(max-width: 1160px) {
+    #screenshotWrapper .leftColumn {
+      padding-right: 20px;
+    }
+    #screenshotWrapper .rightColumn {
+      padding-left: 20px;
+    }
+  }
+
+  @media(max-width: 1000px) {
+    #screenshotDiv {
+      width: 500px;
+    }
+    #screenshotWrapper > div:nth-of-type(3){
+      width: 500px;
+    }
+    .screenshot {
+      max-width: 500px;
+    }
+    #screenshotWrapper .leftColumn {
+      padding-right: 0;
+    }
+    #screenshotWrapper .rightColumn {
+      padding-left: 0;
+    }
+  }
+
+  @media(max-width: 920px) {
+    #screenshotWrapper {
+      width: 95%;
+    }
+  }
+
+  #mobileFeatures {
+    display: none;
+  }
+
+  @media(max-width: 690px) {
+    #screenshotDiv {
+      width: 80%;
+      margin-top: 20px;
+    }
+    .screenshot {
+      max-width: 100%;
+      margin-right: auto;
+      margin-left: auto;
+    }
+    #screenshotWrapper > div:nth-of-type(3){
+      display: none;
+    }
+    #screenshotWrapper .leftColumn {
+      display: none;
+    }
+    #screenshotWrapper .rightColumn {
+      display: none;
+    }
+    #topHeader {
+      background-image: none;
+      background-color: #ce3535;
+    }
+    #screenshotWrapper {
+      width: 100%;
+    }
+    #screenshotWrapper > div {
+      display: flex;
+      justify-content: center;
+    }
+    #mobileFeatures {
+      display: block;
+    }
+  }
+
+  #defaultScreenshot {
+    display: block;
+  }
+
+  #userLinks {
+    display: flex;
+    justify-content: flex-end;
+    font-family: "Open Sans Condensed", helvetica, sans-serif;
+  }
+
+  @media (max-width: 991px) {
+    #userLinks {
+      justify-content: center;
+    }
+  }
+
+  #userLinks div {
+    display: flex;
+    justify-content: space-between;
+    min-width: 400px;
+  }
+
+  #userLinks div a {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    width: 100px;
+    font-weight: 600;
+    font-size: 16px;
+  }
+
+  @media(max-width: 450px) {
+    #userLinks div {
+      min-width: 320px;
+    }
+    #userLinks div a {
+      width: 80px;
+      font-size: 14px;
+    }
+  }
+
+  #userLinks div a:hover {
+    color: #E4667D;
+  }
+
+  #userLinks > div {
+    margin-top: 20px;
+    width: 120px;
+    display: flex;
+    justify-content: space-between;
+    margin-right: 30px;
+  }
+
+  @media (min-width: 768px) {
+    .hide-mobile {
+      display: block;
+    }
+    .show-mobile {
+      display: none;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .hide-mobile {
+      display: none;
+    }
+    .show-mobile {
+      display: block;
+    }
+  }
+
+  /**  colors and transitions back to normal
+    *  hex colors from flatuicolors.com   
+    * button style from https://1stwebdesigner.com/10-pure-css-call-action-button-sets/
+    * (other colors available)
+    **/
+
+  .btn-read {
+    background: #f2f7fa;
+    -webkit-transition: background 225ms ease!important;
+    -moz-transition: background 225ms ease!important;
+    transition: background 225ms ease!important;
+    text-decoration: none; /* strip natual underlines */
+    width: 200px;
+    line-height: 102px;
+    height: 70px;
+  }
+
+  .btn-read span {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .btn-read:before, .btn-read:focus, .btn-read:hover {
+    background: #244746;
+  }
+  /* base btn styling */
+  .btn-base {
+    font-family: Oswald, sans-serif;
+    font-size: 20px;
+    text-transform: uppercase;
+    position: relative;
+    transition: all 225ms ease;
+    border: none;
+    border-radius: 2px;
+    overflow: hidden;
+    color: #fff;
+    text-align: center;
+    line-height: 74px;
+  }
+
+  /* places copy on top */
+  .btn-cta span {
+    z-index: 8;
+    position: relative;
+  }
+
+  /** definition and placement of 
+    * starting size before element */
+
+  .btn-cta:before {
+    content: "";
+    display: block;
+    width: 86%;
+    height: 65%;
+    border-radius: 4px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transition: all 400ms cubic-bezier(.32,1.25,.1,1.47);
+    -moz-transition: all 400ms cubic-bezier(.32,1.25,.1,1.47);
+    transition: all 400ms cubic-bezier(.32,1.25,.1,1.47);
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+  }
+
+  /* grow to sizing for before element */
+  .btn-cta:focus:before, .btn-cta:hover:before {
+    height: 105%;
+    width: 105%;
+  }
+
+  #learnChinese {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+  }
+
+  #learnChinese > section {
+    margin-bottom: 60px;
+    width: 95%;
+    max-width: 900px;
+  }
+
+  #learnChinese h2 {
+    margin-bottom: 80px;
+    margin-top: 20px;
+    font-size: 45px;
+    font-weight: 700;
+    line-height: 48px;
+    font-family: Whitney SSm A,Whitney SSm B,Whitney,Helvetica Neue,sans-serif;
+  }
+
+  #learnChinese .description {
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #learnChinese .imgWrapper img {
+    height: auto;
+    width: 100%;
+    max-width: 600px;
+  }
+
+  #learnChinese p {
+    text-align: justify;
+    line-height: 1.5;
+  }
+
+  #learnChinese img {
+    border-radius: 5px;
+  }
+
+  figcaption {
+    font-style: italic;
+    margin-top: 15px;
+  }
+
+  #aboutAuthor {
+    background-color: #ce3535;
+    line-height: 1.5;
+    color: white;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 80px;
+  }
+
+  #aboutAuthor a {
+    color: black;
+  }
+
+  #aboutAuthor header {
+    text-align: center;
+  }
+
+  #aboutAuthor section {
+    margin-top: 40px;
+    max-width: 900px;
+    width: 95%;
+  }
+
+  #aboutAuthor h2 {
+    margin-bottom: 40px;
+    margin-top: 20px;
+    font-size: 45px;
+    font-weight: 700;
+    line-height: 48px;
+    font-family: Whitney SSm A,Whitney SSm B,Whitney,Helvetica Neue,sans-serif;
+  }
+
+  #aboutAuthor h3 {
+    margin-bottom: 0px;
+  }
+
+  #aboutAuthor h4 {
+    margin-bottom: 25px;
+  }
+
+  #aboutAuthor p {
+    line-height: 1.5;
+    text-align: justify;
+  }
+
+  .authorInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .authorPhoto {
+    border-radius: 50%;
+    width: 120px;
+    height: auto;
+    border: solid 3px white;
+  }
+
+  .authorName {
+    margin-bottom: 25px;
+  }
+
+  #testimonials {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background-color: #ce3535;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #testimonials h2 {
+    margin-bottom: 40px;
+    margin-top: 20px;
+    font-size: 45px;
+    font-weight: 700;
+    line-height: 48px;
+    font-family: Whitney SSm A,Whitney SSm B,Whitney,Helvetica Neue,sans-serif;
+  }
+
+  /* Style the imgContainer with a rounded border, grey background and some padding and margin */
+  .imgContainer {
+    border: 2px solid #ccc;
+    background-color: #eee;
+    border-radius: 5px;
+    padding: 16px;
+    margin-top: 16px;
+    text-align: left;
+    color: black;
+    max-width: 700px;
+  }
+
+  .imgContainer p {
+    font-size: 16px;
+    text-align: justify;
+    text-justify: inter-word;
+    line-height: 1.5;
+  }
+
+  /* Clear floats after containers */
+  .imgContainer::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+  /* Float images inside the imgContainer to the left. Add a right margin, and style the image as a circle */
+  .imgContainer img {
+    float: left;
+    margin-right: 20px;
+    border-radius: 50%;
+    border: white 5px solid;
+  }
+
+  /* Increase the font-size of a span element */
+  .imgContainer span {
+    font-size: 20px;
+    margin-right: 15px;
+  }
+
+  /* Add media queries for responsiveness. This will center both the text and the image inside the imgContainer */
+  @media (max-width: 500px) {
+    .imgContainer {
+      text-align: center;
+    }
+
+    .imgContainer img {
+      margin: auto;
+      float: none;
+      display: block;
+    }
+  }
+
+  #faq {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    display: flex;
+    justify-content: center;
+  }
+
+  #faq p {
+    font-size: 16px;
+  }
+
+  #faq h2 {
+    margin-bottom: 80px;
+    margin-top: 20px;
+    font-size: 45px;
+    font-weight: 700;
+    line-height: 48px;
+    font-family: Whitney SSm A,Whitney SSm B,Whitney,Helvetica Neue,sans-serif;
+  }
+
+  #faq h3 {
+    margin-top: 30px;
+    line-height: 1.3;
+  }
+
+  /*@media (min-width: 992px) {
+    #faq {
+      
+    }
+  }*/
+
+  #faq > div {
+    width: 80%;
+  }
+
+  #faq p {
+    text-align: justify;
+    line-height: 1.5;
+  }
+
+  #faq li {
+    text-align: justify;
+    line-height: 1.5;
+  }
+
+  @media(max-width: 450px) {
+    #learnChinese h2 {
+      font-size: 36px;
+      line-height: 36px;
+      margin-bottom: 30px;
+    }
+    #aboutAuthor h2 {
+      font-size: 36px;
+      line-height: 36px;
+      margin-bottom: 40px;
+    }
+    #testimonials h2 {
+      font-size: 36px;
+      line-height: 36px;
+      margin-bottom: 40px;
+    }
+    #faq h2 {
+      margin-bottom: 40px;
+      margin-top: 20px;
+      font-size: 36px;
+      line-height: 36px;
+    }
+    #mainHeader h2 {
+      font-size: 22px;
+      line-height: 25px;
+    }
+    #learnChinese {
+      padding-bottom: 10px;
+    }
   }
 `;
 

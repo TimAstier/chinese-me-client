@@ -6,7 +6,7 @@
   "author": "Timothée Astier",
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && node src/createSiteMap.js",
+    "build": "react-scripts build && node src/createSitemap.js",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "lint": "eslint *.js .; exit 0",

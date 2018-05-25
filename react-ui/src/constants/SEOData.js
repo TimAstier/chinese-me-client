@@ -1,75 +1,104 @@
 const SEOData = {
+  // URLs with a priority will be listed in sitemap
   '/': {
     title: 'Learn Mandarin Chinese - ChineseMe',
     description: 'Learn Mandarin Chinese online. ChineseMe is the world’s most integrated Mandarin Chinese course. It adapts to your interests and covers practical situations, pronunciation, grammar, calligraphy, character etymology and cultural tips.',
-    keywords: 'ChineseMe, Learn Chinese, Learn Chinese Online, Chinese Language Course, Learn to speak Chinese, Learn to speak Mandarin, Study Mandarin Online, Learn Mandarin Online, Learning Chinese Online, Learning Chinese Language Online, Learn Chinese Mandarin Online, Learning the Chinese Language, Best Chinese course, Mandarin Language Learning Online, The Best Way to Learn Chinese'
+    keywords: 'ChineseMe, Learn Chinese, Learn Chinese Online, Chinese Language Course, Learn to speak Chinese, Learn to speak Mandarin, Study Mandarin Online, Learn Mandarin Online, Learning Chinese Online, Learning Chinese Language Online, Learn Chinese Mandarin Online, Learning the Chinese Language, Best Chinese course, Mandarin Language Learning Online, The Best Way to Learn Chinese',
+    changefreq: 'monthly',
+    priority: 1
   },
   '/help': {
     title: 'Help - ChineseMe',
     description: 'A short user guide explaining how the ChineseMe course works.',
-    keywords: 'ChineseMe help, how it works'
+    keywords: 'ChineseMe help, how it works',
+    changefreq: 'yearly',
+    priority: 0.5
   },
   '/about': {
     title: 'About - ChineseMe',
     description: 'ChineseMe is the first integrated Chinese course designed for committed learners. Our aim is to combine the best ideas for pronunciation, vocabulary, characters, sentence patterns (grammar), cultural knowledge and interactive exercises in a single, integrated learning experience.',
-    keywords: 'ChineseMe, Learn Chinese, Learn Chinese Online, Chinese Language Course, About ChineseMe'
+    keywords: 'ChineseMe, Learn Chinese, Learn Chinese Online, Chinese Language Course, About ChineseMe',
+    changefreq: 'yearly',
+    priority: 0.9
   },
   '/philosophy': {
     title: 'Our philosophy - ChineseMe',
     description: 'Discover the unique approach that is behind the our Mandarin Chinese course.',
-    keywords: 'ChineseMe philosophy, Chinese grammar, Chinese vocabulary, Chinese culture, Chinese pronunciation'
+    keywords: 'ChineseMe philosophy, Chinese grammar, Chinese vocabulary, Chinese culture, Chinese pronunciation',
+    changefreq: 'yearly',
+    priority: 0.8
   },
   '/terms-of-service': {
     title: 'Terms of Service - ChineseMe',
     description: 'By using our Services, you are agreeing to terms enclosed in this document. Please read them carefully.',
-    keywords: 'ChineseMe Terms of Service, ChineseMe terms & conditions'
+    keywords: 'ChineseMe Terms of Service, ChineseMe terms & conditions',
+    changefreq: 'yearly',
+    priority: 0.4
   },
   '/privacy-policy': {
     title: 'Privacy Policy - ChineseMe',
     description: 'This document gives you information about how we manage personal data from our users.',
-    keywords: 'ChineseMe Privacy Policy'
+    keywords: 'ChineseMe Privacy Policy',
+    changefreq: 'yearly',
+    priority: 0.4
   },
   '/course': {
     title: 'Course - ChineseMe',
     description: 'Select the Season you want to study and learn Mandarin Chinese.',
-    keywords: 'ChineseMe course, ChineseMe lessons'
+    keywords: 'ChineseMe course, ChineseMe lessons',
+    changefreq: 'monthly',
+    priority: 1
   },
   '/login': {
     title: 'Log in - ChineseMe',
     description: 'Log into your ChineseMe account.',
-    keywords: 'ChineseMe Log in'
+    keywords: 'ChineseMe Log in',
+    changefreq: 'yearly',
+    priority: 0.5
   },
   '/signup': {
     title: 'Signup - ChineseMe',
     description: 'Create your ChineseMe account and start learning Chinese.',
-    keywords: 'ChineseMe Signup, ChineseMe register, ChineseMe account'
+    keywords: 'ChineseMe Signup, ChineseMe register, ChineseMe account',
+    changefreq: 'yearly',
+    priority: 0.6
   },
   '/course/season/1/episode/1': {
     title: 'S1E1 - ChineseMe',
     description: 'The very first episode of the ChineseMe course. Ideal for beginners.',
-    keywords: 'ChineseMe course, S1E1'
+    keywords: 'ChineseMe course, S1E1',
+    changefreq: 'monthly',
+    priority: 0.8
   },
   '/course/season/1/episode/2': {
     title: 'S1E2 - ChineseMe',
     description: 'The second episode of the ChineseMe course. Ideal for beginners.',
-    keywords: 'ChineseMe course, S1E2'
+    keywords: 'ChineseMe course, S1E2',
+    changefreq: 'monthly',
+    priority: 0.7
   },
   '/course/season/1/episode/3': {
     title: 'S1E3 - ChineseMe',
     description: 'The third episode of the ChineseMe course. Ideal for beginners.',
-    keywords: 'ChineseMe course, S1E3'
+    keywords: 'ChineseMe course, S1E3',
+    changefreq: 'monthly',
+    priority: 0.7
   },
   '/blog': {
     title: 'Blog - ChineseMe',
     description: 'A collection of high-quality articles about Mandarin Chinese and how to learn Chinese more efficiently.',
-    keywords: 'ChineseMe blog'
+    keywords: 'ChineseMe blog',
+    changefreq: 'weekly',
+    priority: 0.9
   },
+  // The URLs below are restricted and non-listed in Google's sitemap
   '/blog/the-ultimate-chinese-flashcard-system': {
     title: 'The ultimate Chinese flashcard system - ChineseMe',
     description: 'Discover our recommended approach to review your Chinese knowledge in the most efficient way.',
-    keywords: 'Chinese flashcards, SRS, Anki'
+    keywords: 'Chinese flashcards, SRS, Anki',
+    changefreq: 'yearly',
+    // priority: 0.6
   },
-  // The URLs below are restricted and non-listed in Google's sitemap
   '/account': {
     title: 'My account - ChineseMe'
   },
@@ -99,4 +128,4 @@ const SEOData = {
   },
 };
 
-export default SEOData;
+module.exports = SEOData;

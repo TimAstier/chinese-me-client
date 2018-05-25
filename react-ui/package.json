@@ -6,7 +6,7 @@
   "author": "Timothée Astier",
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && rm build/static/js/*.map",
+    "build": "react-scripts build && rm build/static/js/*.map && node src/createSiteMap.js",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "lint": "eslint *.js .; exit 0",
@@ -60,6 +60,7 @@
     "reselect": "^3.0.0",
     "semantic-ui-react": "^0.78.2",
     "shortid": "^2.2.6",
+    "sitemap": "^1.13.0",
     "styled-components": "^2.1.0",
     "sweetalert": "^2.1.0",
     "validator": "^6.2.1"

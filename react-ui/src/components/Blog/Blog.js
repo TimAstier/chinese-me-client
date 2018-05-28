@@ -43,7 +43,8 @@ const Description = styled.p`
 const ArticlesWrapper = styled.div`
   margin-top: 30px;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
 `;
 
 // TODO: fetch articles from our DB
@@ -61,6 +62,28 @@ class Blog extends Component {
               path="/blog/the-ultimate-chinese-flashcard-system"
               image="three_decks.png"
               title="The ultimate Chinese flashcard system"
+            />
+            <ArticleBreadcrumb
+              path="/blog/do-you-really-need-to-learn-chinese-characters"
+              image="chinese_characters_cover.png"
+              title="Do you really need to learn Chinese characters?"
+            />
+            <ArticleBreadcrumb
+              path="/blog/ridiculously-specific-chinese-classifiers"
+              image="chinese_classifiers_by_usefulness.png"
+              title="5 ridiculously specific Chinese classifiers"
+            />
+            <ArticleBreadcrumb
+              path="/blog/saying-chameleon-in-chinese"
+              title='Saying "chameleon" in Chinese'
+            />
+            <ArticleBreadcrumb
+              path="/blog/a-chinese-course-where-you-are-the-star"
+              title="A Chinese course where you are the star"
+            />
+            <ArticleBreadcrumb
+              path="/blog/doing-business-in-china"
+              title="Doing business in China: is learning Chinese a good investment?"
             />
           </ArticlesWrapper>
         </ScreenWrapper>

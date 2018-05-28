@@ -1,48 +1,12 @@
 import React, { Component } from 'react';
-import { bookComponents as c } from '../.';
+import { bookComponents as c, ArticleWrapper } from '../.';
 import { Img } from '../Shared';
-import styled from 'styled-components';
-// import propTypes from 'prop-types';
-
-const Wrapper = styled.div`
-  h1 {
-    font-size: 34px;
-    font-style: bold;
-    font-family: 'Cambria';
-    color: #C0504D;
-    text-align: center;
-  },
-  h2 {
-    font-size: 28px;
-    font-style: bold;
-    font-family: 'Cambria';
-    margin-bottom: 30px;
-    text-align: center;
-  },
-  h3 {
-    margin-top: 30px;
-    margin-bottom: 30px;
-    font-size: 32px;
-    font-style: bold;
-    font-family: 'Cambria';
-    color: black;
-  },
-  h4 {
-    margin-top: 5px;
-    margin-bottom: 10px;
-    font-size: 24px;
-    font-style: bold;
-    font-family: 'Cambria';
-    color: black;
-  }
-`;
 
 // TODO: author, createdDate, updatedDate
-
 class Article extends Component {
   render() {
     return (
-      <Wrapper>
+      <ArticleWrapper>
         <c.Bookrow marginBottom={15} center>
           <h1>The ultimate Chinese flashcard system</h1>
         </c.Bookrow>
@@ -266,11 +230,9 @@ class Article extends Component {
         <c.P>
           The flashcard system in this article is a comprehensive tool which will keep everything you learn — characters, words, pronunciation, grammar patterns, even stress and intonation — at the tip of your fingertips. If you commit every item of worthwhile knowledge to a flashcard, you avoid the time waste of forgetting things that you have already spent a lot of time memorizing. I am sure you will make your own custom adaptations based on personal preferences. Please let me know if you have ideas that can help all of us use flashcards even more effectively to learn Chinese!
         </c.P>
-      </Wrapper>
+      </ArticleWrapper>
     );
   }
 }
-
-Article.propTypes = {};
 
 export default Article;

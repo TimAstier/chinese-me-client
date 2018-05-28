@@ -27,11 +27,17 @@ const Figcaption = styled.figcaption`
 `;
 
 class Img extends Component {
+  _src() {
+    if (this.props.src) {
+      return this.props.src;
+    }
+    return assetEndpointToUrl('/images/' + this.props.name);
+  }
   render() {
     return (
       <Figure>
         <StyledImg
-          src={assetEndpointToUrl('/images/' + this.props.name)}
+          src={this._src()}
           maxWidth={this.props.maxWidth}
           alt={this.props.alt}
         />
@@ -45,7 +51,8 @@ class Img extends Component {
 }
 
 Img.propTypes = {
-  name: propTypes.string.isRequired,
+  src: propTypes.string,
+  name: propTypes.string,
   alt: propTypes.string,
   maxWidth: propTypes.number,
   caption: propTypes.string

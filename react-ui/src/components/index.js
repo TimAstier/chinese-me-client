@@ -11,6 +11,7 @@ export { default as ActivatedPage } from './Signup/ActivatedPage';
 export { default as About } from './StaticPages/About';
 export { default as Article } from './Article/Article';
 export { default as ArticleBreadcrumb } from './Article/Breadcrumb';
+export { default as ArticleWrapper } from './Article/Wrapper';
 export { default as AudioToWords } from './Exercises/AudioToWords/AudioToWords';
 export { default as Avatar } from './Avatar/Avatar';
 export { default as Blog } from './Blog/Blog';

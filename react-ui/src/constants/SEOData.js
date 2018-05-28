@@ -99,6 +99,27 @@ const SEOData = {
     changefreq: 'yearly',
     // priority: 0.6
   },
+  '/blog/do-you-really-need-to-learn-chinese-characters': {
+    title: 'Do you really need to learn Chinese characters? - ChineseMe',
+    description: 'Some people think it\'s OK to skip learning Chinese characters. In my opinion, skipping the characters is a detour rather than a shortcut.',
+    keywords: 'Chinese characters, pinyin, speak Chinese',
+    changefreq: 'yearly',
+    // priority: 0.6
+  },
+  '/blog/doing-business-in-china': {
+    title: 'Doing business in China: is learning Chinese a good investment? - ChineseMe',
+    description: 'Some business people will tell you that learning Chinese is a huge waste of time. But picking up the basics is definitely worth your time, for several reasons.',
+    keywords: 'Business in China, learn Chinese, worth time',
+    changefreq: 'yearly',
+    // priority: 0.6
+  },
+  '/blog/ridiculously-specific-chinese-classifiers': {
+    title: '5 ridiculously specific Chinese classifiers - ChineseMe',
+    description: 'When learning Chinese classifiers, people usually find a list and learn the most frequent or useful ones first. But you’re not someone who just runs mindlessly with the crowd, right? If you plan to learn all of them, why don’t you start from the end?',
+    keywords: 'Chinese classifiers, Measure words',
+    changefreq: 'yearly',
+    // priority: 0.6
+  },
   '/account': {
     title: 'My account - ChineseMe'
   },

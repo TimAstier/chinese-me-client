@@ -75,5 +75,6 @@ https://aws.amazon.com/getting-started/tutorials/deliver-content-faster/
 
 ## Printing new PDF
 - update the PDF version constant
-- for every episode (in production, with no user setting) go in Chrome and do cmd+P
+- Use Chrome Canary (otherwise italic become bold)
+- for every episode (in production, with no user setting) go in Chrome and do cmd + P
 - save as PDF (advanced settings, scale should be 70%)

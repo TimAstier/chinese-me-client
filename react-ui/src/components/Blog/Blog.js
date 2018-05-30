@@ -75,14 +75,17 @@ class Blog extends Component {
             />
             <ArticleBreadcrumb
               path="/blog/saying-chameleon-in-chinese"
+              image="chameleon.png"
               title='Saying "chameleon" in Chinese'
             />
             <ArticleBreadcrumb
               path="/blog/a-chinese-course-where-you-are-the-star"
+              image="tea_house.png"
               title="A Chinese course where you are the star"
             />
             <ArticleBreadcrumb
               path="/blog/doing-business-in-china"
+              image="illustrations/3-1.jpg"
               title="Doing business in China: is learning Chinese a good investment?"
             />
           </ArticlesWrapper>

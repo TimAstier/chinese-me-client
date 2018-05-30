@@ -39,7 +39,7 @@ class Img extends Component {
         <StyledImg
           src={this._src()}
           maxWidth={this.props.maxWidth}
-          alt={this.props.alt}
+          alt={this.props.alt ? this.props.alt : this.props.name}
         />
         {
           this.props.caption &&

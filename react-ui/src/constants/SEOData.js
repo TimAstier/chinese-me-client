@@ -120,6 +120,20 @@ const SEOData = {
     changefreq: 'yearly',
     // priority: 0.6
   },
+  '/blog/saying-chameleon-in-chinese': {
+    title: 'Saying “chameleon” in Chinese - ChineseMe',
+    description: 'Learn words through the meaning of individual characters.',
+    keywords: 'Chinese words, Chinese characters, 变色龙, chameleon',
+    changefreq: 'yearly',
+    // priority: 0.6
+  },
+  '/blog/a-chinese-course-where-you-are-the-star': {
+    title: 'A Chinese course where you are the star - ChineseMe',
+    description: ' ChineseMe is a systematic, integrated Chinese course focusing on YOU: your person, your life, and your interests.',
+    keywords: 'ChineseMe, AI, interest, adapts itself, made for you, customised, personalised course',
+    changefreq: 'yearly',
+    // priority: 0.6
+  },
   '/account': {
     title: 'My account - ChineseMe'
   },

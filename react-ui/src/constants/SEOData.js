@@ -129,7 +129,7 @@ const SEOData = {
   '/blog/a-chinese-course-where-you-are-the-star': {
     title: 'A Chinese course where you are the star - ChineseMe',
     description: ' ChineseMe is a systematic, integrated Chinese course focusing on YOU: your person, your life, and your interests.',
-    keywords: 'ChineseMe, AI, interest, adapts itself, made for you, customised, personalised course',
+    keywords: 'ChineseMe, chinese course, AI, interest, adapts itself, made for you, customised, personalised course',
     changefreq: 'yearly',
     priority: 0.7
   },

@@ -133,6 +133,13 @@ const SEOData = {
     changefreq: 'yearly',
     priority: 0.7
   },
+  '/blog/learn-chinese-pdf': {
+    title: 'PDF to Learn Chinese (Beginners) - ChineseMe',
+    description: 'We designed this PDF guide to provide beginners with a complete introduction to Mandarin Chinese.',
+    keywords: 'Learn Chinese PDF, Learn Chinese free PDF, Learn Chinese beginner',
+    changefreq: 'yearly',
+    priority: 0.8
+  },
   // The URLs below are restricted and non-listed in Google's sitemap
   '/account': {
     title: 'My account - ChineseMe'

@@ -11,7 +11,7 @@ class Article extends Component {
           <this.props.article />
           <NLSignupForm
             title="Get notified of our future articles"
-            text="Sign up now to receive the free PDF version of our Chinese course for beginners, as well as the latest news about the project."
+            text="Sign up now to receive the free PDF version of our Chinese course for beginners, as well as our latest articles about Chinese."
           />
         </c.Page>
       </ScrollableWrapper>

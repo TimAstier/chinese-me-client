@@ -13,6 +13,9 @@ const Wrapper = styled.div`
   margin-top: 30px;
   padding-top: 15px;
   padding-bottom: 10px;
+  @media print {
+    page-break-after: always;
+  }
 `;
 
 class Objective extends Component {

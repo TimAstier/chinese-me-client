@@ -4,3 +4,4 @@ export { default as DoYouReallyNeedToLearnChineseCharacters } from './DoYouReall
 export { default as RidiculouslySpecificChineseClassifiers } from './RidiculouslySpecificChineseClassifiers';
 export { default as SayingChameleonInChinese } from './SayingChameleonInChinese';
 export { default as AChineseCourseWhereYouAreTheStar } from './AChineseCourseWhereYouAreTheStar';
+export { default as LearnChinesePdf } from './LearnChinesePdf';

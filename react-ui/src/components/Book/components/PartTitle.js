@@ -68,7 +68,7 @@ class PartTitle extends Component {
 
   _fontFamily() {
     if (this.props.name === 'dialog_zh') {
-      return 'Kai';
+      return 'ChineseFont';
     }
     return 'Calibri';
   }

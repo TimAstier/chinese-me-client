@@ -51,6 +51,7 @@ class UserPopup extends Component {
         trigger={trigger}
         positioning="bottom center"
         hoverable
+        hideOnScroll
       >
         <Menu>
           <Link to={'/account'}>

@@ -10,7 +10,8 @@ const Wrapper = styled.div`
   height: 100%;
   width: 100%;
   background-color: #F2F7FA;
-  overflow-y: auto;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
   @media print {
     height: auto;
   }

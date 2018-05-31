@@ -106,6 +106,7 @@ class MobileNavbar extends Component {
             trigger={leftTrigger}
             positioning="bottom center"
             hoverable
+            hideOnScroll
           >
             <Menu>
               <Item>
@@ -144,6 +145,7 @@ class MobileNavbar extends Component {
               trigger={rightTrigger}
               positioning="bottom center"
               hoverable
+              hideOnScroll
             >
               <Menu>
                 <Link to={'/login'}>

@@ -78,6 +78,12 @@ if (localStorage.jwtToken) {
   store.dispatch(authActions.setCurrentUser(jwtDecode(localStorage.jwtToken)));
 }
 
+// Fix touch event issue on iOS devices
+// See https://github.com/Semantic-Org/Semantic-UI-React/pull/1833#issuecomment-313713611
+if ('ontouchstart' in document.documentElement) {
+  document.body.style.cursor = 'pointer';
+}
+
 render(
   <Provider store={store}>
     <Router

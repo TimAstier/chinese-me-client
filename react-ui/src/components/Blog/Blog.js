@@ -59,6 +59,11 @@ class Blog extends Component {
           <Description>A collection of high-quality articles about Mandarin Chinese <br /> and how to learn it efficiently.</Description>
           <ArticlesWrapper>
             <ArticleBreadcrumb
+              path="/blog/learn-chinese-pdf"
+              image="Season_1_PDF.png"
+              title="PDF to Learn Chinese (Beginners)"
+            />
+            <ArticleBreadcrumb
               path="/blog/the-ultimate-chinese-flashcard-system"
               image="three_decks.png"
               title="The ultimate Chinese flashcard system"

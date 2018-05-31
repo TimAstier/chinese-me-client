@@ -13,7 +13,7 @@ import assetEndpointToUrl from '../../../helpers/assetEndpointToUrl';
 // Custom code to handle "example" dialogs
 const Chinese = styled.div`
   font-size: 30px;
-  font-family: Kai;
+  font-family: ChineseFont;
   line-height: 35px;
   min-width: 200px;
 `;

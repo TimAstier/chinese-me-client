@@ -7,7 +7,7 @@ import { Row } from '../../Shared';
 
 const ChineseWrapper = styled.div`
   font-size: 30px;
-  font-family: Kai;
+  font-family: ChineseFont;
   line-height: 35px;
   display: flex;
   min-width: ${props => props.width}

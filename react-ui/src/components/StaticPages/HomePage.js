@@ -1000,50 +1000,50 @@ class HomePage extends Component {
                 Some people claim that learning Chinese is more difficult than learning other languages. Mandarin Chinese is exotic and different - but many people learn it surprisingly quickly! The key, in our opinion, is to focus on the right things, and use concepts and methods that are especially designed for Chinese rather than adapted from courses in Western languages. So if you like challenging yourself and learning things that are completely different from what you are used to, learning Chinese is not difficult. It's just different.
               </p>
               <h3>DO I REALLY NEED TO LEARN CHINESE CHARACTERS?</h3>
-              <div>
-                <a href="https://blog.chinese-me.com/do-you-really-need-to-learn-chinese-characters-b0ff06f6bbb2">[FULL ARTICLE]</a> Some language learners try to focus on pīnyīn, skipping the characters entirely. This might look like a reasonable choice if you want to focus on speaking and are not so interested in reading and writing. But in our experience, learning Chinese characters is not only enjoyable, but is also always a good idea and worth the effort.
-                <h3>DO I NEED TO WRITE CHARACTERS?  MY CHINESE FRIENDS JUST TYPE THEM.</h3>
-                <p>
-                  Just like us, people in China write mainly by using electronic input methods. If you have great memory for pictures, you can choose to skip writing characters by hand, and simply learn how to recognize them. That way, you can type characters on your devices. But most people find it easier to remember the characters if they practice writing by hand.
-                </p>
-                <h3>SHOULD I LEARN CHINESE CALLIGRAPHY?</h3>
-                <p>Practicing calligraphy is not something you have to do to learn Chinese. But many people find it enjoyable. The aesthetic principles help us develop a feel for the logic of how Chinese characters have been put together; the rhythm of writing each stroke makes the whole character come alive. After just a short while of practice, this will help you to see the characters in a new way.</p>
-                <h3>HOW LONG DOES IT TAKE TO BE ABLE TO COMMUNICATE IN CHINESE?</h3>
-                <p>
-                  Some people have been in China for ages and speak little or no Chinese. Others have good grammar and vocabulary but their pronunciation is so bad that Chinese people can’t understand even their most basic sentences. But the structure of Mandarin Chinese is not difficult - with the right method, you can quickly start to communicate on basic topics. If you focus on the right things, such as pronunciation and characters, you will get a good feel for the language within a few months to a year. After that, all you need to do is grow your vocabulary.
-                </p>
-                <h3>WHAT IS THE BEST WAY TO LEARN CHINESE?</h3>
-                <p>We think a carefully structured course integrating pronunciation, vocabulary, sentence patterns and culture in a single package is the most effective way of studying Chinese. This is why we created ChineseMe - the “anti-Duolingo” of Chinese language learning!</p>
-                <h3>WHAT IS THE MOST EFFICIENT WAY TO REVIEW WHAT I LEARN?</h3>
-                <p>
-                  <a href="https://blog.chinese-me.com/the-ultimate-chinese-flashcard-system-fbd71e2b63b5">[FULL ARTICLE]</a> When learning Chinese, you will realize that you will keep forgetting most of the new things that you learn. Many strategies exist to refresh your memory. The most efficient and proven way is to use flashcards.
-                </p>
-                <h3>WHICH ARE THE BEST RESOURCES?</h3>
-                <p>Trying to find the best online resources for Chinese is like panning for gold. There are hundreds of sites, some of them with slick design, claiming to “make Chinese easy”. Few are very useful, but it can be hard for beginners to tell the difference. Below, we highlight a few gold nuggets.</p>
-                <h4>Methodology</h4>
-                <ul>
-                  <li>Olle Linge’s blog <a href="http://www.hackingchinese.com">Hacking Chinese</a> is our favorite “how-to” guide for students, telling you what to focus on, where to find the best resources, and so on.</li>
-                </ul>
-                <h4>Pronunciation</h4>
-                <ul>
-                  <li>Yoyo Chinese has attractively packaged youtube videos on Chinese pronunciation. Some explanations should be taken with a grain of sand. Here is Yoyo’s pronunciation <a href="https://www.youtube.com/watch?v=q2hrlAGewvY&list=PLioS_-8erSI1B8dEErLr28sdgsHMui1d-">playlist</a>.</li>
-                </ul>
-                <h4>Vocabulary</h4>
-                <ul>
-                  <li>The best dictionary for Chinese is <a href="https://www.pleco.com/">Pleco</a>; its free version is good enough for beginners, and the paid add-on dictionaries are great value for money if you are serious about learning Chinese.</li>
-                  <li>Our favorite review app is <a href="https://apps.ankiweb.net/">Anki</a>, an open-source flashcard app with space repetition algorithm. The desktop and web-based versions are free and it is available on mobile as a paid app.</li>
-                </ul>
-                <h4>Forums and volunteer sites</h4>
-                <ul>
-                  <li><a href="https://www.chinese-forums.com/">Chinese-forums</a> has a strong community of language enthusiasts sharing advice on China and the Chinese language.</li>
-                  <li><a href="https://chinese.stackexchange.com/">Chinese StackExchange</a> is relatively new, so the community is not yet as strong as that of Chinese-forums, but it still contains useful content.</li>
-                </ul>
-                <p>These are free of charge as long as you help others correct assignments in your own language:</p>
-                <ul>
-                  <li><a href="http://lang-8.com/">Lang-8</a> provides native Mandarin Chinese speakers who will correct your writing assignments, usually within the day. Be aware that volunteers are not professional teachers, so they may miss errors or make corrections that are not really relevant.</li>
-                  <li>At <a href="https://rhinospike.com/">RhinoSpike</a>, you can upload phrases or entire texts and have native Mandarin Chinese speakers record them for you within a day or two. The quality is usually high.</li>
-                </ul>
-              </div>
+              <p>
+                Some language learners try to focus on pīnyīn, skipping the characters entirely. This might look like a reasonable choice if you want to focus on speaking and are not so interested in reading and writing. But in our experience, learning Chinese characters is not only enjoyable, but is also always a good idea and worth the effort. We wrote a complete article about this topic: <a href="https://blog.chinese-me.com/do-you-really-need-to-learn-chinese-characters-b0ff06f6bbb2">Do you really need to learn Chinese characters?</a>
+              </p>
+              <h3>DO I NEED TO WRITE CHARACTERS?  MY CHINESE FRIENDS JUST TYPE THEM.</h3>
+              <p>
+                Just like us, people in China write mainly by using electronic input methods. If you have great memory for pictures, you can choose to skip writing characters by hand, and simply learn how to recognize them. That way, you can type characters on your devices. But most people find it easier to remember the characters if they practice writing by hand.
+              </p>
+              <h3>SHOULD I LEARN CHINESE CALLIGRAPHY?</h3>
+              <p>Practicing calligraphy is not something you have to do to learn Chinese. But many people find it enjoyable. The aesthetic principles help us develop a feel for the logic of how Chinese characters have been put together; the rhythm of writing each stroke makes the whole character come alive. After just a short while of practice, this will help you to see the characters in a new way.</p>
+              <h3>HOW LONG DOES IT TAKE TO BE ABLE TO COMMUNICATE IN CHINESE?</h3>
+              <p>
+                Some people have been in China for ages and speak little or no Chinese. Others have good grammar and vocabulary but their pronunciation is so bad that Chinese people can’t understand even their most basic sentences. But the structure of Mandarin Chinese is not difficult - with the right method, you can quickly start to communicate on basic topics. If you focus on the right things, such as pronunciation and characters, you will get a good feel for the language within a few months to a year. After that, all you need to do is grow your vocabulary.
+              </p>
+              <h3>WHAT IS THE BEST WAY TO LEARN CHINESE?</h3>
+              <p>We think a carefully structured course integrating pronunciation, vocabulary, sentence patterns and culture in a single package is the most effective way of studying Chinese. This is why we created ChineseMe - the “anti-Duolingo” of Chinese language learning!</p>
+              <h3>WHAT IS THE MOST EFFICIENT WAY TO REVIEW WHAT I LEARN?</h3>
+              <p>
+                When learning Chinese, you will realize that you will keep forgetting most of the new things that you learn. Many strategies exist to refresh your memory. The most efficient and proven way is to use flashcards. We recommend this approach: <a href="https://blog.chinese-me.com/the-ultimate-chinese-flashcard-system-fbd71e2b63b5">the ultimate Chinese flashcard system</a>.
+              </p>
+              <h3>WHICH ARE THE BEST RESOURCES?</h3>
+              <p>Trying to find the best online resources for Chinese is like panning for gold. There are hundreds of sites, some of them with slick design, claiming to “make Chinese easy”. Few are very useful, but it can be hard for beginners to tell the difference. Below, we highlight a few gold nuggets.</p>
+              <h4>Methodology</h4>
+              <ul>
+                <li>Olle Linge’s blog <a href="http://www.hackingchinese.com">Hacking Chinese</a> is our favorite “how-to” guide for students, telling you what to focus on, where to find the best resources, and so on.</li>
+              </ul>
+              <h4>Pronunciation</h4>
+              <ul>
+                <li>Yoyo Chinese has attractively packaged youtube videos on Chinese pronunciation. Some explanations should be taken with a grain of sand. Here is Yoyo’s pronunciation <a href="https://www.youtube.com/watch?v=q2hrlAGewvY&list=PLioS_-8erSI1B8dEErLr28sdgsHMui1d-">playlist</a>.</li>
+              </ul>
+              <h4>Vocabulary</h4>
+              <ul>
+                <li>The best dictionary for Chinese is <a href="https://www.pleco.com/">Pleco</a>; its free version is good enough for beginners, and the paid add-on dictionaries are great value for money if you are serious about learning Chinese.</li>
+                <li>Our favorite review app is <a href="https://apps.ankiweb.net/">Anki</a>, an open-source flashcard app with space repetition algorithm. The desktop and web-based versions are free and it is available on mobile as a paid app.</li>
+              </ul>
+              <h4>Forums and volunteer sites</h4>
+              <ul>
+                <li><a href="https://www.chinese-forums.com/">Chinese-forums</a> has a strong community of language enthusiasts sharing advice on China and the Chinese language.</li>
+                <li><a href="https://chinese.stackexchange.com/">Chinese StackExchange</a> is relatively new, so the community is not yet as strong as that of Chinese-forums, but it still contains useful content.</li>
+              </ul>
+              <p>These are free of charge as long as you help others correct assignments in your own language:</p>
+              <ul>
+                <li><a href="http://lang-8.com/">Lang-8</a> provides native Mandarin Chinese speakers who will correct your writing assignments, usually within the day. Be aware that volunteers are not professional teachers, so they may miss errors or make corrections that are not really relevant.</li>
+                <li>At <a href="https://rhinospike.com/">RhinoSpike</a>, you can upload phrases or entire texts and have native Mandarin Chinese speakers record them for you within a day or two. The quality is usually high.</li>
+              </ul>
             </div>
           </div>
         </Wrapper>

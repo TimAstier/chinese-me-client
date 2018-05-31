@@ -75,6 +75,6 @@ https://aws.amazon.com/getting-started/tutorials/deliver-content-faster/
 
 ## Printing new PDF
 - update the PDF version constant
-- Use Chrome Canary (otherwise italic become bold)
+- Be sure Cambria is installed locally (it uses font-face cambria src local)
 - for every episode (in production, with no user setting) go in Chrome and do cmd + P
 - save as PDF (advanced settings, scale should be 70%)

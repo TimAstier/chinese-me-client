@@ -6,6 +6,7 @@ import { Popup } from 'semantic-ui-react';
 import userIcon from '../../images/defaultMaleUserIcon.svg';
 import { Link } from 'react-router';
 import { UserPopup } from '../.';
+import Media from 'react-media';
 
 const Wrapper = styled.div`
   position: fixed;
@@ -128,13 +129,20 @@ class MobileNavbar extends Component {
           </Popup>
         </LeftWrapper>
         <MiddleWrapper>
-          <ScreenButton
-            text="Table of Contents"
-            width={160}
-            height={38}
-            fontSize={16}
-            onClick={this.props.openMapModal}
-          />
+          <Media query="(min-width: 900px)">
+            { matches => matches
+              ? (
+                <ScreenButton
+                  text="Table of Contents"
+                  width={160}
+                  height={38}
+                  fontSize={16}
+                  onClick={this.props.openMapModal}
+                />
+              )
+              : null
+            }
+          </Media>
         </MiddleWrapper>
         <RightWrapper>
           {this.props.isAuthenticated &&

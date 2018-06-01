@@ -84,13 +84,19 @@ if ('ontouchstart' in document.documentElement) {
   document.body.style.cursor = 'pointer';
 }
 
-render(
-  <Provider store={store}>
-    <Router
-      history={history}
-      render={applyRouterMiddleware(useScroll())}
-    >
-      {routes}
-    </Router>
-  </Provider>, document.getElementById('app')
-);
+const rootElement = document.getElementById('app');
+
+const renderProvider = () => {
+  return (
+    <Provider store={store}>
+      <Router
+        history={history}
+        render={applyRouterMiddleware(useScroll())}
+      >
+        {routes}
+      </Router>
+    </Provider>
+  );
+};
+
+render(renderProvider(), rootElement);

@@ -8,10 +8,6 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.css"></link>
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans:400,700'" />
     <link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
-    <!-- Default Meta -->
-    <title>ChineseMe</title>
-    <meta name="twitter:card" content="summary_large_image">
-    <!-- END Default Meta -->
     <script>
       if ('%NODE_ENV%' === 'development' || '%NODE_ENV%' === 'production') {
         !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on"];analytics.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);analytics.push(e);return analytics}};for(var t=0;t<analytics.methods.length;t++){var e=analytics.methods[t];analytics[e]=analytics.factory(e)}analytics.load=function(t){var e=document.createElement("script");e.type="text/javascript";e.async=!0;e.src=("https:"===document.location.protocol?"https://":"http://")+"cdn.segment.com/analytics.js/v1/"+t+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(e,n)};analytics.SNIPPET_VERSION="4.0.0";
@@ -32,23 +28,23 @@
     <!-- Cookie consent notice -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
     <script>
-    window.addEventListener("load", function(){
-      window.cookieconsent.initialise({
-        "palette": {
-          "popup": {
-            "background": "#000"
+      window.addEventListener("load", function(){
+        window.cookieconsent.initialise({
+          "palette": {
+            "popup": {
+              "background": "#000"
+            },
+            "button": {
+              "background": "#55b6ff",
+              "text": "#ffffff"
+            }
           },
-          "button": {
-            "background": "#55b6ff",
-            "text": "#ffffff"
+          "content": {
+            "message": 'This website uses cookies to ensure you get the best experience.',
+            "href": "/privacy-policy"
           }
-        },
-        "content": {
-          "message": 'This website uses cookies to ensure you get the best experience.',
-          "href": "/privacy-policy"
-        }
-      })});
-      </script>
-      <!-- END Cookie consent notice -->
+        })});
+    </script>
+    <!-- END Cookie consent notice -->
   </body>
 </html>

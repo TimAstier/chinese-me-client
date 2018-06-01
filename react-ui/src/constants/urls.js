@@ -3,6 +3,7 @@ export const PDF_VERSION = '1.3';
 
 export const STATIC_ASSETS_ROOT_URL = 'https://d1vi6gdem0f6wt.cloudfront.net';
 export const AFFILIATE_CODE_COOKIE_NAME = 'cm_ref';
+export const DEFAULT_SEO_IMAGE = 'ChineseMe_social.png';
 
 // Those images are available in the s3 bucket at STATIC_ASSETS_ROOT_URL/images/
 export const imageNames = {

@@ -32,6 +32,10 @@ class SEO extends Component {
     return assetEndpointToUrl('/images/' + DEFAULT_SEO_IMAGE);
   }
 
+  _showMCPopup() {
+    return this.props.url.split('/')[1] === '';
+  }
+
   render() {
     return (
       <Helmet>
@@ -56,6 +60,10 @@ class SEO extends Component {
         <meta name="twitter:description" content={ this._description() } />
         <meta name="twitter:title" content={ this._title() } />
         <meta name="twitter:image" content={ this._image() } />
+        {
+          this._showMCPopup() &&
+            <script>{'{require(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us17.list-manage.com","uuid":"e766866f8f1d9b5c999504f74","lid":"220277c22b"}) })}'}</script>
+        }
       </Helmet>
     );
   }

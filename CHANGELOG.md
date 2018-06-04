@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 - Do not display TOC on mobile
+- Return a 404 to crawlers for not found page
 
 ## [0.2] 2017-05-24
 

@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.2.1] 2017-06-04
+
+### Added
+- Smooth scrolling on mobile
+- Handle SEO Meta tags with React-helmet
+- Pre-render pages for crawlers with prerender.io
+
+### Changed
+- Do not display TOC on mobile
+
 ## [0.2] 2017-05-24
 
 ### Added

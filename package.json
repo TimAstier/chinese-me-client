@@ -15,6 +15,7 @@
     "react-ui/node_modules"
   ],
   "dependencies": {
-    "express": "^4.14.1"
+    "express": "^4.14.1",
+    "prerender-node": "^3.1.1"
   }
 }

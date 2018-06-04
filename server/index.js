@@ -5,7 +5,11 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Setup Prerender.io
-app.use(require('prerender-node').set('prerenderToken', 'OGj5lmcxQRskmWMcLP5Y'));
+// See https://prerender.io/documentation
+app.use(require('prerender-node')
+  // To test in development:
+  // .set('prerenderServiceUrl', 'http://localhost:3000/')
+  .set('prerenderToken', 'OGj5lmcxQRskmWMcLP5Y'));
 
 // Priority serve any static files.
 app.use(express.static(path.resolve(__dirname, '../react-ui/build')));

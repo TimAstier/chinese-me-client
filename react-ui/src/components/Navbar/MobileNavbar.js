@@ -77,25 +77,21 @@ const Menu = styled.div`
   display: flex;
   flex-direction: column;
   width: 120px;
-  align-items: center;
-  * {
-    margin-top: 5px;
-    margin-bottom: 5px;
+  align-items: stretch;
+  a:hover, a:active{
+    background-color: lightgrey;
   }
 `;
 
 const Item = styled.div`
   font-size: 16px;
   text-align: center;
-  color: #7f8c94;
   height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
-  :hover {
-    background-color: #F2F7FA;
-  }
+  width: 100%;
+  color: #4183C4;
 `;
 
 class MobileNavbar extends Component {
@@ -110,21 +106,23 @@ class MobileNavbar extends Component {
             hideOnScroll
           >
             <Menu>
-              <Item>
-                <Link to={'/'}>Home</Link>
-              </Item>
-              <Item>
-                <Link to={'/course'}>Course</Link>
-              </Item>
-              <Item>
-                <Link to={'/blog'}>Blog</Link>
-              </Item>
+              <Link to={'/'}>
+                <Item>Home</Item>
+              </Link>
+
+              <Link to={'/course'}>
+                <Item>Course</Item>
+              </Link>
+
+              <Link to={'/blog'}>
+                <Item>Blog</Item>
+              </Link>
               <Item onClick={this.props.askQuestion}>
                 Ask Question
               </Item>
-              <Item>
-                <Link to={'/help'}>Help</Link>
-              </Item>
+              <Link to={'/help'}>
+                <Item>Help</Item>
+              </Link>
             </Menu>
           </Popup>
         </LeftWrapper>

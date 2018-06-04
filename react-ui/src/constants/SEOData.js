@@ -96,49 +96,56 @@ const SEOData = {
     description: 'Discover our recommended approach to review your Chinese knowledge in the most efficient way.',
     keywords: 'Chinese flashcards, SRS, Anki',
     changefreq: 'yearly',
-    priority: 0.7
+    priority: 0.7,
+    image: 'three_decks.png'
   },
   '/blog/do-you-really-need-to-learn-chinese-characters': {
     title: 'Do you really need to learn Chinese characters? - ChineseMe',
     description: 'Some people think it\'s OK to skip learning Chinese characters. In my opinion, skipping the characters is a detour rather than a shortcut.',
     keywords: 'Chinese characters, pinyin, speak Chinese',
     changefreq: 'yearly',
-    priority: 0.7
+    priority: 0.7,
+    image: 'chinese_characters_cover.png'
   },
   '/blog/doing-business-in-china': {
     title: 'Doing business in China: is learning Chinese a good investment? - ChineseMe',
     description: 'Some business people will tell you that learning Chinese is a huge waste of time. But picking up the basics is definitely worth your time, for several reasons.',
     keywords: 'Business in China, learn Chinese, worth time',
     changefreq: 'yearly',
-    priority: 0.7
+    priority: 0.7,
+    image: 'illustrations/3-1.jpg'
   },
   '/blog/ridiculously-specific-chinese-classifiers': {
     title: '5 ridiculously specific Chinese classifiers - ChineseMe',
     description: 'When learning Chinese classifiers, people usually find a list and learn the most frequent or useful ones first. But you’re not someone who just runs mindlessly with the crowd, right? If you plan to learn all of them, why don’t you start from the end?',
     keywords: 'Chinese classifiers, Measure words',
     changefreq: 'yearly',
-    priority: 0.7
+    priority: 0.7,
+    image: 'chinese_classifiers_by_usefulness.png'
   },
   '/blog/saying-chameleon-in-chinese': {
     title: 'Saying “chameleon” in Chinese - ChineseMe',
     description: 'Learn words through the meaning of individual characters.',
     keywords: 'Chinese words, Chinese characters, 变色龙, chameleon',
     changefreq: 'yearly',
-    priority: 0.7
+    priority: 0.7,
+    image: 'chameleon.png'
   },
   '/blog/a-chinese-course-where-you-are-the-star': {
     title: 'A Chinese course where you are the star - ChineseMe',
     description: ' ChineseMe is a systematic, integrated Chinese course focusing on YOU: your person, your life, and your interests.',
     keywords: 'ChineseMe, chinese course, AI, interest, adapts itself, made for you, customised, personalised course',
     changefreq: 'yearly',
-    priority: 0.7
+    priority: 0.7,
+    image: 'tea_house.png'
   },
   '/blog/learn-chinese-pdf': {
     title: 'PDF to Learn Chinese (Beginners) - ChineseMe',
     description: 'We designed this PDF guide to provide beginners with a complete introduction to Mandarin Chinese.',
     keywords: 'Learn Chinese PDF, Learn Chinese free PDF, Learn Chinese beginner',
     changefreq: 'yearly',
-    priority: 0.8
+    priority: 0.8,
+    image: 'Season_1_PDF.png'
   },
   // The URLs below are restricted and non-listed in Google's sitemap
   '/account': {

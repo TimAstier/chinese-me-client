@@ -26,7 +26,7 @@ class SEO extends Component {
   _image() {
     if (SEOData[this.props.url]) {
       if (SEOData[this.props.url].image) {
-        return SEOData[this.props.url].image;
+        return assetEndpointToUrl('/images/' + SEOData[this.props.url].image);
       }
     }
     return assetEndpointToUrl('/images/' + DEFAULT_SEO_IMAGE);

@@ -19,7 +19,7 @@ class Article extends Component {
           />
         </c.Bookrow>
         <c.P>
-          When we learn a language related to our own, we get many words “for free”: an English speaker will immediately recognize a French word like <i>telephone</i> in both spoken and written form. In Chinese, however, <i>telephone</i> is pronounced <b>diànhuà</b>, which sounds nothing like the English word; and it is written using two characters, <c.Chinese>电话</c.Chinese>, rather than our familiar Latin alphabet. Most students of Chinese see the characters as a huge challenge: you will need to master about 2 000 characters to attain even basic literacy. But the Chinese writing system actually has some features that make it easier for us to memorize new vocabulary.
+          When we learn a language related to our own, we get many words “for free”: an English speaker will immediately recognize a French word like <i>téléphone</i> in both spoken and written form. In Chinese, however, <i>telephone</i> is pronounced <b>diànhuà</b>, which sounds nothing like the English word; and it is written using two characters, <c.Chinese>电话</c.Chinese>, rather than our familiar Latin alphabet. Most students of Chinese see the characters as a huge challenge: you will need to master about 2 000 characters to attain even basic literacy. But the Chinese writing system actually has some features that make it easier for us to memorize new vocabulary.
         </c.P>
         <c.Bookrow center>
           <h3>Learn words through the meaning of individual characters</h3>
@@ -29,6 +29,7 @@ class Article extends Component {
           for example <i>computer</i> (<c.Chinese>电脑</c.Chinese>: <i>electricity</i> + <i>brain</i>), <i>electrocardiogram</i> (<c.Chinese>心电图</c.Chinese>: <i>heart</i> + <i>electricity</i> + <i>chart</i>) or <i>movie</i> (<c.Chinese>电影</c.Chinese>:
           <i>electricity</i> + <i>shadow</i>). And once you know a few characters, you can immediately decipher the meaning of complex words such as <c.Chinese>变色龙</c.Chinese> (<i>change</i> + <i>color</i> + <i>dragon</i> = <i>chameleon</i>).
         </c.P>
+        <c.P>This is similar to what we do with European languages, when we can decompose and understand a word thanks to its Greek or Latin roots. Continuing with the same example, the word <i>telephone</i> makes sense if we know its Greek origins <i>(tele = far away + phone = voice)</i>. In Chinese, this sort of logical decomposition is so common that most of the words can be understood or explained by decomposing them into individual characters.</c.P>
         <c.Bookrow center>
           <h3>Use the etymology of pictograms as a memory aid</h3>
         </c.Bookrow>

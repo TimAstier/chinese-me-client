@@ -69,7 +69,7 @@ class Example extends Component {
     return (
       <Row>
         {
-          this.props.code && !this.props.hideCode &&
+          this.props.code &&
             <NumberWrapper>{this.props.code}</NumberWrapper>
         }
         <SentenceWrapper>
@@ -116,7 +116,6 @@ class Example extends Component {
 Example.propTypes = {
   basic: propTypes.bool,
   code: propTypes.string,
-  hideCode: propTypes.bool,
   chinese: propTypes.string.isRequired,
   pinyin: propTypes.string,
   translation: propTypes.string,

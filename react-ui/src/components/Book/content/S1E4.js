@@ -193,13 +193,13 @@ export default class Content extends Component {
           </c.P>
           {grammarTitle()}
           <c.P>We have seen that some Chinese sentences are made up of a Subject, a Verb and an Object, just as in English:</c.P>
-          {example(5, { audio: true, hideCode: true })}
-          <c.P>But unlike in English, not every Chinese sentence needs to contain a verb. For example, we can have a sentence made up of a personal pronoun and a number of years:</c.P>
           {example(1, { audio: true })}
-          <c.P>So to tell somebody your age, you literally say I X YEARS. This would of course sound odd in English. And you can even shorten this to:</c.P>
+          <c.P>But unlike in English, not every Chinese sentence needs to contain a verb. For example, we can have a sentence made up of a personal pronoun and a number of years:</c.P>
           {example(2, { audio: true })}
-          <c.P>In fact, in relaxed colloquial language you can shorten some sentences with <c.Chinese>是</c.Chinese> <b>shì</b> in the same way:</c.P>
+          <c.P>So to tell somebody your age, you literally say I X YEARS. This would of course sound odd in English. And you can even shorten this to:</c.P>
           {example(3, { audio: true })}
+          <c.P>In fact, in relaxed colloquial language you can shorten some sentences with <c.Chinese>是</c.Chinese> <b>shì</b> in the same way:</c.P>
+          {example(4, { audio: true })}
           <c.P>Sentences like this may be easier to understand by using a different grammatical concept: Topic and Comment. The Topic indicates what the sentence "is about" and the Comment makes some remark regarding this Topic. The Topic always comes first in a sentence:</c.P>
           <c.P><Row><c.Char>我</c.Char><c.Space width={100}/><c.Char>二十七。</c.Char></Row></c.P>
           <c.P><Row>TOPIC<c.Space width={75}/>COMMENT</Row></c.P>
@@ -218,7 +218,7 @@ export default class Content extends Component {
           </c.P>
           {grammarTitle()}
           <c.P>In Chinese, it is often possible to omit words when they are clear from the context. In the second phrase below, the subject <c.Chinese>我</c.Chinese> <i>I</i> has been omitted:</c.P>
-          {example(4, { audio: true })}
+          {example(5, { audio: true })}
           <c.P>In this example, it is already clear who you are talking about – yourself – so it is not necessary to repeat this subject <i>I</i>.</c.P>
           <c.P>Again, we could analyze this as a Topic-Comment construction:</c.P>
           <c.Bookrow>(I : FAMILY-NAMED WANG, CALLED WANG YUGUO.)</c.Bookrow>

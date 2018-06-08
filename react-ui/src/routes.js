@@ -57,7 +57,7 @@ export default (
           <Route path="review" component={ containers.Review } />
           <Route path="exam" component={ containers.Exam } />
           <Route path="result" component={ containers.ExamResult } />
-          <Route path="question" component={ containers.Question } />
+          <Route path="question" component={ requireAuth(containers.Question) } />
         </Route>
       </Route>
       <Route path="blog" component={ components.Blog } />

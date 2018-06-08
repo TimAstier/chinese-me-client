@@ -193,7 +193,7 @@ export default class Content extends Component {
           </c.P>
           {grammarTitle()}
           <c.P>We have seen that some Chinese sentences are made up of a Subject, a Verb and an Object, just as in English:</c.P>
-          {example(1, { audio: true })}
+          {example(1, { audio: true, hideCode: true })}
           <c.P>But unlike in English, not every Chinese sentence needs to contain a verb. For example, we can have a sentence made up of a personal pronoun and a number of years:</c.P>
           {example(2, { audio: true })}
           <c.P>So to tell somebody your age, you literally say I X YEARS. This would of course sound odd in English. And you can even shorten this to:</c.P>

@@ -33,6 +33,7 @@ class Example extends Component {
         audioUrl={this._audioUrl(false)}
         slowAudioUrl={this._audioUrl(true)}
         displayTranslation={this.props.options.displayTranslation}
+        hideCode={this.props.options.hideCode}
       />
     );
   }
@@ -45,7 +46,8 @@ Example.propTypes = {
   options: propTypes.shape({
     basic: propTypes.bool,
     audio: propTypes.bool,
-    displayTranslation: propTypes.bool
+    displayTranslation: propTypes.bool,
+    hideCode: propTypes.bool
   }),
   episodeNumber: propTypes.number.isRequired
 };

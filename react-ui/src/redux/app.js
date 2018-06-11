@@ -1,4 +1,5 @@
 import { Map } from 'immutable';
+import { EventTypes } from 'redux-segment';
 
 // Types
 
@@ -21,10 +22,26 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
 
 // Actions
 
-const setInitialized = bool => ({
-  type: types.SET_INITIALIZED,
-  payload: bool
-});
+const setInitialized = bool => {
+  if (bool === false) {
+    return {
+      type: types.SET_INITIALIZED,
+      payload: bool
+    };
+  }
+  return {
+    type: types.SET_INITIALIZED,
+    payload: bool,
+    meta: {
+      analytics: {
+        eventType: EventTypes.track,
+        eventPayload: {
+          event: 'Loaded App'
+        }
+      }
+    }
+  };
+};
 
 export const actions = {
   setInitialized

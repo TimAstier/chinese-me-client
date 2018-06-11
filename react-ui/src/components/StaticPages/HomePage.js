@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
-// import './homepage.css';
 import assetEndpointToUrl from '../../helpers/assetEndpointToUrl';
 import { ScrollableWrapper, NLSignupForm } from '../.';
 import styled from 'styled-components';
@@ -845,10 +844,31 @@ class HomePage extends Component {
             </div>
           </div>
 
-          <NLSignupForm
-            title="Get our free PDF course"
-            text="Sign up now to receive the free PDF version of our Chinese course for beginners, as well as the latest news about the project."
-          />
+          <div id="testimonials" className="centered">
+            <h2>Testimonials</h2>
+            <div className="imgContainer">
+              <img src={assetEndpointToUrl('/images/homepage/Joakim_Enwall.png')} alt="Joakim Enwall" style={{ width: '90px' }} />
+              <p><span>Joakim Enwall</span></p>
+              <p>Chinese teacher at Uppsala University</p>
+              <p>
+                <i>"With its fun dialogues and clear explanations, ChineseMe is a wonderful blend of practical skills and academic rigour. Where others tend to ignore or gloss over grammatical intricacies, this course instead goes in-depth to provide an accessible and easily understood presentation of what makes Chinese so unique and interesting. Warmly recommended."</i>
+              </p>
+            </div>
+            <div className="imgContainer">
+              <img src={assetEndpointToUrl('/images/homepage/cecilia_lindqvist.png')} alt="Cecilia Lindqvist" style={{ width: '90px' }} />
+              <p><span>Cecilia Lindqvist</span></p>
+              <p>Author of <i>China – Empire of Living Symbols</i>, Guest Professor at Beijing Language and Culture University</p>
+              <p><i>"Finally, a systematic course in Chinese where pronunciation, sentence patterns, character etymology and calligraphy are integrated pedagogically. I have been waiting for years for a course like this!"</i></p>
+            </div>
+            <div className="imgContainer">
+              <img src={assetEndpointToUrl('/images/homepage/rachel_meyer.png')} alt="Rachel Meyer" style={{ width: '90px' }} />
+              <p><span>Rachel Meyer</span></p>
+              <p>Author of <i>Chit-Chat Chinese</i>, Co-founder of <a href="https://abclang.com/">ABC Languages</a></p>
+              <p>
+                <i>"ChineseMe is the perfect marriage of solid pedagogical content and an entertaining digital interface. The lessons move in a super logical way taking students from pronunciation, to writing, then on to new words and finally a long dialogue. It has everything you would want in a lesson plan, even an ending quiz. Also loved the cultural tips in each lesson. This program caught my eye right from the start. I recommend giving it a try."</i>
+              </p>
+            </div>
+          </div>
 
           <div id="learnChinese" className="centered">
             <img id="logo" src={assetEndpointToUrl('/images/homepage/square_logo_small.png')} alt="logo"/>
@@ -946,24 +966,6 @@ class HomePage extends Component {
 
           </div>
 
-          <div id="testimonials" className="centered">
-            <h2>Testimonials</h2>
-            <div className="imgContainer">
-              <img src={assetEndpointToUrl('/images/homepage/cecilia_lindqvist.png')} alt="Cecilia Lindqvist" style={{ width: '90px' }} />
-              <p><span>Cecilia Lindqvist</span></p>
-              <p>Author of <i>China – Empire of Living Symbols</i>, Guest Professor at Beijing Language and Culture University</p>
-              <p><i>"Finally, a systematic course in Chinese where pronunciation, sentence patterns, character etymology and calligraphy are integrated pedagogically. I have been waiting for years for a course like this!"</i></p>
-            </div>
-            <div className="imgContainer">
-              <img src={assetEndpointToUrl('/images/homepage/rachel_meyer.png')} alt="Rachel Meyer" style={{ width: '90px' }} />
-              <p><span>Rachel Meyer</span></p>
-              <p>Author of <i>Chit-Chat Chinese</i>, Co-founder of <a href="https://abclang.com/">ABC Languages</a></p>
-              <p>
-                <i>"ChineseMe is the perfect marriage of solid pedagogical content and an entertaining digital interface. The lessons move in a super logical way taking students from pronunciation, to writing, then on to new words and finally a long dialogue. It has everything you would want in a lesson plan, even an ending quiz. Also loved the cultural tips in each lesson. This program caught my eye right from the start. I recommend giving it a try."</i>
-              </p>
-            </div>
-          </div>
-
           <div id="aboutAuthor">
             <h2>About the Authors</h2>
             <section>
@@ -1046,6 +1048,11 @@ class HomePage extends Component {
               </ul>
             </div>
           </div>
+
+          <NLSignupForm
+            title="Get our free PDF course"
+            text="Sign up now to receive the free PDF version of our Chinese course for beginners, as well as the latest news about the project."
+          />
         </Wrapper>
       </ScrollableWrapper>
     );

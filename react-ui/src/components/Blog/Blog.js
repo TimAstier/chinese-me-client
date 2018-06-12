@@ -59,6 +59,11 @@ class Blog extends Component {
           <Description>A collection of high-quality articles about Mandarin Chinese <br /> and how to learn it efficiently.</Description>
           <ArticlesWrapper>
             <ArticleBreadcrumb
+              path="/blog/chinese-consonant-pairs-and-aspiration"
+              image="aspirated_vs_not.png"
+              title="Chinese Consonant Pairs and Aspiration"
+            />
+            <ArticleBreadcrumb
               path="/blog/learn-chinese-pdf"
               image="Season_1_PDF.png"
               title="PDF to Learn Chinese (Beginners)"

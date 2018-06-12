@@ -147,6 +147,14 @@ const SEOData = {
     priority: 0.8,
     image: 'Season_1_PDF.png'
   },
+  '/blog/chinese-consonant-pairs-and-aspiration': {
+    title: 'Chinese Consonant Pairs and Aspiration - ChineseMe',
+    description: 'Johan Björkstén shares one of the keys to understand Chinese pronunciation: aspiration and voicing.',
+    keywords: 'Chinese pronunciation, pinyin, chinese consonants, aspirated consonants, unvoiced, Chinese phonology',
+    changefreq: 'yearly',
+    priority: 0.7,
+    image: 'aspirated_vs_not.png'
+  },
   // The URLs below are restricted and non-listed in Google's sitemap
   '/account': {
     title: 'My account - ChineseMe'

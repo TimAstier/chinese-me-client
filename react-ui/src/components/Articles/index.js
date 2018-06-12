@@ -5,3 +5,4 @@ export { default as RidiculouslySpecificChineseClassifiers } from './Ridiculousl
 export { default as SayingChameleonInChinese } from './SayingChameleonInChinese';
 export { default as AChineseCourseWhereYouAreTheStar } from './AChineseCourseWhereYouAreTheStar';
 export { default as LearnChinesePdf } from './LearnChinesePdf';
+export { default as ChineseConsonantPairsAndAspiration } from './ChineseConsonantPairsAndAspiration';

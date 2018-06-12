@@ -16,10 +16,10 @@ class Article extends Component {
           <iframe title="Chinese Pinyin Pronunciation: consonants and aspiration" width="560" height="315" src="https://www.youtube.com/embed/upFeDw8lpgQ" frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen />
         </c.Bookrow>
         <c.P>
-          Here are two takeaways from this video:
+          Here are takeaways from this video:
         </c.P>
         <c.Bookrow>
-          <h2>Unlike many other languages, Chinese consonants are all <i>unvoiced</i></h2>
+          <h2>Many Chinese consonants are distinguished by aspiration</h2>
         </c.Bookrow>
         <c.P>
           If you pronounce b- and p- in English and hold the palm of your hand on your Adam’s apple, you can notice that the main difference between b- and p- is that b- is <i>voiced</i> (you can feel a vibration), whereas p- is <i>unvoiced</i> (there is no vibration).
@@ -27,9 +27,6 @@ class Article extends Component {
         <Img
           name="no_voicing.png"
         />
-        <c.Bookrow>
-          <h2>Chinese consonant pairs are distinguished with <i>aspiration</i></h2>
-        </c.Bookrow>
         <c.P>
           Instead of this <i>voiced vs. unvoiced</i> distinction, many Chinese consonant pairs are distinguished with another concept called <i>aspiration</i>.
         </c.P>

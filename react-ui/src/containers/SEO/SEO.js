@@ -55,7 +55,7 @@ class SEO extends Component {
         <meta property="og:url" content={ PRODUCTION_ROOT_URL + this.props.url } />
         <meta property="og:image" content={ this._image() } />
         <meta name="twitter:site" content="@ChineseMeHQ" />
-        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:creator" content="@ChineseMeHQ" />
         <meta name="twitter:description" content={ this._description() } />
         <meta name="twitter:title" content={ this._title() } />

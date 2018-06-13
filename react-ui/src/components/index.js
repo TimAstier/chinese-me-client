@@ -23,6 +23,7 @@ export { default as CharacterEtymology } from './CharacterEtymology/CharacterEty
 export { default as CharacterPinyin } from './Exercises/CharacterPinyin/CharacterPinyin';
 export { default as CharacterStroke } from './Exercises/CharacterStroke/CharacterStroke';
 export { default as ChapterHeader } from './MapModal/ChapterHeader';
+export { default as ChineseGrammar } from './StaticPages/ChineseGrammar';
 export { default as ChoiceBox } from './Exercises/MultipleChoice/ChoiceBox/ChoiceBox';
 export { default as ChoicesToOrder } from './Exercises/ChoicesToOrder/ChoicesToOrder';
 export { default as ChoseRole } from './Dialog/ChoseRole';

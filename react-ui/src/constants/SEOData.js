@@ -14,6 +14,13 @@ const SEOData = {
     changefreq: 'yearly',
     priority: 0.5
   },
+  '/chinese-grammar': {
+    title: 'Chinese Grammar - ChineseMe',
+    description: 'Discover sentence patterns, the best way to learn Chinese grammar without complicated theoretical explanations.',
+    keywords: 'Chinese grammar, sentence patterns, Chinese grammar resources',
+    changefreq: 'monthly',
+    priority: 0.9
+  },
   '/about': {
     title: 'About - ChineseMe',
     description: 'ChineseMe is the first integrated Chinese course designed for committed learners. Our aim is to combine the best ideas for pronunciation, vocabulary, characters, sentence patterns (grammar), cultural knowledge and interactive exercises in a single, integrated learning experience.',

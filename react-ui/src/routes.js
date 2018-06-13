@@ -35,6 +35,7 @@ export default (
       <Route path="login" component={ containers.LoginPage } />
       <Route path="about" component={ components.About } />
       <Route path="help" component={ components.Help } />
+      <Route path="chinese-grammar" component={ components.ChineseGrammar } />
       <Route path="privacy-policy" component={ components.Privacy } />
       <Route path="terms-of-service" component={ components.Terms } />
       <Route path="philosophy" component={ components.Philosophy } />

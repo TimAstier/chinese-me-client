@@ -934,7 +934,7 @@ class HomePage extends Component {
             <section>
               <div className="description centered">
                 <h3>Crystal clear explanations</h3>
-                <p>The course is built on sentence patterns - the ideal way of learning Chinese grammar without complicated theoretical explanations. And when we do explain grammatical structures, we use terms and ideas that have been developed especially for Mandarin Chinese. Every word and example has been carefully selected for maximum usefulness, and we continuously incorporate student feedback to improve the course.</p>
+                <p>The course is built on <Link to="/chinese-grammar">sentence patterns</Link> - the ideal way of learning Chinese grammar without complicated theoretical explanations. And when we do explain grammatical structures, we use terms and ideas that have been developed especially for Mandarin Chinese. Every word and example has been carefully selected for maximum usefulness, and we continuously incorporate student feedback to improve the course.</p>
               </div>
               <figure className="imgWrapper centered">
                 <img src={assetEndpointToUrl('/images/homepage/patterns.png')} alt="You really know how to explain difficult concepts."/>

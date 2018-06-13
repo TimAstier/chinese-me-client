@@ -14,15 +14,12 @@ const Wrapper = styled.div`
   h2 {
     margin: 0;
   }
+  text-align: center;
   /* Extra small devices (phones, less than 768px) */
   /* No media query since this is the default in Bootstrap */
   /* Small devices (tablets, 768px and up) */
   /* Medium devices (desktops, 992px and up) */
   /* Large devices (large desktops, 1200px and up) */
-
-  .centered {
-    text-align: center;
-  }
 
   #mainHeader {
     display: flex;

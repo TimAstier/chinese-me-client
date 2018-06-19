@@ -16,9 +16,11 @@ injectGlobal`
     font-family: YingBi;
     src: url('https://d1vi6gdem0f6wt.cloudfront.net/fonts/FZYBKSJW.ttf') format('opentype');
   }
-  @font-face {
-    font-family: Cambria;
-    src: local('Cambria'); 
+  @media print {
+    @font-face {
+      font-family: Cambria;
+      src: local('Cambria'); 
+    }
   }
 `;
 

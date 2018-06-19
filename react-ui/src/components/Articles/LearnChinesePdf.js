@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { bookComponents as c, ArticleWrapper } from '../.';
 import { Img } from '../Shared';
 import { pdfCourse, PDF_VERSION } from '../../constants/urls';
+import { Link } from 'react-router';
 
 // TODO: author, createdDate, updatedDate
 class Article extends Component {
@@ -23,7 +24,7 @@ class Article extends Component {
           </a>
         </c.Bookrow>
         <c.P>
-          <i>Season 1 The basics</i> is a series of ten episodes (or lessons) designed for complete beginners and covering the fundamentals of the Chinese language. It is the first part of our <a href="https://www.chinese-me.com/course">integrated course</a>.
+          <i>Season 1 The basics</i> is a series of ten episodes (or lessons) designed for complete beginners and covering the fundamentals of the Chinese language. It is the first part of our <Link to="/course">integrated course</Link>.
         </c.P>
         <c.P>
           This PDF version ({ PDF_VERSION }) is designed for students and teachers who would like to print the course or read in on any digital device without an Internet connection.

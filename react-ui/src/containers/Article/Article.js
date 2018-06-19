@@ -4,6 +4,8 @@ import { articles } from '../../components';
 import { Article as ArticleComponent } from '../../components';
 import camelCase from 'lodash/camelCase';
 import { capitalizeFirstLetter } from '../../utils/strings';
+import { PRODUCTION_ROOT_URL } from '../../constants/urls';
+import SEOData from '../../constants/SEOData';
 
 class Article extends Component {
   _article(slug) {
@@ -18,7 +20,10 @@ class Article extends Component {
     }
     return (
       <ArticleComponent
-        article={article}
+        article={ article }
+        url={ PRODUCTION_ROOT_URL + this.props.router.getCurrentLocation().pathname }
+        id={ this.props.router.params.slug }
+        title= { SEOData[this.props.router.getCurrentLocation().pathname].title }
       />
     );
   }
@@ -28,7 +33,8 @@ Article.propTypes = {
   router: propTypes.shape({
     params: propTypes.shape({
       slug: propTypes.string.isRequired
-    }).isRequired
+    }).isRequired,
+    getCurrentLocation: propTypes.func.isRequired
   }).isRequired
 };
 

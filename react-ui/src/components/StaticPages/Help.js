@@ -48,6 +48,23 @@ class Help extends Component {
             </c.Bookrow>
             <c.P>Learning Chinese is a wonderful adventure. Our mission is to provide you with a great learning experience: the perfect course, with a reliable teacher always at your side.</c.P>
             <c.P>The course is designed to gradually introduce new piece of knowledge. But in the end, it's up to you to decide on what to study and in which order.</c.P>
+            <c.PartTitle type="secondary">ChineseMe Episodes</c.PartTitle>
+            <c.P>
+              The ChineseMe Episodes (or lessons) are based on a simple workflow:
+            </c.P>
+            <c.P>
+              1. Practice individual characters until you can pronounce them perfectly, as well as remembering the stroke order.
+            </c.P>
+            <c.P>
+              2. Read the sentence patterns. As you learn each new pattern, spend some time listening to each pattern and reading it aloud – if you are really serious, memorize it so that you can speak it fluently in Chinese by just looking at the English translation. Once you nail the individual sounds of each character and word in an example sentence, continue working on the prosody – the melody of the entire sentence. Don’t stop until you sound like a native! Then do the exercises to make sure you have understood how to generalize the pattern using vocabulary you already know.
+            </c.P>
+            <c.P>
+              3. Move on to the dialogs. Some people begin by listening to the entire dialog at natural speed using Listen mode; others prefer to start in Explore mode where they can learn vocabulary and listen to each sentence at artificially slow speed. Once you are familiar with the contents, role play each of the characters in the dialog until your can perform them all fluently.
+            </c.P>
+            <c.P>
+              4. Do the review Exercises and Exam at the end of the episode.
+            </c.P>
+            <c.PartTitle type="secondary">Course features</c.PartTitle>
             <c.P><Row><TextBlock>You can click on the ChineseMe logo to see the <b><i>Season</i></b> you're currently studying and all available <b><i>Episodes.</i></b></TextBlock><div><img src={assetEndpointToUrl('/images/black_logo.png')} alt="chineseMe logo"/></div></Row></c.P>
             <c.P><Row><TextBlock>You can navigate through the course via the Table of Contents.</TextBlock><div><img src={assetEndpointToUrl('/images/toc.png')} alt="table of contents icon"/></div></Row></c.P>
             <c.P><Row><TextBlock>If you have questions, comments or suggestions, we would love to hear from you! Send your <b><i>Message</i></b> via the message button.</TextBlock><div><img src={messageIcon} alt="message icon" width="40px"/></div></Row></c.P>

@@ -6,7 +6,7 @@ const StyledUl = styled.ul`
   list-style-type: none;
   font-size: 21px;
   li {
-    line-height: 25px;
+    line-height: 1.5;
     margin-bottom: 10px;
   }
 `;

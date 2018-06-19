@@ -162,6 +162,14 @@ const SEOData = {
     priority: 0.7,
     image: 'aspirated_vs_not.png'
   },
+  '/blog/quest-for-the-most-efficient-chinese-course': {
+    title: 'Quest for the most efficient Chinese course - ChineseMe',
+    description: 'In order to master the Chinese language, you need to learn a lot of things. Getting the right strategy and study routine is key to learn Chinese efficiently.',
+    keywords: 'daily routine to learn Chinese, daily workflow to learn Chinese, study routine to learn Chinese, how to study Chinese, chinese learning strategy',
+    changefreq: 'yearly',
+    priority: 0.7,
+    image: 'super-mega-easy-chinese.png'
+  },
   // The URLs below are restricted and non-listed in Google's sitemap
   '/account': {
     title: 'My account - ChineseMe'

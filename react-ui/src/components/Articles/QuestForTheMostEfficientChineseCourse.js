@@ -147,6 +147,13 @@ class Article extends Component {
             </li>
           </c.Ul>
         </c.Bookrow>
+        <c.Bookrow center>
+          <Img
+            name="duolingo_course.png"
+            caption="Is the Duolingo approach adapted to the specificities of the Chinese language?"
+            maxWidth={250}
+          />
+        </c.Bookrow>
         <c.P>
           Because of this situation, <b>students of Chinese who are motivated enough to reach their objectives are faced with an impossible mission: design their own strategy to learn Chinese</b>. This means going into the wild and find the best resources for every specific dimension of the language. If you visit forums or Q&A platforms about Chinese language, you will easily find examples of learners following this quest:
         </c.P>
@@ -173,6 +180,11 @@ class Article extends Component {
         </c.Bookrow>
         <c.Bookrow center>
           <h3>A comprehensive learning strategy <br /> based on existing resources</h3>
+        </c.Bookrow>
+        <c.Bookrow center>
+          <Img
+            name="resources_to_learn_chinese.png"
+          />
         </c.Bookrow>
         <c.P>
           Generally speaking, <b>the existing resources are specialized on one dimension of the language</b>. Even like so, they are not always optimal or accurate. And even general Chinese courses are usually only good at one or a few dimensions of the language. Here is a list of resources that are often recommended by learners:

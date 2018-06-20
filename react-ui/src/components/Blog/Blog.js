@@ -60,7 +60,7 @@ class Blog extends Component {
           <ArticlesWrapper>
             <ArticleBreadcrumb
               path="/blog/quest-for-the-most-efficient-chinese-course"
-              image="super-mega-easy-chinese.png"
+              image="resources_to_learn_chinese.png"
               title="Quest for the most efficient Chinese course"
             />
             <ArticleBreadcrumb

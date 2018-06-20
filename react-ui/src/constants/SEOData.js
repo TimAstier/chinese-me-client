@@ -168,7 +168,7 @@ const SEOData = {
     keywords: 'daily routine to learn Chinese, daily workflow to learn Chinese, study routine to learn Chinese, how to study Chinese, chinese learning strategy',
     changefreq: 'yearly',
     priority: 0.7,
-    image: 'super-mega-easy-chinese.png'
+    image: 'resources_to_learn_chinese.png'
   },
   // The URLs below are restricted and non-listed in Google's sitemap
   '/account': {

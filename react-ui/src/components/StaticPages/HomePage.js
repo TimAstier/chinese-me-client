@@ -71,9 +71,9 @@ const Wrapper = styled.div`
 
   #mainHeader h2 {
     margin-top: 20px;
-    font-size: 28px;
+    font-size: 40px;
     font-weight: 600;
-    line-height: 35px;
+    line-height: 40px;
     font-family: Whitney SSm A,Whitney SSm B,Whitney,Helvetica Neue,sans-serif;
     text-align: center;
     color: black;
@@ -770,7 +770,7 @@ class HomePage extends Component {
           <header id="topHeader" style={{ backgroundImage: `url(${assetEndpointToUrl('/images/homepage/home-gradient.svg')}`, backgroundRepeat: 'no-repeat' }} >
             <div id="mainHeader">
               <h1>ChineseMe</h1>
-              <h2>The integrated Chinese course<br/>for committed learners</h2>
+              <h2>The integrated Chinese course</h2>
               <div id="main-cta">
                 <Link to="/course" className="btn-base btn-cta btn-read">
                   <span>Get started</span>

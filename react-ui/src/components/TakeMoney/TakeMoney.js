@@ -17,6 +17,12 @@ class TakeMoney extends Component {
       })
       .then(response => {
         if (response.status === 200) {
+          this.props.purchasedProduct(
+            {
+              productName: this.props.productName,
+              price: this.props.price
+            }
+          );
           return this.props.reloadApp();
         }
         return null;
@@ -37,11 +43,15 @@ class TakeMoney extends Component {
         panelLabel="Buy for"
       >
         <ScreenButton
-          primary
-          text="Buy"
-          fontSize={14}
-          height={25}
-          width={75}
+          secondary
+          text={
+            `Buy for ${(this.props.price / 100)
+              .toLocaleString('en-US', {style: 'currency', currency: 'USD'})
+            }`}
+          width={180}
+          height={40}
+          fontSize={16}
+          onClick={() => this.props.clickedBuyButton(this.props.productName)}
         />
       </StripeCheckout>
     );
@@ -49,11 +59,13 @@ class TakeMoney extends Component {
 }
 
 TakeMoney.propTypes = {
-  email: propTypes.string.isRequired,
+  email: propTypes.string,
   productName: propTypes.string.isRequired,
   price: propTypes.number.isRequired,
   seasonId: propTypes.number.isRequired,
-  reloadApp: propTypes.func.isRequired
+  reloadApp: propTypes.func.isRequired,
+  clickedBuyButton: propTypes.func.isRequired,
+  purchasedProduct: propTypes.func.isRequired
 };
 
 export default TakeMoney;

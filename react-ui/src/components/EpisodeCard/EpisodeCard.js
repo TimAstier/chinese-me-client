@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
 import { ScreenButton, Star } from '../.';
-import iconLock from '../../images/iconLock.svg';
+import { Spinner } from '../.';
 import containsChinese from '../../utils/containsChinese';
 import { MINIMUM_SCORE_TO_PASS, TWO_STARS_THRESHOLD, THREE_STARS_THRESHOLD }
   from '../../constants/exam';
+
+const Preload = require('react-preloaded').Preload;
 
 const Wrapper = styled.div`
   width: 250px;
@@ -25,10 +27,10 @@ const ImageWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: ${props => props.locked ? 0 : '60px'};
+  border-radius: 60px;
   overflow: hidden;
   img {
-    height: ${props => props.locked ? '60%' : '100%'};
+    height: 100%;
     width: auto;
   }
 `;
@@ -95,15 +97,24 @@ class EpisodeCard extends Component {
   render() {
     return (
       <Wrapper>
-        <ImageWrapper locked={this.props.locked}>
-          <img
-            src={this.props.locked ? iconLock : this.props.imageUrl}
-            alt={`episode ${this.props.number}`}
-          />
-        </ImageWrapper>
+        <Preload
+          loadingIndicator={
+            <ImageWrapper>
+              <Spinner />
+            </ImageWrapper>
+          }
+          images={[ this.props.imageUrl ]}
+        >
+          <ImageWrapper>
+            <img
+              src={this.props.imageUrl}
+              alt={`episode ${this.props.number}`}
+            />
+          </ImageWrapper>
+        </Preload>
         <NumberWrapper>
           {
-            '- Episode ' + this.props.number + ' -'
+            '- EPISODE ' + this.props.number + ' -'
           }
         </NumberWrapper>
         <TitleWrapper

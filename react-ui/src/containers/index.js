@@ -18,6 +18,7 @@ export { default as CharacterStroke } from './Exercises/CharacterStroke/Characte
 export { default as ChoicesToOrder } from './Exercises/ChoicesToOrder/ChoicesToOrder';
 export { default as ChoseRole } from './Dialog/ChoseRole';
 export { default as CircleTimer } from './Exam/CircleTimer';
+export { default as Course } from './Course/Course';
 export { default as Dialog } from './Dialog/Dialog';
 export { default as ElementsNav } from './ElementsNav/ElementsNav';
 export { default as EpisodeCard } from './EpisodeCard/EpisodeCard';
@@ -53,7 +54,6 @@ export { default as SignupPage } from './Signup/Page';
 export { default as SignupActivate } from './Signup/Activate';
 export { default as Speech } from './Exercises/Speech/Speech';
 export { default as Statement } from './Statement/Statement';
-export { default as Store } from './Store/Store';
 export { default as Study } from './Study/Study';
 export { default as TakeMoney } from './TakeMoney/TakeMoney';
 export { default as Video } from './Video/Video';

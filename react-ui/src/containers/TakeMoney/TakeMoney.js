@@ -19,6 +19,8 @@ TakeMoney.propTypes = {
 export default connect(
   null,
   {
-    reloadApp: sagaActions.reloadApp
+    reloadApp: sagaActions.reloadApp,
+    clickedBuyButton: sagaActions.clickedBuyButton,
+    purchasedProduct: sagaActions.purchasedProduct
   }
 )(TakeMoney);

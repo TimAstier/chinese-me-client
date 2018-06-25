@@ -6,22 +6,24 @@ import * as containers from './containers';
 import * as components from './components';
 
 // How to redirect by dispatching actions:
-// import { push } from 'react-router-redux';
 
-// push(endpoint); <- In a component's method
+// PUSH
+
+// In a component:
+// import { push } from 'react-router-redux';
+// this.props.push(endpoint); (push needs to be in mapActionsToProps)
+
+// In a saga:
 // yield put(push('/dialog/' + action.payload.episodeId)); <- in a saga
 
-// How to push directly from a component:
-// import { browserHistory } from 'react-router'
-// browserHistory.push('/select')
+// REPLACE
 
-/* ----- */
-// Study routes:
-// /course/:episodeId/[element]/:elementId/[mode]
+// In a component:
+// import { replace } from 'react-router-redux';
+// this.props.replace(endpoint); (replace needs to be in mapActionsToProps)
 
-// Study flow:
-// Hit URL -> Component Render -> trigger saga -> next -> push next URL
-/* ----- */
+// In a saga:
+// yield put(replace('/dialog/' + action.payload.episodeId)); <- in a saga
 
 export default (
   <div>
@@ -39,10 +41,10 @@ export default (
       <Route path="privacy-policy" component={ components.Privacy } />
       <Route path="terms-of-service" component={ components.Terms } />
       <Route path="philosophy" component={ components.Philosophy } />
-      <Route path="store" component={ requireAuth(containers.Store) } />
       <Route path="account" component={ requireAuth(containers.Account) } />
       <Route path="course" component={ containers.Study } >
-        <IndexRoute component={ containers.SelectEpisode } />
+        <IndexRoute component={ containers.Course } />
+        <Route path="season/:seasonNumber" component={ containers.SelectEpisode } />
         <Route path="season/:seasonNumber/episode/:episodeNumber" component={ containers.Book } />
         <Route path=":episodeId" component={ containers.EpisodeHOC } >
           <Route path="character/:characterId/pinyin" component={ containers.CharacterPinyin } />

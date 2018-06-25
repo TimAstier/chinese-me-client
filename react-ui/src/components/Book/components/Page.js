@@ -8,7 +8,7 @@ const Wrapper = styled.div`
   width: 80%;
   @media (max-width: 800px) {
     width: 100%;
-    margin: 0 auto 50px;
+    margin: 10px auto 50px;
     border-radius: 0px;
     box-shadow: none;
   }

@@ -58,7 +58,7 @@ class Account extends Component {
         { !this.props.giftCodeActivated &&
           <div>
             <GiftCodeForm onSubmit={ this.props.onGiftCodeSubmit } />
-            <p>Activating a Gift Code give you the possibility to unlock a Season of your choice for free in the <a href="/store">Store</a>.</p>
+            <p>Activating a Gift Code give you the possibility to unlock a Season of your choice for free in the <a href="/course">course</a>.</p>
             <p>Gift Codes can be obtained during promotional events or purchased from third party stores.</p>
           </div>
         }

@@ -11,9 +11,9 @@ function* watchActivate() {
     try {
       const activated = yield call(Api.post, '/codes/activate/', values);
       if (activated.status === 200) {
-        yield call(loadSettings);
         yield call(resolve);
       }
+      yield call(loadSettings);
       // TODO: show an UI repsonse
     } catch (error) {
       yield call(reject, new SubmissionError(error.response.data));

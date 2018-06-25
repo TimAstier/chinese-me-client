@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
+import { replace } from 'react-router-redux';
 import { Book as BookComponent } from '../../components';
 import * as content from '../../components/Book/content';
 import s from '../../rootSelectors';
@@ -39,14 +40,19 @@ class Book extends Component {
 
   render() {
     const { seasonNumber, episodeNumber } = this.props.params;
+    const contentFile = content[`S${seasonNumber}E${episodeNumber}`];
+    if (!contentFile) {
+      return this.props.replace('/404');
+    }
     return (
       <BookComponent
         initialized={this.props.initialized}
-        content={content[`S${seasonNumber}E${episodeNumber}`]}
+        content={contentFile}
         images={imageNames[`S${seasonNumber}E${episodeNumber}`] || []}
         episode={this.props.episode}
         season={this.props.season}
         nextEpisode={this.props.nextEpisode}
+        params={this.props.params}
       />
     );
   }
@@ -61,7 +67,8 @@ Book.propTypes = {
   nextEpisode: propTypes.instanceOf(models.Episode),
   location: propTypes.object.isRequired,
   setInitialized: propTypes.func.isRequired,
-  setScrollPosition: propTypes.func.isRequired
+  setScrollPosition: propTypes.func.isRequired,
+  replace: propTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -76,6 +83,7 @@ export default connect(
   {
     initBook: sagaActions.initBook,
     setInitialized: bookActions.setInitialized,
-    setScrollPosition: uiActions.setScrollPosition
+    setScrollPosition: uiActions.setScrollPosition,
+    replace
   }
 )(Book);

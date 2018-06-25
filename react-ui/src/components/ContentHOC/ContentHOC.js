@@ -6,6 +6,7 @@ import * as models from '../../models';
 import styled from 'styled-components';
 import Img from '../Shared/Img';
 import { ScreenButton } from '../.';
+import { Link } from 'react-router';
 
 const Placeholder = styled.p`
   color: red;
@@ -200,14 +201,14 @@ class ContentHOC extends Component {
           image={this._image(this.props.images)}
         />
         { this.props.nextEpisode &&
-          <ButtonWrapper>
-            <a href={`/course/season/${this.props.season.number}/episode/${this.props.nextEpisode.number}`}>
+          <ButtonWrapper id="test">
+            <Link to={`/course/season/${this.props.season.number}/episode/${this.props.nextEpisode.number}`}>
               <ScreenButton
                 primary
                 text="Next episode"
                 width={150}
               />
-            </a>
+            </Link>
           </ButtonWrapper>
         }
       </div>
@@ -220,7 +221,7 @@ ContentHOC.propTypes = {
   season: propTypes.instanceOf(models.Season),
   episode: propTypes.instanceOf(models.Episode),
   nextEpisode: propTypes.instanceOf(models.Episode),
-  images: propTypes.array.isRequired
+  images: propTypes.array.isRequired,
 };
 
 export default ContentHOC;

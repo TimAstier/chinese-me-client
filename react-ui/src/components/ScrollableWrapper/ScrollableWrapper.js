@@ -38,7 +38,7 @@ class ScrollableWrapper extends Component {
 
   _shouldUpdateScroll = (prevRouterProps, routerProps) => {
     // Only move to scrollPosition in book
-    if (routerProps.routes[2] && routerProps.routes[2].path === 'season/:seasonNumber/episode/:episodeNumber') {
+    if (routerProps.routes[3] && routerProps.routes[3].path === 'season/:seasonNumber/episode/:episodeNumber') {
       // Do not scroll to saved position if the URL has a hash
       if (!this._scrollId()) {
         return [0, this.props.scrollPosition];
@@ -57,9 +57,9 @@ class ScrollableWrapper extends Component {
       <ScrollContainer
         id="scrollableWrapper"
         scrollKey="scrollableWrapper"
-        shouldUpdateScroll={this._shouldUpdateScroll}
+        shouldUpdateScroll={ this._shouldUpdateScroll }
       >
-        <Wrapper id="scrollableWrapper">
+        <Wrapper>
           {this.props.children}
           <Footer />
         </Wrapper>

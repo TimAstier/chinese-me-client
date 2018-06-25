@@ -58,7 +58,10 @@ export const types = {
   CLICKED_BOOK_BUTTON: 'signal/CLICKED_BOOK_BUTTON',
   ACTIVATE_GIFT_CODE: 'signal/ACTIVATE_GIFT_CODE',
   UNLOCK_SEASON: 'signal/UNLOCK_SEASON',
-  DISPLAY_BROWSER_NOTICE: 'signal/DISPLAY_BROWSER_NOTICE'
+  DISPLAY_BROWSER_NOTICE: 'signal/DISPLAY_BROWSER_NOTICE',
+  CLICKED_BUY_BUTTON: 'signal/CLICKED_BUY_BUTTON',
+  SAW_NOTICE_POPUP: 'signal/SAW_NOTICE_POPUP',
+  PURCHASED_PRODUCT: 'signal/PURCHASED_PRODUCT'
 };
 
 // Action Creators
@@ -295,6 +298,49 @@ const displayBrowserNotice = () => ({
   type: types.DISPLAY_BROWSER_NOTICE
 });
 
+const clickedBuyButton = productName => ({
+  type: types.CLICKED_BUY_BUTTON,
+  meta: {
+    analytics: {
+      eventType: EventTypes.track,
+      eventPayload: {
+        event: 'Clicked Buy Button',
+        properties: {
+          productName
+        }
+      }
+    }
+  }
+});
+
+const sawNoticePopup = type => ({
+  type: types.SAW_NOTICE_POPUP,
+  meta: {
+    analytics: {
+      eventType: EventTypes.track,
+      eventPayload: {
+        event: 'Saw Notice Popup',
+        properties: {
+          type
+        }
+      }
+    }
+  }
+});
+
+const purchasedProduct = properties => ({
+  type: types.PURCHASED_PRODUCT,
+  meta: {
+    analytics: {
+      eventType: EventTypes.track,
+      eventPayload: {
+        event: 'Purchased Product',
+        properties
+      }
+    }
+  }
+});
+
 export const actions = {
   next,
   nextSentence,
@@ -347,5 +393,8 @@ export const actions = {
   clickedBookButton,
   activateGiftCode,
   unlockSeason,
-  displayBrowserNotice
+  displayBrowserNotice,
+  clickedBuyButton,
+  sawNoticePopup,
+  purchasedProduct
 };

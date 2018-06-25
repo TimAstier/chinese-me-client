@@ -1,6 +1,5 @@
 import { take, call, select, put } from 'redux-saga/effects';
 import { types as sagaTypes } from './actions';
-import { actions as studyActions } from '../redux/study';
 import { fetchEntities } from './entities';
 import selectors from '../rootSelectors';
 import { actions as appActions } from '../redux/app';
@@ -18,8 +17,6 @@ export function* initApp() {
     }
     yield call(fetchEntities, ['/seasons']);
     yield call(fetchEntities, ['/episodes']);
-    const firstSeasonId = yield select(selectors.getFirstSeasonId);
-    yield put(studyActions.setCurrentSeasonId(firstSeasonId));
     yield put(appActions.setInitialized(true));
     if (isAuthenticated) {
       const settings = yield call(loadSettings);

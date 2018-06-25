@@ -9,6 +9,8 @@ const SeasonRecord = Immutable.Record({
   available: null,
   purchased: null,
   purchaseDate: null,
+  description: '',
+  levels: '',
   episodes: [],
 });
 

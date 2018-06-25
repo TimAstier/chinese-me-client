@@ -9,6 +9,7 @@ import swal from 'sweetalert';
 
 class BookButton extends Component {
   _redirectUser = () => {
+    this.props.sawNoticePopup('account_required');
     return swal({
       title: 'Account required',
       text: 'You need to log in to access the "Me" part of the experience.\n\nIf you don\'t want to create an account now, no worry! You can continue reading the course and register later if you want to.',
@@ -102,7 +103,8 @@ BookButton.propTypes = {
   askUserSettings: propTypes.func.isRequired,
   currentUrl: propTypes.string.isRequired,
   clickedBookButton: propTypes.func.isRequired,
-  isAuthenticated: propTypes.bool.isRequired
+  isAuthenticated: propTypes.bool.isRequired,
+  sawNoticePopup: propTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -116,6 +118,7 @@ export default connect(
   {
     push,
     askUserSettings: sagaActions.askUserSettings,
-    clickedBookButton: sagaActions.clickedBookButton
+    clickedBookButton: sagaActions.clickedBookButton,
+    sawNoticePopup: sagaActions.sawNoticePopup
   }
 )(BookButton);

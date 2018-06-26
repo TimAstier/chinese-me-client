@@ -4,6 +4,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.0.0] 2017-06-26
+
+### Added
+- New tracking events: Clicked Buy Button, Saw Notice Popup, Purchased Product
+- The '/course' route now allow users to chose a Season
+- SeasonItems, with description, price, estimated study time
+- Add breadcrumbs to navigate: Home > Course > Season X > Episode X
+- Comments on articles via Disqus 
+- Possibility to pre-order seasons that are not yet available
+- Placeholders for upcoming episodes
+
+### Changed
+- Do not hide episode images when locked (used to be locker icon)
+- New routes: '/course/season/X'
+
+### Fixed
+- Fixed regression that broke the scrollToPosition feature in Book 
+
 ## [0.2.2] 2017-06-04
 
 ### Added

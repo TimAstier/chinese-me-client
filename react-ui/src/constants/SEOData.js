@@ -51,7 +51,7 @@ const SEOData = {
   },
   '/course': {
     title: 'Course - ChineseMe',
-    description: 'Select the Season you want to study and learn Mandarin Chinese.',
+    description: 'Welcome to our integrated Chinese course! Select the Season you want to study and learn Mandarin Chinese.',
     keywords: 'ChineseMe course, ChineseMe lessons',
     changefreq: 'monthly',
     priority: 1
@@ -69,6 +69,27 @@ const SEOData = {
     keywords: 'ChineseMe Signup, ChineseMe register, ChineseMe account',
     changefreq: 'yearly',
     priority: 0.6
+  },
+  '/course/season/1': {
+    title: 'Season 1 - ChineseMe',
+    description: 'ChineseMe Season 1 - The basics - is the first part of our integrated Chinese course. Learn the fundamentals of the Chinese language!',
+    keywords: 'ChineseMe Season 1, the basics',
+    changefreq: 'monthly',
+    priority: 0.9
+  },
+  '/course/season/2': {
+    title: 'Season 2 - ChineseMe',
+    description: 'ChineseMe Season 2 - Survival Chinese - is the second part of our integrated Chinese course. Follow the story of Marvin, an American who just started learning Chinese!',
+    keywords: 'ChineseMe Season 2, survival chinese',
+    changefreq: 'monthly',
+    priority: 0.9
+  },
+  '/course/season/3': {
+    title: 'Season 3 - ChineseMe',
+    description: 'ChineseMe Season 3 - Discovering China - is the third part of our integrated Chinese course. Follow the story of Marvin who discovers more about China while still improving his Chinese!',
+    keywords: 'ChineseMe Season 3, discovering China',
+    changefreq: 'monthly',
+    priority: 0.9
   },
   '/course/season/1/episode/1': {
     title: 'S1E1 - ChineseMe',

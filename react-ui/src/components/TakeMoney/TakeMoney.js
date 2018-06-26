@@ -40,12 +40,12 @@ class TakeMoney extends Component {
         amount={this.props.price}
         currency="USD"
         email={this.props.email}
-        panelLabel="Buy for"
+        panelLabel={`${this.props.preorder ? 'Pre-order' : 'Buy'} for`}
       >
         <ScreenButton
           secondary
           text={
-            `Buy for ${(this.props.price / 100)
+            `${this.props.preorder ? 'Pre-order' : 'Buy'} for ${(this.props.price / 100)
               .toLocaleString('en-US', {style: 'currency', currency: 'USD'})
             }`}
           width={180}
@@ -65,7 +65,8 @@ TakeMoney.propTypes = {
   seasonId: propTypes.number.isRequired,
   reloadApp: propTypes.func.isRequired,
   clickedBuyButton: propTypes.func.isRequired,
-  purchasedProduct: propTypes.func.isRequired
+  purchasedProduct: propTypes.func.isRequired,
+  preorder: propTypes.bool
 };
 
 export default TakeMoney;

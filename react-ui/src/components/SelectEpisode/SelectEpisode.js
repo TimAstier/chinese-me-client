@@ -12,6 +12,8 @@ import { EpisodeCard, ScrollableWrapper } from '../../containers';
 import Immutable from 'immutable';
 import * as models from '../../models';
 
+const PREORDER_PRICE = 900;
+
 const SpinnerWrapper = styled.div`
   width: 100%;
   display: flex;
@@ -115,6 +117,18 @@ class SelectEpisode extends Component {
     );
   }
 
+  _renderPreorderButton() {
+    return (
+      <TakeMoney
+        preorder
+        email={this.props.userEmail}
+        productName={this.props.season.name}
+        price={PREORDER_PRICE}
+        seasonId={this.props.season.id}
+      />
+    );
+  }
+
   renderEpisodeCards() {
     const episodeCards = [];
     this.props.episodes.forEach((episode, i) => {
@@ -154,7 +168,19 @@ class SelectEpisode extends Component {
             </Breadcrumb.Section>
           </Breadcrumb>
         </Header>
-        { !this.props.season.purchased && !this.props.giftCode &&
+        { !this.props.season.purchased && !this.props.season.available && !this.props.giftCode &&
+          <PurchaseWrapper>
+            <div><b>This Season is under development.</b></div>
+            <div><i>Pre-order it to support the course and get a $10 discount:</i></div>
+            <PurchaseButtonWrapper>
+              { this._renderPreorderButton() }
+            </PurchaseButtonWrapper>
+            <a href="https://stripe.com">
+              <Img name="powered-by-stripe.png" maxWidth={135}/>
+            </a>
+          </PurchaseWrapper>
+        }
+        { !this.props.season.purchased && this.props.season.available && !this.props.giftCode &&
           <PurchaseWrapper>
             <div><b>You have access to the first three episodes. Feel free to try them!</b></div>
             <div><i>Enjoying this course? Purchase an access to the full season:</i></div>
@@ -166,7 +192,7 @@ class SelectEpisode extends Component {
             </a>
           </PurchaseWrapper>
         }
-        { !this.props.season.purchased && this.props.giftCode &&
+        { !this.props.season.purchased && this.props.season.available && this.props.giftCode &&
           <PurchaseWrapper>
             <div><b>You have access to the first three episodes. Feel free to try them!</b></div>
             <div><i>Enjoying this course? You can use your gift code to unlock this season:</i></div>

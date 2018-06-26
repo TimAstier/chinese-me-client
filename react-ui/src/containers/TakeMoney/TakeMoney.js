@@ -13,7 +13,8 @@ class TakeMoney extends Component {
 }
 
 TakeMoney.propTypes = {
-  reloadApp: propTypes.func.isRequired
+  reloadApp: propTypes.func.isRequired,
+  preorder: propTypes.bool
 };
 
 export default connect(

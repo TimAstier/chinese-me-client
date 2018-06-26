@@ -51,11 +51,12 @@ const Summary = styled.div`
   text-align: justify;
 `;
 
-const Level = styled.div`
+const FirstRow = styled.div`
   display: flex;
+  justify-content: space-between;
 `;
 
-const Details = styled.div`
+const SecondRow = styled.div`
   margin-top: 5px;
   display: flex;
   justify-content: space-between;
@@ -75,8 +76,14 @@ const Footer = styled.div`
   padding-right: 10px;
   padding-left: 10px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   border-top: 1px solid #ddd;
+`;
+
+const DiscountedPrice = styled.div`
+  color: #55b6ff;
+  font-style: italic;
 `;
 
 const levelColors = {
@@ -88,6 +95,17 @@ const levelColors = {
   'Proficient': 'violet'
 };
 
+const ComingSoon = styled.div`
+  color: #55b6ff;
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-style: italic;
+`;
+
+const Price = styled.span`
+  text-decoration: ${props => props.available ? 'none' : 'line-through'};
+`;
+
 class SeasonItem extends Component {
   _getLevelColor(level) {
     const color = levelColors[level];
@@ -95,14 +113,6 @@ class SeasonItem extends Component {
       return color;
     }
     return 'black';
-  }
-
-  _renderAvailability() {
-    if (this.props.available) {
-      return (
-        <span><i><b>Coming soon...</b></i></span>
-      );
-    }
   }
 
   _renderLevelLabels() {
@@ -128,20 +138,33 @@ class SeasonItem extends Component {
           </Summary>
         </Header>
         <MiddleWrapper>
-          <Level>
+          <FirstRow>
             { this._renderLevelLabels() }
-          </Level>
-          <Details>
+            { !this.props.available &&
+              <DiscountedPrice>
+                Preorder for $9.00
+              </DiscountedPrice>
+            }
+          </FirstRow>
+          <SecondRow>
             <div><i>Estimated study time: <b>{`~${this.props.episodesCount * TIME_PER_EPISODE}h`}</b></i></div>
             <Label as="a" tag>
-              $19.00
+              <Price available={this.props.available}>
+                {this.props.price.toLocaleString('en-US', {style: 'currency', currency: 'USD'})}
+              </Price>
             </Label>
-          </Details>
+          </SecondRow>
         </MiddleWrapper>
         <Footer>
+          {
+            !this.props.available &&
+              <ComingSoon>
+                Coming soon
+              </ComingSoon>
+          }
           <Link to={`/course/season/${this.props.seasonNumber}`}>
             <ScreenButton
-              primary
+              primary={this.props.available}
               text="Browse"
               width={100}
               height={35}

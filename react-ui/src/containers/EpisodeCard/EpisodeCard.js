@@ -15,7 +15,7 @@ class EpisodeCard extends Component {
     if (images && images[0]) {
       return assetEndpointToUrl(`/images/${images[0]}`);
     }
-    return 'http://via.placeholder.com/120x120';
+    return 'https://via.placeholder.com/120x120';
   }
 
   _redirectUser = () => {

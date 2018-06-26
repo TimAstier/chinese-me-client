@@ -28,77 +28,82 @@ const Header = styled.div`
   padding-right: 20px;
 `;
 
+const LoadingWrapper = styled.div`
+  height: 100%;
+  width: 100%;
+  background-color: #F2F7FA;
+`;
+
 const SpinnerWrapper = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
 `;
 
+
 class Book extends Component {
-  _renderContent() {
+  _renderHeader() {
+    return (
+      <Header>
+        <Breadcrumb>
+          <Breadcrumb.Section>
+            <Link to="/">Home</Link>
+          </Breadcrumb.Section>
+          <Breadcrumb.Divider icon="right chevron" />
+          <Breadcrumb.Section>
+            <Link to="/course">Course</Link>
+          </Breadcrumb.Section>
+          <Breadcrumb.Divider icon="right chevron" />
+          <Breadcrumb.Section>
+            <Link to={`/course/season/${this.props.params.seasonNumber}`}>
+              {`Season ${this.props.params.seasonNumber}`}
+            </Link>
+          </Breadcrumb.Section>
+          <Breadcrumb.Divider icon="right chevron" />
+          <Breadcrumb.Section active>
+            {`Episode ${this.props.params.episodeNumber}`}
+          </Breadcrumb.Section>
+        </Breadcrumb>
+      </Header>
+    );
+  }
+
+  render() {
     const Content = this.props.content;
-    if (this.props.initialized) {
+    // TODO: display unfound page
+    if (this.props.initialized && Content) {
       // Preloading images allow to calculate correct scrollPosition in
       // scrollableWrapper.
       return (
         <Preload
           loadingIndicator={
-            <Page>
-              <SpinnerWrapper>
-                <Spinner />
-              </SpinnerWrapper>
-            </Page>
+            <LoadingWrapper>
+              { this._renderHeader() }
+              <Page>
+                <SpinnerWrapper>
+                  <Spinner />
+                </SpinnerWrapper>
+              </Page>
+            </LoadingWrapper>
           }
           images={
             this.props.images.map(image => assetEndpointToUrl('/images/' + image)).concat([iconPlayAudio, iconAudioPlayingA, iconAudioPlayingB, iconAudioPlayingC, spinner])
           }
         >
-          <ContentHOC
-            season={this.props.season}
-            episode={this.props.episode}
-            nextEpisode={this.props.nextEpisode}
-            content={Content}
-            images={this.props.images}
-          />
+          <ScrollableWrapper>
+            { this._renderHeader() }
+            <ContentHOC
+              season={this.props.season}
+              episode={this.props.episode}
+              nextEpisode={this.props.nextEpisode}
+              content={Content}
+              images={this.props.images}
+            />
+          </ScrollableWrapper>
         </Preload>
       );
     }
-    return (
-      <Page>
-        <SpinnerWrapper>
-          <Spinner />
-        </SpinnerWrapper>
-      </Page>
-    );
-  }
-
-  render() {
-    return (
-      <ScrollableWrapper>
-        <Header>
-          <Breadcrumb>
-            <Breadcrumb.Section>
-              <Link to="/">Home</Link>
-            </Breadcrumb.Section>
-            <Breadcrumb.Divider icon="right chevron" />
-            <Breadcrumb.Section>
-              <Link to="/course">Course</Link>
-            </Breadcrumb.Section>
-            <Breadcrumb.Divider icon="right chevron" />
-            <Breadcrumb.Section>
-              <Link to={`/course/season/${this.props.params.seasonNumber}`}>
-                {`Season ${this.props.params.seasonNumber}`}
-              </Link>
-            </Breadcrumb.Section>
-            <Breadcrumb.Divider icon="right chevron" />
-            <Breadcrumb.Section active>
-              {`Episode ${this.props.params.episodeNumber}`}
-            </Breadcrumb.Section>
-          </Breadcrumb>
-        </Header>
-        { this._renderContent() }
-      </ScrollableWrapper>
-    );
+    return null;
   }
 }
 

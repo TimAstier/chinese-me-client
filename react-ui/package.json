@@ -1,9 +1,10 @@
 {
   "name": "chinese-me-client",
   "version": "0.0.0",
-  "private": true,
+  "private": false,
   "description": "A client for the ChineseMe app.",
   "author": "Timothée Astier",
+  "license": "GPL-3.0",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build && node src/createSitemap.js",
